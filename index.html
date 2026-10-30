@@ -3,30 +3,38 @@ layout: default
 title: 数学材料目录
 ---
 
-<p class="intro">临时存放数学题目与讨论整理稿。讨论时优先使用每项右侧的「AI 原文」链接。</p>
-<p class="note">文件分类：A = 代数，C = 组合，N = 数论。删除 Markdown 文件后，对应条目会在网站重新部署后自动消失。</p>
+<p class="intro">数学材料集中存放在这里。上传 Markdown 或 PDF 即可，不要求固定文件名、分类或目录结构。</p>
+<p class="note">每项材料都提供网页入口和 AI 原文入口。分类是可选信息；没有填写分类的材料也会正常显示。</p>
 
-{% assign problem_pages = site.pages | where_exp: "item", "item.path contains 'problems/'" | sort: "name" %}
-{% assign categories = "A,C,N" | split: "," %}
+{% assign markdown_pages = site.pages | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
+{% assign markdown_files = site.static_files | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
+{% assign pdf_files = site.static_files | where_exp: "item", "item.path contains 'problems/' and item.path contains '.pdf'" %}
+{% assign materials = markdown_pages | concat: markdown_files | concat: pdf_files | sort: "path" %}
 
-{% for category in categories %}
-  {% assign category_pages = problem_pages | where: "category", category %}
-  <section>
-    <h2 id="{{ category }}">{% case category %}{% when "A" %}A · 代数{% when "C" %}C · 组合{% when "N" %}N · 数论{% endcase %}</h2>
-    {% if category_pages.size > 0 %}
-      <ul class="problem-list">
-        {% for problem in category_pages %}
-          <li>
-            <div class="problem-main">
-              <a class="problem-title" href="{{ problem.url | relative_url }}">{{ problem.title | escape }}</a>
-              <span class="file-id">{{ problem.name | remove: ".md" }}</span>
-            </div>
-            <a class="raw-link" href="https://raw.githubusercontent.com/{{ site.github_repo }}/{{ site.github_branch }}/{{ problem.path }}">AI 原文</a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p class="note">当前没有材料。</p>
-    {% endif %}
-  </section>
-{% endfor %}
+{% if materials.size > 0 %}
+  <ul class="problem-list">
+    {% for material in materials %}
+      {% assign fallback_title = material.name | remove: ".md" | remove: ".pdf" %}
+      {% assign display_title = material.title | default: fallback_title %}
+      {% assign display_category = material.category | default: "未分类" %}
+      {% case display_category %}
+        {% when "A" %}{% assign display_category = "代数" %}
+        {% when "C" %}{% assign display_category = "组合" %}
+        {% when "N" %}{% assign display_category = "数论" %}
+      {% endcase %}
+      {% assign raw_url = "https://raw.githubusercontent.com/" | append: site.github_repo | append: "/" | append: site.github_branch | append: "/" | append: material.path %}
+      <li>
+        <div class="problem-main">
+          <a class="problem-title" href="{{ material.url | relative_url }}">{{ display_title | escape }}</a>
+          <span class="material-meta">{{ display_category | escape }} · {{ material.name | escape }}</span>
+        </div>
+        <div class="item-links">
+          <a href="{{ material.url | relative_url }}">打开</a>
+          <a href="{{ raw_url }}">AI 原文</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="note">目前还没有材料。将 Markdown 或 PDF 文件上传到 problems/ 目录即可。</p>
+{% endif %}
