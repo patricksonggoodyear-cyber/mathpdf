@@ -6,14 +6,16 @@ title: 数学材料目录
 <p class="intro">数学材料集中存放在这里。上传 Markdown 或 PDF 即可，不要求固定文件名、分类或目录结构。</p>
 <p class="note">每项材料都提供网页入口和 AI 原文入口。分类是可选信息；没有填写分类的材料也会正常显示。<a href="{{ '/llms.txt' | relative_url }}">查看 AI 纯文本总目录</a>。</p>
 
-{% assign markdown_pages = site.pages | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
-{% assign markdown_files = site.static_files | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
-{% assign pdf_files = site.static_files | where_exp: "item", "item.path contains 'problems/' and item.path contains '.pdf'" %}
-{% assign materials = markdown_pages | concat: markdown_files | concat: pdf_files | sort: "path" %}
+{% assign markdown_pages = site.pages | where_exp: "item", "item.path contains 'problems/'" %}
+{% assign static_files = site.static_files | where_exp: "item", "item.path contains 'problems/'" %}
+{% assign materials = markdown_pages | concat: static_files | sort: "path" %}
+{% assign has_materials = false %}
 
-{% if materials.size > 0 %}
-  <ul class="problem-list">
-    {% for material in materials %}
+<ul class="problem-list">
+  {% for material in materials %}
+    {% assign extension = material.name | split: "." | last | downcase %}
+    {% if extension == "md" or extension == "pdf" %}
+      {% assign has_materials = true %}
       {% assign fallback_title = material.name | remove: ".md" | remove: ".pdf" %}
       {% assign display_title = material.title | default: fallback_title %}
       {% assign display_category = material.category | default: "未分类" %}
@@ -33,8 +35,9 @@ title: 数学材料目录
           <a href="{{ raw_url }}">AI 原文</a>
         </div>
       </li>
-    {% endfor %}
-  </ul>
-{% else %}
+    {% endif %}
+  {% endfor %}
+</ul>
+{% unless has_materials %}
   <p class="note">目前还没有材料。将 Markdown 或 PDF 文件上传到 problems/ 目录即可。</p>
-{% endif %}
+{% endunless %}
