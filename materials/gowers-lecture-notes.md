@@ -6,19 +6,19 @@ W. T. GOWERS
 
 The aim of this course is to equip you with a set of tools that will help you solve certain combinatorial problems much more easily than you would be able to if you did not have these tools. So, as the title of the course suggests, the emphasis will be much more on the methods used to prove theorems than on the theorems themselves: my main reason for showing you proofs of theorems is to draw attention to and illustrate the methods. 
 
-I do not normally write lecture notes, but am prompted to do so by the fact that some people at the first lecture were unable to take notes because there was not enough space to sit down. I have not decided whether I will write notes for the whole course, but I’ll make what I write available soon after writing it. One efect of this will be that the the notes may well come to an abrupt end while I’m in the middle of discussing something. 
+I do not normally write lecture notes, but am prompted to do so by the fact that some people at the first lecture were unable to take notes because there was not enough space to sit down. I have not decided whether I will write notes for the whole course, but I’ll make what I write available soon after writing it. One effect of this will be that the notes may well come to an abrupt end while I’m in the middle of discussing something. 
 
 ## 2. The average lies between the minimum and the maximum
 
 One of the simplest tools to describe – though it sometimes requires some ingenuity to use – is the principle that a random variable cannot always be less than its mean and cannot always be greater than its mean. More symbolically, 
 
 $$
-\inf X <   \mathbb {E} X <   \sup X.
+\inf X \leq \mathbb E X \leq \sup X.
 $$
 
 By and large, we will be dealing with finite sample spaces, so the inf and sup are a min and a max. 
 
-Perhaps the most famous example of a proof that uses this principle is Erd˝os’s lower bound for the Ramsey number $R ( k , k )$ 
+Perhaps the most famous example of a proof that uses this principle is Erdős’s lower bound for the Ramsey number $R ( k , k )$ 
 
 Theorem 2.1. Let k, $n \in \mathbb N$ be such that $k \geq 2$ and $n \leq 2 ^ { ( k - 1 ) / 2 }$ . Then there exists a graph with n vertices that contains no clique or independent set of size k. 
 
@@ -28,7 +28,7 @@ For any k vertices $x _ { 1 } , \ldots , x _ { k }$ , the probability that they 
 
 By the basic principle above, there must exist a choice of edges such that the number of cliques or independent sets of size k is at most $2 { \binom { n } { k } } 2 ^ { - { \binom { k } { 2 } } }$ , so if we can ensure that this is less than 1, then we will be done. 
 
-But ${ \binom { n } { k } } < n ^ { k } / 2$ , so $2 { \binom { n } { k } } 2 ^ { - { \binom { k } { 2 } } } < n ^ { k } 2 ^ { - k ( k - 1 ) / 2 }$ . Therefore, if $n \leq 2 ^ { ( k - 1 ) / 2 }$ we are done, as claimed.  
+But ${ \binom { n } { k } } < n ^ { k } / 2$ , so $2 { \binom { n } { k } } 2 ^ { - { \binom { k } { 2 } } } < n ^ { k } 2 ^ { - k ( k - 1 ) / 2 }$ . Therefore, if $n \leq 2 ^ { ( k - 1 ) / 2 }$ we are done, as claimed. □ 
 
 The basic ideas of the proof above could be summarized as follows. 
 
@@ -40,21 +40,21 @@ The basic ideas of the proof above could be summarized as follows.
 
 It is very important to learn to think of proofs in this sort of condensed way, trusting that you can do the necessary calculations. 
 
-Here is a second example – also a theorem of Erd˝os. Call a set of integers sum free if it contains no three elements $a , b , c$ with $a + b = c$ 
+Here is a second example – also a theorem of Erdős. Call a set of integers sum free if it contains no three elements $a , b , c$ with $a + b = c$ 
 
 Theorem 2.2. Let X be a set of n positive integers. Then X has a sum-free subset Y of size at least $n / 3$ 
 
-Before I give the proof, let me try to guess how Erd˝os thought of it. He might have begun by thinking about ways of ensuring that sets are sum free. Perhaps he started with the simple observation that the set of all odd numbers is sum free. Unfortunately, that doesn’t help much because X might consist solely of even numbers. But we could try other moduli. 
+Before I give the proof, let me try to guess how Erdős thought of it. He might have begun by thinking about ways of ensuring that sets are sum free. Perhaps he started with the simple observation that the set of all odd numbers is sum free. Unfortunately, that doesn’t help much because X might consist solely of even numbers. But we could try other moduli. 
 
-What would the basic strategy be? What we’d like to do is find a large collection of pretty dense sum-free sets that is in some sense evenly distributed, so that we can argue that X must have a large intersection with one of them, and therefore have a large sum-free subset. If we think about unions of residue classes mod p we soon spot that the interval $[ p / 3 , 2 p / 3 ]$ is sum free, and having spotted that we realize that any non-zero multiple of that interval (mod $p )$ will have the same property. That gives us a collection of sets of density $1 / 3$ and each non-multiple of p is contained in the same number of sets (which is what I meant by “in some sense evenly distributed”). That’s basically the proof, but here are the details, expressed slightly diferently. 
+What would the basic strategy be? What we’d like to do is find a large collection of pretty dense sum-free sets that is in some sense evenly distributed, so that we can argue that X must have a large intersection with one of them, and therefore have a large sum-free subset. If we think about unions of residue classes mod p we soon spot that the interval $[ p / 3 , 2 p / 3 ]$ is sum free, and having spotted that we realize that any non-zero multiple of that interval (mod $p )$ will have the same property. That gives us a collection of sets of density $1 / 3$ and each non-multiple of p is contained in the same number of sets (which is what I meant by “in some sense evenly distributed”). That’s basically the proof, but here are the details, expressed slightly differently. 
 
-Proof. Let $p > \operatorname* { m a x } X$ and let a be chosen randomly from $\{ 1 , 2 , \ldots , p - 1 \}$ . Let $[ p / 3 , 2 p / 3 ]$ denote the set of integers mod p that lie in the real interval $[ p / 3 , 2 p / 3 ]$ . Thus, if $p$ is of the form 3m + 1, then $[ p / 3 , 2 p / 3 ] = \{ m + 1 , \ldots , 2 m \}$ and if $p$ is of the form 3m + 2 then $[ p / 3 , 2 p / 3 ] = \{ m + 1 , \ldots , 2 m + 1 \}$ 
+Proof. Choose a prime $p>\max X$ and choose $a$ uniformly at random from $\{1,\ldots,p-1\}$.
 
 In both cases, $[ p / 3 , 2 p / 3 ]$ contains at least a third of the non-zero residues mod $p .$ . Therefore, for each $x \in X$ , the probability that $a x \in [ p / 3 , 2 p / 3 ]$ is at least $1 / 3 ,$ so the expected number of $x \in X$ such that $a x \in [ p / 3 , 2 p / 3 ]$ is at least $| X | / 3$ 
 
-Applying the basic principle, there must exist a such that for at least a third of the elements x of X we have ax $: \in [ p / 3 , 2 p / 3 ]$ . Let Y be the set of all such x. Then $| Y | \ge n / 3$ But also $Y$ is sum free, since if $x , y , z \in Y$ and $x + y = z$ , then we would have $a x + a y \equiv a z$ mod $p ,$ which is impossible because the set $[ p / 3 , 2 p / 3 ]$ is sum free mod $p .$ .  
+Applying the basic principle, there must exist a such that for at least a third of the elements x of X we have ax $: \in [ p / 3 , 2 p / 3 ]$ . Let Y be the set of all such x. Then $| Y | \ge n / 3$ But also $Y$ is sum free, since if $x , y , z \in Y$ and $x + y = z$ , then we would have $a x + a y \equiv a z$ mod $p ,$ which is impossible because the set $[ p / 3 , 2 p / 3 ]$ is sum free mod $p .$ . □ 
 
-The diference between the way I presented the proof there and the way I described it in advance is that in the proof above I kept the interval $[ p / 3 , 2 p / 3 ]$ fixed and multiplied X by a random $a$ mod $p ,$ whereas in the description before it I kept X fixed and took multiples of the interval $[ p / 3 , 2 p / 3 ]$ . Thus, the two ideas are not diferent in any fundamental way. 
+The diference between the way I presented the proof there and the way I described it in advance is that in the proof above I kept the interval $[ p / 3 , 2 p / 3 ]$ fixed and multiplied X by a random $a$ mod $p ,$ whereas in the description before it I kept X fixed and took multiples of the interval $[ p / 3 , 2 p / 3 ]$ . Thus, the two ideas are not different in any fundamental way. 
 
 Here is a summary of the above proof. Again, this is what you should remember rather than the proof itself. 
 
@@ -70,57 +70,60 @@ The third example is a beautiful proof of a result about crossing numbers. The c
 
 We begin with a well-known lemma that tells us when we are forced to have one crossing. 
 
-Lemma 2.3. Let G be a graph with n vertices and more than $3 n - 6$ edges. Then G is not planar. (In other words, for every drawing of G in the plane there must be at least one pair of edges that cross.) 
+Lemma 2.3. Let $G$ be a simple graph with $n\geq3$ vertices and more than $3n-6$ edges. Then $G$ is not planar.
 
-Proof. Euler’s famous formula for drawings of planar graphs is that $V - E + F = 2$ , where V is the number of vertices, $E$ the number of edges and F the number of faces (including an external face that lies outside the entire graph). 
+Proof. It is enough to consider connected planar graphs: if a planar graph is disconnected, we can add edges between its components in the plane without creating crossings, until it is connected, and this only increases the number of edges. For a connected planar graph, Euler’s formula is $V-E+F=2$, where $V$ is the number of vertices, $E$ the number of edges and $F$ the number of faces (including the unbounded face).
 
 Since each edge lies in two faces and each face has at least three edges on its boundary, we must have (by counting pairs $( e , f )$ where e is an edge on the boundary of face $f )$ that $2 E \geq 3 F$ , so that $F \le 2 E / 3$ . It follows that $V - E / 3 \geq 2$ , so $E \le 3 V - 6$ 
 
-Therefore, if a graph with n vertices has more than $3 n - 6$ edges, then it is not planar, as claimed.  
+Therefore, if a graph with n vertices has more than $3 n - 6$ edges, then it is not planar, as claimed. □ 
 
 A famously non-planar graph is $K _ { 5 }$ , the complete graph with five vertices. That has ${ \binom { 5 } { 2 } } = 1 0$ edges, and since $1 0 = 3 \times 5 - 5$ , its non-planarity follows from the lemma above. 
 
 To avoid cumbersome sentences, I’m going to use the word “crossing” to mean “pair of edges that cross” rather than “point where two edges cross”. 
 
-Corollary 2.4. Let $G$ be a graph with n vertices and m edges. Then the number of crossings is at least $m - 3 n$ 
+Corollary 2.4. Let $G$ be a simple graph with $n\geq3$ vertices and $m$ edges. Every drawing of $G$ in the plane has at least $m-3n$ crossing pairs of edges.
 
-Proof. Informally, we just keep removing edges that are involved in crossings until we get down to 3n edges. More formally, the result is true when $m = 3 n + 1$ , by the previous lemma. But if it is true for $3 n + k$ , then for any graph with $3 n + k + 1$ edges there is at least one edge that crosses another. Removing such an edge results in a graph with $3 n + k$ edges and hence, by the inductive hypothesis, at least k crossings, which do not involve the removed edge. So the number of crossings is at least $k + 1$ and we are done.  
+Proof. Informally, we just keep removing edges that are involved in crossings until we get down to 3n edges. More formally, the result is true when $m = 3 n + 1$ , by the previous lemma. But if it is true for $3 n + k$ , then for any graph with $3 n + k + 1$ edges there is at least one edge that crosses another. Removing such an edge results in a graph with $3 n + k$ edges and hence, by the inductive hypothesis, at least k crossings, which do not involve the removed edge. So the number of crossings is at least $k + 1$ and we are done. □ 
 
 That didn’t have much to do with averaging, but the averaging comes in at the next stage. 
 
 The proof of the corollary above feels a bit wasteful, because each time we remove an edge, we take account of only one crossing that involves that edge, when there could in principle be many. We shall now try to “boost” the result to obtain a much better bound when m is large. 
 
-Why might we expect that to be possible? The basic idea behind the next proof is that if G has lots of edges and we choose a random induced subgraph of $G ,$ then it will still have enough edges to force a crossing. The reason this helps is that (i) the random induced subgraphs “cover G evenly” in the sense discussed earlier, and (ii) if we choose $p$ appropriately, then the previous corollary gives an eficient bound. $\mathrm { S o } .$ roughly speaking, we pass to a subgraph where the argument we have above is not wasteful, and then use the evenness of the covering to argue that G must have had lots of crossings for the random induced subgraph to have as many as it does. 
+Why might we expect that to be possible? The basic idea behind the next proof is that if G has lots of edges and we choose a random induced subgraph of $G ,$ then it will still have enough edges to force a crossing. The reason this helps is that (i) the random induced subgraphs “cover G evenly” in the sense discussed earlier, and (ii) if we choose $p$ appropriately, then the previous corollary gives an efficient bound. $\mathrm { S o } .$ roughly speaking, we pass to a subgraph where the argument we have above is not wasteful, and then use the evenness of the covering to argue that G must have had lots of crossings for the random induced subgraph to have as many as it does. 
 
 Those remarks may seem a little cryptic: I recommend trying to understand them in conjunction with reading the formal proof. 
 
 For a graph G I’ll use the notation $v ( G )$ for the number of vertices and $e ( G )$ for the number of edges. 
 
-Theorem 2.5. Let G be a graph with n vertices and $m \geq$ 4n edges. Then G the crossing number of G is at least $m ^ { 3 } / 6 4 n ^ { 2 }$ 
+Theorem 2.5. Let $G$ be a simple graph with $n$ vertices and $m\geq4n$ edges. Then its crossing number satisfies
+\[
+\operatorname{cr}(G)\geq\frac{m^3}{64n^2}.
+\]
 
 Proof. Suppose we have a drawing of G with k crossings. We now choose a random induced subgraph H of G by selecting the vertices independently with probability $p = 4 n / m$ . (The reason for this choice of p will become clear later in the proof. For now we shall just call it p. Note that once the vertices of H are specified, so are the edges, since it is an induced subgraph.) 
 
-Then the expectation of $v ( H )$ is $p n$ , since each vertex survives with probability $p ,$ the expectation of $e ( H )$ is $p ^ { 2 } m$ , since each edge survives with probability $p ^ { 2 }$ , and the expectation of the number of crossings of H (in this particular drawing) is $p ^ { 4 } k$ , since each crossing survives with probability k. 
+Then the expectation of $v ( H )$ is $p n$ , since each vertex survives with probability $p ,$ the expectation of $e ( H )$ is $p ^ { 2 } m$ , since each edge survives with probability $p ^ { 2 }$ , and the expectation of the number of crossings of H (in this particular drawing) is $p ^ { 4 } k$ , since each crossing pair survives only when all four of its endpoints are selected, an event of probability $p^4$. 
 
-But we also know that the expected number of crossings is at least $\mathbb { E } ( e ( H ) - 3 v ( H ) )$ by the previous corollary. We have chosen p such that $e ( H ) - 3 v ( H ) = p ^ { 2 } m - 3 p n =$ $4 p n - 3 p n = p n$ . Therefore, $p ^ { 4 } k \geq p n$ , which implies that $k \geq p ^ { - 3 } n = m ^ { 3 } / 6 4 n ^ { 2 }$ , as stated.  
+But we also know that the expected number of crossings is at least $\mathbb { E } ( e ( H ) - 3 v ( H ) )$ by the previous corollary. We have chosen p such that $e ( H ) - 3 v ( H ) = p ^ { 2 } m - 3 p n =$ $4 p n - 3 p n = p n$ . Therefore, $p ^ { 4 } k \geq p n$ , which implies that $k \geq p ^ { - 3 } n = m ^ { 3 } / 6 4 n ^ { 2 }$ , as stated. □ 
 
 It might be worth explaining why we chose p to be 4n/m rather than, say, $3 n / m$ . One reason is that if you do the calculations with $3 n / m$ , you get only six crossings in H (if you are slightly more careful with the corollary) instead of pn crossings, and therefore the answer you get out at the end is $6 p ^ { - 4 }$ , which is proportional to $m ^ { 4 } / n ^ { 4 }$ . Except when m is proportional to $n ^ { 2 } ~ { \mathrm { ( i . e . } }$ , as big as it can be), this gives a strictly weaker bound. 
 
-But that is a slightly unsatisfactory answer, since it doesn’t explain why the bound is weaker. The best reason I can come up with (but I think it could probably be improved) is that Corollary 2.4 does not start to become wasteful until m is superlinear in $n _ { \mathrm { : } }$ , since if m is a multiple of $n ,$ then one normally expects an edge to be involved in only a bounded number of crossings. Since increasing p from $3 m / n$ to $4 m / n$ doesn’t cost us much – it just changes an absolute constant – we might as well give ourselves a number of edges that grows linearly with $v ( H )$ rather than remaining bounded. 
+But that is a slightly unsatisfactory answer, since it doesn’t explain why the bound is weaker. The best reason I can come up with (but I think it could probably be improved) is that Corollary 2.4 does not start to become wasteful until m is superlinear in $n _ { \mathrm { : } }$ , since if m is a multiple of $n ,$ then one normally expects an edge to be involved in only a bounded number of crossings. Since increasing $p$ from $3n/m$ to $4n/m$ doesn’t cost us much – it just changes an absolute constant – we might as well give ourselves a number of edges that grows linearly with $v ( H )$ rather than remaining bounded. 
 
 I think my summary of this proof would simply be, “Pick a random induced subgraph with p just large enough for Corollary 2.4 to give a linear number of crossings, and use averaging.” 
 
-The next result is another one where the basic idea is to find a family of sets that uniformly covers the structure we are interested in, and then use an averaging argument to allow ourselves to drop down to a member of that family. It is a famous result of Erd˝os, Ko and Rado. Given a set X and a positive integer k, write $X ^ { ( k ) }$ for the set of all subsets of X of size k. And given a family of sets A, say that it is intersecting if $A \cap B \neq \emptyset$ whenever A, $B \in { \mathcal { A } }$ 
+The next result is another one where the basic idea is to find a family of sets that uniformly covers the structure we are interested in, and then use an averaging argument to allow ourselves to drop down to a member of that family. It is a famous result of Erdős, Ko and Rado. Given a set X and a positive integer k, write $X ^ { ( k ) }$ for the set of all subsets of X of size k. And given a family of sets A, say that it is intersecting if $A \cap B \neq \emptyset$ whenever A, $B \in { \mathcal { A } }$ 
 
 Theorem 2.6. Let X be a set of size n, let k be such that $2 k \leq n$ , and let ${ \mathcal { A } } \subset X ^ { ( k ) }$ be an intersecting family. Then $\begin{array} { r } { | \mathcal { A } | \le \binom { n - 1 } { k - 1 } } \end{array}$ 
 
 Note that it is easy to see that this result is sharp, since we can take all sets of size k that contain one particular element. Also, the condition that $2 k \leq n$ is obviously necessary, since otherwise we can take the entire set $X ^ { ( k ) }$ 
 
-Proof. The following very nice proof is due to Katona. Let $X = \{ x _ { 1 } , \ldots , x _ { k } \}$ , and define an interval to be a set of the form $\{ x _ { j } , x _ { j + 1 } , \dotsc , x _ { j + k - 1 } \}$ , where addition of the indices is mod n. There are n intervals, and if you want to form an intersecting family out of them, you can pick at most k. To prove this, let $\{ x _ { j } , \dotsc , x _ { j + k - 1 } \}$ be one of the intervals in the family and observe that for any other interval J in the family there must exist $1 \leq h \leq k - 1$ such that exactly one of $x _ { j + h - 1 }$ and $x _ { j + h }$ belongs to J, and for any h there can be at most one such interval J. 
+Proof. The following very nice proof is due to Katona. Let $X=\{x_1,\ldots,x_n\}$ , and define an interval to be a set of the form $\{ x _ { j } , x _ { j + 1 } , \dotsc , x _ { j + k - 1 } \}$ , where addition of the indices is mod n. There are n intervals, and if you want to form an intersecting family out of them, you can pick at most k. To prove this, let $\{ x _ { j } , \dotsc , x _ { j + k - 1 } \}$ be one of the intervals in the family and observe that for any other interval J in the family there must exist $1 \leq h \leq k - 1$ such that exactly one of $x _ { j + h - 1 }$ and $x _ { j + h }$ belongs to J, and for any h there can be at most one such interval J. 
 
-The rest of the proof, if you are used to the basic method, is now obvious. We understand families of intervals, so would like to cover $X ^ { ( k ) }$ evenly with them and see what we can deduce from the fact that A cannot have too large an intersection with any one of them. The obvious way of making this idea work is to choose a random ordering $\{ x _ { 1 } , \ldots , x _ { n } \}$ of the elements of X and take the intervals with respect to that ordering. The expected number of elements of A amongst these intervals is $n | { \cal M } | / \binom { n } { k }$ , since each set in A has a $n / { \binom { n } { k } }$ chance of being an interval in this ordering (because there are n of them and $\binom { n } { k }$ sets of size k, and by symmetry each set of size k has an equal probability of being an interval in the ordering). 
+The rest of the proof, if you are used to the basic method, is now obvious. We understand families of intervals, so would like to cover $X ^ { ( k ) }$ evenly with them and see what we can deduce from the fact that A cannot have too large an intersection with any one of them. The obvious way of making this idea work is to choose a random ordering $\{ x _ { 1 } , \ldots , x _ { n } \}$ of the elements of X and take the intervals with respect to that ordering. The expected number of elements of A amongst these intervals is $n|\mathcal A|/\binom{n}{k}$ , since each set in A has a $n / { \binom { n } { k } }$ chance of being an interval in this ordering (because there are n of them and $\binom { n } { k }$ sets of size k, and by symmetry each set of size k has an equal probability of being an interval in the ordering). 
 
-By the basic principle, there must therefore be an ordering such that at least $n | { \mathcal { A } } | / ( _ { k } ^ { n } )$ sets in A are intervals. Since we also know that at most k intervals can all intersect each other, we must have that $\begin{array} { r } { n | \boldsymbol { \mathcal { A } } | / \binom { n } { k } \leq k , \mathrm { s o } \ | \boldsymbol { \mathcal { A } } | \leq \frac { k } { n } \binom { n } { k } = \binom { n - 1 } { k - 1 } } \end{array}$  
+By the basic principle, there must therefore be an ordering such that at least $n | { \mathcal { A } } | / ( _ { k } ^ { n } )$ sets in A are intervals. Since we also know that at most k intervals can all intersect each other, we must have that $\begin{array} { r } { n | \boldsymbol { \mathcal { A } } | / \binom { n } { k } \leq k , \mathrm { s o } \ | \boldsymbol { \mathcal { A } } | \leq \frac { k } { n } \binom { n } { k } = \binom { n - 1 } { k - 1 } } \end{array}$ □ 
 
 If you like thinking about semi-philosophical questions, then you could try to find a good explanation for why this argument gives the best possible bound. 
 
@@ -142,7 +145,7 @@ The preliminary observation that gets the proof going is that for any collection
 
 Now we just do the obvious thing. Choose a random ordering $x _ { 1 } , \ldots , x _ { n }$ of the elements of X and form the maximal chain $\emptyset , \{ x _ { 1 } \} , \{ x _ { 1 } , x _ { 2 } \} , \dots , \{ x _ { 1 } , x _ { 2 } , \dots , x _ { n } \}$ . If $A \in { \mathcal { A } }$ , then the probability that it belongs to this chain is the probability that it equals the set $\{ x _ { 1 } , \ldots , x _ { k } \}$ where $k = | A |$ . This probability is $\left( { n \atop k } \right) ^ { - 1 }$ . Therefore, the expected number of sets in A that belong to the random maximal chain is $\textstyle \sum _ { A \in { \mathcal { A } } } { \binom { n } { | A | } } ^ { - 1 }$ 
 
-But it is also at most 1, since no maximal chain contains more than one set from A. Since ${ \binom { n } { | A | } } \leq { \binom { n } { | n / 2 } }$ regardless of the size of A, it follows that $\vert { \mathcal { A } } \vert \leq { \binom { n } { \lfloor n / 2 \rfloor } }$ , as stated.  
+But it is also at most 1, since no maximal chain contains more than one set from A. Since ${ \binom { n } { | A | } } \leq { \binom { n } { | n / 2 } }$ regardless of the size of A, it follows that $\vert { \mathcal { A } } \vert \leq { \binom { n } { \lfloor n / 2 \rfloor } }$ , as stated. □ 
 
 I didn’t explicitly use the basic principle there, but I could have. I could have said that by the principle there exists a maximal chain that contains at least $\textstyle \sum _ { A \in { \mathcal { A } } } { { \binom { n } { | A | } } ^ { - 1 } }$ sets from A. Then I would have concluded the proof from the fact that it also contains at most one set from A. 
 
@@ -172,7 +175,7 @@ which gives us the identity.
 
 While we’re at it, here are a couple of useful inequalities. The first is Markov’s inequality. 
 
-Lemma 3.2. Let X be a random variable that takes non-negative real values. Then for any non-negative real number, $\mathbb { P } [ X \geq a ] \leq a ^ { - 1 } \mathbb { E } X$ 
+Lemma 3.2. Let $X$ be a random variable taking nonnegative real values. Then for every $a>0$, $\mathbb P[X\geq a]\leq a^{-1}\mathbb E X$.
 
 Proof. Let us bound the expectation from below by partitioning the sample space into the set where $X \geq a$ and the set where $X < a$ Since $X \geq 0$ on the second set, we get 
 
@@ -184,7 +187,7 @@ from which the inequality follows.
 
 The second is Chebyshev’s inequality. 
 
-Lemma 3.3. Let X be a random variable and let $a \geq 0$ . Then $\mathbb { P } [ | X - \mathbb { E } X | \ge a ] \le a ^ { - 2 } \mathrm { v a r } X$ 
+Lemma 3.3. Let $X$ be a random variable and let $a>0$. Then $\mathbb P[|X-\mathbb EX|\geq a]\leq a^{-2}\operatorname{var}X$.
 
 Proof. Let $Y = ( X - \mathbb { E } X ) ^ { 2 }$ . Then $\mathbb { E } Y = \operatorname { v a r } X$ . Therefore, by Markov’s inequality, 
 
@@ -196,7 +199,7 @@ which proves the result.
 
 Now let us use these simple facts to prove a not quite so simple result. Write $\mathbb { Z } _ { p }$ for the set of integers mod p. Throughout the next result, addition is mod $p .$ 
 
-Theorem 3.4. Let A be a subset of $\mathbb { Z } _ { p }$ with δp elements. Suppose that there are at most $\delta ^ { 4 } ( 1 + \gamma ) p ^ { 3 }$ quadruples $( a , b , c , d ) \in A ^ { 4 }$ with $a + b = c + d$ . Then there are at least $\delta ^ { 3 } ( 1 - 2 \gamma ^ { 1 / 3 } \delta ^ { - 1 / 3 } ) p ^ { 2 }$ pairs $( a , d )$ such that $( a , a + d , a + 2 d ) \in A ^ { 3 }$ 
+Theorem 3.4. Let $p$ be an odd prime and let $A\subset\mathbb Z_p$ have $\delta p$ elements, where $\delta>0$. Suppose that there are at most $\delta^4(1+\gamma)p^3$ quadruples $(a,b,c,d)\in A^4$ with $a+b=c+d$. Then there are at least $\delta^3(1-2\gamma^{1/3}\delta^{-1/3})p^2$ pairs $(a,d)$ such that $(a,a+d,a+2d)\in A^3$.
 
 Proof. For each $x \in \mathbb { Z } _ { p }$ , let $f ( x )$ be the number of ways of writing $x = a + b$ with $a , b \in A$ Equivalently, $f ( x )$ is the number of $a \in A$ such that $x - a \in A$ as well. 
 
@@ -216,7 +219,7 @@ $$
 \mathbb {E} _ {y} 1 _ {A} (y) f (2 y) \geq \delta^ {2} (1 - \epsilon) p (\delta - \gamma \epsilon^ {- 2}) = \delta^ {3} p (1 - \epsilon) (1 - \gamma \epsilon^ {- 2} \delta^ {- 1}).
 $$
 
-If we take $\epsilon = ( \gamma \delta ^ { - 1 } ) ^ { 1 / 3 }$ , this gives us $\delta ^ { 3 } p ( 1 - \gamma ^ { 1 / 3 } \delta ^ { - 1 / 3 } ) ^ { 2 } \ge \delta ^ { 3 } p ( 1 - 2 \gamma ^ { 1 / 3 } \delta ^ { - 1 / 3 } )$ . The result follows on multiplying by $p$ (to convert the expectation over y into a sum).  
+If we take $\epsilon = ( \gamma \delta ^ { - 1 } ) ^ { 1 / 3 }$ , this gives us $\delta ^ { 3 } p ( 1 - \gamma ^ { 1 / 3 } \delta ^ { - 1 / 3 } ) ^ { 2 } \ge \delta ^ { 3 } p ( 1 - 2 \gamma ^ { 1 / 3 } \delta ^ { - 1 / 3 } )$ . The result follows on multiplying by $p$ (to convert the expectation over y into a sum). □ 
 
 It often happens in this area that one can do a slightly ugly argument using Markov’s inequality or Chebyshev’s inequality, but with a bit more efort one can find a more elegant argument that gives a better bound. Here we can do that by introducing the function $g ( x ) = f ( x ) - \delta ^ { 2 } p .$ which averages zero. We also know that $\begin{array} { r } { \sum _ { x } g ( x ) ^ { 2 } \le \gamma \delta ^ { 4 } p ^ { 3 } } \end{array}$ , from which it follows that $\begin{array} { r } { \sum _ { x \in A } g ( 2 x ) ^ { 2 } \le \gamma \delta ^ { 4 } p ^ { 3 } } \end{array}$ , and therefore $\mathbb { E } _ { x \in A } g ( 2 x ) ^ { 2 } \le \gamma \delta ^ { 3 } p ^ { 2 }$ . Since the variance of $g$ is non-negative, it follows that $( \mathbb { E } _ { x \in A } g ( 2 x ) ) ^ { 2 } \leq \gamma \delta ^ { 3 } p ^ { 2 }$ , so $\mathbb { E } _ { x \in A } g ( 2 x ) \geq - \gamma ^ { 1 / 2 } \delta ^ { 3 / 2 } p .$ and therefore $\begin{array} { r } { \sum _ { x \in A } g ( 2 x ) \ge - \gamma ^ { 1 / 2 } \delta ^ { 5 / 2 } p ^ { 2 } } \end{array}$ 
 
@@ -230,15 +233,19 @@ Once again I recommend not remembering the proof (or proofs) above, but a summar
 
 (3) But if the variance is small enough, then the function is close to its mean almost everywhere, and in particular on most points of the form 2x for some $x \in X$ 
 
-We shall use second-moment methods quite a bit during this course. But to illustrate that they can come up in a wide variety of contexts, we now give an application to analytic number theory, namely a famous argument of Tur´an, which greatly simplified an earlier proof of the same result that had been more number-theoretic in character. 
+We shall use second-moment methods quite a bit during this course. But to illustrate that they can come up in a wide variety of contexts, we now give an application to analytic number theory, namely a famous argument of Turán, which greatly simplified an earlier proof of the same result that had been more number-theoretic in character. 
 
 We shall need the following estimate for the sum of the reciprocals of the primes up to n. The proof will be left as an exercise (with hints) on an examples sheet. (It follows from the prime number theorem, but can be proved much more easily.) 
 
-Lemma 3.5. There exists a positive integer C such that $\scriptstyle \sum _ { p \leq n } p ^ { - 1 } \leq$ log log $n + C$ for every n, where the sum is over primes $p .$ 
+Lemma 3.5. There is an absolute constant $C$ such that, for every integer $n\geq3$,
+\[
+\sum_{p\leq n}\frac1p=\log\log n+O(1),
+\]
+where the sum is over primes. Equivalently, the difference between the sum and $\log\log n$ is bounded in absolute value by $C$.
 
 The theorem we shall now prove tells us that almost all numbers up to n have roughly log log n prime factors. 
 
-Theorem 3.6. Let x be a randomly chosen integer between 1 and n. Let $\nu ( x )$ be the number of prime factors of x (without multiplicity). And let $\omega : \mathbb { N }  \mathbb { N }$ be a function that tends to infinity. Then 
+Theorem 3.6. Let $x$ be a uniformly random integer between $1$ and $n$. Let $\nu(x)$ be the number of distinct prime factors of $x$, and let $\omega:\mathbb N\to(0,\infty)$ be any function tending to infinity. Then
 
 $$
 \mathbb {P} [ | \nu (x) - \log \log n | > \omega (n) \sqrt {\log \log n} ] = o (1).
@@ -282,9 +289,9 @@ $$
 {\frac {1}{p q}} - ({\frac {1}{p}} - {\frac {1}{n}}) ({\frac {1}{q}} - {\frac {1}{n}}) \leq {\frac {1}{n}} ({\frac {1}{p}} + {\frac {1}{q}}).
 $$
 
-Adding these together for all $p , q \le m$ gives us $\begin{array} { r } { 2 ( m / n ) \sum _ { p \leq n } p ^ { - 1 } } \end{array}$ , which is much smaller than 1. Therefore, we find that var $\nu _ { 1 } \leq \mathrm { l o g }$ log $n + C + 1$ and the theorem follows.  
+Adding these together for all $p , q \le m$ gives us $\begin{array} { r } { 2 ( m / n ) \sum _ { p \leq m } p ^ { - 1 } } \end{array}$ , which is much smaller than 1. Therefore, we find that var $\nu _ { 1 } \leq \mathrm { l o g }$ log $n + C + 1$ and the theorem follows. □ 
 
-A famous theorem of Erd˝os and Kac states that the distribution of $\nu ( x )$ is roughly normal with mean and variance log log n. Very roughly, the idea of the proof is to use an argument like the one above to show that every moment of ν (or more precisely a distribution where, as with $\nu _ { 1 }$ , one truncates the range of summation of the primes) is roughly equal to the corresponding moment for the normal distribution, which is known to imply that the distribution itself is roughly normal. 
+A famous theorem of Erdős and Kac states that the distribution of $\nu ( x )$ is roughly normal with mean and variance log log n. Very roughly, the idea of the proof is to use an argument like the one above to show that every moment of ν (or more precisely a distribution where, as with $\nu _ { 1 }$ , one truncates the range of summation of the primes) is roughly equal to the corresponding moment for the normal distribution, which is known to imply that the distribution itself is roughly normal. 
 
 ## 4. Using the Cauchy-Schwarz inequality
 
@@ -298,13 +305,13 @@ As with norms, we also define two inner products. Given two functions $f , g : X
 
 Now let us have two lemmas. The first is the Cauchy-Schwarz inequality itself. Again, the result has two interpretations, both of which are valid, provided one is consistent about whether one is using sums or expectations. 
 
-Lemma 4.1. Let X be a finite set and let f and g be a function defined on X that takes values in R $o r \mathbb { C }$ . Then $\langle f , g \rangle \leq \| f \| _ { 2 } \| g \| _ { 2 }$ 
+Lemma 4.1. Let $X$ be a finite set and let $f,g:X\to\mathbb C$ (or $f,g:X\to\mathbb R$). Then $|\langle f,g\rangle|\leq\|f\|_2\|g\|_2$.
 
-The sum version will be familiar to you already. If we use expectations instead, then we have to divide the inner product by |X| and the square of each norm by |X|, so the result still holds. The expectations version can also be thought of as an instance of the probability version of the inequality, which states that for two random variables X and Y we have $\mathbb { E } X Y \le ( \mathbb { E } | X | ^ { 2 } ) ^ { 1 / 2 } ( \mathbb { E } | Y | ^ { 2 } ) ^ { 1 / 2 }$ . In this case, the random variables are obtained by picking a random element of x and evaluating f and $g .$ . (Apologies for the overuse of the letter X here.) 
+The sum version will be familiar to you already. If we use expectations instead, then we have to divide the inner product by |X| and the square of each norm by |X|, so the result still holds. The expectations version can also be thought of as an instance of the probability version of the inequality, which states that for complex random variables $X,Y$ we have $|\mathbb E(X\overline Y)|\leq(\mathbb E|X|^2)^{1/2}(\mathbb E|Y|^2)^{1/2}$ . In this case, the random variables are obtained by picking a random element of x and evaluating f and $g .$ . (Apologies for the overuse of the letter X here.) 
 
 The second lemma is another surprisingly useful tool. 
 
-Lemma 4.2. Let X be a finite set and let f be a function from X to $\mathbb { R } \ o r \mathbb { C }$ . Then 
+Lemma 4.2. Let X be a finite set and let f be a function from X to $\mathbb R$ or $\mathbb C$ . Then 
 
 $$
 | \mathbb {E} _ {x} f (x) | ^ {2} \leq \mathbb {E} _ {x} | f (x) | ^ {2}.
@@ -322,23 +329,23 @@ This proves the lemma.
 
 A second proof is to apply the Cauchy-Schwarz inequality to the function f and the constant function that takes the value 1 everywhere. That tells us that $| \mathbb { E } _ { x } f ( x ) | \leq \| f \| _ { 2 }$ since the constant function has $L _ { 2 }$ norm 1, and squaring both sides gives the result. I myself prefer the proof given above, because it is simpler, and because by focusing attention on the variance it also makes another important fact very clear, which is that if $| \mathbb { E } _ { x } f ( x ) | ^ { 2 }$ is almost as big as $\mathbb { E } _ { x } | f ( x ) | ^ { 2 }$ , then the variance of $f$ is small, and therefore $f$ is approximately constant. (The “approximately” here means that the diference between $f$ and a constant function is small in the $L _ { 2 }$ norm.) This very simple principle is yet another one with legions of applications. Indeed, we have already seen one: it was Theorem 3.4. 
 
-We have just encountered our first payof for using expectations rather than sums. The sums version of Lemma 4.2 is that $\begin{array} { r } { | \sum _ { x } f ( x ) | ^ { 2 } \leq | X | \sum _ { x } | f ( x ) | ^ { 2 } } \end{array}$ . That is, we have to introduce a normalizing factor $| X |$ – the size of the set on which $f$ takes its values. The great advantage of the expectation notation is that for many arguments it allows one to make all quantities one is interested in have order of magnitude 1, so we don’t need any normalizing factors. This provides a very useful “checking of units” as our arguments proceed. 
+We have just encountered our first payoff for using expectations rather than sums. The sums version of Lemma 4.2 is that $\begin{array} { r } { | \sum _ { x } f ( x ) | ^ { 2 } \leq | X | \sum _ { x } | f ( x ) | ^ { 2 } } \end{array}$ . That is, we have to introduce a normalizing factor $| X |$ – the size of the set on which $f$ takes its values. The great advantage of the expectation notation is that for many arguments it allows one to make all quantities one is interested in have order of magnitude 1, so we don’t need any normalizing factors. This provides a very useful “checking of units” as our arguments proceed. 
 
 Having stated these results, let us begin with a simple, but very typical, application. Let us define a 4-cycle in a graph $G$ to be an ordered quadruple $( x , y , z , w )$ of vertices such that all of xy, yz, zw, wx are edges. This is a non-standard definition because (i) we count $( x , y , z , w )$ as the same 4-cycle as, for instance, $( z , y , x , w )$ , and (ii) we do not insist that x, y, z, w are distinct. However, the proofs run much more smoothly with this non-standard definition, and from the results it is easy to deduce very similar results about 4-cycles as they are usually defined. 
 
-Theorem 4.3. Let G be a graph with n vertices and $\alpha n ^ { 2 } / 2$ edges. Then G contains at least $\alpha ^ { 4 } n ^ { 4 } \ \oint - c y c l e s .$ 
+Theorem 4.3. Let G be a graph with n vertices and $\alpha n ^ { 2 } / 2$ edges. Then G contains at least $\alpha ^ { 4 } n ^ { 4 } \ 4-cycles .$ 
 
 Proof. The average degree of G is αn. Therefore, by Lemma 4.2 the average square degree is at least $\alpha ^ { 2 } n ^ { 2 }$ . So $\begin{array} { r } { \sum _ { x \in V ( G ) } d ( x ) ^ { 2 } \geq \alpha ^ { 2 } n ^ { 3 } } \end{array}$ 
 
 This sum is the number of triples $( x , y , z )$ such that xy and xz are both edges. Let us define the codegree $d ( y , z )$ to be the number of vertices x that are joined to both y and $z .$ Then the number of the triples $( x , y , z )$ with $x y , x z \in E ( G )$ is equal to $\textstyle \sum _ { y , z } d ( y , z )$ Therefore, $\mathbb { E } _ { y , z } d ( y , z ) \ge \alpha ^ { 2 } n$ . By Lemma 4.2 again, $\begin{array} { r } { \mathbb { E } _ { y , z } d ( y , z ) ^ { 2 } \geq \alpha ^ { 4 } n ^ { 2 } , \mathrm { s o } \sum _ { y , z } d ( y , z ) ^ { 2 } \geq } \end{array}$ $\alpha ^ { 4 } n ^ { 4 }$ 
 
-But $\textstyle \sum _ { y , z } d ( y , z ) ^ { 2 }$ is the sum over all $y , z$ of the number of pairs $x , x ^ { \prime }$ such that $y x , z x , y x ^ { \prime }$ and $z x ^ { \prime }$ are all edges. In other words it is the number of 4-cycles $( y , x , z , x ^ { \prime } )$  
+But $\textstyle \sum _ { y , z } d ( y , z ) ^ { 2 }$ is the sum over all $y , z$ of the number of pairs $x , x ^ { \prime }$ such that $y x , z x , y x ^ { \prime }$ and $z x ^ { \prime }$ are all edges. In other words it is the number of 4-cycles $( y , x , z , x ^ { \prime } )$ □ 
 
 It was slightly clumsy to pass from sums to expectations and back to sums again in the above proof. But this clumsiness, rather than indicating that there is a problem with expectation notation, actually indicates that we did not $\mathrm { g o }$ far enough. We can get rid of it by talking about the density of the graph, which is α, and proving that the 4-cycle density (which I will define it later, but it should be clear what I am talking about) is at least $\alpha ^ { 4 }$ 
 
 Our next application will use the full Cauchy-Schwarz inequality. As well as illustrating an important basic technique, it will yield a result that will be important to us later on. We begin by defining a norm on functions of two variables. We shall apply it to real-valued functions, but we shall give the result for complex-valued functions, since they sometimes come up in applications as well. 
 
-Let X and $Y$ be finite sets and let $f : X \times Y \to \mathbb { C }$ . The 4-cycle norm $\| f \| _ { \Pi }$ is defined by the formula 
+Let X and $Y$ be finite sets and let $f : X \times Y \to \mathbb { C }$ . The 4-cycle norm $\| f \| _ { \square }$ is defined by the formula 
 
 $$
 \| f \| ^ {4} = \mathbb {E} _ {x _ {0}, x _ {1}, y _ {0}, y _ {1} \in X} f (x _ {0}, y _ {0}) \overline {{f (x _ {0} , y _ {1}) f (x _ {1} , y _ {0})}} f (x _ {1}, y _ {1}).
@@ -346,7 +353,7 @@ $$
 
 The proof that this formula defines a norm is another application of the Cauchy-Schwarz inequality and will be presented as an exercise on an examples sheet. Here we shall prove an important inequality that tells us that functions with small 4-cycle norm have small correlation with functions of rank 1. I shall include rather more chat in the proof than is customary, since I want to convey not just the proof but the general method that can be used to prove many similar results. 
 
-Theorem 4.4. Let X and Y be finite sets, let $u : X \to \mathbb { C }$ , let $v : Y \to \mathbb { C }$ and let $f : X \to \mathbb { C }$ . Then 
+Theorem 4.4. Let $X,Y$ be finite sets, let $u:X\to\mathbb C$, $v:Y\to\mathbb C$, and $f:X\times Y\to\mathbb C$. Then
 
 $$
 | \mathbb {E} _ {x, y} f (x, y) u (x) v (y) | \leq \| f \| _ {\square} \| u \| _ {2} \| v \| _ {2}.
@@ -400,7 +407,7 @@ $$
 \mathbb {E} _ {y _ {0}, y _ {1}} \mathbb {E} _ {x _ {0}, x _ {1}} f (x _ {0}, y _ {0}) \overline {{f (x _ {0} , y _ {1}) f (x _ {1} , y _ {0})}} f (x _ {1}, y _ {1}),
 $$
 
-which equals $\| f \| _ { \boldsymbol { \Sigma } } ^ { 4 }$ 
+which equals $\| f \| _ { \boldsymbol { \square } } ^ { 4 }$ 
 
 Putting all this together gives us that 
 
@@ -412,9 +419,9 @@ which proves the result.
 
 ## 5. A brief introduction to quasirandom graphs
 
-A central concept in extremal combinatorics, and also in additive combinatorics, is that of quasirandomness. We have already seen that randomly chosen objects have some nice properties. In the late 1980s it was discovered that many of the properties exhibited by random graphs are, in a loose sense, equivalent. That is, if you have a graph with one “random-like” property, then it automatically has several other such properties. Graphs with one, and hence all, of these properties came to be called quasirandom. A little later, it was realized that the quasirandomness phenomenon (of several diferent randomness properties being equivalent) applied to many other important combinatorial objects, and also gave us an extremely useful conceptual tool for attacking combinatorial problems. 
+A central concept in extremal combinatorics, and also in additive combinatorics, is that of quasirandomness. We have already seen that randomly chosen objects have some nice properties. In the late 1980s it was discovered that many of the properties exhibited by random graphs are, in a loose sense, equivalent. That is, if you have a graph with one “random-like” property, then it automatically has several other such properties. Graphs with one, and hence all, of these properties came to be called quasirandom. A little later, it was realized that the quasirandomness phenomenon (of several different randomness properties being equivalent) applied to many other important combinatorial objects, and also gave us an extremely useful conceptual tool for attacking combinatorial problems. 
 
-Perhaps the main reason quasirandomness is useful is the same as the reason that any non-trivial equivalence is useful: we often want to apply one property, but a diferent, equivalent, property is much easier to verify. I will discuss this in more detail when I have actually presented some equivalences. 
+Perhaps the main reason quasirandomness is useful is the same as the reason that any non-trivial equivalence is useful: we often want to apply one property, but a different, equivalent, property is much easier to verify. I will discuss this in more detail when I have actually presented some equivalences. 
 
 I would also like to draw attention to a device that I shall use in this section, which is another very important part of the combinatorial armoury: analysing sets by looking at their characteristic functions. Typically, one begins by wanting to prove a result about a combinatorial object such as a bipartite graph, which can be thought of as a function from a set $X \times Y$ to the set $\{ 0 , 1 \}$ , and ends up proving a more general result about functions from $X \times Y$ to the closed interval [0, 1], or even to the unit disc in C. 
 
@@ -440,7 +447,7 @@ $$
 \mathbb {E} _ {x, x ^ {\prime}} | g (x) \overline {{g (x ^ {\prime})}} + \mathbb {E} _ {y} f ^ {\prime} (x, y) \overline {{f ^ {\prime} (x ^ {\prime} , y)}} | ^ {2}.
 $$
 
-When we expand the square, the of-diagonal term is 
+When we expand the square, the off-diagonal term is 
 
 $$
 2 \Re \mathbb {E} _ {x, x ^ {\prime}} g (x) \overline {{g (x ^ {\prime})}} \mathbb {E} _ {y} \overline {{f ^ {\prime} (x , y)}} f ^ {\prime} (x ^ {\prime}, y) = 2 \Re \mathbb {E} _ {y} | \mathbb {E} _ {x} g (x) \overline {{f ^ {\prime} (x , y)}} | ^ {2} \geq 0.
@@ -464,9 +471,9 @@ $$
 
 where I have used the letter G to denote the characteristic function of the graph G. 
 
-Corollary 5.2. Let X and Y be finite sets and let G be a bipartite graph with vertex sets X and Y and density δ. Suppose that the 4-cycle density of G is at most $\delta ^ { 4 } ( 1 + c ^ { 4 } )$ . Then $\| G - \delta \| _ { \Pi } \leq 2 c \delta$ 
+Corollary 5.2. Let X and Y be finite sets and let G be a bipartite graph with vertex sets X and Y and density δ. Suppose that the 4-cycle density of G is at most $\delta ^ { 4 } ( 1 + c ^ { 4 } )$ . Then $\| G - \delta \| _ { \square } \leq 2 c \delta$ 
 
-Proof. Applying Lemma 5.1 with $f = G$ and $\theta = \delta .$ we deduce that $\| f ^ { \prime } \| _ { \Pi } ^ { 4 } + \| g ^ { \prime } \| _ { 2 } ^ { 4 } \leq \delta ^ { 4 } c ^ { 4 }$ where $f ^ { \prime } ( x , y ) = G ( x , y ) - \mathbb { E } _ { z } f ( x , z )$ and $g ^ { \prime } ( x ) = \mathbb { E } _ { z } f ( x , z ) - \delta$ . This follows because the 4-cycle density assumption is equivalent to the statement that $\| G \| _ { \ b { \Pi } } ^ { 4 } \le \delta ^ { 4 } ( 1 + c ^ { 4 } )$ 
+Proof. Applying Lemma 5.1 with $f = G$ and $\theta = \delta .$ we deduce that $\| f ^ { \prime } \| _ { \square } ^ { 4 } + \| g ^ { \prime } \| _ { 2 } ^ { 4 } \leq \delta ^ { 4 } c ^ { 4 }$ where $f ^ { \prime } ( x , y ) = G ( x , y ) - \mathbb { E } _ { z } f ( x , z )$ and $g ^ { \prime } ( x ) = \mathbb { E } _ { z } f ( x , z ) - \delta$ . This follows because the 4-cycle density assumption is equivalent to the statement that $\| G \| _ { \ b { \square } } ^ { 4 } \le \delta ^ { 4 } ( 1 + c ^ { 4 } )$ 
 
 If we regard $g ^ { \prime }$ as a function of both x and y that happens not to depend on $y ,$ then we find that 
 
@@ -498,7 +505,7 @@ $$
 | \eta (A, B) - \alpha \beta \delta | = | \mathbb {E} _ {x, y} (G (x, y) - \delta) A (x) B (y) |.
 $$
 
-By Lemma 4.4, the right-hand side is at most $\| G - \delta \| _ { \Pi } \| A \| _ { 2 } \| B \| _ { 2 }$ . Corollary 5.2 gives us that $\| G - \delta \| _ { \Pi } \leq 2 c \delta$ , while $\| A \| _ { 2 }$ and $\| B \| _ { 2 }$ are equal to $\alpha ^ { 1 / 2 }$ and $\beta ^ { 1 / 2 }$ , respectively. This proves the result.  
+By Theorem 4.4, the right-hand side is at most $\| G - \delta \| _ { \square } \| A \| _ { 2 } \| B \| _ { 2 }$ . Corollary 5.2 gives us that $\| G - \delta \| _ { \square } \leq 2 c \delta$ , while $\| A \| _ { 2 }$ and $\| B \| _ { 2 }$ are equal to $\alpha ^ { 1 / 2 }$ and $\beta ^ { 1 / 2 }$ , respectively. This proves the result. □ 
 
 Now let us try to understand what the theorem above is saying. If you are not yet used to densities rather than cardinalities, then you may prefer to reinterpret it in terms of the latter. Then it is saying that the number of edges from A to B is, when c is small, close to $\alpha \beta \delta | X | | Y | = \delta | A | | B |$ . Now if we had chosen our graph randomly with edge-probability $\delta ,$ then we would have expected the number of edges from A to $B$ to be roughly $\delta | A | | B |$ So Theorem 5.3 is telling us that if a graph does not contain many 4-cycles (recall that Theorem 4.3 states that the 4-cycle density must be at least $\delta ^ { 4 }$ and we are assuming that it is not much more than that), then for any two sets A and B the number of edges between A and B is roughly what you would expect. Let us say in this case that the graph has low discrepancy. 
 
@@ -506,7 +513,7 @@ An important remark here is that if we restate the result in terms of the densit
 
 I like to think of Theorem 5.3 as a kind of local-to-global principle. We start with a “local” condition – counting the number of 4-cycles – and deduce from it a “global” principle – that the edges are spread about in such a way that there are approximately the right number joining any two large sets A and B. 
 
-To explain that slightly diferently, consider how one might try to verify the “global” statement. If you try to verify it directly, you find yourself looking at exponentially many pairs of sets $( A , B )$ , which is hopelessly ineficient. But it turns out that you can verify it by counting 4-cycles, of which there are at most $| X | ^ { 2 } | Y | ^ { 2 }$ , which is far smaller than exponential. While this algorithmic consideration will not be our main concern, it is another reflection of the fact that the implication is not just some trivial manipulation but is actually telling us something interesting. And as it happens, there are contexts where the algorithmic considerations are important too, though counting 4-cycles turns out not to be the best algorithm for checking quasirandomness. 
+To explain that slightly differently, consider how one might try to verify the “global” statement. If you try to verify it directly, you find yourself looking at exponentially many pairs of sets $( A , B )$ , which is hopelessly inefficient. But it turns out that you can verify it by counting 4-cycles, of which there are at most $| X | ^ { 2 } | Y | ^ { 2 }$ , which is far smaller than exponential. While this algorithmic consideration will not be our main concern, it is another reflection of the fact that the implication is not just some trivial manipulation but is actually telling us something interesting. And as it happens, there are contexts where the algorithmic considerations are important too, though counting 4-cycles turns out not to be the best algorithm for checking quasirandomness. 
 
 Before we go any further, let us prove an approximate converse to Theorem 5.3. For simplicity, we shall prove it for regular graphs only and leave the general case as an exercise. 
 
@@ -552,7 +559,7 @@ One of the most striking facts about quasirandom graphs is that they contain the
 
 Given a graph $G$ and two (not necessarily disjoint) sets A and B of its vertices, write $G ( A , B )$ for the bipartite graph with vertex sets A and B where $a \in A$ is joined to $b \in B$ if and only if ab is an edge of $G .$ 
 
-Theorem 5.5. Let $G$ be a tripartite graph with vertex sets $X , Y , Z$ . Let the densities of $G ( X , Y ) , G ( Y , Z )$ and $G ( X , Z )$ be $\alpha , ~ \beta$ and $\gamma _ { i }$ , respectively. Suppose that the 4-cycle densities of $G ( X , Y ) , G ( Y , Z )$ and $G ( X , Z )$ are at most $\alpha ^ { 4 } ( 1 + c ^ { 4 } ) , \beta ^ { 4 } ( 1 + c ^ { 4 } )$ and $\gamma ^ { 4 } ( 1 + c ^ { 4 } )$ . Then the triangle density difers from $\alpha \beta \gamma$ by at most $4 c ( \alpha \beta \gamma ) ^ { 1 / 2 }$ 
+Theorem 5.5. Let $G$ be a tripartite graph with vertex sets $X , Y , Z$ . Let the densities of $G ( X , Y ) , G ( Y , Z )$ and $G ( X , Z )$ be $\alpha , ~ \beta$ and $\gamma$ , respectively. Suppose that the 4-cycle densities of $G ( X , Y ) , G ( Y , Z )$ and $G ( X , Z )$ are at most $\alpha ^ { 4 } ( 1 + c ^ { 4 } ) , \beta ^ { 4 } ( 1 + c ^ { 4 } )$ and $\gamma ^ { 4 } ( 1 + c ^ { 4 } )$ . Then the triangle density difers from $\alpha \beta \gamma$ by at most $4 c ( \alpha \beta \gamma ) ^ { 1 / 2 }$ 
 
 Proof. The quantity we wish to estimate is 
 
@@ -572,7 +579,7 @@ $$
 \mathbb {E} _ {x, y, z} (f (x, y) G (y, z) G (x, z) + \alpha g (y, z) G (x, z) + \alpha \beta h (x, z)).
 $$
 
-By Corollary 5.2, $\| f \| _ { \Pi } \leq 2 c \alpha$ . Therefore, for each fixed $z ,$ we have 
+By Corollary 5.2, $\| f \| _ { \square } \leq 2 c \alpha$ . Therefore, for each fixed $z ,$ we have 
 
 $$
 | \mathbb {E} _ {x, y} f (x, y) G (y, z) G (x, z) | \leq 2 c \alpha (\mathbb {E} _ {x} G (x, z)) ^ {1 / 2} (\mathbb {E} _ {y} G (y, z)) ^ {1 / 2},
@@ -592,9 +599,9 @@ $$
 | \alpha \mathbb {E} _ {x. y. z} g (y, z) G (x, z) | \leq 2 c \alpha \beta \gamma^ {1 / 2},
 $$
 
-while the third term is zero. This gives us the bound stated (and in fact, a better bound, but one that is uglier to state and not of obvious importance).  
+while the third term is zero. This gives us the bound stated (and in fact, a better bound, but one that is uglier to state and not of obvious importance). □ 
 
-I cannot stress strongly enough that it is the basic method of proof that matters above, and not the precise details of its implementation. So let me highlight what I regard as the basic method, and then indicate how it could have been implemented diferently. 
+I cannot stress strongly enough that it is the basic method of proof that matters above, and not the precise details of its implementation. So let me highlight what I regard as the basic method, and then indicate how it could have been implemented differently. 
 
 (1) A step that is useful all over additive combinatorics is to decompose a function $F$ that averages $\delta$ into two parts $f + \delta$ , so that we can deal with the constant function $\delta ,$ which we often regard as the main term, and the function $f ,$ which averages zero and which in many contexts is a kind of “error”. (The word “error” is reasonable only if the function is small in some sense. Here the sense in question is that of having a small 4-cycle norm.) 
 
@@ -612,7 +619,7 @@ A second remark I would like to make is that if we use the low-discrepancy prope
 
 A preliminary observation, which we have already mentioned, is that if a graph has low discrepancy, then almost all degrees are roughly the same. We now pick a random vertex $x \in X$ . Then with high probability its neighbourhoods in Y and $Z$ have densities roughly α and $\gamma ,$ respectively. When that happens, then by the low-discrepancy property in $G ( Y , Z )$ the edge weight between these two neighbourhoods is approximately $\alpha \beta \gamma$ . This shows that for almost all $x \in X$ , the probability that a random triangle containing x belongs to the graph is roughly $\alpha \beta \gamma$ , and from that the result follows. 
 
-Note that we did not use the low discrepancy of the graphs $G ( X , Y )$ and $G ( X , Z )$ there, but simply the fact that they are approximately regular. If you look at the proof of Theorem 5.5 above, you will see that a similar remark applies: to bound the first term we needed $\| f \| _ { \Pi }$ to be small, but to bound the second, it would have been suficient to know that $\mathbb { E } _ { y } g ( y , z )$ was small for almost all z, which is the same as saying that for almost all $z$ the density of the neighbourhood of z in Y is roughly $\beta | Y |$ . (One can therefore go further – in both arguments – and say that what matters is that one of the three bipartite graphs should be quasirandom and one should be approximately regular on one side. For instance, in the discrepancy argument sketched above, if $G ( Y , Z )$ has density α and low discrepancy, and almost all vertices in x have approximately $\gamma | Z |$ neighbours in $Z$ , then writing $\delta _ { Y } ( x )$ for the density of the neighbourhood of x in $Y$ , we have that for almost all x the density of triangles containing x is approximately $\beta \gamma \delta _ { Y } ( x )$ , so the triangle density is approximately $\beta \gamma \mathbb { E } _ { x } \delta _ { Y } ( x ) = \alpha \beta \gamma . )$ 
+Note that we did not use the low discrepancy of the graphs $G ( X , Y )$ and $G ( X , Z )$ there, but simply the fact that they are approximately regular. If you look at the proof of Theorem 5.5 above, you will see that a similar remark applies: to bound the first term we needed $\| f \| _ { \square }$ to be small, but to bound the second, it would have been suficient to know that $\mathbb { E } _ { y } g ( y , z )$ was small for almost all z, which is the same as saying that for almost all $z$ the density of the neighbourhood of z in Y is roughly $\beta | Y |$ . (One can therefore go further – in both arguments – and say that what matters is that one of the three bipartite graphs should be quasirandom and one should be approximately regular on one side. For instance, in the discrepancy argument sketched above, if $G ( Y , Z )$ has density α and low discrepancy, and almost all vertices in x have approximately $\gamma | Z |$ neighbours in $Z$ , then writing $\delta _ { Y } ( x )$ for the density of the neighbourhood of x in $Y$ , we have that for almost all x the density of triangles containing x is approximately $\beta \gamma \delta _ { Y } ( x )$ , so the triangle density is approximately $\beta \gamma \mathbb { E } _ { x } \delta _ { Y } ( x ) = \alpha \beta \gamma . )$ 
 
 A third remark is that if we are dealing with a graph rather than a tripartite graph, we can prove a similar result by making it tripartite in a similar way to the way we made it bipartite earlier. That is, we take three copies of the vertex set and join vertices according to whether the corresponding vertices are joined in the original graph. 
 
@@ -640,7 +647,7 @@ $$
 f (x) = \sum_ {r} \hat {f} (r) \omega^ {r x}.
 $$
 
-Proof. Let me justify this in two diferent ways. The first is simply to expand out $\hat { f } ( \boldsymbol { r } )$ That gives us that 
+Proof. Let me justify this in two different ways. The first is simply to expand out $\hat { f } ( \boldsymbol { r } )$ That gives us that 
 
 $$
 \begin{array}{r c l} \sum_ {r} \hat {f} (r) \omega^ {r x} & = & \sum_ {r} \mathbb {E} _ {y} f (y) \omega^ {- r y} \omega^ {r x} \\ & = & \mathbb {E} _ {y} f (y) \sum_ {r} \omega^ {r (x - y)}. \end{array}
@@ -648,23 +655,23 @@ $$
 
 If $y = x$ , then $\begin{array} { r } { \sum _ { r } \omega ^ { r ( x - y ) } = n } \end{array}$ , and otherwise it is 0. Also, the probability that $y = x$ if y is chosen randomly is $1 / n$ . Therefore, the last expression is equal to $f ( x )$ 
 
-The second justification is simply to say that if $u _ { 1 } , \ldots , u _ { n }$ is an orthonormal basis of a complex inner product space, and v is any vector in that space, then $\begin{array} { r } { \boldsymbol { v } = \sum _ { r } \langle \boldsymbol { v } , \boldsymbol { u } _ { r } \rangle \boldsymbol { u } _ { r } } \end{array}$ If we take the orthonormal basis consisting of the functions $\boldsymbol \omega ^ { r x }$ and $v = f$ , then we get precisely the inversion formula.  
+The second justification is simply to say that if $u _ { 1 } , \ldots , u _ { n }$ is an orthonormal basis of a complex inner product space, and v is any vector in that space, then $\begin{array} { r } { \boldsymbol { v } = \sum _ { r } \langle \boldsymbol { v } , \boldsymbol { u } _ { r } \rangle \boldsymbol { u } _ { r } } \end{array}$ If we take the orthonormal basis consisting of the functions $\boldsymbol \omega ^ { r x }$ and $v = f$ , then we get precisely the inversion formula. □ 
 
 With a little thought, one can see that these two justifications are essentially the same argument. It’s just that in the first argument we basically reprove the fact that the functions $\boldsymbol \omega ^ { r x }$ form an orthonormal basis rather than using it. 
 
-Note that in the above result, the right-hand side involves a sum over Fourier coeficients. That is typical in discrete Fourier analysis: we take expectations when we are in “physical space” and sums when we are in “frequency space”. 
+Note that in the above result, the right-hand side involves a sum over Fourier coefficients. That is typical in discrete Fourier analysis: we take expectations when we are in “physical space” and sums when we are in “frequency space”. 
 
 The next result is sometimes attributed to Parseval and sometimes to Plancherel. It is sometimes called a formula, sometimes an identity and sometimes a theorem. So it has at least six possible names – Wikipedia gives some indication about which name is appropriate in which context, if you care about these things. 
 
 Lemma 6.2. Let f and g be functions from $\mathbb { Z } _ { n }$ to $\mathbb { C }$ . Then $\langle \hat { f } , \hat { g } \rangle = \langle f , g \rangle$ . In particular, if $f : \mathbb { Z } _ { n } \to \mathbb { C }$ , then $\| { \hat { f } } \| _ { \ell _ { 2 } } = \| f \| _ { L _ { 2 } }$ 
 
-Proof. This follows immediately from the fact that the functions $\boldsymbol \omega ^ { r x }$ form an orthonormal basis and the Fourier coeficients $\hat { f } ( \boldsymbol { r } )$ are the coeficients of $f$ with respect to this basis. However, it is instructive to see a calculational proof as well as this more theoretical argument. We have 
+Proof. This follows immediately from the fact that the functions $\boldsymbol \omega ^ { r x }$ form an orthonormal basis and the Fourier coefficients $\hat { f } ( \boldsymbol { r } )$ are the coefficients of $f$ with respect to this basis. However, it is instructive to see a calculational proof as well as this more theoretical argument. We have 
 
 $$
 \begin{array}{r c l} \langle \hat {f}, \hat {g} \rangle & = & \sum_ {r} \hat {f} (r) \overline {{\hat {g} (r)}} \\ & = & \sum_ {r} \mathbb {E} _ {x, y} f (x) \overline {{f (y)}} \omega^ {- r (x - y)} \\ & = & \mathbb {E} _ {x, y} f (x) \overline {{f (y)}} \sum_ {r} \omega^ {- r (x - y)}. \end{array}
 $$
 
-If $x = y$ then the sum over $r$ is $n _ { \mathrm { : } }$ while if $x \neq y$ it is zero. Also, for each $x$ the probability that $x = y ~ \mathrm { i s } ~ n ^ { - 1 }$ . Therefore, the right-hand side works out to be $\mathbb { E } _ { x } f ( x ) { \overline { { g ( x ) } } } = \langle f , g \rangle$ .  
+If $x = y$ then the sum over $r$ is $n _ { \mathrm { : } }$ while if $x \neq y$ it is zero. Also, for each $x$ the probability that $x = y ~ \mathrm { i s } ~ n ^ { - 1 }$ . Therefore, the right-hand side works out to be $\mathbb { E } _ { x } f ( x ) { \overline { { g ( x ) } } } = \langle f , g \rangle$ . □ 
 
 The next result is the convolution identity, the result that sets the Fourier transform apart from just any old unitary map. Given two functions $f , g : \mathbb { Z } _ { n } \to \mathbb { C }$ , define their convolution $f * g$ by the formula 
 
@@ -708,13 +715,13 @@ $$
 \mathbb {E} _ {x + w = y + z} f (x) f (w) \overline {{f (y) f (z)}} = \mathbb {E} _ {u} \mathbb {E} _ {x + w = y + z = u} f (x) f (w) \overline {{f (y) f (z)}}.
 $$
 
-But this is $\langle f * f , f * f \rangle$ , so by Parseval’s identity and the convolution identity it equals $\langle \hat { f } ^ { 2 } , \hat { f } ^ { 2 } \rangle$ , which equals $\textstyle \sum _ { r } | { \hat { f } } ( r ) | ^ { 4 }$ , which is $\| \hat { f } \| _ { 4 } ^ { 4 }$  
+But this is $\langle f * f , f * f \rangle$ , so by Parseval’s identity and the convolution identity it equals $\langle \hat { f } ^ { 2 } , \hat { f } ^ { 2 } \rangle$ , which equals $\textstyle \sum _ { r } | { \hat { f } } ( r ) | ^ { 4 }$ , which is $\| \hat { f } \| _ { 4 } ^ { 4 }$ □ 
 
 If f is the characteristic function of a set A, then there are a couple more Fourier-analytic facts that we can add to our repertoire. 
 
 Lemma 6.5. Let $A \subset \mathbb { Z } _ { n }$ be a set of density α. Then $\hat { A } ( 0 ) = \alpha$ and $\begin{array} { r } { \sum _ { r } | \hat { A } ( r ) | ^ { 2 } = \alpha } \end{array}$ . Also, $\hat { A } ( - r ) = \overline { { \hat { A } ( r ) } }$ for every r. 
 
-Proof. The first equality is direct from the definition and the second follows immediately from Parseval’s identity. The third applies to all real-valued functions $f \colon$ it follows from the definition and the fact that $f ( x ) \omega ^ { - u } = { \overline { { f ( x ) \omega ^ { u } } } }$ for every x and u.  
+Proof. The first equality is direct from the definition and the second follows immediately from Parseval’s identity. The third applies to all real-valued functions $f \colon$ it follows from the definition and the fact that $f ( x ) \omega ^ { - u } = { \overline { { f ( x ) \omega ^ { u } } } }$ for every x and u. □ 
 
 It follows that if A has density α, then $\begin{array} { r } { \| \hat { \boldsymbol A } \| _ { 4 } ^ { 4 } = \sum _ { r } | \hat { \boldsymbol A } ( r ) | ^ { 4 } \geq \alpha ^ { 4 } } \end{array}$ . This fact can be proved in at least three other ways. One is to use Proposition 6.4 and the Cauchy-Schwarz inequality, another is to define an associated graph and use the results of exercise 9 on sheet 2 and exercise 7 on sheet 3, and a third is to use the same associated graph but work directly with 4-cycles. (It is not important to have all these proofs of one simple fact, but if you understand how all the arguments are connected, then it greatly improves your understanding of the whole area.) 
 
@@ -760,11 +767,11 @@ $$
 (\sum_ {r \neq 0} | \hat {A} (r) | ^ {2}) ^ {1 / 2} (\sum_ {r \neq 0} | \hat {A} (- 2 r) | ^ {2}) ^ {1 / 2},
 $$
 
-but the second of these factors is equal to the first, so we get $\textstyle \sum _ { r \neq 0 } | { \hat { A } } ( r ) | ^ { 2 }$ , which by Lemma 6.5 is $\alpha - \alpha ^ { 2 } \leq \alpha$ . The result follows.  
+but the second of these factors is equal to the first, so we get $\textstyle \sum _ { r \neq 0 } | { \hat { A } } ( r ) | ^ { 2 }$ , which by Lemma 6.5 is $\alpha - \alpha ^ { 2 } \leq \alpha$ . The result follows. □ 
 
 ## 7. Roth’s theorem
 
-In this section we prove a famous result, the first non-trivial case of the Erd˝os-Tur´an conjecture, which was later to become Szemer´edi’s theorem. It is due to Klaus Roth. 
+In this section we prove a famous result, the first non-trivial case of the Erdős-Turán conjecture, which was later to become Szemerédi’s theorem. It is due to Klaus Roth. 
 
 Theorem 7.1. For every $\delta > 0$ there exists n such that every subset $A \subset \{ 1 , \ldots , n \}$ of density at least δn contains an arithmetic progression of length 3. 
 
@@ -794,7 +801,7 @@ and we are done.
 
 Corollary 7.3. Let n be odd and let A be a subset of $\{ 1 , 2 , \ldots , n \}$ of density δ. Suppose that $A \cap [ n / 3 , 2 n / 3 ]$ has cardinality at least $\delta n / 5$ . Then either A contains an arithmetic progression of length ${ \mathcal { B } } ,$ or when A is considered as a subset of $\mathbb { Z } _ { n }$ , there exists $r \neq 0$ such that $| \hat { A } ( r ) | \ge \delta ^ { 2 } / 1 0$ 
 
-Proof. Let $B = C = A \cap [ n / 3 , 2 n / 3 )$ and consider all of A, B and C as subsets of $\mathbb { Z } _ { n }$ Note that any triple $( x , x + d , x + 2 d ) \in A \times B \times C$ must have d belonging to the interval $( - n / 3 , n / 3 )$ , from which it follows that $( x , x + d , x + 2 d )$ must be a 3-AP even when it is considered as a subset of $\{ 1 , 2 , \ldots , n \}$ . Therefore, if A contains no 3-AP, we obtain from Lemma 7.2 that $\theta ( \beta \gamma ) ^ { 1 / 2 } \geq \alpha \beta \gamma / 2$ , so $\theta \ge \alpha ( \beta \gamma ) ^ { 1 / 2 } / 2$ . By hypothesis, $\beta$ and $\gamma$ are at least $\delta / 5$ , and $\alpha = \delta .$ , so $\alpha ( \beta \gamma ) ^ { 1 / 2 } / 2 \geq \delta ^ { 2 } / 1 0$  
+Proof. Let $B = C = A \cap [ n / 3 , 2 n / 3 )$ and consider all of A, B and C as subsets of $\mathbb { Z } _ { n }$ Note that any triple $( x , x + d , x + 2 d ) \in A \times B \times C$ must have d belonging to the interval $( - n / 3 , n / 3 )$ , from which it follows that $( x , x + d , x + 2 d )$ must be a 3-AP even when it is considered as a subset of $\{ 1 , 2 , \ldots , n \}$ . Therefore, if A contains no 3-AP, we obtain from Lemma 7.2 that $\theta ( \beta \gamma ) ^ { 1 / 2 } \geq \alpha \beta \gamma / 2$ , so $\theta \ge \alpha ( \beta \gamma ) ^ { 1 / 2 } / 2$ . By hypothesis, $\beta$ and $\gamma$ are at least $\delta / 5$ , and $\alpha = \delta .$ , so $\alpha ( \beta \gamma ) ^ { 1 / 2 } / 2 \geq \delta ^ { 2 } / 1 0$ □ 
 
 The next step is to prove that ${ \mathrm { i f ~ } } | { \hat { A } } ( r ) | \geq \theta$ for some $r \neq 0$ , then A has a slightly greater intersection than it should have with an arithmetic progression of length around $\sqrt { n }$ . The key lemma we need is the following. 
 
@@ -802,7 +809,7 @@ Lemma 7.4. Let n be a positive integer, let $r \in \mathbb { Z } _ { n }$ , and 
 
 Proof. Let $m = \lfloor { \sqrt { n } } \rfloor$ . Since the circumference of the unit circle is $2 \pi .$ , by the pigeonhole principle there exist distinct integers $u , v \in \{ 1 , \ldots , m \}$ such that $| \omega ^ { r u } - \omega ^ { r v } | \leq 2 \pi m ^ { - 1 }$ Setting $d = | u - v |$ , we then have that $| \omega ^ { r ( x + d ) } - \omega ^ { r x } | \leq 2 \pi m ^ { - 1 }$ for every x. It follows that if $P$ is any arithmetic progression of length t and common diference $d ,$ then $| \omega ^ { r x } - \omega ^ { r y } | \le$ $2 \pi t m ^ { - 1 }$ for every $x , y \in P$ 
 
-Now let us partition $\{ 1 , 2 , \ldots , n \}$ into residue classes mod d. Then since $d \leq m \leq { \sqrt { n } }$ we can partition each residue class into arithmetic progressions of length between δm/4π and $\delta m / 2 \pi$ , and for each such progression $P$ we have that the diameter of $\omega _ { r } ( P )$ is at most δ.  
+Now let us partition $\{ 1 , 2 , \ldots , n \}$ into residue classes mod d. Then since $d \leq m \leq { \sqrt { n } }$ we can partition each residue class into arithmetic progressions of length between δm/4π and $\delta m / 2 \pi$ , and for each such progression $P$ we have that the diameter of $\omega _ { r } ( P )$ is at most δ. □ 
 
 Corollary 7.5. Let n be a positive integer and let $A \subset \mathbb { Z } _ { n }$ be a subset of density α. Suppose that there exists $r \neq 0$ such that $| \hat { A } ( r ) | \ge \theta$ . Then there exists an arithmetic progression $P \subset \{ 1 , 2 , \dotsc , n \}$ of cardinality at least $\theta \sqrt { n } / 3 2$ such that if we consider P as a subset of $\mathbb { Z } _ { n }$ , then $| A \cap P | / | P | \ge \alpha + \theta / 4$ 
 
@@ -846,7 +853,7 @@ $$
 2 | P _ {i} | \mathbb {E} _ {x \in P _ {i}} f (x) \geq \theta | P _ {i} | / 2,
 $$
 
-which implies that $\mathbb { E } _ { x \in P _ { i } } f ( x ) \ge \theta / 4$ . By the definition of $f _ { ; }$ , this implies that 
+which implies that $\mathbb { E } _ { x \in P _ { i } } f ( x ) \ge \theta / 4$ . By the definition of $f$ , this implies that 
 
 $$
 \left| A \cap P _ {i} \right| / \left| P _ {i} \right| \geq \alpha + \theta / 4,
@@ -864,7 +871,7 @@ By translating if necessary, we may assume that A is a subset of $\{ 1 , 2 , \ld
 
 In the first case we are done. In the second, one of the sets $A \cap [ 1 , t / 3 )$ and $A \cap [ 2 t / 3 , t ]$ has cardinality at least $2 \alpha t / 5$ and hence density at least $1 1 \alpha t / 1 0$ . (The natural bound is $6 \alpha t / 5$ but this doesn’t quite work because if t is a multiple of 3, then the set $A \cap [ 2 t / 3 , t ]$ has cardinality $t / 3 + 1$ rather than $t / 3$ . But this is not at all important.) So in this case we are done by a long way. 
 
-In the third case, Corollary 7.3 gives us the hypothesis we need for Corollary 7.5 with $\theta = \alpha ^ { 2 } / 1 0$ . This then yields a progression P that satisfies the conclusion of the lemma, since $\theta \sqrt { t } / 3 2 \geq \alpha ^ { 2 } \sqrt { n } / 5 0 0$  
+In the third case, Corollary 7.3 gives us the hypothesis we need for Corollary 7.5 with $\theta = \alpha ^ { 2 } / 1 0$ . This then yields a progression P that satisfies the conclusion of the lemma, since $\theta \sqrt { t } / 3 2 \geq \alpha ^ { 2 } \sqrt { n } / 5 0 0$ □ 
 
 The above lemma represents one step of our iteration argument. Now let us finish the argument. 
 
@@ -878,17 +885,17 @@ $$
 \log \log n \geq (8 0 / \alpha) \log 3 + \log 6 + \log (\log 5 0 0 + 2 \log (\alpha^ {- 1}))
 $$
 
-sufices. This is at most $C / \alpha$ for some absolute constant C, so we have ended up showing that a density of $C /$ log log n sufices to guarantee a progression of length 3. This proves Roth’s theorem.  
+suffices. This is at most $C / \alpha$ for some absolute constant C, so we have ended up showing that a density of $C /$ log log n suffices to guarantee a progression of length 3. This proves Roth’s theorem. □ 
 
 ## 8. Szemeredi’s regularity lemma<sup>´</sup>
 
-In this section I shall state and prove one of the most influential results in combinatorics: the famous regularity lemma of Szemer´edi. His original version of the lemma, which was slightly diferent from the one people use today, formed an essential part of his proof of the Erd˝os-Tur´an conjecture, but has subsequently found a huge number of other applications. The underlying reason for this is quite simple: it provides a crude (but not too crude to be useful) classification of all graphs. 
+In this section I shall state and prove one of the most influential results in combinatorics: the famous regularity lemma of Szemerédi. His original version of the lemma, which was slightly different from the one people use today, formed an essential part of his proof of the Erdős-Turán conjecture, but has subsequently found a huge number of other applications. The underlying reason for this is quite simple: it provides a crude (but not too crude to be useful) classification of all graphs. 
 
-If one were to summarize the theorem in a few words, it would be to say that every graph can be approximately decomposed into a small number of quasirandom graphs. Soon I shall make that statement precise, and then I’ll set about proving it. In a subsequent section I shall give a couple of applications. From the point of view of this course, it is really the applications that I am interested in, since the regularity lemma gives rise to what one might call the regularity method, which can be used to prove a number of results that are dificult to prove any other way. However, the proof of the lemma itself also introduces a useful addition to the combinatorialist’s toolbox: the notion of an energy-increment argument, which I shall explain later in this section. 
+If one were to summarize the theorem in a few words, it would be to say that every graph can be approximately decomposed into a small number of quasirandom graphs. Soon I shall make that statement precise, and then I’ll set about proving it. In a subsequent section I shall give a couple of applications. From the point of view of this course, it is really the applications that I am interested in, since the regularity lemma gives rise to what one might call the regularity method, which can be used to prove a number of results that are difficult to prove any other way. However, the proof of the lemma itself also introduces a useful addition to the combinatorialist’s toolbox: the notion of an energy-increment argument, which I shall explain later in this section. 
 
 I am now going to introduce a definition that is not quite standard, but I find it more convenient than the standard one. Let G be a bipartite graph with finite vertex sets X and Y. As earlier in these notes, if $A \subset X$ and $B \subset Y$ , I shall write $G ( A , B )$ for the induced bipartite subgraph with vertex sets A and B. I shall also write $d ( A , B )$ for the density of this induced subgraph. It will also be useful to write $d ( A )$ and $d ( B )$ for the densities $| A | / | X |$ and $| B | / | Y |$ of A and B inside X and Y, respectively. 
 
-Definition 8.1. Let G be a bipartite graph of density α with finite vertex sets X and Y and let $\epsilon > 0$ . We say that G is -regular if for any two subsets $A \subset X$ and $B \subset Y$ we have the estimate 
+Definition 8.1. Let G be a bipartite graph of density α with finite vertex sets X and Y and let $\epsilon > 0$ . We say that G is \epsilon-regular if for any two subsets $A \subset X$ and $B \subset Y$ we have the estimate 
 
 $$
 | \mathbb {E} _ {x \in X, y \in Y} G (x, y) A (x) B (y) - \alpha d (A) d (B) | \leq \epsilon .
@@ -900,13 +907,13 @@ $$
 | \mathbb {E} _ {x \in X, y \in Y} G (x, y) A (x) B (y) - \alpha d (A) d (B) | \leq 2 c \alpha (d (A) d (B)) ^ {1 / 2},
 $$
 
-which we can bound above very crudely by $2 c \alpha$ . So Theorem 5.3 gives us a suficient condition for a bipartite graph to be -regular. 
+which we can bound above very crudely by $2 c \alpha$ . So Theorem 5.3 gives us a suficient condition for a bipartite graph to be \epsilon-regular. 
 
 The definition can be adapted to graphs (as opposed to bipartite graphs) in the usual way: we simply take A and B to be subsets of the vertex set of G rather than one subset of each of the two vertex sets of G. 
 
-I feel a moral obligation to present the standard definition as well and prove that it is approximately equivalent to the one I have given. Returning to the bipartite case, it is usual to define the density $d ( A , B )$ to be $\mathbb { E } _ { x \in A , y \in B } G ( x , y )$ , and to say that G is -regular if $| d ( A , B ) - \alpha | < \epsilon$ whenever $d ( A )$ and $d ( B )$ are both at least . 
+I feel a moral obligation to present the standard definition as well and prove that it is approximately equivalent to the one I have given. Returning to the bipartite case, it is usual to define the density $d ( A , B )$ to be $\mathbb { E } _ { x \in A , y \in B } G ( x , y )$ , and to say that G is \epsilon-regular if $| d ( A , B ) - \alpha | < \epsilon$ whenever $d ( A )$ and $d ( B )$ are both at least \epsilon. 
 
-## Lemma 8.2. The two definitions of -regularity are polynomially equivalent.
+## Lemma 8.2. The two definitions of \epsilon-regularity are polynomiallly equivalent.
 
 Proof. Note first that 
 
@@ -926,23 +933,23 @@ $$
 | d (A, B) - \alpha | \leq \epsilon / d (A) d (B).
 $$
 
-Therefore, if $d ( A )$ and $d ( B )$ are both at least $\epsilon ^ { 1 / 3 }$ we find that $| d ( A , B ) - \alpha | \leq \epsilon ^ { 1 / 3 }$ Therefore, a graph that is -regular in the first sense is $\epsilon ^ { 1 / 3 }$ regular in the second sense. 
+Therefore, if $d ( A )$ and $d ( B )$ are both at least $\epsilon ^ { 1 / 3 }$ we find that $| d ( A , B ) - \alpha | \leq \epsilon ^ { 1 / 3 }$ Therefore, a graph that is \epsilon-regular in the first sense is $\epsilon ^ { 1 / 3 }$ regular in the second sense. 
 
-In the reverse direction, if $d ( A ) < \epsilon \ \mathrm { o r } \ d ( B ) < \epsilon ,$ then $| \mathbb { E } _ { x \in X , y \in Y } G ( x , y ) A ( x ) B ( y ) \ -$ $\alpha d ( A ) d ( B ) | ~ < ~ \epsilon ~$ . If both $d ( A )$ and $d ( B )$ are at least  and $| d ( A , B ) - \alpha | \leq \epsilon _ { : }$ , then $| d ( A ) d ( B ) d ( A , B ) - \alpha d ( A ) d ( B ) | \leq \epsilon d ( A ) d ( B ) \leq \epsilon .$ . So a graph that is -regular in the second sense is -regular in the first sense.  
+In the reverse direction, if $d ( A ) < \epsilon \ or \ d ( B ) < \epsilon ,$ then $| \mathbb { E } _ { x \in X , y \in Y } G ( x , y ) A ( x ) B ( y ) \ -$ $\alpha d ( A ) d ( B ) | ~ < ~ \epsilon ~$ . If both $d ( A )$ and $d ( B )$ are at least \epsilon and $| d ( A , B ) - \alpha | \leq \epsilon _ { : }$ , then $| d ( A ) d ( B ) d ( A , B ) - \alpha d ( A ) d ( B ) | \leq \epsilon d ( A ) d ( B ) \leq \epsilon .$ . So a graph that is \epsilon-regular in the second sense is \epsilon-regular in the first sense. □ 
 
 I prefer the first definition because it is better suited to analytic proofs of the kind I am stressing in this course. However, the first is also convenient in many situations, and since it is standard, it is important to know it. 
 
-The next definition we need is that of an -regular partition, or rather pair of partitions. If G is a bipartite graph with finite vertex sets X and $Y ,$ and $X _ { 1 } , \ldots , X _ { r }$ and $Y _ { 1 } , \dots , Y _ { s }$ are partitions of X and Y , then we call the partitions -regular if 
+The next definition we need is that of an \epsilon-regular partition, or rather pair of partitions. If G is a bipartite graph with finite vertex sets X and $Y ,$ and $X _ { 1 } , \ldots , X _ { r }$ and $Y _ { 1 } , \dots , Y _ { s }$ are partitions of X and Y , then we call the partitions \epsilon-regular if 
 
 $$
 \sum \left\{d \left(X _ {i}\right) d \left(Y _ {j}\right): G \left(X _ {i}, Y _ {j}\right) \text {is not} \epsilon - \text {regular} \right\} \leq \epsilon .
 $$
 
-A helpful way of thinking about this is as follows. If $A \subset X$ and $B \subset Y$ , then say that $( A , B )$ is an -regular pair if the graph $G ( A , B )$ is -regular. Then the partitions above are -regular if the probability that a random edge belongs to a pair of cells that form an -regular pair is at least $1 - \epsilon$ 
+A helpful way of thinking about this is as follows. If $A \subset X$ and $B \subset Y$ , then say that $( A , B )$ is an \epsilon-regular pair if the graph $G ( A , B )$ is \epsilon-regular. Then the partitions above are \epsilon-regular if the probability that a random edge belongs to a pair of cells that form an \epsilon-regular pair is at least $1 - \epsilon$ 
 
-We are now ready to state Szemer´edi’s regularity lemma for bipartite graphs. 
+We are now ready to state Szemerédi’s regularity lemma for bipartite graphs. 
 
-Theorem 8.3. Let G be a bipartite graph with finite vertex sets X and Y and let $\epsilon > 0$ Then there exists an -regular pair of partitions $X _ { 1 } , \ldots , X _ { r }$ of X and $Y _ { 1 } , \dots , Y _ { s }$ of Y such that $r , s \le K ( \epsilon )$ 
+Theorem 8.3. Let G be a bipartite graph with finite vertex sets X and Y and let $\epsilon > 0$ Then there exists an \epsilon-regular pair of partitions $X _ { 1 } , \ldots , X _ { r }$ of X and $Y _ { 1 } , \dots , Y _ { s }$ of Y such that $r , s \le K ( \epsilon )$ 
 
 To be completed. 
 
@@ -956,7 +963,7 @@ Lemma 10.1. Let $r _ { 1 } , \ldots , r _ { k } \in \mathbb { Z } _ { n }$ and l
 
 Proof. For each $\phi \in [ 0 , 1 )$ let $A _ { \theta } ( \phi )$ be the arc of the unit circle that goes from $e ^ { 2 \pi i \phi }$ to $e ^ { 2 \pi i ( \phi + \theta ) }$ . If we choose $\big ( \phi _ { 1 } , \ldots , \phi _ { k } \big )$ uniformly at random from $[ 0 , 1 ) ^ { k }$ , then for each x the probability that $( \omega ^ { r _ { 1 } x } , \ldots , \omega ^ { r _ { k } x } ) \in A _ { \theta } ( \phi _ { 1 } ) \times \cdot \cdot \cdot \times A _ { \theta } ( \phi _ { k } )$ is $\theta ^ { k }$ . It follows that there exists $( \phi _ { 1 } , \ldots , \phi _ { k } )$ such that the density of x such that $( r _ { 1 } x , \dots , r _ { k } x ) \in A _ { \theta } ( \phi _ { 1 } ) \times \cdot \cdot \cdot \times A _ { \theta } ( \phi _ { k } )$ is at least $\theta ^ { k }$ 
 
-If x and y both have that property, then for each i we have that $\omega ^ { r _ { i } ( x - y ) }$ belongs to the arc that goes from $e ^ { - 2 \pi i \theta } \ \mathrm { t o } \ e ^ { 2 \pi i \theta }$ . It follows that $| 1 - \omega ^ { r _ { i } ( x - y ) } | \leq \delta$ for each i, and therefore that $x - y \in B ( r _ { 1 } , \ldots , r _ { k } ; \delta )$ . The result follows.  
+If x and y both have that property, then for each i we have that $\omega ^ { r _ { i } ( x - y ) }$ belongs to the arc that goes from $e ^ { - 2 \pi i \theta } \ \mathrm { t o } \ e ^ { 2 \pi i \theta }$ . It follows that $| 1 - \omega ^ { r _ { i } ( x - y ) } | \leq \delta$ for each i, and therefore that $x - y \in B ( r _ { 1 } , \ldots , r _ { k } ; \delta )$ . The result follows. □ 
 
 Note that θ is given by the formula $\delta = 2 \sin ( \pi \theta )$ . In particular, $\theta > \delta / 2 \pi$ . That will be useful in the next lemma. Note also that $B ( r _ { 1 } , \ldots , r _ { k } ; \delta )$ is equal to the set of all x such that $r _ { i } x \in [ - \theta n , \theta n ]$ for each i. 
 
@@ -964,7 +971,7 @@ Corollary 10.2. Let n be prime and let $r _ { 1 } , \ldots , r _ { k } \in \math
 
 Proof. We begin by finding a small $\rho$ such that $B ( r _ { 1 } , \ldots , r _ { k } ; \rho )$ contains a non-zero point. For this it is suficient if it has cardinality greater than 1, and by Lemma 10.1 and the remark immediately following it, that will happen if $( \rho / 2 \pi ) ^ { k } \ge n ^ { - 1 }$ , which is true if $\rho =$ $2 \pi n ^ { - 1 / k }$ 
 
-If x belongs to the Bohr set $B ( r _ { 1 } , \ldots , r _ { k } ; \rho )$ and $m \rho \leq \delta$ , then the arithmetic progression $\{ 0 , x , 2 x , \ldots , m x \}$ is a subset of $B ( r _ { 1 } , \dots , r _ { k } ; \delta )$ . This proves the result.  
+If x belongs to the Bohr set $B ( r _ { 1 } , \ldots , r _ { k } ; \rho )$ and $m \rho \leq \delta$ , then the arithmetic progression $\{ 0 , x , 2 x , \ldots , m x \}$ is a subset of $B ( r _ { 1 } , \dots , r _ { k } ; \delta )$ . This proves the result. □ 
 
 For the next lemma we need a couple more definitions. A d-dimensional lattice is a subgroup of $\mathbb { R } ^ { d }$ that is spanned by n linearly independent points. (Equivalently, it is a discrete subgroup of $\mathbb { R } ^ { d }$ that is not contained in a proper subspace.) A d-dimensional lattice convex body is the intersection of a d-dimensional lattice with a convex set. It is symmetric if it is invariant under the transformation $x \mapsto - x$ 
 
@@ -996,7 +1003,7 @@ For the next lemma it will be convenient to write $B [ K ; \theta ]$ for the set
 
 Lemma 10.4. Let K be a subset of $\mathbb { Z } _ { n }$ of size k and let $\theta > 0$ . Then $| B [ K , 2 \theta ] | \leq$ $4 ^ { k } | B [ K , \theta ]$ 
 
-Proof. Cover the interval $[ - \theta n , \theta n ]$ by four intervals $I _ { 1 } , \ldots , I _ { 4 }$ of width $\theta n / 2$ . Let $K =$ $\{ r _ { 1 } , \ldots , r _ { k } \}$ , and for each $h = ( h _ { 1 } , \ldots , h _ { k } ) \in \{ 1 , 2 , 3 , 4 \} ^ { k }$ , let $B ( h )$ be the set of x such that $r _ { j } x \in I _ { h _ { j } }$ for every $j .$ . Then the union of the $4 ^ { k }$ sets $B ( h )$ is equal to $B [ K ; 2 \theta ]$ and $B ( h ) - B ( h ) \subset B [ K ; \theta ]$ for each h. The result follows.  
+Proof. Cover the interval $[ - \theta n , \theta n ]$ by four intervals $I _ { 1 } , \ldots , I _ { 4 }$ of width $\theta n / 2$ . Let $K =$ $\{ r _ { 1 } , \ldots , r _ { k } \}$ , and for each $h = ( h _ { 1 } , \ldots , h _ { k } ) \in \{ 1 , 2 , 3 , 4 \} ^ { k }$ , let $B ( h )$ be the set of x such that $r _ { j } x \in I _ { h _ { j } }$ for every $j .$ . Then the union of the $4 ^ { k }$ sets $B ( h )$ is equal to $B [ K ; 2 \theta ]$ and $B ( h ) - B ( h ) \subset B [ K ; \theta ]$ for each h. The result follows. □ 
 
 Our next aim is to prove a very useful fact about Bohr sets, which roughly speaking says that for many θ the size of $B [ K , \theta ]$ has good continuity properties. Before we give the statement, we prove Vitali’s covering lemma. 
 
@@ -1004,17 +1011,17 @@ Lemma 10.5. Let $[ a , b ]$ be a real interval and let U be an open covering of 
 
 Proof. Let V be a minimal subcover. Since $[ a , b ]$ is compact, V is finite. Also, the minimality of V implies that for each $U \in \mathcal { V }$ there exists $x \in [ a , b ]$ such that $x \in U$ and x belongs to no other set in V. Let $\mathcal { V } = \{ U _ { 1 } , \ldots , U _ { k } \}$ and for each i let $x _ { i } \in U _ { i } \setminus \bigcup _ { j \neq i } U _ { j }$ . Without loss of generality $x _ { 1 } < x _ { 2 } < \cdots < x _ { k }$ 
 
-For each $1 \leq i < j \leq k$ we have that $x _ { i } < x _ { j } , x _ { i } \in U _ { i } , x _ { j } \notin U _ { i } , x _ { j } \in U _ { j } , x _ { j } \notin U _ { i }$ . It follows that all points in $U _ { i }$ are less than $x _ { j }$ and all points in $U _ { j }$ are greater than $x _ { i }$ . From this it follows that the sets $U _ { 1 } , U _ { 3 } , U _ { 5 } , . . .$ . are disjoint, as are the sets $U _ { 2 } , U _ { 4 } , U _ { 6 } , \ldots .$ . But one or other of these collections of sets must cover at least half of $[ a , b ]$  
+For each $1 \leq i < j \leq k$ we have that $x _ { i } < x _ { j } , x _ { i } \in U _ { i } , x _ { j } \notin U _ { i } , x _ { j } \in U _ { j } , x _ { j } \notin U _ { i }$ . It follows that all points in $U _ { i }$ are less than $x _ { j }$ and all points in $U _ { j }$ are greater than $x _ { i }$ . From this it follows that the sets $U _ { 1 } , U _ { 3 } , U _ { 5 } , . . .$ . are disjoint, as are the sets $U _ { 2 } , U _ { 4 } , U _ { 6 } , \ldots .$ . But one or other of these collections of sets must cover at least half of $[ a , b ]$ □ 
 
 Let f be a function from an interval [a, b] to R, let $x \in [ a , b ]$ and let $C \geq 0$ be a constant. We shall say that f is C-Lipschitz at x if $| f ( y ) - f ( x ) | \leq C | y - x |$ for every $y \in [ a , b ]$ 
 
 Corollary 10.6. Let $f : [ a , b ]  \mathbb { R }$ be an increasing function with $f ( b ) - f ( a ) = \lambda ( b - a )$ Let $a _ { 1 } = ( 3 a + b ) / 4$ and let $b _ { 1 } = ( a + 3 b ) / 4$ . Then there exists $x \in [ a _ { 1 } , b _ { 1 } ]$ such that f is 4λ-Lipschitz at x. 
 
-Proof. Suppose that this is not true. Then for every $x \in [ a _ { 1 } , b _ { 1 } ]$ we can find $y \in [ a , b ]$ such that $| f ( y ) - f ( x ) | > 4 \lambda | y - x |$ . Since f is increasing, this allows us to find an open interval $( u _ { x } , v _ { x } )$ containing x such that $f ( v _ { x } ) - f ( u _ { x } ) > 4 \lambda ( v _ { x } - u _ { x } )$ . By Lemma 10.5 we can cover at least half of $[ a _ { 1 } , b _ { 1 } ]$ with a disjoint collection of such intervals, from which it follows that $f ( b _ { 1 } ) - f ( a _ { 1 } ) > 2 \lambda ( b _ { 1 } - a _ { 1 } ) = \lambda ( b - a )$ . From that it follows that $f ( b ) - f ( a ) > \lambda ( b - a )$ , a contradiction.  
+Proof. Suppose that this is not true. Then for every $x \in [ a _ { 1 } , b _ { 1 } ]$ we can find $y \in [ a , b ]$ such that $| f ( y ) - f ( x ) | > 4 \lambda | y - x |$ . Since f is increasing, this allows us to find an open interval $( u _ { x } , v _ { x } )$ containing x such that $f ( v _ { x } ) - f ( u _ { x } ) > 4 \lambda ( v _ { x } - u _ { x } )$ . By Lemma 10.5 we can cover at least half of $[ a _ { 1 } , b _ { 1 } ]$ with a disjoint collection of such intervals, from which it follows that $f ( b _ { 1 } ) - f ( a _ { 1 } ) > 2 \lambda ( b _ { 1 } - a _ { 1 } ) = \lambda ( b - a )$ . From that it follows that $f ( b ) - f ( a ) > \lambda ( b - a )$ , a contradiction. □ 
 
 Corollary 10.7. Let $K \subset \mathbb { Z } _ { n }$ be a set of size k. Then for every $\rho > 0$ there exists $\alpha \in [ 1 / 4 , 3 / 4 ]$ such that the function $f : [ 0 , 1 ] \to \mathbb { R }$ defined by $f : x \mapsto \log _ { 2 } \left| B [ K ; 2 ^ { x } \rho ] \right|$ is 8k-Lipschitz at α. 
 
-Proof. Clearly f is an increasing function. Also, by Lemma $1 0 . 4 , f ( 1 ) - f ( 0 ) = \log _ { 2 } | B ( K ; 2 \rho ] | -$ $\log _ { 2 } | B [ K ; \rho ] | \leq 2 k$ . Corollary 10.6 then gives us the required α.  
+Proof. Clearly f is an increasing function. Also, by Lemma $1 0 . 4 , f ( 1 ) - f ( 0 ) = \log _ { 2 } | B ( K ; 2 \rho ] | -$ $\log _ { 2 } | B [ K ; \rho ] | \leq 2 k$ . Corollary 10.6 then gives us the required α. □ 
 
 Now let us translate Corollary 10.7 into a statement about the size of Bohr sets. Let $K , \rho$ and α be as in the corollary, and let $\theta = 2 ^ { \alpha } \rho .$ . Then for every $\beta > 1$ we have the inequalities 
 
@@ -1040,7 +1047,7 @@ $$
 | B [ K; (1 - \delta) \theta ] \geq (1 - 8 k \delta) | B [ K; \theta ] |.
 $$
 
-## 11. Plunnecke’s theorem and Ruzsa’s embedding lemma
+## 11. Plünnecke’s theorem and Ruzsa’s embedding lemma
 
 Lemma 11.1. Let A and B be finite subsets of an Abelian group G and suppose that $| A + B | = K | A |$ and that $| Z + B | \ge K | Z |$ for every $Z \subset A$ . Then $| A + B + C | \leq K | A + C |$ $f o r$ every finite set $C \subset G$ 
 
@@ -1068,7 +1075,7 @@ which completes the proof.
 
 Corollary 11.2. Let A and B be finite subsets of an Abelian group G and suppose that $| A + B | \leq C | A |$ . Then $| h B | \leq C ^ { h } | A |$ 
 
-Proof. Let $A ^ { \prime } \subset A$ be such that the ratio $\lvert A ^ { \prime } + B \rvert / \lvert A ^ { \prime } \rvert$ is minimized. Then $| A ^ { \prime } + B | \leq$ $C | A |$ and A<sup>0</sup> and B satisfy the conditions of the previous lemma. It follows that $| A ^ { \prime } +$ $B + ( h - 1 ) B | \leq C | A ^ { \prime } + ( h - 1 ) B |$ for every h. Therefore, by induction we have that $| A ^ { \prime } + h B | \leq C ^ { h } | A ^ { \prime } |$ , which implies the result. In particular, if we set $A = B$ , this tells us that if $| A + A | \leq C | A |$ , then $| h A | \leq C ^ { h } | A |$  
+Proof. Let $A ^ { \prime } \subset A$ be such that the ratio $\lvert A ^ { \prime } + B \rvert / \lvert A ^ { \prime } \rvert$ is minimized. Then $| A ^ { \prime } + B | \leq$ $C | A |$ and A' and B satisfy the conditions of the previous lemma. It follows that $| A ^ { \prime } +$ $B + ( h - 1 ) B | \leq C | A ^ { \prime } + ( h - 1 ) B |$ for every h. Therefore, by induction we have that $| A ^ { \prime } + h B | \leq C ^ { h } | A ^ { \prime } |$ , which implies the result. In particular, if we set $A = B$ , this tells us that if $| A + A | \leq C | A |$ , then $| h A | \leq C ^ { h } | A |$ □ 
 
 We now want to get a similar result for sums and diferences. For that we can use a very useful lemma of Ruzsa, known as the Ruzsa triangle inequality. 
 
@@ -1078,19 +1085,19 @@ The reason this is called a triangle inequality is that we can define a sort of 
 
 Proof. We shall prove this result by defining an injection $\phi : B \times ( A - C ) \to ( A - B ) \times ( B - C )$ C). This we do in a fairly obvious way. First, for each $u \in A - C$ we choose elements $\rho ( u )$ of A and $\sigma ( u )$ of C with $\rho ( u ) - \sigma ( u ) = u$ . Then we define $\phi ( b , u )$ to be $( \rho ( u ) - b , b - \sigma ( u ) )$ 
 
-Suppose now that we are presented with a pair $( r , s )$ and told that it is $\phi ( b , u )$ for some $( b , u ) \in B \times ( A - C )$ . Then $r + s = \rho ( u ) - \sigma ( u ) = u$ . But once we have determined u, we also determine b, since it equals $s + \sigma ( u )$  
+Suppose now that we are presented with a pair $( r , s )$ and told that it is $\phi ( b , u )$ for some $( b , u ) \in B \times ( A - C )$ . Then $r + s = \rho ( u ) - \sigma ( u ) = u$ . But once we have determined u, we also determine b, since it equals $s + \sigma ( u )$ □ 
 
 Corollary 11.4. Let A be a finite subset of an Abelian group and suppose that $| A + A | \leq$ $C | A |$ or that $| A - A | \leq C | A |$ . Then for every r and s we have that $| r A - s A | \leq C ^ { r + s } | A |$ 
 
-Proof. $\operatorname { I f } \ | A + A | \leq C | A |$ , then by the proof of Lemma 11.2 we know that A has a subset A<sup>0</sup> such that $| A ^ { \prime } + r A | \le C ^ { r } | A ^ { \prime } |$ and $| A ^ { \prime } + s A | \leq C ^ { s } | A ^ { \prime } |$ . Therefore, by Lemma 11.3 with the roles of A, B and C played by $r A , \mathrm { ~ } - A ^ { \prime }$ and sA, respectively (noting that $| A ^ { \prime } +$ $s A | = | - A ^ { \prime } - s A | )$ , we find that $| A ^ { \prime } + r A | | A ^ { \prime } + s A | \geq | A ^ { \prime } | | r A - s A |$ , which implies that $| r A - s A | \leq C ^ { r + s } | A ^ { \prime } |$ , which is at most $C ^ { r + s } | A |$  
+Proof. $\operatorname { I f } \ | A + A | \leq C | A |$ , then by the proof of Lemma 11.2 we know that A has a subset A' such that $| A ^ { \prime } + r A | \le C ^ { r } | A ^ { \prime } |$ and $| A ^ { \prime } + s A | \leq C ^ { s } | A ^ { \prime } |$ . Therefore, by Lemma 11.3 with the roles of A, B and C played by $r A , \mathrm { ~ } - A ^ { \prime }$ and sA, respectively (noting that $| A ^ { \prime } +$ $s A | = | - A ^ { \prime } - s A | )$ , we find that $| A ^ { \prime } + r A | | A ^ { \prime } + s A | \geq | A ^ { \prime } | | r A - s A |$ , which implies that $| r A - s A | \leq C ^ { r + s } | A ^ { \prime } |$ , which is at most $C ^ { r + s } | A |$ □ 
 
 Lemma 11.5. Let A and B be sets such that $| A + B | \leq C | B |$ . Then there is a set X of size at most C such that $A \subset X + B - B$ 
 
-Proof. Let $X = \{ x _ { 1 } , \ldots , x _ { k } \}$ be a maximal subset of A such that the sets $x _ { i } + B$ are disjoint. Since each set $x _ { i } + B$ has size $| B |$ and is a subset of $A + B$ , X has size at most C. The maximality of X tells us that for every $a \in A$ there exists i such that $a + B$ and $x _ { i } + B$ are not disjoint, which is the same as saying that $a \in x _ { i } + B - B$ . The result follows.  
+Proof. Let $X=\{x_1,\ldots,x_n\}$ be a maximal subset of A such that the sets $x _ { i } + B$ are disjoint. Since each set $x _ { i } + B$ has size $| B |$ and is a subset of $A + B$ , X has size at most C. The maximality of X tells us that for every $a \in A$ there exists i such that $a + B$ and $x _ { i } + B$ are not disjoint, which is the same as saying that $a \in x _ { i } + B - B$ . The result follows. □ 
 
-## 12. The polynomial method
+## 12. The polynomiall method
 
-It is not very easy to say exactly what the polynomial method is, but in broad terms it is exploiting facts about zeros of polynomials to prove results that do not appear to have anything to do with polynomials. Typically, one tries to prove that a small combinatorial structure cannot exist by showing that if it did, then it would allow us to define a non-zero polynomial of low degree that vanishes on a large set, sometimes with some extra structure, which we can then contradict by proving results that show that non-zero polynomials of low degree cannot vanish on such sets. 
+It is not very easy to say exactly what the polynomiall method is, but in broad terms it is exploiting facts about zeros of polynomialls to prove results that do not appear to have anything to do with polynomialls. Typically, one tries to prove that a small combinatorial structure cannot exist by showing that if it did, then it would allow us to define a non-zero polynomiall of low degree that vanishes on a large set, sometimes with some extra structure, which we can then contradict by proving results that show that non-zero polynomialls of low degree cannot vanish on such sets. 
 
 In this section we shall illustrate the method with three results. The first is a celebrated result of Dvir, who solved the so-called Kakeya problem for finite fields. This is the following question: suppose that A is a subset of $\mathbb { F } _ { p } ^ { n }$ that contains a translate of every line. Must A have size $p ^ { n - o ( 1 ) } ?$ Here, we are taking n to be fixed and $p$ to be tending to infinity. Dvir’s solution gave the following theorem. 
 
@@ -1098,53 +1105,53 @@ Theorem 12.1. Let A be a subset of $\mathbb { F } _ { p } ^ { n }$ that contains
 
 The proof needs a couple of simple (but surprisingly powerful) lemmas. 
 
-Lemma 12.2. Let $A \subset \mathbb { F } _ { p } ^ { n }$ be a set of size less than $\textstyle { \binom { n + d } { d } }$ . Then there exists a non-zero polynomial $P ( x _ { 1 } , \ldots , x _ { n } )$ of degree d that vanishes on $A$ 
+Lemma 12.2. Let $A \subset \mathbb { F } _ { p } ^ { n }$ be a set of size less than $\textstyle { \binom { n + d } { d } }$ . Then there exists a non-zero polynomiall $P ( x _ { 1 } , \ldots , x _ { n } )$ of degree d that vanishes on $A$ 
 
-Proof. A polynomial of degree d in the variables $x _ { 1 } , \ldots , x _ { n }$ is a linear combination of monomials of degree at most d. The number of monomials of degree k is the number of ways of writing a number less than or equal to $d$ in the form $a _ { 1 } + \cdots + a _ { n }$ with each $a _ { i }$ non-negative. By a standard holes-and-pegs argument, this is $\textstyle { \binom { n + d } { d } }$ . (Given $n + d$ holes with d pegs, then $a _ { i }$ is the number of pegs that follow the ith hole.) Therefore, for a polynomial of degree d to vanish at m given points, a certain set of $m$ linear combinations of the coeficients must all be zero. By dimension considerations, this is possible if m is less than the number of coeficients. The result follows.  
+Proof. A polynomiall of degree d in the variables $x _ { 1 } , \ldots , x _ { n }$ is a linear combination of monomials of degree at most d. The number of monomials of degree k is the number of ways of writing a number less than or equal to $d$ in the form $a _ { 1 } + \cdots + a _ { n }$ with each $a _ { i }$ non-negative. By a standard holes-and-pegs argument, this is $\textstyle { \binom { n + d } { d } }$ . (Given $n + d$ holes with d pegs, then $a _ { i }$ is the number of pegs that follow the ith hole.) Therefore, for a polynomiall of degree d to vanish at m given points, a certain set of $m$ linear combinations of the coefficients must all be zero. By dimension considerations, this is possible if m is less than the number of coefficients. The result follows. □ 
 
-When $d = p - 1$ , this gives us that for every set A of size less than $\textstyle { \binom { n + p - 1 } { p - 1 } } = { \binom { n + p - 1 } { n } }$ we can find a non-zero polynomial of degree d that vanishes on A. Since ${ \binom { n + p - 1 } { p - 1 } } > p ^ { n } / n !$ 2 this is in particular true when $\left| A \right| \leq p ^ { n } / n !$ 
+When $d = p - 1$ , this gives us that for every set A of size less than $\textstyle { \binom { n + p - 1 } { p - 1 } } = { \binom { n + p - 1 } { n } }$ we can find a non-zero polynomiall of degree d that vanishes on A. Since ${ \binom { n + p - 1 } { p - 1 } } > p ^ { n } / n !$ 2 this is in particular true when $\left| A \right| \leq p ^ { n } / n !$ 
 
 The next lemma is the main idea behind the proof of Dvir’s theorem. 
 
-Lemma 12.3. Suppose that $A \subset \mathbb { F } _ { p } ^ { n }$ contains a line in every direction, that $d < p$ , and that there exists a non-zero polynomial f of degree at most d that vanishes on A. Then there is a non-zero degree-d polynomial that vanishes everywhere on $\mathbb { F } _ { p } ^ { n }$ 
+Lemma 12.3. Suppose that $A \subset \mathbb { F } _ { p } ^ { n }$ contains a line in every direction, that $d < p$ , and that there exists a non-zero polynomiall f of degree at most d that vanishes on A. Then there is a non-zero degree-d polynomiall that vanishes everywhere on $\mathbb { F } _ { p } ^ { n }$ 
 
-Proof. Without loss of generality the degree of f is exactly d. Let $a , z \in \mathbb { F } _ { p } ^ { n }$ with $z \neq 0$ and let L be the line consisting of all points $a + t z$ . The restriction of $f$ to $L$ is a polynomial of degree d in t, and its leading coeficient is $f _ { d } ( z )$ , where $f _ { d }$ is the degree-d part of $f$ . To see this, observe that for any monomial $\textstyle \prod _ { i = 1 } ^ { n } x _ { i } ^ { r _ { i } }$ its value at $a + t z$ is $\textstyle \prod _ { i = 1 } ^ { n } ( a _ { i } + t z _ { i } ) ^ { r _ { i } }$ , so if the monomial has degree $d ,$ then to obtain a term in $t ^ { d }$ we must choose $t z _ { i }$ from each bracket, which gives $t ^ { d } \prod _ { i = 1 } ^ { n } z _ { i } ^ { r _ { i } }$ 
+Proof. Without loss of generality the degree of f is exactly d. Let $a , z \in \mathbb { F } _ { p } ^ { n }$ with $z \neq 0$ and let L be the line consisting of all points $a + t z$ . The restriction of $f$ to $L$ is a polynomiall of degree d in t, and its leading coefficient is $f _ { d } ( z )$ , where $f _ { d }$ is the degree-d part of $f$ . To see this, observe that for any monomial $\textstyle \prod _ { i = 1 } ^ { n } x _ { i } ^ { r _ { i } }$ its value at $a + t z$ is $\textstyle \prod _ { i = 1 } ^ { n } ( a _ { i } + t z _ { i } ) ^ { r _ { i } }$ , so if the monomial has degree $d ,$ then to obtain a term in $t ^ { d }$ we must choose $t z _ { i }$ from each bracket, which gives $t ^ { d } \prod _ { i = 1 } ^ { n } z _ { i } ^ { r _ { i } }$ 
 
-Now if $f$ vanishes everywhere on $L _ { : }$ , then since its dependence on t is given by a polynomial of degree less than $p ,$ all the coeficients of that polynomial must be zero. It follows that $f _ { d } ( z ) = 0$ . But z was an arbitrary non-zero element of $\mathbb { F } _ { p } ^ { n }$ , and $f _ { d }$ vanishes at zero as well, so it vanishes everywhere.  
+Now if $f$ vanishes everywhere on $L$ , then since its dependence on t is given by a polynomiall of degree less than $p ,$ all the coefficients of that polynomiall must be zero. It follows that $f _ { d } ( z ) = 0$ . But z was an arbitrary non-zero element of $\mathbb { F } _ { p } ^ { n }$ , and $f _ { d }$ vanishes at zero as well, so it vanishes everywhere. □ 
 
-To finish the proof, we need the second of our simple but powerful lemmas. It is called the Schwartz-Zippel lemma, and it tells us that a polynomial of degree $d$ in n variables cannot have too many roots. Some sort of intuition for how many roots we might expect comes from thinking about linear polynomials: there we do not get more than $p ^ { n - 1 }$ roots. A very useful and general principle in applications of arithmetic geometry is that polynomials behave in a rather similar way to linear functions. For example, a linear function from R to R has at most one root, while a polynomial of degree d has at most d roots, which is the same up to a constant. 
+To finish the proof, we need the second of our simple but powerful lemmas. It is called the Schwartz-Zippel lemma, and it tells us that a polynomiall of degree $d$ in n variables cannot have too many roots. Some sort of intuition for how many roots we might expect comes from thinking about linear polynomialls: there we do not get more than $p ^ { n - 1 }$ roots. A very useful and general principle in applications of arithmetic geometry is that polynomialls behave in a rather similar way to linear functions. For example, a linear function from R to R has at most one root, while a polynomiall of degree d has at most d roots, which is the same up to a constant. 
 
-Before we prove the Schwartz-Zipple lemma, we need a preparatory result. Note that there is an important distinction between the zero polynomial, which is the polynomial with all coeficients of all monomials equal to zero, and a polynomial that takes the value zero everywhere on $\mathbb { F } _ { p } ^ { n }$ . For instance, the polynomial $x ^ { p - 1 } - 1$ is not the zero polynomial but takes the value zero everywhere on $\mathbb { F } _ { p }$ 
+Before we prove the Schwartz-Zippel lemma, we need a preparatory result. Note that there is an important distinction between the zero polynomiall, which is the polynomiall with all coefficients of all monomials equal to zero, and a polynomiall that takes the value zero everywhere on $\mathbb { F } _ { p } ^ { n }$ . For instance, the polynomiall $x ^ { p - 1 } - 1$ is not the zero polynomiall but takes the value zero everywhere on $\mathbb { F } _ { p }$ 
 
-Lemma 12.4. Let f be a non-zero polynomial on $\mathbb { F } _ { p } ^ { n }$ of degree less than $p .$ . Then $f$ is not identically zero. 
+Lemma 12.4. Let f be a non-zero polynomiall on $\mathbb { F } _ { p } ^ { n }$ of degree less than $p .$ . Then $f$ is not identically zero. 
 
-Proof. We shall prove this by induction on n. If $n = 1$ , then a non-zero polynomial that vanishes everywhere has $p$ roots, so must be of degree $p .$ . Essentially the same argument works for general $n$ . If f vanishes everywhere, then for each $a$ it vanishes on the set $x _ { 1 } = a$ But the restriction of $f$ to that set is a polynomial of degree less than $p$ in the variables $x _ { 2 } , \ldots , x _ { n } .$ , so by induction it is the zero polynomial. 
+Proof. We shall prove this by induction on n. If $n = 1$ , then a non-zero polynomiall that vanishes everywhere has $p$ roots, so must be of degree $p .$ . Essentially the same argument works for general $n$ . If f vanishes everywhere, then for each $a$ it vanishes on the set $x _ { 1 } = a$ But the restriction of $f$ to that set is a polynomiall of degree less than $p$ in the variables $x _ { 2 } , \ldots , x _ { n } .$ , so by induction it is the zero polynomiall. 
 
-In other words, if we substitute a for $x _ { 1 }$ in the definition of $f _ { ; }$ , we obtain the zero polynomial. If we think of $f$ as a polynomial in $x _ { 1 }$ with coeficients in $\mathbb { F } _ { p } [ x _ { 2 } , \ldots , x _ { n } ]$ , then the polynomial division algorithm tells us that we can write $f ( x )$ in the form $P ( x _ { 1 } , \dots , x _ { n } ) ( x _ { 1 } -$ $a ) + Q ( x _ { 2 } , \ldots , x _ { n } )$ , so if this polynomial is the zero polynomial when we substitute $x _ { 1 } = a$ we obtain that $Q$ is the zero polynomial and $( x _ { 1 } - a )$ divides $f .$ . But if this is true for every $^ { a , }$ then again we find that $f$ has to have degree at least $p ,$ contradicting our assumption.  
+In other words, if we substitute a for $x _ { 1 }$ in the definition of $f$ , we obtain the zero polynomiall. If we think of $f$ as a polynomiall in $x _ { 1 }$ with coefficients in $\mathbb { F } _ { p } [ x _ { 2 } , \ldots , x _ { n } ]$ , then the polynomiall division algorithm tells us that we can write $f ( x )$ in the form $P ( x _ { 1 } , \dots , x _ { n } ) ( x _ { 1 } -$ $a ) + Q ( x _ { 2 } , \ldots , x _ { n } )$ , so if this polynomiall is the zero polynomiall when we substitute $x _ { 1 } = a$ we obtain that $Q$ is the zero polynomiall and $( x _ { 1 } - a )$ divides $f .$ . But if this is true for every $a$ then again we find that $f$ has to have degree at least $p ,$ contradicting our assumption. □ 
 
-Lemma 12.5. Let f be a non-zero polynomial of degree at most d on $\mathbb { F } _ { p } ^ { n }$ . Then f has at most $d p ^ { n - 1 }$ roots. 
+Lemma 12.5. Let f be a non-zero polynomiall of degree at most d on $\mathbb { F } _ { p } ^ { n }$ . Then f has at most $d p ^ { n - 1 }$ roots. 
 
-Proof. Without loss of generality the degree is exactly d. As we have already seen, if we restrict f to the line consisting of points $a + t z$ , then we obtain a polynomial of degree d in the single variable t with leading coeficient $f _ { d } ( z )$ , where $f _ { d }$ is the degree-d part of $f .$ By Lemma 12.4 we may choose z such that $f _ { d } ( z ) \neq 0$ . But that means that on every line L in direction z the restriction of $f$ to L is given by a polynomial in one variable of degree d. So $f$ has at most d roots in any line, and therefore at most $d p ^ { n - 1 }$ roots in total.  
+Proof. Without loss of generality the degree is exactly d. As we have already seen, if we restrict f to the line consisting of points $a + t z$ , then we obtain a polynomiall of degree d in the single variable t with leading coefficient $f _ { d } ( z )$ , where $f _ { d }$ is the degree-d part of $f .$ By Lemma 12.4 we may choose z such that $f _ { d } ( z ) \neq 0$ . But that means that on every line L in direction z the restriction of $f$ to L is given by a polynomiall in one variable of degree d. So $f$ has at most d roots in any line, and therefore at most $d p ^ { n - 1 }$ roots in total. □ 
 
-It follows from the Schwartz-Zippel lemma that a non-zero polynomial of degree less than p cannot vanish on all of $\mathbb { F } _ { p } ^ { n }$ . Combining this with Lemmas 12.2 and 12.3 we obtain Theorem 12.1 with $c ( n ) = 1 / n !$ 
+It follows from the Schwartz-Zippel lemma that a non-zero polynomiall of degree less than p cannot vanish on all of $\mathbb { F } _ { p } ^ { n }$ . Combining this with Lemmas 12.2 and 12.3 we obtain Theorem 12.1 with $c ( n ) = 1 / n !$ 
 
 We now turn to a result due to Noga Alon, known as the combinatorial Nullstellensatz. 
 
-Lemma 12.6. Let f be a non-zero polynomial in n variables over $\mathbb { F } _ { p }$ of degree $k _ { 1 } + \cdots + k _ { n }$ where the $k _ { i }$ are non-negative integers and the coeficient of $x _ { 1 } ^ { k _ { 1 } } \ldots x _ { n } ^ { k _ { n } }$ is non-zero. Let $S _ { 1 } , \ldots , S _ { n }$ be subsets of $\mathbb { F } _ { p }$ such that $| S _ { i } | ~ > ~ k _ { i }$ for each i. Then $f$ does not vanish on $S _ { 1 } \times \cdots \times S _ { n }$ 
+Lemma 12.6. Let f be a non-zero polynomiall in n variables over $\mathbb { F } _ { p }$ of degree $k _ { 1 } + \cdots + k _ { n }$ where the $k _ { i }$ are non-negative integers and the coefficient of $x _ { 1 } ^ { k _ { 1 } } \ldots x _ { n } ^ { k _ { n } }$ is non-zero. Let $S _ { 1 } , \ldots , S _ { n }$ be subsets of $\mathbb { F } _ { p }$ such that $| S _ { i } | ~ > ~ k _ { i }$ for each i. Then $f$ does not vanish on $S _ { 1 } \times \cdots \times S _ { n }$ 
 
 Proof. We prove this by induction on the degree of $f$ . The result is easy when the degree is zero. 
 
-If the degree is greater than zero, then without loss of generality $k _ { 1 } > 0$ . Let $a \in S _ { 1 }$ and use polynomial division to write $f ( x )$ in the form $( x _ { 1 } - a ) P ( x ) + Q ( x )$ , where $Q$ does not depend on $x _ { 1 }$ . Since the term in $x _ { 1 } ^ { k _ { 1 } } \ldots x _ { n } ^ { k _ { n } }$ has a non-zero coeficient in $f ,$ , and the degree of P is $k _ { 1 } + \dots + k _ { n } - 1$ , the term in $x _ { 1 } ^ { k _ { 1 } - 1 } x _ { 2 } ^ { k _ { 2 } } \ldots x _ { n } ^ { k _ { n } }$ has non-zero coeficient in $P .$ 
+If the degree is greater than zero, then without loss of generality $k _ { 1 } > 0$ . Let $a \in S _ { 1 }$ and use polynomiall division to write $f ( x )$ in the form $( x _ { 1 } - a ) P ( x ) + Q ( x )$ , where $Q$ does not depend on $x _ { 1 }$ . Since the term in $x _ { 1 } ^ { k _ { 1 } } \ldots x _ { n } ^ { k _ { n } }$ has a non-zero coefficient in $f ,$ , and the degree of P is $k _ { 1 } + \dots + k _ { n } - 1$ , the term in $x _ { 1 } ^ { k _ { 1 } - 1 } x _ { 2 } ^ { k _ { 2 } } \ldots x _ { n } ^ { k _ { n } }$ has non-zero coefficient in $P .$ 
 
-Suppose that the result is false. Then $f$ vanishes on $\{ a \} \times S _ { 2 } \times \cdots \times S _ { n }$ , from which it follows that $Q$ vanishes on this set too. Since $Q$ does not depend on $x _ { 1 } .$ , it vanishes on all of $S _ { 1 } \times \cdots \times S _ { n }$ . Therefore, $( x _ { 1 } - a ) P$ vanishes on $S _ { 1 } \times \cdots \times S _ { n }$ , which implies that $P$ vanishes on $( S _ { 1 } \setminus \{ a \} ) \times S _ { 2 } \times \cdot \cdot \cdot \times S _ { n }$ . This contradicts the inductive hypothesis.  
+Suppose that the result is false. Then $f$ vanishes on $\{ a \} \times S _ { 2 } \times \cdots \times S _ { n }$ , from which it follows that $Q$ vanishes on this set too. Since $Q$ does not depend on $x _ { 1 } .$ , it vanishes on all of $S _ { 1 } \times \cdots \times S _ { n }$ . Therefore, $( x _ { 1 } - a ) P$ vanishes on $S _ { 1 } \times \cdots \times S _ { n }$ , which implies that $P$ vanishes on $( S _ { 1 } \setminus \{ a \} ) \times S _ { 2 } \times \cdot \cdot \cdot \times S _ { n }$ . This contradicts the inductive hypothesis. □ 
 
 As our first application of the combinatorial Nullstellensatz, we give a short proof of the Cauchy-Davenport theorem, which is the following result (discovered independently by Cauchy in 1813 and Davenport in 1935 – apparently it was not until 1947 that Davenport found out that Cauchy had beaten him to it by over a century). Neither Cauchy nor Davenport used the method below. 
 
 Theorem 12.7. Let p be a prime and let A and B be subsets of $\mathbb { F } _ { p }$ . Then $| A + B | \geq$ min $\{ p , | A | + | B | - 1 \}$ 
 
-Proof. Once we have the clue that this can be proved using the combinatorial Nullstellensatz, we need to find a suitable sequence of sets $S _ { 1 } , \ldots , S _ { n }$ and a polynomial that vanishes on $S _ { 1 } \times \cdots \times S _ { n }$ and that has small degree unless $A + B$ is large. 
+Proof. Once we have the clue that this can be proved using the combinatorial Nullstellensatz, we need to find a suitable sequence of sets $S _ { 1 } , \ldots , S _ { n }$ and a polynomiall that vanishes on $S _ { 1 } \times \cdots \times S _ { n }$ and that has small degree unless $A + B$ is large. 
 
-This gives enough of a clue to complete the proof. The obvious sequence of sets to take, since the only sets we have around are A and B, is $( A , B )$ . We want the degree of our polynomial to depend on the size of $A + B$ , and we also want it to vanish on $A \times B$ . The most economical way of getting it to vanish at a point $( a , b )$ is to ensure that the polynomia has a factor $x + y - ( a + b )$ , which leads to the idea of considering the polynomial 
+This gives enough of a clue to complete the proof. The obvious sequence of sets to take, since the only sets we have around are A and B, is $( A , B )$ . We want the degree of our polynomiall to depend on the size of $A + B$ , and we also want it to vanish on $A \times B$ . The most economical way of getting it to vanish at a point $( a , b )$ is to ensure that the polynomial has a factor $x + y - ( a + b )$ , which leads to the idea of considering the polynomiall 
 
 $$
 f (x, y) = \prod_ {c \in A + B} (x + y - c).
@@ -1152,7 +1159,7 @@ $$
 
 This vanishes on $A \times B$ and has degree equal to $| A + B |$ , so it looks promising. 
 
-Suppose now that $| A + B | < p$ and $| A + B | \leq | A | + | B | - 2$ . We want to contradict the combinatorial Nullstellensatz, so we need a monomial $x ^ { r } y ^ { s }$ with non-zero coeficient with $r < | A | , s < | B |$ and $r + s = | A + B |$ . But if we pick any r and s that satisfy the last three conditions, which we clearly can if $| A + B | \leq | A | + | B | - 2$ , then the coeficient of $x ^ { r } y ^ { s }$ in the polynomial is $\textstyle { \binom { r + s } { r } }$ , and this is non-zero because p is prime and $r + s < p$  
+Suppose now that $| A + B | < p$ and $| A + B | \leq | A | + | B | - 2$ . We want to contradict the combinatorial Nullstellensatz, so we need a monomial $x ^ { r } y ^ { s }$ with non-zero coefficient with $r < | A | , s < | B |$ and $r + s = | A + B |$ . But if we pick any r and s that satisfy the last three conditions, which we clearly can if $| A + B | \leq | A | + | B | - 2$ , then the coefficient of $x ^ { r } y ^ { s }$ in the polynomiall is $\textstyle { \binom { r + s } { r } }$ , and this is non-zero because p is prime and $r + s < p$ □ 
 
 Note that this result is sharp if A and B are arithmetic progressions in $\mathbb { F } _ { p }$ with the same common diference. Note too that the result is false in $\mathbb { Z } _ { n }$ if n is composite, since then $\mathbb { Z } _ { n }$ has proper subgroups 
 
@@ -1162,12 +1169,12 @@ Theorem 12.8. Let p be a prime and let A and B be subsets of $\mathbb { Z } _ { 
 
 Proof. First we show that if $| A | + | B | \geq p + 2$ , then $A \dot { + } B = \mathbb { Z } _ { p } . \mathrm { ~ H ~ } p = 2$ the result is trivial. To see it for $p > 2$ , let $x \in \mathbb { Z } _ { p }$ . Then $A \cap ( x - B )$ contains at least two elements, so at least one of them, a does not satisfy the equation $2 a = x$ . But then $a \in A$ and $b = x - a \in B$ are distinct elements that add up to x. 
 
-We would now like to apply the combinatorial Nullstellensatz, so we need to show that if $A \dot { + } B$ is too small, then some polynomial of low degree vanishes everywhere on a product set. The natural product set to try to take is $A + B$ . What low-degree polynomial would vanish on $A + B ?$ Well, we know that $A \dot { + } B$ is small, so a first approximation would be to take the polynomial $\textstyle \prod _ { c \in A + B } ( x + y - c )$ . The trouble with that is that it does not necessarily vanish when $x = y \in A \cap B$ . But we can take care of that by simply multiplying by the polynomial $x - y$ 
+We would now like to apply the combinatorial Nullstellensatz, so we need to show that if $A \dot { + } B$ is too small, then some polynomiall of low degree vanishes everywhere on a product set. The natural product set to try to take is $A + B$ . What low-degree polynomiall would vanish on $A + B ?$ Well, we know that $A \dot { + } B$ is small, so a first approximation would be to take the polynomiall $\textstyle \prod _ { c \in A + B } ( x + y - c )$ . The trouble with that is that it does not necessarily vanish when $x = y \in A \cap B$ . But we can take care of that by simply multiplying by the polynomiall $x - y$ 
 
-So now we have a polynomial of degree $\vert A \dot { + } B \vert + 1$ that vanishes on $A \times B$ . For technical reasons it will be convenient to modify it slightly. Let us assume that the result is false and let C be a set that contains $A \dot { + } B$ and has cardinality exactly $| A | + | B | - 4$ . Let P be the polynomial $\textstyle ( x - y ) \prod _ { c \in C } ( x + y - c )$ . This polynomial vanishes on $A \dot { + } B$ and has degree $\left| A \right| + \left| B \right| - 3$ 
+So now we have a polynomiall of degree $\vert A \dot { + } B \vert + 1$ that vanishes on $A \times B$ . For technical reasons it will be convenient to modify it slightly. Let us assume that the result is false and let C be a set that contains $A \dot { + } B$ and has cardinality exactly $| A | + | B | - 4$ . Let P be the polynomiall $\textstyle ( x - y ) \prod _ { c \in C } ( x + y - c )$ . This polynomiall vanishes on $A \dot { + } B$ and has degree $\left| A \right| + \left| B \right| - 3$ 
 
-Let us look at the terms in $x ^ { | A | - 1 } y ^ { | B | - 2 }$ and $x ^ { | A | - 2 } y ^ { | B | - 1 }$ , since if either of these has a non-zero coeficient then we will have contradicted the combinatorial Nullstellensatz. Let us write $r = | A | , s = | B | , t = r + s - 3$ . Then the coeficient of $x ^ { r - 1 } y ^ { s - 2 } { \mathrm { ~ i s ~ } } \binom { t - 1 } { r - 2 } - \binom { t - 1 } { r - 1 }$ and the coeficient of $x ^ { r - 2 } y ^ { s - 1 }$ is $\textstyle { \binom { t - 1 } { r - 3 } } - { \binom { t - 1 } { r - 2 } }$ . It is not possible for three consecutive (or indeed any three) binomial coeficients to be equal, so the result is proved.  
+Let us look at the terms in $x ^ { | A | - 1 } y ^ { | B | - 2 }$ and $x ^ { | A | - 2 } y ^ { | B | - 1 }$ , since if either of these has a non-zero coefficient then we will have contradicted the combinatorial Nullstellensatz. Let us write $r = | A | , s = | B | , t = r + s - 3$ . Then the coefficient of $x ^ { r - 1 } y ^ { s - 2 } { is } \binom { t - 1 } { r - 2 } - \binom { t - 1 } { r - 1 }$ and the coefficient of $x ^ { r - 2 } y ^ { s - 1 }$ is $\textstyle { \binom { t - 1 } { r - 3 } } - { \binom { t - 1 } { r - 2 } }$ . It is not possible for three consecutive (or indeed any three) binomial coefficients to be equal, so the result is proved. □ 
 
 Note that if $A = B = \{ 0 , 1 , 2 , \ldots , r - 1 \}$ , then $A \div B = \{ 1 , 2 , \ldots , 2 r - 3 \}$ , so the result is sharp when the sets have equal size. It is not sharp for general sizes, since for example if B is a singleton, then $| A | + | B | \geq | A | - 1 = | A | + | B | - 2$ 
 
-The above two results can be proved by other means, but there are results that have been proved using the combinatorial Nullstellensatz for which no other proof is known – just as no proof of Dvir’s theorem is known that does not go via polynomials. 
+The above two results can be proved by other means, but there are results that have been proved using the combinatorial Nullstellensatz for which no other proof is known – just as no proof of Dvir’s theorem is known that does not go via polynomialls. 
