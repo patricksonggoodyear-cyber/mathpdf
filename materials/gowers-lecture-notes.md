@@ -501,7 +501,10 @@ We now come to what is perhaps the most important (but certainly not the only im
 
 Given a bipartite graph G as above, and subsets $A \subset X$ and $B \subset Y$ , define the edge weight $\eta ( A , B )$ to be the number of edges from A to B divided by $| X | | Y |$ . Although we shall not need it immediately, it is worth also mentioning the edge density $d ( A , B )$ , which is the number of edges from A to B divided by $| A | | B |$ 
 
-Theorem 5.3. Let X and Y be finite sets and let G be a bipartite graph with vertex sets X and Y . Let the density of G be δ and suppose that the 4-cycle density of G is at most $\delta ^ { 4 } ( 1 + c ^ { 4 } )$ . Let $A \subset X$ and $B \subset Y$ be subsets of density α and $\beta _ { i }$ , respectively. Then 
+Theorem 5.3. Let $X,Y$ be finite sets and let $G$ be a bipartite graph with vertex sets $X,Y$. Let its density be $\delta$ and suppose its 4-cycle density is at most $\delta^4(1+c^4)$. Let $A\subset X$ and $B\subset Y$ have densities $\alpha$ and $\beta$, respectively. Then
+\[
+|\eta(A,B)-\alpha\beta\delta|\leq2c\delta(\alpha\beta)^{1/2}.
+\]
 
 $$
 | \eta (A, B) - \alpha \beta \delta | \leq 2 c \delta (\alpha \beta) ^ {1 / 2}.
@@ -812,7 +815,7 @@ Corollary 7.3. Let $n$ be odd and let $A\subset\{1,\ldots,n\}$ have density $\de
 
 Proof. Let $B = C = A \cap [ n / 3 , 2 n / 3 )$ and consider all of A, B and C as subsets of $\mathbb { Z } _ { n }$ Note that any triple $( x , x + d , x + 2 d ) \in A \times B \times C$ must have d belonging to the interval $( - n / 3 , n / 3 )$ , from which it follows that $( x , x + d , x + 2 d )$ must be a 3-AP even when it is considered as a subset of $\{ 1 , 2 , \ldots , n \}$ . Therefore, if A contains no 3-AP, we obtain from Lemma 7.2 that $\theta ( \beta \gamma ) ^ { 1 / 2 } \geq \alpha \beta \gamma / 2$ , so $\theta \ge \alpha ( \beta \gamma ) ^ { 1 / 2 } / 2$ . By hypothesis, $\beta$ and $\gamma$ are at least $\delta / 5$ , and $\alpha = \delta .$ , so $\alpha ( \beta \gamma ) ^ { 1 / 2 } / 2 \geq \delta ^ { 2 } / 1 0$ □ 
 
-The next step is to prove that ${ \mathrm { i f ~ } } | { \hat { A } } ( r ) | \geq \theta$ for some $r \neq 0$ , then A has a slightly greater intersection than it should have with an arithmetic progression of length around $\sqrt { n }$ . The key lemma we need is the following. 
+The next step is to prove that if $|\widehat A(r)|\geq\theta$$ for some $r \neq 0$ , then A has a slightly greater intersection than it should have with an arithmetic progression of length around $\sqrt { n }$ . The key lemma we need is the following. 
 
 Lemma 7.4. Let $n$ be a positive integer, $r\in\mathbb Z_n$, and $0<\varepsilon\leq1$. There is a partition of $\{1,\ldots,n\}$ into arithmetic progressions $P_i$, each of length at least $\varepsilon\sqrt n/16$, such that
 \[
@@ -823,7 +826,7 @@ Proof. Let $m=\lfloor\sqrt n\rfloor$. Partition the unit circle into $m$ arcs of
 
 
 
-Corollary 7.5. Let n be a positive integer and let $A \subset \mathbb { Z } _ { n }$ be a subset of density α. Suppose that there exists $r \neq 0$ such that $| \hat { A } ( r ) | \ge \theta$ . Then there exists an arithmetic progression $P \subset \{ 1 , 2 , \dotsc , n \}$ of cardinality at least $\theta \sqrt { n } / 3 2$ such that if we consider P as a subset of $\mathbb { Z } _ { n }$ , then $| A \cap P | / | P | \ge \alpha + \theta / 4$ 
+Corollary 7.5. Let $n$ be a positive integer and let $A\subset\mathbb Z_n$ have density $\alpha$. Suppose that there exists $r \neq 0$ such that $| \hat { A } ( r ) | \ge \theta$ . Then there exists an arithmetic progression $P \subset \{ 1 , 2 , \dotsc , n \}$ of cardinality at least $\theta \sqrt { n } / 3 2$ such that if we consider P as a subset of $\mathbb { Z } _ { n }$ , then $| A \cap P | / | P | \ge \alpha + \theta / 4$ 
 
 Proof. For each x, let $f ( x ) = A ( x ) - \alpha$ . Then $\mathbb { E } _ { x } f ( x ) = 0$ and $\hat { f } ( r ) = \hat { A } ( r )$ for every $r \neq 0$ Therefore, by hypothesis there exists $r \in \mathbb { Z } _ { n }$ such that $| { \hat { f } } ( r ) | \geq \theta$ 
 
@@ -897,7 +900,7 @@ n^{3^{-100/\alpha}}\geq(600/\alpha^2)^6.
 \]
 Such an $n$ exists for every fixed $\alpha>0$. This proves Roth’s theorem.
 
-If we have to repeat the argument $4 0 / \alpha$ times, then the density will reach at least 2α. Then after a further $4 0 / 2 \alpha$ iterations, it will reach 4α, and so on. So the total number of iterations we can need is at most $( 4 0 / \alpha ) ( 1 + 1 / 2 + 1 / 4 + . . . ) = 8 0 / \alpha$ 
+ 
 
 From this it follows that A contains an arithmetic progression provided that after taking cube roots $8 0 / \alpha$ times we still have a number greater than $( 5 0 0 / \alpha ^ { 2 } ) ^ { 6 }$ . That is, we need $n ^ { 3 ^ { - 8 0 / \alpha } } \geq ( 5 0 0 / \alpha ^ { 2 } ) ^ { 6 }$ . Taking logs, this becomes $3 ^ { - 8 0 / \alpha } \log n \geq 6 ( \log 5 0 0 + 2 \log ( \alpha ^ { - 1 } )$ . And taking logs again we find that the inequality 
 
@@ -1198,7 +1201,7 @@ Note that this result is sharp if A and B are arithmetic progressions in $\mathb
 
 Now we shall use the combinatorial Nullstellensatz to prove a variant of the Cauchy-Davenport theorem. The result is due to da Silva and Hamidoune, who found a somewhat involved combinatorial proof. This short argument was discovered by Alon, Nathanson and Ruzsa. Let us write $A \dot { + } B$ for the set of sums $a + b$ such that $a \in A , b \in B$ and $a \neq b$ 
 
-Theorem 12.8. Let $p$ be prime and let $A,B\subset\mathbb Z_p$. Then $| A { \dot { + } } B | \geq$ min $\{ p , | A | + | B | - 3 \}$ 
+Theorem 12.8. Let $p$ be prime and let $A,B\subset\mathbb Z_p$. Then $|A\dot+B|\geq\min\{p,|A|+|B|-3\}$. 
 
 Proof. First, if $|A|+|B|\geq p+2$, then $A\dot+B=\mathbb Z_p$. For $p=2$ the result is immediate. If $p>2$, fix $x\in\mathbb Z_p$. Then $A\cap(x-B)$ contains at least two elements, so at least one of them, a does not satisfy the equation $2 a = x$ . But then $a \in A$ and $b = x - a \in B$ are distinct elements that add up to x. 
 
