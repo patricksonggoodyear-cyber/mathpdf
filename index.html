@@ -4,7 +4,7 @@ title: 数学材料目录
 ---
 
 <p class="intro">数学材料集中存放在这里。上传 Markdown 或 PDF 即可，不要求固定文件名、分类或目录结构。</p>
-<p class="note">每项材料都提供网页入口和 AI 原文入口。分类是可选信息；没有填写分类的材料也会正常显示。</p>
+<p class="note">每项材料都提供网页入口和 AI 原文入口。分类是可选信息；没有填写分类的材料也会正常显示。<a href="{{ '/llms.txt' | relative_url }}">查看 AI 纯文本总目录</a>。</p>
 
 {% assign markdown_pages = site.pages | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
 {% assign markdown_files = site.static_files | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
