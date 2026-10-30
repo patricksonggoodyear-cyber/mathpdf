@@ -749,7 +749,7 @@ $$
 
 These are the probabilities that a random additive quadruple and a random 3-AP live entirely in A. 
 
-Lemma 6.6. Let n be odd and let A be a subset of $\mathbb { Z } _ { n }$ of density α. Suppose that $\begin{array} { r } { \operatorname* { m a x } _ { r \neq 0 } | \hat { A } ( r ) | \leq c \alpha ^ { 2 } } \end{array}$ . Then $| P _ { 3 } ( A ) - \alpha ^ { 3 } | \le c \alpha ^ { 3 }$ 
+Lemma 6.6. Let $n$ be an odd prime and let $A\subset\mathbb Z_n$ have density $\alpha$. Suppose that $\max_{r\ne0}|\widehat A(r)|\leq c\alpha^2$. Then $|P_3(A)-\alpha^3|\leq c\alpha^3$.
 
 Proof. The 3-AP density is a quantity that has a nice expression on the Fourier side. To see this, first define a set $A _ { 2 }$ to be the set of all u such that $u / 2 \in A$ . (It is here that we need n to be odd.) Note that 
 
@@ -775,7 +775,7 @@ $$
 (\sum_ {r \neq 0} | \hat {A} (r) | ^ {2}) ^ {1 / 2} (\sum_ {r \neq 0} | \hat {A} (- 2 r) | ^ {2}) ^ {1 / 2},
 $$
 
-but the second of these factors is equal to the first, so we get $\textstyle \sum _ { r \neq 0 } | { \hat { A } } ( r ) | ^ { 2 }$ , which by Lemma 6.5 is $\alpha - \alpha ^ { 2 } \leq \alpha$ . The result follows. □ 
+but the second factor equals the first because multiplication by $-2$ permutes the nonzero residues modulo odd $n$ only when $n$ is prime; for general odd $n$ this need not hold. The argument therefore requires $n$ to be prime (or, more generally, that multiplication by $2$ permutes the relevant frequencies). Under this additional hypothesis the sum is $\sum_{r\ne0}|\widehat A(r)|^2$ , which by Lemma 6.5 is $\alpha - \alpha ^ { 2 } \leq \alpha$ . The result follows. □ 
 
 ## 7. Roth’s theorem
 
@@ -819,9 +819,9 @@ Lemma 7.4. Let $n$ be a positive integer, $r\in\mathbb Z_n$, and $0<\varepsilon\
 |\omega^{rx}-\omega^{ry}|<\varepsilon\quad(x,y\in P_i).
 \]
 
-Proof. Let $m = \lfloor { \sqrt { n } } \rfloor$ . Since the circumference of the unit circle is $2 \pi .$ , by the pigeonhole principle there exist distinct integers $u , v \in \{ 1 , \ldots , m \}$ such that $| \omega ^ { r u } - \omega ^ { r v } | \leq 2 \pi m ^ { - 1 }$ Setting $d = | u - v |$ , we then have that $| \omega ^ { r ( x + d ) } - \omega ^ { r x } | \leq 2 \pi m ^ { - 1 }$ for every x. It follows that if $P$ is any arithmetic progression of length t and common difference $d ,$ then $| \omega ^ { r x } - \omega ^ { r y } | \le$ $2 \pi t m ^ { - 1 }$ for every $x , y \in P$ 
+Proof. Let $m=\lfloor\sqrt n\rfloor$. Partition the unit circle into $m$ arcs of equal length. By the pigeonhole principle, two of the points $\omega^{ru}$, $1\leq u\leq m$, lie in the same arc, so for some $1\leq d\leq m-1$ we have $|\omega^{rd}-1|\leq2\pi/m$. Hence consecutive terms of any progression with common difference $d$ have phase distance at most $2\pi/m$. For a progression of length $q$, the diameter of its phases is at most $2\pi(q-1)/m$. Partition each residue class modulo $d$ into consecutive blocks whose lengths lie between $\varepsilon m/(4\pi)$ and $\varepsilon m/(2\pi)$; for sufficiently large $n$ this is possible, since each residue class has length at least $n/m$. These blocks are arithmetic progressions, their lengths are at least $\varepsilon\sqrt n/16$, and their phase diameters are less than $\varepsilon$. For the finitely many smaller $n$, use singleton blocks.
 
-Now let us partition $\{ 1 , 2 , \ldots , n \}$ into residue classes mod d. Then since $d \leq m \leq { \sqrt { n } }$ we can partition each residue class into arithmetic progressions of length between δm/4π and $\delta m / 2 \pi$ , and for each such progression $P$ we have that the diameter of $\omega _ { r } ( P )$ is at most δ. □ 
+Now partition $\{1,\ldots,n\}$ into residue classes modulo $d$. Since $d\leq m\leq\sqrt n$, each class has at least $n/m$ elements. Partition each class into consecutive blocks with lengths between $\varepsilon m/(4\pi)$ and $\varepsilon m/(2\pi)$; for sufficiently large $n$ this can be done. Each block is an arithmetic progression of common difference $d$, has length at least $\varepsilon\sqrt n/16$, and its phase diameter is less than $\varepsilon$. □
 
 Corollary 7.5. Let n be a positive integer and let $A \subset \mathbb { Z } _ { n }$ be a subset of density α. Suppose that there exists $r \neq 0$ such that $| \hat { A } ( r ) | \ge \theta$ . Then there exists an arithmetic progression $P \subset \{ 1 , 2 , \dotsc , n \}$ of cardinality at least $\theta \sqrt { n } / 3 2$ such that if we consider P as a subset of $\mathbb { Z } _ { n }$ , then $| A \cap P | / | P | \ge \alpha + \theta / 4$ 
 
@@ -877,14 +877,17 @@ We have essentially finished the proof, but it remains to put all the ingredient
 
 Lemma 7.6. Let $A\subset\{1,\ldots,n\}$ have density $\alpha$ and contain no 3-term arithmetic progression. For all sufficiently large $n$ (depending on $\alpha$), there is a subprogression $P$ such that
 \[
+|P|\geq\frac{\alpha^2\sqrt n}{600},\qquad \frac{|A\cap P|}{|P|}\geq\alpha+\frac{\alpha^2}{50}.
+\]
+\[
 |P|\geq\frac{\alpha^2\sqrt n}{500},\qquad \frac{|A\cap P|}{|P|}\geq\alpha+\frac{\alpha^2}{40}.
 \]
 
-Proof. If $n$ is odd, put $t=n$. If $n$ is even, take the interval $I=\{1,\ldots,n-1\}$ and the singleton $\{n\}$. If $n\in A$, the singleton has density $1$ and is itself a 3-term progression, contrary to the hypothesis. Thus $n\notin A$, and $I$ has density $\alpha n/(n-1)\geq\alpha$. In either case we obtain an odd-length interval $I$ of length $t\geq n-1$ on which the relative density of $A$ is at least $\alpha$. Translate $I$ to identify it with $\{1,\ldots,t\}$.
+Proof. If $n$ is odd, put $t=n$. If $n$ is even, consider $I_1=\{1,\ldots,n-1\}$ and $I_2=\{2,\ldots,n\}$, both of odd length $n-1$. At least one of these intervals has relative density at least $\alpha-1/(n-1)$, since their counts sum to at least $2|A|-2$. For sufficiently large $n$ this density, say $\alpha'$, satisfies $\alpha'\geq\alpha-\alpha^2/1000$. Work in that interval and translate it to $\{1,\ldots,t\}$, where $t=n-1$. In the odd case put $\alpha'=\alpha$ and $t=n$. In either case $\alpha'\geq\alpha-\alpha^2/1000$ and $t\geq n-1$.
 
-By translating if necessary, we may assume that A is a subset of $\{ 1 , 2 , \ldots , t \}$ . Corollary 7.3 now tells us that either A contains an arithmetic progression of length 3, or $A \cap [ t / 3 , 2 t / 3 )$ has cardinality less than $\alpha t / 5$ , or there exists $r \neq 0$ such that $| \hat { A } ( r ) | \geq \alpha ^ { 2 } / 1 0$ when A is considered as a subset of $\mathbb { Z } _ { t }$ 
+Apply Corollary 7.3 with the actual density $\alpha'$. It says that either $A$ contains a 3-term progression, or $|A\cap[t/3,2t/3)|<\alpha't/5$, or some nonzero Fourier coefficient has magnitude at least $\alpha'^2/10$.
 
-In the first case we are done. In the second, one of the sets $A \cap [ 1 , t / 3 )$ and $A \cap [ 2 t / 3 , t ]$ has cardinality at least $2 \alpha t / 5$ and hence density at least $1 1 \alpha t / 1 0$ . (The natural bound is $6 \alpha t / 5$ but this doesn’t quite work because if t is a multiple of 3, then the set $A \cap [ 2 t / 3 , t ]$ has cardinality $t / 3 + 1$ rather than $t / 3$ . But this is not at all important.) So in this case we are done by a long way. 
+In the first case we are done. In the second case, the two outer intervals together contain more than $4\alpha't/5$ elements of $A$, so one contains at least $2\alpha't/5$. Each has at most $t/3+1$ integer points. For all sufficiently large $t$, its relative density is at least $\alpha'+\alpha'^2/50$, and it is a subprogression of length at least $\alpha^2\sqrt n/600$. In the third case, apply Corollary 7.5 with $\theta=\alpha'^2/10$. It gives a progression of length at least $\alpha'^2\sqrt t/320\geq\alpha^2\sqrt n/600$ and density at least $\alpha'+\alpha'^2/40\geq\alpha+\alpha^2/50$. The same lower density bound holds in the second case. Thus the lemma follows.
 
 In the third case, Corollary 7.3 gives us the hypothesis we need for Corollary 7.5 with $\theta = \alpha ^ { 2 } / 1 0$ . This then yields a progression P that satisfies the conclusion of the lemma, since $\theta \sqrt { t } / 3 2 \geq \alpha ^ { 2 } \sqrt { n } / 5 0 0$ □ 
 
@@ -988,7 +991,7 @@ Proof. Put $\rho=2\pi n^{-1/k}$. If $\rho\leq2$, Lemma 10.1 and the estimate $\t
 
  
 
-For the next lemma we need a couple more definitions. A d-dimensional lattice is a subgroup of $\mathbb { R } ^ { d }$ that is spanned by n linearly independent points. (Equivalently, it is a discrete subgroup of $\mathbb { R } ^ { d }$ that is not contained in a proper subspace.) A lattice convex body is the intersection of a d-dimensional lattice with a convex set. It is symmetric if it is invariant under the transformation $x \mapsto - x$ 
+For the next lemma we need a couple more definitions. A $d$-dimensional lattice is a discrete subgroup of $\mathbb R^d$ generated by $d$ linearly independent vectors. A lattice convex body is the intersection of a lattice with a convex set. It is symmetric if it is invariant under $x\mapsto-x$.
 
 Lemma 10.3. Let $n$ be prime, let $r_1,\ldots,r_k$ be nonzero elements of $\mathbb Z_n$, and let $0<\delta<\sqrt2$. Then the Bohr set $B(r_1,\ldots,r_k;\delta)$ is Freiman isomorphic to a $k$-dimensional symmetric lattice convex body.
 
