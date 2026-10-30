@@ -902,7 +902,7 @@ Such an $n$ exists for every fixed $\alpha>0$. This proves Roth’s theorem.
 
  
 
-From this it follows that A contains an arithmetic progression provided that after taking cube roots $8 0 / \alpha$ times we still have a number greater than $( 5 0 0 / \alpha ^ { 2 } ) ^ { 6 }$ . That is, we need $n ^ { 3 ^ { - 8 0 / \alpha } } \geq ( 5 0 0 / \alpha ^ { 2 } ) ^ { 6 }$ . Taking logs, this becomes $3 ^ { - 8 0 / \alpha } \log n \geq 6 ( \log 5 0 0 + 2 \log ( \alpha ^ { - 1 } )$ . And taking logs again we find that the inequality 
+
 
 $$
 \log \log n \geq (8 0 / \alpha) \log 3 + \log 6 + \log (\log 5 0 0 + 2 \log (\alpha^ {- 1}))
@@ -1030,9 +1030,9 @@ Proof. Cover $[-2\theta n,2\theta n]$ by four intervals $I_1,\ldots,I_4$, each o
 
 Our next aim is to prove a very useful fact about Bohr sets, which roughly speaking says that for many θ the size of $B [ K , \theta ]$ has good continuity properties. Before we give the statement, we prove Vitali’s covering lemma. 
 
-Lemma 10.5. Let $[ a , b ]$ be a real interval and let U be an open covering of $[ a , b ]$ . Then there are disjoint sets $U _ { 1 } , \dots , U _ { k }$ in U that cover at least half of $[ a , b ]$ 
+Lemma 10.5. Let $[a,b]$ be a real interval and let $\mathcal U$ be a cover of $[a,b]$ by open intervals. Then there are pairwise disjoint members of $\mathcal U$ whose union covers at least half of $[a,b]$.
 
-Proof. Let V be a minimal subcover. Since $[ a , b ]$ is compact, V is finite. Also, the minimality of V implies that for each $U \in \mathcal { V }$ there exists $x \in [ a , b ]$ such that $x \in U$ and x belongs to no other set in V. Let $\mathcal { V } = \{ U _ { 1 } , \ldots , U _ { k } \}$ and for each i let $x _ { i } \in U _ { i } \setminus \bigcup _ { j \neq i } U _ { j }$ . Without loss of generality $x _ { 1 } < x _ { 2 } < \cdots < x _ { k }$ 
+Proof. Let $\mathcal V$ be a minimal subcover. Since $[a,b]$ is compact, $\mathcal V$ is finite. By minimality, for each $U\in\mathcal V$ there is a point $x_U\in U$ that belongs to no other member of $\mathcal V$. Write $\mathcal V=\{U_1,\ldots,U_k\}$ and order these witness points so that $x_1<\cdots<x_k$. If $i<j$, then $x_j\notin U_i$ and $x_i\notin U_j$. Since $U_i,U_j$ are intervals, every point of $U_i$ lies to the left of $x_j$, and every point of $U_j$ lies to the right of $x_i$. It follows that the subfamilies $U_1,U_3,U_5,\ldots$ and $U_2,U_4,U_6,\ldots$ each consist of pairwise disjoint intervals. One of these two subfamilies covers at least half of $[a,b]$, as required. □
 
 For each $i<j$, we have $x_i<x_j$, $x_i\in U_i$, and $x_j\notin U_i$, while $x_j\in U_j$. It follows that all points in $U _ { i }$ are less than $x _ { j }$ and all points in $U _ { j }$ are greater than $x _ { i }$ . From this it follows that the sets $U _ { 1 } , U _ { 3 } , U _ { 5 } , . . .$ . are disjoint, as are the sets $U _ { 2 } , U _ { 4 } , U _ { 6 } , \ldots .$ . But one or other of these collections of sets must cover at least half of $[ a , b ]$ □ 
 
@@ -1167,7 +1167,7 @@ In other words, if we substitute a for $x _ { 1 }$ in the definition of $f$ , we
 
 Lemma 12.5. Let f be a non-zero polynomial of degree at most d on $\mathbb { F } _ { p } ^ { n }$ . Then f has at most $d p ^ { n - 1 }$ roots. 
 
-Proof. If $d\geq p$, then $dp^{n-1}\geq p^n$, so the claimed bound is immediate. We may therefore assume $d<p$ and, without loss of generality, that the degree is exactly $d$.
+Proof. If $d\geq p$, then $dp^{n-1}\geq p^n$, so the claimed bound is immediate. We may therefore assume $d<p$ and that the degree of $f$ is exactly $d$. Write $f=f_d+f_{d-1}+\cdots+f_0$, where each $f_j$ is homogeneous of degree $j$ and $f_d$ is nonzero. By Lemma 12.4, $f_d$ is nonzero at some $z\in\mathbb F_p^n$. In particular, $z\ne0$. The affine lines parallel to $z$ partition $\mathbb F_p^n$ into $p^{n-1}$ disjoint lines. On each such line, parameterized as $a+tz$, the restriction $f(a+tz)$ is a polynomial in $t$ of degree exactly $d$, because its leading coefficient is $f_d(z)\ne0$. It therefore has at most $d$ roots. Summing over the $p^{n-1}$ parallel lines shows that $f$ has at most $dp^{n-1}$ zeros in total. □
 
 It follows from the Schwartz-Zippel lemma that a non-zero polynomial of degree less than p cannot vanish on all of $\mathbb { F } _ { p } ^ { n }$ . Combining this with Lemmas 12.2 and 12.3 we obtain Theorem 12.1 with $c ( n ) = 1 / n !$ 
 
