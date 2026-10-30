@@ -1,6 +1,6 @@
 # mathpdf
 
-一个面向 AI 数学讨论的轻量材料中转站。材料集中放在 `problems/`，GitHub Pages 自动生成目录；每份材料都提供可直接访问的原文链接。
+一个面向 AI 数学讨论的轻量材料中转站。材料集中放在 `problems/`，GitHub Pages 自动生成网页目录和 AI 纯文本总目录；每份材料都提供可直接访问的原文链接。
 
 ## 上传规则
 
@@ -19,7 +19,7 @@
 1. 打开仓库的 `problems/` 目录。
 2. 点击 **Add file → Upload files**，可以一次选择并上传多份文件；也可以选择 **Create new file** 在线新建 Markdown。
 3. 文件名按自己的习惯填写，不需要修改成指定格式。
-4. 将文件提交到仓库。首页目录会在 GitHub Pages 部署完成后自动更新。
+4. 将文件提交到仓库。网页目录和 AI 总目录会在 GitHub Pages 部署完成后自动更新。
 
 Markdown 文件可以使用下面这个最简模板。标题和分类都不是必填项；填写标题有助于首页显示更易读的名称。
 
@@ -52,12 +52,13 @@ $$
 ## 给 AI 使用
 
 - 网站首页：<https://patricksonggoodyear-cyber.github.io/mathpdf/>
-- 每项材料都有「AI 原文」链接，指向 GitHub Raw 文件，而不是需要浏览器渲染的页面。
-- 与 AI 讨论时，优先提供对应材料的「AI 原文」链接；若 AI 无法读取链接，再直接上传文件或粘贴 Markdown 内容。
+- AI 总目录：<https://patricksonggoodyear-cyber.github.io/mathpdf/llms.txt>。这是自动生成的纯文本索引，列出所有 Markdown/PDF 材料和对应原文链接。
+- 首页每项材料都有「AI 原文」链接，指向 GitHub Raw 文件，而不是需要浏览器渲染的网页。
+- 与 AI 讨论时，可以先提供 AI 总目录，再提供相关材料的原文链接；若 AI 无法读取链接，再直接上传文件或粘贴 Markdown 内容。
 - 尽量保留原题、符号定义、前提条件、推导过程和图表说明。不要为了缩短材料而删掉对结论有影响的上下文。
 
 ## 删除材料
 
-在 GitHub 中打开对应文件，选择 **Delete this file** 并提交即可。首页会在下次部署后自动更新，不需要手动修改目录。
+在 GitHub 中打开对应文件，选择 **Delete this file** 并提交即可。网页目录和 AI 总目录会在下次部署后自动更新，不需要手动修改目录。
 
 请只上传适合公开访问的内容。仓库是公开的，文件和原文链接都可以被他人访问。
