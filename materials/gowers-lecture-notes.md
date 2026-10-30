@@ -676,7 +676,7 @@ Lemma 6.2. Let f and g be functions from $\mathbb { Z } _ { n }$ to $\mathbb { C
 Proof. This follows immediately from the fact that the functions $\boldsymbol \omega ^ { r x }$ form an orthonormal basis and the Fourier coefficients $\hat { f } ( \boldsymbol { r } )$ are the coefficients of $f$ with respect to this basis. However, it is instructive to see a calculational proof as well as this more theoretical argument. We have 
 
 $$
-\begin{array}{r c l} \langle \hat {f}, \hat {g} \rangle & = & \sum_ {r} \hat {f} (r) \overline {{\hat {g} (r)}} \\ & = & \sum_ {r} \mathbb {E} _ {x, y} f (x) \overline {{g (y)}} \omega^ {- r (x - y)} \\ & = & \mathbb {E} _ {x, y} f (x) \overline {{f (y)}} \sum_ {r} \omega^ {- r (x - y)}. \end{array}
+\begin{array}{r c l} \langle \hat {f}, \hat {g} \rangle & = & \sum_ {r} \hat {f} (r) \overline {{\hat {g} (r)}} \\ & = & \sum_ {r} \mathbb {E} _ {x, y} f (x) \overline {{g (y)}} \omega^ {- r (x - y)} \\ & = & \mathbb {E} _ {x, y} f (x) \overline {{g (y)}} \sum_ {r} \omega^ {- r (x - y)}. \end{array}
 $$
 
 If $x=y$, then the sum over $r$ is $n$ while if $x \neq y$ it is zero. Also, for each fixed $x$, the probability that $y=x$ is $1/n$. Therefore the right-hand side is $\mathbb E_x f(x)\overline{g(x)}=\langle f,g\rangle$ . □ 
@@ -960,7 +960,7 @@ $$
 \sum \left\{d \left(X _ {i}\right) d \left(Y _ {j}\right): G \left(X _ {i}, Y _ {j}\right) \text {is not} \epsilon - \text {regular} \right\} \leq \epsilon .
 $$
 
-A helpful way of thinking about this is as follows. If $A \subset X$ and $B \subset Y$ , then say that $( A , B )$ is an \epsilon-regular pair if the graph $G ( A , B )$ is \epsilon-regular. Then the partitions above are \epsilon-regular if the probability that a random edge belongs to a pair of cells that form an \epsilon-regular pair is at least $1 - \epsilon$ 
+A helpful way of thinking about this is as follows. If $A \subset X$ and $B \subset Y$ , then say that $( A , B )$ is an \epsilon-regular pair if the graph $G ( A , B )$ is \epsilon-regular. Then the partitions above are $\epsilon$-regular if a uniformly random pair $(x,y)\in X\times Y$ lies in a pair of cells that form an $\epsilon$-regular pair with probability at least $1-\epsilon$. 
 
 We are now ready to state Szemerédi’s regularity lemma for bipartite graphs. 
 
@@ -982,11 +982,11 @@ If x and y both have that property, then for each i we have that $\omega ^ { r _
 
 Note that θ is given by the formula $\delta = 2 \sin ( \pi \theta )$ . In particular, $\theta > \delta / 2 \pi$ . That will be useful in the next lemma. Note also that $B ( r _ { 1 } , \ldots , r _ { k } ; \delta )$ is equal to the set of all x such that $r _ { i } x \in [ - \theta n , \theta n ]$ for each i. 
 
-Corollary 10.2. Let $n$ be prime, let $r_1,\ldots,r_k\in\mathbb Z_n$, and let $\delta>0$. Then $B(r_1,\ldots,r_k;\delta)$ contains an arithmetic progression modulo $n$ of length at least $\delta n^{1/k}/(2\pi)$.
+Corollary 10.2. Let $n$ be prime, let $r_1,\ldots,r_k\in\mathbb Z_n$, and let $0<\delta\leq2$. Then $B(r_1,\ldots,r_k;\delta)$ contains an arithmetic progression modulo $n$ of length at least $\delta n^{1/k}/(2\pi)$.
 
 Proof. Put $\rho=2\pi n^{-1/k}$. If $\rho\leq2$, Lemma 10.1 and the estimate $\theta>\rho/(2\pi)$ show that $B(r_1,\ldots,r_k;\rho)$ has density greater than $1/n$, so it contains a nonzero element $x$. With $m=\lfloor\delta/\rho\rfloor$, the inequality $|1-z^j|\leq j|1-z|$ for $|z|=1$ shows that $\{0,x,2x,\ldots,mx\}\subset B(r_1,\ldots,r_k;\delta)$. Since $n$ is prime and $x\ne0$, these residues are distinct and the progression has at least $\delta n^{1/k}/(2\pi)$ terms. If $\rho>2$, the stated lower bound is less than $1$, and the singleton progression $\{0\}$ suffices.
 
-If x belongs to the Bohr set $B ( r _ { 1 } , \ldots , r _ { k } ; \rho )$ and $m \rho \leq \delta$ , then the arithmetic progression $\{ 0 , x , 2 x , \ldots , m x \}$ is a subset of $B ( r _ { 1 } , \dots , r _ { k } ; \delta )$ . This proves the result. □ 
+ 
 
 For the next lemma we need a couple more definitions. A d-dimensional lattice is a subgroup of $\mathbb { R } ^ { d }$ that is spanned by n linearly independent points. (Equivalently, it is a discrete subgroup of $\mathbb { R } ^ { d }$ that is not contained in a proper subspace.) A lattice convex body is the intersection of a d-dimensional lattice with a convex set. It is symmetric if it is invariant under the transformation $x \mapsto - x$ 
 
@@ -1026,7 +1026,7 @@ Lemma 10.5. Let $[ a , b ]$ be a real interval and let U be an open covering of 
 
 Proof. Let V be a minimal subcover. Since $[ a , b ]$ is compact, V is finite. Also, the minimality of V implies that for each $U \in \mathcal { V }$ there exists $x \in [ a , b ]$ such that $x \in U$ and x belongs to no other set in V. Let $\mathcal { V } = \{ U _ { 1 } , \ldots , U _ { k } \}$ and for each i let $x _ { i } \in U _ { i } \setminus \bigcup _ { j \neq i } U _ { j }$ . Without loss of generality $x _ { 1 } < x _ { 2 } < \cdots < x _ { k }$ 
 
-For each $1 \leq i < j \leq k$ we have that $x _ { i } < x _ { j } , x _ { i } \in U _ { i } , x _ { j } \notin U _ { i } , x _ { j } \in U _ { j } , x _ { j } \notin U _ { i }$ . It follows that all points in $U _ { i }$ are less than $x _ { j }$ and all points in $U _ { j }$ are greater than $x _ { i }$ . From this it follows that the sets $U _ { 1 } , U _ { 3 } , U _ { 5 } , . . .$ . are disjoint, as are the sets $U _ { 2 } , U _ { 4 } , U _ { 6 } , \ldots .$ . But one or other of these collections of sets must cover at least half of $[ a , b ]$ □ 
+For each $i<j$, we have $x_i<x_j$, $x_i\in U_i$, and $x_j\notin U_i$, while $x_j\in U_j$. It follows that all points in $U _ { i }$ are less than $x _ { j }$ and all points in $U _ { j }$ are greater than $x _ { i }$ . From this it follows that the sets $U _ { 1 } , U _ { 3 } , U _ { 5 } , . . .$ . are disjoint, as are the sets $U _ { 2 } , U _ { 4 } , U _ { 6 } , \ldots .$ . But one or other of these collections of sets must cover at least half of $[ a , b ]$ □ 
 
 Let f be a function from an interval [a, b] to R, let $x \in [ a , b ]$ and let $C \geq 0$ be a constant. We shall say that f is C-Lipschitz at x if $| f ( y ) - f ( x ) | \leq C | y - x |$ for every $y \in [ a , b ]$ 
 
@@ -1195,11 +1195,11 @@ Now we shall use the combinatorial Nullstellensatz to prove a variant of the Cau
 
 Theorem 12.8. Let $p$ be prime and let $A,B\subset\mathbb Z_p$. Then $| A { \dot { + } } B | \geq$ min $\{ p , | A | + | B | - 3 \}$ 
 
-Proof. First we show that if $| A | + | B | \geq p + 2$ , then $A \dot { + } B = \mathbb { Z } _ { p } . \mathrm { ~ H ~ } p = 2$ the result is trivial. If $p>2$, fix $x\in\mathbb Z_p$. Then $A\cap(x-B)$ contains at least two elements, so at least one of them, a does not satisfy the equation $2 a = x$ . But then $a \in A$ and $b = x - a \in B$ are distinct elements that add up to x. 
+Proof. First, if $|A|+|B|\geq p+2$, then $A\dot+B=\mathbb Z_p$. For $p=2$ the result is immediate. If $p>2$, fix $x\in\mathbb Z_p$. Then $A\cap(x-B)$ contains at least two elements, so at least one of them, a does not satisfy the equation $2 a = x$ . But then $a \in A$ and $b = x - a \in B$ are distinct elements that add up to x. 
 
 We would now like to apply the combinatorial Nullstellensatz, so we need to show that if $A \dot { + } B$ is too small, then some polynomial of low degree vanishes everywhere on a product set. The natural product set to try to take is $A + B$ . What low-degree polynomial would vanish on $A + B ?$ Well, we know that $A \dot { + } B$ is small, so a first approximation would be to take the polynomial $\textstyle \prod _ { c \in A + B } ( x + y - c )$ . The trouble with that is that it does not necessarily vanish when $x = y \in A \cap B$ . But we can take care of that by simply multiplying by the polynomial $x - y$ 
 
-So now we have a polynomial of degree $\vert A \dot { + } B \vert + 1$ that vanishes on $A \times B$ . For technical reasons it is convenient to modify it slightly. Suppose the result is false, and choose a set $C$ containing $A\dot+B$ with $|C|=|A|+|B|-4$. Let P be the polynomial $\textstyle ( x - y ) \prod _ { c \in C } ( x + y - c )$ . This polynomial vanishes on $A \dot { + } B$ and has degree $\left| A \right| + \left| B \right| - 3$ 
+So now we have a polynomial of degree $\vert A \dot { + } B \vert + 1$ that vanishes on $A \times B$ . For technical reasons it is convenient to modify it slightly. Suppose the result is false and $|A|+|B|\geq4$. Choose a set $C$ containing $A\dot+B$ with $|C|=|A|+|B|-4$; this is possible because the assumed failure gives $|A\dot+B|<|A|+|B|-3$. The cases $|A|+|B|<4$ are immediate. Let P be the polynomial $\textstyle ( x - y ) \prod _ { c \in C } ( x + y - c )$ . This polynomial vanishes on $A \dot { + } B$ and has degree $\left| A \right| + \left| B \right| - 3$ 
 
 Let us look at the terms in $x ^ { | A | - 1 } y ^ { | B | - 2 }$ and $x ^ { | A | - 2 } y ^ { | B | - 1 }$ , since if either of these has a non-zero coefficient then we will have contradicted the combinatorial Nullstellensatz. Let us write $r = | A | , s = | B | , t = r + s - 3$ . Then the coefficient of $x ^ { r - 1 } y ^ { s - 2 } { is } \binom { t - 1 } { r - 2 } - \binom { t - 1 } { r - 1 }$ and the coefficient of $x ^ { r - 2 } y ^ { s - 1 }$ is $\textstyle { \binom { t - 1 } { r - 3 } } - { \binom { t - 1 } { r - 2 } }$ . It is not possible for three consecutive (or indeed any three) binomial coefficients to be equal, so the result is proved. □ 
 
