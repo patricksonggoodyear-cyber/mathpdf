@@ -905,10 +905,10 @@ Such an $n$ exists for every fixed $\alpha>0$. This proves Roth’s theorem.
 
 
 $$
-\log \log n \geq (8 0 / \alpha) \log 3 + \log 6 + \log (\log 5 0 0 + 2 \log (\alpha^ {- 1}))
+
 $$
 
-suffices. This is at most $C / \alpha$ for some absolute constant C, so we have ended up showing that a density of $C /$ log log n suffices to guarantee a progression of length 3. This proves Roth’s theorem. □ 
+
 
 ## 8. Szemerédi’s regularity lemma<sup>´</sup>
 
