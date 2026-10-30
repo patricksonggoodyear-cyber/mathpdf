@@ -936,7 +936,7 @@ The definition can be adapted to graphs (as opposed to bipartite graphs) in the 
 
 I feel a moral obligation to present the standard definition as well and prove that it is approximately equivalent to the one I have given. Returning to the bipartite case, it is usual to define the density $d ( A , B )$ to be $\mathbb { E } _ { x \in A , y \in B } G ( x , y )$ , and to say that G is \epsilon-regular if $| d ( A , B ) - \alpha | < \epsilon$ whenever $d ( A )$ and $d ( B )$ are both at least \epsilon. 
 
-## Lemma 8.2. The two definitions of \epsilon-regularity are polynomialy equivalent.
+Lemma 8.2. The two definitions of $\epsilon$-regularity are polynomially equivalent.
 
 Proof. Note first that 
 
