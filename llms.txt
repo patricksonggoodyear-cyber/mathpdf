@@ -1,0 +1,28 @@
+---
+layout: none
+---
+# mathpdf
+
+> 面向 AI 数学讨论的公开材料库。材料集中存放于 problems/，每份材料保留可直接读取的原文链接。
+
+## 使用说明
+
+- 优先读取 Markdown 原文；其中的文字、LaTeX 公式和推导结构通常比 PDF 更容易解析。
+- PDF 原文也在下方列出。若当前模型无法直接读取 PDF，请提示用户上传文件或提供 OCR/文本版本。
+- 分类只是可选元数据；不要从文件名猜测题目所属学科。
+- 分析数学材料时，保留题目条件、定义、符号约定和证明上下文。不要把猜测当成原文结论。
+- 以下链接指向 GitHub Raw 原文。
+
+## 材料列表
+
+{% assign markdown_pages = site.pages | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
+{% assign markdown_files = site.static_files | where_exp: "item", "item.path contains 'problems/' and item.path contains '.md'" %}
+{% assign pdf_files = site.static_files | where_exp: "item", "item.path contains 'problems/' and item.path contains '.pdf'" %}
+{% assign materials = markdown_pages | concat: markdown_files | concat: pdf_files | sort: "path" %}
+{% for material in materials %}
+{% assign fallback_title = material.name | remove: ".md" | remove: ".pdf" %}
+{% assign display_title = material.title | default: fallback_title %}
+{% assign display_category = material.category | default: "未分类" %}
+{% assign raw_url = "https://raw.githubusercontent.com/" | append: site.github_repo | append: "/" | append: site.github_branch | append: "/" | append: material.path %}
+- [{{ display_title | escape }}]({{ raw_url }}) — {{ display_category | escape }} — `{{ material.path }}`
+{% endfor %}
