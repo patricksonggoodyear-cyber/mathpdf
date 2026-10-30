@@ -821,7 +821,7 @@ Lemma 7.4. Let $n$ be a positive integer, $r\in\mathbb Z_n$, and $0<\varepsilon\
 
 Proof. Let $m=\lfloor\sqrt n\rfloor$. Partition the unit circle into $m$ arcs of equal length. By the pigeonhole principle, two of the points $\omega^{ru}$, $1\leq u\leq m$, lie in the same arc, so for some $1\leq d\leq m-1$ we have $|\omega^{rd}-1|\leq2\pi/m$. Hence consecutive terms of any progression with common difference $d$ have phase distance at most $2\pi/m$. For a progression of length $q$, the diameter of its phases is at most $2\pi(q-1)/m$. Partition each residue class modulo $d$ into consecutive blocks whose lengths lie between $\varepsilon m/(4\pi)$ and $\varepsilon m/(2\pi)$; for sufficiently large $n$ this is possible, since each residue class has length at least $n/m$. These blocks are arithmetic progressions, their lengths are at least $\varepsilon\sqrt n/16$, and their phase diameters are less than $\varepsilon$. For the finitely many smaller $n$, use singleton blocks.
 
-Now partition $\{1,\ldots,n\}$ into residue classes modulo $d$. Since $d\leq m\leq\sqrt n$, each class has at least $n/m$ elements. Partition each class into consecutive blocks with lengths between $\varepsilon m/(4\pi)$ and $\varepsilon m/(2\pi)$; for sufficiently large $n$ this can be done. Each block is an arithmetic progression of common difference $d$, has length at least $\varepsilon\sqrt n/16$, and its phase diameter is less than $\varepsilon$. □
+
 
 Corollary 7.5. Let n be a positive integer and let $A \subset \mathbb { Z } _ { n }$ be a subset of density α. Suppose that there exists $r \neq 0$ such that $| \hat { A } ( r ) | \ge \theta$ . Then there exists an arithmetic progression $P \subset \{ 1 , 2 , \dotsc , n \}$ of cardinality at least $\theta \sqrt { n } / 3 2$ such that if we consider P as a subset of $\mathbb { Z } _ { n }$ , then $| A \cap P | / | P | \ge \alpha + \theta / 4$ 
 
@@ -879,9 +879,7 @@ Lemma 7.6. Let $A\subset\{1,\ldots,n\}$ have density $\alpha$ and contain no 3-t
 \[
 |P|\geq\frac{\alpha^2\sqrt n}{600},\qquad \frac{|A\cap P|}{|P|}\geq\alpha+\frac{\alpha^2}{50}.
 \]
-\[
-|P|\geq\frac{\alpha^2\sqrt n}{500},\qquad \frac{|A\cap P|}{|P|}\geq\alpha+\frac{\alpha^2}{40}.
-\]
+
 
 Proof. If $n$ is odd, put $t=n$. If $n$ is even, consider $I_1=\{1,\ldots,n-1\}$ and $I_2=\{2,\ldots,n\}$, both of odd length $n-1$. At least one of these intervals has relative density at least $\alpha-1/(n-1)$, since their counts sum to at least $2|A|-2$. For sufficiently large $n$ this density, say $\alpha'$, satisfies $\alpha'\geq\alpha-\alpha^2/1000$. Work in that interval and translate it to $\{1,\ldots,t\}$, where $t=n-1$. In the odd case put $\alpha'=\alpha$ and $t=n$. In either case $\alpha'\geq\alpha-\alpha^2/1000$ and $t\geq n-1$.
 
@@ -889,11 +887,15 @@ Apply Corollary 7.3 with the actual density $\alpha'$. It says that either $A$ c
 
 In the first case we are done. In the second case, the two outer intervals together contain more than $4\alpha't/5$ elements of $A$, so one contains at least $2\alpha't/5$. Each has at most $t/3+1$ integer points. For all sufficiently large $t$, its relative density is at least $\alpha'+\alpha'^2/50$, and it is a subprogression of length at least $\alpha^2\sqrt n/600$. In the third case, apply Corollary 7.5 with $\theta=\alpha'^2/10$. It gives a progression of length at least $\alpha'^2\sqrt t/320\geq\alpha^2\sqrt n/600$ and density at least $\alpha'+\alpha'^2/40\geq\alpha+\alpha^2/50$. The same lower density bound holds in the second case. Thus the lemma follows.
 
-In the third case, Corollary 7.3 gives us the hypothesis we need for Corollary 7.5 with $\theta = \alpha ^ { 2 } / 1 0$ . This then yields a progression P that satisfies the conclusion of the lemma, since $\theta \sqrt { t } / 3 2 \geq \alpha ^ { 2 } \sqrt { n } / 5 0 0$ □ 
+ 
 
 The above lemma represents one step of our iteration argument. Now let us finish the argument. 
 
-Proof of Theorem 7.1. As long as n is large enough, $\alpha ^ { 2 } \sqrt { n } / 5 0 0 \ge n ^ { 1 / 3 }$ . (More precisely, we need n to be at least $( 5 0 0 / \alpha ^ { 2 } ) ^ { 6 } . )$ Therefore, by Lemma 7.6, either A contains an arithmetic progression of length 3 or there is a progression P of size at least $n ^ { 1 / 3 }$ inside which A has relative density at least $\alpha + \alpha ^ { 2 } / 4 0$ . In the latter case, we simply repeat the argument. 
+Proof of Theorem 7.1. As long as the current interval length $N$ is sufficiently large, $\alpha^2\sqrt N/600\geq N^{1/3}$; it is enough that $N\geq(600/\alpha^2)^6$. By Lemma 7.6, either a 3-term progression is found or there is a subprogression of length at least $N^{1/3}$ on which the density increases by at least $\alpha^2/50$. Repeating this step, the density at least doubles within at most $50/\alpha$ iterations; summing the resulting geometric series shows that at most $100/\alpha$ iterations are needed before the density would exceed $1$. Thus the process must terminate with a 3-term progression, provided the interval length remains above $(600/\alpha^2)^6$ throughout. Since each step replaces the length by at least its cube root, it suffices to choose $n$ so large that
+\[
+n^{3^{-100/\alpha}}\geq(600/\alpha^2)^6.
+\]
+Such an $n$ exists for every fixed $\alpha>0$. This proves Roth’s theorem.
 
 If we have to repeat the argument $4 0 / \alpha$ times, then the density will reach at least 2α. Then after a further $4 0 / 2 \alpha$ iterations, it will reach 4α, and so on. So the total number of iterations we can need is at most $( 4 0 / \alpha ) ( 1 + 1 / 2 + 1 / 4 + . . . ) = 8 0 / \alpha$ 
 
