@@ -1137,7 +1137,7 @@ It is not very easy to say exactly what the polynomial method is, but in broad t
 
 In this section we shall illustrate the method with three results. The first is a celebrated result of Dvir, who solved the so-called Kakeya problem for finite fields. This is the following question: suppose that A is a subset of $\mathbb { F } _ { p } ^ { n }$ that contains a translate of every line. Must A have size $p ^ { n - o ( 1 ) } ?$ Here, we are taking n to be fixed and $p$ to be tending to infinity. Dvir’s solution gave the following theorem. 
 
-Theorem 12.1. Let $A\subset\mathbb F_p^n$ contain an affine line in every direction. Then $| A | \geq c ( n ) p ^ { n }$ 
+Theorem 12.1. Let $A\subset\mathbb F_p^n$ contain an affine line in every direction. Then $|A|\geq p^n/n!$.$ 
 
 The proof needs a couple of simple (but surprisingly powerful) lemmas. 
 
@@ -1167,7 +1167,7 @@ In other words, if we substitute a for $x _ { 1 }$ in the definition of $f$ , we
 
 Lemma 12.5. Let f be a non-zero polynomial of degree at most d on $\mathbb { F } _ { p } ^ { n }$ . Then f has at most $d p ^ { n - 1 }$ roots. 
 
-Proof. Without loss of generality the degree is exactly d. As we have already seen, if we restrict f to the line consisting of points $a + t z$ , then we obtain a polynomial of degree d in the single variable t with leading coefficient $f _ { d } ( z )$ , where $f _ { d }$ is the degree-d part of $f .$ By Lemma 12.4 we may choose z such that $f _ { d } ( z ) \neq 0$ . But that means that on every line L in direction z the restriction of $f$ to L is given by a polynomial in one variable of degree d. So $f$ has at most d roots in any line, and therefore at most $d p ^ { n - 1 }$ roots in total. □ 
+Proof. If $d\geq p$, then $dp^{n-1}\geq p^n$, so the claimed bound is immediate. We may therefore assume $d<p$ and, without loss of generality, that the degree is exactly $d$.
 
 It follows from the Schwartz-Zippel lemma that a non-zero polynomial of degree less than p cannot vanish on all of $\mathbb { F } _ { p } ^ { n }$ . Combining this with Lemmas 12.2 and 12.3 we obtain Theorem 12.1 with $c ( n ) = 1 / n !$ 
 
