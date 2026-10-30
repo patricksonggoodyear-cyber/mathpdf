@@ -1,30 +1,27 @@
----
-layout: null
----
 # mathpdf
 
-> 面向 AI 数学讨论的公开材料库。材料集中存放于 problems/，每份材料保留可直接读取的原文链接。
+This is a public file drop for sharing math materials with AI. Its only purpose is: upload files, then give AI the original file URL.
 
-## 使用说明
+## Rules
 
-- 优先读取 Markdown 原文；其中的文字、LaTeX 公式和推导结构通常比 PDF 更容易解析。
-- PDF 原文也在下方列出。若当前模型无法直接读取 PDF，请提示用户上传文件或提供文本版本。
-- 分类只是可选元数据；不要从文件名猜测题目所属学科。
-- 分析数学材料时，保留题目条件、定义、符号约定和证明上下文。不要把猜测当成原文结论。
-- 以下链接指向 GitHub Raw 原文。
+- All materials are stored under `materials/`.
+- There are no required filenames, categories, metadata, templates, or subdivisions.
+- Do not infer a topic or category from a filename.
+- Read original files, not the rendered website.
+- Markdown is usually easiest to parse. PDFs and other file types are stored unchanged; if a model cannot parse one, ask the user to attach the original file.
 
-## 材料列表
+## Discover files
 
-{% assign markdown_pages = site.pages | where_exp: "item", "item.path contains 'problems/'" %}
-{% assign static_files = site.static_files | where_exp: "item", "item.path contains 'problems/'" %}
-{% assign materials = markdown_pages | concat: static_files | sort: "path" %}
-{% for material in materials %}
-{% assign extension = material.name | split: "." | last | downcase %}
-{% if extension == "md" or extension == "pdf" %}
-{% assign fallback_title = material.name | remove: ".md" | remove: ".pdf" %}
-{% assign display_title = material.title | default: fallback_title %}
-{% assign display_category = material.category | default: "未分类" %}
-{% assign raw_url = "https://raw.githubusercontent.com/" | append: site.github_repo | append: "/" | append: site.github_branch | append: "/" | append: material.path %}
-- [{{ display_title | escape }}]({{ raw_url }}) — {{ display_category | escape }} — `{{ material.path }}`
-{% endif %}
-{% endfor %}
+Repository tree (filter entries whose path starts with `materials/` and whose type is `blob`):
+https://api.github.com/repos/patricksonggoodyear-cyber/mathpdf/git/trees/main?recursive=1
+
+Folder contents:
+https://api.github.com/repos/patricksonggoodyear-cyber/mathpdf/contents/materials?ref=main
+
+Raw URL pattern:
+https://raw.githubusercontent.com/patricksonggoodyear-cyber/mathpdf/main/materials/<filename>
+
+Website:
+https://patricksonggoodyear-cyber.github.io/mathpdf/
+
+Everything in this repository is public.

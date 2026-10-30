@@ -1,8 +1,0 @@
-title: "mathpdf"
-description: "供 AI 阅读的临时数学材料中转站"
-url: "https://patricksonggoodyear-cyber.github.io"
-baseurl: "/mathpdf"
-markdown: kramdown
-
-github_repo: "patricksonggoodyear-cyber/mathpdf"
-github_branch: "main"

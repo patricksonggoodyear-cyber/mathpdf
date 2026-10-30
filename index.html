@@ -1,43 +1,135 @@
----
-layout: default
-title: 数学材料目录
----
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="上传材料，获取 AI 可读取的原文链接。">
+  <title>mathpdf · 上传 → AI 阅读</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", sans-serif; }
+    body { margin: 0; line-height: 1.6; }
+    main { width: min(820px, calc(100% - 36px)); margin: 48px auto; }
+    h1 { margin-bottom: 4px; font-size: 2rem; }
+    .sub { color: #888; margin-top: 0; }
+    .upload { margin: 24px 0; padding: 16px; border: 1px solid #8886; border-radius: 10px; }
+    .upload p { margin: 0 0 10px; }
+    a { text-underline-offset: 3px; }
+    .upload-link { display: inline-block; padding: 8px 12px; border: 1px solid #8888; border-radius: 7px; text-decoration: none; }
+    .tools { display: flex; align-items: center; gap: 12px; margin: 24px 0 10px; }
+    input { box-sizing: border-box; flex: 1; min-width: 0; padding: 10px 12px; border: 1px solid #8888; border-radius: 7px; background: transparent; color: inherit; font: inherit; }
+    #status { color: #888; font-size: .9rem; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid #8883; }
+    .file { min-width: 0; overflow-wrap: anywhere; }
+    .meta { display: block; color: #888; font-size: .82rem; }
+    .links { display: flex; flex: 0 0 auto; gap: 14px; white-space: nowrap; }
+    .empty { color: #888; padding: 18px 0; }
+    footer { margin-top: 34px; color: #888; font-size: .85rem; }
+    @media (max-width: 560px) { main { margin: 28px auto; } li { align-items: flex-start; flex-direction: column; gap: 5px; } .tools { flex-wrap: wrap; } #status { width: 100%; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>mathpdf</h1>
+  <p class="sub">上传材料 → 把原文链接交给 AI</p>
+  <section class="upload">
+    <p><strong>把文件放进 materials/ 即可。</strong></p>
+    <p>文件名随意。可以一次上传多份。不用分类、不用改名、不用拆分、不用写模板。</p>
+    <a class="upload-link" href="https://github.com/patricksonggoodyear-cyber/mathpdf/tree/main/materials">打开材料目录并上传文件 ↗</a>
+  </section>
+  <div class="tools">
+    <input id="search" type="search" placeholder="搜索文件名" aria-label="搜索文件名">
+    <span id="status">正在读取材料列表…</span>
+  </div>
+  <ul id="files"></ul>
+  <p id="empty" class="empty" hidden>没有找到材料。</p>
+  <footer>
+    给 AI：优先使用每项的「AI 原文」链接，或先读取 <a href="./llms.txt">llms.txt</a>。
+    仓库内容公开，上传即公开。
+  </footer>
+</main>
+<script>
+(() => {
+  const OWNER = "patricksonggoodyear-cyber";
+  const REPO = "mathpdf";
+  const BRANCH = "main";
+  const FOLDER = "materials";
+  const API = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/git/trees/" + BRANCH + "?recursive=1";
+  const RAW = "https://raw.githubusercontent.com/" + OWNER + "/" + REPO + "/" + BRANCH + "/";
+  const BLOB = "https://github.com/" + OWNER + "/" + REPO + "/blob/" + BRANCH + "/";
+  const list = document.getElementById("files");
+  const status = document.getElementById("status");
+  const empty = document.getElementById("empty");
+  const search = document.getElementById("search");
+  let files = [];
 
-<p class="intro">数学材料集中存放在这里。上传 Markdown 或 PDF 即可，不要求固定文件名、分类或目录结构。</p>
-<p class="note">每项材料都提供网页入口和 AI 原文入口。分类是可选信息；没有填写分类的材料也会正常显示。<a href="{{ '/llms.txt' | relative_url }}">查看 AI 纯文本总目录</a>。</p>
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + " B";
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+  }
+  function safePath(path) {
+    return path.split("/").map(encodeURIComponent).join("/");
+  }
+  function render() {
+    const q = search.value.trim().toLocaleLowerCase();
+    const shown = files.filter(file => file.name.toLocaleLowerCase().includes(q) || file.path.toLocaleLowerCase().includes(q));
+    list.replaceChildren();
+    empty.hidden = shown.length !== 0;
+    for (const file of shown) {
+      const li = document.createElement("li");
+      const info = document.createElement("div");
+      info.className = "file";
+      const name = document.createElement("strong");
+      name.textContent = file.name;
+      const meta = document.createElement("span");
+      meta.className = "meta";
+      meta.textContent = file.path + " · " + formatSize(file.size || 0);
+      info.append(name, meta);
 
-{% assign markdown_pages = site.pages | where_exp: "item", "item.path contains 'problems/'" %}
-{% assign static_files = site.static_files | where_exp: "item", "item.path contains 'problems/'" %}
-{% assign materials = markdown_pages | concat: static_files | sort: "path" %}
-{% assign has_materials = false %}
-
-<ul class="problem-list">
-  {% for material in materials %}
-    {% assign extension = material.name | split: "." | last | downcase %}
-    {% if extension == "md" or extension == "pdf" %}
-      {% assign has_materials = true %}
-      {% assign fallback_title = material.name | remove: ".md" | remove: ".pdf" %}
-      {% assign display_title = material.title | default: fallback_title %}
-      {% assign display_category = material.category | default: "未分类" %}
-      {% case display_category %}
-        {% when "A" %}{% assign display_category = "代数" %}
-        {% when "C" %}{% assign display_category = "组合" %}
-        {% when "N" %}{% assign display_category = "数论" %}
-      {% endcase %}
-      {% assign raw_url = "https://raw.githubusercontent.com/" | append: site.github_repo | append: "/" | append: site.github_branch | append: "/" | append: material.path %}
-      <li>
-        <div class="problem-main">
-          <a class="problem-title" href="{{ material.url | relative_url }}">{{ display_title | escape }}</a>
-          <span class="material-meta">{{ display_category | escape }} · {{ material.name | escape }}</span>
-        </div>
-        <div class="item-links">
-          <a href="{{ material.url | relative_url }}">打开</a>
-          <a href="{{ raw_url }}">AI 原文</a>
-        </div>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
-{% unless has_materials %}
-  <p class="note">目前还没有材料。将 Markdown 或 PDF 文件上传到 problems/ 目录即可。</p>
-{% endunless %}
+      const links = document.createElement("div");
+      links.className = "links";
+      const preview = document.createElement("a");
+      preview.href = BLOB + safePath(file.path);
+      preview.target = "_blank";
+      preview.rel = "noopener";
+      preview.textContent = "查看";
+      const raw = document.createElement("a");
+      raw.href = RAW + safePath(file.path);
+      raw.target = "_blank";
+      raw.rel = "noopener";
+      raw.textContent = "AI 原文";
+      links.append(preview, raw);
+      li.append(info, links);
+      list.append(li);
+    }
+    if (files.length) status.textContent = shown.length + " / " + files.length + " 个文件";
+  }
+  async function load() {
+    try {
+      const response = await fetch(API, { headers: { Accept: "application/vnd.github+json" } });
+      if (!response.ok) throw new Error("GitHub API 返回 " + response.status);
+      const data = await response.json();
+      if (data.truncated) throw new Error("材料列表过大");
+      files = data.tree
+        .filter(item => item.type === "blob" && item.path.startsWith(FOLDER + "/"))
+        .map(item => ({ path: item.path, name: item.path.slice(FOLDER.length + 1).split("/").pop(), size: item.size || 0 }))
+        .sort((a, b) => a.path.localeCompare(b.path, "zh-CN"));
+      render();
+      if (!files.length) status.textContent = "目录暂时为空";
+    } catch (error) {
+      status.textContent = "读取失败";
+      empty.hidden = false;
+      empty.textContent = "暂时无法读取 GitHub 文件列表。请直接打开材料目录：";
+      const link = document.createElement("a");
+      link.href = "https://github.com/" + OWNER + "/" + REPO + "/tree/" + BRANCH + "/" + FOLDER;
+      link.textContent = "materials/";
+      empty.append(" ", link, "。");
+    }
+  }
+  search.addEventListener("input", render);
+  load();
+})();
+</script>
+</body>
+</html>

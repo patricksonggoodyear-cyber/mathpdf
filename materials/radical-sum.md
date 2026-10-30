@@ -1,8 +1,4 @@
----
-layout: default
-title: "第3题：用 m 个根式构造小正数"
-category: A
----
+# 第3题：用 m 个根式构造小正数
 
 ## 题目与常数的含义
 
