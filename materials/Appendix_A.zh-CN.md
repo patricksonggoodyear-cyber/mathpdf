@@ -440,9 +440,9 @@ $$
 
 **习题 A.2.4\*** 证明域的特征要么为 $0$，要么为一个素数 $p$。
 
-## 定义 A.2.6（斜域）
+## 定义 A.2.6（除环／斜域）
 
-斜域 $K$ 是乘法不一定满足交换律的域；换言之，它是一个每个非零元素都有乘法逆元的环：对任意 $0\neq a\in K$，都存在元素 $a^{-1}\in K$，使得 $aa^{-1}=a^{-1}a=1_K$（由于乘法不一定满足交换律，因此这里需要明确写出两个等式）。
+除环（也称斜域）$K$ 是乘法不一定满足交换律、但每个非零元素都有乘法逆元的环；换言之，它是一个每个非零元素都有乘法逆元的环：对任意 $0\neq a\in K$，都存在元素 $a^{-1}\in K$，使得 $aa^{-1}=a^{-1}a=1_K$（由于乘法不一定满足交换律，因此这里需要明确写出两个等式）。
 
 最后，我们定义一个非常重要的代数结构——整环。
 
@@ -522,7 +522,7 @@ $k\mapsto\exp\left(\frac{2ki\pi}{n}\right)$ 显然是两者之间的一个同构
 
 ## 定义 A.2.11（核）
 
-态射 $\varphi$ 的核 $\ker\varphi$ 是所有满足 $\varphi(x)=0$ 的元素 $x$ 所组成的集合。它衡量 $\varphi$ 距离单射还有多远。
+态射 $\varphi$ 的核 $\ker\varphi$ 是所有满足 $\varphi(x)=0$ 的元素 $x$ 所组成的集合；对于群态射，右侧的 $0$ 应理解为目标群的单位元。它衡量 $\varphi$ 距离单射还有多远。
 
 ## 定义 A.2.12（像）
 
@@ -644,7 +644,7 @@ $n_1g_1+\cdots+n_kg_k$，其中 $n_i\in\mathbb{Z}$。证明存在唯一的整数
 
 $$
 (G,+)\simeq
-(\mathbb{Z}^n\times\mathbb{Z}/d_1\mathbb{Z}\times\cdots\times\mathbb{Z}/d_k\mathbb{Z},+).
+(\mathbb{Z}^n\times\mathbb{Z}/d_1\mathbb{Z}\times\cdots\times\mathbb{Z}/d_m\mathbb{Z},+).
 $$
 
 **习题 A.3.20†（伯恩赛德引理）** 设 $G$ 是有限群，$S$ 是有限集合，$\cdot$ 是 $G$ 在 $S$ 上的群作用，也就是说，这是一个映射 $\cdot:G\times S\to S$，满足对任意 $g,h\in G$ 和 $s\in S$，都有 $e\cdot s=s$ 且 $(gh)\cdot s=g\cdot(h\cdot s)$。给定 $g\in G$，用 $\operatorname{Fix}(g)$ 表示被 $g$ 固定的 $S$ 中元素所组成的集合。证明
