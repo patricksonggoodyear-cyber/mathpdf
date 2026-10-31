@@ -521,3 +521,270 @@ T^2-aT-\frac{b^2}{4}
 $$
 的两个根。该多项式的判别式为 $a^2+b^2\geq0$，所以两个根都是实数；它们的乘积为 $-b^2/4\leq0$，因此其中一个非负，另一个非正。将非负的根记为 $x^2$，将非正的根记为 $-y^2$。分别开平方得到 $x,y$，再调整其中一个数的符号，使 $2xy=b$。于是 $x+iy$ 就是所求的平方根。
 
+## B.4 习题
+
+### 牛顿公式
+
+**习题 B.4.2†（埃尔米特定理）.** 证明：函数 $f:\mathbb F_p\to\mathbb F_p$ 是双射，当且仅当
+$$
+\sum_{a\in\mathbb F_p}f(a)^k
+$$
+在 $k=1,\ldots,p-2$ 时等于 $0$，而在 $k=p-1$ 时等于 $-1$。
+
+### 解答
+
+若 $f$ 是双射，这就是习题 A.3.11†。现在假设题设中的条件成立。由牛顿公式（注意当 $k<p$ 时 $k\neq0$，所以推论 B.2.1 仍然适用），对于每个固定的 $k$，$e_k(f(0),\ldots,f(p-1))$ 只有一个可能的取值。因此，
+$$
+e_k(f(0),\ldots,f(p-1))=e_k(0,\ldots,p-1),
+$$
+因为 $0,\ldots,p-1$ 本身也满足题设条件。于是
+$$
+\prod_{a\in\mathbb F_p}(X-f(a))
+=\prod_{a\in\mathbb F_p}(X-a),
+$$
+故 $f$ 是双射，证毕。
+
+**习题 B.4.3†.** 假设 $\alpha_1,\ldots,\alpha_k$ 满足：对所有正整数 $m$，
+$$
+\alpha_1^m+\cdots+\alpha_k^m
+$$
+都是代数整数。证明 $\alpha_1,\ldots,\alpha_k$ 都是代数整数。
+
+### 解答
+
+由牛顿公式，对每个 $i$ 都有
+$$
+k!\,e_i(\alpha_1,\ldots,\alpha_k)\in\overline{\mathbb Z}.
+$$
+因此，由习题 1.5.22†，对任意 $\alpha\in\{\alpha_1,\ldots,\alpha_k\}$，都有
+$$
+k!\alpha\in\overline{\mathbb Z}.
+$$
+特别地，对任意固定的正整数 $m$，将原假设应用于 $\alpha_1^m,\ldots,\alpha_k^m$，可得
+$$
+k!\alpha^m\in\overline{\mathbb Z}.
+$$
+
+所以问题归结为证明：若 $\alpha\in\overline{\mathbb Q}$ 是代数数，并且存在非零整数 $N\in\mathbb Z$，使得对每个正整数 $m$ 都有
+$$
+N\alpha^m\in\overline{\mathbb Z},
+$$
+那么 $\alpha\in\overline{\mathbb Z}$。也就是说，$\alpha$ 的各次幂具有统一有界的分母。
+
+当 $n$ 足够大时，$\alpha^{2^n}$ 的次数保持不变。事实上，数列
+$$
+[\mathbb Q(\alpha^{2^n}):\mathbb Q]
+=
+[\mathbb Q(\alpha^{2^n}):\mathbb Q(\alpha^{2^{n-1}})]
+[\mathbb Q(\alpha^{2^{n-1}}):\mathbb Q]
+$$
+是一个非增的正整数数列。将 $\alpha$ 替换为某个足够大的幂 $\alpha^{2^m}$ 后，可以假设这一次数对所有 $n\geq0$ 都保持不变。
+
+设 $\beta_1,\ldots,\beta_\ell$ 是 $\alpha$ 的共轭。考虑
+$$
+f_{2^k}=\prod_{i=1}^{\ell}(X-\beta_i^{2^k}),
+$$
+它是 $\alpha^{2^k}$ 的极小多项式。令 $N_k=1/c(f_{2^k})$，其中 $c(f_{2^k})$ 表示该多项式系数的内容；换言之，$N_k$ 是使 $N_kf_{2^k}\in\mathbb Z[X]$ 的最小正整数。由假设，$N_k$ 有统一上界。
+
+然而，
+$$
+\begin{aligned}
+N_k^2 f_{2^{k+1}}(X^2)
+&=N_k^2\prod_{i=1}^{\ell}(X^2-\beta_i^{2^{k+1}})\\
+&=\left(N_k\prod_{i=1}^{\ell}(X-\beta_i^{2^k})\right)
+  \left(N_k\prod_{i=1}^{\ell}(X+\beta_i^{2^k})\right)\\
+&=\pm(N_kf_{2^k}(X))(N_kf_{2^k}(-X)),
+\end{aligned}
+$$
+由高斯引理 5.1.2，右侧是本原多项式。因此
+$$
+N_{k+1}=N_k^2.
+$$
+于是，若 $N_1>1$，便有
+$$
+N_k=N_1^{2^{k-1}}\longrightarrow\infty,
+$$
+这与 $N_k$ 有统一上界矛盾。因此 $N_1=1$，从而 $\alpha$ 的极小多项式具有整数系数，也就是说，$\alpha$ 是代数整数。证毕。
+
+### 注 B.4.1
+
+需要指出的是，如果允许使用一些理想理论，上述关键结论可以有一个非常简短、直观的证明。先考虑 $\alpha\in\mathbb Q$ 的情形。我们可以直接考察 $p$-进赋值：
+$$
+n v_p(\alpha)+v_p(N)\geq0.
+$$
+当 $n$ 足够大时，这给出 $v_p(\alpha)\geq0$。因此 $\alpha$ 是整数。
+
+对于一般的代数整数，几乎可以原样使用同样的证明：数域 $K$ 不一定是唯一分解整环，但总有理想分解。因此，这次我们考察 $K$ 的素理想 $\mathfrak p$，得到
+$$
+n v_{\mathfrak p}(\alpha)+v_{\mathfrak p}(N)\geq0,
+$$
+从而再次推出 $v_{\mathfrak p}(\alpha)\geq0$。最后，由于这对任意素理想 $\mathfrak p$ 都成立，我们得到
+$$
+\alpha\in\mathcal O_K.
+$$
+
+### 代数几何
+
+**习题 B.4.4†（结式）.** 设 $R$ 为一个交换环，$f,g\in R[X]$ 是次数分别为 $m,n$ 的两个多项式。对任意整数 $k\geq0$，记 $R_k[X]$ 为 $R[X]$ 中所有次数小于 $k$ 的多项式构成的集合。结式 $\operatorname{Res}(f,g)$ 定义为线性映射
+$$
+(u,v)\longmapsto uf+vg
+$$
+的行列式，其中该映射从 $R_m[X]\times R_n[X]$ 映到 $R_{m+n}[X]$。证明：若
+$$
+f=\sum_i a_iX^i,\qquad g=\sum_i b_iX^i,
+$$
+则
+$$
+\operatorname{Res}(f,g)=
+\left|
+\begin{array}{cccccccc}
+a_0&0&\cdots&0&b_0&0&\cdots&0\\
+a_1&a_0&\cdots&0&b_1&b_0&\cdots&0\\
+a_2&a_1&\ddots&0&b_2&b_1&\ddots&0\\
+\vdots&\vdots&\ddots&a_0&\vdots&\vdots&\ddots&b_0\\
+a_m&a_{m-1}&\cdots&\vdots&b_n&b_{n-1}&\cdots&\vdots\\
+0&a_m&\ddots&\vdots&0&b_n&\ddots&\vdots\\
+\vdots&\vdots&\ddots&a_{m-1}&\vdots&\vdots&\ddots&b_{n-1}\\
+0&0&\cdots&a_m&0&0&\cdots&b_n
+\end{array}
+\right|.
+$$
+并且，若
+$$
+f=a\prod_{i=1}^{m}(X-\alpha_i),\qquad
+g=b\prod_{j=1}^{n}(X-\beta_j),
+$$
+则
+$$
+\operatorname{Res}(f,g)
+=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\alpha_i-\beta_j).
+$$
+此外，证明 $\operatorname{Res}(f,g)\in fR[X]+gR[X]$。最后证明：若 $f,g\in\mathbb Z[X]$ 都是首一多项式，且存在 $u,v\in\mathbb Z[X]$ 使得 $uf+vg=1$，那么 $\operatorname{Res}(f,g)=\pm1$。
+
+### 解答
+
+结式的行列式公式，可以通过在单项式基 $1,X,\ldots,X^{m+n-1}$ 下考察线性映射的矩阵得到。
+
+为了证明根的乘积公式，先把根 $\alpha_i,\beta_j$ 视为不定元。在域 $K$ 上工作。若某个 $\alpha_i=\beta_j$，则结式为零，因为对应的线性映射不是满射。因此，结式被每个 $\alpha_i-\beta_j$ 整除。另一方面，从行列式公式可以看出，结式关于每个 $\alpha_i$ 的次数至多为 $n$，关于每个 $\beta_j$ 的次数至多为 $m$。比较首项系数，便得到
+$$
+\operatorname{Res}(f,g)=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\alpha_i-\beta_j).
+$$
+
+对于理想包含关系，将等式 $uf+vg=r$ 在单项式基下写成
+$$
+RV=(r,0,\ldots,0)^{\mathsf T}=r e_1,
+$$
+其中 $R$ 是线性映射 $(u,v)\mapsto uf+vg$ 对应的矩阵。因此，我们需要
+$$
+rR^{-1}e_1\in R^{m+n}.
+$$
+取 $r=\det R=\operatorname{Res}(f,g)$ 即可，因为伴随矩阵恒等式给出
+$$
+(\det R)R^{-1}=\operatorname{adj}(R),
+$$
+而 $\operatorname{adj}(R)$ 的元素仍属于 $R$。
+
+现在令 $f,g$ 为次数分别是 $m,n$ 的一般整系数多项式。最后，假设
+$$
+(f\mathbb Z[X]+g\mathbb Z[X])\cap\mathbb Z=\mathbb Z.
+$$
+将 $f,g$ 分别写成
+$$
+f=\prod_{i=1}^{m}(X-\alpha_i),\qquad
+g=\prod_{j=1}^{n}(X-\beta_j).
+$$
+对每个 $j$，在等式 $uf+vg=1$ 中代入 $\beta_j$，得到
+$$
+u(\beta_j)f(\beta_j)=1.
+$$
+因此
+$$
+\prod_{j=1}^{n}f(\beta_j)=\pm\operatorname{Res}(f,g)
+$$
+整除 $1$，从而得到所需结论。
+
+**习题 B.4.6†（希尔伯特零点定理）.** 设 $K$ 为代数闭域。假设
+$$
+f_1,\ldots,f_m\in K[X_1,\ldots,X_n]
+$$
+没有公共零点。证明存在多项式 $g_1,\ldots,g_m$，使得
+$$
+f_1g_1+\cdots+f_mg_m=1.
+$$
+进一步推导：若多项式 $f$ 在 $f_1,\ldots,f_m$ 的所有公共根处都取值为零，那么存在整数 $k$ 以及多项式 $g_1,\ldots,g_m$，使得
+$$
+f^k=f_1g_1+\cdots+f_mg_m.
+$$
+
+### 解答
+
+我们对变量个数 $n$ 作归纳。当 $n=1$ 时，这就是贝祖等式。
+
+现在设 $n\geq1$。我们用结式消去一个变量。考虑多项式
+$$
+g=\operatorname{Res}_{X_n}
+\left(f_m,U_1f_1+\cdots+U_{m-1}f_{m-1}\right)
+\in K[U_1,\ldots,U_{m-1}][X_1,\ldots,X_{n-1}],
+$$
+其中 $U_1,\ldots,U_{m-1}$ 是形式变量。由习题 B.4.4†，点 $(x_1,\ldots,x_{n-1})$ 是 $g$ 的根，当且仅当 $f_m$ 与 $U_1f_1+\cdots+U_{m-1}f_{m-1}$ 在该点对应的 $X_n$ 变量上有公共根；或者，这两个多项式关于 $X_n$ 的首项系数同时在 $(x_1,\ldots,x_{n-1})$ 处为零。前一种情况意味着 $(x_1,\ldots,x_n)$ 是 $f_1,\ldots,f_m$ 的公共根；后一种情况意味着 $f_1,\ldots,f_m$ 关于 $X_n$ 的首项系数在 $(x_1,\ldots,x_{n-1})$ 处全为零（我们称 $(x_1,\ldots,x_{n-1})$ 是一个“无穷远处的公共根”）。
+
+我们希望排除第二种情况。这并不困难：对某些常数 $c_i$ 作坐标变换
+$$
+X_i\longmapsto X_i+c_iX_n,\qquad i=1,\ldots,n-1,
+$$
+便可使这些多项式关于 $X_n$ 的首项系数成为非零常数，从而不存在上述公共根。
+
+因此，由于 $f_1,\ldots,f_m$ 没有公共根，$g$ 也没有根。然而，把 $g$ 看成关于 $U_1,\ldots,U_{m-1}$ 的多项式时，$g$ 的根恰好是其各个系数 $g_i$ 的公共根。由归纳假设，存在这些系数的一个线性组合等于 $1$。另一方面，由结式的性质，
+$$
+g=\operatorname{Res}_{X_n}
+\left(f_m,U_1f_1+\cdots+U_{m-1}f_{m-1}\right)
+=uf_m+v(U_1f_1+\cdots+U_{m-1}f_{m-1}),
+$$
+其中
+$$
+u,v\in K[X_1,\ldots,X_n][U_1,\ldots,U_{m-1}].
+$$
+因此，$g$ 的系数 $g_i$ 都是 $f_1,\ldots,f_m$ 的线性组合，组合系数属于 $K[X_1,\ldots,X_n]$。于是，$f_1,\ldots,f_m$ 也存在一个线性组合等于 $1$，证毕。
+
+对于第二部分，不妨假设 $f\neq0$。将第一部分应用于
+$$
+f_1,\ldots,f_m,\ 1-X_{n+1}f.
+$$
+由假设，这些多项式没有公共根。这一技巧称为拉宾诺维奇技巧。因此，存在
+$$
+g_1,\ldots,g_m,g\in K[X_1,\ldots,X_{n+1}]
+$$
+使得
+$$
+g_1f_1+\cdots+g_mf_m+g(1-X_{n+1}f)=1.
+$$
+令 $X_{n+1}=1/f$，再将等式两边乘以 $f$ 的一个足够大的幂，就得到所需等式。证毕。
+
+**习题 B.4.7†（弱贝祖定理）.** 证明：若两个互素多项式 $f,g\in K[X,Y]$ 的次数分别为 $m,n$，则它们在 $K$ 中至多有 $mn$ 个公共根。（贝祖定理指出，它们恰有 $mn$ 个公共根，按重数计，并且允许根位于无穷远处。⁴）
+
+### 解答
+
+不妨假设 $K$ 含有任意多个元素；如果必要，可以按照习题 4.2.1* 的方法，不断向 $K$ 中加入新元素。
+
+我们仿照习题 B.4.6† 的证明。考虑结式
+$$
+h=\operatorname{Res}_Y(f,g).
+$$
+由习题 B.4.4† 中的行列式表达式，$h$ 的次数至多为 $mn$。由同一习题，若 $(x,y)$ 是 $f,g$ 的公共根，则 $x$ 是 $h$ 的根。因此，只要对每个 $x$ 至多有一个可能的 $y$，问题便得到解决，因为 $h$ 的次数至多为 $mn$，所以它至多有 $mn$ 个根。注意，我们已经知道公共根的数目有限（当然，这也可以由贝祖等式推出）。
+
+下面说明如何保证每个 $x$ 至多对应一个 $y$。作坐标变换
+$$
+X\longmapsto X'+c'Y,
+$$
+并选择适当的 $c'$，使得在新坐标下，$f,g$ 的每个公共根的第一坐标都互不相同。这是可行的，因为新坐标下的公共根为
+$$
+(\alpha+c'\beta,\beta),
+$$
+而使两个不同公共根具有相同第一坐标的 $c'$ 只能满足
+$$
+\alpha+c'\beta=\alpha'+c'\beta'
+\quad\Longleftrightarrow\quad
+c'=\frac{\alpha-\alpha'}{\beta'-\beta}.
+$$
+这样的 $c'$ 只有有限多个。
+
