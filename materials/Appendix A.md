@@ -10,45 +10,45 @@ Prerequisites for this chapter: none.
 
 A field $(K,+,\cdot)$ is a set $K$ with at least two elements and with two operations $+$ and $\cdot$, called addition and multiplication. These operations are associative and commutative, every element has an additive inverse, every non-zero element has a multiplicative inverse, there are additive and multiplicative identities, and multiplication distributes over addition. We usually just say that $K$ is a field by abuse of terminology.
 
-Here is what these terms mean: an operation $\dagger:K^2\to K$ is associative if $(a\dagger b)\dagger c=a\dagger(b\dagger c)$ for any $a,b,c\in $K$$ (that way we can write $a\dagger b\dagger c$ without ambiguity).
+Here is what these terms mean: an operation $\dagger:K^2\to K$ is associative if $(a\dagger b)\dagger c=a\dagger(b\dagger c)$ for any $a,b,c\in K$ (that way we can write $a\dagger b\dagger c$ without ambiguity).
 
-It is commutative if $a\dagger b=b\dagger a$ for any $a,b\in $K$$.
+It is commutative if $a\dagger b=b\dagger a$ for any $a,b\in K$.
 
-It has an identity $e$ if $a\dagger e=e\dagger a=a$ for any $a\in $K$$ (this is denoted $0_K$ for addition and $1_K$ for multiplication, but we usually drop the $K$ when the context is clear).
+It has an identity $e$ if $a\dagger e=e\dagger a=a$ for any $a\in K$ (this is denoted $0_K$ for addition and $1_K$ for multiplication, but we usually drop the $K$ when the context is clear).
 
 $a'$ is an inverse of $a$ for $\dagger$ if $a\dagger a'=a'\dagger a=e$ (denoted $-a$ for addition and $a^{-1}$ for multiplication).
 
 $+$ distributes over $\cdot$ if $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$, where $ab$ denotes $a\cdot b$.
 
-Exercise ${ \bf A . 1 . 1 ^ { * } }$ . Let K be a field. Prove that $0 _ { K } a = 0 _ { K }$ for any $a \in $K$ .$
+Exercise A.1.1*. Let $K$ be a field. Prove that $0_Ka=0_K$ for any $a\in K$.
 
-Exercise A.1.2*. Let † be a binary (taking two arguments) associative operation on a set $M$. Suppose that M has an identity. Prove that it is unique. Similarly, prove that, if an element $g \in M$ has an inverse, then it is unique.<sup>1</sup>
+Exercise A.1.2*. Let $\dagger$ be a binary (taking two arguments) associative operation on a set $M$. Suppose that $M$ has an identity. Prove that it is unique. Similarly, prove that, if an element $g\in M$ has an inverse, then it is unique.<sup>1</sup>
 
 ## Remark A.1.1
 
-Note that a field must have at least two elements (the additive and multiplicative identities must be distinct), i.e. the trivial ring $R$ = {0} is not a field. There are various reasons for this axiom, akin to the convention that 1 isn’t prime, but perhaps the simplest one is that if it were a field we would not have the uniqueness of dimension anymore since {0} and the empty set are both bases of {0}. (This is unimportant for this appendix, see Appendix C for the definition of dimension.)
+Note that a field must have at least two elements (the additive and multiplicative identities must be distinct), i.e. the trivial ring $R=\{0\}$ is not a field. There are various reasons for this axiom, akin to the convention that $1$ isn’t prime, but perhaps the simplest one is that if it were a field we would not have the uniqueness of dimension anymore since $\{0\}$ and the empty set are both bases of $\{0\}$. (This is unimportant for this appendix, see Appendix C for the definition of dimension.)
 
-Here are some examples of fields: the familiar sets of rational numbers $\mathbb{Q}$, of real numbers $\mathbb{R}$ and of complex numbers $\mathbb{C}$. We will define a variety of other fields throughout this book, but here is one very important field: the fields $\mathbb{F}_p$ of integers modulo $p$, where $p$ is a prime. You can think of it as $\{0,1,\ldots,p-1\}$ with addition and multiplication modulo $p$. It differs greatly from the previous fields for two reasons: because it is finite (we will study these fields in Chapter 4) and because it has non-zero characteristic<sup>2</sup> (see Section A.2 for a definition if you’re curious, but this is unimportant for now). Why is it a field? Well, all axioms are obvious because they are true in $\mathbb{Z}$ and hence also in $\mathbb{Z}/p\mathbb{Z}$, except the one about multiplicative inverses. But you already know that integers which are not divisible by $p$ have inverses modulo $p$ since it’s prime.
+Here are some examples of fields: the familiar sets of rational numbers $\mathbb{Q}$, of real numbers $\mathbb{R}$ and of complex numbers $\mathbb{C}$. We will define a variety of other fields throughout this book, but here is one very important field: the field $\mathbb{F}_p$ of integers modulo $p$, where $p$ is a prime. You can think of it as $\{0,1,\ldots,p-1\}$ with addition and multiplication modulo $p$. It differs greatly from the previous fields for two reasons: because it is finite (we will study these fields in Chapter 4) and because it has non-zero characteristic<sup>2</sup> (see Section A.2 for a definition if you’re curious, but this is unimportant for now). Why is it a field? Well, all axioms are obvious because they are true in $\mathbb{Z}$ and hence also in $\mathbb{Z}/p\mathbb{Z}$, except the one about multiplicative inverses. But you already know that integers which are not divisible by $p$ have inverses modulo $p$ since it’s prime.
 
 We now define polynomials with coefficients in a field $K$.
 
 ## Definition A.1.2 (Polynomials)
 
-A polynomial $f$ with coefficients in $K$ is an object $f=a_nX^n+\dots+a_1X+a_0$ where $a_0,\ldots,a_n\in $K$$. The greatest $k$ such that $a_k\neq0$ is called the degree $\deg f$ of $f$; the degree of the zero polynomial is $\deg 0=-\infty$. The set of polynomials with coefficients in $K$ is denoted $K[X]$.
+A polynomial $f$ with coefficients in $K$ is an object $f=a_nX^n+\dots+a_1X+a_0$ where $a_0,\ldots,a_n\in K$. The greatest $k$ such that $a_k\neq0$ is called the degree $\deg f$ of $f$; the degree of the zero polynomial is $\deg0=-\infty$. The set of polynomials with coefficients in $K$ is denoted $K[X]$.
 
 The coefficient $a_{\deg f}$ is called the leading coefficient of $f$, and $a_0$ is the constant coefficient of $f$. When the leading coefficient is $1$, we say the polynomial is monic (the zero polynomial isn’t monic).
 
 ## Remark A.1.2
 
-We can also consider similar objects but without the restriction that $a_k=0$ for sufficiently large $k$. They are called formal power series. They are also very useful objects, but are not considerably used in algebraic number theory so we do not consider them here (two exceptions: see Theorem B.2.1 and Remark C.4.1). Another point to note is that, although one can obtain many very interesting results by purely formal and algebraic considerations, we lose one advantage of polynomials: we can not always evaluate them (since the resulting series might not converge, or worse, we might not even have a topology to consider convergence). Thus, they demand a bit more care if we want to do that. See Andreescu-Dospinescu [1] chapter 8 for an introduction to the wonders of formal power series.
+We can also consider similar objects but without the restriction that $a_k=0$ for sufficiently large $k$. They are called formal power series. They are also very useful objects, but are not considerably used in algebraic number theory so we do not consider them here (two exceptions: see Theorem B.2.1 and Remark C.4.1). Another point to note is that, although one can obtain many very interesting results by purely formal and algebraic considerations, we lose one advantage of polynomials: we cannot always evaluate them (since the resulting series might not converge, or worse, we might not even have a topology to consider convergence). Thus, they demand a bit more care if we want to do that. See Andreescu-Dospinescu [1] chapter 8 for an introduction to the wonders of formal power series.
 
 The sum and product of two polynomials are defined intuitively; I don’t think I have to explain that. The formal object $X$ will be called a "variable", even if that makes it seem like it’s not a formal object.<sup>3</sup> Polynomials in multiple variables are defined analogously as
 
 $$
-\sum_ {i _ {1}, \dots , i _ {m} \geq 0} a _ {i _ {1}, \dots , i _ {m}} X _ {1} ^ {i _ {1}} \cdot \dots \cdot X _ {k} ^ {i _ {m}}
+\sum_{i_1,\ldots,i_m\geq0}a_{i_1,\ldots,i_m}X_1^{i_1}\cdots X_m^{i_m}
 $$
 
-where all but finitely many $a _ {i_1,\ldots,i_m}$ are zero. The degree is now defined as the greatest value of $i_1+\cdots+i_m$ for non-zero $a_{i_1,\ldots,i_m}$
+where all but finitely many $a_{i_1,\ldots,i_m}$ are zero. The degree is now defined as the greatest value of $i_1+\cdots+i_m$ for non-zero $a_{i_1,\ldots,i_m}$.
 
 Exercise A.1.3*. Prove that multiplication of polynomials is associative and commutative.
 
@@ -58,7 +58,7 @@ Here is why fields are nice: they are precisely the structure that lets us defin
 
 ## Proposition A.1.1 (Euclidean Division of Polynomials)
 
-Let $f,g\in $K$[X]$ be polynomials, with $g\neq0$. There exist polynomials $q,r\in $K$[X]$ with $\deg r<\deg g$ such that $f=gq+r$.
+Let $f,g\in K[X]$ be polynomials, with $g\neq0$. There exist polynomials $q,r\in K[X]$ with $\deg r<\deg g$ such that $f=gq+r$.
 
 ## Proof
 
@@ -80,83 +80,83 @@ We now define divisibility of polynomials like we do in $\mathbb { Z } :$
 
 ## Definition A.1.3 (Divisibility of Polynomials)
 
-We say a polynomial $f \in $K$ [ X ]$ divides a polynomial $g \in $K$ [ X ]$ , and write $f \mid g ,$ if there exists a polynomial $h \in $K$ [ X ]$ such that $g = f h$
+We say a polynomial $f\in K[X]$ divides a polynomial $g\in K[X]$, and write $f\mid g$, if there exists a polynomial $h\in K[X]$ such that $g=fh$.
 
-Note that repeated applications of the Euclidean remainder yield the Euclidean algorithm: given two polynomials $f,g\in $K$[X]$ with $\deg f>\deg g$, we iteratively replace $f$ by the remainder of its division by $g$. For instance, $f=X^3+X$ and $g=X^2$ yield
+Note that repeated applications of the Euclidean remainder yield the Euclidean algorithm: given two polynomials $f,g\in K[X]$ with $\deg f>\deg g$, we iteratively replace $f$ by the remainder of its division by $g$. For instance, $f=X^3+X$ and $g=X^2$ yield
 
 $$
 \{X ^ {3} + X, X ^ {2} \} \rightarrow \{X ^ {2}, X \} \rightarrow \{X, 0 \} \rightarrow \{0, 0 \}.
 $$
 
-This will, as in $\mathbb{Z}$, eventually produce the pair $\{0,h\}$ where $h$ is the greatest common divisor (gcd) of $f$ and $g$, i.e. a polynomial which divides both $f$ and $g$ and such that, if $h'\mid f$ and $h'\mid g$, then $h'\mid h$ (in particular it is the common divisor with greatest degree, except when $f = g = 0 )$ . Note that the gcd is only defined up to multiplication by a non-zero constant, although we will usually assume it to be monic.
+This will, as in $\mathbb{Z}$, eventually produce the pair $\{0,h\}$ where $h$ is the greatest common divisor (gcd) of $f$ and $g$, i.e. a polynomial which divides both $f$ and $g$ and such that, if $h'\mid f$ and $h'\mid g$, then $h'\mid h$ (in particular, it is the common divisor with greatest degree, except when $f=g=0$). Note that the gcd is only defined up to multiplication by a non-zero constant, although we will usually assume it to be monic.
 
 Exercise A.1.4*. Prove that the gcd of $0$ and $0$ is $0$.
 
-Exercise A.1.5*. Prove that the Euclidean algorithm produces the gcd. Deduce that the gcd of two polynomials in $K [ X ]$ is also in $K [ X ]$ . (As a consequence, the fundamental theorem of algebra Theorem A.1.1 implies that two polynomials with rational coefficients are coprime in $\mathbb { Q } [ X ]$ if and only if they have a common complex root.)
+Exercise A.1.5*. Prove that the Euclidean algorithm produces the gcd. Deduce that the gcd of two polynomials in $K[X]$ is also in $K[X]$. (As a consequence, the fundamental theorem of algebra, Theorem A.1.1, implies that two polynomials with rational coefficients are coprime in $\mathbb{Q}[X]$ if and only if they have a common complex root.)
 
-Exercise A.1.6* (Bézout’s Lemma). Consider two polynomials $f , g \in $K$ [ X ]$ . Prove that there exist polynomials $u , v \in $K$ [ X ]$ such that $u f + v g = \operatorname* { g c d } ( f , g )$
+Exercise A.1.6* (Bézout’s Lemma). Consider two polynomials $f,g\in K[X]$. Prove that there exist polynomials $u,v\in K[X]$ such that $uf+vg=\gcd(f,g)$.
 
 As another corollary of Proposition A.1.1, we get the following extremely fundamental fact.
 
 Proposition A.1.2
 
-Let $f \in $K$ [ X ]$ be a polynomial. If $f ( \alpha ) = 0$ , then $X - \alpha \mid f .$
+Let $f\in K[X]$ be a polynomial. If $f(\alpha)=0$, then $X-\alpha\mid f$.
 
 ## Proof
 
-Let $f = ( X - \alpha ) q + r$ be the Euclidean division of f by $X - \alpha$ . Since deg $X - \alpha = 1$ , we have deg $r < 1$ so r is constant. Notice that $r = r ( \alpha ) = f ( \alpha ) = 0$ , which means $f = ( X - \alpha ) q .$ , i.e. $X - \alpha$ divides $f .$
+Let $f=(X-\alpha)q+r$ be the Euclidean division of $f$ by $X-\alpha$. Since $\deg(X-\alpha)=1$, we have $\deg r<1$, so $r$ is constant. Notice that $r=r(\alpha)=f(\alpha)=0$, which means $f=(X-\alpha)q$, i.e. $X-\alpha$ divides $f$.
 
 ## Corollary A.1.1*
 
-A polynomial $f \in $K$ [ X ]$ of degree $n \geq 0$ has at most n roots in $K$.
+A polynomial $f\in K[X]$ of degree $n\geq0$ has at most $n$ roots in $K$.
 
 ## Proof
 
-Suppose for the sake of a contradiction that f had $n + 1$ roots $\alpha _ { 1 } , \ldots , \alpha _ { n + 1 }$ . Using Proposition A.1.2 repeatedly, we get $f = ( X - \alpha _ { 1 } ) f _ { 1 } , f _ { 1 } = ( X - \alpha _ { 2 } ) f _ { 2 } , . . . , f _ { n } = ( X - \alpha _ { n + 1 } ) f _ { n + 1 }$ so that
+Suppose for the sake of a contradiction that $f$ had $n+1$ roots $\alpha_1,\ldots,\alpha_{n+1}$. Using Proposition A.1.2 repeatedly, we get $f=(X-\alpha_1)f_1$, $f_1=(X-\alpha_2)f_2$, ..., $f_n=(X-\alpha_{n+1})f_{n+1}$, so that
 
 $$
 f = (X - \alpha_ {1}) \cdot \ldots \cdot (X - \alpha_ {n + 1}) f _ {n + 1}.
 $$
 
-Since $f$ is non-zero, the degree of $f _ { n + 1 }$ is non-negative so $n = \deg f = n + 1 + \deg f _ { n + 1 } \geq n + 1$ which is a contradiction.
+Since $f$ is non-zero, the degree of $f_{n+1}$ is non-negative, so $n=\deg f=n+1+\deg f_{n+1}\geq n+1$, which is a contradiction.
 
-Exercise A.1.7*. Let $f \in $K$ [ X _ { 1 } , \ldots , X _ { n } ]$ be a polynomial in n variables and suppose $S _ { 1 } , \ldots , S _ { n } \subseteq K$ are subsets of K such that $\left| S _ { i } \right| > \deg _ { X _ { i } } f .$ If $f$ vanishes on $S _ { 1 } \times \ldots \times S _ { n } ,$ prove that $f \ = \ 0 .$ . (This is the generalisation of Corollary A.1.1 to multivariate polynomials.)
+Exercise A.1.7*. Let $f\in K[X_1,\ldots,X_n]$ be a polynomial in $n$ variables and suppose $S_1,\ldots,S_n\subseteq K$ are subsets of $K$ such that $|S_i|>\deg_{X_i}f$. If $f$ vanishes on $S_1\times\cdots\times S_n$, prove that $f=0$. (This is the generalisation of Corollary A.1.1 to multivariate polynomials.)
 
 Here is a non-trivial application of this.
 
 ## Problem A.1.1
 
-Let $n \geq 2$ be a positive integer. What is the gcd of the numbers $1 ^ { n } - 1 , 2 ^ { n } - 1 , \dotsc , n ^ { n } - 1 ?$
+Let $n\geq2$ be a positive integer. What is the gcd of the numbers $1^n-1,2^n-1,\ldots,n^n-1$?
 
 ## Solution
 
-Let d be this gcd. Suppose $p$ is a prime factor of d. If $p \leq n ,$ , then $p \mid p ^ { n } - 1$ which is impossible. Thus $p > n .$ . Consider the polynomial
+Let $d$ be this gcd. Suppose $p$ is a prime factor of $d$. If $p\leq n$, then $p\mid p^n-1$, which is impossible. Thus $p>n$. Consider the polynomial
 
 $$
 X ^ {n} - 1 - (X - 1) \cdot \ldots \cdot (X - n)
 $$
 
-in $\mathbb { F } _ { p } [ X ]$ . It has degree at most $n - 1$ and n roots (in $\mathbb { F } _ { p } )$ by assumption, thus it is the zero polynomial. Hence we have
+in $\mathbb{F}_p[X]$. It has degree at most $n-1$ and $n$ roots (in $\mathbb{F}_p$) by assumption, thus it is the zero polynomial. Hence we have
 
 $$
 X ^ {n} - 1 \equiv (X - 1) \cdot \ldots \cdot (X - n) \pmod {p}.
 $$
 
-Expand the RHS and consider the coefficient of $\ X ^ { n - 1 } \colon { \mathrm { i t ~ i s ~ } } - ( 1 + \ldots + n ) = - { \frac { n ( n + 1 ) } { 2 } }$ . On the other hand, since $n \geq 2 .$ the coefficient of $X ^ { n - 1 }$ of the LHS is 0. Thus
+Expand the RHS and consider the coefficient of $X^{n-1}$: it is $-(1+\ldots+n)=-\frac{n(n+1)}{2}$. On the other hand, since $n\geq2$, the coefficient of $X^{n-1}$ of the LHS is $0$. Thus
 
 $$
 p \mid \frac {n (n + 1)}{2}.
 $$
 
-Since $p > n ,$ this means $p = n + 1$ . Thus, if $n + 1$ is composite we are already done: the gcd is 1. If $n + 1 = p$ is prime, the gcd d is a power of $\dot { \mathbf { \rho } } _ { p }$ and we must find out what it is. Clearly, $p$ is odd.
+Since $p>n$, this means $p=n+1$. Thus, if $n+1$ is composite we are already done: the gcd is $1$. If $n+1=p$ is prime, the gcd $d$ is a power of $p$ and we must find out what it is. Clearly, $p$ is odd.
 
-By Fermat’s little theorem, $p \mid k ^ { n } - 1$ for $k = 1 , \dots , n$ so $p \mid d .$ It remains to prove that $p ^ { 2 } \nmid d .$ For this, suppose for the sake of a contradiction that $p ^ { 2 } \mid ( p - 1 ) ^ { p - 1 } - 1$ . Then,
+By Fermat’s little theorem, $p\mid k^n-1$ for $k=1,\ldots,n$, so $p\mid d$. It remains to prove that $p^2\nmid d$. For this, suppose for the sake of a contradiction that $p^2\mid(p-1)^{p-1}-1$. Then,
 
 $$
 p \mid \frac {(p - 1) ^ {(p - 1)} - 1}{(p - 1) ^ {2} - 1} = \sum_ {k = 0} ^ {\frac {p - 1}{2} - 1} (p - 1) ^ {2 k} \equiv \frac {p - 1}{2} \pmod {p}
 $$
 
-which is a contradiction so we are done in this case too: $d = n + 1$ if it is prime and 1 otherwise.
+which is a contradiction, so we are done in this case too: $d=n+1$ if it is prime and $1$ otherwise.
 
 In particular, notice that $X ^ { p - 1 } - 1 = ( X - 1 ) \cdot . . . \cdot ( X - ( p - 1 ) )$ in $\mathbb { F } _ { p }$ which will be important for Chapter 4.
 
@@ -164,23 +164,23 @@ Proposition A.1.2 motivates us to make the following definition.
 
 ## Definition A.1.4 (Multiple Root)
 
-We say $\alpha$ is a root of multiplicity $m$ if $(X-\alpha)^m\mid f$ but $(X-\alpha)^{m+1}\nmid f$. The multiplicity of $α$ is denoted $v _ { \alpha } ( f )$
+We say $\alpha$ is a root of multiplicity $m$ if $(X-\alpha)^m\mid f$ but $(X-\alpha)^{m+1}\nmid f$. The multiplicity of $\alpha$ is denoted $v_\alpha(f)$.
 
 ## Definition A.1.5 (Derivative)
 
-The (formal) derivative of a polynomial $f=\sum_{i\geq0}a_iX^i\in $K$[X]$ is $f'=\sum_{i\geq1}ia_iX^{i-1}$. The $n$th derivative of $f$ is denoted $f^{(n)}$ (with $f^{(0)}=f$).
+The (formal) derivative of a polynomial $f=\sum_{i\geq0}a_iX^i\in K[X]$ is $f'=\sum_{i\geq1}ia_iX^{i-1}$. The $n$th derivative of $f$ is denoted $f^{(n)}$ (with $f^{(0)}=f$).
 
-Exercise A.1.8*. Prove that $( f g ) ^ { \prime } = f ^ { \prime } g + g f ^ { \prime }$ and $( f + g ) ^ { \prime } = f ^ { \prime } + g ^ { \prime }$ for any $f , g \in $K$ [ X ]$ . Show also that $( f ^ { n } ) ^ { \prime } = n f ^ { \prime } f ^ { n - 1 }$ for any positive integer $n$, where $f ^ { k }$ denotes the kth power and not the kth iterate. More generally, show that
+Exercise A.1.8*. Prove that $(fg)'=f'g+gf'$ and $(f+g)'=f'+g'$ for any $f,g\in K[X]$. Show also that $(f^n)'=nf'f^{n-1}$ for any positive integer $n$, where $f^k$ denotes the $k$th power and not the $k$th iterate. More generally, show that
 
 $$
 \left(\prod_ {i = 1} ^ {n} f _ {i}\right) ^ {\prime} = \sum_ {i = 1} ^ {n} f _ {i} ^ {\prime} \prod_ {j \neq i} f _ {j}.
 $$
 
-We can now give a criterion to compute the multiplicity of a root, using our notion of derivative. This will, however, only work as long as $\operatorname{char}K$ is greater than the multiplicity of the root. Roughly speaking, the characteristic $c\in\mathbb{N}$ is the smallest positive integer such that $c=0$ in $K$, if one exists, and is $0$ otherwise. See Definition A.2.3 for a more rigorous definition. For instance, the characteristic of $\mathbb { F } _ { p }$ is p while the characteristic of $\mathbb{Q}$ is 0.
+We can now give a criterion to compute the multiplicity of a root, using our notion of derivative. This will, however, only work as long as $\operatorname{char}K$ is greater than the multiplicity of the root. Roughly speaking, the characteristic $c\in\mathbb{N}$ is the smallest positive integer such that $c=0$ in $K$, if one exists, and is $0$ otherwise. See Definition A.2.3 for a more rigorous definition. For instance, the characteristic of $\mathbb{F}_p$ is $p$ while the characteristic of $\mathbb{Q}$ is $0$.
 
 ## Proposition A.1.3 (Multiple Roots)*
 
-Let $f\in $K$[X]$ be a polynomial. If $\operatorname{char}K=0$, then for any positive integer $m$ and any $\alpha\in $K$$ we have $( X - \alpha ) ^ { m } \mid f$ if and only if
+Let $f\in K[X]$ be a polynomial. If $\operatorname{char}K=0$, then for any positive integer $m$ and any $\alpha\in K$ we have $(X-\alpha)^m\mid f$ if and only if
 
 $$
 f (\alpha) = f ^ {\prime} (\alpha) = \ldots = f ^ {(m - 1)} (\alpha) = 0.
@@ -188,15 +188,15 @@ $$
 
 Otherwise, this only holds for $m<\operatorname{char}K$.
 
-Here is how this theorem can fail when $v_\alpha(f)\geq c$: the derivative of $f = X ^ { p }$ over $\mathbb { F } _ { p }$ is $p X ^ { p - 1 } = 0 ,$ so $f ^ { ( k ) } ( 0 ) = 0$ for all $k \in \mathbb N$ yet $X^p$ is clearly not divisible by $X^k$ for $k>p$
+Here is how this theorem can fail when $v_\alpha(f)\geq c$: the derivative of $f=X^p$ over $\mathbb{F}_p$ is $pX^{p-1}=0$, so $f^{(k)}(0)=0$ for all $k\in\mathbb{N}$, yet $X^p$ is clearly not divisible by $X^k$ for $k>p$.
 
 ## Proof
 
-We proceed by induction on m. The base case is Proposition A.1.2. We shall prove that, if $f ( \alpha ) = 0 , v _ { \alpha } ( f ^ { \prime } ) = v _ { \alpha } ( f ) - 1 .$
+We proceed by induction on $m$. The base case is Proposition A.1.2. We shall prove that, if $f(\alpha)=0$, then $v_\alpha(f')=v_\alpha(f)-1$.
 
-Let $m=v_\alpha(f)\geq1$. Write $f=(X-\alpha)^m g$ where $X-\alpha\nmid g$. Then, by Exercise $\mathrm { A . 1 . 8 ^ { * } }$ $f ^ { \prime } = m ( X - \alpha ) ^ { m - 1 } g + ( X - \alpha ) ^ { m } g ^ { \prime }$ which is indeed divisible by $( X - \alpha ) ^ { m - 1 }$ but not $( X - \alpha ) ^ { m }$ as $X - \alpha \nmid g .$ . Here, we used the fact that m is non-zero because it is positive but less than the characteristic.
+Let $m=v_\alpha(f)\geq1$. Write $f=(X-\alpha)^m g$ where $X-\alpha\nmid g$. Then, by Exercise A.1.8*, $f'=m(X-\alpha)^{m-1}g+(X-\alpha)^mg'$, which is indeed divisible by $(X-\alpha)^{m-1}$ but not $(X-\alpha)^m$ as $X-\alpha\nmid g$. Here, we used the fact that $m$ is non-zero because it is positive but less than the characteristic.
 
-Using our notion of multiple roots, we get that if $f$ has degree $n$, leading coefficient $a$, and roots $\alpha _ { 1 } , \ldots , \alpha _ { n }$ (not necessarily distinct, we count them with multiplicity) then $( X - \alpha _ { 1 } ) \cdot . . . \cdot ( X - \alpha _ { n } ) \mid f$ so that
+Using our notion of multiple roots, we get that if $f$ has degree $n$, leading coefficient $a$, and roots $\alpha_1,\ldots,\alpha_n$ (not necessarily distinct, we count them with multiplicity), then $(X-\alpha_1)\cdots(X-\alpha_n)\mid f$, so that
 
 $$
 f = (X - \alpha_ {1}) \cdot \ldots \cdot (X - \alpha_ {n}) g
@@ -206,7 +206,7 @@ for some $g$ which must be constant equal to a by looking at the degrees. We hav
 
 ## Proposition A.1.4 (Vieta’s Formulas)*
 
-Suppose $f=a_0+\cdots+a_{n-1}X^{n-1}+X^n$ is a monic polynomial of degree $n$ with roots $\alpha _ { 1 } , \ldots , \alpha _ { n }$ (counted with multiplicity). Then,
+Suppose $f=a_0+\cdots+a_{n-1}X^{n-1}+X^n$ is a monic polynomial of degree $n$ with roots $\alpha_1,\ldots,\alpha_n$ (counted with multiplicity). Then,
 
 $$
 a _ {n - k} = (- 1) ^ {k} \sum_ {i _ {1} <   \dots <   i _ {k}} \alpha_ {i _ {1}} \cdot \dots \cdot \alpha_ {i _ {k}}
@@ -218,7 +218,7 @@ for any $k = 0 , \ldots , n - 1 .$
 
 It is simply the expansion of $f = \left( X - \alpha _ { 1 } \right) \cdot \ldots \cdot \left( X - \alpha _ { n } \right)$
 
-In particular, $a _ { 0 } = ( - 1 ) ^ { n } \alpha _ { 1 } \cdot \ldots \cdot \alpha _ { n }$ and $a _ { n - 1 } = - ( \alpha _ { 1 } + . . . + \alpha _ { n } )$ . We have in fact already used a special case of these formulas in Problem A.1.1. Here are two more applications of this, to show how useful it is.
+In particular, $a_0=(-1)^n\alpha_1\cdots\alpha_n$ and $a_{n-1}=-(\alpha_1+\cdots+\alpha_n)$. We have in fact already used a special case of these formulas in Problem A.1.1. Here are two more applications of this, to show how useful it is.
 
 ## Corollary A.1.2 (Wilson’s Theorem)
 
@@ -226,23 +226,23 @@ For any prime $p$, $(p-1)!\equiv-1\pmod p$.
 
 ## Proof
 
-We have already seen that $1 , 2 , \ldots , p - 1$ are exactly the roots of $X ^ { p - 1 } - 1$ in $\mathbb { F } _ { p }$ by Fermat’s little theorem. Thus, their product is $( - 1 ) ^ { p - 1 } \cdot ( - 1 )$ by Vieta’s formulas as −1 is the constant coefficient of $X ^ { p - 1 } - 1$ . This means that $(p-1)!\equiv(-1)^p\equiv-1\pmod p$, as wanted (when $p$ is odd it is clear, and when $p=2$ we have $1=-1$ in $\mathbb{F}_2$).
+We have already seen that $1,2,\ldots,p-1$ are exactly the roots of $X^{p-1}-1$ in $\mathbb{F}_p$ by Fermat’s little theorem. Thus, their product is $(-1)^{p-1}\cdot(-1)$ by Vieta’s formulas, as $-1$ is the constant coefficient of $X^{p-1}-1$. This means that $(p-1)!\equiv(-1)^p\equiv-1\pmod p$, as wanted (when $p$ is odd it is clear, and when $p=2$ we have $1=-1$ in $\mathbb{F}_2$).
 
 ## Problem A.1.2 (APMO 2014 Problem 3)
 
-Find all positive integers n such that for any integer k there exists an integer a for which $a ^ { 3 } + a - k$ is divisible by n.
+Find all positive integers $n$ such that for any integer $k$ there exists an integer $a$ for which $a^3+a-k$ is divisible by $n$.
 
 ## (Partial) Solution
 
 This is equivalent to $x\mapsto x^3+x$ being bijective modulo $n$. In particular, if it is bijective modulo $n$, it is bijective modulo any prime factor $p\mid n$. We will show that $p=3$. This will imply that $n$ is a power of $3$, and conversely all powers of $3$ work, but we have not established the tools to prove this yet. It will be proven in Chapter 5 as a consequence of Hensel’s lemma 5.3.1. Clearly, $p=2$ does not work, since $0^3+0\equiv0\pmod2$ and $1^3+1\equiv0\pmod2$, so $p$ must be odd.
 
-Thus, we restrict ourself to the prime case. Suppose $x \mapsto x ^ { 3 } + x$ is a permutation of $\mathbb { F } _ { p }$ . Then,
+Thus, we restrict ourselves to the prime case. Suppose $x\mapsto x^3+x$ is a permutation of $\mathbb{F}_p$. Then,
 
 $$
 1 \cdot 2 \cdot \ldots \cdot (p - 1) \equiv (1 ^ {3} + 1) (2 ^ {3} + 2) \cdot \ldots \cdot ((p - 1) ^ {3} + (p - 1))
 $$
 
-as $0 ^ { 3 } + 0 = 0 \mathrm { ~ s o ~ } x \mapsto x ^ { 3 }$ must also be a permutation of $\mathbb { F } _ { p } \setminus \{ 0 \}$ . After simplifying by $1 \cdots \cdot \cdot \cdot ( p - 1 )$ this is equivalent to
+as $0^3+0=0$, so $x\mapsto x^3+x$ must also be a permutation of $\mathbb{F}_p\setminus\{0\}$. After simplifying by $1\cdot2\cdots(p-1)$, this is equivalent to
 
 $$
 (1 ^ {2} + 1) (2 ^ {2} + 1) \cdot \ldots ((p - 1) ^ {2} + 1) \equiv 1.
@@ -260,25 +260,25 @@ Conversely, the following result, which is proven in Appendix B, shows that we c
 
 ## Theorem A.1.1 (Fundamental Theorem of Algebra)
 
-Any polynomial $f \in \mathbb { C } [ X ]$ of degree $n \geq 0$ has exactly n roots, i.e.,
+Any polynomial $f\in\mathbb{C}[X]$ of degree $n\geq0$ has exactly $n$ roots, i.e.,
 
 $$
 f = a (X - \alpha_ {1}) \cdot \ldots \cdot (X - \alpha_ {n})
 $$
 
-where $\alpha _ { 1 } , \ldots , \alpha _ { n }$ are the roots of f counted with multiplicity and a is its leading coefficient.
+where $\alpha_1,\ldots,\alpha_n$ are the roots of $f$ counted with multiplicity, and $a$ is its leading coefficient.
 
 Over the real numbers, we have the following result.
 
 ## Proposition A.1.5
 
-Any non-zero polynomial $f \in \mathbb { R } [ X ]$ factorises into a product
+Any non-zero polynomial $f\in\mathbb{R}[X]$ factorises into a product
 
 $$
 a (X - \alpha_ {1}) \cdot \ldots \cdot (X - \alpha_ {m}) f _ {1} \cdot \ldots \cdot f _ {k}
 $$
 
-where $a \in \mathbb { R }$ is its leading coefficient, $\alpha _ { i } \in \mathbb { R }$ are its real roots, and the $f _ { i } \in \mathbb { R } [ X ]$ are monic polynomials of degree 2 with $n$o real roots.
+where $a\in\mathbb{R}$ is its leading coefficient, $\alpha_i\in\mathbb{R}$ are its real roots, and the $f_i\in\mathbb{R}[X]$ are monic polynomials of degree $2$ with no real roots.
 
 In fact, we shall prove that non-real roots $α$ come in pairs of conjugates $\alpha , { \overline { { \alpha } } } ,$ since $( X - \alpha ) ( X - \overline { { \alpha } } )$ has real coefficients this will yield the result.
 
@@ -292,27 +292,27 @@ We have $f = ( X - \alpha ) ^ { m } g$ for some $g \in \mathbb { C } [ X ]$ if a
 
 ## Proof of Proposition A.1.5
 
-Write $f = a ( X - \alpha _ { 1 } ) \cdot \ldots \cdot ( X - \alpha _ { m } ) ( X - \beta _ { 1 } ) ( X - { \overline { { \beta } } } _ { 1 } ) \cdot \ldots \cdot ( X - \beta _ { m } ) ( X - { \overline { { \beta } } } _ { m } )$ where $\alpha _ { i } \in \mathbb { R }$ and $\beta _ { i } \in \mathbb { C } \backslash$ R using Proposition A.1.6. Then,
+Write $f=a(X-\alpha_1)\cdots(X-\alpha_m)(X-\beta_1)(X-\overline{\beta_1})\cdots(X-\beta_k)(X-\overline{\beta_k})$, where $\alpha_i\in\mathbb{R}$ and $\beta_i\in\mathbb{C}\setminus\mathbb{R}$ using Proposition A.1.6. Then,
 
 $$
 f = a (X - \alpha_ {1}) \cdot \ldots \cdot (X - \alpha_ {m}) f _ {1} \cdot \ldots \cdot f _ {k}
 $$
 
-where $f_i=(X-\beta_i)(X-\overline{\beta_i})=X^2-2\Re(\beta_i)X+|\beta_i|^2\in\mathbb{R}[X]$.
+where $f _ { i } = ( X - \beta _ { i } ) ( X - { \overline { { \beta } } } _ { i } ) = X^2-2\Re(\beta_i)X+|\beta_i|^2 \in \mathbb { R } [ X ] .$
 
-The fact that some polynomials over $\mathbb{R}[X]$ cannot be decomposed into a product of linear polyno mials motivates us to make the following definition.
+The fact that some polynomials over $\mathbb{R}[X]$ cannot be decomposed into a product of linear polynomials motivates us to make the following definition.
 
 ## Definition A.1.6 (Irreducible Polynomial)
 
-A non-zero polynomial $f \in $K$ [ X ]$ is said to be irreducible in $K [ X ]$ if it can not be written as a product of two polynomials of smaller degrees. We shall also say it is irreducible over $K$.
+A non-zero polynomial $f\in K[X]$ is said to be irreducible in $K[X]$ if it cannot be written as a product of two polynomials of smaller degrees. We shall also say it is irreducible over $K$.
 
-Notice that degree $2$ and $3$ polynomials are irreducible if and only if they don’t have a root in $K$ since if they can be written as a product of two polynomials of smaller degrees one of them must have degree 1. For instance, $X ^ { 3 } + 2$ is irreducible in $\mathbb{Q}[X]$ since it does not have a root there, but not in $\mathbb{R}[X]$. $X ^ { 2 } + 1$ is irreducible in $\mathbb { R } [ X ]$ , but not in $\mathbb{C}[X]$. Irreducible polynomials over $\mathbb{R}$ and $\mathbb{C}$ are a bit degenerate because they have degree $1$ or $2$, but over $\mathbb{Q}$ there are irreducible polynomials of arbitrarily large degree.
+Notice that degree-$2$ and degree-$3$ polynomials are irreducible if and only if they don’t have a root in $K$, since if they can be written as a product of two polynomials of smaller degrees, one of them must have degree $1$. For instance, $X^3+2$ is irreducible in $\mathbb{Q}[X]$ since it does not have a root there, but not in $\mathbb{R}[X]$. $X^2+1$ is irreducible in $\mathbb{R}[X]$, but not in $\mathbb{C}[X]$. Irreducible polynomials over $\mathbb{R}$ and $\mathbb{C}$ are a bit degenerate because they have degree $1$ or $2$, but over $\mathbb{Q}$ there are irreducible polynomials of arbitrarily large degree.
 
 Here is one last result, which is the only one of this section which will not be used extensively throughout this book.
 
 ## Theorem A.1.2 (Lagrange Interpolation)
 
-For any distinct $a_1,\ldots,a_{n+1}\in $K$$ and $b_1,\ldots,b_{n+1}\in $K$$, there is a unique polynomial $f\in $K$[X]$ of degree at most $n$ such that $f ( a _ { i } ) = b _ { i }$ for $i = 1 , \ldots , n + 1$ . It is given by $\begin{array} { r } { f = \sum _ { i = 1 } ^ { n + 1 } b _ { i } f _ { i } } \end{array}$ where
+For any distinct $a_1,\ldots,a_{n+1}\in K$ and $b_1,\ldots,b_{n+1}\in K$, there is a unique polynomial $f\in K[X]$ of degree at most $n$ such that $f(a_i)=b_i$ for $i=1,\ldots,n+1$. It is given by $f=\sum_{i=1}^{n+1}b_if_i$, where
 
 $$
 f _ {i} := \prod_ {j \neq i} \frac {X - a _ {j}}{a _ {i} - a _ {j}}.
@@ -320,7 +320,7 @@ $$
 
 ## Proof
 
-First, let’s prove uniqueness. If $f , g \in $K$ [ X ]$ have degree at most $n$ and $f ( a _ { i } ) = b _ { i } = g ( a _ { i } )$ for any $i = 1 , \ldots , n + 1$ then $f - g$ has $n + 1$ roots and has degree at most $n$ so it is the zero polynomial, i.e. $f = g .$
+First, let’s prove uniqueness. If $f,g\in K[X]$ have degree at most $n$ and $f(a_i)=b_i=g(a_i)$ for any $i=1,\ldots,n+1$, then $f-g$ has $n+1$ roots and has degree at most $n$, so it is the zero polynomial, i.e. $f=g$.
 
 For existence, notice that $f _ { i } ( a _ { j } ) = 0$ for any $j \neq i$ and $f _ { i } ( a _ { i } ) = 1$ , so that
 
@@ -330,11 +330,11 @@ $$
 
 ## Corollary A.1.3
 
-Let $K \subseteq L$ be two fields. If a polynomial $f \in L [ X ]$ of degree $n$ reaches values in $K$ at $n + 1$ points in $K$, it has coefficients in $K$
+Let $K\subseteq L$ be two fields. If a polynomial $f\in L[X]$ of degree $n$ reaches values in $K$ at $n+1$ points in $K$, it has coefficients in $K$.
 
 ## Proof
 
-If $f(a_i)=b_i$ with $a_i,b_i\in $K$$ for $i=1,\ldots,n+1$ and distinct $a_i$, the Lagrange interpolation formula shows that $f\in $K$[X]$
+If $f(a_i)=b_i$ with $a_i,b_i\in K$ for $i=1,\ldots,n+1$ and distinct $a_i$, the Lagrange interpolation formula shows that $f\in K[X]$.
 
 Exercise $\mathbf { A . 1 . 9 ^ { * } }$ . Prove that every function $f : \mathbb { F } _ { p } \to \mathbb { F } _ { p }$ is polynomial.
 
@@ -342,37 +342,37 @@ To conclude this section, we make one final definition. Unlike what their name w
 
 ## Definition A.1.7 (Rational Function)
 
-A rational function with coefficients in $K$ is a quotient of two polynomials $f/g$ with coefficients in $K$ such that $g\neq0$ (with the additional rule that $f/g=(hf)/(hg)$ for any $n$on-zero $h\in $K$[X]$). The set of rational functions with coefficients in $K$ is denoted $K(X)$.
+A rational function with coefficients in $K$ is a quotient of two polynomials $f/g$ with coefficients in $K$ such that $g\neq0$ (with the additional rule that $f/g=(hf)/(hg)$ for any non-zero $h\in K[X]$). The set of rational functions with coefficients in $K$ is denoted $K(X)$.
 
-The derivative of a rational function $f / g$ is $( f ^ { \prime } g - g ^ { \prime } f ) / ( g ^ { 2 } )$ , where $g ^ { 2 } = g \cdot g .$
+The derivative of a rational function $f/g$ is $(f'g-g'f)/g^2$, where $g^2=g\cdot g$.
 
-Exercise $\mathbf { A . 1 . 1 0 ^ { * } }$ . Prove that the derivative of a rational function does not depend on its form: i.e $( f / g ) ^ { \prime } =$ $( ( h f ) / ( h g ) ) ^ { \prime }$ for any $f , g , h \in $K$ [ X ]$ with $g , h \neq 0$
+Exercise A.1.10*. Prove that the derivative of a rational function does not depend on its form, i.e. $(f/g)'=((hf)/(hg))'$ for any $f,g,h\in K[X]$ with $g,h\neq0$.
 
 ## A.2 Algebraic Structures and Morphisms
 
-We introduced the notion of a field in the last section; here, we shall define a few additional algebraic structures. There are two things to understand from this section: what an integral domain $\mathrm { i s ^ { 5 } }$ and what morphisms and isomorphisms are. This doesn’t mean that the other definitions are useless, but you can ignore them for now. They will be used in some chapters: when this happens the reader should come to this appendix to refresh their memory.
+We introduced the notion of a field in the last section; here, we shall define a few additional algebraic structures. There are two things to understand from this section: what an integral domain is<sup>5</sup> and what morphisms and isomorphisms are. This doesn’t mean that the other definitions are useless, but you can ignore them for now. They will be used in some chapters: when this happens the reader should come to this appendix to refresh their memory.
 
 ## Definition A.2.1 (Ring)
 
-We say a set $R$ with two operations + and $\cdot$ from $R^2$ to $R$ is a ring if the following axioms are satisfied. We write $ab$ for $a \cdot b$ .
+We say a set $R$ with two operations $+$ and $\cdot$ from $R^2$ to $R$ is a ring if the following axioms are satisfied. We write $ab$ for $a\cdot b$.
 
-1. + is associative: $(a + b) + c = a + (b + c)$ for any $a, b, c \in $R$$ .
+1. $+$ is associative: $(a+b)+c=a+(b+c)$ for any $a,b,c\in R$.
 
-2. + is commutative: $a + b = b + a$ for any $a, b \in $R$$ .
+2. $+$ is commutative: $a+b=b+a$ for any $a,b\in R$.
 
-3. additive identity: there is an element $0_R$ such that $0_R + a = a$ for any $a \in $R$$ .
+3. Additive identity: there is an element $0_R$ such that $0_R+a=a$ for any $a\in R$.
 
-4. additive inverse: for any $a \in $R$$ there is an element $-a \in $R$$ such that $a + (-a) = 0_R$ .
+4. Additive inverse: for any $a\in R$ there is an element $-a\in R$ such that $a+(-a)=0_R$.
 
-5. $\cdot$ is associative: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ for any $a, b, c \in $R$$ .
+5. $\cdot$ is associative: $(a\cdot b)\cdot c=a\cdot(b\cdot c)$ for any $a,b,c\in R$.
 
-6. multiplicative identity: there is an element $1_R$ such that $1_R \cdot a = a \cdot 1_R = a$ for any $a \in $R$$ .
+6. Multiplicative identity: there is an element $1_R$ such that $1_R\cdot a=a\cdot1_R=a$ for any $a\in R$.
 
-7. $\cdot$ distributes over +: for any $a, b, c \in $R$$ , $a(b + c) = ab + ac$ and $(b + c)a = ba + ca$ .
+7. $\cdot$ distributes over $+$: for any $a,b,c\in R$, $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$.
 
-Exercise A.2.1<sup>∗</sup>. Prove that $1 _ { R }$ and $0 _ { R }$ are unique, and that any element has a unique additive inverse and a unique multiplicative inverse if it is non-zero.
+Exercise A.2.1<sup>∗</sup>. Prove that $1_R$ and $0_R$ are unique, and that any element has a unique additive inverse and a unique multiplicative inverse if it is non-zero.
 
-Exercise $\mathbf { A } . 2 . 2 ^ { * }$ . Let $R$ be a ring. Prove that $0 _ { R } a = a 0 _ { R } = 0 _ { R }$ for any $a \in $R$ .$
+Exercise A.2.2*. Let $R$ be a ring. Prove that $0_Ra=a0_R=0_R$ for any $a\in R$.
 
 A ring is like a field, but possibly without multiplicative inverses, and with possibly non-commutative multiplication. Non-commutative rings will only be relevant in Chapter 2. Again, $R$ is technically not a ring; $(R,+,\cdot)$ is. By abuse of terminology, we will say that $R$ is a ring when the addition and multiplication are obvious. We shall usually write $0$ for $0_R$ and $1$ for $1_R$, even if they might not technically be our usual $0,1\in\mathbb{Z}$.
 
@@ -388,13 +388,13 @@ Rings have a certain number associated with them which distinguishes rings like 
 
 ## Definition A.2.3 (Characteristic)
 
-Let $R$ be a ring. We say R has characteristic m if $m$ is the smallest integer such that
+Let $R$ be a ring. We say $R$ has characteristic $m$ if $m$ is the smallest positive integer such that
 
 $$
 \underbrace {1 + \ldots + 1} = 0.
 $$
 
-{z<sub>m times</sub>
+_{m\text{ times}}
 
 If no such $m$ exists, we say $R$ has characteristic $0$. The characteristic of $R$ is denoted $\operatorname{char}R$.
 
@@ -408,7 +408,7 @@ We now define a field in terms of these objects, exactly like before, but hopefu
 
 ## Definition A.2.5 (Field)
 
-A field $K$ is a commutative ring where non-zero elements have multiplicative inverses, i.e. for any $a \in $K$$ there is an element $a ^ { - 1 } \in $K$$ such that $a a ^ { - 1 } = 1 _ { K }$
+A field $K$ is a commutative ring where non-zero elements have multiplicative inverses, i.e. for any $a\in K$ there is an element $a^{-1}\in K$ such that $aa^{-1}=1_K$.
 
 For fields, you should think about $\mathbb{Q}$. We also have the analogous definition for non-commutative fields.
 
@@ -416,7 +416,7 @@ Exercise A.2.4*. Prove that the characteristic of a field is either $0$ or a pri
 
 ## Definition A.2.6 (Skew Field)
 
-A skew field $K$ is a field but where multiplication is not necessarily commutative, i.e. a ring with multiplicative inverses: for any $0 \not = a \in $K$$ there is an element $a ^ { - 1 } \in $K$$ such that $a a ^ { - 1 } = a ^ { - 1 } a =$ $1 _ { K }$ (we specify both equalities because multiplication is not necessarily commutative anymore).
+A skew field $K$ is a field where multiplication is not necessarily commutative, i.e. a ring with multiplicative inverses: for any $0\neq a\in K$ there is an element $a^{-1}\in K$ such that $aa^{-1}=a^{-1}a=1_K$ (we specify both equalities because multiplication is not necessarily commutative anymore).
 
 Finally, we define the fundamental integral domains.
 
@@ -426,19 +426,19 @@ A domain is a ring where the product of two non-zero elements is non-zero. A com
 
 For integral domains, you can again think about $\mathbb{Z}$. An example of a commutative ring which isn’t an integral domain is $\mathbb{Z}/4\mathbb{Z}$: $2\cdot2\equiv0\pmod4$, but $2\not\equiv0\pmod4$. $\mathbb{Z}$ is really the typical example of an integral domain, more than of a ring or commutative ring.
 
-Exercise A.2.5. Let $R$ be a finite integral domain (i.e. with finitely cardinality). Prove that it is a field.
+Exercise A.2.5. Let R be a finite integral domain (i.e. with finitely cardinality). Prove that it is a field.
 
-An important fact about integral domains is that they are precisely the subrings of fields, i.e. they are the rings which can be embedded in a larger field. Why is this true? It’s obvious that a subring of a field is an integral domain. For the converse, given an integral domain $R$, you can construct its field of fractions $\operatorname{Frac}(R)$, exactly like how you construct $\mathbb{Q}$ from $\mathbb{Z}$. You define formal objects $a / b$ for $a , b \in $R$$ and then you say $a / \bar { b } = c / d$ if ad = bc and you define addition and multiplication in this obvious ways; it is then easy to check that this yields a field. For instance, for $R=K[X]$, this gives $\operatorname{Frac}(R)=K(X)$.
+An important fact about integral domains is that they are precisely the subrings of fields, i.e. they are the rings which can be embedded in a larger field. Why is this true? It’s obvious that a subring of a field is an integral domain. For the converse, given an integral domain $R$, you can construct its field of fractions $\operatorname{Frac}(R)$, exactly like how you construct $\mathbb{Q}$ from $\mathbb{Z}$. You define formal objects $a/b$ for $a,b\in R$ and then you say $a/b=c/d$ if $ad=bc$ and you define addition and multiplication in this obvious way; it is then easy to check that this yields a field. For instance, for $R=K[X]$, this gives $\operatorname{Frac}(R)=K(X)$.
 
 Exercise $\mathbf { A . 2 . 6 ^ { * } }$ . Prove that a subring of a field is an integral domain.
 
 Exercise A.2.7. What goes wrong if you try to construct the field of fractions of a commutative ring which isn’t a domain?
 
-Since integral domains can be embedded in fields, polynomials with coefficients there retain most of their properties, so we can also define polynomials with coefficients in an integral domain $R$. The ring of such polynomials is denoted $R[X]$, and the field of rational functions with coefficients in $R$, $\operatorname{Frac}(R[X])$, is denoted $R(X)$.
+Since integral domains can be embedded in fields, polynomials with coefficients there retain most of their properties, so we can also define polynomials with coefficients in an integral domain $R$. The ring of such polynomials is denoted $R[X]$, and the ring of rational functions with coefficients in $R$, $\operatorname{Frac}(R[X])$, is denoted $R(X)$.
 
-Exercise $\mathbf { A . 2 . 8 ^ { * } }$ . Let $R$ be an integral domain. Prove that $R [ X ]$ is also one.
+Exercise A.2.8*. Let $R$ be an integral domain. Prove that $R[X]$ is also one.
 
-In fact, perhaps the most important property we lose when restricting ourself to an integral domain, is that we can not do the Euclidean division of any $f$ by any $g \neq 0 .$ . Indeed, our proof Proposition A.1.1 involved dividing by the leading coefficient of $^ { g , }$ and it is true that we can’t have $X = 2 X q + r$ for some $q \in \mathbb { Z } [ X ]$ and $r \in \mathbb { Z } [ X ]$ of degree less than 1. However, this also means that there is one case when we can make this Euclidean division: when $g$ is monic.
+In fact, perhaps the most important property we lose when restricting ourselves to an integral domain is that we cannot do the Euclidean division of any $f$ by any $g\neq0$. Indeed, our proof of Proposition A.1.1 involved dividing by the leading coefficient of $g$, and it is true that we can’t have $X=2Xq+r$ for some $q\in\mathbb{Z}[X]$ and $r\in\mathbb{Z}[X]$ of degree less than $1$. However, this also means that there is one case when we can make this Euclidean division: when $g$ is monic.
 
 Finally, we explain what morphisms are. Imagine you have the two fields $\{ 0 , 1 \}$ and $\{ a , b \}$ where $a , b$ are formal symbols. Multiplication and addition are defined as follows. For the former, $0+0=0$, $0+1=1$ and $1+1=0$ for addition, and $0\cdot0=0$, $0\cdot1=0$ and $1\cdot1=1$ for multiplication. For the latter, it’s $a + a = a , a + b = b$ and $b + b = a$ for addition, and $a \cdot a = a , a \cdot b = a$ and $b \cdot b = b .$
 
@@ -448,25 +448,25 @@ Thus, we want to define formally what a "relabelling" of the elements is. This i
 
 ## Definition A.2.8 (Field Isomorphism)
 
-Let $K$ and $L$ be two fields. We say a function $\varphi:K\to L$ is an isomorphism if $\varphi$ is additive, multiplicative, sends $1$ to $1$, and is bijective, i.e. $\varphi(x+y)=\varphi(x)+\varphi(y)$ and $\varphi(x)\varphi(y)=\varphi(xy)$, and $\varphi(1)=1$ for any $x,y\in $K$$. If there exists such a $\varphi$, we say $K$ and $L$ are isomorphic and write $K\simeq L$.
+Let $K$ and $L$ be two fields. We say a function $\varphi:K\to L$ is an isomorphism if $\varphi$ is additive, multiplicative, sends $1$ to $1$, and is bijective, i.e. $\varphi(x+y)=\varphi(x)+\varphi(y)$ and $\varphi(x)\varphi(y)=\varphi(xy)$, and $\varphi(1)=1$ for any $x,y\in K$. If there exists such a $\varphi$, we say $K$ and $L$ are isomorphic and write $K\simeq L$.
 
 A few words on this definition. The function $\varphi$ is our "relabelling" of the elements: relabel x as $\varphi ( x )$ . The conditions of $\varphi$ are to ensure that $f$ conserves the field structure, i.e. addition gets mapped to addition, multiplication to multiplication, inverse to inverse, identity to identity. The reason why we ask that $f ( 1 ) = 1$ but not that $f ( 0 ) = 0$ is that this follows from $\varphi ( 0 ) + \varphi ( 0 ) = \varphi ( 0 )$ . However $f ( 1 ) = 1$ does not follow from $\varphi ( 1 ) \varphi ( 1 ) = \varphi ( 1 )$ : $ϕ$ could be identically zero.
 
-Similarly, $f ( - x ) = - f ( x )$ and $f ( x ^ { - 1 } ) = f ( x ) ^ { - 1 }$ follow from the additivity and multiplicativity respectively. What we really want is for f to respect every single aspect of the field structure, but we have not written down all of these conditions in the definition of an isomorphism since they are redundant (of course we also want f to be bijective: this is what it means for the fields to be "the same up to relabelling").
+A few words on this definition. The function $\varphi$ is our "relabelling" of the elements: relabel $x$ as $\varphi(x)$. The conditions on $\varphi$ ensure that it preserves the field structure, i.e. addition gets mapped to addition, multiplication to multiplication, inverses to inverses, and identities to identities. The reason why we ask that $\varphi(1)=1$ but not that $\varphi(0)=0$ is that the latter follows from $\varphi(0)+\varphi(0)=\varphi(0)$. However, $\varphi(1)=1$ does not follow from $\varphi(1)\varphi(1)=\varphi(1)$: $\varphi$ could be identically zero.
 
-In fact, all this talk about "conserving the structure" suggests that this might actually be an important notion, and this is why we define morphism as functions which preserve the structure (which is implicit, technically we should say our previous f is a field isomorphism, not just an isomorphism).
+Similarly, $\varphi(-x)=-\varphi(x)$ and $\varphi(x^{-1})=\varphi(x)^{-1}$ follow from additivity and multiplicativity, respectively. What we really want is for $\varphi$ to respect every single aspect of the field structure, but we have not written down all of these conditions in the definition of an isomorphism since they are redundant (of course we also want $\varphi$ to be bijective: this is what it means for the fields to be "the same up to relabelling").
 
 ## Definition A.2.9 (Field Morphism)
 
-Let $K$ and $L$ be two fields. We say a function $\varphi:K\to L$ is a morphism if $\varphi$ is additive, multiplicative, and sends $1$ to $1$, i.e. $\varphi(x+y)=\varphi(x)+\varphi(y)$ and $\varphi(x)\varphi(y)=\varphi(xy)$, and $\varphi(1)=1$ for any $x,y\in $K$$.
+Let $K$ and $L$ be two fields. We say a function $\varphi:K\to L$ is a morphism if $\varphi$ is additive, multiplicative, and sends $1$ to $1$, i.e. $\varphi(x+y)=\varphi(x)+\varphi(y)$ and $\varphi(x)\varphi(y)=\varphi(xy)$, and $\varphi(1)=1$ for any $x,y\in K$.
 
-Commutative rings morphisms and isomorphisms are defined exactly the same way, because the additional structure that comes from fields is the existence of multiplicative inverse, but we have seen that the fact that $\varphi$ sends inverses to inverses already follows from its multiplicativity (and the fact that $\varphi ( 1 ) = 1 )$ ).
+Morphisms and isomorphisms of commutative rings are defined exactly the same way, because the additional structure that comes from fields is the existence of multiplicative inverses, but we have seen that the fact that $\varphi$ sends inverses to inverses already follows from its multiplicativity (and the fact that $\varphi(1)=1$).
 
 You might think that these notions of isomorphisms and morphisms are just pedantic details about how to define formally objects. They are not. They suggest that objects which were initially defined very differently might in fact be similar. For instance, morphisms of sets are just functions since sets have no structure, and isomorphisms are bijective functions. Are bijections useless to study?
 
 An example of fields non-trivially isomorphic is the one of $\mathbb { Q } ( \pi )$ of rational functions in $π$ and $\mathbb { Q } ( e )$ of rational functions in e are isomorphic. This is not obvious, and in fact very hard to prove (we do not do it in this book).<sup>6</sup> A better example will be seen soon, but first we need to define groups for this (they will be used in Chapter 6).
 
-## Definition A.2.10 (Group)
+An example of fields non-trivially isomorphic is the one of $\mathbb{Q}(\pi)$ of rational functions in $\pi$ and $\mathbb{Q}(e)$ of rational functions in $e$; these fields are isomorphic. This is not obvious, and in fact very hard to prove (we do not do it in this book).<sup>6</sup> A better example will be seen soon, but first we need to define groups for this (they will be used in Chapter 6).
 
 We say a set $G$ with an operation $\dagger:G^2\to G$ is a group if $\dagger$ is associative, has an identity, and each element has an inverse for $\dagger$, i.e.:
 
@@ -474,29 +474,29 @@ We say a set $G$ with an operation $\dagger:G^2\to G$ is a group if $\dagger$ is
 2. There is an $e\in G$ such that $a\dagger e=e\dagger a=a$ for any $a\in G$.
 3. For any $a\in G$ there is an $a^{-1}\in G$ such that $a\dagger a^{-1}=a^{-1}\dagger a=e$.
 
-Exercise $\mathbf { A . 2 . 9 ^ { * } }$ . Prove that the identity e of a group $G$ is unique, and that any $a \in G$ has a unique inverse. Moreover, prove that $( x y ) ^ { - 1 } = y ^ { - 1 } x ^ { - 1 }$
+Exercise A.2.9*. Prove that the identity $e$ of a group $G$ is unique, and that any $a\in G$ has a unique inverse. Moreover, prove that $(xy)^{-1}=y^{-1}x^{-1}$.
 
-The simplest example is the cyclic group with $n$ elements $(\mathbb{Z}/n\mathbb{Z},+) $, where $\mathbb{Z}/n\mathbb{Z}$ represents integers modulo $n$. We say it’s cyclic because it’s generated by only one element: the elements of $( \mathbb { Z } / n \mathbb { Z } , + )$ have the form $1 + \ldots + 1$ for some $n$umber of ones. It is commutative or abelian, which means that the operation is commutative.<sup>7</sup>
+The simplest example is the cyclic group with $n$ elements $(\mathbb{Z}/n\mathbb{Z},+)$, where $\mathbb{Z}/n\mathbb{Z}$ represents integers modulo $n$. We say it’s cyclic because it’s generated by only one element: the elements of $(\mathbb{Z}/n\mathbb{Z},+)$ have the form $1+\ldots+1$ for some number of ones. It is commutative or abelian, which means that the operation is commutative.<sup>7</sup>
 
 Note that if you consider rings as groups you must ignore their multiplicative structure, since groups have only operation (you can also consider the multiplicative group of units a ring, i.e. the elements which are invertible).
 
-A slightly more elaborate example, yet still very important, is the symmetric group with $n$ elements $\mathfrak{S}_n$. This is the group of permutations of $\{ 1 , \ldots , n \}$ , and the operation is composition.
+A slightly more elaborate example, yet still very important, is the symmetric group with n elements ${ \mathfrak { S } } _ { n }$ . This is the group of permutations of $\{ 1 , \ldots , n \}$ , and the operation is composition.
 
-Exercise $\mathbf { A . 2 . 1 0 ^ { * } }$ . Check that $( \mathfrak { S } _ { n } , \circ )$ is a group.
+A slightly more elaborate example, yet still very important, is the symmetric group with $n$ elements $\mathfrak{S}_n$. This is the group of permutations of $\{1,\ldots,n\}$, and the operation is composition.
 
 Morphisms of groups are extremely easy to define since groups have so little (yet so much!) structure: it’s simply a function which commutes with the operation: $\varphi : G \to H$ is a morphism if $\varphi ( a \dagger b ) = \varphi ( a ) \star \varphi ( b )$ for any $a , b \in G$
 
 Exercise $\mathbf { A . 2 . 1 1 ^ { * } }$ . Prove that a morphism of groups from $( G , \dagger )$ to $( H , \star )$ maps the identity of $G$ to the identity of H.
 
-We now give an example of a non-trivial isomorphism (of groups). If $p$ is prime, the groups $((\mathbb{Z}/p\mathbb{Z})^{\times},\cdot)$ and $(\mathbb{Z}/(p-1)\mathbb{Z},+)$ are isomorphic, where $(\mathbb{Z}/p\mathbb{Z})^{\times}$ denotes the residue classes modulo $p$ that are coprime to $p$ (so that inverses exist). Since they clearly have the same number of elements, this is equivalent to $( \mathbb { Z } / p \mathbb { Z } ) ^ { \times }$ being cyclic, i.e. generated by one element, which we will call $g .$ . This $g$ is such that, for any $a \in ( \mathbb { Z } / p \mathbb { Z } ) ^ { \times }$ , there is a $k$ such that $a=g^k$ . This is exactly the definition of a primitive root! Thus, this isomorphism translates the fact that there is a primitive root modulo $p$, which is certainly non-trivial! Here is another very interesting example: $(\mathbb{Z}/n\mathbb{Z},+)$ is isomorphic to $(U_n,\cdot)$, where $U_n$ denotes the set of complex $n$th roots of unity. Indeed, the function $\begin{array} { r } { k \mapsto \exp \left( \frac { 2 k i \pi } { n } \right) } \end{array}$ is clearly an isomorphism between the two.
+We now give an example of a non-trivial isomorphism (of groups). If $p$ is a prime, the groups $((\mathbb{Z}/p\mathbb{Z})^{\times},\cdot)$ and $(\mathbb{Z}/(p-1)\mathbb{Z},+)$ are isomorphic, where $(\mathbb{Z}/p\mathbb{Z})^{\times}$ denotes the integers modulo $p$ which are coprime with $p$ (so that inverses exist). Since they clearly have the same number of elements, this is equivalent to $(\mathbb{Z}/p\mathbb{Z})^{\times}$ being cyclic, i.e. generated by one element, which we will call $g$. This $g$ is such that, for any $a\in(\mathbb{Z}/p\mathbb{Z})^{\times}$, there is a $k$ such that $a=g^k$. This is exactly the definition of a primitive root! Thus, this isomorphism translates the fact that there is a primitive root modulo $p$, which is certainly non-trivial! Here is another very interesting example: $(\mathbb{Z}/n\mathbb{Z},+)$ is isomorphic to $(U_n,\cdot)$, where $U_n$ denotes the set of complex $n$th roots of unity. Indeed, the function $k\mapsto\exp\left(\frac{2ki\pi}{n}\right)$ is clearly an isomorphism between the two.
 
-We will usually write our group operations multiplicatively, that is, we will write xy or x·y for x†y. In this case, one should always write the inverse of y as $y ^ { - 1 }$ instead of $1 / y$ , unless the group is already known to be abelian. Indeed, if we were to write $1 / y ,$ would $x / y$ mean $x y ^ { - 1 }$ or $y ^ { - 1 } x ?$ Sometimes the additive notation will also be used, we shall then write $x + y$ for xy and nx for $x ^ { n }$ . We may also write the identity e of $G$ as 1 or 0, depending on whether we are using the additive or multiplicative notation. In addition, when the operation is obvious, we will omit it. For instance, when we consider a ring as a group (such as $\mathbb { Z } / n \mathbb { Z } )$ , the operation will always be addition. Indeed, it cannot be multiplication since 0 does not have an inverse. Conversely, if we write $R ^ { \times }$ , the set of invertible units of $R ,$ this shall be considered as a multiplicative group (it is not additive since $0 \not \in $R$ ^ { \times } )$ .
+We will usually write our group operations multiplicatively, that is, we will write xy or x·y for x†y. In this case, one should always write the inverse of y as $y ^ { - 1 }$ instead of $1 / y$ , unless the group is already known to be abelian. Indeed, if we were to write $1 / y ,$ would $x / y$ mean $x y ^ { - 1 }$ or $y ^ { - 1 } x ?$ Sometimes the additive notation will also be used, we shall then write $x + y$ for xy and nx for $x ^ { n }$ . We may also write the identity e of $G$ as 1 or 0, depending on whether we are using the additive or multiplicative notation. In addition, when the operation is obvious, we will omit it. For instance, when we consider a ring as a group (such as $\mathbb { Z } / n \mathbb { Z } )$ , the operation will always be addition. Indeed, it cannot be multiplication since 0 does not have an inverse. Conversely, if we write $R ^ { \times }$ , the set of invertible units of $R ,$ this shall be considered as a multiplicative group (it is not additive since $0 \not \in R ^ { \times } )$ .
 
 Lastly, we define two important maps on morphisms.
 
 ## Definition A.2.11 (Kernel)
 
-The kernel $\ker\varphi$ of a morphism $\varphi$ is the set of $x$ such that $\varphi(x)=0$. It measures how far $\varphi$ is from being injective.
+The kernel ker $\varphi$ of a morphism $\varphi$ is the set of x such that $\varphi ( x ) = 0$ It measures how far $\varphi$ is from being injective.
 
 ## Definition A.2.12 (Image)
 
@@ -512,9 +512,9 @@ As a final remark, in Appendix C, we will introduce another algebraic structure 
 
 ## Derivatives
 
-Exercise ${ \bf A . 3 . 1 ^ { \dagger } }$ . Let $f , g \in $K$ [ X ]$ be two polynomials. Prove that the derivative of $f \circ g$ is $g ^ { \prime } \cdot f ^ { \prime } \circ g$
+Exercise ${ \bf A . 3 . 1 ^ { \dagger } }$ . Let $f , g \in K [ X ]$ be two polynomials. Prove that the derivative of $f \circ g$ is $g ^ { \prime } \cdot f ^ { \prime } \circ g$
 
-Exercise ${ \bf A . 3 . 2 ^ { \dagger } }$ . Let $f \in $K$ [ X ]$ be a non-constant polynomial. Prove that there are a finite number of $g , h \in $K$ [ X ]$ such that $g \circ h = f$ , up to affine translation, meaning $\begin{array} { r } { ( g , h ) \equiv \left( g ( a X + b ) , \frac { h - b } { a } \right) } \end{array}$
+Exercise ${ \bf A . 3 . 2 ^ { \dagger } }$ . Let $f \in K [ X ]$ be a non-constant polynomial. Prove that there are a finite number of $g , h \in K [ X ]$ such that $g \circ h = f$ , up to affine translation, meaning $\begin{array} { r } { ( g , h ) \equiv \left( g ( a X + b ) , \frac { h - b } { a } \right) } \end{array}$
 
 Exercise A.3.3. Let $f \in \mathbb { R } [ X ]$ be a polynomial. Suppose that $f \circ f$ is the square of a polynomial. Prove that f also is the square of a polynomial.
 
@@ -522,7 +522,7 @@ Exercise A.3.4<sup>†</sup> (USA TST 2017). Let $f , g \in \mathbb { R } [ X ]$
 
 Exercise A.3.5 (All-Russian Olympiad 2014). On a blackboard, we write (only) the polynomials $X^2-3X$ and $X^2-4X$ and all real numbers $c \in \mathbb { R }$ . If the polynomials $f$ and g are written on the board, we can also write $f \pm g , f \cdot g$ and $f \circ g .$ . Is it possible to write a polynomial of the form $X ^ { n } - 1 ?$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f \in $K$ [ X ]$ be a polynomial of degree $n$ and leading coefficient a. Define its discrete derivative as $\Delta f : = f ( X + 1 ) - f ( X )$ . Prove that, for any $g \in $K$ [ X ]$ $\Delta f = \Delta g$ if and only if $f - g$ is constant, and that $\Delta f$ is a polynomial of degree $n - 1$ with leading coefficient an where $a$ is the leading coefficient of $f .$ . Deduce the minimal degree of a monic polynomial $f \in \mathbb { Z } [ X ]$ identically zero modulo $m ,$ for a given integer $m \geq 1$
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 Exercise A.3.7†. Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Define its discrete derivative $\Delta f$ as $x\mapsto f(x+1)-f(x)$. Prove that, for any integer $n\geq0$,
 
@@ -540,7 +540,7 @@ for any $n \in \mathbb { N } .$
 
 Roots of Unity
 
-Exercise A.3.9<sup>†</sup> (Root of Unity Filter). Let $\begin{array} { r } { f = \sum _ { i } a _ { i } X ^ { i } \in $K$ [ X ] } \end{array}$ be a polynomial, and suppose that $\omega _ { 1 } , \ldots , \omega _ { n } \in $K$$ are distinct nth roots of unity. Prove that
+Exercise A.3.9<sup>†</sup> (Root of Unity Filter). Let $f=\sum_i a_iX^i\in K[X]$ be a polynomial, and suppose that $\omega_1,\ldots,\omega_n\in K$ are distinct $n$th roots of unity. Prove that
 
 $$
 \frac {f (\omega_ {1}) + \dots + f (\omega_ {n})}{n} = \sum_ {n | k} a _ {k}.
@@ -564,7 +564,7 @@ Denote by $S(f)$ the sum of the squares of the coefficients of $f$. Deduce that 
 
 Exercise A.3.11<sup>†</sup>. Let k be an integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \nmid k$ and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
 
-Exercise A.3.12†. Let $p \neq 3$ be a prime number. Suppose that a and b are integers such that $p \mid a ^ { 2 } + a b + b ^ { 2 }$ . Prove that $( a + b ) ^ { p } \equiv a ^ { p } + b ^ { p }$ (mod $p ^ { 3 } )$
+Exercise A.3.12<sup>†</sup>. Let $p\neq3$ be a prime number. Suppose that $a$ and $b$ are integers such that $p\mid a^2+ab+b^2$. Prove that $(a+b)^p\equiv a^p+b^p\pmod{p^3}$.
 
 Exercise A.3.13 (China TST 2018). Let k be an integer, p a prime number, and $S$ the set of kth powers of elements of $\mathbb { F } _ { p }$ . Prove that, if $2 < | S | < p - 1$ , the elements of $S$ are not an arithmetic progression.
 
@@ -576,7 +576,7 @@ $$
 x + H - x = H
 $$
 
-for any $x\in G$<sup>2</sup>, we define the quotient $G/H$ of $G$ by $H$ by declaring $x\equiv y\pmod H$ if $x-y\in H$<sup>3</sup>. Prove that this is indeed a group, and that $|G/H|=|G|/|H|$ for any such $G,H$<sup>4</sup>.
+for any $x\in G$, we define the quotient $G/H$ of $G$ by $H$ by declaring $x\equiv y\pmod H$ if $x-y\in H$. Prove that this is indeed a group, and that $|G/H|=|G|/|H|$ for any such $G,H$.
 
 Exercise A.3.15† (Isomorphism Theorems). Prove the following first, second, and third isomorphism theorems.
 
@@ -588,12 +588,12 @@ Exercise A.3.15† (Isomorphism Theorems). Prove the following first, second, an
 
 Exercise A.3.16†. Let G be a finite group, $\varphi : G \to \mathbb { C } ^ { \times }$ be a non-trivial group morphism (i.e. not the constant function 1), where $( \mathbb { C } ^ { \times } , \cdot )$ is the group of non-zero complex numbers under multiplication. Prove that $\textstyle \sum _ { g \in G } \varphi ( g ) = 0$
 
-Exercise ${ \bf A . 3 . 1 7 ^ { \dagger } }$ (Lagrange’s Theorem). Let G be a group of cardinality n (also called the order of G). Prove that $g ^ { n } = e$ for all $g \in G .$ . In other words, the order of an element divides the order of the group. More generally, prove that the order of a subgroup divides the order of the group.
+Exercise ${ \bf A . 3 . 1 7 ^ { \dagger } }$ (Lagrange’s Theorem). Let G be a group of cardinality $n$ (also called the order of G). Prove that $g ^ { n } = e$ for all $g \in G .$ . In other words, the order of an element divides the order of the group. More generally, prove that the order of a subgroup divides the order of the group.
 
 Exercise A.3.18† (5/8 Theorem). Let G be a non-commutative finite group. Prove that the probability
 
 $$
-p (G) = \frac {| \{(x , y) \in G ^ {2} \mid x y = y x \} |}{| G | ^ {2}}
+p (G) = \frac {| \{(x , y) \in $G$ ^ {2} \mid x y = y x \} |}{| G | ^ {2}}
 $$
 
 that two elements commute is at most $5 / 8 .$
@@ -607,7 +607,7 @@ $$
 Exercise A.3.20<sup>†</sup> (Burnside’s Lemma). Let $G$ be a finite group, $S$ a finite set, and $\cdot$ a group action of $G$ on $S$, meaning a map $\cdot:G\times S\to S$ such that $e \cdot s = s$ and $( g h ) \cdot s = g \cdot ( h \cdot s )$ for any $g , h \in G$ and $s \in S$ . Given a $g \in G ,$ , denote by $\operatorname { F i x } ( g )$ the set of elements of s fixed by $g .$ Prove that
 
 $$
-| S / G | = \frac {1}{| G |} \sum_ {g \in G} \operatorname{Fix} (g),
+| S / G | = \frac {1}{| G |} \sum_ {g \in $G$} \operatorname{Fix} (g),
 $$
 
 where $| S / G |$ denotes the number of (disjoint) orbits $\mathcal { O } _ { i } = G s _ { i }$ . Deduce the number of necklaces that have p beads which can be of a colours, where $p$ is a prime number and two necklaces are considered to be the same up to rotation.
@@ -640,7 +640,7 @@ Deduce the Gauss-Lucas theorem: if $f \in \mathbb { C } [ X ]$ is non-constant, 
 
 Exercise A.3.27† (Sturm’s Theorem). Given a squarefree polynomial $f \in \mathbb { R } [ X ]$ , define the sequence $f _ { 0 } = f , f _ { 1 } = f ^ { \prime }$ and $f _ { n + 2 }$ is minus the remainder of the Euclidean division of $f _ { n }$ by $f _ { n + 1 }$ . Define also $V ( \xi )$ as the number of sign changes in the sequence $f _ { 0 } ( \xi ) , f _ { 1 } ( \xi ) , . . . ,$ , ignoring zeros. Prove that the number of distinct real roots of $f$ in the interval $] a , b ]$ is $V ( a ) - V ( b ) .$ 11
 
-Exercise $\mathbf { A . 3 . 2 8 ^ { \dagger } }$ (Ehrenfeucht’s Criterion). Let $K$ be a characteristic zero field, let $f _ { 1 } , \dots , f _ { k } \in $K$ [ X ]$ be polynomials and define
+Exercise A.3.28<sup>†</sup> (Ehrenfeucht’s Criterion). Let $K$ be a characteristic-zero field, let $f_1,\ldots,f_k\in K[X]$ be polynomials and define
 
 $$
 f = f _ {1} (X _ {1}) + \dots + f _ {k} (X _ {k}) \in $K$ [ X _ {1}, \dots , X _ {k} ].
@@ -668,7 +668,7 @@ Exercise A.3.30. Find all polynomials $f \in \mathbb { C } [ X ]$ satisfying
 
 5. $f ( X ^ { 2 } ) = f ( X ) f ( X - 1 ) .$
 
-Exercise A.3.31. Let $f\in $K$[X]$ be a polynomial of degree $n$. Find $f(n+1)$ if
+Exercise A.3.31. Let $f\in K[X]$ be a polynomial of degree $n$. Find $f(n+1)$ if
 
 1. (USAMO 1975) $\textstyle f ( k ) = { \frac { k } { k + 1 } }$ for $k = 0 , \ldots , n$
 
@@ -678,7 +678,7 @@ Exercise A.3.31. Let $f\in $K$[X]$ be a polynomial of degree $n$. Find $f(n+1)$ 
 
 ## A.1 Fields and Polynomials
 
-Exercise A.1.1<sup>∗</sup>. Let K be a field. Prove that $0 _ { K } a = 0 _ { K }$ for any $a \in $K$$
+Exercise A.1.1<sup>∗</sup>. Let $K$ be a field. Prove that $0_Ka=0_K$ for any $a\in K$.
 
 ## Solution
 
@@ -722,7 +722,7 @@ Exercise A.1.4<sup>∗</sup>. Prove that the gcd of 0 and 0 is 0.
 
 Any polynomial divides 0 and 0 if and only if it divides 0.
 
-Exercise A.1.5*. Prove that the Euclidean algorithm produces the gcd. Deduce that the gcd of two polynomials in $K [ X ]$ is also in $K [ X ]$ . (As a consequence, the fundamental theorem of algebra Theorem A.1.1 implies that two polynomials with rational coefficients are coprime in $\mathbb { Q } [ X ]$ if and only if they have a common complex root.)
+Exercise $\mathbf { A . 1 . 5 ^ { * } }$ . Prove that the Euclidean algorithm produces the gcd. Deduce that the gcd of two polynomials in $K [ X ]$ is also in $K [ X ]$ . (As a consequence, the fundamental theorem of algebra Theorem A.1.1 implies that two polynomials with rational coefficients are coprime in $\mathbb { Q } [ X ]$ if and only if they have a common complex root.)
 
 ## Solution
 
@@ -738,7 +738,7 @@ $$
 h \mid f - g q, g \implies h \mid g, (f - g q) + g q = f.
 $$
 
-Exercise A.1.6*. Consider two polynomials $f , g \in $K$ [ X ]$ . Prove that there exist polynomials $u , v \in $K$ [ X ]$ such that $u f + v g = \operatorname* { g c d } ( f , g )$
+Exercise A.1.6*. Consider two polynomials $f,g\in K[X]$. Prove that there exist polynomials $u,v\in K[X]$ such that $uf+vg=\gcd(f,g)$.
 
 ## Solution
 
@@ -754,7 +754,7 @@ as wanted.
 
 One might, at first sight, think that this proof also works for non-coprime $f , g$ (which is impossible for obvious reasons). However, we used the assumption that they were coprime when we said the base case was deg $g = 1 \mathrm { : }$ : this is only true because the gcd is 1 so the Euclidean algorithm eventually yields a pair $\{ 1 , f \}$ with $f \neq 0 ,$ , right before the pair {1, 0}. Otherwise, we would have to do the base case when deg $g = - \infty$ which is clearly impossible.
 
-Exercise A.1.7*. Let $f \in $K$ [ X _ { 1 } , \ldots , X _ { n } ]$ be a polynomial in n variables and suppose $S _ { 1 } , \ldots , S _ { n } \subseteq K$ are subsets of $K$ such that $\left| S _ { i } \right| > \deg _ { X _ { i } } f .$ . If $f$ vanishes on $S _ { 1 } \times \ldots \times S _ { n }$ , prove that $f = 0$ . (This is the generalisation of Corollary A.1.1 to multivariate polynomials.)
+Exercise A.1.7*. Let $f\in K[X_1,\ldots,X_n]$ be a polynomial in $n$ variables and suppose $S_1,\ldots,S_n\subseteq K$ are subsets of $K$ such that $|S_i|>\deg_{X_i}f$. If $f$ vanishes on $S_1\times\cdots\times S_n$, prove that $f=0$. (This is the generalisation of Corollary A.1.1 to multivariate polynomials.)
 
 ## Solution
 
@@ -766,7 +766,7 @@ $$
 
 vanishes on $S _ { 1 } \times \ldots \times S _ { n - 1 }$ and has degree less than $| S _ { i } |$ in $X _ { i } .$ . Hence, $g ( x _ { n } ) = 0$ . Finally, $g$ is a polynomial in $X _ { n }$ (with coefficients in the ring $K [ X _ { 1 } , \dotsc , X _ { n - 1 } ] )$ of degree less than $\vert S _ { n } \vert$ vanishing on $S _ { n }$ , which implies that $\mathrm { i t } ^ { \prime } \mathrm { s \ 0 }$ by Corollary $\mathrm { { A . 1 . 1 . } }$ . (Technically, to use Corollary A.1.1 we would need to work over a field, while we are only working over a ring: $K [ X _ { 1 } , \ldots , X _ { n } ]$ . However, this is trivial to fix: this is an integral domain so we can embed it its field of fractions, i.e. work over the field $K ( X _ { 1 } , \ldots , X _ { n } ) . )$
 
-Exercise A.1.8*. Prove that $( f g ) ^ { \prime } = f ^ { \prime } g + g f ^ { \prime }$ and $( f + g ) ^ { \prime } = f ^ { \prime } + g ^ { \prime }$ for any $f , g \in $K$ [ X ]$ . Show also that $( f ^ { n } ) ^ { \prime } = n f ^ { \prime } f ^ { n - 1 }$ for any positive integer $n$, where $f ^ { k }$ denotes the kth power and not the kth iterate. More generally, show that
+Exercise A.1.8*. Prove that $(fg)'=f'g+gf'$ and $(f+g)'=f'+g'$ for any $f,g\in K[X]$. Show also that $(f^n)'=nf'f^{n-1}$ for any positive integer $n$, where $f^k$ denotes the $k$th power and not the $k$th iterate. More generally, show that
 
 $$
 \left(\prod_ {i = 1} ^ {n} f _ {i}\right) ^ {\prime} = \sum_ {i = 1} ^ {n} f _ {i} ^ {\prime} \prod_ {j \neq i} f _ {j}.
@@ -806,7 +806,7 @@ Exercise A.1.9<sup>∗</sup>. Prove that every function $f : \mathbb { F } _ { p
 
 This follows from Lagrange’s interpolation theorem since $\mathbb { F } _ { p }$ is finite.
 
-Exercise $\mathbf { A . 1 . 1 0 ^ { * } }$ . Prove that the derivative of a rational function does not depend on its form: i.e. $( f / g ) ^ { \prime } = ( ( h f ) / ( h g ) ) ^ { \prime }$ for any $f , g , h \in $K$ [ X ]$ with $g , h \neq 0$
+Exercise A.1.10*. Prove that the derivative of a rational function does not depend on its form, i.e. $(f/g)'=((hf)/(hg))'$ for any $f,g,h\in K[X]$ with $g,h\neq0$.
 
 ## Solution
 
@@ -830,7 +830,7 @@ Solution
 
 This follows from Exercise $\mathrm { A . 2 . 9 ^ { * } }$
 
-Exercise A.2.2*. Let $R$ be a ring. Prove that $0 _ { R } a = a 0 _ { R } = 0 _ { R }$ for any $a \in $R$$
+Exercise A.2.2*. Let $R$ be a ring. Prove that $0_Ra=a0_R=0_R$ for any $a\in R$.
 
 ## Solution
 
@@ -840,21 +840,21 @@ Exercise A.2.3<sup>∗</sup>. Prove that $\operatorname{char}R$ is the smallest 
 
 ## Solution
 
-If $R$ contains a copy of $\mathbb{Z}/m\mathbb{Z}$ with $m\geq1$, then $R$ has characteristic dividing $m$, which shows the result when $m\neq1$. If $m=0$, then $R$ has characteristic zero since $n\neq0$ for all $n$on-zero $n\in\mathbb{Z}$. Conversely, when $\operatorname{char}R=m$, the canonical map $\mathbb{Z}/m\mathbb{Z}\to R$, $\overline{a}\mapsto a\cdot1_R$, is well-defined and injective.
+If $R$ contains a copy of $\mathbb{Z}/m\mathbb{Z}$ with $m\geq1$, then $R$ has characteristic dividing $m$, which shows the result when $m\neq1$. If $m=0$, then $R$ has characteristic zero, since $n\cdot1_R\neq0$ for all non-zero $n\in\mathbb{Z}$. Conversely, when $\operatorname{char}R=m$, the canonical map $\mathbb{Z}/m\mathbb{Z}\to R$, $\overline{a}\mapsto a\cdot1_R$, is well-defined and injective.
 
 because the characteristics are the same.)
 
-Exercise A.2.4<sup>∗</sup>. Prove that the characteristic of a field is either $0$ or a prime number $p .$
+Exercise A.2.4<sup>∗</sup>. Prove that the characteristic of a field is either 0 or a prime number $p .$
 
 ## Solution
 
 Let c denote the characteristic of a given field $K$. If $c \neq 0 ,$ then $c \geq 2$ since the trivial ring is not a field. Suppose that $c = a b$ . Then, in $K$, we have $a b = 0$ which means $a = 0$ or $b = 0$ since it’s an integral domain. By minimality of the characteristic, this means that $c = a$ or $c = b .$ 7
 
-Exercise A.2.5. Let $R$ be a finite integral domain (i.e. with finitely cardinality). Prove that it is a field.
+Exercise A.2.5. Let R be a finite integral domain (i.e. with finitely cardinality). Prove that it is a field.
 
 ## Solution
 
-Let $a \in $R$$ be non-zero. Consider the powers of a: $a , a ^ { 2 } , \dotsb .$ Since R is finite, there exist $i < j$ such that $a ^ { i } = a ^ { j }$ , i.e. $a ^ { i } ( a ^ { j - i } - 1 ) \stackrel { \textstyle - } { = } 0 .$ . Since $a \ne 0$ and $R$ is an integral domain, we get $a ^ { j - i } - 1 = 0 ;$ , so that $a ^ { j - i - \mathrm { i } }$ is the inverse of a.
+Let $a \in R$ be non-zero. Consider the powers of a: $a , a ^ { 2 } , \dotsb .$ Since R is finite, there exist $i < j$ such that $a ^ { i } = a ^ { j }$ , i.e. $a ^ { i } ( a ^ { j - i } - 1 ) \stackrel { \textstyle - } { = } 0 .$ . Since $a \ne 0$ and R is an integral domain, we get $a ^ { j - i } - 1 = 0 ;$ , so that $a ^ { j - i - \mathrm { i } }$ is the inverse of a.
 
 Exercise $\mathbf { A . 2 . 6 ^ { * } }$ . Prove that a subring of a field is an integral domain.
 
@@ -874,11 +874,11 @@ $$
 
 which doesn’t necessarily means $a y = b x$ since d might not be invertible. Here is a concrete counterexample, if $d d ^ { \prime } = 0$ , then $1 / d = d ^ { \prime } / 0$ and $d ^ { \prime } / 0 = 1 / 0$ but $1 / d \neq 1 / 0$
 
-Exercise A.2.8<sup>∗</sup>. Let $R$ be an integral domain. Prove that $R [ X ]$ is also one.
+Exercise A.2.8<sup>∗</sup>. Let R be an integral domain. Prove that $R [ X ]$ is also one.
 
 ## Solution
 
-Suppose that $f$ and $g$ are non-zero elements of $R[X]$ with respective leading coefficients $a$ and $b$. Then, the leading coefficient of $fg$ is $ab$, since $ab\neq0$ as $R$ is an integral domain, which implies in particular that $fg$ is non-zero.
+Suppose that $f$ and g are non-zero elements of $R [ X ]$ with respective leading coefficients a and b. Then, the leading coefficient of $f g$ is ab since ab $\neq 0$ as R is an integral domain, which implies in particular that $f g$ is non-zero.
 
 Exercise $\mathbf { A . 2 . 9 ^ { * } }$ . Prove that the identity e of a group $G$ is unique, and that any $a \in G$ has a unique inverse. Moreover, prove that $( x y ) ^ { - 1 } = y ^ { - 1 } x ^ { - 1 }$
 
@@ -922,7 +922,7 @@ If it is injective, then the kernel is trivial. Otherwise, suppose that $\varphi
 
 ## Derivatives
 
-Exercise A.3.1<sup>†</sup>. Let $f , g \in $K$ [ X ]$ be two polynomials. Prove that the derivative of $f \circ g$ is $g ^ { \prime } \cdot f ^ { \prime } \circ g$
+Exercise A.3.1<sup>†</sup>. Let $f , g \in K [ X ]$ be two polynomials. Prove that the derivative of $f \circ g$ is $g ^ { \prime } \cdot f ^ { \prime } \circ g$
 
 ## Solution
 
@@ -930,11 +930,11 @@ $$
 \text {   Write   } f = \sum_ {i} a _ {i} X ^ {i}. \text {   Then,   } (f \circ g) ^ {\prime} = \sum_ {i} a _ {i} (g ^ {i}) ^ {\prime} = \sum_ {i} i a _ {i} g ^ {\prime} g ^ {i - 1} = g ^ {\prime} f ^ {\prime} \circ g.
 $$
 
-Exercise ${ \bf A . 3 . 2 ^ { \dagger } }$ . Let $f \in $K$ [ X ]$ be a non-constant polynomial. Prove that there are a finite number of $g , h \in $K$ [ X ]$ such that $g \circ h = f ,$ up to affine translation, meaning $\begin{array} { r } { ( g , h ) \equiv \left( g ( a X + b ) , \frac { h - b } { a } \right) } \end{array}$
+Exercise ${ \bf A . 3 . 2 ^ { \dagger } }$ . Let $f \in K [ X ]$ be a non-constant polynomial. Prove that there are a finite number of $g , h \in K [ X ]$ such that $g \circ h = f ,$ up to affine translation, meaning $\begin{array} { r } { ( g , h ) \equiv \left( g ( a X + b ) , \frac { h - b } { a } \right) } \end{array}$
 
 ## Solution
 
-By composing with an affine transformation, we may assume that $h ( 0 ) = 0$ and that h is monic. If we differentiate the equation $g \circ h = f ,$ we get ${ \dot { h } } ^ { \prime } \mid f ^ { \prime } .$ . There is a finite number of such $h ^ { \prime }$ since we fixed its leading coefficient and f is non-constant. Since $h ( 0 ) = 0$ , there is also a finite number of h. Since g is uniquely determined from $h ,$ we are done.
+By composing with an affine transformation, we may assume that $h(0)=0$ and that $h$ is monic. If we differentiate the equation $g\circ h=f$, we get $h'\mid f'$. There are a finite number of such $h'$ since we fixed its leading coefficient and $f$ is non-constant. Since $h(0)=0$, there is also a finite number of $h$. Since $g$ is uniquely determined from $h$, we are done.
 
 Exercise A.3.4<sup>†</sup> (USA TST 2017). Let $f , g \in \mathbb { R } [ X ]$ be non-constant coprime polynomials. Prove that there are at most three real numbers $λ$ such tha $f + \lambda g$ is the square of a polynomial.
 
@@ -960,11 +960,11 @@ $$
 g ^ {\prime} (f + \lambda g) - g (f ^ {\prime} + \lambda g ^ {\prime}) = f g ^ {\prime} - g ^ {\prime} f.
 $$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f\in $K$[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in $K$[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 ## Solution
 
-The discrete derivative operator is a morphism (from the space of polynomials of degree at most $n$ to the space of polynomials of degree at most $n - 1 )$ , thus it sufices to show that its kernel consists only of constants. This follows from the second part, that $\Delta f$ is a polynomial of degree $n - 1$ . For this, simply write $\textstyle f = \sum _ { i = 0 } ^ { n } a _ { i } X ^ { i }$ . Then,
+The discrete derivative operator is a morphism (from the space of polynomials of degree at most n to the space of polynomials of degree at most $n - 1 )$ , thus it sufices to show that its kernel consists only of constants. This follows from the second part, that $\Delta f$ is a polynomial of degree $n - 1$ . For this, simply write $\textstyle f = \sum _ { i = 0 } ^ { n } a _ { i } X ^ { i }$ . Then,
 
 $$
 \Delta f = \sum_ {i = 0} ^ {n} a _ {i} ((X + 1) ^ {i} - X ^ {i}) = \sum_ {i = 0} ^ {n} a _ {i} \sum_ {j = 0} ^ {i - 1} {\binom {i} {j}} X ^ {j}
@@ -1018,7 +1018,7 @@ is a polynomial as well. Note also that its leading coefficient is $\frac{1}{m+1
 
 ## Roots of Unity
 
-Exercise A.3.9† (Root of Unity Filter). Let $\begin{array} { r } { f = \sum _ { i } a _ { i } X ^ { i } \in $K$ [ X ] } \end{array}$ be a polynomial, and suppose that $\omega _ { 1 } , \ldots , \omega _ { n } \in $K$$ are distinct nth roots of unity. Prove that
+Exercise A.3.9† (Root of Unity Filter). Let $f=\sum_i a_iX^i\in K[X]$ be a polynomial, and suppose that $\omega_1,\ldots,\omega_n\in K$ are distinct $n$th roots of unity. Prove that
 
 $$
 \frac {f (\omega_ {1}) + \ldots + f (\omega_ {n})}{n} = \sum_ {n | k} a _ {k}.
@@ -1098,7 +1098,7 @@ Exercise A.3.12<sup>†</sup>. Let $p\neq3$ be a prime number. Suppose that $a$ 
 
 Note that we can suppose that $a,b\not\equiv0\pmod p$ and reduce the problem to the case where $b=1$ by considering $x\equiv ab^{-1}\pmod p$ so that $x^2+x+1\equiv0$. In particular, $x$ has order $3$ modulo $p$ since $x^3-1\equiv(x-1)(x^2+x+1)$ but $x\not\equiv1$ since $p\neq3$. This implies that $p\equiv1\pmod3$ by Exercise $3.3.4^*$. (This is a special case of Theorem 3.3.1.)
 
-The key point is that, since $p\equiv1\pmod3$, we have $(X^2+X+1)^2\mid (X+1)^p-X^p-1=:f$. Since $(X+1)^p-X^p-1\equiv0\pmod p$ by the binomial expansion (see ?? for more details), this means that $(X^2+X+1)^2$ divides the polynomial $f/p$ in $\mathbb{Q}[X]$, and hence in $\mathbb{Z}[X]$ too since it is monic. We conclude that $p(X^2+X+1)^2\mid f$ in $\mathbb{Z}[\overline{X}]$, so that
+The key point is that, since $p\equiv1\pmod3$, we have $(X^2+X+1)^2\mid(X+1)^p-X^p-1=:f$. Since $(X+1)^p-X^p-1\equiv0\pmod p$ by the binomial expansion (see ?? for more details), this means that $(X^2+X+1)^2$ divides the polynomial $f/p$ in $\mathbb{Q}[X]$, and hence in $\mathbb{Z}[X]$ too since it is monic. We conclude that $p(X^2+X+1)^2\mid f$ in $\mathbb{Z}[\overline{X}]$, so that
 
 $$
 v _ {p} (f (x)) \geq v _ {p} (p (x ^ {2} + x + 1)) \geq 3
@@ -1134,13 +1134,13 @@ for any $x\in G$<sup>2</sup>, we define the quotient $G/H$ of $G$ by $H$ by decl
 
 ## Solution
 
-$G/H$ is clearly closed under the operation of $G$ and has inverses and an identity. We need, however, to check that the operation is well-defined: if $x\equiv y\pmod H$ and $z\in G$, then $x+z\equiv y+z\pmod H$ and $z+x\equiv z+y\pmod H$. For the former, note that $(x+z)-(y+z)=x-y\in H$, since $G$ is abelian; for the latter, note that $(z+x)-(z+y)=z+(x-y)-z$ is in $H$ because $H$ is normal in $G$. The second part is obvious: any $x\in G$ is equal to exactly $|H|$ elements modulo $H$, namely $x+y$ for $y\in H$.
+$G/H$ is clearly closed under the operation of $G$ and has inverses and an identity. We need, however, to check that the operation is well-defined: if $x\equiv y\pmod H$ and $z\in G$, then $x+z\equiv y+z\pmod H$ and $z+x\equiv z+y\pmod H$. For the former, note that $(x+z)-(y+z)=x-y\in H$; for the latter, note that $(z+x)-(z+y)=z+(x-y)-z$ is in $H$ because $H$ is normal in $G$. The second part is obvious: any $x\in G$ is equal to exactly $|H|$ elements modulo $H$, namely $x+y$ for $y\in H$.
 
 Exercise A.3.15† (Isomorphism Theorems). Prove the following first, second, and third isomorphism theorems.
 
 1. Let $\varphi:A\to B$ be a morphism of groups. Then $A/\ker\varphi\simeq\operatorname{im}\varphi$. (In particular, $\ker\varphi$ is normal in $A$ and $|\operatorname{im}\varphi|\cdot|\ker\varphi|=|A|$.)
-
-2. Let H be a subgroup of a group $G$, and N a normal subgroup of G. Then, $H / H \cap N \simeq H N / N$ (In particular, you need to show that this makes sense: HN is a group and $H \cap N$ is normal in $H . )$
+2. Let $H$ be a subgroup of a group $G$, and $N$ a normal subgroup of $G$. Then $H/(H\cap N)\simeq HN/N$. (In particular, you need to show that this makes sense: $HN$ is a group and $H\cap N$ is normal in $H$.)
+3. Let $N\subseteq H$ be normal subgroups of a group $G$. Then $(G/N)/(H/N)\simeq G/H$.
 
 3. Let $N \subseteq H$ be normal subgroups of a group $G$. Then, $( G / N ) / ( H / N ) \simeq G / H$
 
@@ -1148,13 +1148,13 @@ Exercise A.3.15† (Isomorphism Theorems). Prove the following first, second, an
 
 1. Note that $\ker\varphi$ is normal in $A$. Indeed, if $\varphi(x)=1$, then $\varphi(yxy^{-1})=\varphi(y)\varphi(x)\varphi(y)^{-1}=1$ too. Second, note that every element in the image of $\varphi$ has exactly one preimage in $A/\ker\varphi$: indeed, if $\varphi(x)=\varphi(y)$, then $xy^{-1}\in\ker\varphi$, so they are equal modulo $\ker\varphi$. This shows that it is an isomorphism (it is clearly surjective, and we have shown it was injective too).
 
-2. Note that $H \cap N$ is normal in H since $N$ is so $h H \cap N h ^ { - 1 } \subseteq N$ but this is also in H when $h \in H$ so must be equal to $H \cap N .$ . Note also that $H N$ is indeed a group since, if $g m , h n \in H N .$ , then $m h = h \ell$ for some $\ell \in N$ as N is normal, so
+2. Note that $H \cap N$ is normal in $H$ since $N$ is so $h H \cap N h ^ { - 1 } \subseteq N$ but this is also in $H$ when $h \in H$ so must be equal to $H \cap N .$ . Note also that $H N$ is indeed a group since, if $g m , h n \in H N .$ , then $m h = h \ell$ for some $\ell \in N$ as N is normal, so
 
 $$
-g m h n = g h \ell n \in H N.
+g m h n = g h \ell n \in $H$ N.
 $$
 
-Similarly, $g m = k g$ for some $k \in G$ so $( g m ) ^ { - 1 } = g ^ { - 1 } k ^ { - 1 } \in H N _ { }$ . Now, consider the natural map from H to $H N / N ,$ sending h to $h N$ . Its kernel consists of the h such that $h N = N$ , i.e. $h \in N$ . Hence, its kernel is $H \cap N$ so we get $H / H \cap N \simeq H N / N$ by the first isomorphism theorem.
+Similarly, $g m = k g$ for some $k \in G$ so $( g m ) ^ { - 1 } = g ^ { - 1 } k ^ { - 1 } \in H N _ { }$ . Now, consider the natural map from $H$ to $H N / N ,$ sending h to $h N$ . Its kernel consists of the h such that $h N = N$ , i.e. $h \in N$ . Hence, its kernel is $H \cap N$ so we get $H / H \cap N \simeq H N / N$ by the first isomorphism theorem.
 
 3. Consider the surjective map $G / N  G / H$ which sends $g N$ to $g H$ . It is well defined since $N \subseteq H . g N$ is in the kernel if $g H = H , { \mathrm { i . e . } } \ g \in H .$ . Hence, the kernel consists of hN for $h \in H ,$ , i.e. $H / N$ . We conclude from the first isomorphism theorem that $G / H \simeq ( G / N ) / ( H / N )$ as wanted.
 
@@ -1165,7 +1165,7 @@ Exercise A.3.16<sup>†</sup>. Let G be a finite group, $\varphi : G \to \mathbb
 Note that, for any $h \in G , g \mapsto h g$ is a bijection so
 
 $$
-\sum_ {g \in G} \varphi (g) = \sum_ {g \in G} \varphi (h g) = \varphi (h) \sum_ {g \in G} \varphi (g)
+\sum_ {g \in $G$} \varphi (g) = \sum_ {g \in $G$} \varphi (h g) = \varphi (h) \sum_ {g \in $G$} \varphi (g)
 $$
 
 which means that $\textstyle \sum _ { g \in G } \varphi ( g ) = 0$ by picking an h such that $\varphi ( h ) \neq 1$
@@ -1183,10 +1183,10 @@ since the numerator is zero while the denominator isn’t, as $n > 1$ . To concl
 isomorphism theorem from Exercise A.3.15<sup>†</sup>, we have
 
 $$
-\sum_ {g \in G} \varphi (g) = \frac {| G |}{\ker \varphi} \sum_ {x \in \mathrm{im} \varphi} x = 0.
+\sum_ {g \in $G$} \varphi (g) = \frac {| G |}{\ker \varphi} \sum_ {x \in \mathrm{im} \varphi} x = 0.
 $$
 
-Exercise A.3.17<sup>†</sup> (Lagrange’s Theorem). Let G be a group of cardinality n (also called the order of G). Prove that $g ^ { n } = e$ for all $g \in G .$ . In other words, the order of an element divides the order of the group. More generally, prove that the order of a subgroup divides the order of the group.
+Exercise A.3.17<sup>†</sup> (Lagrange’s Theorem). Let G be a group of cardinality $n$ (also called the order of G). Prove that $g ^ { n } = e$ for all $g \in G .$ . In other words, the order of an element divides the order of the group. More generally, prove that the order of a subgroup divides the order of the group.
 
 ## Solution
 
@@ -1195,7 +1195,7 @@ See Theorem 2.5.1 and Exercise 6.3.15<sup>∗</sup>.
 Exercise A.3.18<sup>†</sup> (5/8 Theorem). Let $G$ be a non-commutative finite group. Prove that the probability
 
 $$
-p (G) = \frac {| \{(x , y) \in G ^ {2} \mid x y = y x \} |}{| G | ^ {2}}
+p (G) = \frac {| \{(x , y) \in $G$ ^ {2} \mid x y = y x \} |}{| G | ^ {2}}
 $$
 
 that two elements commute is at most $5 / 8 .$
@@ -1221,7 +1221,7 @@ Now, if $x \notin Z , C ( x )$ is a subgroup of G distinct from it so has cardin
 conclude,
 
 $$
-\begin{array}{l} \frac {| \{(x , y) \in G ^ {2} \mid x y = y x \} |}{| G | ^ {2}} = \sum_ {x \in G} \frac {| C (x) |}{| G | ^ {2}} \\ \qquad = \sum_ {x \in Z} \frac {| G |}{| G | ^ {2}} + \sum_ {x \not \in Z} \frac {| C (x) |}{| G | ^ {2}} \\ \qquad \leq \frac {| Z |}{| G |} + (| G | - | Z |) \cdot \frac {| G | / 2}{| G | ^ {2}} \\ \qquad = \frac {| Z |}{| G |} + \frac {1}{2} - \frac {| Z |}{2 | G |} \\ \qquad = \frac {| Z |}{2 | G |} + \frac {1}{2} \\ \qquad \leq \frac {1}{8} + \frac {1}{2} \\ \qquad = \frac {5}{8}. \end{array}
+\begin{array}{l} \frac {| \{(x , y) \in $G$ ^ {2} \mid x y = y x \} |}{| G | ^ {2}} = \sum_ {x \in $G$} \frac {| C (x) |}{| G | ^ {2}} \\ \qquad = \sum_ {x \in $\mathbb{Z}$} \frac {| G |}{| G | ^ {2}} + \sum_ {x \not \in $\mathbb{Z}$} \frac {| C (x) |}{| G | ^ {2}} \\ \qquad \leq \frac {| Z |}{| G |} + (| G | - | Z |) \cdot \frac {| G | / 2}{| G | ^ {2}} \\ \qquad = \frac {| Z |}{| G |} + \frac {1}{2} - \frac {| Z |}{2 | G |} \\ \qquad = \frac {| Z |}{2 | G |} + \frac {1}{2} \\ \qquad \leq \frac {1}{8} + \frac {1}{2} \\ \qquad = \frac {5}{8}. \end{array}
 $$
 
 ## Remark A.3.3
@@ -1238,7 +1238,7 @@ $$
 
 This problem has two parts: proving that a finite abelian group is isomorphic to a product of cyclic groups in the wanted way, and proving that the torsion $T$ of a finitely generated abelian group, i.e. the set of elements with finite order (which is a subgroup here since G is abelian) is finite and that $G \simeq \mathbb { Z } ^ { n } \times T$ for some $n$.
 
-For the first part, pick an element $h \in G$ of maximal order $m .$ . We claim that the order of any element $g \in G$ divides m. (We know that this must be true by the statement: this m is our $d _ { k } .$ Note however that this is false for non-abelian groups.) Indeed, suppose that $x , y \in G$ have order $a , b .$ We will construct an element of order $\operatorname { l c m } ( a , b )$ . First suppose that a and b are coprime. Then, $a ( x + y ) = a x$ has order b since $\operatorname* { g c d } ( a , b ) = 1$ , and similarly $b ( x + y ) = b y$ has order $a .$ Thus, the order of $x + y$ is divisible by a and $b ,$ and hence by ab. Conversely, it clearly divides ab so must be exactly ab.
+For the first part, pick an element $h \in G$ of maximal order $m .$ . We claim that the order of any element $g \in G$ divides m. (We know that this must be true by the statement: this m is our $d _ { k } .$ Note however that this is false for non-abelian groups.) Indeed, suppose that $x , y \in G$ have order $a , b .$ We will construct an element of order $\operatorname { l c m } ( a , b )$ . First suppose that a and b are coprime. Then, $a ( x + y ) = a x$ has order $b$ since $\operatorname* { g c d } ( a , b ) = 1$ , and similarly $b ( x + y ) = b y$ has order $a .$ Thus, the order of $x + y$ is divisible by a and $b ,$ and hence by ab. Conversely, it clearly divides ab so must be exactly ab.
 
 Now, if $a$ and $b$ are not necessarily coprime, let $a'=\prod_{v_p(a)\geq v_p(b)}p^{v_p(a)}$ and $b'=\prod_{v_p(a)<v_p(b)}p^{v_p(b)}$, so that $a'$ and $b'$ are coprime and have product $\operatorname{lcm}(a,b)$. The elements $( a / a ^ { \prime } ) x$ and $( b / \bar { b } ^ { \prime } ) y$ have respective orders $a ^ { \prime }$ and $b ^ { \prime }$ so we are done by the previous step since $a ^ { \prime }$ and $b ^ { \prime }$ are coprime.
 
@@ -1248,7 +1248,7 @@ $$
 G \simeq H \times G / H.
 $$
 
-Continuing in this fashion with $G / H$ (which has a strictly smaller cardinality unless $G$ is already trivial) yields the wanted decomposition, since we have shown that the $d _ { i }$ are divisible by the previous one ($m$ is divisible by the order of any element). To prve that $G \simeq H \times G / H _ { \mathrm { \scriptsize { ; } } }$ , we will find a morphism $\varphi$ from $G$ to $H$ which is the identity H. Indeed, $g\mapsto(\varphi(g),g+H)$ will then be the wanted isomorphism between $G$ and $H\times G/H$ : if $\varphi ( g ) = \varphi ( g ^ { \prime } )$ and $$g\equiv g'\pmod H$$ then $\varphi ( g - g ^ { \prime } ) = g - g ^ { \prime }$ since it is the identity on H so we must have $g = g ^ { \prime }$ . Thus, our morphism is injective and hence bijective since $| G | = | H | \cdot | G / H |$
+Continuing in this fashion with $G/H$ (which has a strictly smaller cardinality unless $G$ is already trivial) yields the wanted decomposition, since we have shown that the $d_i$ are divisible by the previous one ($m$ is divisible by the order of any element). To prove that $G\simeq H\times G/H$, we will find a morphism $\varphi$ from $G$ to $H$ which is the identity on $H$. Indeed, $g\mapsto(\varphi(g),g+H)$ will then be the wanted isomorphism between $G$ and $H\times G/H$: if $\varphi(g)=\varphi(g')$ and $g\equiv g'\pmod H$, then $\varphi(g-g')=g-g'$ since it is the identity on $H$, so we must have $g=g'$. Thus, our morphism is injective and hence bijective since $|G|=|H|\cdot|G/H|$.
 
 We proceed by induction on the minimal number of elements needed to generate $G$ from $H$. When $H=G$ it is trivial. Now, suppose $\varphi$ is a morphism from $G'\subseteq G$ to $H$ and let $g\in G\setminus G'$ We will extend $ϕ$ to $\langle G ^ { \prime } , g \rangle$ , the subgroup generated by $G ^ { \prime }$ and g as desired. Let $n$ be the order of $g$ in $G/G'$, i.e. the smallest positive integer such that $ng\in G'$. Then, $kg\in G'$ if and only if $n\mid k$. Thus, $\varphi(g'+kg):=\varphi(g')+k\varphi(g)$ is well-defined as long as $\varphi(g)$ is such that
 
@@ -1256,9 +1256,9 @@ $$
 \varphi (n g) = n \varphi (g).
 $$
 
-Now, note that $n$ divides the order of $g$, which divides $m=|H|$. Hence, it is always possible to find such a $\varphi(g)$. If $\varphi(ng)=kh$, then, since $mg=0$, we have $(mk/n)h=0$, i.e. $n\mid k$, which means that $\varphi(g)=(k/n)h$ works. Note also that this reasoning shows that the decompositio$n$ is unique too.
+Now, note that $n$ divides the order of $g$, which divides $m=|H|$. Hence, it is always possible to find such a $\varphi(g)$. If $\varphi(ng)=kh$, then, since $mg=0$, we have $(mk/n)h=0$, i.e. $n\mid k$, which means that $\varphi(g)=(k/n)h$ works. Note also that this reasoning shows that the decomposition is unique too.
 
-Now, we prove that torsion-free finitely generated abelian groups are isomorphic to $\mathbb{Z}^n$ for a unique $n$. But first, we show how the problem follows from these two special cases. Note that $G/T$ is torsion-free: if $x+T$ has finite order, then $nx\in T$ for some positive integer $n$, so $x$ has finite order, i.e. $x\in T$. Pick a basis $\alpha _ { 1 }$ (mod $T ) , \ldots , \alpha _ { n }$ (mod T). Now, we claim that
+Now, we prove that torsion-free finitely generated abelian groups are isomorphic to $\mathbb{Z}^n$ for a unique $n$. But first, we show how the problem follows from these two special cases. Note that $G/T$ is torsion-free: if $x+T$ has finite order, then $nx\in T$ for some positive integer $n$, so $x$ has finite order, i.e. $x\in T$. Pick a basis $\alpha_1+T,\ldots,\alpha_n+T$. Now, we claim that
 
 $$
 G \simeq T \times (\alpha_ {1} \mathbb {Z} + \dots + \alpha_ {n} \mathbb {Z}) \simeq T \times \mathbb {Z} ^ {n}
@@ -1266,35 +1266,35 @@ $$
 
 as wanted. This follows from the simple isomorphism $( x , y ) \mapsto x + y .$ This is surjective by definition, since $\alpha _ { 1 } \mathbb { Z } + \ldots + \alpha _ { n } \mathbb { Z }$ is a system of representatives of $G / T$ . For the injectivity, note that, if $x + y = x ^ { \prime } + y ^ { \prime }$ , then $y - y ^ { \prime } = x - x ^ { \prime } \in T$ so $y = y ^ { \prime }$ and thus $\boldsymbol { x } \ = \ \boldsymbol { x } ^ { \prime }$ since $\alpha _ { 1 } \mathbb { Z } + . . . + \alpha _ { n } \mathbb { Z } \simeq G / T$ has trivial torsion. There is one last thing we need to show however: that $T$ is finite. Pick an isomorphism $\varphi : G \mapsto T \times \mathbb { Z } ^ { n }$ . Then, the first coordinates of the image of a generating family of elements of $G$ generate T. Since they all have finite order, they generate a finite number of elements as wanted.
 
-Hence, we only need to prove that if $G$ has trivial torsion, it is isomorphic to $\mathbb{Z}^n$ for some $n$. Note that this $n$ is unique: if we had an isomorphism from $\mathbb{Z}^m$ to $\mathbb{Z}^n$, we would have one from $(\mathbb{Z}/2\mathbb{Z})^m$ to $(\mathbb{Z}/2\mathbb{Z})^n$ by reducing modulo $2$, and this forces $m=n$. Pick a generating set of minimal cardinality $\alpha _ { 1 } , \ldots , \alpha _ { n }$ . We wish to prove that it is linearly independent. Suppose that it is not the case, and let $N \neq 0$ be the minimum value of the absolute values of the coefficients of a non-trivial linear combination which is zero. In fact, we shall also pick the generating set to minimise N. The contradiction will then come from a construction of another generating set with zero linear combination with smaller coefficients.
+Hence, we only need to prove that if $G$ has trivial torsion, it is isomorphic to $\mathbb{Z}^n$ for some $n$. Note that this $n$ is unique: if we had an isomorphism from $\mathbb{Z}^m$ to $\mathbb{Z}^n$, we would have one from $(\mathbb{Z}/2\mathbb{Z})^m$ to $(\mathbb{Z}/2\mathbb{Z})^n$ by reducing modulo $2$, and this forces $m=n$. Pick a generating set of minimal cardinality $\alpha_1,\ldots,\alpha_n$. We wish to prove that it is linearly independent. Suppose that it is not the case, and let $N\neq0$ be the minimum value of the absolute values of the coefficients of a non-trivial linear combination which is zero. In fact, we shall also pick the generating set to minimise $N$. The contradiction will then come from a construction of another generating set with zero linear combination with smaller coefficients.
 
-Suppose that $k _ { 1 } \alpha _ { 1 } + . . . + k _ { n } \alpha _ { n } = 0$ and $N = | k _ { 1 } | + \ldots + | k _ { n } |$ . Suppose without loss of generality that $0 ~ < ~ | \boldsymbol { k } _ { 1 } | ~ < ~ | \boldsymbol { k } _ { 2 } |$ . Say we replace the family $\alpha _ { 1 } , \ldots , \alpha _ { n }$ by $\alpha _ { 1 } \pm \alpha _ { 2 } , \alpha _ { 2 } , . . . , \alpha _ { n }$ . Then, $k _ { 1 } \alpha _ { 1 } + \ldots + k _ { n } \alpha _ { n } = 0$ becomes
+Suppose that $k_1\alpha_1+\cdots+k_n\alpha_n=0$ and $N=|k_1|+\cdots+|k_n|$. Suppose without loss of generality that $0<|k_1|<|k_2|$. Say we replace the family $\alpha_1,\ldots,\alpha_n$ by $\alpha_1\pm\alpha_2,\alpha_2,\ldots,\alpha_n$. Then, $k_1\alpha_1+\cdots+k_n\alpha_n=0$ becomes
 
 $$
 k _ {1} (\alpha_ {1} \pm \alpha_ {2}) + (k _ {2} \mp k _ {1}) \alpha_ {2} + k _ {3} \alpha_ {3} \dots + k _ {n} \alpha_ {n} = 0.
 $$
 
-By picking the ±1 sign appropriately, we ensure that $| k _ { 2 } \mp k _ { 1 } | < | k _ { 2 } |$ thus leading to a smaller value of $N _ { ; }$ which is a contradiction. We are done.
+By picking the $\pm1$ sign appropriately, we ensure that $|k_2\mp k_1|<|k_2|$, thus leading to a smaller value of $N$, which is a contradiction. We are done.
 
-Exercise A.3.20<sup>†</sup> (Burnside’s Lemma). Let $G$ be a finite group, $S$ a finite set, and $\cdot$ a group action of $G$ on $S$, meaning a map $\cdot:G\times S\to S$ such that $e \cdot s = s$ and $( g h ) \cdot s = g \cdot ( h \cdot s )$ for any $g , h \in G$ and $s \in S$ . Given a $g \in G ,$ , denote by $\operatorname { F i x } ( g )$ the set of elements of s fixed by $g .$ Prove that
+Exercise A.3.20<sup>†</sup> (Burnside’s Lemma). Let $G$ be a finite group, $S$ a finite set, and $\cdot$ a group action of $G$ on $S$, meaning a map $\cdot:G\times S\to S$ such that $e\cdot s=s$ and $(gh)\cdot s=g\cdot(h\cdot s)$ for any $g,h\in G$ and $s\in S$. Given $g\in G$, denote by $\operatorname{Fix}(g)$ the set of elements of $S$ fixed by $g$. Prove that
 
 $$
-| S / G | = \frac {1}{| G |} \sum_ {g \in G} \operatorname{Fix} (g),
+| S / G | = \frac {1}{| G |} \sum_ {g \in $G$} \operatorname{Fix} (g),
 $$
 
-where $| S / G |$ denotes the number of (disjoint) orbits $\mathcal { O } _ { i } = G s _ { i }$ . Deduce the number of necklaces that have $p$ beads which can be of a colours, where $p$ is a prime number and two necklaces are considered to be the same up to rotation.
+where $|S/G|$ denotes the number of (disjoint) orbits $\mathcal{O}_i=Gs_i$. Deduce the number of necklaces that have $p$ beads which can be of $a$ colours, where $p$ is a prime number and two necklaces are considered to be the same up to rotation.
 
 ## Solution
 
-Consider the sum $\sum _ { g \in G } | \operatorname { F i x } ( g ) |$ . This is equal to the number of pairs $(g,s)$ such that $gs=s$. Hence, this is also equal to $\sum _ { s \in S } | \operatorname { S t a b } ( s ) |$ , where $\operatorname { S t a b } ( s )$ denotes the elements of G fixing s. Now consider the orbit Gs of s. We claim that $| G s | = | G / \operatorname { S t a b } ( s ) | = | G | / | \operatorname { S t a b } ( s ) |$ |. Indeed, the map from the left cosets $G/\operatorname{Stab}(s)$ to $Gs$ sending $g\operatorname{Stab}(s)$ to $gs$ is clearly a bijection: if $g s = h s$ then $h ^ { - 1 } g \in \mathrm { S t a b } ( s )$ so $g \mathrm { S t a b } ( s ) = h \mathrm { S t a b } ( s )$ . Hence,
+Consider the sum $\sum_{g\in G}|\operatorname{Fix}(g)|$. This is equal to the number of pairs $(g,s)$ such that $gs=s$. Hence, this is also equal to $\sum_{s\in S}|\operatorname{Stab}(s)|$, where $\operatorname{Stab}(s)$ denotes the elements of $G$ fixing $s$. Now consider the orbit $Gs$ of $s$. We claim that $|Gs|=|G/\operatorname{Stab}(s)|=|G|/|\operatorname{Stab}(s)|$. Indeed, the map from the left cosets $G/\operatorname{Stab}(s)$ to $Gs$ sending $g\operatorname{Stab}(s)$ to $gs$ is clearly a bijection: if $gs=hs$, then $h^{-1}g\in\operatorname{Stab}(s)$, so $g\operatorname{Stab}(s)=h\operatorname{Stab}(s)$. Hence,
 
 $$
-\begin{array}{c} \sum_ {g \in G} | \operatorname{Fix} (g) | = | G | \sum_ {s \in S} \frac {1}{| G s |} \\ = \sum_ {\mathcal {O} \in S / G} \sum_ {x \in \mathcal {O}} \frac {1}{| \mathcal {O} |} \\ = \sum_ {\mathcal {O} \in S / G} 1 \\ = | S / G | \end{array}
+\begin{array}{c} \sum_ {g \in $G$} | \operatorname{Fix} (g) | = | G | \sum_ {s \in $S$} \frac {1}{| G s |} \\ = \sum_ {\mathcal {O} \in $S$ / G} \sum_ {x \in \mathcal {O}} \frac {1}{| \mathcal {O} |} \\ = \sum_ {\mathcal {O} \in $S$ / G} 1 \\ = | S / G | \end{array}
 $$
 
 as desired.
 
-For the second part, consider the cyclic group $\mathbb { Z } / p \mathbb { Z }$ acting on the sets of words (necklaces) in an alphabet (the set of colours) of size $a .$ Why did we choose $\mathbb { Z } / p \mathbb { Z } ?$ Because we consider the necklaces up to rotation. The action of $g \in \mathbb { Z } / p \mathbb { Z }$ is of course a rotation of $g$ beads, say to the right. Then, there is one element fixing all words: $0 ,$ and all the other ones only fix words with all letters equal, i.e. monochromatic necklaces. Indeed, if $0 \not = g \in \mathbb { Z } / p \mathbb { Z }$ fixes a necklace, then so does $\mathbb { Z } / p \mathbb { Z } = g \mathbb { Z } / p \mathbb { Z }$ which means that the necklace is invariant under all rotations, i.e. monochromatic. Hence, the number of necklaces is
+For the second part, consider the cyclic group $\mathbb{Z}/p\mathbb{Z}$ acting on the sets of words (necklaces) in an alphabet (the set of colours) of size $a$. Why did we choose $\mathbb{Z}/p\mathbb{Z}$? Because we consider the necklaces up to rotation. The action of $g\in\mathbb{Z}/p\mathbb{Z}$ is of course a rotation of $g$ beads, say to the right. Then, there is one element fixing all words: $0$, and all the other ones only fix words with all letters equal, i.e. monochromatic necklaces. Indeed, if $0\neq g\in\mathbb{Z}/p\mathbb{Z}$ fixes a necklace, then so does $\mathbb{Z}/p\mathbb{Z}=g\mathbb{Z}/p\mathbb{Z}$, which means that the necklace is invariant under all rotations, i.e. monochromatic. Hence, the number of necklaces is
 
 $$
 \frac {a ^ {p} + (p - 1) a}{p}
@@ -1314,7 +1314,7 @@ $$
 f _ {m} = (X + 1) \cdot \ldots \cdot (X + m) - 1 \in \mathbb {F} _ {p} [ X ].
 $$
 
-Since $\mathbb { F } _ { p }$ is a field, $f _ { m }$ has at most m roots in $\mathbb { F } _ { p } .$ Thus, there are at most m integers n such that $n ! \equiv ( m + n ) !$ , since this is equivalent to $f _ { m } ( n ) = 0$
+Since $\mathbb{F}_p$ is a field, $f_m$ has at most $m$ roots in $\mathbb{F}_p$. Thus, there are at most $m$ integers $n$ such that $n!\equiv(m+n)!\pmod p$, since this is equivalent to $f_m(n)=0$.
 
 Let k be an integer which we will specify later on. Let N be the set of pairs of elements of S at a distance less than k, i.e.
 
@@ -1402,22 +1402,22 @@ which has the desired expression.
 
 ## Remark A.3.4
 
-You may notice that the first identity is the logarithmic derivative (log $f ) ^ { \prime }$ . This can be used to produce an analytic proof of this identity: it holds when $X > \alpha _ { k }$ for all $k$ (in particular they are all real), but is also a polynomial identity in X and the $\alpha _ { k }$ , so it must hold polynomially. More specifically, if we fix the $\alpha _ { i } \in \mathbb { R }$ , it holds for sufficiently large X so it must hold for all X. Thus, it holds for all $\alpha _ { i } , X \in \mathbb { R }$ which means that it always holds by Exercise $\mathrm { A . 1 . 7 ^ { * } }$
+You may notice that the first identity is the logarithmic derivative $(\log f)'$. This can be used to produce an analytic proof of this identity: it holds when $X>\alpha_k$ for all $k$ (in particular they are all real), but is also a polynomial identity in $X$ and the $\alpha_k$, so it must hold polynomially. More specifically, if we fix the $\alpha_i\in\mathbb{R}$, it holds for sufficiently large $X$, so it must hold for all $X$. Thus, it holds for all $\alpha_i,X\in\mathbb{R}$, which means that it always holds by Exercise A.1.7*.
 
-Exercise A.3.27† (Sturm’s Theorem). Given a squarefree polynomial $f \in \mathbb { R } [ X ]$ , define the sequence $f _ { 0 } = f , f _ { 1 } = f ^ { \prime }$ and $f _ { n + 2 }$ is minus the remainder of the Euclidean division of $f _ { n }$ by $f _ { n + 1 }$ . Define also $V ( \xi )$ as the number of sign changes in the sequence $f _ { 0 } ( \xi ) , f _ { 1 } ( \xi ) , . . . ,$ ignoring zeros. Prove that the number of distinct real roots of $f$ in the interval $] a , b ]$ is $V ( a ) - V ( b ) .$ J
+Exercise A.3.27† (Sturm’s Theorem). Given a squarefree polynomial $f\in\mathbb{R}[X]$, define the sequence $f_0=f$, $f_1=f'$ and $f_{n+2}$ as minus the remainder of the Euclidean division of $f_n$ by $f_{n+1}$. Define also $V(\xi)$ as the number of sign changes in the sequence $f_0(\xi),f_1(\xi),\ldots$, ignoring zeros. Prove that the number of distinct real roots of $f$ in the interval $(a,b]$ is $V(a)-V(b)$.
 
 ## Solution
 
 When $x$ increases from $a$ to $b$, it may pass through a zero of some $f_k$ (otherwise, by the intermediate value theorem, $V(a)=V(b)$ and there is clearly no root in the interval as claimed). We shall prove that this leaves $V(x)$ invariant if $k\geq1$, and decreases it by $1$ precisely when $k=0$, i.e. when $x$ is a root of $f$. Before doing that, note that the important part of the definition of $(f_n)_{n\geq0}$ is that $f_{n+1}\equiv-f_{n-1}\pmod{f_n}$ for all $n$. In particular, if $f_n(x)$ and $f_{n+1}(x)$ are zero, then so is $f_{n-1}(x)$, which implies, by induction, that $x$ is a root of every $f_i$. This is impossible since $f_0=f$ and $f_1=f'$ have no common root by assumption.
 
-First, suppose that $f_i(\xi)=0$ for some $\xi$ and $i\geq1$. Then, since $f_{i+1}\equiv-f_{i-1}\pmod{f_i}$, $f_{i+1}(x)$ and $f_{i-1}(x)$ have opposite signs around $ξ$ (and are non-zero by our previous observation). This means that, before $\xi ,$ , we had one sign change in $( f _ { i - 1 } ( x ) , f _ { i } ( x ) , f _ { i + 1 } ( x ) )$ since this has the form $( \pm 1 , \varepsilon , \mp 1 )$ for $\varepsilon \in \{ - 1 , 1 \}$ . After $\xi$ and at $\xi ,$ we still have one sign change for the same reason. Hence, $V ( x )$ stays invariant when $x$ passes through a root of some $f _ { i }$ with $i \geq 1$
+First, suppose that $f_i(\xi)=0$ for some $\xi$ and $i\geq1$. Then, since $f_{i+1}\equiv-f_{i-1}\pmod{f_i}$, $f_{i+1}(x)$ and $f_{i-1}(x)$ have opposite signs around $\xi$ (and are non-zero by our previous observation). This means that, before $\xi$, we had one sign change in $(f_{i-1}(x),f_i(x),f_{i+1}(x))$ since this has the form $(\pm1,\varepsilon,\mp1)$ for $\varepsilon\in\{-1,1\}$. After $\xi$ and at $\xi$, we still have one sign change for the same reason. Hence, $V(x)$ stays invariant when $x$ passes through a root of some $f_i$ with $i\geq1$.
 
-Now, suppose that $f ( \xi ) = 0 .$ . Then, around $\xi , f ( \xi + \varepsilon ) = \varepsilon f ^ { \prime } ( \xi ) + O ( \varepsilon ^ { 2 } )$ which means that the sign of $f ( x )$ flips before and after $\xi ,$ while the sign of $f ^ { \prime }$ does not change since $\xi$ is a simple root. More precisely, before $\xi , f ( x )$ and $f ^ { \prime } ( x )$ had opposite sign, while they have the same sign after $\xi . \mathrm { \ A t \ } \xi ,$ we do not count a sign change since $f ( \xi ) = 0 \operatorname { s o } V ( \xi ) = V ( \xi + \varepsilon )$ for sufficiently small $\varepsilon > 0 ,$ , which finishes the proof.
+Now, suppose that $f(\xi)=0$. Then, around $\xi$, $f(\xi+\varepsilon)=\varepsilon f'(\xi)+O(\varepsilon^2)$, which means that the sign of $f(x)$ flips before and after $\xi$, while the sign of $f'$ does not change since $\xi$ is a simple root. More precisely, before $\xi$, $f(x)$ and $f'(x)$ had opposite signs, while they have the same sign after $\xi$. At $\xi$, we do not count a sign change since $f(\xi)=0$, so $V(\xi)=V(\xi+\varepsilon)$ for sufficiently small $\varepsilon>0$, which finishes the proof.
 
-Exercise A.3.28<sup>†</sup> (Ehrenfeucht’s Criterion). Let K be a characteristic zero field, let $f _ { 1 } , \dots , f _ { k } \in $K$ [ X ]$ be polynomials and define
+Exercise A.3.28<sup>†</sup> (Ehrenfeucht’s Criterion). Let $K$ be a characteristic-zero field, let $f_1,\ldots,f_k\in K[X]$ be polynomials and define
 
 $$
-f = f _ {1} (X _ {1}) + \ldots + f _ {k} (X _ {k}) \in $K$ [ X _ {1}, \ldots , X _ {k} ].
+f=f_1(X_1)+\cdots+f_k(X_k)\in $K$[X_1,\ldots,X_k].
 $$
 
 If $k \geq 3$ , prove that $f$ is irreducible. In addition, prove that this result still holds if $k = 2$ and $f _ { 1 }$ and $f _ { 2 }$ have coprime degrees.
@@ -1482,4 +1482,4 @@ $$
 f = \sum_ {i = 1} ^ {n} X ^ {k a _ {i} + \ell} \in I
 $$
 
-for any $k , \ell$ such that $k a _ { i } + \ell \geq 0$ for all i. Hence, the problem reduces to proving that these polynomials are coprime, i.e., that for any $a$lgebraic number $\textstyle \alpha , \sum _ { i = 1 } ^ { n } \alpha ^ { k a _ { i } }$ can not always be zero. This follows from our proof of Theorem C.4.1: this is a linear recurrence, and the only linear recurrence which is identically zero is the zero recurrence. However, $\textstyle \sum _ { i = 1 } ^ { n } \alpha ^ { k a _ { i } }$ is clearly not the zero recurrence since the coefficient before $\alpha ^ { k a _ { i } }$ for every $i$.
+for any $k , \ell$ such that $k a _ { i } + \ell \geq 0$ for all i. Hence, the problem reduces to proving that these polynomials are coprime, i.e., that for any algebraic number $\textstyle \alpha , \sum _ { i = 1 } ^ { n } \alpha ^ { k a _ { i } }$ can not always be zero. This follows from our proof of Theorem C.4.1: this is a linear recurrence, and the only linear recurrence which is identically zero is the zero recurrence. However, $\textstyle \sum _ { i = 1 } ^ { n } \alpha ^ { k a _ { i } }$ is clearly not the zero recurrence since the coefficient before $\alpha ^ { k a _ { i } }$ for every $i$.
