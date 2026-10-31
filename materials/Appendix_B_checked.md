@@ -4,7 +4,7 @@ Prerequisites for this chapter: Section A.1.
 
 ## B.1 The Fundamental Theorem of Symmetric Polynomials
 
-Given a commutative ring R (in our case we will consider Z and Q) and an integer $n \geq 0$ , we can consider the symmetric polynomials in n variables with coefficients in R. These are defined as the polynomialls in n variables invariant under all permutations of these variables. 
+Given a commutative ring R (in our case we will consider Z and Q) and an integer $n \geq 0$ , we can consider the symmetric polynomials in n variables with coefficients in R. These are defined as the polynomials in n variables invariant under all permutations of these variables. 
 
 ## Definition B.1.1 (Symmetric Polynomials)
 
@@ -42,10 +42,28 @@ This theorem explains why we called $e _ { k }$ "elementary symmetric polynomial
 We proceed by induction on the number n of variables. For n = 1 this is trivial as $\sigma_{1} = X$ . Thus suppose it is true for n - 1 variables.
 Now, we proceed again by induction on the degree d of f. When f = 0 this is obvious. Otherwise, by the first induction hypothesis, $f(X_{1},\ldots,X_{n-1},0)=g(e_{1}^{\prime},\ldots,e_{n-1}^{\prime})$ for some $g \in K[X_{1},\ldots,X_{n}]$ , where $e_{i}^{\prime}$ is the ith elementary symmetric polynomial in n - 1 variables, i.e. $e_{i}^{\prime}(X_{1},\ldots,X_{n-1})=e_{i}(X_{1},\ldots,X_{n-1},0)$ . Notice that $\deg g \leq \deg f$ .
 Write $f(X_{1},\ldots,X_{n})=g(e_{1},\ldots,e_{n-1})+h(X_{1},\ldots,X_{n})$ .
-We have $h(X_{1},\ldots,X_{n-1},0)=0$ , i.e. $X_{n} \mid h(X_{1},\ldots,X_{n-1},X_{n})$ $(h(X_{1},\ldots,X_{n})$ has a root at $X_{n}$ in the ring $R[X_{1},\ldots,X_{n-1}][X]$ ). By symmetry we also have $X_{i} \mid h$ for any i so $h=X_{1}\cdot\ldots\cdot X_{n}r=e_{n}s$ .
-To conclude s is symmetric and has degree at most $\deg f - n < \deg f$ so $r = s(e_1, \ldots, e_n)$ by the second induction hypothesis and we get $f = g(e_1, \ldots, e_{n-1}) + e_n r(e_1, \ldots, e_n)$ as wanted. 
+Since $h(X_1,\ldots,X_{n-1},0)=0$, we have $X_n\mid h$. By symmetry, $X_i\mid h$ for every $i$, so
+$$
+h=X_1\cdots X_n r=e_n r.
+$$
+The polynomial $r$ is symmetric and has degree at most $\deg f-n<\deg f$. By the induction hypothesis on degree, there is a polynomial $q$ such that $r=q(e_1,\ldots,e_n)$. Therefore
+$$
+f=g(e_1,\ldots,e_{n-1})+e_nq(e_1,\ldots,e_n),
+$$
+as required.
 
-Exercise B.1.2. Prove that the decomposition of a symmetric polynomial $f$ as $g ( e _ { 1 } , \ldots , e _ { n } )$ is unique.
+
+
+**Exercise B.1.2.** Prove that the representation of a symmetric polynomial as $g(e_1,\ldots,e_n)$ is unique.
+
+### Solution
+
+It is enough to prove that $e_1,\ldots,e_n$ are algebraically independent over $R$. Use lexicographic monomial order with $X_1>X_2>\cdots>X_n$. The leading monomial of $e_k$ is $X_1\cdots X_k$. Thus the leading monomial of $e_1^{a_1}\cdots e_n^{a_n}$ is
+$$
+X_1^{a_1+\cdots+a_n}X_2^{a_2+\cdots+a_n}\cdots X_n^{a_n}.
+$$
+Different exponent vectors $(a_1,\ldots,a_n)$ give different leading monomials, since the $a_i$ can be recovered by taking successive differences of the exponents. Therefore distinct monomials in the $e_i$ cannot cancel in a nonzero polynomial relation. The $e_i$ are algebraically independent, so the representation is unique.
+
 
 ## B.2 Newton’s Formulas
 
@@ -93,94 +111,126 @@ Exercise $\mathbf { B } . 2 . 1 ^ { * }$ . Prove Corollary B.2.1.
 
 ## Elementary Proof of Newton’s Formulas
 
-Let’s compute the product $e _ { k - 1 } p _ { i } . \ e _ { k - i }$ is the sum of products of $k - i$ distinct variables, while $p _ { i }$ is the sum of the ith powers of all the variables. Thus, $e _ { k - i } p _ { i }$ is the sum of the product of the ith power of some variable, times $k - i$ distinct variables. 
-
-In the product of the $k - i$ distinct variable, either one of these variables will be the same as the one raised to the ith power, or not. Hence, we get $e _ { k - i } p _ { i } = r ( i ) + r ( i + 1 )$ where $r ( j )$ is the sum of products of one other variable raised to the $k - j \mathrm { t h }$ power times j other distinct variables: 
-
+Fix $k\geq1$. For $1\leq j\leq k+1$, define
 $$
-\sum_ {i _ {1} <   \ldots <   i _ {k - j}} X _ {i _ {1}} \cdot \ldots \cdot X _ {i _ {k - j}} \cdot \sum_ {\ell \neq i _ {1}, \ldots , i _ {k - j}} X _ {\ell} ^ {j}.
+r(j)=
+\sum_{1\leq i_1<\cdots<i_{k-j}\leq n}
+X_{i_1}\cdots X_{i_{k-j}}
+\sum_{\ell\notin\{i_1,\ldots,i_{k-j}\}}X_\ell^j.
 $$
-
-Thus, 
-
+In each term of $e_{k-i}p_i$, the variable raised to the $i$th power either belongs to the set of $k-i$ distinct variables or does not. Consequently,
 $$
-\sum_ {i = 1} ^ {k} (- 1) ^ {i - 1} e _ {k - i} p _ {i} = (r (1) + r (2)) - (r (2) + r (3)) + \dots + (- 1) ^ {k} (r (k) + r (k + 1)) = r (1) + (- 1) ^ {k} r (k + 1).
+e_{k-i}p_i=r(i)+r(i+1).
 $$
-
-To conclude, $r ( 1 ) = k e _ { k }$ and $r ( k + 1 ) = 0$ (there is no sum over $- 1$ variables, or at least which is a homogeneous polynomial of degree k). 
-
-## Proof of Newton’s Formulas using Generating Functions
-
-We now present a proof by generating functions. We work in $R [ X _ { 1 } , \ldots , X _ { k } ] [ [ T ] ]$ , i.e. the ring of 
-
-formal power series in T with coefficients in $R [ X _ { 1 } , \ldots , X _ { n } ]$ . We have 
-
+The alternating sum therefore telescopes:
 $$
-(1 - X _ {1} T) \cdot \ldots \cdot (1 - X _ {n} T) = \sum_ {k = 0} ^ {n} (- 1) ^ {k} e _ {k} T ^ {k}
+\begin{aligned}
+\sum_{i=1}^{k}(-1)^{i-1}e_{k-i}p_i
+&=(r(1)+r(2))-(r(2)+r(3))+\cdots\\
+&\quad+(-1)^{k-1}(r(k)+r(k+1))\\
+&=r(1)+(-1)^{k-1}r(k+1).
+\end{aligned}
 $$
+Here $r(1)=ke_k$, since each product of $k$ distinct variables is counted $k$ times, while $r(k+1)=0$ because it would require choosing $-1$ distinct variables. This proves Newton’s formulas.
 
-so, by differentiating, we get 
 
+## Proof of Newton’s Formulas Using Generating Functions
+
+Work in the formal power series ring $R[X_1,\ldots,X_n][[T]]$. We have
 $$
-\begin{array}{l} \sum_ {k = 0} ^ {n} (- 1) ^ {k} k e _ {k} T ^ {k} = T \sum_ {i = 1} ^ {n} \left((- X _ {i}) \prod_ {j \neq i} (1 - X _ {j} T)\right) \\ \qquad = - \left(\sum_ {i = 1} ^ {n} \frac {X _ {i} T}{1 - X _ {i} T}\right) \prod_ {j = 1} ^ {n} (1 - X _ {j} T) \\ \qquad = - \left(\sum_ {i = 1} ^ {n} \sum_ {j = 1} ^ {\infty} (X _ {i} T) ^ {j}\right) \left(\sum_ {i = 0} ^ {n} (- 1) ^ {i} e _ {i} T ^ {i}\right) \\ \qquad = \left(\sum_ {i = 1} ^ {\infty} p _ {i} T ^ {i}\right) \left(\sum_ {j = 0} ^ {n} (- 1) ^ {i - 1} e _ {i} T ^ {i}\right). \end{array}
+P(T):=\prod_{i=1}^{n}(1-X_iT)
+=\sum_{k=0}^{n}(-1)^ke_kT^k.
 $$
-
-By comparing the $T ^ { k }$ coefficients, we get 
-
+Applying $T\frac{d}{dT}$ to both sides gives
 $$
-(- 1) ^ {k} = \sum_ {o = 1} ^ {k} (- 1) ^ {k - i - 1} p _ {i} e _ {k - i}
+\begin{aligned}
+\sum_{k=0}^{n}(-1)^k k e_kT^k
+&=T\sum_{i=1}^{n}(-X_i)\prod_{j\neq i}(1-X_jT)\\
+&=-\left(\sum_{i=1}^{n}\frac{X_iT}{1-X_iT}\right)P(T)\\
+&=-\left(\sum_{i=1}^{n}\sum_{j=1}^{\infty}(X_iT)^j\right)
+  \left(\sum_{\ell=0}^{n}(-1)^\ell e_\ell T^\ell\right)\\
+&=\left(\sum_{i=1}^{\infty}p_iT^i\right)
+  \left(\sum_{\ell=0}^{n}(-1)^{\ell-1}e_\ell T^\ell\right).
+\end{aligned}
 $$
+Comparing coefficients of $T^k$, we obtain
+$$
+(-1)^k k e_k
+=\sum_{i=1}^{k}(-1)^{k-i-1}p_i e_{k-i},
+$$
+which is equivalent to Newton’s formulas.
 
-as wanted. 
 
 ## B.3 The Fundamental Theorem of Algebra
 
-Recall the statement of the fundamental theorem of algebra, whose name was coined at a time where algebra was about solving polynomial equations.<sup>1</sup> In reality, it is a theorem about analysis and is usually proven that way. However, in this section we will present a mostly algebraic one (a completely algebraic proof is impossible because R is defined analytically). 
+Recall the fundamental theorem of algebra, whose name was coined at a time when algebra was primarily concerned with solving polynomial equations.<sup>1</sup> Despite its name, it is a theorem of analysis and is usually proved by analytic methods. In this section we present a mostly algebraic proof. A completely algebraic proof is not possible here because the real numbers are defined analytically.
 
 ## Theorem B.3.1 (Fundamental Theorem of Algebra)
 
-Any polynomial $f \in \mathbb { C } [ X ]$ of degree $n \geq 0$ has exactly n roots, i.e., 
-
+Every polynomial $f\in\mathbb{C}[X]$ of degree $n\geq0$ has exactly $n$ roots, counted with multiplicity. Equivalently,
 $$
-f = a (X - \alpha_ {1}) \cdot \ldots (X - \alpha_ {n})
+f=a\prod_{i=1}^{n}(X-\alpha_i),
+$$
+where $\alpha_1,\ldots,\alpha_n$ are the roots of $f$ and $a$ is its leading coefficient.
+
+By Proposition A.1.2, it is enough to show that every nonconstant polynomial in $\mathbb{C}[X]$ has a complex root. This statement is also known as the d’Alembert–Gauss theorem. d’Alembert recognised the importance of the result but gave a flawed proof; Gauss was among the first to provide a rigorous proof and subsequently gave several proofs.
+
+## Theorem B.3.2 (d’Alembert–Gauss Theorem)
+
+Every nonconstant polynomial with complex coefficients has a complex root.
+
+It is enough first to prove this for polynomials with real coefficients. Indeed, if $f$ has complex coefficients, then $g=f\overline f$ has real coefficients, where $\overline f$ is obtained by taking the complex conjugate of each coefficient of $f$. If $g$ has a root $\alpha\in\mathbb{C}$, then either $f(\alpha)=0$ or $\overline f(\alpha)=0$; in the latter case, $f(\overline\alpha)=0$. Thus a complex root of $g$ gives a complex root of $f$.
+
+We use the following two facts. The first follows from the intermediate value theorem; the second is left as an exercise.
+
+## Proposition B.3.1
+
+Every real polynomial of odd degree has a real root.
+
+### Proof
+
+For a real polynomial of odd degree, its values have opposite signs for sufficiently large positive and negative arguments. The intermediate value theorem therefore gives a real root. (Equivalently, one may express this using the signs of the limits as $x\to\pm\infty$.)
+
+## Proposition B.3.2
+
+Every polynomial in $\mathbb{C}[X]$ of degree $2$ has a root in $\mathbb{C}$.
+
+**Exercise B.3.1\*.** Prove Proposition B.3.2.
+
+### Proof: Every Nonconstant Real Polynomial Has a Complex Root
+
+Let $f\in\mathbb{R}[X]$ have degree $n$. We use induction on $k=v_2(n)$. The case $k=0$ follows from Proposition B.3.1, since then $n$ is odd. For the induction step, suppose $k\geq1$, so $n$ is even.
+
+Let $\alpha_1,\ldots,\alpha_n$ be the roots of $f$ in a splitting field $K$. Such a field can be constructed by successively adjoining roots of irreducible factors: adjoining a root of an irreducible polynomial gives a field extension, and repeating the process yields a field in which $f$ splits. (See Exercise 4.2.1\*.)
+
+For each real number $t$, define
+$$
+g_t(X)=\prod_{1\leq i<j\leq n}
+\left(X-(\alpha_i+\alpha_j+t\alpha_i\alpha_j)\right).
+$$
+This polynomial has real coefficients. Indeed, its coefficients are symmetric polynomials in $\alpha_1,\ldots,\alpha_n$, so the fundamental theorem of symmetric polynomials expresses them in terms of the elementary symmetric polynomials $e_i(\alpha_1,\ldots,\alpha_n)$, which are real by Vieta’s formulas.
+
+The degree of $g_t$ is $n(n-1)/2$. Since $n$ is even and $k=v_2(n)$, we have
+$$
+v_2(\deg g_t)=v_2\!\left(\frac{n(n-1)}2\right)=k-1.
+$$
+By the induction hypothesis, $g_t$ has a complex root. Thus, for each $t$, some pair $i<j$ satisfies
+$$
+\alpha_i+\alpha_j+t\alpha_i\alpha_j\in\mathbb{C}.
 $$
 
-where $\alpha _ { 1 } , \ldots , \alpha _ { n }$ are the roots of f counted with multiplicity and a is its leading coefficient. 
+Choose $n(n-1)/2+1$ distinct nonzero real values of $t$. Since there are only $n(n-1)/2$ pairs $(i,j)$, the pigeonhole principle gives two distinct values $r,s$ for which the same pair $(i,j)$ occurs. Hence both
+$$
+\alpha_i+\alpha_j+r\alpha_i\alpha_j
+\quad\text{and}\quad
+\alpha_i+\alpha_j+s\alpha_i\alpha_j
+$$
+belong to $\mathbb{C}$. Subtracting and dividing by $r-s\neq0$ shows that $\alpha_i\alpha_j\in\mathbb{C}$; it then follows that $\alpha_i+\alpha_j\in\mathbb{C}$. Therefore $\alpha_i$ and $\alpha_j$ are roots of the quadratic polynomial
+$$
+X^2-(\alpha_i+\alpha_j)X+\alpha_i\alpha_j,
+$$
+which has complex coefficients. By Proposition B.3.2, both roots belong to $\mathbb{C}$. In particular, $f$ has a complex root. This completes the induction and proves the theorem.
 
-By Proposition A.1.2, it suffices to show that any non-constant polynomial $f \in \mathbb { C } [ X ]$ has a root in C. This is also called the d’Alembert-Gauss theorem because d’Alembert was the first one to recognise the importance of proving this result but gave a flawed proof, while Gauss was (almost) the first one to give a rigorous proof (in fact he even gave multiple proofs). 
-
-Theorem B.3.2 (d’Alembert-Gauss Theorem) 
-
-Every nonconstant polynomial with complex coefficients has a complex root. 
-
-Notice that we can assume the polynomiall f has real coefficients, since if f has complex coefficients, $g = f { \overline { { f } } }$ has real coefficients where $\overline { { f } }$ denotes the polynomiall obtained by applying complex conjugation to the coefficients of $f .$ Thus, if we find a root α of $^ { g , }$ either $\alpha \in \mathbb { R }$ in which case we can use induction on $\frac { g } { X - \alpha }$ , or we know by Proposition A.1.6 that α is also a root and we can use induction on ${ \frac { g } { ( X - \alpha ) ( X - { \overline { { \alpha } } } ) } }$ This would prove that g has as many complex roots as its degree, and thus $f$ too. 
-
-We shall only use two results. The first one is a corollary of the intermediate value theorem, while the second one is left as an exercise. 
-
-Proposition B.3.1 
-
-Any polynomial $f \in \mathbb { R } [ X ]$ of odd degree has a real root. 
-
-## Proof
-
-Since f has odd degree, $f ( - \infty )$ and $f ( + \infty )$ have opposite signs so there is a root by the intermediate value theorem. (Here we work in $\mathbb { R } \cup \{ + \infty , - \infty \}$ , which is just a nice shortcut for not writing limits.) 
-
-Proposition B.3.2 
-
-Any polynomial $f \in \mathbb { C } [ X ]$ of degree 2 has a root $\mathbb { C } .$ 
-
-Exercise $\mathbf { B . 3 . 1 ^ { * } }$ . Prove Proposition B.3.2. 
-
-Proof that any non-constant polynomial with real coefficients has a complex root
-Let $f \in \mathbb{R}[X]$ be a polynomial of degree $n$ . We proceed by induction on $k = v_2(n)$ ; the case $k = 0$ is Proposition B.3.1. For the induction step, suppose $k \geq 1$ so that $n$ is even.
-Let $\alpha_1, \ldots, \alpha_n$ be the roots of $f$ . You might wonder what that means since we don't know if they exist (in $\mathbb{C}$ ) or not. It's true that we don't know whether they lie in $\mathbb{C}$ or not yet, but we can construct them formally, just like $i$ was constructed formally to be an object such that $i^2 = -1$ . Thus we can construct $\alpha_1, \ldots, \alpha_n$ inductively such that $f$ has $n$ roots in some field $K$ . (However, if you add a formal object $\alpha$ such that $g(\alpha)$ to a field, this will make a field only if $g$ is irreducible. But you can factorise $f$ into a product of irreducible polynomials then add a root of one of the factors and repeat. See Exercise 4.2.1 $^{*}$ .)
-Given a real number $t$ , we consider the polynomiall $g_t = \prod_{i < j} X - (\alpha_i + \alpha_j + t\alpha_i\alpha_j)$ which has real coefficients by the fundamental theorem of symmetric polynomials: if $\prod_{i < j} X - (X_i + X_j + tX_iX_j) = h_t(X, e_1, \ldots, e_n)$ for some $h_t \in \mathbb{R}[X][X_1, \ldots, X_n]$ , then $g_t = h_t(X, e_1(\alpha_1, \ldots, \alpha_n), \ldots, e_n(\alpha_1, \ldots, \alpha_n))$ since $e_i(\alpha_1, \ldots, \alpha_n) \in \mathbb{R}$ by Vieta's formulas. 
-
-Notice that $g _ { t }$ has degree $\textstyle { \frac { n ( n - 1 ) } { 2 } }$ and, since n is even, $v _ { 2 } ( \deg g _ { t } ) = n - 1$ . Hence, $g _ { t }$ always has a complex root $\alpha = \alpha _ { i } + \alpha _ { j } + t \alpha _ { i } \alpha _ { j }$ for some $i , j$ by the induction hypothesis. 
-
-Now pick $\textstyle { \frac { n ( n - 1 ) } { 2 } } + 1$ values of $0 \neq t \in \mathbb { R } \colon$ by the pigeonhole principle two of them must have the same indices, $\alpha _ { i } + \alpha _ { j } + r \alpha _ { i } \alpha _ { j }$ is a complex root of $g _ { r }$ and $\alpha _ { i } + \alpha _ { j } + s \alpha _ { i } \alpha _ { j }$ is a complex root of $g _ { s }$ for the same $i , j$ 
-
-By subtracting these two numbers, we get $\alpha _ { i } \alpha _ { j } \in \mathbb { C } .$ . Similarly, we have $\alpha _ { i } + \alpha _ { j } \in \mathbb { C }$ . Thus $\alpha _ { i }$ and $\alpha _ { j }$ are roots of a quadratic equation $X ^ { 2 } - ( \alpha _ { i } + \alpha _ { j } ) X + \alpha _ { i } \alpha _ { j }$ with complex coefficients and hence also lie in C by Proposition B.3.2. In particular, we have found a complex root of $f$ as wanted. 
 
 ## B.4 Exercises
 
@@ -280,7 +330,7 @@ $$
 f (a _ {0}, \ldots , a _ {n - 1}) \geq 0
 $$
 
-is equivalent to the polynomiall $X ^ { n } + a _ { n - 1 } X ^ { n - 1 } + \ldots + a _ { 0 }$ having only real roots, if and only if $n \in \{ 1 , 2 , 3 \}$ 
+is equivalent to the polynomial $X ^ { n } + a _ { n - 1 } X ^ { n - 1 } + \ldots + a _ { 0 }$ having only real roots, if and only if $n \in \{ 1 , 2 , 3 \}$ 
 
 Exercise B.4.14. Let $f \in K [ X ]$ be a monic polynomial with roots $\alpha _ { 1 } , \ldots , \alpha _ { n }$ . Prove that its discriminant, as defined in Remark 1.3.2 or Exercise B.4.4<sup>†</sup> is equal to 
 
@@ -437,7 +487,7 @@ $$
 
 ## Solution
 
-We proceed by induction on the number n of variables. When $n = 1$ this is just Bézout’s lemma. Now, if $n \geq 1$ , we will eliminate one variable with the resultant. Consider the polynomiall 
+We proceed by induction on the number n of variables. When $n = 1$ this is just Bézout’s lemma. Now, if $n \geq 1$ , we will eliminate one variable with the resultant. Consider the polynomial 
 
 $$
 g = \mathrm{Res} _ {X _ {n}} (f _ {m}, U _ {1} f _ {1} + \ldots + U _ {m - 1} f _ {m - 1}) \in K [ U _ {1}, \ldots , U _ {m - 1} ] [ X _ {1}, \ldots , X _ {n - 1} ],
@@ -497,9 +547,9 @@ $$
 
 equations, one for each coefficient. For large N, $\begin{array} { r } { ( N + 1 ) ^ { n + 1 } > \frac { ( ( n + 1 ) M N ) ^ { n + 1 } - 1 } { ( n + 1 ) M N - 1 } } \end{array}$ , which means that there is a non-trivial solution as wanted (the kernel is non-trivial by e.g. the rank-nullity theorem ??, or Proposition C.1.2). 
 
-To make the idea of the second solution clearer, we treat the case $n = 1$ first. If $f , g \in K [ X ]$ are polynomials, the resultant $h = \operatorname { R e s } _ { X } ( f - S , g - T )$ is a non-zero polynomial in $S , T$ with coefficients in K. Indeed, it is non-zero since when $S - f$ and $T - g$ are coprime it takes a non-zero value (we can choose $T = 0$ and $S \in K$ to be a large constant for instance). However, when $S = f$ and $T = g$ , the polynomialls $f - S$ and $g - T$ are not coprime anymore so $h ( f , g ) = 0$ as wanted. 
+To make the idea of the second solution clearer, we treat the case $n = 1$ first. If $f , g \in K [ X ]$ are polynomials, the resultant $h = \operatorname { R e s } _ { X } ( f - S , g - T )$ is a non-zero polynomial in $S , T$ with coefficients in K. Indeed, it is non-zero since when $S - f$ and $T - g$ are coprime it takes a non-zero value (we can choose $T = 0$ and $S \in K$ to be a large constant for instance). However, when $S = f$ and $T = g$ , the polynomials $f - S$ and $g - T$ are not coprime anymore so $h ( f , g ) = 0$ as wanted. 
 
-Now, we construct by backwards induction on k a polynomial with coefficients in $K [ X _ { 1 } , \ldots , X _ { k } ]$ vanishing at $f _ { 1 } , \ldots , f _ { n + 1 }$ . In other words, we eliminate one variable each time. Here is how we do it: at first, $f _ { n , i } = f _ { i }$ . Then, we define the polynomialls 
+Now, we construct by backwards induction on k a polynomial with coefficients in $K [ X _ { 1 } , \ldots , X _ { k } ]$ vanishing at $f _ { 1 } , \ldots , f _ { n + 1 }$ . In other words, we eliminate one variable each time. Here is how we do it: at first, $f _ { n , i } = f _ { i }$ . Then, we define the polynomials 
 
 $$
 f _ {k - 1, i} = \mathrm{Res} _ {X _ {k}} (f _ {k, k + 1} - T _ {k, k + 1}, f _ {k, i} - T _ {k, i})
@@ -517,7 +567,7 @@ $$
 \pi \mid (f _ {k, i} + T _ {k, i}) - (f _ {k, i} - T _ {k, i} ^ {\prime}) = T _ {k, i} - T _ {k, i} ^ {\prime}
 $$
 
-for some irreducible $\pi \mid f _ { k , k + 1 }$ and distinct $T _ { k , i } , T _ { k , i } ^ { \prime } \in K$ by the pigeonhole principle. This is impossible since it implies $T _ { k , i } = T _ { k , i } ^ { \prime }$ . There is still one slight technicality: we could have $\ell \geq | K |$ However, we can simply add elements to $K$ to get a sufficiently large $K$ as in Exercise $\mathrm { B . 4 . 7 ^ { \dagger } }$ and then consider the norm of the polynomiall $f$ we obtain $( { \mathrm { i . e . } }$ . take the product over each of its conjugates, exactly like we did in the solution of Exercise 1.5.22<sup>†</sup>).  
+for some irreducible $\pi \mid f _ { k , k + 1 }$ and distinct $T _ { k , i } , T _ { k , i } ^ { \prime } \in K$ by the pigeonhole principle. This is impossible since it implies $T _ { k , i } = T _ { k , i } ^ { \prime }$ . There is still one slight technicality: we could have $\ell \geq | K |$ However, we can simply add elements to $K$ to get a sufficiently large $K$ as in Exercise $\mathrm { B . 4 . 7 ^ { \dagger } }$ and then consider the norm of the polynomial $f$ we obtain $( { \mathrm { i . e . } }$ . take the product over each of its conjugates, exactly like we did in the solution of Exercise 1.5.22<sup>†</sup>).  
 
 Exercise B.4.9<sup>†</sup> (Transcendence Bases). Let $L / K$ be a field extension. Call a maximal set of $K -$ algebraically independent elements of $L$ a transcendence basis. Prove that, if $L / K$ has a transcendence basis of cardinality $n ,$ then all transcendence bases have cardinality $n .$ . This n is called the transcendence degree $\mathrm { t r d e g } _ { K } L .$ . Finally, show that, if $L = K ( \alpha _ { 1 } , \ldots , \alpha _ { n } )$ any maximal algebraically independent subset of $\alpha _ { 1 } , \ldots , \alpha _ { n }$ is a transcendence basis. (In particular $\mathrm { t r } \mathrm { d e g } _ { K } L \leq n . )$ 
 
@@ -661,7 +711,7 @@ $$
 D = \left| \begin{array}{c c c c} T _ {0} & 1 & \dots & 1 \\ T _ {1} & f _ {2} & \dots & f _ {k} \\ \vdots & \vdots & \ddots & \vdots \\ T _ {k - 1} & f _ {2} ^ {k - 1} & \dots & f _ {k} ^ {k - 1} \end{array} \right|.
 $$
 
-Write this as $\begin{array} { r } { g = \frac { D \Delta } { \Delta ^ { 2 } } } \end{array}$ . Notice that $\Delta ^ { 2 }$ is symmetric, while $D$ and $\Delta$ both change sign when two $f _ { i }$ are switched, so $D \Delta$ is symmetric in $f _ { 2 } , \ldots , f _ { k }$ . However, it is easy to see that, for any $i ,$ $e _ { i } ( f _ { 2 } , \ldots , f _ { k } )$ can be expressed polynomially in terms of $f _ { 1 }$ and $e _ { j } ( f _ { 1 } , \ldots , f _ { k } )$ . Hence, this $\mathrm { \Delta } \breve { \frac { D \Delta } { \Delta ^ { 2 } } }$ is a rational function in $f$ with symmetric coefficients by the fundamental theorem of symmetric polynomials.  
+Write this as $\begin{array} { r } { g = \frac { D \Delta } { \Delta ^ { 2 } } } \end{array}$ . Notice that $\Delta ^ { 2 }$ is symmetric, while $D$ and $\Delta$ both change sign when two $f _ { i }$ are switched, so $D \Delta$ is symmetric in $f _ { 2 } , \ldots , f _ { k }$ . However, it is easy to see that, for any $i ,$ $e _ { i } ( f _ { 2 } , \ldots , f _ { k } )$ can be expressed polynomialy in terms of $f _ { 1 }$ and $e _ { j } ( f _ { 1 } , \ldots , f _ { k } )$ . Hence, this $\mathrm { \Delta } \breve { \frac { D \Delta } { \Delta ^ { 2 } } }$ is a rational function in $f$ with symmetric coefficients by the fundamental theorem of symmetric polynomials.  
 
 Exercise B.4.13<sup>†</sup> (Iran Mathematical Olympiad 2012). Prove that there exists a polynomial $f \in$ $\mathbb { R } [ X _ { 0 } , \ldots , X _ { n - 1 } ]$ such that, for all $a _ { 0 } , \ldots , a _ { n - 1 } \in \mathbb { R }$ 2 
 
@@ -669,7 +719,7 @@ $$
 f (a _ {0}, \dots , a _ {n - 1}) \geq 0
 $$
 
-is equivalent to the polynomiall $X ^ { n } + a _ { n - 1 } X ^ { n - 1 } + \ldots + a _ { 0 }$ having only real roots, if and only if $n \in \{ 1 , 2 , 3 \}$ 
+is equivalent to the polynomial $X ^ { n } + a _ { n - 1 } X ^ { n - 1 } + \ldots + a _ { 0 }$ having only real roots, if and only if $n \in \{ 1 , 2 , 3 \}$ 
 
 ## Solution
 
@@ -681,7 +731,7 @@ $$
 
 so it isn’t real as desired. 
 
-Now, if there exists such a polynomial for $n \geq 4 .$ , there exists one for $n = 4$ by setting $g ( a , b , c , d ) =$ $f ( a , b , c , d , 0 , \dots , 0 )$ . Thus, it only remains to prove that there doesn’t exist such a polynomial for $n = 4$ . For this, consider the special polynomial $f ( 0 , b , 0 , d )$ since we know precisely when the roots of $X ^ { 4 } + b \dot { X } ^ { 2 } + d \quad$ are real. For convenience, we shall in fact consider the polynomiall $g ( r , s ) = f ( 0 , - r - s , 0 , r s )$ which is non-negative if the roots of 
+Now, if there exists such a polynomial for $n \geq 4 .$ , there exists one for $n = 4$ by setting $g ( a , b , c , d ) =$ $f ( a , b , c , d , 0 , \dots , 0 )$ . Thus, it only remains to prove that there doesn’t exist such a polynomial for $n = 4$ . For this, consider the special polynomial $f ( 0 , b , 0 , d )$ since we know precisely when the roots of $X ^ { 4 } + b \dot { X } ^ { 2 } + d \quad$ are real. For convenience, we shall in fact consider the polynomial $g ( r , s ) = f ( 0 , - r - s , 0 , r s )$ which is non-negative if the roots of 
 
 $$
 X ^ {4} - (r + s) X ^ {2} + r s = (X ^ {2} - r) (X ^ {2} - s)
@@ -693,4 +743,4 @@ $$
 0 \geq \lim _ {s \to 0 ^ {-}} g (r, s) = g (r, 0) = \lim _ {s \to 0 ^ {+}} g (r, s) \geq 0,
 $$
 
-i.e. $g ( r , 0 ) = 0$ for any non-negative r. But then, the polynomiall $g ( R , 0 )$ must be zero since it has infinitely many roots, so $g ( r , 0 )$ is also zero (and in particular non-negative) for negative r which is a contradiction.  
+i.e. $g ( r , 0 ) = 0$ for any non-negative r. But then, the polynomial $g ( R , 0 )$ must be zero since it has infinitely many roots, so $g ( r , 0 )$ is also zero (and in particular non-negative) for negative r which is a contradiction.  
