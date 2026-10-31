@@ -123,14 +123,14 @@ $$
 
 so, by differentiating, we get 
 
-$
+$$
 \frac{d}{dT}\prod_{j=1}^{n}(1-X_jT)
 =-\left(\sum_{i=1}^{n}\frac{X_i}{1-X_iT}\right)\prod_{j=1}^{n}(1-X_jT).
-$
+$$
 Using $\frac{X_i}{1-X_iT}=\sum_{k\geq 1}X_i^kT^{k-1}$ and comparing coefficients of $T^{k-1}$ gives
-$
+$$
 k e_k=\sum_{i=1}^{k}(-1)^{i-1}e_{k-i}p_i,
-$
+$$
 as required. 
 
 ## B.3 The Fundamental Theorem of Algebra
