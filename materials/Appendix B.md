@@ -40,10 +40,10 @@ This theorem explains why we called $e _ { k }$ "elementary symmetric polynomial
 
 Proof
 We proceed by induction on the number n of variables. For n = 1 this is trivial as $\sigma_{1} = X$ . Thus suppose it is true for n - 1 variables.
-Now, we proceed by induction on the degree $d$ of $f$. When f = 0 this is obvious. Otherwise, by the first induction hypothesis, $f(X_{1},\ldots,X_{n-1},0)=g(e_{1}^{\prime},\ldots,e_{n-1}^{\prime})$ for some $g \in K[X_{1},\ldots,X_{n}]$ , where $e_{i}^{\prime}$ is the ith elementary symmetric polynomial in n - 1 variables, i.e. $e_{i}^{\prime}(X_{1},\ldots,X_{n-1})=e_{i}(X_{1},\ldots,X_{n-1},0)$ . Notice that $\deg g \leq \deg f$ .
+Now, we proceed by induction on the degree $d$ of $f$. When f = 0 this is obvious. Otherwise, by the first induction hypothesis, $f(X_{1},\ldots,X_{n-1},0)=g(e_{1}^{\prime},\ldots,e_{n-1}^{\prime})$ for some $g \in R[Y_{1},\ldots,Y_{n-1}]$ , where $e_{i}^{\prime}$ is the ith elementary symmetric polynomial in n - 1 variables, i.e. $e_{i}^{\prime}(X_{1},\ldots,X_{n-1})=e_{i}(X_{1},\ldots,X_{n-1},0)$ . Notice that $\deg g \leq \deg f$ .
 Write $f(X_{1},\ldots,X_{n})=g(e_{1},\ldots,e_{n-1})+h(X_{1},\ldots,X_{n})$ .
 We have $h(X_{1},\ldots,X_{n-1},0)=0$ , i.e. $X_{n} \mid h(X_{1},\ldots,X_{n-1},X_{n})$ $(h(X_{1},\ldots,X_{n})$ has a root at $X_{n}$ in the ring $R[X_{1},\ldots,X_{n-1}][X]$ ). By symmetry we also have $X_{i} \mid h$ for any i so $h=X_{1}\cdot\ldots\cdot X_{n}r=e_{n}s$ .
-The quotient $r$ is symmetric and has degree at most $\deg f - n < \deg f$, so by the second induction hypothesis, $r=s(e_1,\ldots,e_n)$$ by the second induction hypothesis and we get $f = g(e_1, \ldots, e_{n-1}) + e_n r(e_1, \ldots, e_n)$ as wanted. 
+The quotient $r$ is symmetric and has degree at most $\deg f-n<\deg f$. By the second induction hypothesis, there is a polynomial $s$ such that $r=s(e_1,\ldots,e_n)$. Therefore, $f=g(e_1,\ldots,e_{n-1})+e_n s(e_1,\ldots,e_n)$, as required. 
 
 
 Exercise B.1.2. Prove that the decomposition of a symmetric polynomial $f$ as $g ( e _ { 1 } , \ldots , e _ { n } )$ is unique.
@@ -123,17 +123,15 @@ $$
 
 so, by differentiating, we get 
 
-$$
-\begin{array}{l} \sum_ {k = 0} ^ {n} (- 1) ^ {k} k e _ {k} T ^ {k} = T \sum_ {i = 1} ^ {n} \left((- X _ {i}) \prod_ {j \neq i} (1 - X _ {j} T)\right) \\ \qquad = - \left(\sum_ {i = 1} ^ {n} \frac {X _ {i} T}{1 - X _ {i} T}\right) \prod_ {j = 1} ^ {n} (1 - X _ {j} T) \\ \qquad = - \left(\sum_ {i = 1} ^ {n} \sum_ {j = 1} ^ {\infty} (X _ {i} T) ^ {j}\right) \left(\sum_ {i = 0} ^ {n} (- 1) ^ {i} e _ {i} T ^ {i}\right) \\ \qquad = \left(\sum_ {i = 1} ^ {\infty} p _ {i} T ^ {i}\right) \left(\sum_ {j = 0} ^ {n} (- 1) ^ {i - 1} e _ {i} T ^ {i}\right). \end{array}
-$$
-
-By comparing the $T ^ { k }$ coefficients, we get 
-
 $
-k e_k = \sum_{i=1}^{k}(-1)^{i-1}e_{k-i}p_i.
+\frac{d}{dT}\prod_{j=1}^{n}(1-X_jT)
+=-\left(\sum_{i=1}^{n}\frac{X_i}{1-X_iT}\right)\prod_{j=1}^{n}(1-X_jT).
 $
-
-as wanted. 
+Using $\frac{X_i}{1-X_iT}=\sum_{k\geq 1}X_i^kT^{k-1}$ and comparing coefficients of $T^{k-1}$ gives
+$
+k e_k=\sum_{i=1}^{k}(-1)^{i-1}e_{k-i}p_i,
+$
+as required. 
 
 ## B.3 The Fundamental Theorem of Algebra
 
@@ -147,7 +145,7 @@ $$
 f = a (X - \alpha_ {1}) \cdot \ldots (X - \alpha_ {n})
 $$
 
-where $\alpha _ { 1 } , \ldots , \alpha _ { n }$ are the roots of f counted with multiplicity and a is its leading coeficient. 
+where $\alpha _ { 1 } , \ldots , \alpha _ { n }$ are the roots of f counted with multiplicity and a is its leading coefficient. 
 
 By Proposition A.1.2, it suffices to show that any non-constant polynomial $f \in \mathbb { C } [ X ]$ has a root in C. This is also called the d’Alembert-Gauss theorem because d’Alembert was the first one to recognize the importance of proving this result but gave a flawed proof, while Gauss was (almost) the first one to give a rigorous proof (in fact he even gave multiple proofs). 
 
@@ -333,7 +331,7 @@ $$
 x ^ {2} - y ^ {2} + 2 i x y = (x + i y) ^ {2} = a + b i.
 $$
 
-This means $x ^ { 2 } - y ^ { 2 } = a$ and $2 x y = b .$ This is equivalent to $x^2$ and $-y^2$ being roots of $T^2+aT-b^2/4$ by Vieta’s formulas. Since the constant coeficient is negative, the roots are real (e.g. by the intermediate value theorem), and since the product is negative, one is positive and one negative. Label the positive root $x^2$ and the negative root $-y^2$. Take square roots to obtain $x$ and $y$, and adjust one sign so that $2xy=b$. 
+This means $x ^ { 2 } - y ^ { 2 } = a$ and $2 x y = b .$ This is equivalent to $x^2$ and $-y^2$ being roots of $T^2-aT-b^2/4$ by Vieta’s formulas. Since the constant coeficient is negative, the roots are real (e.g. by the intermediate value theorem), and since the product is negative, one is positive and one negative. Label the positive root $x^2$ and the negative root $-y^2$. Take square roots to obtain $x$ and $y$, and adjust one sign so that $2xy=b$. 
 
 ## B.4 Exercises
 
