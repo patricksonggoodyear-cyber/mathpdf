@@ -52,8 +52,6 @@ f=g(e_1,\ldots,e_{n-1})+e_nq(e_1,\ldots,e_n),
 $$
 as required.
 
-
-
 **Exercise B.1.2.** Prove that the representation of a symmetric polynomial as $g(e_1,\ldots,e_n)$ is unique.
 
 ### Solution
@@ -63,7 +61,6 @@ $$
 X_1^{a_1+\cdots+a_n}X_2^{a_2+\cdots+a_n}\cdots X_n^{a_n}.
 $$
 Different exponent vectors $(a_1,\ldots,a_n)$ give different leading monomials, since the $a_i$ can be recovered by taking successive differences of the exponents. Therefore distinct monomials in the $e_i$ cannot cancel in a nonzero polynomial relation. The $e_i$ are algebraically independent, so the representation is unique.
-
 
 ## B.2 Newton’s Formulas
 
@@ -133,7 +130,6 @@ $$
 $$
 Here $r(1)=ke_k$, since each product of $k$ distinct variables is counted $k$ times, while $r(k+1)=0$ because it would require choosing $-1$ distinct variables. This proves Newton’s formulas.
 
-
 ## Proof of Newton’s Formulas Using Generating Functions
 
 Work in the formal power series ring $R[X_1,\ldots,X_n][[T]]$. We have
@@ -159,7 +155,6 @@ $$
 =\sum_{i=1}^{k}(-1)^{k-i-1}p_i e_{k-i},
 $$
 which is equivalent to Newton’s formulas.
-
 
 ## B.3 The Fundamental Theorem of Algebra
 
@@ -231,7 +226,6 @@ X^2-(\alpha_i+\alpha_j)X+\alpha_i\alpha_j,
 $$
 which has complex coefficients. By Proposition B.3.2, both roots belong to $\mathbb{C}$. In particular, $f$ has a complex root. This completes the induction and proves the theorem.
 
-
 ## B.4 Exercises
 
 ## Newton’s Formulas
@@ -250,33 +244,46 @@ Exercise $\mathbf { B . 4 . 3 } ^ { \dagger }$ . Suppose that $\alpha _ { 1 } , 
 
 ## Algebraic Geometry<sup>2</sup>
 
-Exercise B.4.4<sup>†</sup> (Resultant). Let R be a commutative ring, and $f , g \in R [ X ]$ be two polynomials of respective degrees m and $n .$ . For any integer $k \geq 0 .$ , denote by $R _ { k } [ X ]$ the subset of $R [ X ]$ consisting of polynomials of degree less than $k .$ . The resultant Res $( f , g )$ is defined as the determinant of the linear map 
-
+**Exercise B.4.4† (Resultant).** Let $R$ be a commutative ring, and let $f,g\in R[X]$ have respective degrees $m,n$. For $k\geq0$, let $R_k[X]$ be the set of polynomials of degree less than $k$. Define the resultant $\operatorname{Res}(f,g)$ as the determinant of the linear map
 $$
-(u, v) \mapsto u f + v g
+R_n[X]\times R_m[X]\longrightarrow R_{m+n}[X],
+\qquad (u,v)\longmapsto uf+vg.
 $$
-
-from $R _ { m } [ X ] \times R _ { n } [ X ]$ to $R _ { m + n } [ X ]$ . Prove that, if $\textstyle f = \sum _ { i } a _ { i } X ^ { i }$ and $\begin{array} { r } { g = \sum _ { i } b _ { i } X ^ { i } } \end{array}$ , we have<sup>3</sup> 
-
+Show that, if $f=\sum_{i=0}^{m}a_iX^i$ and $g=\sum_{j=0}^{n}b_jX^j$, its matrix in the standard monomial bases is the Sylvester matrix
 $$
-\operatorname{Res} (f, g) = \left| \begin{array}{c c c c c c c c} a _ {0} & 0 & \dots & 0 & b _ {0} & 0 & \dots & 0 \\ a _ {1} & a _ {0} & \dots & 0 & b _ {1} & b _ {0} & \dots & 0 \\ a _ {2} & a _ {1} & \ddots & 0 & b _ {2} & b _ {1} & \ddots & 0 \\ \vdots & \vdots & \ddots & a _ {0} & \vdots & \vdots & \ddots & b _ {0} \\ a _ {m} & a _ {m - 1} & \dots & \vdots & b _ {n} & b _ {n - 1} & \dots & \vdots \\ 0 & a _ {m} & \ddots & \vdots & 0 & b _ {n} & \ddots & \vdots \\ \vdots & \vdots & \ddots & a _ {m - 1} & \vdots & \vdots & \ddots & b _ {n - 1} \\ 0 & 0 & \dots & a _ {m} & 0 & 0 & \dots & b _ {n} \end{array} \right|,
+\operatorname{Res}(f,g)=
+\det\begin{bmatrix}
+a_0&0&\cdots&0&b_0&0&\cdots&0\\
+a_1&a_0&\cdots&0&b_1&b_0&\cdots&0\\
+a_2&a_1&\ddots&0&b_2&b_1&\ddots&0\\
+\vdots&\vdots&\ddots&a_0&\vdots&\vdots&\ddots&b_0\\
+a_m&a_{m-1}&\cdots&\vdots&b_n&b_{n-1}&\cdots&\vdots\\
+0&a_m&\ddots&\vdots&0&b_n&\ddots&\vdots\\
+\vdots&\vdots&\ddots&a_{m-1}&\vdots&\vdots&\ddots&b_{n-1}\\
+0&0&\cdots&a_m&0&0&\cdots&b_n
+\end{bmatrix}.
 $$
-
-and, if $\begin{array} { r } { f = a \prod _ { i } X - \alpha _ { i } } \end{array}$ and $g = b \prod _ { j } X - \beta _ { j }$ , then<sup>4</sup> 
-
+If
 $$
-\operatorname{Res} (f, g) = a ^ {m} b ^ {n} \prod_ {i, j} \alpha_ {i} - \beta_ {j}.
+f=a\prod_{i=1}^{m}(X-\alpha_i),
+\qquad
+g=b\prod_{j=1}^{n}(X-\beta_j),
 $$
+prove that
+$$
+\operatorname{Res}(f,g)
+=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\beta_j-\alpha_i).
+$$
+Also prove that $\operatorname{Res}(f,g)\in fR[X]+gR[X]$.<sup>3</sup> Finally, show that if $f,g\in\mathbb{Z}[X]$ are monic and $uf+vg=1$ for some $u,v\in\mathbb{Z}[X]$, then $\operatorname{Res}(f,g)=\pm1$.
 
-In addition, prove that ${ \mathrm { R e s } } ( f , g ) \in ( f R [ X ] + g R [ X ] ) . ^ { 5 }$ Finally, prove that if $f , g \in \mathbb { Z } [ X ]$ are monic and $u f + v g = 1$ for some $u , v \in \mathbb { Z } [ X ]$ , Res $( f , g ) = \pm 1$ . (It is not necessarily true that $( f R [ X ] + g R [ X ] ) \cap R =$ $\operatorname { R e s } ( f , g ) R$ for specific polynomials $f , g .$ , but we always have Res $( f , g ) \in f R [ X ] + g R [ \dot { X } ]$ by the previous point.) 
+**Exercise B.4.5.** Prove the following identities:
 
-Exercise B.4.5. Prove that 
-
-• Res $( f g , h ) = \operatorname { R e s } ( f , h ) \operatorname { R e s } ( g , h )$ for any $f , g h \in R [ X ]$ 
-
-• Res $( f - g h , g ) = b ^ { k - n } \operatorname { R e s } ( f , g )$ for any $f , g , h \in R [ X ]$ where k is the degree of $f - g h , n$ is the degree of g and b its leading coefficient. 
-
-• Res $( F ( f , g ) , G ( f , g ) ) = \mathrm { R e s } ( F , G ) ^ { k } \mathrm { R e s } ( f , g ) ^ { m n }$ where $F , G , f , g \in R [ X , Y ]$ are homogeneous polynomials of respective degrees $m , n , k , k$ . Here, by ${ \mathrm { R e s } } ( A , B )$ for homogeneous A, $B \in R [ X , Y ]$ we mean Res $( A ( X , 1 ) , B ( X , 1 ) )$ . 
+- $\operatorname{Res}(fg,h)=\operatorname{Res}(f,h)\operatorname{Res}(g,h)$ for any $f,g,h\in R[X]$.
+- $\operatorname{Res}(f-gh,g)=b^{k-\deg f}\operatorname{Res}(f,g)$, where $k=\deg(f-gh)$ and $b$ is the leading coefficient of $g$.
+- If $F,G,f,g\in R[X,Y]$ are homogeneous of degrees $m,n,k,k$, respectively, then
+  $\operatorname{Res}(F(f,g),G(f,g))=\operatorname{Res}(F,G)^k\operatorname{Res}(f,g)^{mn}$.
+  For homogeneous $A,B\in R[X,Y]$, use the convention
+  $\operatorname{Res}(A,B):=\operatorname{Res}(A(X,1),B(X,1))$.
 
 Exercise $\mathbf { B . 4 . 6 ^ { \dagger } }$ (Hilbert’s Nullstellensatz). Let K be an algebraically closed field. Suppose that $f _ { 1 } , \dots , f _ { m } \in K [ X _ { 1 } , \dots , X _ { n } ]$ have no common zeros in $K .$ . Prove that there exist polynomials $g _ { 1 } , \ldots , g _ { m }$ such that 
 
@@ -298,9 +305,9 @@ $$
 f (f _ {1}, \ldots , f _ {n + 1}) = 0.
 $$
 
-Exercise $\mathbf { B . 4 . 9 } ^ { \dagger }$ (Transcendence Bases). Let $L / K$ be a field extension. Call a maximal set of $K \cdot$ algebraically independent elements of L a transcendence basis. Prove that, if $L / K$ has a transcendence basis of cardinality $n ,$ then all transcendence bases have cardinality n. This n is called the transcendence degree trd $\mathsf { g } _ { K } L .$ Finally, show that, if $L = K ( \alpha _ { 1 } , \ldots , \alpha _ { n } )$ any maximal algebraically independent subset of $\alpha _ { 1 } , \ldots , \alpha _ { n }$ is a transcendence basis. (In particular $\mathrm { t r } \mathrm { d e g } _ { K } L \leq n . )$ 
+Exercise $\mathbf { B . 4 . 9 } ^ { \dagger }$ (Transcendence Bases). Let $L / K$ be a field extension. A maximal set of elements of $L$ that are algebraically independent over $K$ is called a transcendence basis. Prove that, if $L / K$ has a transcendence basis of cardinality $n ,$ then all transcendence bases have cardinality n. This $n$ is called the transcendence degree $\operatorname{trdeg}_K L$. Finally, show that, if $L = K ( \alpha _ { 1 } , \ldots , \alpha _ { n } )$ any maximal algebraically independent subset of $\alpha _ { 1 } , \ldots , \alpha _ { n }$ is a transcendence basis. (In particular $\mathrm { t r } \mathrm { d e g } _ { K } L \leq n . )$ 
 
-Exercise B.4.10<sup>†</sup>. Let K be an algebraically closed field which is contained in another field $L .$ Suppose that $f _ { 1 } , \dots , f _ { m } \in K [ X _ { 1 } , \dots , X _ { n } ]$ are polynomials with a common root in $L .$ . Prove that they also have a common root in $K .$ 
+**Exercise B.4.10†.** Let $K$ be an algebraically closed field which is contained in another field $L .$ Suppose that $f _ { 1 } , \dots , f _ { m } \in K [ X _ { 1 } , \dots , X _ { n } ]$ are polynomials with a common root in $L .$ . Prove that they also have a common root in $K .$ 
 
 ## Miscellaneous
 
@@ -485,31 +492,38 @@ $$
 f ^ {k} = f _ {1} g _ {1} + \ldots + f _ {m} g _ {m}.
 $$
 
-## Solution
+### Solution
 
-We proceed by induction on the number n of variables. When $n = 1$ this is just Bézout’s lemma. Now, if $n \geq 1$ , we will eliminate one variable with the resultant. Consider the polynomial 
+We proceed by induction on the number $n$ of variables. When $n=1$, the assertion is Bézout’s lemma in the principal ideal domain $K[X]$.
 
+Suppose $n>1$. After a generic linear change of coordinates of the form $X_i\mapsto X_i+c_iX_n$ for $i=1,\ldots,n-1$, we may assume that each nonzero $f_i$ has a nonzero constant leading coefficient as a polynomial in $X_n$. This avoids common roots at infinity when we specialize the first $n-1$ coordinates.
+
+Introduce indeterminates $U_1,\ldots,U_{m-1}$ and consider
 $$
-g = \mathrm{Res} _ {X _ {n}} (f _ {m}, U _ {1} f _ {1} + \ldots + U _ {m - 1} f _ {m - 1}) \in K [ U _ {1}, \ldots , U _ {m - 1} ] [ X _ {1}, \ldots , X _ {n - 1} ],
+G(U_1,\ldots,U_{m-1},X_1,\ldots,X_{n-1})
+=\operatorname{Res}_{X_n}\left(f_m,\sum_{i=1}^{m-1}U_if_i\right).
 $$
-
-where $U _ { 1 } , \dots , U _ { m - 1 }$ are formal variables. By Exercise $\mathrm { B } . 4 . 4 ^ { \dagger } , ( x _ { 1 } , \ldots , x _ { n - 1 } )$ is a root of $g$ if and only if $f _ { m }$ and $U _ { 1 } f _ { 1 } + . . . + U _ { m - 1 } f _ { m - 1 }$ have a common root $x _ { n }$ at $\left( x _ { 1 } , \ldots , x _ { n - 1 } \right)$ , i.e. $( x _ { 1 } , \ldots , x _ { n } )$ is a common root of $f _ { 1 } , \ldots , f _ { m }$ , or if the leading coefficient in $X _ { n }$ of $f _ { m }$ and $U _ { 1 } f _ { 1 } + . . . + U _ { m - 1 } f _ { m - 1 }$ vanish at $( x _ { 1 } , \ldots , x _ { n - 1 } )$ , i.e. the leading coefficient in $X _ { n }$ of $f _ { 1 } , \ldots , f _ { m }$ vanish at $( x _ { 1 } , \ldots , x _ { n - 1 } )$ (we say $( x _ { 1 } , \ldots , x _ { n - 1 } )$ is a common root at infinity). We wish to rule out the second case. This is not very hard: perform the change of coordinates $X _ { i }  X _ { i } + c _ { i } X _ { n }$ for $i = 1 , \ldots , n - 1$ and some $c _ { i }$ to get constant leading coefficients in $X _ { n }$ (thus sharing no common root). 
-
-Hence, $g$ has no root by assumption since $f _ { 1 } , \ldots , f _ { m }$ have no common root. However, a root of g is simply a common root of its coefficients $g _ { i }$ when g is seen as a polynomial in $U _ { 1 } , \dots , U _ { m - 1 }$ This implies that a linear combination of the $g _ { i }$ is 1, by the induction hypothesis. Finally, notice that 
-
+Write $G=\sum_\nu G_\nu(X_1,\ldots,X_{n-1})U^\nu$. We claim that the coefficient polynomials $G_\nu$ have no common zero in $K^{n-1}$. Indeed, if all coefficients vanished at some $x'=(x_1,\ldots,x_{n-1})$, the resultant would vanish identically as a polynomial in the $U_i$. But the roots of $f_m(x',X_n)$ are finite in number, and none is a common root of all the $f_i(x',X_n)$ by hypothesis. For each such root, the condition
 $$
-g = \mathrm{Res} _ {X _ {m}} (f, U _ {1} f _ {1} + \ldots + U _ {m - 1} f _ {m - 1}) = u f + v (U _ {1} f _ {1} + \ldots + U _ {m - 1} f _ {m - 1})
+\sum_{i=1}^{m-1}U_if_i(x',x_n)=0
 $$
+defines a proper hyperplane in $U$-space. Since $K$ is infinite, we can choose $U$ outside their union and also ensure that the linear combination has full degree. The resultant is then nonzero, a contradiction.
 
-for some $u , v \in K [ X _ { 1 } , \ldots , X _ { n } ] [ U _ { 1 } , \ldots , U _ { m - 1 } ]$ , by Exercise $\mathrm { { B . 4 . 4 ^ { \dagger } } }$ . Hence, the coefficients $g _ { i }$ of $g$ are linear combinations of the $f _ { i }$ (with coefficients in $K [ X _ { 1 } , \ldots , X _ { n } ] )$ . We conclude that a linear combination of the $f _ { i }$ is 1 as wanted. 
-
-For the second part, suppose without loss of generality that $f \ \neq \ 0 .$ Use the first part on $f _ { 1 } , \dots , f _ { m } , 1 - X _ { n + 1 } f$ which have no common root by assumption (this is known as Rabinowitsch’s trick). Thus, there are $g _ { 1 } , \dots , g _ { m } , g \in K [ X _ { 1 } , \dots , X _ { n + 1 } ]$ such that 
-
+By the induction hypothesis applied to the coefficient polynomials $G_\nu$, there are polynomials $H_\nu\in K[X_1,\ldots,X_{n-1}]$ such that
 $$
-g _ {1} f _ {1} + \ldots + g _ {m} f _ {m} + g (1 - X _ {n + 1} f) = 1.
+\sum_\nu H_\nu G_\nu=1.
 $$
+The resultant belongs to the ideal generated by $f_m$ and $\sum_{i=1}^{m-1}U_if_i$ (by Exercise B.4.4†). Comparing coefficients of the $U_i$ shows that every $G_\nu$ belongs to the ideal $(f_1,\ldots,f_m)$. Hence $1\in(f_1,\ldots,f_m)$, proving the first assertion.
 
-Now, evaluate this at $X _ { n + 1 } = 1 / f$ and multiply by a large enough power of f to get the wanted equality.  
+For the second assertion, assume $f\neq0$. Apply the first part to $f_1,\ldots,f_m,1-X_{n+1}f$, which have no common zero by hypothesis (Rabinowitsch’s trick). Thus
+$$
+g_1f_1+\cdots+g_mf_m+g(1-X_{n+1}f)=1
+$$
+for suitable polynomials $g_i,g\in K[X_1,\ldots,X_{n+1}]$. Substitute $X_{n+1}=1/f$ and multiply by a sufficiently large power of $f$ to obtain
+$$
+f^k=f_1h_1+\cdots+f_mh_m
+$$
+for some integer $k$ and polynomials $h_i\in K[X_1,\ldots,X_n]$.
 
 Exercise B.4.7<sup>†</sup> (Weak Bézout’s Theorem). Prove that two coprime polynomials $f , g \in K [ X , Y ]$ of respective degrees m and n have at most mn common roots in $K .$ (Bézout’s theorem states that they have exactly mn common roots counted with multiplicity, possibly at infinity.<sup>4</sup>) 
 
@@ -573,7 +587,7 @@ Exercise B.4.9<sup>†</sup> (Transcendence Bases). Let $L / K$ be a field exten
 
 ## Solution
 
-We prove a result analogous to Proposition C.1.2: if $\alpha _ { 1 } , \ldots , \alpha _ { m } \in L$ are K-algebraically independent and $\beta _ { 1 } , \ldots , \beta _ { n } \in L$ are such that any element of $L$ is algebraic over $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ , then $m \leq n$ . Since transcendence bases satisfy both conditions, this shows that trdeg $\dot { } _ { \times } { \cal L }$ is well-defined. This almost Exercise $\mathrm { B . 4 . 8 ^ { \dagger } }$ : any family of $n + 1$ elements algebraic over $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ is algebraically dependent over K. The only difference is that, in our case $\alpha _ { 1 } , \ldots , \alpha _ { m }$ are not necessarily in $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ . However, the first argument still works perfectly fine, the only difference is that, if $\alpha _ { i }$ has degree $d _ { i }$ over $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ , we get (at most) 
+We prove a result analogous to Proposition C.1.2: if $\alpha _ { 1 } , \ldots , \alpha _ { m } \in L$ are K-algebraically independent and $\beta _ { 1 } , \ldots , \beta _ { n } \in L$ are such that any element of $L$ is algebraic over $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ , then $m \leq n$ . Since transcendence bases satisfy both conditions, this shows that $\operatorname{trdeg}_K L$ is well-defined. This almost Exercise $\mathrm { B . 4 . 8 ^ { \dagger } }$ : any family of $n + 1$ elements algebraic over $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ is algebraically dependent over K. The only difference is that, in our case $\alpha _ { 1 } , \ldots , \alpha _ { m }$ are not necessarily in $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ . However, the first argument still works perfectly fine, the only difference is that, if $\alpha _ { i }$ has degree $d _ { i }$ over $K ( \beta _ { 1 } , \ldots , \beta _ { n } )$ , we get (at most) 
 
 $$
 \prod_ {i = 1} ^ {m} d _ {i} \frac {(m M N) ^ {n + 1} - 1}{m M N - 1}
@@ -583,7 +597,7 @@ equations this time, which is still less than $( N + 1 ) ^ { m }$ for large $N$ 
 
 For the second part, note that, by the same argument as Theorem 1.3.2 or by Chapter $6 ,$ any element of $K ( \alpha _ { 1 } , \ldots , \alpha _ { n } )$ is algebraic over $K ( S )$ , where $S \subseteq \{ \alpha _ { 1 } , \ldots , \alpha _ { n } \}$ is a maximal subset of K-algebraically independent element.  
 
-Exercise B.4.10<sup>†</sup>. Let K be an algebraically closed field which is contained in another field $L .$ Suppose that $f _ { 1 } , \dots , f _ { m } \in K [ X _ { 1 } , \dots , X _ { n } ]$ are polynomials with a common root in $L .$ . Prove that they also have a common root in $K$ . 
+**Exercise B.4.10†.** Let $K$ be an algebraically closed field which is contained in another field $L .$ Suppose that $f _ { 1 } , \dots , f _ { m } \in K [ X _ { 1 } , \dots , X _ { n } ]$ are polynomials with a common root in $L .$ . Prove that they also have a common root in $K$ . 
 
 ## Solution
 
