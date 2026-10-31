@@ -1085,7 +1085,7 @@ $$
 $$
 0=a_1\leq a_2\leq\cdots\leq a_n.
 $$
-必定存在某个 $k\in\{2,ldots,n\}$，使得
+必定存在某个 $k\in\{2,\ldots,n\}$，使得
 $
 a_k\geq a_{k-1}+2;
 $
