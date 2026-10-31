@@ -860,13 +860,13 @@ Exercise $\mathbf { A . 2 . 6 ^ { * } }$ . Prove that a subring of a field is an
 
 Solution
 
-If ab = 0 and $a \neq 0$ then $b = a ^ { - 1 } a b = 0 .$
+If $ab=0$ and $a\neq0$, then $b=a^{-1}ab=0$.
 
 Exercise A.2.7. What goes wrong if you try to construct the field of fractions of a commutative ring which isn’t a domain?
 
 ## Solution
 
-Clearly, if $u v = 0 ,$ , there is something wrong with $1 / u .$ . Indeed, we would have $1 / u = v / ( u v ) = v / 0$ which doesn’t make sense (even formally: $1 \cdot 0$ is not equal toThe problem is that $a / b = c / d$ if $a d =$ bc is not an equivalence relation anymore: we can have $a / b = c / d$ and $c / d = x / y$ but $a / b \neq x / y$ . Indeed, this is how the usual proof of transitivity goes: we have ad = bc and $c y = d x$ so
+Clearly, if $uv=0$, there is something wrong with $1/u$. Indeed, we would have $1/u=v/(uv)=v/0$, which doesn’t make sense (even formally: $1\cdot0$ is not equal to $1$). The problem is that $a/b=c/d$ if $ad=bc$ is not an equivalence relation anymore: we can have $a/b=c/d$ and $c/d=x/y$ but $a/b\neq x/y$. Indeed, this is how the usual proof of transitivity goes: we have $ad=bc$ and $cy=dx$, so
 
 $$
 a d y = b c y = b d x
@@ -1432,7 +1432,7 @@ $$
 n i _ {1} + m j _ {1} = n i _ {2} + m j _ {2} \iff n (i _ {1} - i _ {2}) = m (j _ {1} - j _ {2}).
 $$
 
-Since m and n are coprime, this implies n $\mid j _ { 1 } - j _ { 2 }$ and m $\mid i _ { 1 } - i _ { 2 }$ . But then, deg $\overset { \cdot } { \boldsymbol { X } } \overset { \boldsymbol { u } } { \geq }$ m and $\deg _ { Y } u \geq n ,$ , which implies that s is constant in both X and $Y , { \mathrm { i . e . } }$ . constant, since $f ( X ) + g ( Y ) =$ uv. This is a contradiction.
+Since $m$ and $n$ are coprime, this implies $n\mid j_1-j_2$ and $m\mid i_1-i_2$. But then, $\deg_Xu\geq m$ and $\deg_Yu\geq n$, which implies that $s$ is constant in both $X$ and $Y$, i.e. constant, since $f(X)+g(Y)=uv$. This is a contradiction.
 
 Now suppose $k \geq 3$ and $f = u v$ . Let $n _ { i } = \deg f _ { i }$ and let $a _ { i }$ be the leading coefficient of $f _ { i }$ . The same argument as before shows that
 
