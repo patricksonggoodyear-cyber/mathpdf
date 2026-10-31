@@ -981,3 +981,334 @@ $$
 注意，$r_i(\alpha)$ 不一定是多项式；它可能只是代数于
 $K(\alpha_1,\ldots,\alpha_k)$ 上的元素。不过，考虑它的范数（即它在 $K(\alpha_1,\ldots,\alpha_k)$ 上的所有共轭之积），就能得到一个多项式。事实上，若 $r_i(\alpha)$ 的范数非零，那么 $r_i(\alpha)$ 本身也非零。（还需要注意 $\pi$ 的首项系数：若它在特化时变成零，$\alpha$ 的共轭个数就会减少，论证可能出现问题；不过，我们也可以选择 $a_1,\ldots,a_k$，使这个首项系数不为零。）证毕。
 
+### 杂项
+
+**习题 B.4.11†（2020 年 ISL 题目的推广）.** 设 $n\geq1$ 为整数。求最大的整数 $N$，使得存在一个次数为 $N$ 的单项式 $f$，无法写成
+$$
+\sum_{i=1}^{n}e_if_i,
+$$
+其中 $f_i\in\mathbb Z[X_1,\ldots,X_n]$。
+
+### 解答
+
+答案是
+$$
+N=\frac{n(n-1)}2.
+$$
+
+首先证明单项式
+$$
+X_2X_3^2\cdots X_n^{n-1}
+$$
+无法写成题目要求的形式。反设
+$$
+X_2X_3^2\cdots X_n^{n-1}=\sum_i e_if_i,
+$$
+其中各个 $f_i$ 都可以不失一般性地假设为次数
+$$
+\frac{n(n-1)}2-i
+$$
+的齐次多项式（只需忽略其他次数的单项式）。
+
+现在对所有置换 $\sigma\in\mathfrak S_n$，将
+$$
+\varepsilon(\sigma)X_{\sigma(2)}X_{\sigma(3)}^2
+\cdots X_{\sigma(n)}^{n-1}
+$$
+求和，其中 $\varepsilon$ 表示置换的符号（见定义 C.3.2）。由于 $e_i$ 都是对称多项式，我们得到
+$$
+\begin{aligned}
+&\sum_{\sigma\in\mathfrak S_n}
+\varepsilon(\sigma)
+X_{\sigma(2)}X_{\sigma(3)}^2\cdots X_{\sigma(n)}^{n-1}\\
+&\qquad=
+\sum_i e_i
+\sum_{\sigma\in\mathfrak S_n}
+\varepsilon(\sigma)
+f_i(X_{\sigma(1)},\ldots,X_{\sigma(n)}).
+\end{aligned}
+$$
+
+关键在于：若 $f$ 的次数小于 $n(n-1)/2$，那么
+$$
+\sum_{\sigma\in\mathfrak S_n}
+\varepsilon(\sigma)
+f(X_{\sigma(1)},\ldots,X_{\sigma(n)})=0.
+$$
+这会导致矛盾，因为上式左侧是若干个互不相同的单项式之和，因而不为零。
+
+下面证明这一关键结论。不妨设 $f$ 是单项式
+$$
+f=\prod_{i=1}^{n}X_i^{a_i}.
+$$
+由于
+$$
+\sum_{i=1}^{n}a_i
+<
+\frac{n(n-1)}2
+=
+\sum_{i=1}^{n}(i-1),
+$$
+由抽屉原理，至少有两个指数相等。设 $a_i=a_j$。记 $\tau$ 为换位 $i\leftrightarrow j$。将 $\mathfrak S_n$ 中的置换按照轨道 $\{\sigma,\sigma\circ\tau\}$ 分组。由于
+$$
+f(X_{\sigma(1)},\ldots,X_{\sigma(n)})
+=
+f(X_{\sigma\circ\tau(1)},\ldots,X_{\sigma\circ\tau(n)}),
+$$
+而由习题 C.3.11*，
+$$
+\varepsilon(\sigma\circ\tau)=-\varepsilon(\sigma),
+$$
+所以每个轨道中的两项相互抵消。关键结论得证。
+
+接下来证明：当
+$$
+a_1+\cdots+a_n>\frac{n(n-1)}2
+$$
+时，单项式 $X_1^{a_1}\cdots X_n^{a_n}$ 可以写成所需形式。
+
+若 $a_1,\ldots,a_n\geq1$，结论显然成立，因为
+$$
+e_n=X_1\cdots X_n
+$$
+整除该单项式。下面对
+$$
+a_1^2+\cdots+a_n^2
+$$
+作归纳。上述情形给出了归纳的基例。
+
+现在设
+$$
+a_1+\cdots+a_n>\frac{n(n-1)}2,
+$$
+并且不妨设
+$$
+0=a_1\leq a_2\leq\cdots\leq a_n.
+$$
+必定存在某个 $k$，使得
+$$
+a_{k+1}\geq a_k+2;
+$$
+否则，对所有 $k$ 都有 $a_k\leq k-1$，这与指数和的假设矛盾。
+
+考虑多项式
+$$
+\begin{aligned}
+&X_1^{a_1}\cdots X_n^{a_n}\\
+&\quad-
+X_1^{a_1}\cdots X_{k-1}^{a_{k-1}}
+X_k^{a_k-1}\cdots X_n^{a_n-1}e_{n-k}.
+\end{aligned}
+$$
+我们断言，这个多项式中出现的每个单项式，其指数平方和都严格小于
+$$
+a_1^2+\cdots+a_n^2.
+$$
+这就能完成归纳步骤。
+
+为说明这一点，将第二项中的任意一个单项式写成
+$$
+X_1^{a_1+b_1}\cdots
+X_{k-1}^{a_{k-1}+b_{k-1}}
+X_k^{a_k+b_k-1}\cdots
+X_n^{a_n+b_n-1},
+$$
+其中 $b_i\in\{0,1\}$，且
+$$
+b_1+\cdots+b_n=n-k.
+$$
+由平方函数的凸性可知：若某个 $i<k$ 满足 $b_i=1$，而某个 $j\geq k$ 满足 $b_j=0$，那么
+$$
+(a_i+1)^2+(a_j-1)^2<a_i^2+a_j^2,
+$$
+因为 $a_j\geq a_{k+1}\geq a_k+2>a_i+1$。因此，可以不断把位于 $k$ 之前的 $1$“移到”下标不小于 $k$ 的位置，每移动一次，指数平方和都会严格减小。最终得到
+$$
+\begin{aligned}
+&(a_1+b_1)^2+\cdots+(a_{k-1}+b_{k-1})^2\\
+&\quad +(a_k+b_k-1)^2+\cdots+(a_n+b_n-1)^2\\
+&\leq a_1^2+\cdots+a_n^2.
+\end{aligned}
+$$
+等号只可能对应原单项式本身；但我们在构造的差中已经减去了这个单项式。因此，差中每个单项式的指数平方和都严格更小。由归纳假设，这些单项式均可写成所需形式，进而原单项式也可以。证毕。
+
+**习题 B.4.12†（拉格朗日）.** 给定有理函数 $f\in K(X_1,\ldots,X_n)$，记 $G_f$ 为所有满足
+$$
+f(X_1,\ldots,X_n)=f(X_{\sigma(1)},\ldots,X_{\sigma(n)})
+$$
+的置换 $\sigma\in\mathfrak S_n$ 所构成的集合。
+
+设 $f,g\in K(X_1,\ldots,X_n)$ 是两个有理函数。若 $G_f\subseteq G_g$，证明存在有理函数
+$$
+r\in K(e_1,\ldots,e_n)(X)
+$$
+使得
+$$
+g=r\circ f.
+$$
+
+### 解答
+
+我们给出 Prasolov [21] 中的证明。将 $G_g$ 分解为 $G_f$ 的互不相交的左陪集：
+$$
+G_g=h_1G_f\sqcup h_2G_f\sqcup\cdots\sqcup h_kG_f.
+$$
+对每个 $i$，记
+$$
+f_i=h_if,\qquad g_i=h_ig,
+$$
+其中 $\sigma f$ 表示
+$$
+f(X_{\sigma(1)},\ldots,X_{\sigma(n)}).
+$$
+这也就是说，置换群 $\mathfrak S_n$ 作用在域 $K(X_1,\ldots,X_n)$ 上。这里用到了假设 $G_f\subseteq G_g$。
+
+**第一种证明。** 注意到
+$$
+\sum_{i=1}^{k}\frac{g_i}{T-f_i}
+$$
+按照定义是关于 $X_1,\ldots,X_n$ 的对称有理函数。由于
+$$
+\Omega=\prod_{i=1}^{k}(T-f_i)
+$$
+也具有对称性，由对称多项式基本定理，存在
+$$
+F\in K(e_1,\ldots,e_n)[T]
+$$
+使得
+$$
+\sum_{i=1}^{k}\frac{g_i}{T-f_i}
+=\frac{F(T)}{\Omega(T)}.
+$$
+注意
+$$
+\Omega'(f)=\prod_{i=2}^{k}(f-f_i)
+$$
+正是将 $\Omega(T)/(T-f)$ 在 $T=f$ 处取值得到的结果。因此，
+$$
+\frac{F(f)}{\Omega'(f)}
+=
+\sum_{i=1}^{k}
+g_i\left(\frac{\Omega}{(T-f_i)\Omega'}\right)(f)
+=g,
+$$
+因为当 $f\neq f_i$ 时，
+$$
+\frac{\Omega}{(T-f_i)\Omega'}
+$$
+在 $T=f$ 处取值为零。这就说明 $g$ 是 $f$ 与对称有理函数的有理组合。
+
+**第二种证明。** 这种证明或许更直观。考虑方程组
+$$
+\sum_{i=1}^{k}f_i^s g_i=T_s,
+$$
+其中指数表示幂，而不是迭代次数。由习题 C.5.7 中的克莱姆法则以及附录 C 中的范德蒙德行列式，我们得到
+$$
+g=\frac{D}{\Delta},
+$$
+其中
+$$
+\Delta=
+\left|
+\begin{array}{ccc}
+1&\cdots&1\\
+f_1&\cdots&f_k\\
+\vdots&\ddots&\vdots\\
+f_1^{k-1}&\cdots&f_k^{k-1}
+\end{array}
+\right|
+=\prod_{i<j}(f_i-f_j),
+$$
+而
+$$
+D=
+\left|
+\begin{array}{cccc}
+T_0&1&\cdots&1\\
+T_1&f_2&\cdots&f_k\\
+\vdots&\vdots&\ddots&\vdots\\
+T_{k-1}&f_2^{k-1}&\cdots&f_k^{k-1}
+\end{array}
+\right|.
+$$
+将其改写为
+$$
+g=\frac{D\Delta}{\Delta^2}.
+$$
+注意，$\Delta^2$ 是对称的；当交换两个 $f_i$ 时，$D$ 和 $\Delta$ 都变号，所以 $D\Delta$ 关于 $f_2,\ldots,f_k$ 是对称的。
+
+另一方面，对任意 $i$，$e_i(f_2,\ldots,f_k)$ 都可以用 $f_1$ 和 $e_j(f_1,\ldots,f_k)$ 多项式地表示。因此，由对称多项式基本定理，$D\Delta/\Delta^2$ 是一个关于 $f$ 的有理函数，其系数是对称有理函数。这就证明了所需结论。证毕。
+
+**习题 B.4.13†（2012 年伊朗数学奥林匹克）.** 证明：存在多项式
+$$
+f\in\mathbb R[X_0,\ldots,X_{n-1}],
+$$
+使得对所有 $a_0,\ldots,a_{n-1}\in\mathbb R$，
+$$
+f(a_0,\ldots,a_{n-1})\geq0
+$$
+等价于多项式
+$$
+X^n+a_{n-1}X^{n-1}+\cdots+a_0
+$$
+的所有根都是实数，当且仅当 $n\in\{1,2,3\}$。
+
+### 解答
+
+当 $n\leq3$ 时，判别式满足题目要求。事实上，若
+$$
+f=\prod_i(X-\alpha_i),
+$$
+则其判别式是
+$$
+\left(\prod_{i<j}(\alpha_i-\alpha_j)\right)^2.
+$$
+当所有 $\alpha_i$ 都是实数时，这个值非负。
+
+还需要证明：对于这些 $n$，当且仅当所有 $\alpha_i$ 都是实数时，范德蒙德乘积
+$$
+\prod_{i<j}(\alpha_i-\alpha_j)
+$$
+才是实数。因为它的平方是实数，所以该乘积要么是实数，要么是纯虚数。
+
+当 $n=1$ 时结论显然，因为任何一次实系数多项式都在 $\mathbb R$ 中分裂。
+
+当 $n=2$ 时，若 $f$ 的根为 $\alpha$ 和 $\overline\alpha$，且 $\alpha\neq\overline\alpha$，那么
+$$
+\alpha-\overline\alpha
+$$
+不是实数，因为取复共轭会使它变号。
+
+当 $n=3$ 时，若 $f$ 有一对非实共轭根 $\alpha,\overline\alpha$，以及一个实根 $\beta$，那么取复共轭也会使
+$$
+(\alpha-\overline\alpha)(\beta-\alpha)(\beta-\overline\alpha)
+$$
+变号。因此它不是实数，结论成立。
+
+现在，若 $n\geq4$ 时存在这样的多项式，那么令若干系数为零，便可得到 $n=4$ 时的一个多项式。例如，令
+$$
+g(a,b,c,d)=f(a,b,c,d,0,\ldots,0).
+$$
+因此，只需证明 $n=4$ 时不存在这样的多项式。
+
+考虑特殊形式的多项式 $f(0,b,0,d)$，因为我们明确知道
+$$
+X^4+bX^2+d
+$$
+的根何时全为实数。为方便起见，令
+$$
+g(r,s)=f(0,-r-s,0,rs).
+$$
+于是，$g(r,s)$ 非负，当且仅当多项式
+$$
+X^4-(r+s)X^2+rs=(X^2-r)(X^2-s)
+$$
+的根全为实数。换言之，$g(r,s)\geq0$ 当且仅当 $r,s\geq0$。
+
+固定任意 $r\geq0$。当 $s<0$ 时，$g(r,s)<0$；当 $s>0$ 时，$g(r,s)\geq0$。由连续性，
+$$
+0\geq\lim_{s\to0^-}g(r,s)
+=g(r,0)
+=\lim_{s\to0^+}g(r,s)\geq0.
+$$
+因此，对任意 $r\geq0$，都有 $g(r,0)=0$。但多项式 $g(R,0)$ 有无穷多个根，所以它必须是零多项式。于是，对负数 $r$ 也有 $g(r,0)=0$，这意味着 $g(r,0)\geq0$；然而此时 $r<0$，对应的四次多项式并非所有根都为实数，矛盾。证毕。
+
