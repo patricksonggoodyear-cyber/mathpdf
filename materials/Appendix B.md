@@ -224,7 +224,7 @@ Exercise B.4.5. Prove that
 
 • Res $( f g , h ) = \operatorname { R e s } ( f , h ) \operatorname { R e s } ( g , h )$ for any $f , g h \in R [ X ]$ 
 
-• Res $( f - g h , g ) = b ^ { k - n } \operatorname { R e s } ( f , g )$ for any $f , g , h \in R [ X ]$ where k is the degree of $f - g h , n$ is the degree of g and b its leading coeficient. 
+• Res $( f - g h , g ) = b ^ { k - n } \operatorname { R e s } ( f , g )$ for any $f , g , h \in R [ X ]$ where k is the degree of $f - g h , n$ is the degree of g and b its leading coefficient. 
 
 • Res $( F ( f , g ) , G ( f , g ) ) = \mathrm { R e s } ( F , G ) ^ { k } \mathrm { R e s } ( f , g ) ^ { m n }$ where $F , G , f , g \in R [ X , Y ]$ are homogeneous polynomials of respective degrees $m , n , k , k$ . Here, by ${ \mathrm { R e s } } ( A , B )$ for homogeneous A, $B \in R [ X , Y ]$ we mean Res $( A ( X , 1 ) , B ( X , 1 ) )$ . 
 
@@ -282,7 +282,7 @@ $$
 
 is equivalent to the polynomial $X ^ { n } + a _ { n - 1 } X ^ { n - 1 } + \ldots + a _ { 0 }$ having only real roots, if and only if $n \in \{ 1 , 2 , 3 \}$ 
 
-Exercise B.4.14. Let $f \in K [ X ]$ be a monic polynomial with roots $\alpha _ { 1 } , \ldots , \alpha _ { n }$ . Prove that its dis criminant, as defined in Remark 1.3.2 or Exercise B.4.4<sup>†</sup> is equal to 
+Exercise B.4.14. Let $f \in K [ X ]$ be a monic polynomial with roots $\alpha _ { 1 } , \ldots , \alpha _ { n }$ . Prove that its discriminant, as defined in Remark 1.3.2 or Exercise B.4.4<sup>†</sup> is equal to 
 
 $$
 (- 1) ^ {\frac {n (n - 1)}{2}} \cdot \prod_ {i = 1} ^ {n} f ^ {\prime} (\alpha_ {i}).
@@ -331,7 +331,7 @@ $$
 x ^ {2} - y ^ {2} + 2 i x y = (x + i y) ^ {2} = a + b i.
 $$
 
-This means $x ^ { 2 } - y ^ { 2 } = a$ and $2 x y = b .$ This is equivalent to $x^2$ and $-y^2$ being roots of $T^2-aT-b^2/4$ by Vieta’s formulas. Since the constant coeficient is negative, the roots are real (e.g. by the intermediate value theorem), and since the product is negative, one is positive and one negative. Label the positive root $x^2$ and the negative root $-y^2$. Take square roots to obtain $x$ and $y$, and adjust one sign so that $2xy=b$. 
+This means $x ^ { 2 } - y ^ { 2 } = a$ and $2 x y = b .$ This is equivalent to $x^2$ and $-y^2$ being roots of $T^2-aT-b^2/4$ by Vieta’s formulas. Since the constant coefficient is negative, the roots are real (e.g. by the intermediate value theorem), and since the product is negative, one is positive and one negative. Label the positive root $x^2$ and the negative root $-y^2$. Take square roots to obtain $x$ and $y$, and adjust one sign so that $2xy=b$. 
 
 ## B.4 Exercises
 
@@ -409,7 +409,7 @@ In addition, prove that Res $( f , g ) \in ( f R [ X ] + g R [ X ] ) . ^ { 3 }$ 
 
 ## Solution
 
-The determinant formula for the resultant follows by considering the matrix of the linear map with respect to the monomial basis $1 , X , \dotsc , X ^ { m + n - 1 }$ . To prove the explicit formula, consider the case where $A = a , B = b , \alpha _ { i } = A _ { i }$ and $\beta _ { j } = B _ { j }$ are indeterminates. Working over a field K, the resultant vanishes when $A _ { i } = B _ { j }$ for some $i , j$ since the map is not surjective: it never reaches 1. Thus, the resultant is divisible by $A _ { i } - B _ { j }$ for all $i , j .$ Looking at the determinant formula, we see that the degree of Res $( f , g )$ in $A _ { 1 }$ is n and its leading coeficient is $A ^ { m } B ^ { n }$ , which proves the wanted formula. 
+The determinant formula for the resultant follows by considering the matrix of the linear map with respect to the monomial basis $1 , X , \dotsc , X ^ { m + n - 1 }$ . To prove the explicit formula, consider the case where $A = a , B = b , \alpha _ { i } = A _ { i }$ and $\beta _ { j } = B _ { j }$ are indeterminates. Working over a field K, the resultant vanishes when $A _ { i } = B _ { j }$ for some $i , j$ since the map is not surjective: it never reaches 1. Thus, the resultant is divisible by $A _ { i } - B _ { j }$ for all $i , j .$ Looking at the determinant formula, we see that the degree of Res $( f , g )$ in $A _ { 1 }$ is n and its leading coefficient is $A ^ { m } B ^ { n }$ , which proves the wanted formula. 
 
 For the second part, write the equation $u f + v g = r$ in the monomial basis as $R V = ( r , 0 , \ldots , 0 ) : =$ $r e _ { 1 }$ , where $R$ is the matrix corresponding to the linear map $(u,v)\mapsto uf+vg$ . Hence, we wish to have $r R ^ { - 1 } e _ { 1 } \in R ^ { n }$ . ?? tells us that $r = \operatorname* { d e t } R = \operatorname { R e s } ( f , g )$ works. 
 
@@ -443,7 +443,7 @@ $$
 g = \mathrm{Res} _ {X _ {n}} (f _ {m}, U _ {1} f _ {1} + \ldots + U _ {m - 1} f _ {m - 1}) \in K [ U _ {1}, \ldots , U _ {m - 1} ] [ X _ {1}, \ldots , X _ {n - 1} ],
 $$
 
-where $U _ { 1 } , \dots , U _ { m - 1 }$ are formal variables. By Exercise $\mathrm { B } . 4 . 4 ^ { \dagger } , ( x _ { 1 } , \ldots , x _ { n - 1 } )$ is a root of $g$ if and only if $f _ { m }$ and $U _ { 1 } f _ { 1 } + . . . + U _ { m - 1 } f _ { m - 1 }$ have a common root $x _ { n }$ at $\left( x _ { 1 } , \ldots , x _ { n - 1 } \right)$ , i.e. $( x _ { 1 } , \ldots , x _ { n } )$ is a common root of $f _ { 1 } , \ldots , f _ { m }$ , or if the leading coeficient in $X _ { n }$ of $f _ { m }$ and $U _ { 1 } f _ { 1 } + . . . + U _ { m - 1 } f _ { m - 1 }$ vanish at $( x _ { 1 } , \ldots , x _ { n - 1 } )$ , i.e. the leading coeficient in $X _ { n }$ of $f _ { 1 } , \ldots , f _ { m }$ vanish at $( x _ { 1 } , \ldots , x _ { n - 1 } )$ (we say $( x _ { 1 } , \ldots , x _ { n - 1 } )$ is a common root at infinity). We wish to rule out the second case. This is not very hard: perform the change of coordinates $X _ { i }  X _ { i } + c _ { i } X _ { n }$ for $i = 1 , \ldots , n - 1$ and some $c _ { i }$ to get constant leading coefficients in $X _ { n }$ (thus sharing no common root). 
+where $U _ { 1 } , \dots , U _ { m - 1 }$ are formal variables. By Exercise $\mathrm { B } . 4 . 4 ^ { \dagger } , ( x _ { 1 } , \ldots , x _ { n - 1 } )$ is a root of $g$ if and only if $f _ { m }$ and $U _ { 1 } f _ { 1 } + . . . + U _ { m - 1 } f _ { m - 1 }$ have a common root $x _ { n }$ at $\left( x _ { 1 } , \ldots , x _ { n - 1 } \right)$ , i.e. $( x _ { 1 } , \ldots , x _ { n } )$ is a common root of $f _ { 1 } , \ldots , f _ { m }$ , or if the leading coefficient in $X _ { n }$ of $f _ { m }$ and $U _ { 1 } f _ { 1 } + . . . + U _ { m - 1 } f _ { m - 1 }$ vanish at $( x _ { 1 } , \ldots , x _ { n - 1 } )$ , i.e. the leading coefficient in $X _ { n }$ of $f _ { 1 } , \ldots , f _ { m }$ vanish at $( x _ { 1 } , \ldots , x _ { n - 1 } )$ (we say $( x _ { 1 } , \ldots , x _ { n - 1 } )$ is a common root at infinity). We wish to rule out the second case. This is not very hard: perform the change of coordinates $X_i \mapsto X_i+c_iX_n$ for $i = 1 , \ldots , n - 1$ and some $c _ { i }$ to get constant leading coefficients in $X _ { n }$ (thus sharing no common root). 
 
 Hence, $g$ has no root by assumption since $f _ { 1 } , \ldots , f _ { m }$ have no common root. However, a root of g is simply a common root of its coefficients $g _ { i }$ when g is seen as a polynomial in $U _ { 1 } , \dots , U _ { m - 1 }$ This implies that a linear combination of the $g _ { i }$ is 1, by the induction hypothesis. Finally, notice that 
 
@@ -495,7 +495,7 @@ $$
 \sum_ {k = 0} ^ {N} ((n + 1) M N) ^ {k} = \frac {((n + 1) M N) ^ {n + 1} - 1}{(n + 1) M N - 1}
 $$
 
-equations, one for each coeficient. For large N, $\begin{array} { r } { ( N + 1 ) ^ { n + 1 } > \frac { ( ( n + 1 ) M N ) ^ { n + 1 } - 1 } { ( n + 1 ) M N - 1 } } \end{array}$ , which means that there is a non-trivial solution as wanted (the kernel is non-trivial by e.g. the rank-nullity theorem ??, or Proposition C.1.2). 
+equations, one for each coefficient. For large N, $\begin{array} { r } { ( N + 1 ) ^ { n + 1 } > \frac { ( ( n + 1 ) M N ) ^ { n + 1 } - 1 } { ( n + 1 ) M N - 1 } } \end{array}$ , which means that there is a non-trivial solution as wanted (the kernel is non-trivial by e.g. the rank-nullity theorem ??, or Proposition C.1.2). 
 
 To make the idea of the second solution clearer, we treat the case $n = 1$ first. If $f , g \in K [ X ]$ are polynomials, the resultant $h = \operatorname { R e s } _ { X } ( f - S , g - T )$ is a non-zero polynomial in $S , T$ with coefficients in K. Indeed, it is non-zero since when $S - f$ and $T - g$ are coprime it takes a non-zero value (we can choose $T = 0$ and $S \in K$ to be a large constant for instance). However, when $S = f$ and $T = g$ , the polynomials $f - S$ and $g - T$ are not coprime anymore so $h ( f , g ) = 0$ as wanted. 
 
@@ -551,7 +551,7 @@ $$
 f _ {i} (r _ {1} (\alpha_ {1}, \dots , \alpha_ {k}) (\alpha), \dots , r _ {n} (\alpha_ {1}, \dots , \alpha_ {k}) (\alpha)) = 0
 $$
 
-is an equality modulo the minimal polynomial $\pi ( \alpha _ { 1 } , \ldots , \alpha _ { k } )$ of $\alpha$ . Thus, if we replace $\alpha _ { i }$ by $a _ { i } \in K$ and α by a root $a \in K$ of $\pi ( a _ { 1 } , \ldots , a _ { k } )$ , we get a common root in K. We just need to check that the $r _ { i } ( a _ { 1 } , \ldots , a _ { k } ) ( a )$ are well-defined, i.e. their denominator is non-zero. This follows from Exercise $\mathrm { A . 1 . 7 ^ { * } }$ : the denominator is non-zero so it stays non-zero infinitely many times in $K ^ { n }$ . Note that $r _ { i } ( \alpha )$ is not necessarily a polynomial, instead it is algebraic over $K ( \alpha _ { 1 } , \ldots , \alpha _ { k } )$ but by considering its norm (the product with its conjugates over $K ( \alpha _ { 1 } , \ldots , \alpha _ { k } ) )$ we can get a polynomial. Indeed, if the norm of $r _ { i } ( \alpha )$ is non-zero then so is $r _ { i } ( \alpha )$ . (We also need to be careful with the leading coeficient of π: if it vanishes α has too few conjugates and things can get weird, but we can simply pick $a _ { 1 } , \ldots , a _ { k }$ so that it doesn’t vanish either.)  
+is an equality modulo the minimal polynomial $\pi ( \alpha _ { 1 } , \ldots , \alpha _ { k } )$ of $\alpha$ . Thus, if we replace $\alpha _ { i }$ by $a _ { i } \in K$ and α by a root $a \in K$ of $\pi ( a _ { 1 } , \ldots , a _ { k } )$ , we get a common root in K. We just need to check that the $r _ { i } ( a _ { 1 } , \ldots , a _ { k } ) ( a )$ are well-defined, i.e. their denominator is non-zero. This follows from Exercise $\mathrm { A . 1 . 7 ^ { * } }$ : the denominator is non-zero so it stays non-zero infinitely many times in $K ^ { n }$ . Note that $r _ { i } ( \alpha )$ is not necessarily a polynomial, instead it is algebraic over $K ( \alpha _ { 1 } , \ldots , \alpha _ { k } )$ but by considering its norm (the product with its conjugates over $K ( \alpha _ { 1 } , \ldots , \alpha _ { k } ) )$ we can get a polynomial. Indeed, if the norm of $r _ { i } ( \alpha )$ is non-zero then so is $r _ { i } ( \alpha )$ . (We also need to be careful with the leading coefficient of π: if it vanishes α has too few conjugates and things can get weird, but we can simply pick $a _ { 1 } , \ldots , a _ { k }$ so that it doesn’t vanish either.)  
 
 ## Miscellaneous
 
@@ -681,7 +681,7 @@ $$
 
 so it isn’t real as desired. 
 
-Now, if there exists such a polynomial for $n \geq 4 .$ , there exists one for $n = 4$ by setting $g ( a , b , c , d ) =$ $f ( a , b , c , d , 0 , \dots , 0 )$ . Thus, it only remains to prove that there doesn’t exist such a polynomial for $n = 4$ . For this, consider the special polynomial $f ( 0 , b , 0 , d )$ since we know precisely when the roots of $X ^ { 4 } + b \dot { X } ^ { 2 } + d \quad$ are real. For convenience, we shall in fact consider the polynomial $g ( r , s ) = f ( 0 , - r - s , 0 , r s )$ which is non-negative if the roots of 
+Now, if there exists such a polynomial for $n \geq 4 .$ , there exists one for $n = 4$ by setting $g ( a , b , c , d ) =$ $f ( a , b , c , d , 0 , \dots , 0 )$ . Thus, it only remains to prove that there doesn’t exist such a polynomial for $n = 4$ . For this, consider the special polynomial $f ( 0 , b , 0 , d )$ since we know precisely when the roots of $X ^ { 4 } + bX^2 + d \quad$ are real. For convenience, we shall in fact consider the polynomial $g ( r , s ) = f ( 0 , - r - s , 0 , r s )$ which is non-negative if the roots of 
 
 $$
 X ^ {4} - (r + s) X ^ {2} + r s = (X ^ {2} - r) (X ^ {2} - s)
