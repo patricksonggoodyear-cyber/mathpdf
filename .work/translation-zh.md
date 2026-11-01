@@ -582,3 +582,359 @@ k+1=|\mathcal A[N]|\geq\alpha N.
 左边是满足 \(p_1,p_2\leq N\) 的素数对 \((p_1,p_2)\) 的个数；右边则是满足 \(p_1+p_2\leq2N\)，且存在一对不超过 \(N\) 的素数 \(p_1',p_2'\)，使得 \(p_1'+p_2'=n\) 的素数对 \((p_1,p_2)\) 的个数。第一类素数对包含在第二类之中。
 
 由 Cauchy–Schwarz 不等式，我们有
+
+由 Cauchy–Schwarz 不等式，
+\[
+\sum_{n\leq2N}r(n)1_S(n)
+\leq |S|^{1/2}
+\left(\sum_{n\leq2N}r(n)^2\right)^{1/2}.
+\tag{2.3}
+\]
+
+我们将证明下面的估计。
+
+**命题 2.2.3.** 记 \(r(n)\) 为将 \(n\) 表示为两个素数之和的表示数。那么
+\[
+\sum_{n\leq X}r(n)^2\ll\frac{X^3}{\log^4X}.
+\]
+
+将这一估计代入 (2.2)、(2.3)，取 \(X=2N\)，再利用下界
+\[
+\pi(N)\gg\frac N{\log N}\qquad(N\geq2),
+\]
+便得到 \(|S|\gg N\)，也就是说，存在一个与 \(N\) 无关的常数 \(c>0\)，使得
+\[
+|S|\geq cN.
+\]
+这正是命题 2.2.2 的结论。
+
+当然，剩下的任务是证明命题 2.2.3。为此，我们先对 \(r(n)\)（即将 \(n\) 写成两个素数之和的表示数）建立逐点上界。
+
+注意，要得到 \(r(n)\) 的渐近公式，甚至要对偶数 \(n\) 证明下界 \(r(n)>0\)，都是著名的未解决问题：哥德巴赫猜想。若能证明
+\[
+r(n)\ll\frac n{\log^2n}
+\tag{2.4}
+\]
+对所有 \(n\) 一致成立，就足够了。这是凭直觉可能预期的估计：随机选取 \(x\leq n\)，\(x\) 是素数的概率约为 \(1/\log n\)，而 \(n-x\) 也是素数的概率同样如此。然而，这两个事件并不独立；如果 \(n\) 能被许多小素数整除，那么 \(x\) 是素数这一条件，会使得 \(n-x\) 也是素数的可能性高于一个随机整数。
+
+事实上，(2.4) 不可能对所有 \(n\) 一致成立。我们将在下一节证明下面这个稍弱的估计，其中加入了一个算术因子，以反映上述启发式讨论中提到的相关性。
+
+**命题 2.2.4.** 有
+\[
+r(n)\ll
+\prod_{p\mid n}\left(1+\frac1p\right)
+\cdot\frac n{\log^2n}.
+\]
+
+人们猜想，右端实际上给出了 \(r(n)\) 的正确数量级。因子
+\[
+\prod_{p\mid n}\left(1+\frac1p\right)
+\]
+不可能关于 \(n\) 一致有界，因为
+\(1+\frac1p\sim e^{1/p}\)，而素数倒数之和
+\[
+\sum_p\frac1p
+\]
+发散。不过，为了推出命题 2.2.3，我们只需要该因子的平方均值有界。现在给出这一推导。
+
+**证明（假设命题 2.2.4，证明命题 2.2.3）。** 我们将证明
+\[
+\sum_{n\leq X}
+\prod_{p\mid n}\left(1+\frac1p\right)^2
+\ll X.
+\tag{2.5}
+\]
+这足以利用命题 2.2.4 推出命题 2.2.3。事实上，当 \(n\) 充分大时，\(n/\log^2n\) 是递增函数，因此
+\[
+\begin{aligned}
+\sum_{n\leq X}r(n)^2
+&\ll \sum_{n\leq X}
+\left(
+\prod_{p\mid n}\left(1+\frac1p\right)
+\cdot\frac n{\log^2n}
+\right)^2\\
+&\ll \frac{X^2}{\log^4X}
+\sum_{n\leq X}\prod_{p\mid n}\left(1+\frac1p\right)^2.
+\end{aligned}
+\]
+由 (2.5) 立即得到所需的估计。
+
+现在证明 (2.5)。我们利用
+\[
+\prod_{p\mid n}\left(1+\frac1p\right)
+\leq\sum_{d\mid n}\frac1d.
+\]
+事实上，左边恰好是 \(n\) 的所有平方自由因子对应的 \(1/d\) 之和。不过，
+\[
+\begin{aligned}
+\sum_{n\leq X}\left(\sum_{d\mid n}\frac1d\right)^2
+&=\sum_{d_1,d_2\leq X}\frac1{d_1d_2}
+\sum_{\substack{n\leq X\\ [d_1,d_2]\mid n}}1\\
+&\leq X\sum_{d_1,d_2\leq X}
+\frac1{d_1d_2[d_1,d_2]}.
+\end{aligned}
+\]
+由于
+\[
+[d_1,d_2]\geq
+\max(d_1,d_2)\geq\sqrt{d_1d_2},
+\]
+所以
+\[
+\begin{aligned}
+\sum_{d_1,d_2\leq X}
+\frac1{d_1d_2[d_1,d_2]}
+&\leq
+\sum_{d_1,d_2\leq X}
+\frac1{d_1^{3/2}d_2^{3/2}}\\
+&=\left(\sum_{d\leq X}\frac1{d^{3/2}}\right)^2
+\ll1.
+\end{aligned}
+\]
+综合这些事实即可得到所需结论。
+
+于是，剩下也是最重要的任务，就是证明命题 2.2.4。我们将使用一种称为塞尔伯格筛法的工具来完成这一点。
+
+## 2.3. 塞尔伯格筛法
+
+本节将证明 \(r(N)\) 的一个上界，其中 \(r(N)\) 是将 \(N\) 表示为两个素数之和的表示数（注意这里从 \(n\) 改为 \(N\)；对于这一论证，后者似乎更自然，也使我们可以把 \(n\) 用作求和中的哑变量）。本节中始终假设 \(N\) 为偶数；若 \(N\) 为奇数，则显然 \(r(N)\leq1\)（等号成立当且仅当 \(N-2\) 是素数）。
+
+定义
+\[
+\mathcal A:=\{n(N-n):n\leq N\}.
+\]
+
+令
+\[
+z:=N^{1/3}.
+\]
+（任何形如 \(z=N^c\)、其中 \(c<1/2\) 的阈值都可以使用；取 \(c\) 接近 \(1/2\) 时，隐含常数会更好。不过，为了明确起见，我们固定采用这一选择。）若 \(n\leq N\)，且 \(n\) 与 \(N-n\) 都是素数，那么以下三种情形至少有一种成立：
+
+(i) \(n\leq z\)；
+
+(ii) \(N-n\leq z\)；
+
+(iii) \(n(N-n)\) 没有不超过 \(z\) 的素因子。
+
+因此
+\[
+r(N)\leq2z+S(\mathcal A,z),
+\]
+其中 \(S(\mathcal A,z)\) 表示 \(\mathcal A\) 中没有不超过 \(z\) 的素因子的元素个数。为了证明命题 2.2.4，只需建立上界
+\[
+S(\mathcal A,z)\ll
+\prod_{p\mid N}\left(1+\frac1p\right)
+\cdot\frac N{\log^2N}.
+\tag{2.6}
+\]
+
+估计 \(S(\mathcal A,z)\) 的一般问题（即对于更一般的集合 \(\mathcal A\) 和更一般的参数 \(z\) 进行估计）属于筛法理论的研究范围。我们即将介绍的方法虽然是在当前这一特定情形下描述的，但可以应用于范围广泛得多的问题。
+
+对于每个正整数 \(d\)，记 \(\mathcal A_d\) 为 \(\mathcal A\) 中能被 \(d\) 整除的元素所组成的集合。解决这个问题最直接的尝试，是使用容斥原理，计算
+\[
+S(\mathcal A,z)
+=|\mathcal A|-\sum_{p<z}|\mathcal A_p|
++\sum_{p<p'<z}|\mathcal A_{pp'}|-\cdots.
+\]
+遗憾的是，由于项数非常多，这种方法很快就会遇到困难；即使对 \(|\mathcal A_d|\) 的估计只有很小的误差，也会失控地放大。因此需要一种更精细的方法。
+
+我们可以表述更复杂的容斥原理版本（Brun 筛法），但这里将使用一个由 Selberg 提出的思想。它使得论述相对简短，不过乍看之下确实显得有些神奇，缺乏直观动机。
+
+在开始细节之前，先回顾初等数论中的一些基本概念与记号。若 \(a,b\) 是正整数，我们用 \((a,b)\) 表示 \(a,b\) 的最大公因数，用 \([a,b]\) 表示最小公倍数。我们定义 Möbius 函数
+\[
+\mu:\mathbf N\to\{-1,0,1\}
+\]
+如下：若 \(n=p_1\cdots p_k\) 是由 \(k\) 个互不相同的素数组成的乘积，则
+\(\mu(n)=(-1)^k\)；否则 \(\mu(n)=0\)。稍后我们将使用 Möbius 反演与 Dirichlet 卷积的一些基本事实。若要复习或初步了解这一主题，可参见附录 A。
+
+现在转向塞尔伯格筛法。取任意一组实数参数
+\((\lambda_d)_{d\leq z}\)，只要求 \(\lambda_1=1\)。考虑权函数
+\[
+\nu(n):=
+\left(
+\sum_{\substack{d\mid n(N-n)\\d\leq z}}\lambda_d
+\right)^2.
+\]
+显然该权函数非负；当 \(n\in S(\mathcal A,z)\) 时，它等于
+\(\lambda_1^2=1\)，因为求和中只有 \(d=1\) 这一项。因此
+\[
+S(\mathcal A,z)\leq\sum_{n\leq N}\nu(n).
+\tag{2.7}
+\]
+
+展开 \(\nu\) 的定义并重新整理，得到
+\[
+S(\mathcal A,z)
+\leq
+\sum_{d_1,d_2\leq z}
+\lambda_{d_1}\lambda_{d_2}
+|\mathcal A_{[d_1,d_2]}|.
+\tag{2.8}
+\]
+注意这里的 \([d_1,d_2]\) 表示 \(d_1,d_2\) 的最小公倍数，因此
+\[
+\mathcal A_{[d_1,d_2]}
+=
+\{n\leq N:d_1,d_2\mid n(N-n)\}.
+\]
+
+我们将限制权重 \(\lambda_d\)，要求它们仅在平方自由的 \(d\) 上取非零值（也就是说，若 \(d\) 被某个素数的平方整除，则 \(\lambda_d=0\)）。现在估计 \(d\) 为平方自由数时的 \(|\mathcal A_d|\)。有
+\[
+|\mathcal A_d|=\omega(d)\frac Nd+R_d,
+\tag{2.9}
+\]
+其中 \(\omega(d)\) 是同余方程
+\[
+x(N-x)\equiv0\pmod d
+\]
+的解的个数，并且
+\[
+|R_d|\leq\omega(d).
+\tag{2.10}
+\]
+余项来自这样一个事实：我们无法将区间 \(\{1,\ldots,N\}\) 精确划分为长度为 \(d\) 的区间，最后可能剩下一个长度小于 \(d\) 的区间。若 \(d\) 是平方自由数，则由中国剩余定理，
+\[
+\omega(d)=\prod_{p\mid d}\omega(p).
+\tag{2.11}
+\]
+直接检查可得
+\[
+\omega(p)=
+\begin{cases}
+2,&p\nmid N,\\
+1,&p\mid N.
+\end{cases}
+\tag{2.12}
+\]
+
+将 (2.9) 代入 (2.8)，得到
+\[
+\begin{aligned}
+S(\mathcal A,z)\leq{}&
+N\sum_{d_1,d_2\leq z}
+\frac{\lambda_{d_1}\lambda_{d_2}
+\omega([d_1,d_2])}{[d_1,d_2]}\\
+&+\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega([d_1,d_2]).
+\end{aligned}
+\tag{2.13}
+\]
+这里记
+\[
+Q=Q((\lambda_d)_{d\leq z})
+:=
+\sum_{d_1,d_2\leq z}
+\frac{\lambda_{d_1}\lambda_{d_2}
+\omega([d_1,d_2])}{[d_1,d_2]},
+\tag{2.14}
+\]
+以及
+\[
+E=E((\lambda_d)_{d\leq z})
+:=
+\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega([d_1,d_2]).
+\tag{2.15}
+\]
+
+目前，除了 \(\lambda_1=1\) 以及权重仅支撑在平方自由数上以外，我们还没有对 \(\lambda_d\) 作任何要求。接下来的策略是选择 \(\lambda_d\)，使二次型 \(Q\) 最小，然后希望 \(E\) 也足够小，至少在适当选取 \(z\) 后如此。
+
+注意，当 \(z=N^{1/3}\) 时，要求 \(E\) 足够小并不过分；只要有如下粗略估计就足够：
+\[
+|\lambda_d|,\ \omega(d)\leq N^{1/10}
+\tag{2.16}
+\]
+（例如如此），便可推出
+\[
+E\ll N^{1-1/20},
+\]
+这显著小于预期的主项 \(\sim N(\log N)^{-2}\)。
+
+**最小化二次型。** 现在转向选择 \(\lambda_d\) 以使 \(Q\) 最小这一任务。这看起来有些棘手，但实际上 Möbius 反演可以将该二次型对角化，这当然会很有帮助。
+
+首先，将 \(Q\) 重写为
+\[
+Q=
+\sum_{d_1,d_2\leq z}
+\frac{\omega(d_1)\omega(d_2)}{d_1d_2}
+\lambda_{d_1}\lambda_{d_2}
+\frac{(d_1,d_2)}{\omega((d_1,d_2))}.
+\tag{2.17}
+\]
+这里使用了 \(\lambda_d\) 仅在平方自由的 \(d\) 上取非零值这一事实，因此
+\[
+\omega(d_1)\omega(d_2)
+=
+\omega((d_1,d_2))\omega([d_1,d_2]).
+\tag{2.18}
+\]
+（考虑 \(\omega\) 的各个自变量所含的素因子，并使用 (2.11)，即可验证。）
+
+为处理这一表达式，我们使用一个相当标准的技巧。令
+\[
+g(k)=\frac{k}{\omega(k)},
+\]
+并注意由 Möbius 反演（见附录 A），有
+\[
+g(k)=\sum_{\delta\mid k}f(\delta),
+\tag{2.19}
+\]
+其中
+\[
+f(k)=\sum_{\delta\mid k}
+\mu\left(\frac{k}{\delta}\right)g(\delta).
+\]
+用 Dirichlet 卷积的记号表示，即
+\[
+g=f*1,\qquad f=g*\mu.
+\]
+注意 \(g(k)=k/\omega(k)\) 是积性函数，因此 \(f=g*\mu\) 也是积性函数（见附录 A）。此外，容易验证，对于素数 \(p\)，
+\[
+f(p)=\frac p{\omega(p)}-1,
+\]
+其中 \(\omega\) 如 (2.11)、(2.12) 所定义。注意 \(f(p)\) 从不为零（当 \(p=2\) 时，这是因为我们假设 \(N\) 为偶数），因此 \(f\) 实际上严格为正。
+
+将 (2.19) 代入 (2.17)，并交换求和次序，得到
+\[
+\begin{aligned}
+Q
+&=\sum_{\delta\leq z}f(\delta)
+\left(\sum_{\substack{\delta\mid d\\d\leq z}}
+\frac{\omega(d)}d\lambda_d\right)^2\\
+&=\sum_{\delta\leq z}f(\delta)u_\delta^2,
+\end{aligned}
+\tag{2.20}
+\]
+其中
+\[
+u_\delta:=
+\sum_{\substack{\delta\mid d\\d\leq z}}
+\frac{\omega(d)}d\lambda_d.
+\]
+（这里的 \(d\) 遍历平方自由数。）作出这一变量替换后，\(Q\) 确实成为对角二次型。为了最小化 \(Q\)，我们需要用新的变量 \(u_\delta\) 表示约束 \(\lambda_1=1\)。这可以通过应用引理 A.0.2 来实现。由此得到
+\[
+\frac{\omega(d)}d\lambda_d
+=
+\sum_{\substack{d\mid\delta\\\delta\leq z}}
+\mu\left(\frac{\delta}{d}\right)u_\delta,
+\tag{2.21}
+\]
+其中 \(\delta\) 遍历平方自由数。因此，约束 \(\lambda_1=1\) 简化为
+\[
+\sum_{\delta\leq z}\mu(\delta)u_\delta=1.
+\tag{2.22}
+\]
+
+要在约束 (2.22) 下最小化 (2.20) 中的 \(Q\)，只需配方；更具体地说，考虑不等式
+\[
+\sum_{\delta\leq z}
+f(\delta)
+\left(
+u_\delta-\frac{\mu(\delta)}{Df(\delta)}
+\right)^2
+\geq0,
+\tag{2.23}
+\]
+其中
