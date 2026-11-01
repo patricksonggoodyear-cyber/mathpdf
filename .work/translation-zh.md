@@ -4524,3 +4524,589 @@ f_1,f_2:\mathbf N\to\mathbf C
 f_1\star f_2
 \]
 表示它们的 Dirichlet 卷积：
+
+\[
+(f_1\star f_2)(n)
+:=
+\sum_{d\mid n}f_1(d)f_2\left(\frac nd\right).
+\]
+容易验证，这是一个对称且满足结合律的运算。
+
+**引理 A.0.1（Möbius 反演）。** 设
+\[
+f,g:\mathbf N\to\mathbf C
+\]
+是算术函数。那么，对于所有 \(n\)，
+\[
+g(n)=\sum_{d\mid n}f(d)
+\]
+成立，当且仅当对于所有 \(n\)，
+\[
+f(n)=\sum_{d\mid n}\mu\left(\frac nd\right)g(d).
+\]
+
+**证明。** 用 Dirichlet 卷积的记号表示，这一结论是说
+\[
+g=f\star1
+\]
+当且仅当
+\[
+f=g\star\mu.
+\]
+证明的关键观察是
+\[
+\mu\star1=\delta,
+\tag{A.1}
+\]
+其中
+\[
+\delta:\mathbf N\to\mathbf C
+\]
+是定义为
+\[
+\delta(1)=1,\qquad \delta(n)=0\quad(n>1)
+\]
+的算术函数。换言之，
+\[
+\sum_{d\mid n}\mu(d)=0,
+\]
+除非 \(n=1\)，此时该和等于 1。通过考察 \(n\) 的素因数分解，很容易验证这一点。
+
+还可以注意到，\(\delta\) 在 Dirichlet 卷积下起到单位元的作用：
+\[
+f=f\star\delta.
+\]
+因此，若 \(g=f\star1\)，则
+\[
+\begin{aligned}
+g\star\mu
+&=(f\star1)\star\mu\\
+&=f\star(1\star\mu)\\
+&=f\star\delta=f.
+\end{aligned}
+\]
+反过来，若 \(g\star\mu=f\)，则
+\[
+\begin{aligned}
+f\star1
+&=(g\star\mu)\star1\\
+&=g\star(\mu\star1)\\
+&=g\star\delta=g.
+\end{aligned}
+\]
+证明完成。□
+
+我们还需要 Möbius 反演的下述变体。
+
+**引理 A.0.2.** 设 \(z\geq1\) 是一个参数。假设有两个算术函数
+\[
+f,g:\mathbf N\to\mathbf C,
+\]
+满足
+\[
+g(\delta)=
+\sum_{\substack{d\leq z\\\delta\mid d}}f(d).
+\tag{A.2}
+\]
+那么
+\[
+f(d)=
+\sum_{\substack{\delta\leq z\\d\mid\delta}}
+\mu\left(\frac{\delta}{d}\right)g(\delta).
+\tag{A.3}
+\]
+
+**证明。** 将 (A.2) 代入 (A.3) 的右端，得到
+\[
+\sum_{d'\leq z}f(d')
+\sum_{d\mid\delta\mid d'}
+\mu\left(\frac{\delta}{d}\right).
+\]
+（注意，条件 \(\delta\leq z\) 已经消失，因为它自动由
+\(d'\leq z\) 且 \(\delta\mid d'\) 推出。）在内层求和中代入
+\(\delta=kd\)，便得到
+\[
+\begin{aligned}
+\sum_{d\mid\delta\mid d'}
+\mu\left(\frac{\delta}{d}\right)
+&=\sum_{k\mid d'/d}\mu(k)\\
+&=1_{d'/d=1}.
+\end{aligned}
+\]
+这就完成了证明。□
+
+*注记。* 在这里，对集合
+\[
+\mathcal D:=\{d:d\leq z\}
+\]
+所使用的全部性质是它具有**约数封闭性**，也就是说，若
+\(d\in\mathcal D\) 且 \(d'\mid d\)，则 \(d'\in\mathcal D\)。因此，对于其他约数封闭集合，也有类似结论。
+
+**约数函数 \(\tau\)。** 回忆，\(\tau(n)\) 是 \(n\) 的（正整数）约数的个数。若
+\[
+n=p_1^{a_1}\cdots p_k^{a_k}
+\]
+是 \(n\) 的素因数分解，那么
+\[
+\tau(n)=(a_1+1)\cdots(a_k+1);
+\]
+\(n\) 的约数恰好是形如
+\[
+p_1^{a_1'}\cdots p_k^{a_k'},
+\qquad 0\leq a_i'\leq a_i
+\]
+的数。
+
+约数函数的一个非常重要的事实——在整个解析数论中都会用到——是**约数估计**：它断言 \(\tau(n)\) 的增长速度慢于 \(n\) 的任意固定正次幂。
+
+**引理 A.0.3（约数估计）。** 对于任意 \(\varepsilon>0\)，存在一个常数 \(C_\varepsilon\)，使得对所有 \(n\)，都有
+\[
+\tau(n)\leq C_\varepsilon n^\varepsilon.
+\]
+
+**证明。** 设
+\[
+n=p_1^{a_1}\cdots p_k^{a_k}
+\]
+是 \(n\) 的素因数分解。对于每个固定的素数 \(p\)，都有
+\[
+\lim_{a\to\infty}
+\frac{a+1}{p^{\varepsilon a}}=0,
+\]
+因此存在某个
+\[
+C=C(p,\varepsilon),
+\]
+使得对于所有自然数 \(a\)，
+\[
+a+1\leq C(p,\varepsilon)p^{a\varepsilon}.
+\]
+此外，由于
+\[
+a+1\leq2^a,
+\]
+当
+\[
+p\geq2^{1/\varepsilon}
+\]
+时，我们可以取
+\[
+C(p,\varepsilon)=1.
+\]
+因此
+\[
+\begin{aligned}
+\tau(n)
+&=\prod_{i=1}^k(a_i+1)\\
+&\leq\prod_iC(p_i,\varepsilon)p_i^{a_i\varepsilon}\\
+&\leq C(\varepsilon)n^\varepsilon,
+\end{aligned}
+\]
+其中
+\[
+C(\varepsilon):=\prod_pC(p,\varepsilon).
+\]
+注意，由于
+\[
+p\geq2^{1/\varepsilon}
+\]
+时 \(C(p,\varepsilon)=1\)，这是一个有限常数。□
+
+**积性函数。** 若算术函数
+\[
+f:\mathbf N\to\mathbf C
+\]
+满足
+\[
+f(ab)=f(a)f(b)
+\]
+对所有互素的 \(a,b\) 成立，则称 \(f\) 为**积性函数**。要特别注意，这一条件并不是说对所有 \(a,b\) 都有
+\(f(ab)=f(a)f(b)\)；后者是一个更强的条件，称为**完全积性**。
+
+Möbius 函数 \(\mu\) 和约数函数 \(\tau\) 都是积性函数，但二者都不是完全积性函数。
+
+可以验证，若
+\[
+f,g:\mathbf N\to\mathbf C
+\]
+是两个积性函数，那么它们的 Dirichlet 卷积
+\(f\star g\) 仍然是积性函数。事实上，若 \(a,b\) 互素，则
+\[
+\begin{aligned}
+(f\star g)(ab)
+&=\sum_{d\mid ab}f\left(\frac{ab}{d}\right)g(d)\\
+&=\sum_{\substack{d_1\mid a\\d_2\mid b}}
+f\left(\frac a{d_1}\frac b{d_2}\right)
+g(d_1d_2)\\
+&=\sum_{d_1\mid a}
+f\left(\frac a{d_1}\right)g(d_1)
+\sum_{d_2\mid b}
+f\left(\frac b{d_2}\right)g(d_2)\\
+&=(f\star g)(a)(f\star g)(b).
+\end{aligned}
+\]
+
+## 附录 B
+
+## 数的几何
+
+本节的主要目标是证明 Minkowski 第二定理。首先简要回顾格的行列式的一些标准性质。
+
+**引理 B.0.1.** 若 \(q\in\mathbf N\)，则
+\[
+\det(q\mathbf Z^d)=q^d.
+\]
+若 \(\Lambda,\Lambda'\) 是两个格，且
+\[
+\Lambda'\subset\Lambda,
+\]
+那么
+\[
+\frac{\det(\Lambda')}{\det(\Lambda)}
+=[\Lambda:\Lambda'],
+\]
+其中右端表示 \(\Lambda'\) 作为 \(\Lambda\) 的子群的指数，也就是说，覆盖 \(\Lambda\) 所需的 \(\Lambda'\) 的陪集个数。
+
+现在回顾 Minkowski 第二定理的陈述，并同时陈述 Minkowski 第一基本定理。在这两个结果中，
+\[
+K\subset\mathbf R^d
+\]
+都是中心对称凸体，而
+\[
+\Lambda\subset\mathbf R^d
+\]
+是一个格。\(K\) 关于 \(\Lambda\) 的连续极小值为
+\[
+\lambda_1,\ldots,\lambda_d.
+\]
+
+**定理 B.0.1（Minkowski 第一基本定理）。** 若
+\[
+\operatorname{vol}(K)>2^d\det(\Lambda),
+\]
+那么 \(K\) 包含 \(\Lambda\) 的一个非零点。
+
+**定理 B.0.2（Minkowski 第二定理）。** 有
+\[
+\lambda_1\cdots\lambda_d\operatorname{vol}(K)
+\leq2^d\det(\Lambda).
+\]
+
+注意，Minkowski 第一基本定理是 Minkowski 第二定理的推论。事实上，若
+\[
+\operatorname{vol}(K)>2^d\det(\Lambda),
+\]
+那么由 Minkowski 第二定理可知
+\[
+\lambda_1\cdots\lambda_d<1.
+\]
+由于
+\[
+\lambda_1\leq\cdots\leq\lambda_d,
+\]
+这意味着 \(\lambda_1<1\)。根据 \(\lambda_1\) 的定义，可知 \(K\) 至少包含 \(\Lambda\) 的一个非零点。
+
+Minkowski 第一基本定理是下面这个结果——Blichfeldt 引理——的一个非常直接的推论。该引理也是证明 Minkowski 第二定理的一个工具。
+
+**引理 B.0.2（Blichfeldt 引理）。** 设
+\[
+K\subset\mathbf R^d,
+\]
+并且
+\[
+\operatorname{vol}(K)>\det(\Lambda).
+\]
+那么存在两个不同的点
+\[
+\mathbf x,\mathbf y\in K,
+\]
+使得
+\[
+\mathbf x-\mathbf y\in\Lambda.
+\]
+
+*注记。* 注意，这里的 \(K\) 不要求是中心对称的，也不要求是凸集。
+
+**证明。** 考虑集合
+\[
+K\cap B(0,R),\qquad R\to\infty.
+\]
+其体积趋于 \(K\) 的体积，因此不妨假设 \(K\) 包含于某个球
+\(B(0,R)\) 内。现在假设结论不成立；那么 \(K\) 的任何平移都不包含两个格点。换言之，对于所有
+\(\mathbf t\in\mathbf R^d\)，都有
+\[
+\sum_{\mathbf x}
+1_K(\mathbf x-\mathbf t)1_\Lambda(\mathbf x)
+\leq1.
+\]
+令 \(R'\) 远大于 \(R\)，并对所有
+\(\mathbf t\in B(0,R')\) 取平均，得到
+\[
+\sum_{\mathbf x}1_\Lambda(\mathbf x)
+\left(
+\frac1{\operatorname{vol}(B(0,R'))}
+\int_{B(0,R')}
+1_K(\mathbf x-\mathbf t)\,d\mathbf t
+\right)
+\leq1.
+\]
+由于
+\[
+K\subset B(0,R),
+\]
+当
+\[
+\|\mathbf x\|\leq R'-R
+\]
+时，内层积分等于 \(\operatorname{vol}(K)\)。因此
+\[
+\sum_{\mathbf x}
+1_\Lambda(\mathbf x)
+1_{B(0,R'-R)}(\mathbf x)
+\leq
+\frac{\operatorname{vol}(B(0,R'))}{\operatorname{vol}(K)},
+\]
+从而
+\[
+\begin{aligned}
+&\frac1{\operatorname{vol}(B(0,R'-R))}
+\sum_{\mathbf x}
+1_\Lambda(\mathbf x)
+1_{B(0,R'-R)}(\mathbf x)\\
+&\qquad\leq
+\frac{\operatorname{vol}(B(0,R'))}
+{\operatorname{vol}(B(0,R'-R))}
+\cdot\frac1{\operatorname{vol}(K)}.
+\end{aligned}
+\tag{B.1}
+\]
+
+然而，通过用基本平行多面体铺砌空间，容易看出
+\[
+\lim_{r\to\infty}
+\frac1{\operatorname{vol}(B(0,r))}
+\sum_{\mathbf x}
+1_\Lambda(\mathbf x)1_{B(0,r)}(\mathbf x)
+=
+\frac1{\det(\Lambda)}.
+\]
+此外，
+\[
+\lim_{R'\to\infty}
+\frac{\operatorname{vol}(B(0,R'))}
+{\operatorname{vol}(B(0,R'-R))}
+=1.
+\]
+与 (B.1) 比较，立即得到
+\[
+\frac1{\det(\Lambda)}
+\leq\frac1{\operatorname{vol}(K)},
+\]
+这与假设矛盾。□
+
+虽然接下来并不正式需要它，我们还是停下来给出 Minkowski 第一基本定理的简单推导。
+
+**证明（Minkowski 第一基本定理）。** 由 Blichfeldt 引理，集合
+\[
+\frac12K
+=
+\left\{\frac12\mathbf x:\mathbf x\in K\right\}
+\]
+包含 \(\Lambda\) 的两个不同点。因此，存在
+\(\mathbf x,\mathbf y\in K\)，使得
+\[
+\frac12(\mathbf x-\mathbf y)\in\Lambda.
+\]
+然而，由于 \(K\) 是凸且中心对称的，
+\[
+\frac12(\mathbf x-\mathbf y)\in K.
+\]
+这就得到了 \(K\) 中一个非零的 \(\Lambda\) 元素。□
+
+现在转向 Minkowski 第二定理的证明。
+
+**证明（Minkowski 第二定理）。** 从技术角度来说，假设 \(K\) 是开集会比较方便；我们可以将 \(K\) 换成其内部
+\(K^\circ\)，从而作出这一假设。取 \(K\) 关于 \(\Lambda\) 的一个方向基
+\[
+\mathbf b_1,\ldots,\mathbf b_d.
+\]
+由于 \(K\) 是开集，
+\[
+\lambda_kK\cap\Lambda
+\]
+由向量
+\[
+\mathbf b_1,\ldots,\mathbf b_{k-1}
+\]
+张成。事实上，若不是这样，我们就可以再选取一个线性无关的向量
+\[
+\mathbf b\in\lambda_kK\cap\Lambda,
+\]
+而由 \(K\) 的开性可知，该向量实际上属于某个
+\[
+(\lambda_k-\varepsilon)K\cap\Lambda,
+\]
+其中 \(\varepsilon>0\)。这与 \(\lambda_k\) 的定义矛盾。
+
+将每个给定的 \(\mathbf x\) 用基向量 \(\mathbf b_i\) 表示为
+\[
+\mathbf x=x_1\mathbf b_1+\cdots+x_d\mathbf b_d.
+\]
+现在定义一些不太寻常的映射
+\[
+\phi_j:K\to K：
+\]
+将 \(\mathbf x\in K\) 映射为包含 \(\mathbf x\) 的切片的重心，其中该切片平行于由
+\[
+\mathbf b_1,\ldots,\mathbf b_{j-1}
+\]
+张成的子空间（当 \(j=1\) 时，
+\[
+\phi_1(\mathbf x)=\mathbf x.
+\]
+）
+
+接下来，定义映射
+\[
+\phi:K\to\mathbf R^d
+\]
+如下：
+\[
+\phi(\mathbf x)
+:=
+\sum_{j=1}^d
+(\lambda_j-\lambda_{j-1})\phi_j(\mathbf x),
+\]
+其中约定
+\[
+\lambda_0=0.
+\]
+
+关于 \(\phi_j\) 与 \(\phi\)，我们再作几点观察。在坐标表示中，
+\[
+\phi_j(\mathbf x)
+=
+\sum_i c_{ij}(\mathbf x)\mathbf b_i,
+\]
+其中当 \(i\geq j\) 时，
+\[
+c_{ij}(\mathbf x)=x_i；
+\]
+而当 \(i<j\) 时，
+\(c_{ij}(\mathbf x)\) 仅依赖于
+\[
+x_j,\ldots,x_d.
+\]
+因此，对于某些连续函数 \(\psi_i\)，有
+\[
+\phi(\mathbf x)
+=
+\sum_{i=1}^d
+\mathbf b_i
+\left(
+\lambda_ix_i+\psi_i(x_{i+1},\ldots,x_d)
+\right).
+\]
+于是容易得到
+\[
+\operatorname{vol}(\phi(K))
+=
+\lambda_1\cdots\lambda_d\operatorname{vol}(K),
+\tag{B.2}
+\]
+因为变换
+\[
+x_i'=\lambda_ix_i+\psi_i(x_{i+1},\ldots,x_d)
+\]
+的 Jacobian 为
+\[
+\lambda_1\cdots\lambda_d.
+\]
+
+为了导出矛盾，假设
+\[
+\lambda_1\cdots\lambda_d\operatorname{vol}(K)
+>
+2^d\det(\Lambda).
+\]
+由 Blichfeldt 引理与 (B.2)，这意味着 \(\phi(K)\) 包含两个元素
+\[
+\phi(\mathbf x),\qquad\phi(\mathbf y),
+\]
+它们之差属于
+\[
+2\Lambda:=\{2\lambda:\lambda\in\Lambda\}.
+\]
+换言之，
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))\in\Lambda.
+\]
+写成
+\[
+\mathbf x=\sum_ix_i\mathbf b_i,\qquad
+\mathbf y=\sum_iy_i\mathbf b_i,
+\]
+并设 \(k\) 是满足
+\[
+x_k\ne y_k
+\]
+的最大指标。那么，对于 \(i>k\)，
+\[
+\phi_i(\mathbf x)=\phi_i(\mathbf y),
+\]
+因此
+\[
+\begin{aligned}
+\frac{\phi(\mathbf x)-\phi(\mathbf y)}2
+&=
+\sum_{j=1}^d(\lambda_j-\lambda_{j-1})
+\left(
+\frac{\phi_j(\mathbf x)-\phi_j(\mathbf y)}2
+\right)\\
+&=
+\sum_{j=1}^k(\lambda_j-\lambda_{j-1})
+\left(
+\frac{\phi_j(\mathbf x)-\phi_j(\mathbf y)}2
+\right).
+\end{aligned}
+\]
+
+这有两个推论。首先，由 \(K\) 的凸性可知，对于所有 \(j\)，
+\[
+\frac12(\phi_j(\mathbf x)-\phi_j(\mathbf y))\in K,
+\]
+因此（再次利用凸性）
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))
+\in\lambda_kK.
+\]
+其次，当将
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))
+\]
+用方向基表示时，我们可以容易地计算出
+\(\mathbf b_k\) 的系数恰好为
+\[
+\frac{\lambda_k(x_k-y_k)}2.
+\]
+特别地，这个系数非零。这意味着
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))
+\]
+是 \(\Lambda\) 与 \(\lambda_kK\) 中的一个元素，却不属于
+\[
+\mathbf b_1,\ldots,\mathbf b_{k-1}
+\]
+所张成的子空间。这与证明开始时的观察矛盾。□
+
+## 参考文献
+
+[1] H. Davenport，《解析方法在 Diophantine 方程与 Diophantine 不等式中的应用》（*Analytic Methods for Diophantine Equations and Diophantine Inequalities*），第二版。R. C. Vaughan、D. R. Heath-Brown 与 D. E. Freeman 作序。T. D. Browning 编辑并整理出版。Cambridge Mathematical Library，Cambridge University Press，Cambridge，2005。xx+140 页。
+
+[2] B. J. Green，C3.8 课程讲义，在线可得。
+
+[3] H. Iwaniec，《经典自守形式专题》（*Topics in Classical Automorphic Forms*），Graduate Studies in Mathematics，第 17 卷，Springer。
+
+[4] T. D. Wooley，《华林问题的重大改进》（*Large Improvements in Waring’s Problem*），*Annals of Mathematics*（第二辑）135（1992），第 1 期，131–164 页。
+
+[5] G. A. Freiman，《集合加法结构理论基础》（*Foundations of a Structural Theory of Set Addition*），俄文原著英译本。Translations of Mathematical Monographs，第 37 卷。American Mathematical Society，Providence，R. I.，1973。vii+108 页。
