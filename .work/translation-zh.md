@@ -1945,3 +1945,439 @@ A+A:=\{a_1+a_2:a_1,a_2\in A\}.
 a_1<\cdots<a_n,
 \]
 则有
+
+若 \(\phi_\lambda|_{A_\lambda}\) 不是 Freiman \(s\)-同构，则必有某个
+\[
+d_\lambda\in(sA-sA)\setminus\{0\},
+\]
+使得
+\[
+\psi(\lambda d_\lambda)\equiv0\pmod m.
+\]
+
+为了导出矛盾，固定
+\[
+d\in(sA-sA)\setminus\{0\},
+\]
+并考察满足 \(d=d_\lambda\) 的 \(\lambda\) 值。我们不妨称这些 \(\lambda\) 为“对 \(d\) 不利的”。若素数 \(q\) 取得足够大，则它不会整除
+\((sA-sA)\setminus\{0\}\) 中的任何元素，因此 \(d\) 与 \(q\) 互素。
+
+当 \(\lambda\) 遍历
+\((\mathbf Z/q\mathbf Z)^\times\) 时，\(\lambda d\) 均匀地遍历
+\((\mathbf Z/q\mathbf Z)^\times\)。因此
+\[
+\{\psi(\lambda d):\lambda\in(\mathbf Z/q\mathbf Z)^\times\}
+=\{1,\ldots,q-1\}.
+\]
+在这个区间内，满足 \(y\equiv0\pmod m\) 的元素个数至多为
+\((q-1)/m\)。由于每个 \(d\) 都属于
+\((sA-sA)\setminus\{0\}\)，所以对某个 \(d\) 不利的 \(\lambda\) 的总数至多为
+\[
+\frac{q-1}{m}(|sA-sA|-1)<q-1,
+\]
+其中不等式来自假设 \(m\geq|sA-sA|\)。
+
+这就产生了矛盾，因为每个 \(\lambda\) 都必然对某个 \(d\) 不利（即 \(d=d_\lambda\)）。□
+
+在证明 Freiman 定理时，我们将使用下面这个推论。
+
+**推论 5.3.1.** 设 \(A\subset\mathbf Z\) 是一个有限集，倍增常数为 \(K\)。那么，存在一个素数
+\[
+q\leq2K^{16}|A|
+\]
+以及一个子集 \(A'\subset A\)，满足
+\[
+|A'|\geq\frac{|A|}{8},
+\]
+且 \(A'\) Freiman 8-同构于
+\(\mathbf Z/q\mathbf Z\) 的某个子集。
+
+**证明。** 由 Plünnecke–Ruzsa 不等式（定理 4.4.1），
+\[
+|8A-8A|\leq K^{16}|A|.
+\]
+再由 Bertrand 猜想（Bertrand’s postulate），存在素数 \(q\)，使得
+\[
+|8A-8A|\leq q\leq2|8A-8A|.
+\]
+显然，这个素数满足
+\[
+q\leq2K^{16}|A|.
+\]
+由 Ruzsa 模型引理，存在子集 \(A'\subset A\)，使得
+\[
+|A'|\geq\frac{|A|}{8},
+\]
+并且 \(A'\) Freiman 8-同构于 \(\mathbf Z/q\mathbf Z\) 的一个子集。□
+
+## 5.4. Bogolyubov 引理
+
+Ruzsa 模型引理（更准确地说，是推论 5.3.1）使我们能够将注意力从一个倍增常数较小的整数集 \(A\subset\mathbf Z\)，转移到循环群 \(\mathbf Z/q\mathbf Z\) 中的一个稠密子集。我们现在证明一个关于这类集合结构的引理。
+
+**定义 5.4.1.** 设
+\[
+R=\{r_1,\ldots,r_k\}
+\]
+是 \(\mathbf Z/q\mathbf Z\) 中由非零元素组成的一个集合，且
+\(\varepsilon>0\) 是一个参数。我们定义频率集为 \(R\)、宽度为
+\(\varepsilon\) 的 **Bohr 集**
+\[
+B(R,\varepsilon)
+:=
+\left\{
+x\in\mathbf Z/q\mathbf Z:
+\left\|\frac{r_ix}{q}\right\|_{\mathbf T}
+\leq\varepsilon,\quad i=1,\ldots,k
+\right\}.
+\]
+参数 \(k\) 称为这个 Bohr 集的维数。
+
+**命题 5.4.1（Bogolyubov 引理）。** 设
+\(S\subset\mathbf Z/q\mathbf Z\)，且 \(|S|=\sigma q\)。那么
+\(2S-2S\) 包含一个维数至多为 \(4/\sigma^2\)、宽度至少为 \(1/10\) 的 Bohr 集。
+
+在证明中，我们将使用离散傅里叶变换，具体而言，是
+\(\mathbf Z/q\mathbf Z\) 上的傅里叶变换。（事实上，傅里叶变换可以在任意局部紧阿贝尔群上建立。因此，第 3 章中出现的 \(\mathbf Z\) 上的傅里叶变换，以及 \(\mathbf Z/q\mathbf Z\) 上的离散傅里叶变换，都可以看作同一一般概念的特例。）下面给出相关定义与基本性质。
+
+**定义 5.4.2.** 设
+\[
+f:\mathbf Z/q\mathbf Z\to\mathbf C
+\]
+是一个函数。对于 \(r\in\mathbf Z/q\mathbf Z\)，定义其（离散）傅里叶变换为
+\[
+\widehat f(r):=
+\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}
+f(x)e(-rx/q).
+\]
+
+**命题 5.4.2.** 设
+\[
+f,g:\mathbf Z/q\mathbf Z\to\mathbf C
+\]
+是两个函数。
+
+(i) 有 Fourier 反演公式
+\[
+f(x)=\sum_{r\in\mathbf Z/q\mathbf Z}
+\widehat f(r)e(rx/q).
+\]
+
+(ii) 有 Parseval 恒等式
+\[
+\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}
+f(x)\overline{g(x)}
+=
+\sum_{r\in\mathbf Z/q\mathbf Z}
+\widehat f(r)\overline{\widehat g(r)}.
+\]
+
+(iii) 若卷积
+\(f*g:\mathbf Z/q\mathbf Z\to\mathbf C\) 定义为
+\[
+(f*g)(x):=
+\frac1q\sum_{y\in\mathbf Z/q\mathbf Z}f(y)g(x-y),
+\]
+那么
+\[
+\widehat{f*g}(r)=\widehat f(r)\widehat g(r).
+\]
+
+**证明。** 再一次，利用定义以及下述事实，很容易验证上述各式：
+\[
+\sum_{r}e(rx/q)=
+\begin{cases}
+q,&x=0,\\
+0,&x\in(\mathbf Z/q\mathbf Z)\setminus\{0\}.
+\end{cases}
+\]
+*注记。* 在 Parseval 恒等式中取 \(f=g\)，得到
+\[
+\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}|f(x)|^2
+=
+\sum_{r\in\mathbf Z/q\mathbf Z}|\widehat f(r)|^2.
+\]
+
+值得停下来思考一下卷积“做了什么”。若 \(f\) 与 \(g\) 分别支撑在
+\(\mathbf Z/q\mathbf Z\) 的子集 \(A,B\) 上（例如，可以取
+\(f=1_A\)、\(g=1_B\)），那么 \(f*g\) 支撑在 \(A+B\) 上。此外，
+\(f*g\) 具有很好的傅里叶变换，这对于进一步分析非常方便。需要特别注意，
+\(1_A*1_B\) 与 \(1_{A+B}\) 并不相同：后一个函数在 \(A+B\) 的每个元素上赋予相同的权重，而前一个函数则根据表示为 \(a+b\)（其中 \(a\in A,b\in B\)）的方式数，对元素 \(x\) 赋予相应权重。
+
+现在转向 Bogolyubov 引理（引理 5.4.1）的证明。
+
+**证明（引理 5.4.1）。** 考虑函数
+\[
+f:=1_S*1_S*1_{-S}*1_{-S}.
+\]
+它支撑在 \(2S-2S\) 上，也就是说，若 \(f(x)>0\)，则
+\(x\in2S-2S\)。注意
+\[
+\widehat{1_{-S}}(r)=\overline{\widehat{1_S}(r)},
+\]
+因此
+\[
+\widehat f(r)=|\widehat{1_S}(r)|^4.
+\]
+由 Fourier 反演公式以及 \(f\) 为实值函数这一事实，我们有
+\[
+\begin{aligned}
+f(x)
+&=\sum_r|\widehat{1_S}(r)|^4e(rx/q)\\
+&=\sum_r|\widehat{1_S}(r)|^4
+\cos(2\pi rx/q).
+\end{aligned}
+\tag{5.3}
+\]
+
+令 \(R\) 为所有满足
+\[
+r\ne0,\qquad
+|\widehat{1_S}(r)|\geq\frac{\sigma^{3/2}}2
+\]
+的 \(r\) 所组成的集合。由 Parseval 恒等式，
+\[
+\begin{aligned}
+|R|\frac{\sigma^3}{4}
+&\leq\sum_{r\in R}|\widehat{1_S}(r)|^2\\
+&\leq\sum_r|\widehat{1_S}(r)|^2\\
+&=\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}1_S(x)^2\\
+&=\sigma,
+\end{aligned}
+\]
+因此
+\[
+|R|\leq\frac4{\sigma^2}.
+\tag{5.4}
+\]
+
+我们断言
+\[
+B\left(R,\frac1{10}\right)\subset2S-2S.
+\]
+为此，只需证明当
+\(x\in B(R,1/10)\) 时 \(f(x)>0\)。我们将使用公式 (5.3)，并把关于 \(r\) 的求和分成三部分：\(r=0\) 这一项、\(r\in R\) 的各项，以及其余所有项。
+
+显然，
+\[
+|\widehat{1_S}(0)|^4=\sigma^4.
+\]
+若 \(r\in R\)，则
+\[
+\cos(2\pi rx/q)\geq0,
+\]
+因此这些项之和非负。最后，
+\[
+\begin{aligned}
+&\sum_{r\notin R\cup\{0\}}
+|\widehat{1_S}(r)|^4\cos(2\pi rx/q)\\
+&\qquad\geq
+-\sum_{r\notin R\cup\{0\}}|\widehat{1_S}(r)|^4\\
+&\qquad\geq
+-\frac{\sigma^3}{4}
+\sum_r|\widehat{1_S}(r)|^2
+=-\frac{\sigma^4}{4},
+\end{aligned}
+\]
+最后一步再次使用了 Parseval 恒等式。综合以上各项，得到
+\[
+f(x)\geq\sigma^4+0-\frac{\sigma^4}{4}>0,
+\]
+这正是所需结论。□
+
+## 5.5. Bohr 集中的广义等差数列
+
+证明命题 5.4.1 究竟带来了什么，并不是显而易见的。答案是，Bohr 集 \(B(R,\varepsilon)\) 具有大量结构，特别是其中包含一个较大的广义等差数列。关键命题如下。
+
+**命题 5.5.1.** 设
+\(R\subset\mathbf Z/q\mathbf Z\) 是一个大小为 \(k\)、且不包含零的集合。设
+\[
+0<\varepsilon<\frac12.
+\]
+那么 Bohr 集 \(B(R,\varepsilon)\) 包含一个维数为 \(k\) 的真广义等差数列，其基数至少为
+\[
+\left(\frac{\varepsilon}{k}\right)^kq.
+\]
+
+在证明中，我们将依赖数的几何中的一个结果——Minkowski 第二定理。该定理将在下面的命题 5.5.2 中陈述。其证明不属于考试范围，但会在附录 B 中给出。为了陈述该定理，我们需要一些术语。
+
+格
+\[
+\Lambda\subset\mathbf R^d
+\]
+是 \(\mathbf R^d\) 的一个离散且余紧子群。一个标准定理指出，每个格都可以写成
+\[
+\mathbf Zv_1\oplus\mathbf Zv_2\oplus\cdots\oplus\mathbf Zv_d,
+\]
+其中 \(v_1,\ldots,v_d\) 线性无关；这些向量称为 \(\Lambda\) 的一个整基。集合
+\[
+\mathcal F:=
+\left\{
+x_1v_1+\cdots+x_dv_d:
+0\leq x_i<1
+\right\}
+\]
+称为 \(\Lambda\) 的一个基本区域。注意，它在 \(\Lambda\) 的各个平移之下恰好覆盖 \(\mathbf R^d\)。向量 \(v_i\)（以及因此的 \(\mathcal F\)）并不由 \(\Lambda\) 唯一确定，但基本区域的体积却是唯一确定的。格的行列式 \(\det(\Lambda)\) 定义为 \(\Lambda\) 的基本区域的体积。
+
+Minkowski 第二定理的陈述还涉及一个中心对称凸体
+\[
+K\subset\mathbf R^d.
+\]
+这意味着 \(K\) 是一个凸集（也就是说，若 \(x,y\in K\)，则对于所有
+\(\lambda\in[0,1]\)，都有
+\[
+\lambda x+(1-\lambda)y\in K
+\]
+），并且它是中心对称的，即若 \(x\in K\)，则 \(-x\in K\)。
+
+在一定程度上，数的几何就是研究格 \(\Lambda\) 如何与凸体 \(K\) 相互作用。
+
+设我们有一个格 \(\Lambda\) 和一个凸体 \(K\)。我们定义 \(K\) 关于
+\(\Lambda\) 的连续极小值
+\(\lambda_1,\ldots,\lambda_d\) 如下：
+\(\lambda_j\) 是所有满足 \(\lambda K\) 包含 \(j\) 个线性无关的 \(\Lambda\) 元素的 \(\lambda\) 中的下确界。若 \(K\) 是紧集，则
+\(\lambda_jK\) 本身就包含 \(j\) 个线性无关的 \(\Lambda\) 元素。（对于每个
+\(\varepsilon>0\)，集合 \((\lambda_j+\varepsilon)K\) 都包含这样的元素。由于这些元素都位于 \((\lambda_j+1)K\) 中，因此只有有限种选择；特别地，对于某个趋于零的 \(\varepsilon\) 数列，我们可以始终选取同一组元素。由于 \(K\) 是紧的，这些元素都属于 \(\lambda_jK\)。）
+
+**命题 5.5.2（Minkowski 第二定理）。** 有
+\[
+\lambda_1\cdots\lambda_d\,\operatorname{vol}(K)
+\leq2^d\det(\Lambda).
+\]
+
+现在转向命题 5.5.1 的证明。
+
+**证明（命题 5.5.1）。** 令
+\[
+R=\{r_1,\ldots,r_k\},
+\]
+并考虑格
+\[
+\Lambda=q\mathbf Z^k+(r_1,\ldots,r_k)\mathbf Z.
+\]
+由于 \(q\) 是素数，这可以写成直和
+\[
+q\mathbf Z^k\oplus
+\{0,1,\ldots,q-1\}\cdot(r_1,\ldots,r_k).
+\]
+因此，\(\Lambda\) 包含 \(q\mathbf Z^k\)，且
+\[
+[\Lambda:q\mathbf Z^k]=q.
+\]
+由此以及
+\[
+\det(q\mathbf Z^k)=q^k
+\]
+可知
+\[
+\det(\Lambda)=q^{k-1}
+\]
+（见引理 B.0.1）。
+
+取 \(K\subset\mathbf R^k\) 为如下盒子：
+\[
+K=\{\mathbf x:\|\mathbf x\|_\infty\leq\varepsilon q\}.
+\]
+令 \(\lambda_1,\ldots,\lambda_k\) 为 \(K\) 关于 \(\Lambda\) 的连续极小值。由于 \(K\) 是闭集，
+\(\lambda_jK\) 包含 \(j\) 个线性无关的 \(\Lambda\) 元素。我们可以依次选取这些元素，从而得到
+\(\mathbf R^k\) 的一组基
+\[
+\mathbf b_1,\ldots,\mathbf b_k,
+\]
+使得对于所有 \(j\)，
+\[
+\mathbf b_j\in\Lambda\cap\lambda_jK.
+\]
+（这样的基称为方向基；需要提醒的是，尽管 \(\mathbf b_j\) 是
+\(\Lambda\) 中的线性无关元素，但它们不一定构成 \(\Lambda\) 的整基。）于是
+\[
+\mathbf b_j\in\Lambda,\qquad
+\|\mathbf b_j\|_\infty\leq\lambda_j\varepsilon q.
+\]
+对于 \(j=1,\ldots,k\)，令
+\[
+L_j:=\left\lceil\frac1{\lambda_jk}\right\rceil.
+\]
+那么，当 \(0\leq\ell_j<L_j\) 时，
+\[
+\|\ell_j\mathbf b_j\|_\infty
+\leq\frac{\varepsilon q}{k},
+\]
+因此
+\[
+\|\ell_1\mathbf b_1+\cdots+\ell_k\mathbf b_k\|_\infty
+\leq\varepsilon q.
+\]
+
+现在，每个 \(\mathbf b_i\) 都属于 \(\Lambda\)，因此模 \(q\) 同余于
+\[
+x_i(r_1,\ldots,r_k)
+\]
+，其中某个 \(x_i\) 满足 \(0\leq x_i<q\)。稍微滥用一下记号，我们将这些 \(x_i\) 看作 \(\mathbf Z/q\mathbf Z\) 中的元素。前面的观察意味着，对每个 \(i\)，都有
+\[
+\left\|
+\frac{(\ell_1x_1+\cdots+\ell_kx_k)r_i}{q}
+\right\|_{\mathbf T}
+\leq\varepsilon.
+\]
+换言之，广义等差数列
+\[
+\left\{
+\ell_1x_1+\cdots+\ell_kx_k:
+0\leq\ell_i<L_i
+\right\}
+\]
+包含于 Bohr 集 \(B(R,\varepsilon)\)。
+
+剩下要证明的是这个等差数列的大小下界，并且还要证明它是 proper 的。大小下界容易得到：该集合的大小至少为
+\[
+k^{-k}(\lambda_1\cdots\lambda_k)^{-1}.
+\]
+由 Minkowski 第二定理，以及
+\[
+\det(\Lambda)=q^{k-1},\qquad
+\operatorname{vol}(K)=(2\varepsilon q)^k,
+\]
+可知这一数量至少为
+\[
+\left(\frac{\varepsilon}{k}\right)^kq.
+\]
+
+为了证明 proper 性，假设
+\[
+\ell_1x_1+\cdots+\ell_kx_k
+\equiv
+\ell_1'x_1+\cdots+\ell_k'x_k
+\pmod q,
+\]
+其中
+\[
+|\ell_i|,\ |\ell_i'|<
+\left\lceil\frac1{k\lambda_i}\right\rceil.
+\]
+那么向量
+\[
+\mathbf b
+=
+(\ell_1-\ell_1')\mathbf b_1+\cdots+
+(\ell_k-\ell_k')\mathbf b_k
+\]
+属于 \(q\mathbf Z^k\)，而且
+\[
+\begin{aligned}
+\|\mathbf b\|_\infty
+&\leq\sum_{i=1}^k
+2\left\lfloor\frac1{\lambda_ik}\right\rfloor
+\|\mathbf b_i\|_\infty\\
+&\leq2\varepsilon q.
+\end{aligned}
+\]
+由于假设 \(\varepsilon<1/2\)，可知 \(\mathbf b=0\)。再由
+\(\mathbf b_i\) 的线性无关性，得到对于所有 \(i\)，
+\[
+\ell_i=\ell_i'.
+\]
+因此，这个等差数列确实是 proper 的。□
+
+## 5.6. Freiman 定理：证明的收尾
+
+本节完成 Freiman 定理的证明。
