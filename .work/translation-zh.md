@@ -1945,6 +1945,454 @@ A+A:=\{a_1+a_2:a_1,a_2\in A\}.
 a_1<\cdots<a_n,
 \]
 则有
+\[
+a_1+a_1<a_1+a_2<\cdots<a_1+a_n<a_2+a_n<\cdots<a_n+a_n,
+\]
+这是 \(A+A\) 中 \(2n-1\) 个互不相同的元素。
+
+上述两个界都可以取到等号。例如，若
+\[
+A=\{1,2,\ldots,2^{n-1}\},
+\]
+那么所有的和 \(a_1+a_2\) 都互不相同（除了平凡关系
+\(a_1+a_2=a_2+a_1\)）。若
+\[
+A=\{1,\ldots,n\},
+\]
+那么
+\[
+A+A=\{2,\ldots,2n\},
+\]
+其大小为 \(2n-1\)。
+
+若
+\[
+\frac{|A+A|}{|A|}\leq K,
+\]
+则称 \(A\) 的**倍增常数至多为 \(K\)**。
+
+通常，我们考虑 \(K\) 固定（例如 \(K=10\)），而
+\[
+n=|A|
+\]
+非常大的情形。
+
+本章要考虑的基本问题如下。
+
+**问题 5.0.1.** 若
+\[
+|A+A|\leq K|A|,
+\]
+其中 \(K\) 较小，那么 \(A\) 具有怎样的结构？
+
+## 5.1. 广义等差数列与 Freiman 定理
+
+在陈述主要结果之前，我们先给出一些复杂程度逐渐增加的动机性例子。
+
+**例 5.1.1（等差数列）。** 设 \(A\) 是任意一个长度为 \(n\) 的等差数列。那么
+\[
+|A+A|=2n-1.
+\]
+
+**例 5.1.2（等差数列的子集）。** 设 \(P\) 是一个长度为 \(Cn\) 的等差数列，且
+\(A\subset P\) 是一个大小为 \(n\) 的任意子集。那么
+\[
+|A+A|\leq2Cn.
+\]
+
+**例 5.1.3（二维等差数列）。** 假设
+\[
+L_1L_2=n,
+\]
+并考虑形如
+\[
+A:=
+\{x_0+\ell_1x_1+\ell_2x_2:
+0\leq\ell_1<L_1,\ 0\leq\ell_2<L_2\}
+\]
+的集合。若 \(x_i\) 之间相距足够远，使得这里描述的元素都互不相同，则
+\[
+|A|=n.
+\]
+在这种情况下，我们称 \(A\) 是**真**（proper）的。我们有
+\[
+\begin{aligned}
+A+A=\{&
+2x_0+\ell_1'x_1+\ell_2'x_2:\\
+&0\leq\ell_1'<2L_1-1,\ 
+0\leq\ell_2'<2L_2-1
+\},
+\end{aligned}
+\]
+因此显然
+\[
+|A+A|\leq4|A|.
+\]
+
+**例 5.1.4（\(d\) 维等差数列）。** 与上例相同，但现在有 \(d\) 个参数
+\[
+L_1,\ldots,L_d；
+\]
+也就是说，
+\[
+A=
+\{x_0+\ell_1x_1+\cdots+\ell_dx_d:
+0\leq\ell_i<L_i\}.
+\tag{5.1}
+\]
+若 \(A\) 是真广义等差数列，则
+\[
+|A+A|\leq2^d|A|.
+\]
+
+**例 5.1.5（多维等差数列的子集）。** 设 \(P\) 是一个大小为 \(Cn\) 的真 \(d\) 维等差数列。令 \(A\subset P\) 为一个大小为 \(n\) 的任意子集。那么
+\[
+|A+A|
+\leq|P+P|
+\leq2^d|P|
+=2^dCn.
+\]
+
+最后这个例子给出了一类相当大的集合，它们的倍增常数至多为 \(K\)（只需选取满足 \(2^dC\leq K\) 的任意参数 \(d,C\)）。
+
+Freiman 定理断言，上述例子已经涵盖了所有可能的情形。
+
+**定理 5.1.1（Freiman）。** 设
+\[
+A\subset\mathbf Z
+\]
+是一个有限集，且
+\[
+|A+A|\leq K|A|.
+\]
+那么 \(A\) 包含于一个广义等差数列 \(P\) 中，其中
+\[
+\dim(P)\ll_K1,\qquad
+\operatorname{size}(P)\ll_K|A|.
+\]
+
+形如 (5.1) 的广义等差数列的**规模**定义为
+\[
+L_1\cdots L_d.
+\]
+这一数量至少等于该等差数列的基数；若该等差数列不是 proper 的，则规模严格大于其基数。
+
+Freiman 定理指出，\(A\) 包含于一个真等差数列中，其维数至多为
+\(d(K)\)，规模至多为 \(C(K)|A|\)，其中 \(d(\cdot)\) 与
+\(C(\cdot)\) 都只依赖于 \(K\)。本课程不会关注具体的界，不过我们给出的论证会导出 \(d(K)\) 关于 \(K\) 的指数级上界，以及 \(C(K)\) 关于 \(K\) 的双指数级上界。这距离真正的最佳结果还相当远；事实上，只需多做一些工作，就可以从这两个界中各去掉一个指数，但我们在这里不这样做。
+
+当然，还可以有许多其他改进，不过这里同样不会涉及。例如，如果需要，可以要求 \(P\) 是 proper 的。
+
+## 5.2. Freiman 同态
+
+在 Freiman 于 1966 年出版的那本极具洞察力的著作 [5] 中，他尝试类比 Klein 处理几何的方式来研究加法数论：除了研究整数集合
+\(A,B,\ldots\) 之外，还应当研究它们之间的映射，尤其是那些在自然类型的映射下保持不变的性质。这种观点在当时无疑被认为有些古怪，但 Freiman 同态的概念如今已成为加法组合学中的重要工具。
+
+**定义 5.2.1.** 设 \(s\geq2\) 是一个整数，且 \(A,B\) 是加法集合。若映射
+\[
+\phi:A\to B
+\]
+满足：只要
+\[
+a_1+\cdots+a_s=a_1'+\cdots+a_s',
+\]
+就有
+\[
+\phi(a_1)+\cdots+\phi(a_s)
+=
+\phi(a_1')+\cdots+\phi(a_s'),
+\]
+那么称 \(\phi\) 为一个 **Freiman \(s\)-同态**。
+
+显然，任意群同态限制在任何子集上，都是任意阶数的 Freiman 同态。不过，这一概念要一般得多。例如，从
+\[
+A=\{1,10,100,1000\}
+\]
+到另一个加法集合的任意映射都是 Freiman 2-同态，因为 \(A\) 不存在非平凡的关系
+\[
+a_1+a_2=a_1'+a_2'.
+\]
+
+若映射 \(\phi\) 存在逆映射 \(\phi^{-1}\)，且逆映射也是 Freiman \(s\)-同态，则称 \(\phi\) 为 Freiman \(s\)-同构。需要提醒的是，与代数中的常见预期不同，一个单射 Freiman 同态未必是 Freiman 同构。例如，显然的映射
+\[
+\phi:\{0,1\}^n\to(\mathbf Z/2\mathbf Z)^n
+\]
+是任意阶数的 Freiman 同态（它由自然群同态
+\[
+\mathbf Z^n\to(\mathbf Z/2\mathbf Z)^n
+\]
+诱导得到）。然而，它不是 Freiman 2-同构，因为
+\((\mathbf Z/2\mathbf Z)^n\) 中的加法关系远远多于
+\(\{0,1\}^n\) 中的加法关系。
+
+下面的引理记录 Freiman 同构的一些基本事实。
+
+**引理 5.2.1.** 设 \(A,B,C\) 是加法集合，且 \(s\geq2\) 是一个整数。那么有以下结论。
+
+(i) 若
+\[
+\phi:A\to B,\qquad\psi:B\to C
+\]
+都是 Freiman \(s\)-同态，那么复合映射
+\[
+\psi\circ\phi
+\]
+也是 Freiman \(s\)-同态。
+
+(ii) 若
+\[
+\phi:A\to B
+\]
+是 Freiman \(s\)-同态，那么对于每个满足
+\[
+2\leq s'\leq s
+\]
+的整数 \(s'\)，它也是 Freiman \(s'\)-同态。
+
+(iii) 若
+\[
+\phi:A\to B
+\]
+是 Freiman \(s\)-同态，且 \(k,\ell\geq0\) 是整数并满足
+\(k+\ell\geq1\)，那么对于任意满足
+\[
+2\leq s'\leq\frac{s}{k+\ell}
+\]
+的整数 \(s'\)，\(\phi\) 都诱导出一个 Freiman \(s'\)-同态
+\[
+\widetilde\phi:kA-\ell A\to kB-\ell B.
+\]
+
+(iv) 若将上述前三条中的“同态”全部替换为“同构”，则相应结论仍然成立。
+
+(v) 若 \(P\) 是一个广义等差数列，且
+\[
+\phi:P\to B
+\]
+是 Freiman 2-同态，那么 \(\phi(P)\) 是一个维数相同的广义等差数列。若 \(\phi\) 是 Freiman 2-同构，并且 \(P\) 是 proper 的，那么 \(\phi(P)\) 也具有 proper 性质。
+
+(vi) 令
+\[
+\pi_m:\mathbf Z\to\mathbf Z/m\mathbf Z
+\]
+为自然映射。那么，当其限制在任意区间
+\[
+(t,t+m/s]\cap\mathbf Z
+\]
+上时，\(\pi_m\) 是 Freiman \(s\)-同构，其中 \(t\in\mathbf R\)。
+
+**证明。** 前四部分在理解定义之后都非常直接，课堂上我们不会仔细讨论它们。也许 (iii) 需要进一步说明：应定义
+\[
+\begin{aligned}
+&\widetilde\phi(
+a_1+\cdots+a_k-a_1'-\cdots-a_\ell')\\
+&\qquad=
+\phi(a_1)+\cdots+\phi(a_k)
+-\phi(a_1')-\cdots-\phi(a_\ell').
+\end{aligned}
+\]
+然后需要检查，这个定义是良定义的，而且确实是所声称阶数的 Freiman 同态。
+
+为了证明 (v)，设
+\[
+\phi:P\to\phi(P)
+\]
+是一个 Freiman 2-同态。假设
+\[
+P=\{x_0+\ell_1x_1+\cdots+\ell_dx_d:
+0\leq\ell_i<L_i\}.
+\]
+令
+\[
+y_0=\phi(x_0),
+\]
+并通过
+\[
+y_0+y_i=\phi(x_0+x_i),
+\qquad i=1,\ldots,d
+\]
+定义 \(y_1,\ldots,y_d\)。我们断言，对于所有满足
+\(0\leq\ell_i<L_i\) 的 \(\ell_1,\ldots,\ell_d\)，都有
+\[
+\begin{aligned}
+&\phi(x_0+\ell_1x_1+\cdots+\ell_dx_d)\\
+&\qquad=
+y_0+\ell_1y_1+\cdots+\ell_dy_d.
+\end{aligned}
+\]
+这可以通过对
+\(\ell_1+\cdots+\ell_d\) 作归纳来建立，因为我们对 \(y_i\) 的定义保证，当
+\[
+\ell_1+\cdots+\ell_d=0
+\quad\text{或}\quad1
+\]
+时上述等式成立。例如，为了得到
+\[
+(\ell_1,\ldots,\ell_d)=(1,1,0,\ldots,0)
+\]
+的结论，可以利用关系
+\[
+x_0+(x_0+x_1+x_2)
+=(x_0+x_1)+(x_0+x_2),
+\]
+从而得到
+\[
+\phi(x_0)+\phi(x_0+x_1+x_2)
+=
+\phi(x_0+x_1)+\phi(x_0+x_2),
+\]
+因此
+\[
+\phi(x_0+x_1+x_2)=y_0+y_1+y_2,
+\]
+正如所需。
+
+最后，说明 (vi)。由于 \(\pi_m\) 是群同态，因此它也是 Freiman 同态。它在任意长度至多为 \(m\) 的区间上的限制都是双射。假设
+\[
+x_1,\ldots,x_s,x_1',\ldots,x_s'
+\]
+满足
+\[
+t<x_i,x_i'\leq t+\frac ms,
+\]
+并且
+\[
+\pi_m(x_1)+\cdots+\pi_m(x_s)
+=
+\pi_m(x_1')+\cdots+\pi_m(x_s').
+\]
+也就是说，
+\[
+x_1+\cdots+x_s
+\equiv
+x_1'+\cdots+x_s'
+\pmod m.
+\]
+由于
+\[
+|x_1+\cdots+x_s-x_1'-\cdots-x_s'|<m,
+\]
+必有
+\[
+x_1+\cdots+x_s=x_1'+\cdots+x_s'.
+\]
+这就完成了证明。□
+
+## 5.3. Ruzsa 模型引理
+
+本节证明 Imre Ruzsa 的一个卓越引理。它断言，一个倍增常数较小的整数集 \(A\subset\mathbf Z\)，有一个较大的子集 Freiman 同构于循环群
+\(\mathbf Z/m\mathbf Z\) 的某个稠密子集。在这一环境中，调和分析的工具会强大得多；相比之下，任意整数子集（即使倍增常数较小）也可能分布得非常“分散”。下面是 Ruzsa 引理。
+
+**命题 5.3.1（Ruzsa 模型引理）。** 设
+\[
+A\subset\mathbf Z
+\]
+是一个有限集，且 \(s\geq2\) 是整数。令 \(m\geq|sA-sA|\) 为一个整数。那么存在集合
+\[
+A'\subset A,\qquad |A'|\geq\frac{|A|}{s},
+\]
+使得 \(A'\) Freiman \(s\)-同构于
+\(\mathbf Z/m\mathbf Z\) 的某个子集。
+
+**证明。** 必要时对 \(A\) 作平移，不妨假设 \(A\) 由正整数构成。取一个充分大的素数 \(q\)。对于
+\[
+\lambda\in(\mathbf Z/q\mathbf Z)^\times,
+\]
+考虑如下映射的复合：
+\[
+\phi_\lambda:=\gamma\circ\beta\circ\alpha_\lambda,
+\]
+其中
+\[
+\mathbf Z
+\xrightarrow{\alpha_\lambda}
+\mathbf Z/q\mathbf Z
+\xrightarrow{\beta}
+\{1,\ldots,q\}
+\xrightarrow{\gamma}
+\mathbf Z/m\mathbf Z.
+\]
+这里：
+
+- \(\alpha_\lambda\) 表示先模 \(q\) 取余，再乘以 \(\lambda\)；
+- \(\beta\) 是模 \(q\) 取余映射的逆映射（将剩余类选为
+  \(\{1,\ldots,q\}\) 中的代表元）；
+- \(\gamma\) 是模 \(m\) 的约化映射。
+
+现在，\(\alpha_\lambda\) 和 \(\gamma\) 都是任意阶数的 Freiman 同态。映射 \(\beta\) 则不是；不过，由命题 5.2.1 (vi)，当限制在任意区间
+\[
+I_j:=
+\left\{
+n\in\mathbf Z:
+\frac{jq}{s}<n\leq\frac{(j+1)q}{s}
+\right\}
+\]
+模 \(q\) 的像上时，它是 Freiman \(s\)-同态。由于这 \(s\) 个区间（其中
+\(j=0,1,\ldots,s-1\)）覆盖了 \(\{1,\ldots,q\}\)，由抽屉原理可知，对于每个 \(\lambda\)，都存在某个
+\[
+j=j(\lambda),
+\]
+使得集合
+\[
+A_\lambda:=
+\{a\in A:
+\alpha_\lambda(a)\in I_{j(\lambda)}\pmod q\}
+\]
+的大小至少为
+\[
+\frac{|A|}{s}.
+\]
+根据构造，\(\phi_\lambda\) 限制在 \(A_\lambda\) 上时是 Freiman \(s\)-同态。
+
+到目前为止，我们所说的一切对任意 \(\lambda\) 都成立。为了完成证明，我们现在说明，存在某个 \(\lambda\)，使得
+\(\phi_\lambda\) 是可逆的，而且其逆映射也是 Freiman \(s\)-同态。若这一点对某个 \(\lambda\) 不成立，那么就存在
+\[
+d=a_1+\cdots+a_s-a_1'-\cdots-a_s'\ne0
+\]
+使得
+\[
+\phi_\lambda(a_1)+\cdots+\phi_\lambda(a_s)
+=
+\phi_\lambda(a_1')+\cdots+\phi_\lambda(a_s').
+\tag{5.2}
+\]
+这里，\(d\) 以及
+\(a_i,a_i'\in A_\lambda\) 都依赖于 \(\lambda\)。
+
+令
+\[
+x:=
+\sum_{i=1}^s\beta(\alpha_\lambda(a_i))
+-
+\sum_{i=1}^s\beta(\alpha_\lambda(a_i')).
+\]
+若 (5.2) 成立，则
+\[
+\gamma(x)=0,
+\]
+也就是说
+\[
+x\equiv0\pmod m.
+\]
+不失一般性（必要时交换 \(a_i\) 与 \(a_i'\)），可以假设
+\[
+x\geq0.
+\]
+此外，由于 \(a_i,a_i'\) 都属于 \(A_\lambda\)，可知
+\[
+x\in s(I_{j(\lambda)}-I_{j(\lambda)})
+\subset(-q,q).
+\]
+因此
+\[
+0\leq x<q.
+\]
+
+现在，由构造可知，\(x\) 与 \(\lambda d\) 模 \(q\) 同余。因此
+\[
+x=\psi(\lambda d),
+\]
+其中 \(\psi(n)\) 是 \(\{0,1,\ldots,q-1\}\) 中与 \(n\) 模 \(q\) 同余的唯一整数。
 
 若 \(\phi_\lambda|_{A_\lambda}\) 不是 Freiman \(s\)-同构，则必有某个
 \[
