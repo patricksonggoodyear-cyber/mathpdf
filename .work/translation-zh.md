@@ -938,3 +938,327 @@ u_\delta-\frac{\mu(\delta)}{Df(\delta)}
 \tag{2.23}
 \]
 其中
+
+\[
+D=D(z):=
+\sum_{\delta\leq z}\frac{\mu^2(\delta)}{f(\delta)}
+=
+\sum_{\substack{d\leq z\\d\text{ 平方自由}}}\frac1{f(d)}.
+\tag{2.24}
+\]
+这表明，在约束 (2.22) 下，\(Q\)（如 (2.20) 所定义）的最小值为 \(1/D\)，且当
+\[
+u_\delta=\frac{\mu(\delta)}{Df(\delta)}
+\tag{2.25}
+\]
+时取到等号。
+
+因此，我们将尚未指定的权重 \(\lambda_d\) 选为使 \(u_\delta\) 取上述值的权重。根据 (2.21)，这意味着定义
+\[
+\lambda_d:=
+\frac{d}{\omega(d)D}
+\sum_{\substack{d\mid\delta\\\delta\leq z}}
+\frac{\mu(\delta/d)\mu(\delta)}{f(\delta)}.
+\tag{2.26}
+\]
+
+现在总结一下目前的进展。我们的目标是证明 (2.6)。取 (2.26) 中给出的特定权重 \(\lambda_d\)，并令 \(z=N^{1/3}\)，代入 (2.13)，得到
+\[
+S(\mathcal A,z)
+\leq\frac ND+
+O\left(N^{2/3}\max_{d\leq z}|\lambda_d|^2\omega(d)^2\right).
+\tag{2.27}
+\]
+在估计 \(E\) 时，我们使用了
+\[
+\begin{aligned}
+E
+&=\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega([d_1,d_2])\\
+&\leq\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega(d_1)\omega(d_2)\\
+&\leq z^2\sup_d|\lambda_d|^2\omega(d)^2,
+\end{aligned}
+\]
+其中中间一步由 (2.18) 得到。
+
+(2.27) 右端的两项分别相当于主项与误差项，不过我们还没有对它们作出严格估计。
+
+为了控制主项，我们将证明
+\[
+D\gg\log^2N\cdot
+\left(\prod_{p\mid N}\left(1+\frac1p\right)\right)^{-1}.
+\tag{2.28}
+\]
+为了控制误差项，我们将证明
+\[
+|\lambda_d|\omega(d)\ll_\varepsilon d^\varepsilon
+\qquad\text{对所有平方自由的 }d.
+\tag{2.29}
+\]
+这是解析数论中的标准记号，表示对于每个 \(\varepsilon>0\)，都存在某个常数 \(C_\varepsilon\)，使得
+\[
+|\lambda_d|\omega(d)\leq C_\varepsilon d^\varepsilon.
+\]
+
+将 (2.28) 与 (2.29) 代入 (2.27)，便可很快得到所需的上界 (2.6)。
+
+因此，剩下的工作是证明 (2.28) 与 (2.29)。这两个结论的证明相当长，也略微有些技术性，不过推导过程值得仔细学习。它们与论证的其他部分关联不大，读者也可以选择略过。
+
+**估计主项。** 现在证明 (2.28)。在本证明中，将 \(\omega\) 扩张为完全积性函数，定义
+\[
+\omega(p^j):=\omega(p)^j.
+\]
+若 \(d\) 是平方自由数，则
+\[
+\begin{aligned}
+\frac1{f(d)}
+&=\prod_{p\mid d}\frac1{f(p)}
+=\prod_{p\mid d}
+\frac{\omega(p)/p}{1-\frac{\omega(p)}p}\\
+&=\prod_{p\mid d}
+\sum_{j\geq1}\frac{\omega(p^j)}{p^j},
+\end{aligned}
+\]
+其中使用了 \(f\) 的积性以及几何级数公式。因此
+\[
+\begin{aligned}
+D
+&=\sum_{\substack{d\leq z\\d\text{ 平方自由}}}
+\prod_{p\mid d}\sum_{j\geq1}
+\frac{\omega(p^j)}{p^j}\\
+&=\sum_{\substack{m:\,\operatorname{rad}(m)\leq z}}
+\frac{\omega(m)}m
+\geq\sum_{m\leq z}\frac{\omega(m)}m.
+\end{aligned}
+\tag{2.30}
+\]
+这里，整数 \(m\) 的根基 \(\operatorname{rad}(m)\) 是整除 \(m\) 的不同素数的乘积；当然，它是平方自由数。
+
+令 \(S'\) 为所有与 \(N\) 互素的正整数构成的集合，令 \(S_*\) 为所有只由整除 \(N\) 的素数组成的正整数构成的集合。任意整数 \(m\) 都有唯一分解
+\[
+m=m'm_*,
+\qquad m'\in S',\quad m_*\in S_*.
+\]
+
+我们断言
+\[
+\omega(m)\geq\tau(m'),
+\tag{2.31}
+\]
+其中 \(\tau\) 是约数函数，即 \(\tau(x)\) 表示 \(x\) 的正整数约数个数。回忆 (2.12) 中 \(\omega(p)\) 的定义。若写成
+\[
+m=p_1^{a_1}\cdots p_k^{a_k},
+\]
+并设 \(p_1,\ldots,p_\ell\) 是那些不整除 \(N\) 的素数，则
+\[
+m'=p_1^{a_1}\cdots p_\ell^{a_\ell},
+\]
+并且
+\[
+\omega(m)=2^{a_1+\cdots+a_\ell},
+\]
+而
+\[
+\tau(m')=(a_1+1)\cdots(a_\ell+1).
+\]
+由对所有整数 \(a\geq1\) 都成立的不等式 \(2^a\geq a+1\)，立即得到所断言的估计 (2.31)。
+
+将 (2.31) 代入 (2.30)，得到
+\[
+D\geq\sum_{m\leq z}\frac{\tau(m')}{m}.
+\tag{2.32}
+\]
+
+现在注意到
+\[
+\prod_{p\mid N}\left(1-\frac1p\right)^{-1}
+=\sum_{t\in S_*}\frac1t.
+\]
+这是因为可以将
+\[
+\left(1-\frac1p\right)^{-1}
+=\sum_{j\geq0}p^{-j}
+\]
+展开，再对所有整除 \(N\) 的素数 \(p\) 相乘。由 (2.32) 可得
+\[
+\begin{aligned}
+D\prod_{p\mid N}\left(1-\frac1p\right)^{-1}
+&\geq
+\sum_{m\leq z}\frac{\tau(m')}{m}
+\sum_{t\in S_*}\frac1t\\
+&=
+\sum_n\frac1n
+\sum_{\substack{m\leq z\\m\mid n\\n/m\in S_*}}
+\tau(m')\\
+&\geq
+\sum_{n\leq z}\frac1n
+\sum_{\substack{m\mid n\\n/m\in S_*}}
+\tau(m').
+\end{aligned}
+\]
+中间一步中，我们代入了 \(n=mt\)。现在，在关于 \(m\) 的求和中，\(n/m\) 恰好遍历 \(n_*\) 的所有约数，因此内层求和共有 \(\tau(n_*)\) 项。对每一项都有 \(m'=n'\)。因此
+\[
+\sum_{\substack{m\mid n\\n/m\in S_*}}\tau(m')
+=\tau(n_*)\tau(n')
+=\tau(n),
+\]
+于是我们证明了
+\[
+D\prod_{p\mid N}\left(1-\frac1p\right)^{-1}
+\geq\sum_{n\leq z}\frac{\tau(n)}n.
+\tag{2.33}
+\]
+
+现在几乎已经完成了 (2.28) 的证明。最后，首先注意到
+\[
+\sum_{n\leq z}\frac{\tau(n)}n
+\geq
+\left(\sum_{x\leq\sqrt z}\frac1x\right)^2.
+\]
+事实上，将右端的平方展开后，得到
+\[
+\sum_{n\leq z}\frac{\widetilde\tau(n)}n,
+\]
+其中 \(\widetilde\tau(n)\) 表示 \(n\) 的约数 \(d\) 中满足
+\(d,n/d\leq\sqrt z\) 的个数。回忆 \(z=N^{1/3}\)，便可推出
+\[
+\sum_{n\leq z}\frac{\tau(n)}n\gg\log^2N.
+\tag{2.34}
+\]
+
+最后，为了推出 (2.28)，结合 (2.33)、(2.34)，并利用
+\[
+\begin{aligned}
+\prod_{p\mid N}\left(1-\frac1p\right)
+&=\prod_{p\mid N}\left(1+\frac1p\right)^{-1}
+\cdot\prod_{p\mid N}\left(1-\frac1{p^2}\right)\\
+&\gg\prod_{p\mid N}\left(1+\frac1p\right)^{-1},
+\end{aligned}
+\]
+即可得到结论。这里使用了乘积
+\[
+\prod_p\left(1-\frac1{p^2}\right)
+\]
+收敛到一个正实数这一事实；事实上，该乘积等于
+\[
+\frac1{\zeta(2)}=\frac6{\pi^2}.
+\]
+
+**估计误差项。** 现在证明估计 (2.29)。由 (2.26) 中 \(\lambda_d\) 的定义可得
+\[
+\begin{aligned}
+|\omega(d)\lambda_d|
+&=\left|
+\frac dD
+\sum_{\substack{d\mid\delta\\\delta\leq z}}
+\frac{\mu(\delta/d)\mu(\delta)}{f(\delta)}
+\right|\\
+&\leq
+\frac{d}{Df(d)}
+\sum_{\substack{\delta'\leq z\\
+\delta'\text{ 平方自由}}}
+\frac1{f(\delta')}
+=\frac d{f(d)}.
+\end{aligned}
+\]
+现在容易验证
+\[
+\frac p{f(p)}\leq6;
+\]
+最坏的情形是 \(p=3\) 且 \(\omega(3)=2\)。因此
+\[
+\begin{aligned}
+|\omega(d)\lambda_d|
+&\leq\frac d{f(d)}
+=\prod_{p\mid d}\frac p{f(p)}\\
+&\leq6^{\#\{\text{\(d\) 的不同素因子}\}}
+=\tau(d)^{\frac{\log6}{\log2}}.
+\end{aligned}
+\]
+由约数估计（引理 A.0.3）立即得到所需结论。□
+
+## 第 3 章
+
+## 长度为 3 的等差数列的 Roth 定理
+
+本章的目标是证明 Roth 于 1953 年得到的下述定理。该定理本身就很值得学习，同时也为我们引入一个关键工具——傅里叶变换——提供了机会。
+
+**定理 3.0.1（Roth 定理）。** 存在一个绝对常数 \(C\)，使得集合
+\(A\subset\{1,\ldots,N\}\) 只要满足
+\[
+|A|\geq\frac{CN}{\log\log N},
+\]
+就包含一个非平凡的三项等差数列（也就是说，存在 \(x,x+d,x+2d\) 这三个元素，其中 \(d\ne0\)）。
+
+特别注意，当 \(N\) 充分大时，\(1/\log\log N\) 最终会小于任意给定的正数。
+
+本章中，我们始终假设 \(N\) 充分大（即大于某个我们不打算精确说明的绝对常数）。
+
+## 3.1. 密度增量策略
+
+Roth 定理的证明采用所谓的**密度增量策略**，驱动这一策略的关键命题如下。
+
+**命题 3.1.1.** 设 \(0<\alpha<1\)，并且
+\[
+N\geq\left(\frac8\alpha\right)^{10}.
+\]
+设 \(P\subset\mathbf Z\) 是长度为 \(N\) 的等差数列，而 \(A\subset P\) 是一个至少有 \(\alpha N\) 个元素的集合。那么，以下两种情形至少有一种成立：
+
+(i) \(A\) 包含一个非平凡的三项等差数列；
+
+(ii) 存在一个长度为 \(N'\geq N^{1/5}\) 的等差数列 \(P'\)，若记
+\[
+A':=A\cap P',\qquad
+\alpha':=\frac{|A'|}{|P'|},
+\]
+则有
+\[
+\alpha'\geq\alpha+\frac{\alpha^2}{112}.
+\]
+
+通过反复应用这一命题即可得到定理 3.0.1。令
+\[
+P_0:=\{1,\ldots,N\},
+\]
+并假设我们有一个集合 \(A\subset P_0\)，满足 \(|A|=\alpha N\)，且不包含非平凡的三项等差数列。于是，我们尝试反复应用命题 3.1.1，得到一列等差数列
+\[
+P_0,P_1,P_2,\ldots
+\]
+以及相应的集合
+\[
+A_i:=A\cap P_i.
+\]
+\(P_i\) 的长度满足
+\[
+N_i\geq N^{(1/5)^i},
+\]
+而密度
+\[
+\alpha_i:=\frac{|A_i|}{|P_i|}
+\]
+满足
+\[
+\alpha_{i+1}>\alpha_i+c\alpha_i^2.
+\]
+
+这一迭代不可能持续太久：经过 \(C/\alpha\) 步后，密度已经翻倍；再经过 \(C/(2\alpha)\) 步，密度又翻倍，以此类推。由于任何集合的密度都不可能超过 1，所以总步数至多为 \(2C/\alpha\)。我们因此可以得出，命题 3.1.1 的某次应用必然失效；这只能意味着条件
+\[
+N_i>C\alpha_i^{-C}
+\]
+不再成立。由于
+\[
+N_i>N^{(1/5)^i}
+\geq N^{(1/5)^{2C/\alpha}},
+\]
+并且（非常粗略地）
+\[
+\alpha_i\geq\alpha,
+\]
+所以我们得到
+\[
+N^{(1/5)^{2C/\alpha}}\leq C\alpha^{-C}.
+\]
+整理后便得到
