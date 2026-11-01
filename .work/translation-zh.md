@@ -3191,3 +3191,390 @@ E\geq4V.
 \mathbb E\mathbf E'-3\mathbb E\mathbf V'.
 \tag{7.4}
 \]
+
+不过，容易看出
+\[
+\mathbb E\mathbf V'=pV,\qquad
+\mathbb E\mathbf E'=p^2E,
+\]
+（因为对于 \(G\) 中的每一条边，只有当它的两个端点都被选中时，它才会成为 \(\mathbf G'\) 中的一条边），并且
+\[
+\mathbb E\widetilde{\operatorname{cr}}(\mathbf G')
+=p^4\operatorname{cr}(G),
+\]
+（因为对于 \(G\) 中的每一个交叉，只有当其中两条边涉及的四个端点都被选中时，它才会成为 \(\mathbf G'\) 中的一个交叉）。
+
+将这些结果代入 (7.4)，得到
+\[
+p^4\operatorname{cr}(G)\geq p^2E-3pV.
+\]
+我们可以自由选择任意参数 \(p\in[0,1]\)。取
+\[
+p=\frac{4V}{E}
+\]
+（注意，由假设可知 \(p\leq1\)），整理各项后便得到所需的界。□
+
+## 7.2. Szemerédi–Trotter 定理
+
+本节证明定理 7.0.1。
+
+**证明（定理 7.0.1）。** 首先注意，当 \(r\leq7\)（例如如此）时，定理 7.0.1 是平凡的，因为位于至少两条直线上的点至多有
+\[
+\binom m2
+\]
+个。
+
+因此，以下设 \(r\geq8\)。如下构造一个图 \(G\)：\(G\) 的顶点是 \(P\) 中的点，其中 \(P\) 表示位于 \(L\) 中至少 \(r\) 条直线上的点集。当且仅当 \(x,y\) 是 \(P\) 中位于 \(L\) 的同一条直线上的相邻点时，才在这两个顶点之间连接一条边。记
+\[
+n=|P|
+\]
+为该图的顶点数；这正是我们希望给出上界的量。
+
+现在注意，\(G\) 有一个自然的画法，即由 \(L\) 中的直线所诱导的画法；在这一画法中，每条边实际上都由一条直线段表示。由于两条直线至多相交于一点，该画法中的交叉数至多为
+\(\binom m2\)。因此
+\[
+\operatorname{cr}(G)\leq\binom m2<m^2.
+\tag{7.5}
+\]
+
+边数 \(E\) 至少为
+\[
+rn-m.
+\]
+解释如下：计算从顶点 \(v\) 出发的边数。通常，\(v\) 至少与其他 \(2r\) 个顶点相邻。例外是当 \(v\) 是 \(L\) 中某条直线（两个方向上）的两个端点之一时，此时我们会少计一条邻接关系。对所有 \(v\) 求和，至少得到 \(2rn-2m\) 对 \((v,w)\)，其中 \(vw\) 是一条边；当然，这样会将每条边重复计算两次。
+
+现在考虑命题 7.1.1。要么我们可以应用该命题，要么不可以。若不能，则
+\[
+E<4n,
+\]
+所以
+\[
+rn-m<4n.
+\]
+由于 \(r\geq8\)，这意味着
+\[
+\frac{rn}{2}\leq m,
+\]
+于是这种情形下定理 7.0.1 成立。否则，
+\[
+E\geq4n,
+\]
+我们就可以应用命题 7.1.1，得到
+\[
+m^2\geq\frac{(rn-m)^3}{64n^2}.
+\tag{7.6}
+\]
+若
+\[
+n\leq\frac{2m}{r},
+\]
+那么定理 7.0.1 同样成立。否则，
+\[
+rn-m\geq\frac{rn}{2},
+\]
+因此 (7.6) 变为
+\[
+m^2\geq\frac{(rn/2)^3}{64n^2},
+\]
+整理后立即得到
+\[
+n\ll\frac{m^2}{r^3},
+\]
+定理 7.0.1 再次成立。证明完成。□
+
+## 7.3. 和积问题
+
+本节给出 Elekes 关于和积问题的界。
+
+**定理 7.3.1.** 设 \(A\subset\mathbf R\) 是一个大小为 \(n\) 的有限集。那么
+\[
+|A+A|\,|A\cdot A|\gg n^{5/2}.
+\]
+特别地，\(A+A\) 与 \(A\cdot A\) 中至少有一个，其基数满足
+\[
+\gg n^{5/4}.
+\]
+
+**证明。** 显然，只需处理 \(0\notin A\) 的情形（否则删去 0，并对所得集合应用该界）。考虑点集
+\[
+P:=
+\left\{
+\left(\frac1{a'},-\frac1{aa'}\right):
+a,a'\in A
+\right\},
+\]
+以及直线集
+\[
+L:=
+\left\{
+\{(x,y)\in\mathbf R^2:ux+vy=1\}:
+u\in A+A,\ v\in A\cdot A
+\right\}.
+\]
+注意
+\[
+|P|=n^2,
+\]
+而直线数 \(m=|L|\) 为
+\[
+m=|A+A|\,|A\cdot A|.
+\]
+
+关键观察是，\(P\) 中每个点都至少位于这些直线中的 \(n\) 条直线上。事实上，对于每个 \(t\in A\)，当
+\[
+u=a'+t,\qquad v=at
+\]
+时，点
+\[
+\left(\frac1{a'},-\frac1{aa'}\right)
+\]
+位于直线 \(ux+vy=1\) 上。
+
+由 Szemerédi–Trotter 定理，
+\[
+n^2\ll\frac mn+\frac{m^2}{n^3},
+\]
+这意味着
+\[
+m\gg n^{5/2}.
+\]
+这正是所需的结论。□
+
+## 第 8 章
+
+## 关于集合加法的一些进一步结果
+
+本章汇集了一些关于和集与集合加法的进一步不等式。其中有若干结果本身就很有趣，不过本章的首要目标，是为下一章证明 Bourgain–Chang 和积定理准备所需的工具。
+
+## 8.1. 直线上的 Prékopa–Leindler 不等式
+
+我们从一个关于实数可测子集的简单和集不等式开始。这可以看作第 5 章开头所述观察的连续类比。本节中，\(\mu\) 表示 Lebesgue 测度。
+
+**引理 8.1.1.** 设 \(X,Y,Z\subset\mathbf R\) 是非空可测集，且
+\[
+X+Y\subset Z.
+\]
+那么
+\[
+\mu(Z)\geq\mu(X)+\mu(Y).
+\]
+
+**证明。** 对任意 \(\varepsilon>0\)，都存在紧集
+\[
+X'\subset X,\qquad Y'\subset Y,
+\]
+使得
+\[
+\mu(X')\geq\mu(X)-\varepsilon,\qquad
+\mu(Y')\geq\mu(Y)-\varepsilon.
+\]
+（这一性质正是 Lebesgue 测度的内正则性；不过，在我们的离散应用中，只会在引理 8.1.1 的结论可以直接看出的情形下使用它。）
+
+令
+\[
+x:=\inf X',\qquad y:=\sup Y'.
+\]
+由于 \(X',Y'\) 是紧集，
+\[
+x\in X',\qquad y\in Y',
+\]
+因此两个集合
+\[
+x+Y',\qquad X'+y
+\]
+都包含于 \(Z\)。注意，\(x+Y'\) 中的每个元素都不大于 \(x+y\)，而 \(X'+y\) 中的每个元素都不小于 \(x+y\)。因此
+\[
+(x+Y')\cap(X'+y)=\{x+y\},
+\]
+这当然是一个测度为零的单点集。于是
+\[
+\begin{aligned}
+\mu(Z)
+&\geq\mu((X'+y)\cup(x+Y'))\\
+&=\mu(X'+y)+\mu(x+Y')\\
+&=\mu(X')+\mu(Y')\\
+&\geq\mu(X)+\mu(Y)-2\varepsilon.
+\end{aligned}
+\]
+令 \(\varepsilon\to0\)，结论即得。□
+
+现在转向本节的主题。设
+\[
+f,g:\mathbf R\to[0,\infty)
+\]
+是紧支集、分段连续的函数。定义**上确界卷积**（max-convolution）为
+\[
+f^{\overline *}g(x)
+:=
+\sup_{y\in\mathbf R}f(x-y)g(y).
+\]
+下面的结论是所谓 Prékopa–Leindler 不等式的一个一维特殊情形的特殊情形。
+
+**命题 8.1.1.** 设
+\[
+f,g:\mathbf R\to[0,\infty)
+\]
+是紧支集、分段连续的函数。那么有不等式
+\[
+\int f^{\overline *}g
+\geq2\|f\|_2\|g\|_2,
+\tag{8.1}
+\]
+其中范数是通常的 Lebesgue 范数：
+\[
+\|f\|_2:=\left(\int_{\mathbf R}f^2\right)^{1/2},
+\qquad
+\|g\|_2:=\left(\int_{\mathbf R}g^2\right)^{1/2}.
+\]
+
+**证明。** 设 \(\lambda\geq0\)。若
+\[
+f(x-y),g(y)\geq\sqrt\lambda,
+\]
+则
+\[
+f^{\overline *}g(x)\geq\lambda.
+\]
+换言之，
+\[
+\{t:f(t)\geq\sqrt\lambda\}
++
+\{t:g(t)\geq\sqrt\lambda\}
+\subseteq
+\{t:f^{\overline *}g(t)\geq\lambda\},
+\]
+或者等价地，
+\[
+\{t:f(t)^2\geq\lambda\}
++
+\{t:g(t)^2\geq\lambda\}
+\subseteq
+\{t:f^{\overline *}g(t)\geq\lambda\}.
+\]
+由引理 8.1.1，得到
+\[
+\begin{aligned}
+&\mu(\{t:f(t)^2\geq\lambda\})
++\mu(\{t:g(t)^2\geq\lambda\})\\
+&\qquad\leq
+\mu(\{t:f^{\overline *}g(t)\geq\lambda\}).
+\end{aligned}
+\tag{8.2}
+\]
+这里 \(\mu\) 是 Lebesgue 测度。
+
+现在由 Fubini 定理，对于任意可测函数
+\[
+F:\mathbf R\to[0,\infty),
+\]
+都有所谓的“层蛋糕分解”：
+\[
+\int_0^\infty
+\mu(\{x:F(x)\geq\lambda\})\,d\lambda
+=
+\int_{\mathbf R}F(x)\,dx.
+\]
+将这一公式应用于 (8.2)，得到
+\[
+\|f\|_2^2+\|g\|_2^2
+\leq\int_{\mathbf R}f^{\overline *}g.
+\tag{8.3}
+\]
+所需的不等式 (8.1) 立即由此以及初等不等式
+\[
+a^2+b^2\geq2ab
+\]
+推出，其中取
+\[
+a=\|f\|_2,\qquad b=\|g\|_2.
+\]
+□
+
+*注记。* 最后一步看起来有些浪费，读者可能会想，为什么我们不直接陈述更强的不等式 (8.3)？原因是，(8.1) 中给出的形式在应用中更有用。
+
+## 8.2. 加权离散 Prékopa–Leindler 不等式
+
+现在转向离散结果。本节的主要目标是证明下面的命题 8.2.1，这是一个加权离散 Prékopa–Leindler 不等式。其陈述与命题 8.1.1 有明显的类比。
+
+设
+\[
+a,b:\mathbf Z\to[0,\infty)
+\]
+是紧支集函数。定义上确界卷积
+\[
+a\overline *b(n)
+:=
+\sup_{m\in\mathbf Z}a(n-m)b(m).
+\]
+
+**命题 8.2.1.** 设
+\[
+a,b:\mathbf Z\to[0,\infty)
+\]
+是紧支集函数，且 \(p\in[0,1]\)。那么
+\[
+\sum_n
+\max\bigl(
+p\,a\overline *b(n),\,
+(1-p)\,a\overline *b(n-1)
+\bigr)
+\geq\|a\|_2\|b\|_2.
+\]
+这里的范数是离散的 \(\ell^2\) 范数，定义为
+\[
+\|a\|_2:=
+\left(\sum_na(n)^2\right)^{1/2},
+\qquad
+\|b\|_2:=
+\left(\sum_nb(n)^2\right)^{1/2}.
+\]
+
+**证明。** 在本证明中，我们将在 \(\mathbf R\)（定义如上一节）和 \(\mathbf Z\)（定义如上）上都使用记号 \(\overline *\) 与
+\(\|\cdot\|_2\)。希望在任何给定时刻，我们所处理函数的定义域都能从上下文中清楚看出。
+
+由连续性，不妨设
+\[
+p\in(0,1).
+\]
+令
+\[
+\lambda:=\log\left(\frac1p-1\right).
+\]
+将命题 8.1.1 应用于如下定义的函数 \(f,g\)：
+\[
+f(x):=e^{\lambda\{x\}}a(\lfloor x\rfloor),
+\qquad
+g(y):=e^{\lambda\{y\}}b(\lfloor y\rfloor).
+\]
+
+令 \(n\in\mathbf Z\)，且 \(0\leq t<1\)。设
+\[
+x+y=n+t.
+\]
+那么，由于
+\[
+x-1<\lfloor x\rfloor\leq x,
+\]
+可知
+\[
+n-2<\lfloor x\rfloor+\lfloor y\rfloor<n+1.
+\]
+换言之，
+\[
+\lfloor x\rfloor+\lfloor y\rfloor=n-1
+\quad\text{或}\quad n.
+\]
+若
+\[
+\lfloor x\rfloor+\lfloor y\rfloor=n-1,
+\]
+则
+\[
+f(x)g(y)
+\leq e^{\lambda(t+1)}a\overline *b(n-1),
+\]
+而若
+\[
+\lfloor x\rfloor+\lfloor y\rfloor=n,
+\]
+则
