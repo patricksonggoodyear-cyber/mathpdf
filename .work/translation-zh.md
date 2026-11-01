@@ -1262,3 +1262,325 @@ N_i>N^{(1/5)^i}
 N^{(1/5)^{2C/\alpha}}\leq C\alpha^{-C}.
 \]
 整理后便得到
+
+\[
+\log\log N
+\leq\log\log(C\alpha^{-C})+\frac{2C}{\alpha}
+\leq\frac{C'}{\alpha},
+\]
+这立即给出所声称的界。
+
+*注记。* 这里最重要的参数，远远超过其他参数，是我们进行迭代的次数；它大约为 \(O(1/\alpha)\)。
+
+## 3.2. 整数集 \(\mathbf Z\) 上的傅里叶变换
+
+设
+\[
+f:\mathbf Z\to\mathbf C
+\]
+是一个紧支集函数（也就是说，在某个有限区间之外，\(f(n)=0\)）。我们定义它的傅里叶变换 \(\widehat f(\theta)\) 为
+\[
+\widehat f(\theta):=\sum_n f(n)e(-n\theta).
+\]
+由于 \(f\) 具有紧支集，因此不存在收敛性问题。
+
+我们将使用的一个关键事实是 Parseval 恒等式。
+
+**命题 3.2.1.** 有
+\[
+\sum_n f(n)\overline{g(n)}
+=
+\int_{\mathbf T}
+\widehat f(\theta)\overline{\widehat g(\theta)}\,d\theta.
+\]
+
+**证明。** 根据定义，并利用下述事实，容易验证这一恒等式：
+\[
+\begin{aligned}
+\int_{\mathbf T}e(m\theta)\,d\theta
+&=\int_0^1e(m\theta)\,d\theta\\
+&=
+\begin{cases}
+1,&m=0,\\
+0,&m\in\mathbf Z\setminus\{0\}.
+\end{cases}
+\end{aligned}
+\tag{3.1}
+\]
+
+*注记。* 取 \(f=g\)，得到
+\[
+\sum_n|f(n)|^2
+=
+\int_{\mathbf T}|\widehat f(\theta)|^2\,d\theta.
+\]
+
+## 3.3. 一个较大的傅里叶系数
+
+现在转向密度增量策略的细节。首先注意一个非常简单的事实：不失一般性，我们可以假设
+\[
+P=[N]=\{1,\ldots,N\}.
+\]
+通过仿射变换总可以将问题化归到这一情形。
+
+我们首先证明命题 3.1.1 的下述替代版本，其中第 (ii) 个结论有所不同：它断言函数
+\[
+f_A:=1_A-\alpha1_{[N]}
+\]
+存在一个较大的傅里叶系数。这个函数称为 \(A\) 的**平衡函数**。下一节将证明，较大的傅里叶系数会推出命题 3.1.1 原表述中的密度增量。
+
+**命题 3.3.1.** 设 \(0<\alpha<1\)，且
+\[
+N\geq\frac4{\alpha^2}.
+\]
+设 \(A\subset[N]\) 是一个至少具有 \(\alpha N\) 个元素的集合。那么，以下两种情形至少有一种成立：
+
+(i) \(A\) 包含一个非平凡的三项等差数列；
+
+(ii) 平衡函数 \(f_A\) 有一个较大的傅里叶系数。具体而言，存在某个
+\(\theta\in\mathbf T\)，使得
+\[
+|\widehat f_A(\theta)|
+\geq\frac{\alpha^2N}{28}.
+\]
+
+**证明。** 若 \(f_1,f_2,f_3:\mathbf Z\to\mathbf R\) 是三个有限支集函数，我们定义算子
+\[
+T(f_1,f_2,f_3)
+:=
+\sum_{x,d}f_1(x)f_2(x+d)f_3(x+2d).
+\]
+它按照函数 \(f_i\) 给出的权重，对三项等差数列进行计数。特别地，
+\[
+T(1_A,1_A,1_A)
+=
+\#\{\text{\(A\) 中的三项等差数列}\}.
+\tag{3.2}
+\]
+
+需要特别注意，这里的计数包括 \(d=0\) 的“平凡”等差数列。然而，\(A\) 恰好有 \(\alpha N\) 个平凡等差数列。因此，若情形 (i) 不成立，则
+\[
+T(1_A,1_A,1_A)=\alpha N
+\leq\frac{\alpha^3N^2}{4}.
+\tag{3.3}
+\]
+右端的不等式使用了假设 \(N\geq4/\alpha^2\)。
+
+注意 \(T\) 是一个三线性算子。因此，我们可以写成
+\[
+1_A=f_A+\alpha1_{[N]},
+\]
+并将 \(T(1_A,1_A,1_A)\) 展开为八项之和：
+\[
+\begin{aligned}
+T(1_A,1_A,1_A)
+={}&\alpha^3T(1_{[N]},1_{[N]},1_{[N]})\\
+&+\cdots+T(f_A,f_A,f_A).
+\end{aligned}
+\tag{3.4}
+\]
+省略号所表示的七个“误差项”中，每一项至少包含一个 \(f_A\)。先考察第一项
+\[
+\alpha^3T(1_{[N]},1_{[N]},1_{[N]}).
+\]
+这一项很容易精确计算：满足
+\(x,x+d,x+2d\in[N]\) 的 \((x,d)\) 的个数，恰好等于
+\([N]\times[N]\) 中具有相同奇偶性的二元组 \((n_1,n_2)\) 的个数。事实上，此时可以唯一确定
+\[
+x=n_1,\qquad d=\frac12(n_2-n_1),
+\]
+而 \(x+d\) 自动属于 \([N]\)。若 \(N\) 为偶数，这一数量为 \(N^2/2\)；若 \(N\) 为奇数，则为 \((N^2+1)/2\)。因此，无论哪种情形，它都至少为 \(N^2/2\)。于是
+\[
+\alpha^3T(1_{[N]},1_{[N]},1_{[N]})
+\geq\frac{\alpha^3N^2}{2}.
+\]
+
+由此可知，若情形 (i) 不成立（因而 (3.3) 成立），那么 (3.4) 中七个误差项之和至少为
+\(\alpha^3N^2/4\)。所以，其中至少有一项不小于
+\(\alpha^3N^2/28\)，也就是说
+\[
+|T(f_1,f_2,f_3)|
+\geq\frac{\alpha^3N^2}{28},
+\tag{3.5}
+\]
+其中每个 \(f_i\) 都是 \(\alpha1_{[N]}\) 或 \(f_A\)，且至少有一个等于 \(f_A\)。
+
+现在来到关键思想：存在一个用傅里叶变换表示
+\(T(f_1,f_2,f_3)\) 的公式：
+\[
+T(f_1,f_2,f_3)
+=
+\int_{\mathbf T}
+\widehat f_1(\theta)
+\widehat f_2(-2\theta)
+\widehat f_3(\theta)\,d\theta.
+\tag{3.6}
+\]
+写出这个公式之后，只需将右端的傅里叶变换定义代入，就很容易验证它。
+
+因此，若 (3.5) 成立，则
+\[
+\left|
+\int_{\mathbf T}
+\widehat f_1(\theta)
+\widehat f_2(-2\theta)
+\widehat f_3(\theta)\,d\theta
+\right|
+\geq\frac{\alpha^3N^2}{28}.
+\tag{3.7}
+\]
+
+不妨设 \(f_3=f_A\)；其他情形的分析非常类似。于是
+\[
+\sup_{\theta\in\mathbf T}|\widehat f_A(\theta)|
+\int_{\mathbf T}
+|\widehat f_1(\theta)|
+|\widehat f_2(-2\theta)|\,d\theta
+\geq\frac{\alpha^3N^2}{28}.
+\]
+由 Cauchy–Schwarz 不等式，
+\[
+\begin{aligned}
+&\sup_{\theta\in\mathbf T}|\widehat f_A(\theta)|
+\left(\int_{\mathbf T}|\widehat f_1(\theta)|^2\,d\theta\right)^{1/2}\\
+&\qquad\cdot
+\left(\int_{\mathbf T}|\widehat f_2(-2\theta)|^2\,d\theta\right)^{1/2}
+\geq\frac{\alpha^3N^2}{28}.
+\end{aligned}
+\tag{3.8}
+\]
+
+另一方面，由 Parseval 恒等式，
+\[
+\int_{\mathbf T}|\widehat f_i(\theta)|^2\,d\theta
+=
+\sum_n|f_i(n)|^2.
+\]
+容易验证，若 \(f_i=\alpha1_{[N]}\)，右端等于 \(\alpha^2N\)；若 \(f_i=f_A\)，右端等于 \(\alpha(1-\alpha)N\)。因此，无论哪一种情形，右端都至多为 \(\alpha N\)。于是由 (3.8) 得到
+\[
+\sup_{\theta\in\mathbf T}|\widehat f_A(\theta)|
+\geq\frac{\alpha^2N}{28},
+\]
+这正是命题中的情形 (ii)。□
+
+## 3.4. 从较大的傅里叶系数到密度增量
+
+本节说明，如何将命题 3.3.1 中的情形 (ii)（平衡函数 \(f_A\) 具有较大的傅里叶系数）替换为命题 3.1.1 中的情形 (ii)（某个等差数列上出现密度增量）。关键技术工具如下。
+
+这里，若 \(F:\mathbf Z\to\mathbf C\) 是一个函数，且 \(S\subset\mathbf Z\) 是有限集，我们记
+\[
+\operatorname{diam}_S(F)
+:=
+\sup_{x,x'\in S}|F(x)-F(x')|.
+\]
+
+**引理 3.4.1.** 设 \(\theta\in\mathbf T\)。那么我们可以将 \([N]\) 划分为若干等差数列 \(P_i\)，每个等差数列的长度至少为 \(N^{1/5}\)，并且对所有 \(i\) 都有
+\[
+\operatorname{diam}_{P_i}(e(\theta x))
+\leq N^{-1/5}.
+\]
+
+**证明。** 在整个论证中，假设 \(N\) 充分大。令
+\[
+Q:=\lfloor N^{1/2}\rfloor.
+\]
+由 Dirichlet 的一个著名的抽屉原理应用，存在正整数 \(d\leq Q\)，使得
+\[
+\|d\theta\|_{\mathbf R/\mathbf Z}\leq\frac1Q.
+\]
+（将 \(\theta,2\theta,\ldots,Q\theta\) 看作 \(\mathbf T\) 中的元素。这些元素中有两个——不妨设为 \(j_1\theta\) 与 \(j_2\theta\)——彼此距离不超过 \(1/Q\)。取 \(d:=|j_1-j_2|>0\) 即可。）
+
+若 \(P\) 是公差为 \(d\)、长度至多为 \(3N^{1/5}\) 的任意等差数列，则由三角不等式，
+\[
+\begin{aligned}
+\operatorname{diam}_P(e(\theta x))
+&\leq3N^{1/5}|e(\theta d)-1|\\
+&\leq\frac{20N^{1/5}}Q
+<N^{-1/5},
+\end{aligned}
+\]
+这里使用了不等式
+\[
+|e(t)-1|
+=2|\sin\pi t|
+\leq2\pi\|t\|_{\mathbf R/\mathbf Z}.
+\]
+
+现在注意，可以将 \([N]\) 划分为公差均为 \(d\) 的等差数列 \(P_i\)，使其长度都落在区间
+\[
+[N^{1/5},3N^{1/5}]
+\]
+内。具体做法是，先将 \([N]\) 划分为公差为 \(d\) 的等差数列，每个等差数列的长度约为
+\[
+\frac Nd\gg N^{1/2}.
+\]
+然后沿着每个这样的等差数列从左到右，将其进一步划分为长度为
+\(\lceil N^{1/5}\rceil\) 的等差数列，直到剩下一个长度不超过 \(N^{1/5}\) 的尾段。将这个尾段与前一个等差数列合并即可。□
+
+下面的结果与命题 3.3.1 一起，将立即推出命题 3.1.1，从而完成 Roth 定理的证明。
+
+**命题 3.4.1.** 假设
+\[
+|\widehat f_A(\theta)|\geq\frac{\alpha^2N}{28},
+\qquad
+N\geq\left(\frac8\alpha\right)^{10},
+\]
+并且 \([N]=\bigcup_iP_i\) 是上述划分。那么存在某个 \(i\)，使得
+\[
+|A\cap P_i|
+\geq
+\left(\alpha+\frac{\alpha^2}{112}\right)|P_i|.
+\]
+
+**证明。** 由于 \(P_i\) 划分了 \([N]\)，显然有
+\[
+\sum_i
+\left|
+\sum_{x\in P_i}f_A(x)e(-\theta x)
+\right|
+\geq\frac{\alpha^2}{28}N.
+\]
+由三角不等式以及 \(|f_A(x)|\leq1\)，左端至多为
+\[
+\begin{aligned}
+&\sum_i\left|\sum_{x\in P_i}f_A(x)\right|
++\sum_i|P_i|\operatorname{diam}_{P_i}(e(\theta x))\\
+&\qquad\leq
+\sum_i\left|\sum_{x\in P_i}f_A(x)\right|+N^{4/5}\\
+&\qquad\leq
+\sum_i\left|\sum_{x\in P_i}f_A(x)\right|
++\frac{\alpha^2}{56}N,
+\end{aligned}
+\]
+最后一步来自关于 \(N\) 的假设。于是
+\[
+\sum_i\left|\sum_{x\in P_i}f_A(x)\right|
+\geq\frac{\alpha^2}{56}N.
+\]
+
+由于
+\[
+\sum_{x\in[N]}f_A(x)=0,
+\]
+我们有
+\[
+\begin{aligned}
+\sum_i\Bigg(
+\left|\sum_{x\in P_i}f_A(x)\right|
++\sum_{x\in P_i}f_A(x)
+\Bigg)
+&\geq\frac{\alpha^2}{56}N\\
+&=\frac{\alpha^2}{56}\sum_i|P_i|.
+\end{aligned}
+\]
+因此，必存在某个 \(i\)，使得
+\[
+\left|\sum_{x\in P_i}f_A(x)\right|
++\sum_{x\in P_i}f_A(x)
+\geq\frac{\alpha^2}{56}|P_i|,
+\]
+这意味着
+\[
+\sum_{x\in P_i}f_A(x)
+\geq\frac{\alpha^2}{112}|P_i|.
+\]
