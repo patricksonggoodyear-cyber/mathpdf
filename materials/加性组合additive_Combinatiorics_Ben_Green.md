@@ -1,2916 +1,5563 @@
-Additive Combinatorics 
-
-Ben Green 
-
-## Contents
-
-0.1. Overview 1  
-0.2. Synopsis 1  
-0.3. Further reading 2  
-0.4. Notation 2  
-Chapter 1. Sums of squares 5  
-1.1. Sums of two squares 5  
-1.2. Sums of four squares 6  
-1.3. Sums of three squares 8  
-1.4. *Further comments 8  
-Chapter 2. Sums of primes 9  
-2.1. Bases. Schnirel'man density 9  
-2.2. Primes and Schnirel'man density 12  
-2.3. Selberg's sieve 15  
-Chapter 3. Roth's theorem on progressions of length 3 23  
-3.1. The density increment strategy 23  
-3.2. Fourier transform on $\mathbf{Z}$ 24  
-3.3. A large Fourier coefficient 25  
-3.4. From a large Fourier coefficient to a density increment 27  
-Chapter 4. Sumset inequalities 29  
-4.1. Basic notation and definitions 29  
-4.2. Ruzsa's triangle inequality and covering lemma 29  
-4.3. Petridis's inequality 30  
-4.4. The Plünnecke-Ruzsa inequality 32  
-Chapter 5. Freiman's theorem 35  
-5.1. Generalised progressions and Freiman's theorem 35  
-5.2. Freiman homomorphisms 37  
-5.3. Ruzsa's model lemma 39  
-5.4. Bogolyubov's lemma 41  
-5.5. Generalised progressions in Bohr sets 43 
-
-## CONTENTS
-
-5.6. Freiman's theorem: conclusion of the proof 45   
-Chapter 6. Additive energy and Balog-Szemerédi-Gowers 47   
-6.1. Introduction 47   
-6.2. Basic properties. Statement of Balog-Szemerédi-Gowers 48   
-6.3. *Paths of length 2 49   
-6.4. *Paths of length 3 50   
-6.5. Proof of Balog-Szemerédi-Gowers 51   
-Chapter 7. Combinatorial geometry and sum-product 55   
-7.1. Crossing number inequality 55   
-7.2. The Szemerédi-Trotter theorem 58   
-7.3. Sum-product 59   
-Chapter 8. Some further results about set addition 61   
-8.1. The Prékopa-Leindler inequality on the line 61   
-8.2. A weighted discrete Prékopa-Leindler inequality 62   
-8.3. Quasicubes, binary sets and sumsets 64   
-8.4. Skew-dimension and the Pálvölgyi-Zhelezov Theorem 65   
-Chapter 9. Higher sum-product theorems 69   
-9.1. Higher-order additive energies 69   
-9.2. A lemma of Chang 71   
-9.3. The Bourgain-Chang theorem 71   
-Appendix A. Arithmetical functions 75   
-Appendix B. Geometry of numbers 79   
-Bibliography 83 
-
-## 0.1. Overview
-
-The aim of this course is to present classic results in additive and combinatorial number theory, showing how tools from a variety of mathematical areas may be used to solve number-theoretical problems. 
-
-We will begin by looking at classical theorems about writing natural numbers as the sums of squares and primes. For instance, we will prove Lagrange’s theorem that every number is the sum of four squares, and we will show that every large integer is the sum of a bounded number of primes. 
-
-Next we will look at more general sets of integers, proving a famous theorem of Roth: every set of integers with positive density contains three distinct elements in arithmetic progression. 
-
-We will also look at the structure of finite sets A of integers which are almost closed under addition in the sense that their sumset $A + A : = \{ a _ { 1 } + a _ { 2 } : a _ { 1 } , a _ { 2 } \in A \}$ is relatively small. The highlight here is Freiman’s theorem, which states that any such set has a precise combinatorial structure known as a generalised progression. 
-
-Finally, we will look at instances of the sum-product phenomenon, which says that it is impossible for a finite set of integers to be simultaneously additively- and multiplicatively structured. This section draws from a particularly rich set of other mathematical areas, including graph theory, geometry and analysis. Nonetheless, prerequisites will be minimal and we will develop what we need from scratch. 
-
-## 0.2. Synopsis
-
-The classical bases. Every prime congruent to 1 modulo 4 is a sum of two squares. Every natural number is the sum of four squares. *Discussion of sums of three squares*. Schnirelman density. Application of Selberg’s sieve to show that every large number is the sum of at most C primes for some fixed C. 
-
-Progressions of length 3. Basic properties of Fourier transforms. Roth’s theorem that every subset of $\{ 1 , \ldots , N \}$ of size at least δN contains three elements in arithmetic progression, provided N is suficiently large in terms of δ. 
-
-Sumsets and Freiman’s theorem. Basic sumset estimates. Additive energy and its relation to sumsets: statement (but not proof) of the Balog-Szemer´edi-Gowers theorem. Bohr sets and Bogolyubov’s theorem. Minkowski’s second theorem (statement only). Freiman’s theorem on sets with small doubling constant. 
-
-Sum-product theorems. The crossing number inequality for graphs. The Szemer´edi-Trotter theorem on point-line incidences, and application to prove that either $| A + A | { \mathrm { ~ o r ~ } } | A \cdot A |$ has size at least $c | A | ^ { 5 / 4 }$ . The Pr´ekopa-Leindler inequality, quasicubes and sumsets. Proof of Bourgain and Chang’s result that either the mfold sumset $A + A + \cdots + A$ or the m-fold product set $A \cdot A \cdots A$ has size at least $| A | ^ { f ( m ) }$ , where $f ( m )  \infty$ 
-
-If time allows the course will conclude with a brief non-examinable discussion of Gowers’s work on Szemer´edi’s theorem for progressions of length 4 and longer, which ties together several earlier strands in the course. 
-
-## 0.3. Further reading
-
-M. Nathanson’s two books Additive Number Theory have been a significant inspiriation for the choice of topics in this course. They cover quite a bit of the material. Students should bear in mind that these books were written 25 years ago, whilst this course features a number of more recent developments. The book of T. Tao and V. Vu Additive Combinatorics is similarly influential and also very useful, though again this book does not cover the more recent developments. 
-
-Probably the best external resource for this course is the very new book Graph Theory and Additive Combinatorics by Yufei Zhao, which I highly recommend. 
-
-## 0.4. Notation
-
-Asymptotic notation. Throughout the course we will be using asymptotic notation. This is vital in handling the many inequalities and rough estimates we will encounter. Here is a summary of the notation we will see. We suggest the reader not worry too much about this now; we will gain plenty of practice with this notation. See also the first question on Sheet 0. 
-
-$A \ll B$ means that there is an absolute constant $C > 0$ such that $| A | \leqslant$ CB. In this notation, A and B will typically be variable quantities, depending on some other parameter. For example, $x + 1 \ll x$ for $x \geqslant 1$ because $| x + 1 | \leqslant 2 x$ in this range. It is important to note that the constant C may be diferent in diferent instances of the notation. 
-
-$A = O ( B )$ means the same thing. 
-
-$A \ll B$ is the same as $B \gg A$ 
-
-$O ( A )$ means some quantity bounded in magnitude by CA for some absolute constant $C > 0$ . In particular, $O ( 1 )$ simply means a quantity bounded by an absolute positive constant. For example, $\textstyle { \frac { 5 x } { 1 + x } } = O ( 1 )$ for $x \geqslant 0$ 
-
-We shall adopt the very standard notation 
-
-$$
-e (t) := e ^ {2 \pi i t}.
-$$
-
-One may think of this either as a function on R, periodic with period 1, or as a function on $\mathbf { T } = \mathbf { R } / \mathbf { Z } ;$ we shall not be careful in making the distinction. 
-
-For $\theta \in \textbf { T }$ we write $\| \boldsymbol { \theta } \| _ { \mathbf { T } }$ for the distance of θ from 0. Thus, for example, $\| 2 / 3 \| _ { \mathbf { T } } = 1 / 3$ 
-
-Quantities. In understanding additive and analytic number theory, it is important to develop a robust intuitive feeling for the rough size of certain quantities. For example, one should be absolutely clear about the fact that, for X large, 
-
-$$
-\log^ {1 0} X \ll e ^ {\sqrt {\log X}} \ll X ^ {0. 0 1}.
-$$
-
-## CHAPTER 1
-
-## Sums of squares
-
-In this chapter, a square will mean the square of an integer, which may be zero. Thus the set of squares is $\{ 0 , 1 , 4 , 9 , 1 6 , \dots \}$ 
-
-## 1.1. Sums of two squares
-
-Theorem 1.1.1. An odd prime p is the sum of two squares if and only i $f p \equiv$ 1(mod 4). 
-
-Proof. Since all squares are 0 or 1(mod 4), a sum of two squares can only ever be $0 , 1 \mathrm { { o r } 2 }$ modulo 4, and in particular not 3(mod 4). 
-
-Conversely, suppose $p \equiv 1 ( { \bmod { 4 } } )$ is a prime. By basic facts about quadratic residues, −1 is a square modulo $p ,$ and so there exist integers x, y (in fact $y = 1 )$ with $x ^ { 2 } + y ^ { 2 } = m p$ for some positive integer m. Suppose that m is the minimal positive integer with this property, and assume as a hypothesis for contradiction that $m > 1$ . Replacing x with −x and reducing mod $p$ if necessary, and similarly for $y ,$ we may assume that $| x | , | y | < p / 2$ , and therefore 
-
-$$
-m p <   2 (\frac {p}{2}) ^ {2},
-$$
-
-which certainly implies that $m < p .$ . In particular, at least one of x and $y$ is not divisible by $m .$ . Indeed, if not then $m ^ { 2 } | x ^ { 2 } + y ^ { 2 }$ , implying that $m | p .$ Since we are assuming that m $\neq 1$ , this would force $m = p ,$ which we know not to be the case. 
-
-Pick $a , b$ with $| a | , | b | \leqslant m / 2$ and x ≡ a(mod m), $y \equiv b ( \mathrm { m o d } m )$ . Note that $a ^ { 2 } + b ^ { 2 } > 0$ since not both of $x , y$ are multiples of $m .$ . Note furthermore that 
-
-$$
-a ^ {2} + b ^ {2} \equiv x ^ {2} + y ^ {2} \equiv 0 (\mathrm{mod} m);
-$$
-
-let us write $a ^ { 2 } + b ^ { 2 } = r m$ , where $r > 0$ is an integer. Note that 
-
-$$
-r m \leqslant 2 (\frac {m}{2}) ^ {2},
-$$
-
-and so $r < m$ . Observing the identity 
-
-$$
-(x ^ {2} + y ^ {2}) (a ^ {2} + b ^ {2}) = (x a + y b) ^ {2} + (x b - y a) ^ {2},
-$$
-
-we have 
-
-$$
-r m ^ {2} p = (x a + y b) ^ {2} + (x b - y a) ^ {2}.
-$$
-
-Now we have 
-
-$$
-x a + y b \equiv x ^ {2} + y ^ {2} \equiv 0 (\mathrm{mod} m),
-$$
-
-and 
-
-$$
-x b - y a \equiv x y - y x \equiv 0 (\mathrm{mod} m).
-$$
-
-Therefore if we define 
-
-$$
-x ^ {\prime} := \frac {x a + y b}{m}, y ^ {\prime} := \frac {x b - y a}{m},
-$$
-
-both $x ^ { \prime }$ and $y ^ { \prime }$ are integers. Furthermore 
-
-$$
-(x ^ {\prime}) ^ {2} + (y ^ {\prime}) ^ {2} = r p.
-$$
-
-Since $0 < r < m$ , this is contrary to the supposed minimality of $m$ . Therefore we were wrong to assume that $m > 1$ , and the proof is complete. □ 
-
-*Remarks. The “descent” argument we gave for Theorem 1.1.1 is one of the most elementary proofs of the theorem. A somewhat diferent proof goes via algebraic number theory in $\mathbf { Q } ( i )$ . It is known that the ring of integers $\mathbf { Z } [ i ]$ is a principal ideal domain (PID), and so if the ideal $( p )$ splits then it must be as a product $( p ) = ( x + i y ) ( x - i y )$ of two principal ideals, both of norm $p ,$ which then implies that $x ^ { 2 } + y ^ { 2 } = p$ . But there is a criterion (Dedekind’s criterion) asserting that the factorisation of $( p )$ in $\mathbf { Z } [ i ]$ can be read of from the factorisation of the polynomial $X ^ { 2 } + 1$ in $\mathbf { F } _ { p } .$ . In particular, $( p )$ splits if and only if $X ^ { 2 } + 1$ factors over $\mathbf { F } _ { p } ,$ , that is to say precisely when −1 is a quadratic residue mod $p ,$ i.e. $p \equiv 1$ (mod 4). 
-
-Note that, although the above argument is short modulo known results, the usual proof that $\mathbf { Z } [ i ]$ is a PID proceeds via showing that it is a Euclidean domain, that is to say by a descent procedure quite similar to that used in the proof of Theorem 1.1.1. 
-
-## 1.2. Sums of four squares
-
-Theorem 1.2.1. Every natural number is the sum of four squares. 
-
-Proof. We note the identity 
-
-$$
-\begin{array}{r l} & {(x _ {1} ^ {2} + x _ {2} ^ {2} + x _ {3} ^ {2} + x _ {4} ^ {2}) (y _ {1} ^ {2} + y _ {2} ^ {2} + y _ {3} ^ {2} + y _ {4} ^ {2}) = (x _ {1} y _ {1} + x _ {2} y _ {2} + x _ {3} y _ {3} + x _ {4} y _ {4}) ^ {2} +} \\ & {\qquad + (x _ {1} y _ {2} - x _ {2} y _ {1} + x _ {3} y _ {4} - x _ {4} y _ {3}) ^ {2} + (x _ {1} y _ {3} - x _ {3} y _ {1} + x _ {4} y _ {2} - x _ {2} y _ {4}) ^ {2}} \\ & {\qquad + (x _ {1} y _ {4} - x _ {4} y _ {1} + x _ {2} y _ {3} - x _ {3} y _ {2}) ^ {2}.} \end{array}\tag{1.1}
-$$
-
-This means that the set of numbers which are the sum of four squares is closed under multiplication. Since $2 = 1 ^ { 1 } + 1 ^ { 2 } + 0 ^ { 2 } + 0 ^ { 2 }$ , it sufices to show that any odd prime $p$ is in this set. 
-
-Now we proceed along very similar lines to the proof of Theorem 1.1.1. First, we claim that there is some $m > 0$ such that 
-
-$$
-m p = x _ {1} ^ {2} + x _ {2} ^ {2} + x _ {3} ^ {2} + x _ {4} ^ {2}.
-$$
-
-To see this, first observe that every element x of $\mathbf { Z } / p \mathbf { Z }$ is a sum of two squares, since the set S of squares (mod p) has size ${ \scriptstyle { \frac { 1 } { 2 } } } ( p + 1 )$ , and hence $S$ and $x - S$ must intersect. Writing 1 and $- 1 ( \mathrm { m o d } p )$ as sums of two squares and then adding gives a sum of four squares, not all zero, which is a multiple of $p .$ . 
-
-Assume that m is minimal with this property, and suppose as a hypothesis for contradiction that $m > 1$ 
-
-Replacing $x _ { i }$ with $- { x } _ { i }$ if necessary, we may assume that $| x _ { i } | < p / 2$ (note that $p$ is odd, so the inequality is indeed strict). It follows that 
-
-$$
-m p <   4 (\frac {p}{2}) ^ {2} = p ^ {2},
-$$
-
-and so $0 < m < p .$ 
-
-If m is even, then the $x _ { i }$ may be grouped into two pairs in which the parities are equal, say $x _ { 1 } \equiv x _ { 2 } ( { \bmod { 2 } } ) , x _ { 3 } \equiv x _ { 4 } ( { \bmod { 2 } } )$ . But then 
-
-$$
-\frac {1}{2} m p = (\frac {x _ {1} + x _ {2}}{2}) ^ {2} + (\frac {x _ {1} - x _ {2}}{2}) ^ {2} + (\frac {x _ {3} + x _ {4}}{2}) ^ {2} + (\frac {x _ {3} - x _ {4}}{2}) ^ {2},
-$$
-
-contrary to the minimality of $m$ 
-
-Suppose, then, that m is odd. Not all of the $x _ { i }$ are divisible by $m ,$ , as this would imply $m ^ { 2 } | x _ { 1 } ^ { 2 } + x _ { 2 } ^ { 2 } + x _ { 3 } ^ { 2 } + x _ { 4 } ^ { 2 } = m p$ and so m|p. Since we are assuming $m > 1$ , this forces $m = p ,$ but we have already proved that $m < p$ . Pick $y _ { i }$ with $| y _ { i } | < m / 2$ and $x _ { i } \equiv y _ { i } ( { \bmod { m } } ) , i = 1 , \ldots , 4 .$ This is possible with strict inequality, as claimed, since m is odd. Then $y _ { 1 } ^ { 2 } + y _ { 2 } ^ { 2 } + y _ { 3 } ^ { 2 } + y _ { 4 } ^ { 2 }$ is positive, and also a multiple of m since it is congruent to $x _ { 1 } ^ { 2 } + x _ { 2 } ^ { 2 } + x _ { 3 } ^ { 2 } + x _ { 4 } ^ { 2 }$ . Suppose that $y _ { 1 } ^ { 2 } + y _ { 2 } ^ { 2 } + y _ { 3 } ^ { 2 } + y _ { 4 } ^ { 2 } = r m$ . Then 
-
-$$
-r m <   4 (\frac {m}{2}) ^ {2} = m ^ {2}
-$$
-
-and so $r < m$ . Now from (1.1), we have 
-
-$$
-r m ^ {2} p = (x _ {1} y _ {1} + x _ {2} y _ {2} + x _ {3} y _ {3} + x _ {4} y _ {4}) ^ {2} + \ldots ,
-$$
-
-where the $\cdot \cdot \cdot$ . comprises the three other terms in (1.1). One may easily check, using $x _ { i } \equiv y _ { i } ( { \bmod { m } } )$ , that all four of the bracketed terms are multiples of $m$ . Therefore 
-
-$$
-r p = (\frac {x _ {1} y _ {1} + x _ {2} y _ {2} + x _ {3} y _ {3} + x _ {4} y _ {4}}{m}) ^ {2} + \ldots ,
-$$
-
-with all the bracketed terms integers. Since $r < m$ , this contradicts the supposed minimality of $m .$ . □ 
-
-## 1.3. Sums of three squares
-
-Theorems about sums of three squares lie a little deeper, at least partly because there is no analogue of the multiplicativity identity (1.1). However, any student of number theory should certainly be aware of the main result on the topic, due to Gauss. 
-
-Theorem 1.3.1. All numbers not of the form $4 ^ { m } ( 8 k + 7 )$ are the sum of three squares. 
-
-## 1.4. *Further comments
-
-Sums of squares have a rich theory. Sums of three squares are connected to class numbers. Writing $h ( d )$ for the class number of the quadratic field $\mathbf { Q } ( { \sqrt { d } } )$ , Gauss showed that the number of representations of $d > 3$ as a sum of 3 squares is $c h ( d )$ where $c = 1 2$ if d ≡ 1, 2(mod 4), $c = 2 4$ if $d \equiv 3 ( { \bmod { 8 } } )$ , and $c = 0$ if $d \equiv 7 ( { \bmod { 8 } } )$ 
-
-Representations by sums of squares are intimately connected to the theory of modular forms of half integral weight. This leads to beautiful results: for example, the number of ways to write n as a sum of four squares is 8 times the sum of the divisors d of n with $4 \nmid d .$ 
-
-A good source for more information is [3, Section 11.3], where one may find explicit formulae for the number of representations of n as a sum of s squares, $s = 4 , 6 , 8 , 1 0 , 1 2$ . The formula for $s \ = \ 8$ is particularly clean, the number of representations in this case being $\begin{array} { r } { 1 6 \sum _ { d \mid n } ( - 1 ) ^ { n - d } d ^ { 3 } } \end{array}$ 
-
-## CHAPTER 2
-
-## Sums of primes
-
-The main theorem of this chapter is the following. 
-
-Theorem 2.0.1. There is some absolute constant C such that every integer greater than or equal to 2 is a sum of at most C primes. 
-
-We will not be concerned with obtaining a particularly good value of C, or even an explicit value. It was shown by Helfgott in 2013 that every odd integer $\geqslant 3$ is a sum of at most 3 primes, and from this is follows easily that we can take $C = 4$ . It is conjectured that $C = 3$ but this is an unsolved problem, more-or-less equivalent to the Goldbach conjecture. Helfgott’s proof is long and it also relies on computations; we will give a much more elementary argument, which goes back to Schnirel’man. 
-
-## 2.1. Bases. Schnirel’man density
-
-Let A be an infinite set of nonnegative integers with $0 \in { \mathcal { A } } .$ and let $h \geqslant 1$ be an integer. Then we say that A is a basis of order h if every nonnegative integer is the sum of h elements of A (repetitions are allowed). We say that A is a basis of finite order if it is a basis of some order h. 
-
-If $m \geqslant 1$ is an integer then we write $m A$ for the set of all sums $a _ { 1 } + \cdots + a _ { m }$ with $a _ { 1 } , \dots , a _ { m } \in \mathcal { A }$ . Thus A is a basis of order h if and only if $h \mathcal { A } = \mathbf { Z } _ { \geq 0 }$ , the set of all non-negative integers. 
-
-Let us quickly note some simple properties of the notion of basis, leaving the (very short) proofs to the reader: 
-
-• if A is a basis of order h then it is also a basis of order h<sup>0</sup> for any $h ^ { \prime } \geqslant h ;$ 
-
-• if kA is a basis of order h then A is a basis of order at most kh. 
-
-As a consequence of the main result of the last chapter, the squares (together with 0) are a basis of order 4, but not a basis of order 3. 
-
-We will deduce Theorem 2.0.1 from the following statement. 
-
-Proposition 2.1.1. The set consisting of 0, 1 and the primes is a basis of finite order. 
-
-The deduction of Theorem 2.0.1 is quite easy, so we give it now. Let h be such that the set consisting of 0, 1 and the primes is a basis of order h. In particular, if n is some arbitrary integer then we may write 
-
-$$
-n - 2 = p _ {1} + \dots + p _ {k} + 1 + \dots + 1,
-$$
-
-where the total number of primes and ones is at most h. 
-
-If there are no 1s, we have 
-
-$$
-n = p _ {1} + \dots + p _ {k} + 2.
-$$
-
-If there are 1s, we have 
-
-$$
-n = p _ {1} + \dots + p _ {k} + 1 + 1 + \dots + 1,
-$$
-
-where there are at least three 1s. We can replace those by 2s and 3s. 
-
-In both cases, we have written n as a sum of at most $h + 1$ primes, and so Theorem 2.0.1 is true with $C = h + 1$ 
-
-Our task, then, is to establish Proposition 2.0.1. We begin by formulating a suficient condition for an arbitrary set A containing 0 and 1 to be a basis of finite order. Then we show how to apply our criterion to establish Proposition 2.1.1. The suficient condition we will give is in terms of the concept of Schnire’lman density, which we define now. 
-
-Definition 2.1.1 (Schnirel’man density). Suppose that A is a set of nonnegative integers. Then the Schnirel’man density of $A , \sigma _ { \mathcal { A } }$ , is defined to be the infimum of all the quantities 
-
-$$
-\frac {1}{N} | \mathcal {A} \cap \{1, \ldots , N \} |
-$$
-
-N = 1, 2, . . . . 
-
-It is convenient to write, as a shorthand, 
-
-$$
-\mathcal {A} [ N ] := \mathcal {A} \cap \{1, \dots , N \}.
-$$
-
-Thus if A has Schnirel’man density $\sigma = \sigma _ { \mathcal { A } }$ then $| \mathcal { A } [ N ] | \geqslant \sigma N$ for all N, and $\sigma$ is the least constant with this property. Note that if a set has positive Schnire’lman density then $1 \in A .$ 
-
-Here is the key result. 
-
-Proposition 2.1.2. Suppose that A is a set containing 0 which has positive Schnirel’man density. Then A is a basis of finite order. In fact, if the Schnirel’man density of A is σ then A is a basis of order at most $4 / \sigma$ 
-
-We will give the proof of this a little later. The key ingredient is the following key lemma, known as Schnirel’man’s inequality. Here, and in what follows, 
-
-$$
-\mathcal {A} + \mathcal {B} := \{a + b: a \in \mathcal {A}, b \in \mathcal {B} \}.
-$$
-
-(This concept, the sumset of two sets A and B, will feature heavily later in the course.) 
-
-Lemma 2.1.1. Suppose that A and B are sets of nonnegative integers, both containing 0, and with Schnirel’man densities $\alpha , \beta$ respectively. Then the Schnirel’man density of $\boldsymbol A + \boldsymbol B$ is at least $\alpha + \beta - \alpha \beta$ 
-
-Proof. Fix some positive integer N. If both α and $\beta$ are zero there is nothing to prove. Suppose, then, that $\alpha > 0$ . In particular, $1 \in { \mathcal { A } }$ 
-
-Write down the elements of $A [ N ]$ in order, 
-
-$$
-1 = a _ {0} <   a _ {1} <   \dots <   a _ {k} \leqslant N.
-$$
-
-For each $i = 0 , \ldots , k - 1$ , the elements of $a _ { i } + B [ a _ { i + 1 } - a _ { i } - 1 ]$ are all in $A + B$ and lie strictly between $a _ { i }$ and $a _ { i + 1 }$ . Since $0 \in B .$ , the elements $a _ { 0 } , \ldots , a _ { k }$ themselves lie in $A + B ,$ and they are distinct from the elements just listed. Finally, the elements $a _ { k } + B [ N - a _ { k } ]$ again lie in $A + B ,$ and they lie in the interval $( a _ { k } , n ]$ 
-
-It follows that 
-
-$$
-(\mathcal {A} + \mathcal {B}) [ N ] \geqslant k + 1 + \sum_ {i = 0} ^ {k - 1} | \mathcal {B} [ a _ {i + 1} - a _ {i} - 1 ] | + | \mathcal {B} [ N - a _ {k} ] |.\tag{2.1}
-$$
-
-Now by the definition of Schnirel’man density we have the inequalities 
-
-$$
-\begin{array}{c} | \mathcal {B} [ a _ {i + 1} - a _ {i} - 1 ] | \geqslant \beta (a _ {i + 1} - a _ {i} - 1), \\ | \mathcal {B} [ N - a _ {k} ] | \geqslant \beta (N - a _ {k}). \end{array}
-$$
-
-Substituting into (2.1) gives 
-
-$$
-\begin{array}{l} | (\mathcal {A} + \mathcal {B}) [ N ] | \geqslant k + 1 + \beta \big (\sum_ {i = 0} ^ {k - 1} (a _ {i + 1} - a _ {i} - 1) + N - a _ {k} \big) \\ \qquad = \beta N + (1 - \beta) (k + 1). \end{array}
-$$
-
-In the last step we telescoped the sum over $i .$ 
-
-However, 
-
-$$
-k + 1 = | \mathcal {A} [ N ] | \geqslant \alpha N;
-$$
-
-inserting this into the bound just obtained gives 
-
-$$
-| (\mathcal {A} + \mathcal {B}) [ N ] | \geqslant \beta N + (1 - \beta) \alpha N = (\alpha + \beta - \alpha \beta) N,
-$$
-
-which is what we wanted to prove. 
-
-We need to supplement this with the following, which is more efective for very large density. 
-
-Lemma 2.1.2. Suppose that A is a set containing 0 and with Schnirel’man density at least one half. Then $2 \mathcal { A } = \mathcal { A } + \mathcal { A }$ contains all positive integers. 
-
-Proof. Suppose that N does not lie in $A + A .$ . Then, for all $k , 1 \leqslant k \leqslant N$ , either k or $N - k$ must fail to lie in ${ \mathcal { A } } .$ It follows that $| { \mathcal { A } } [ N ] | < { \frac { 1 } { 2 } } N$ , contrary to the assumption on Schnirel’man density. □ 
-
-We turn now to the deduction of Proposition 2.1.2. For each k, write $\sigma _ { k }$ for the Schnirel’man density of $k A .$ , and $\sigma = \sigma _ { 1 }$ for short. By Schnire’lman’s inequality, applied with $B = k \mathcal { A }$ , we have 
-
-$$
-\sigma_ {k + 1} \geqslant \sigma_ {k} + \sigma - \sigma_ {k} \sigma .
-$$
-
-Therefore, for a given $k ,$ either $\begin{array} { r } { \sigma _ { k } \geqslant \frac { 1 } { 2 } } \end{array}$ or else 
-
-$$
-\sigma_ {k + 1} \geqslant \sigma_ {k} + \frac {1}{2} \sigma .
-$$
-
-It follows that there must be some $k \leqslant 2 / \sigma$ for which $\sigma _ { k } > \frac { 1 } { 2 }$ 
-
-Finally, by applying Lemma 2.1.2 we see that $k \mathcal { A } + k \mathcal { A }$ contains all positive integers. This concludes the proof of Proposition 2.1.2. 
-
-To conclude this section we remark that Mann (1942) proved a stronger version of Lemma 2.1.1. Mann showed that, under the same assumptions, the Schnirel’man density of $A + A$ is at least min $( 1 , \alpha + \beta )$ 
-
-## 2.2. Primes and Schnirel’man density
-
-In this section, we let $\tilde { \mathcal P }$ be the set of primes augmented by 0 and 1. Our task is to prove Proposition 2.1.1, namely to show that $\tilde { \mathcal P }$ is a basis of finite order. It would sufice, in view of Proposition 2.1.2, to show that $\tilde { \mathcal P }$ has positive Schnire’lman density. Unfortunately, such a statement is false. Indeed, as $N  \infty$ we have $| \mathcal { P } [ N ] | / N \to 0$ . (By the prime number theorem, the left-hand side decays like $1 / \log N . )$ 
-
-It turns out to be true that $2 \tilde { \mathcal { P } } = \tilde { \mathcal { P } } + \tilde { \mathcal { P } }$ does have positive Schnire’lman density, and this is enough to complete the proof of Proposition 2.1.1 by the elementary properties of bases. 
-
-Proposition 2.2.1. Let $\tilde { \mathcal P }$ denote the set of primes, augmented by including 0 and 1. Then $2 \tilde { \mathcal P }$ has positive Schnire’lman density. 
-
-To establish this result, it is enough to prove the following slightly weakersounding claim. 
-
-Proposition 2.2.2. There is some $c > 0$ such that, for all $N \geqslant 2$ , at least cN diferent integers are a sum of two primes less than or equal to N. 
-
-Proposition 2.2.2 is rather easily seen to imply Proposition 2.2.1. Indeed for $N \geqslant 2$ it implies that 
-
-$$
-| 2 \tilde {\mathcal {P}} [ 2 N ] | \geqslant c N,
-$$
-
-and so for all $m \geqslant 4$ we have 
-
-$$
-\frac {1}{m} | 2 \tilde {\mathcal {P}} [ m ] | \geqslant \frac {c (m - 1)}{2 m} > \frac {c}{4}.
-$$
-
-(The minus 1 here comes from the possibility that m is odd.) On the other hand if m $\leqslant 3$ then, since $1 \in 2 \tilde { \mathcal P }$ , we have the trivial bound 
-
-$$
-\frac {1}{m} | 2 \tilde {\mathcal {P}} [ m ] | \geqslant \frac {1}{3}.
-$$
-
-These two bounds together show that the Schnirel’man density of $2 \tilde { \mathcal { P } }$ is indeed positive, which is the statement of Proposition 2.2.1. 
-
-The remaining task in this chapter, then, is to prove Proposition 2.2.2. To do this, denote by $r ( n )$ the number of representations of n as a sum of two primes. Write $\pi ( X )$ for the number of primes less than or equal to $X ,$ , and S for the set of integers expressible as a sum of two primes, both less than or equal to $N .$ . Then we have 
-
-$$
-\pi (N) ^ {2} \leqslant \sum_ {n \leqslant 2 N} r (n) 1 _ {S} (n);\tag{2.2}
-$$
-
-the LHS is the number of pairs of primes $( p _ { 1 } , p _ { 2 } )$ with $p _ { 1 } , p _ { 2 } \leqslant N$ , whilst the RHS is the number of pairs of primes $( p _ { 1 } , p _ { 2 } )$ for which $p _ { 1 } + p _ { 2 } \leqslant 2 N$ and for which there exists a pair of primes $p _ { 1 } ^ { \prime } , p _ { 2 } ^ { \prime } \leqslant N$ with $p _ { 1 } ^ { \prime } + p _ { 2 } ^ { \prime } = n$ . The first set of pairs is contained in the second. 
-
-$\mathrm { B y }$ the Cauchy-Schwarz inequality we have 
-
-$$
-\sum_ {n \leqslant 2 N} r (n) 1 _ {S} (n) \leqslant | S | ^ {1 / 2} (\sum_ {n \leqslant 2 N} r (n) ^ {2}) ^ {1 / 2}.\tag{2.3}
-$$
-
-We will establish the following bound. 
-
-Proposition 2.2.3. Denote by $r ( n )$ the number of representations of n as a sum of two primes. Then 
-
-$$
-\sum_ {n \leqslant X} r (n) ^ {2} \ll \frac {X ^ {3}}{\log^ {4} X}.
-$$
-
-Plugging this into (2.2), (2.3) (with $X = 2 N )$ and using the lower bound $\pi ( N ) \gg$ N/ log N (for $N \geqslant 2 )$ leads to $| S | \gg N$ , that is to say $| S | \geqslant c N$ for some constant $c > 0 .$ , independent of N. This is precisely the statement of Proposition 2.2.2. 
-
-It remains, of course, to prove Proposition 2.2.3. To do this, we obtain a pointwise upper bound on $r ( n )$ , the number of ways to write n as a sum of two primes. 
-
-Note that to obtain an asymptotic for $r ( n )$ , or even a lower bound of $r ( n ) > 0$ for even $n ,$ is a famous unsolved problem: the Goldbach Conjecture. It would be enough to show that 
-
-$$
-r (n) \ll \frac {n}{\log^ {2} n},\tag{2.4}
-$$
-
-uniformly in $n .$ . This is the bound one might naively expect: picking $x \leqslant n$ at random, x is prime with probability $\sim { \frac { 1 } { \log n } }$ , and the same is true of $n - x$ . However, these events are not independent, and if n is divisible by many small primes then x being prime makes $n - x$ more likely to be prime than a random integer. 
-
-In fact, (2.4) is not true uniformly. We instead establish (in the next section) the following slightly weaker bound which incorporates an arithmetic factor reflecting the dependencies hinted at in the heuristic discussion above. 
-
-Proposition 2.2.4. We have 
-
-$$
-r (n) \ll \prod_ {p | n} (1 + \frac {1}{p}) \cdot \frac {n}{\log^ {2} n}.
-$$
-
-It is conjectured that the right-hand side is the correct order of magnitude for $r ( n )$ . The factor $\begin{array} { r } { \prod _ { p \mid n } ( 1 + \frac { 1 } { p } ) } \end{array}$ is not bounded uniformly in $n ,$ because $1 + \textstyle { \frac { 1 } { p } } \sim e ^ { 1 / p }$ and the sum $\begin{array} { r } { \sum _ { p } p ^ { - 1 } } \end{array}$ diverges. However, to deduce Proposition 2.2.3 we only need it to be bounded in square mean. We make this deduction now. 
-
-Proof. [Proof of Proposition 2.2.3, assuming Proposition 2.2.4]. We will show that 
-
-$$
-\sum_ {n \leqslant X} \prod_ {p | n} (1 + \frac {1}{p}) ^ {2} \ll X.\tag{2.5}
-$$
-
-This sufices to allow us to deduce Proposition 2.2.3 from Proposition 2.2.4. Indeed, $\frac { n } { \log ^ { 2 } n }$ is an increasing function of n for large n and so 
-
-$$
-\sum_ {n \leqslant X} r (n) ^ {2} \ll \sum_ {n \leqslant X} \bigl (\prod_ {p | n} (1 + \frac {1}{p}) \cdot \frac {n}{\log^ {2} n} \bigr) ^ {2} \ll \frac {X ^ {2}}{\log^ {4} X} \sum_ {n \leqslant X} \prod_ {p | n} (1 + \frac {1}{p}) ^ {2},
-$$
-
-from which the required bound follows immediately from (2.5). 
-
-Now we prove (2.5). We use the fact that 
-
-$$
-\prod_ {p \mid n} (1 + \frac {1}{p}) \leqslant \sum_ {d \mid n} \frac {1}{d}.
-$$
-
-In fact, the LHS is just the sum of $\textstyle { \frac { 1 } { d } }$ over the squarefree divisors of n. However, 
-
-$$
-\sum_{n\leqslant X}(\sum_{d|n}\frac{1}{d})^{2} = \sum_{d_{1},d_{2}\leqslant X}\frac{1}{d_{1}d_{2}}\sum_{\substack{n\leqslant X\\ [d_{1},d_{2}]|n}}1\leqslant X\sum_{d_{1},d_{2}\leqslant X}\frac{1}{d_{1}d_{2}[d_{1},d_{2}]}.
-$$
-
-Now since $[ d _ { 1 } , d _ { 2 } ] \geqslant$ max $( d _ { 1 } , d _ { 2 } ) \geqslant \sqrt { d _ { 1 } d _ { 2 } }$ , we have 
-
-$$
-\sum_ {d _ {1}, d _ {2} \leqslant X} \frac {1}{d _ {1} d _ {2} [ d _ {1} , d _ {2} ]} \leqslant \sum_ {d _ {1}, d _ {2} \leqslant X} \frac {1}{d _ {1} ^ {3 / 2} d _ {2} ^ {3 / 2}} = (\sum_ {d \leqslant X} \frac {1}{d ^ {3 / 2}}) ^ {2} \ll 1.
-$$
-
-Putting these facts together gives the result. 
-
-The remaining (and most substantial) task, then, is to establish Proposition 2.2.4. We do this using a tool known as the Selberg sieve. 
-
-## 2.3. Selberg’s sieve
-
-In this section we will prove an upper bound for $r ( N )$ , the number of representations of N as a sum of two primes (note the change from n to $N ;$ the latter seems more natural for this argument, and it means we can use n as a dummy variable). Assume throughout the section that $N$ is even; if N is odd then clearly $r ( N ) \leqslant 1$ (with equality if and only if $N - 2$ is prime). 
-
-Define 
-
-$$
-\mathcal {A} := \{n (N - n): n \leqslant N \}.
-$$
-
-Let $z : = N ^ { 1 / 3 }$ (any threshold of the form $z = N ^ { c }$ with $c < { \frac { 1 } { 2 } }$ would work for us, with sharper implied constants coming from taking c close to ${ \frac { 1 } { 2 } } ,$ , but let us fix on this choice for definiteness). If $n \leqslant N$ and n and $N - n$ are prime, then either (i) $n \leqslant z ; { \mathrm { ( i i ) } } \ N - n \leqslant z { \mathrm { ~ o r ~ } } ( { \mathrm { i i i } } ) \ n ( N - n )$ has no prime factors $\leqslant z .$ It follows that 
-
-$$
-r (N) \leqslant 2 z + S (\mathcal {A}, z),
-$$
-
-where $S ( A , z )$ denotes the number of elements of A with no primes factors $\leqslant z .$ . To establish Proposition 2.2.4, it therefore suficies to prove the upper bound 
-
-$$
-S (\mathcal {A}, z) \ll \prod_ {p | N} (1 + \frac {1}{p}) \cdot \frac {N}{\log^ {2} N}.\tag{2.6}
-$$
-
-The general problem of estimating $S ( A , z ) \ { \mathrm { ~ ( i . e . } }$ , for more general sets ${ \mathcal { A } } ,$ and more general parameters $z )$ is the concern of sieve theory. The method we are about to describe in our particular setting can be applied to a much wider selection of problems. 
-
-For each positive integer $d ,$ write $\mathbf { \mathcal { A } } _ { d }$ for the set of elements of A which are divisible by d. The most na¨ıve attempt at the problem would be to use inclusionexclusion, computing 
-
-$$
-S (\mathcal {A}, z) = | \mathcal {A} | - \sum_ {p <   z} | \mathcal {A} _ {p} | + \sum_ {p <   p ^ {\prime} <   z} | \mathcal {A} _ {p p ^ {\prime}} | - \dots
-$$
-
-Unfortunately, this quickly runs into dificulties due to the very large number of terms; even small errors in the estimation of the $| \mathcal { A } _ { d } |$ blow up uncontrollably. A more subtle approach is therefore required. 
-
-One can formulate more involved versions of the inclusion-exclusion principle (the Brun sieve), but we will use an idea due to Selberg. Whilst allowing for a relatively short treatment, it does appear rather magical and unmotivated at first sight. 
-
-Before starting the details, we recall some basic concepts and notation from elementary number theory. If $^ { a , }$ b are positive integers then we write $( a , b )$ for the greatest common divisor of $a , b ,$ and $[ a , b ]$ for the lowest common multiple. We define the M¨obius function $\mu : \mathbf { N }  \{ - 1 , 0 , 1 \}$ by $\mu ( n ) = ( - 1 ) ^ { k }$ if $n = p _ { 1 }$ · · · p<sub>k</sub> is a product of k distinct primes, and $\mu ( n ) = 0$ otherwise. A little later, we will be using some basic facts about M¨obius inversion and Dirichlet convolution. For a refresher on/introduction to this topic, see Appendix A. 
-
-We turn now to the Selberg sieve. Let $( \lambda _ { d } ) _ { d \leqslant z }$ be any real parameters subject only to $\lambda _ { 1 } = 1$ . Consider then the weight 
-
-$$
-\nu (n):= \big(\sum_{\substack{d|n(N - n)\\ d\leqslant z}}\lambda_{d}\big)^{2}.
-$$
-
-This weight is of course non-negative, and when $n \in S ( \mathcal { A } , z )$ it equals $\lambda _ { 1 } ^ { 2 } = 1$ , since only the term $d = 1$ appears in the sum. Therefore 
-
-$$
-S (\mathcal {A}, z) \leqslant \sum_ {n \leqslant N} \nu (n).\tag{2.7}
-$$
-
-Expanding out the definition of ν and rearranging, this $\mathrm { g i }$ ves 
-
-$$
-S (\mathcal {A}, z) \leqslant \sum_ {d _ {1}, d _ {2} \leqslant z} \lambda_ {d _ {1}} \lambda_ {d _ {2}} | \mathcal {A} _ {[ d _ {1}, d _ {2} ]} |.\tag{2.8}
-$$
-
-Note here that $[ d _ { 1 } , d _ { 2 } ]$ denotes the lcm of $d _ { 1 } , d _ { 2 }$ and so 
-
-$$
-A _ {[ d _ {1}, d _ {2} ]} = \{n \leqslant N: d _ {1}, d _ {2} | n (N - n) \}.
-$$
-
-We will restrict the weights $\lambda _ { d }$ to be supported on squarefree d (that is, $\lambda _ { d } = 0$ if d is divisible by the square of a prime). Let us now estimate the quantity $| \mathcal { A } _ { d } |$ when d is squarefree. We have 
-
-$$
-| \mathcal {A} _ {d} | = \omega (d) \frac {N}{d} + R _ {d},\tag{2.9}
-$$
-
-where $\omega ( d )$ is the number of solutions to $x ( N - x ) \equiv 0 ( { \bmod { d } } )$ , and 
-
-$$
-| R _ {d} | \leqslant \omega (d).\tag{2.10}
-$$
-
-The remainder term here comes from the fact that one cannot exactly divide $\{ 1 , \ldots , N \}$ into intervals of length $d ,$ and there can be an interval of length < d left over. Now if d is squarefree then, by the Chinese remainder theorem, we have 
-
-$$
-\omega (d) = \prod_ {p | d} \omega (p).\tag{2.11}
-$$
-
-By direct inspection, we have 
-
-$$
-\omega (p) = \left\{ \begin{array}{l l} 2 & p \nmid N \\ 1 & p | N. \end{array} \right.\tag{2.12}
-$$
-
-Substituting (2.9) into (2.8) yields 
-
-$$
-S (\mathcal {A}, z) \leqslant N \sum_ {d _ {1}, d _ {2} \leqslant z} \frac {\lambda_ {d _ {1}} \lambda_ {d _ {2}} \omega ([ d _ {1} , d _ {2} ])}{[ d _ {1} , d _ {2} ]} + \sum_ {d _ {1}, d _ {2} \leqslant z} | \lambda_ {d _ {1}} | | \lambda_ {d _ {2}} | \omega ([ d _ {1}, d _ {2} ])\tag{2.13}
-$$
-
-where 
-
-$$
-Q = Q ((\lambda_ {d}) _ {d \leqslant z}) := \sum_ {d _ {1}, d _ {2} \leqslant z} \frac {\lambda_ {d _ {1}} \lambda_ {d _ {2}} \omega ([ d _ {1} , d _ {2} ])}{[ d _ {1} , d _ {2} ]},\tag{2.14}
-$$
-
-and 
-
-$$
-E = E ((\lambda_ {d}) _ {d \leqslant z}) := \sum_ {d _ {1}, d _ {2} \leqslant z} | \lambda_ {d _ {1}} | | \lambda_ {d _ {2}} | \omega ([ d _ {1}, d _ {2} ]).\tag{2.15}
-$$
-
-Recall that, at the moment, we have not said anything about the $\lambda _ { d }$ other than that $\lambda _ { 1 } = 1$ and that they are supported on squarefree $d .$ The strategy now is to choose the $\lambda _ { d }$ so as to minimize the quadratic form $Q ,$ and then hope that $E$ is small, at least with z chosen appropriately. 
-
-Note that with $z = N ^ { 1 / 3 }$ this hope about $E$ is not overly ambitious; we need only have the crude bounds 
-
-$$
-| \lambda_ {d} |, \omega (d) \leqslant N ^ {1 / 1 0}\tag{2.16}
-$$
-
-(say) in order to conclude that $E \ll N ^ { 1 - 1 / 2 0 }$ (and in particular appreciably less than the expected main term of $\sim N ( \log N ) ^ { - 2 } )$ 
-
-Minimizing the quadratic form. We turn now to the task of choosing the $\lambda _ { d }$ so as to minimise $Q .$ This looks like a rather scary prospect, but in fact M¨obius inversion allows us to diagonalise the form, which is of course very helpful. 
-
-To begin with, we rewrite $Q$ in the form 
-
-$$
-Q = \sum_ {d _ {1}, d _ {2} \leqslant z} \frac {\omega (d _ {1}) \omega (d _ {2})}{d _ {1} d _ {2}} \lambda_ {d _ {1}} \lambda_ {d _ {2}} \frac {(d _ {1} , d _ {2})}{\omega ((d _ {1} , d _ {2}))}.\tag{2.17}
-$$
-
-Here, we used the fact that the $\lambda _ { d }$ are supported where d is squarefree, and so we have 
-
-$$
-\omega (d _ {1}) \omega (d _ {2}) = \omega ((d _ {1}, d _ {2})) \omega ([ d _ {1}, d _ {2} ])\tag{2.18}
-$$
-
-(consider the primes dividing each argument of ω, and use (2.11)). To get a handle on this, we use a fairly standard trick. Write $g ( k ) = k / \omega ( k )$ , and observe that by M¨obius inversion (see Appendix A) we have 
-
-$$
-g (k) = \sum_ {\delta | k} f (\delta)\tag{2.19}
-$$
-
-where 
-
-$$
-f (k) = \sum_ {\delta | k} \mu (\frac {k}{\delta}) g (\delta).
-$$
-
-In the notation of Dirichlet convolution, $g \ = \ f * 1$ and $f = g * \mu$ . Note that $g ( k ) ~ = ~ k / \omega ( k )$ is multiplicative, and hence so is $f = g * \mu$ (see Appendix $\mathrm { A } )$ Furthermore it is easy to check that $\begin{array} { r } { f ( p ) = \frac { p } { \omega ( p ) } - 1 } \end{array}$ when $p$ is a prime, where of course $\omega$ is as defined in (2.11), (2.12). Note that $f ( \boldsymbol p )$ is never zero (when $p = 2$ 2 this is because we are assuming N odd), and so in fact $f$ is strictly positive. 
-
-Substituting (2.19) into (2.17) and swapping the order of summation yields 
-
-$$
-Q = \sum_ {\delta \leqslant z} f (\delta) \bigg (\sum_ {\delta | d, d \leqslant z} \frac {\omega (d)}{d} \lambda_ {d} \bigg) ^ {2} = \sum_ {\delta \leqslant z} f (\delta) u _ {\delta} ^ {2},\tag{2.20}
-$$
-
-where 
-
-$$
-u _ {\delta} := \sum_ {\delta | d, d \leqslant z} \frac {\omega (d)}{d} \lambda_ {d}.
-$$
-
-(Here, $d$ ranges over squarefrees.) With this change of variables, $Q$ is indeed a diagonal quadratic form. To minimise $Q$ we need to express the constraint $\lambda _ { 1 } = 1$ in terms of these new variables $u _ { \delta } .$ . This can be achieved by applying Lemma A.0.2. One obtains 
-
-$$
-\frac {\omega (d)}{d} \lambda_ {d} = \sum_ {d | \delta , \delta \leqslant z} \mu (\frac {\delta}{d}) u _ {\delta},\tag{2.21}
-$$
-
-where $\delta$ ranges over squarefrees. Therefore the constraint $\lambda _ { 1 } = 1$ becomes simply 
-
-$$
-\sum_ {\delta \leqslant z} \mu (\delta) u _ {\delta} = 1.\tag{2.22}
-$$
-
-The minimisation of $Q { \mathrm { . } }$ , as given in (2.20), subject to the constraint (2.22), is a simple matter of completing the square, or more specifically looking at the inequality 
-
-$$
-\sum_ {\delta \leqslant z} f (\delta) (u _ {\delta} - \frac {\mu (\delta)}{D f (\delta)}) ^ {2} \geqslant 0,\tag{2.23}
-$$
-
-where 
-
-$$
-D = D (z) := \sum_ {\delta \leqslant z} \frac {\mu^ {2} (\delta)}{f (\delta)} = \sum_ {d \leqslant z, d \text {squarefree}} \frac {1}{f (d)}.\tag{2.24}
-$$
-
-This shows that the minimum value of $Q$ (as given by (2.20)) subject to the constraint (2.22) is $1 / D$ , and that equality is attained when 
-
-$$
-u _ {\delta} = \mu (\delta) / D f (\delta).\tag{2.25}
-$$
-
-Thus we take our as yet unspecified weights $\lambda _ { d }$ to be the ones giving this choice of the $u _ { \delta }$ . In view of (2.21), this means that we define 
-
-$$
-\lambda_ {d} := \frac {d}{\omega (d) D} \sum_ {d | \delta , \delta \leqslant z} \frac {\mu (\delta / d) \mu (\delta)}{f (\delta)}.\tag{2.26}
-$$
-
-Let us take stock of our current position. Our aim is to prove (2.6). Taking the particular choice (2.26) of the $\lambda _ { d } .$ , and $z : = N ^ { 1 / 3 }$ , substituting into (2.13) gives 
-
-$$
-S (\mathcal {A}, z) \leqslant \frac {N}{D} + O (N ^ {2 / 3} \max _ {d \leqslant z} | \lambda_ {d} | ^ {2} \omega (d) ^ {2}).\tag{2.27}
-$$
-
-Here, in estimating E, we have used 
-
-$$
-E = \sum_ {d _ {1}, d _ {2} \leqslant z} | \lambda_ {d _ {1}} | | \lambda_ {d _ {2}} | \omega ([ d _ {1}, d _ {2} ]) \leqslant \sum_ {d _ {1}, d _ {2} \leqslant z} | \lambda_ {d _ {1}} | | \lambda_ {d _ {2}} | \omega (d _ {1}) \omega (d _ {2}) \leqslant z ^ {2} \sup _ {d} | \lambda_ {d} | ^ {2} \omega (d) ^ {2},
-$$
-
-where the middle step follows from (2.18). 
-
-The two terms on the right in (2.27) have the status of main term and error term respectively, though we have not yet shown anything rigorous about them. 
-
-To bound the main term, we will show that 
-
-$$
-D \gg \log^ {2} N \cdot (\prod_ {p | N} (1 + \frac {1}{p})) ^ {- 1}.\tag{2.28}
-$$
-
-To bound the error term, we will show that 
-
-$$
-| \lambda_ {d} | \omega (d) \ll_ {\varepsilon} d ^ {\varepsilon} \quad \text { for   all   squarefree } d.\tag{2.29}
-$$
-
-This notation, which is standard in analytic number theory, means that for every $\varepsilon > 0$ there is some constant $C _ { \varepsilon }$ such that $| \lambda _ { d } | \omega ( d ) \leqslant C _ { \varepsilon } d ^ { \varepsilon }$ 
-
-The desired bound (2.6) follows very quickly by substituting (2.28) and (2.29) into (2.27). 
-
-It remains, then, to establish (2.28) and (2.29). The proofs of these statements are somewhat lengthy and a little technical, though instructive to work through. They are fairly unrelated to the rest of the argument and readers may wish to skip them. 
-
-Bounding the main term. We now prove (2.28). For the purposes of this proof, extend ω to a completely multiplicative function by defining $\omega ( p ^ { j } ) : = \omega ( p ) ^ { j }$ . Now 
-
-if $d$ is squarefree then 
-
-$$
-\frac {1}{f (d)} = \prod_ {p | d} \frac {1}{f (p)} = \prod_ {p | d} \frac {\omega (p) / p}{1 - \frac {\omega (p)}{p}} = \prod_ {p | d} \sum_ {j \geqslant 1} \frac {\omega (p ^ {j})}{p ^ {j}},
-$$
-
-by the multiplicativity of $f$ and the geometric series formula. Therefore 
-
-$$
-D = \sum_ {d \leqslant z, d \text {squarefree}} \prod_ {p | d} \sum_ {j \geqslant 1} \frac {\omega (p ^ {j})}{p ^ {j}} = \sum_ {m: \operatorname{rad} (m) \leqslant z} \frac {\omega (m)}{m} \geqslant \sum_ {m \leqslant z} \frac {\omega (m)}{m}.\tag{2.30}
-$$
-
-Here, the radical $\operatorname { r a d } ( m )$ is the product of the distinct primes dividing $m ,$ which is of course squarefree. 
-
-Let $S ^ { \prime }$ be the set of all positive integers coprime to $N ,$ and let $S _ { * }$ denote the set of all positive integers composed only of primes dividing N. Any integer m has a unique factorisation $m = m ^ { \prime } m _ { * }$ , where $m ^ { \prime } \in S ^ { \prime }$ and $m _ { * } \in S _ { * }$ 
-
-We claim that 
-
-$$
-\omega (m) \geqslant \tau (m ^ {\prime}),\tag{2.31}
-$$
-
-where $\tau$ is the divisor function, that is to say $\tau ( x )$ is the number of positive integer divisors of x. Recall the definition (2.12) of $\omega ( p )$ . Thus if we write $m = p _ { 1 } ^ { a _ { 1 } } \cdots p _ { k } ^ { a _ { k } }$ with $p _ { 1 } , \ldots , p _ { \ell }$ being those primes not dividing $N _ { ; }$ , then $m ^ { \prime } = p _ { 1 } ^ { a _ { 1 } } \cdot \cdot \cdot p _ { \ell } ^ { a _ { \ell } }$ and 
-
-$$
-\omega (m) = 2 ^ {a _ {1} + \dots + a _ {\ell}},
-$$
-
-whilst 
-
-$$
-\tau (m ^ {\prime}) = (a _ {1} + 1) \dots (a _ {\ell} + 1).
-$$
-
-The claimed inequality (2.31) now follows from the fact that $2 ^ { a } \geqslant a + 1$ for all integers $a \geqslant 1$ 
-
-Substituting (2.31) into (2.30) yields 
-
-$$
-D \geqslant \sum_ {m \leqslant z} \frac {\tau (m ^ {\prime})}{m}.\tag{2.32}
-$$
-
-Now observe that 
-
-$$
-\prod_ {p \mid N} (1 - \frac {1}{p}) ^ {- 1} = \sum_ {t \in S _ {*}} \frac {1}{t};
-$$
-
-this follows by expanding $\begin{array} { r } { ( 1 - \frac { 1 } { p } ) ^ { - 1 } = \sum _ { j \geqslant 0 } p ^ { - j } } \end{array}$ and multiplying up over all primes $p$ dividing N. It follows from (2.32) that 
-
-$$
-D\prod_{p|N}(1 - \frac{1}{p})^{-1}\geqslant \sum_{m\leqslant z}\frac{\tau(m^{\prime})}{m}\sum_{t\in S_{*}}\frac{1}{t} = \sum_{n}\frac{1}{n}\sum_{\substack{m\leqslant z\\ m|n\\ n / m\in S_{*}}}\tau (m^{\prime})\geqslant \sum_{n\leqslant z}\frac{1}{n}\sum_{\substack{m|n\\ n / m\in S_{*}}}\tau (m^{\prime}).
-$$
-
-where in the middle step we substituted $n = m t$ . Now in the sum over $m , n / m$ runs exactly over the divisors of $n _ { * } .$ , so there are $\tau ( n _ { * } )$ terms in the sum. For each 
-
-of them we have $m ^ { \prime } = n ^ { \prime }$ . It follows that 
-
-$$
-\sum_{\substack{m|n\\ n / m\in S_{*}}}\tau (m^{\prime}) = \tau (n_{*})\tau (n^{\prime}) = \tau (n),
-$$
-
-and so we have proven that 
-
-$$
-D \prod_ {p | N} (1 - \frac {1}{p}) ^ {- 1} \geqslant \sum_ {n \leqslant z} \frac {\tau (n)}{n}.\tag{2.33}
-$$
-
-We have now almost completed the proof of (2.28). To finish it, note first that 
-
-$$
-\sum_ {n \leqslant z} \frac {\tau (n)}{n} \geqslant \left(\sum_ {x \leqslant \sqrt {z}} \frac {1}{x}\right) ^ {2}
-$$
-
-(since, by multiplying out the square, the right-hand side is $\sum _ { n \leq z } { \frac { { \tilde { \tau } } ( n ) } { n } }$ , where $\tilde { \tau } ( n )$ denotes the number of divisors d of n with $d , n / d \leqslant { \sqrt { z } } . )$ Recalling that $z = N ^ { 1 / 3 }$ it follows that 
-
-$$
-\sum_ {n \leqslant z} \frac {\tau (n)}{n} \gg \log^ {2} N.\tag{2.34}
-$$
-
-Finally, to deduce (2.28), we use (2.33), (2.34) and the fact that 
-
-$$
-\prod_ {p \mid N} (1 - \frac {1}{p}) = \prod_ {p \mid N} (1 + \frac {1}{p}) ^ {- 1} \cdot \prod_ {p \mid N} (1 - \frac {1}{p ^ {2}}) \gg \prod_ {p \mid N} (1 + \frac {1}{p}) ^ {- 1},
-$$
-
-since the product $\Pi _ { p } ( 1 - \frac { 1 } { p ^ { 2 } } )$ converges to a positive real number (in fact to $1 / \zeta ( 2 ) =$ $6 / \pi ^ { 2 } )$ 
-
-Bounding the error term. Now we prove the estimate (2.29). From the definition (2.26) of $\lambda _ { d } ,$ we have 
-
-$$
-|\omega (d)\lambda_{d}| = |\frac{d}{D}\sum_{d|\delta ,\delta \leqslant z}\frac{\mu(\delta / d)\mu(\delta)}{f(\delta)} |\leqslant \frac{d}{Df(d)}\sum_{\substack{\delta^{\prime}\leqslant z\\ \delta^{\prime}\text{squarefree}}}\frac{1}{f(\delta^{\prime})} = \frac{d}{f(d)}.
-$$
-
-Now it is easy to check that $p / f ( p ) \leqslant 6 .$ the worst case being when $p = 3$ and $\omega ( 3 ) = 2$ . Therefore 
-
-$$
-| \omega (d) \lambda_ {d} | \leqslant \frac {d}{f (d)} = \prod_ {p \mid d} \frac {p}{f (p)} \leqslant 6 ^ {\# \text {prime factors of} d} = \tau (d) ^ {\frac {\log 6}{\log 2}}.
-$$
-
-The claim now follows from the divisor bound (Lemma A.0.3). 
-
-## CHAPTER 3
-
-## Roth’s theorem on progressions of length 3
-
-In this chapter our aim is to prove the following theorem of Roth from 1953. The theorem is well-worth studying in its own right, but it also gives an opportunity to introduce a key tool: the Fourier transform. 
-
-Theorem 3.0.1 (Roth’s theorem). There is an absolute constant C such that any subset $A \subset \{ 1 , \ldots , N \}$ with cardinality at least $C N /$ log log N contains a nontrivial three-term arithmetic progression (that is to say, a triple $x , x + d , x + 2 d$ with $d \neq 0 )$ 
-
-Note, in particular, that $1 /$ log log N is eventually smaller than any fixed positive constant. 
-
-Throughout this chapter we will assume that N is suficiently large (meaning bigger than some absolute constant which we shall not specify precisely). 
-
-## 3.1. The density increment strategy
-
-Roth’s theorem proceeds via the so-called density increment strategy, and the key proposition which drives this is the following. 
-
-Proposition 3.1.1. Suppose that $0 < \alpha < 1$ and that $N \geqslant ( 8 / \alpha ) ^ { 1 0 }$ . Suppose that $P \subset \mathbf { Z }$ is an arithmetic progression of length N and that $A \subset P$ is a set with cardinality at least αN. Then one of the following two alternatives holds: 
-
-(i) A contains a nontrivial 3-term progression; 
-
-(ii) There is an arithmetic progression P<sup>0</sup> of length $N ^ { \prime } \geqslant N ^ { 1 / 5 }$ such that, writing $A ^ { \prime } : = A \cap P ^ { \prime }$ and $\alpha ^ { \prime } : = | A ^ { \prime } | / | P ^ { \prime } |$ , we have $\begin{array} { r } { \alpha ^ { \prime } \geqslant \alpha + \frac { \alpha ^ { 2 } } { 1 1 2 } } \end{array}$ 
-
-Theorem 3.0.1 follows by iterating this proposition. Set $P _ { 0 } : = \{ 1 , \ldots , N \}$ and let us suppose that we have a set $A \subset P _ { 0 }$ with $| A | = \alpha N$ and containing no nontrivial 3-term progression. Then we attempt to use Proposition 3.1.1 repeatedly to obtain a sequence $P _ { 0 } , P _ { 1 } , P _ { 2 } , . . .$ of progressions together with sets $A _ { i } : = A \cap P _ { i }$ . The length of $P _ { i }$ will be $N _ { i } \geqslant N ^ { ( 1 / 5 ) ^ { i } }$ and the densities $\alpha _ { i } : = | A _ { i } | / | P _ { i } |$ will satisfy $\alpha _ { i + 1 } > \alpha _ { i } + c \alpha _ { i } ^ { 2 }$ 
-
-Now this iteration cannot last too long: after $C / \alpha$ steps the density has already doubled, after a further $C / 2 \alpha$ steps it has doubled again, and so on. Since no set can have density greater than one, there can be no more than $2 C / \alpha$ steps in total. We conclude that our applications of Proposition 3.1.1 must have been invalid, which can ony mean that the condition $N _ { i } > C \alpha _ { i } ^ { - C }$ was violated. Since 
-
-$$
-N _ {i} > N ^ {(1 / 5) ^ {i}} \geqslant N ^ {(1 / 5) ^ {2 C / \alpha}}
-$$
-
-and (very crudely) 
-
-$$
-\alpha_ {i} \geqslant \alpha ,
-$$
-
-we infer the bound 
-
-$$
-N ^ {(1 / 5) ^ {2 C / \alpha}} \leqslant C \alpha^ {- C}.
-$$
-
-Rearranging gives 
-
-$$
-\log \log N \leqslant \log \log (C \alpha^ {- C}) + \frac {2 C}{\alpha} \leqslant \frac {C ^ {\prime}}{\alpha},
-$$
-
-which immediately gives the claimed bound. 
-
-Remark. The most important parameter by far is the number of times we performed the iteration, which was roughly $O ( 1 / \alpha )$ 
-
-## 3.2. Fourier transform on Z
-
-Let $f : \mathbf { Z }  \mathbf { C }$ be a compactly-supported function (that is, $f ( n ) = 0$ outside of some finite interval). Then we define the Fourier transform $\hat { f } ( \theta )$ by 
-
-$$
-\hat {f} (\theta) := \sum_ {n} f (n) e (- n \theta).
-$$
-
-Since f is compactly-supported, there is no issue of convergence. 
-
-A crucial fact we will need is the Parseval identity. 
-
-Proposition 3.2.1. We have 
-
-$$
-\sum_ {n} f (n) \overline {{g (n)}} = \int_ {\mathbf {T}} \hat {f} (\theta) \overline {{\hat {g} (\theta)}} d \theta .
-$$
-
-Proof. This is an easy check using the definitions, as well as the fact that 
-
-$$
-\int_ {\mathbf {T}} e (m \theta) d \theta = \int_ {0} ^ {1} e (m \theta) d \theta = \left\{ \begin{array}{l l} 1 & m = 0 \\ 0 & m \in \mathbf {Z} \setminus \{0 \}. \end{array} \right.\tag{3.1}
-$$
-
-Remark. Taking $f = g$ gives 
-
-$$
-\sum_ {n} | f (n) | ^ {2} = \int_ {\mathbf {T}} | \hat {f} (\theta) | ^ {2} d \theta .
-$$
-
-## 3.3. A large Fourier coeficient
-
-We turn now to the details of the density increment strategy. We begin with a very simple observation, which is that we may assume without loss of generality that $P = [ N ] = \{ 1 , \dots , N \}$ . We may always reduce to this case by an afine rescaling. 
-
-We will first establish the following alternative version of Proposition 3.1.1, in which the conclusion of part (ii) is diferent, asserting the existence of a large Fourier coeficient of the function 
-
-$$
-f _ {A} := 1 _ {A} - \alpha 1 _ {[ N ]},
-$$
-
-the so-called balanced function of A. In the next section, we will show that a large Fourier coeficient implies a density increment as in the original formulation of Proposition 3.1.1. 
-
-Proposition 3.3.1. Suppose that $0 \textless \alpha \textless 1$ and that $N \geqslant 4 / \alpha ^ { 2 }$ . Suppose that $A \subset [ N ]$ is a set with cardinality at least αN. Then one of the following two alternatives holds: 
-
-(i) A contains a nontrivial 3-term progression; 
-
-(ii) The balanced function $f _ { A }$ has a large Fourier coeficient: specifically, there is some $\theta \in \mathbf { T }$ such that $| \hat { f } _ { A } ( \theta ) | \geqslant \alpha ^ { 2 } N / 2 8$ 
-
-Proof. If $f _ { 1 } , f _ { 2 } , f _ { 3 } : \mathbf { Z }  \mathbf { R }$ are three finitely-supported functions then we introduce the operator 
-
-$$
-T (f _ {1}, f _ {2}, f _ {3}) := \sum_ {x, d} f _ {1} (x) f _ {2} (x + d) f _ {3} (x + 2 d).
-$$
-
-This counts the number of 3-term progressions weighted by the functions $f _ { i }$ . In particular, 
-
-$$
-T \left(1 _ {A}, 1 _ {A}, 1 _ {A}\right) = \# \{\text { number   of   3 - term   progressions   in } A \}.\tag{3.2}
-$$
-
-Note carefully that this count includes “trivial” progressions with $d = 0$ . However, A has precisely αN trivial progressions, so if option (i) does not hold then 
-
-$$
-T (1 _ {A}, 1 _ {A}, 1 _ {A}) = \alpha N \leqslant \alpha^ {3} N ^ {2} / 4.\tag{3.3}
-$$
-
-For the inequality on the right we used the assumption that $N \geqslant 4 / \alpha ^ { 2 }$ 
-
-Note that $T$ is a trilinear operator. Thus we may write $1 _ { A } = f _ { A } + \alpha 1 _ { [ N ] }$ and expand $T ( 1 _ { A } , 1 _ { A } , 1 _ { A } )$ as a sum of eight terms, 
-
-$$
-T (1 _ {A}, 1 _ {A}, 1 _ {A}) = \alpha^ {3} T (1 _ {[ N ]}, 1 _ {[ N ]}, 1 _ {[ N ]}) + \dots + T (f _ {A}, f _ {A}, f _ {A}).\tag{3.4}
-$$
-
-Each of the seven “error terms” denoted by the ellipsis · · · contains at least one copy of $f _ { A }$ . Let us look at the first term $\alpha ^ { 3 } T ( 1 _ { [ N ] } , 1 _ { [ N ] } , 1 _ { [ N ] } )$ . It is quite simple to evaluate this exactly: the number of $( x , d )$ with $x , x + d , x + 2 d \in [ N ]$ is precisely the number of pairs $( n _ { 1 } , n _ { 2 } ) \in [ N ] \times [ N ]$ with $n _ { 1 } , n _ { 2 }$ having the same parity, since we then have, uniquely, $x = n _ { 1 }$ and $\begin{array} { r } { d = \frac 1 2 ( n _ { 2 } - n _ { 1 } ) } \end{array}$ , and $x + d$ automatically lies in $[ N ]$ . This is $N ^ { 2 } / 2$ if N is even, and $( N ^ { 2 } + 1 ) / 2$ if N is odd, thus at least $N ^ { 2 } / 2$ in all cases. Thus 
-
-$$
-\alpha^ {3} T (1 _ {[ N ]}, 1 _ {[ N ]}, 1 _ {[ N ]}) \geqslant \alpha^ {3} N ^ {2} / 2.
-$$
-
-It follows that if option (i) does not hold (and hence we have (3.3)) then the sum of the seven error terms in (3.4) is at least $\alpha ^ { 3 } N ^ { 2 } / 4$ . Thus one of these terms is at least $\alpha ^ { 3 } N ^ { 2 } / 2 8$ , that is to say 
-
-$$
-\left| T \left(f _ {1}, f _ {2}, f _ {3}\right) \right| \geqslant \alpha^ {3} N ^ {2} / 2 8,\tag{3.5}
-$$
-
-where each $f _ { i }$ is either $\alpha \mathbf { 1 } _ { [ N ] }$ or $f _ { A }$ , and at least one of them is $f _ { A }$ 
-
-Now we come to the key idea: there is a formula for $T ( f _ { 1 } , f _ { 2 } , f _ { 3 } )$ in terms of the Fourier transform: 
-
-$$
-T (f _ {1}, f _ {2}, f _ {3}) = \int_ {\mathbf {T}} \hat {f} _ {1} (\theta) \hat {f} _ {2} (- 2 \theta) \hat {f} _ {3} (\theta) d \theta .\tag{3.6}
-$$
-
-Once written down, it is very easy to check this by substituting the definition of the Fourier transforms on the right-hand side. 
-
-Thus if (3.5) holds then 
-
-$$
-\big | \int_ {\mathbf {T}} \hat {f} _ {1} (\theta) \hat {f} _ {2} (- 2 \theta) \hat {f} _ {3} (\theta) d \theta \big | \geqslant \alpha^ {3} N ^ {2} / 2 8.\tag{3.7}
-$$
-
-Suppose that $f _ { 3 } = f _ { A } ;$ the analysis of other possibilities is very similar. Then 
-
-$$
-\sup _ {\theta \in \mathbf {T}} | \hat {f} _ {A} (\theta) | \int_ {\mathbf {T}} | \hat {f} _ {1} (\theta) | | \hat {f} _ {2} (- 2 \theta) | d \theta \geqslant \alpha^ {3} N ^ {2} / 2 8.
-$$
-
-By the Cauchy-Schwarz inequality, 
-
-$$
-\sup _ {\theta \in \mathbf {T}} | \hat {f} _ {A} (\theta) | \left(\int_ {\mathbf {T}} | \hat {f} _ {1} (\theta) | ^ {2} d \theta\right) ^ {1 / 2} \left(\int_ {\mathbf {T}} | \hat {f} _ {2} (\theta) | d \theta\right) ^ {1 / 2} \geqslant \alpha^ {3} N ^ {2} / 2 8.\tag{3.8}
-$$
-
-However, by Parseval’s identity we have 
-
-$$
-\int_ {\mathbf {T}} | f _ {i} (\theta) | ^ {2} d \theta = \sum_ {n} | f _ {i} (n) | ^ {2}.
-$$
-
-One may easily check that the RHS is $\alpha ^ { 2 } N$ if $f _ { i } = \alpha 1 _ { [ N ] }$ and $\alpha ( 1 - \alpha ) N$ if $f _ { i } = f _ { A }$ 2 and so certainly at most αN in either case. Thus from (3.8) we obtain 
-
-$$
-\sup _ {\theta \in \mathbf {T}} | \hat {f} _ {A} (\theta) | \geqslant \alpha^ {2} N / 2 8,
-$$
-
-which is precisely option (ii) in the proposition. 
-
-## 3.4. From a large Fourier coeficient to a density increment
-
-In this section, we show how option (ii) in Proposition 3.3.1 (the balanced function $f _ { A }$ has a large Fourier coeficient) may be replaced by option (ii) in Proposition 3.1.1 (a density increment on a progression). The crucial technical ingredient is the following. 
-
-Here, if $F : \mathbf { Z }  \mathbf { C }$ is a function and $S \subset \mathbf { Z }$ a finite set, we write diam $s ( F ) : =$ $\begin{array} { r } { \operatorname* { s u p } _ { x , x ^ { \prime } \in S } | F ( x ) - F ( x ^ { \prime } ) | } \end{array}$ 
-
-Lemma 3.4.1. Suppose that $\theta \in \mathbf { T }$ . Then we may partition [N] into progressions $P _ { i }$ , each of length at least $N ^ { 1 / 5 }$ , such that diam $_ { P _ { i } } ( e ( \theta x ) ) \leqslant N ^ { - 1 / 5 }$ for all i. 
-
-Proof. Throughout this argument we will assume that N is suficiently large. Let $Q : = \lfloor N ^ { 1 / 2 } \rfloor$ . By a well-known application of the pigeonhole principle due to Dirichlet, there is some positive $d \leqslant Q$ such that $\lVert d { \boldsymbol { \theta } } \rVert ~ \leqslant ~ 1 / Q$ . (Consider $\theta , 2 \theta , \cdot \cdot \cdot , Q \theta$ as elements of $\mathbf { T } ;$ some two of these, say $j _ { 1 } \theta$ and $j _ { 2 } \theta .$ , lie within $1 / Q$ of one another. Take $d : = | j _ { 1 } - j _ { 2 } | . \ \rangle$ 0 
-
-If $P$ is any progression with common diference d and length $\leqslant 3 N ^ { 1 / 5 }$ then, by the triangle inequality, 
-
-$$
-\operatorname{diam} _ {P} (e (\theta x)) \leqslant 3 N ^ {1 / 5} | e (\theta d) - 1 | \leqslant 2 0 N ^ {1 / 5} / Q <   N ^ {- 1 / 5},
-$$
-
-where here we used the inequality 
-
-$$
-| e (t) - 1 | = 2 | \sin \pi t | \leqslant 2 \pi \| t \| _ {\mathbf {R} / \mathbf {Z}}.
-$$
-
-Now observe that $[ N ]$ can be partitioned into progressions $P _ { i }$ with common diference d and lengths in the range $[ N ^ { 1 / 5 } , 3 N ^ { 1 / 5 } ]$ . To do this, first partition $[ N ]$ into progressions of common diference d, each of length $\sim N / d \gg N ^ { 1 / 2 }$ . Then proceed along each such progression from left to right, partitioning into progressions of length $\lceil N ^ { 1 / 5 } \rceil$ until we have a leftover progression of length $\leqslant N ^ { 1 / 5 }$ . Amalgamate this with the preceding one. □ 
-
-The following result, together with Proposition 3.3.1, immediately implies Proposition 3.1.1, and hence completes the proof of Roth’s theorem. 
-
-Proposition 3.4.1. Suppose that $| \hat { f } _ { A } ( \theta ) | \geqslant \alpha ^ { 2 } N / 2 8$ , that $N \geqslant ( 8 / \alpha ) ^ { 1 0 }$ , and let $[ N ] = \cup _ { i } P _ { i }$ be a partition as above. Then there is some i such that $| A \cap P _ { i } | \geqslant$ $\textstyle ( \alpha + { \frac { \alpha ^ { 2 } } { 1 1 2 } } ) | P _ { i } |$ 
-
-Proof. Since the $P _ { i }$ partition $[ N ]$ , we obviously have 
-
-$$
-\sum_ {i} | \sum_ {x \in P _ {i}} f _ {A} (x) e (- \theta x) | \geqslant \frac {\alpha^ {2}}{2 8} N.
-$$
-
-By the triangle inequality and the bound $| f _ { A } ( x ) | \leqslant 1$ , the left-hand side is at most 
-
-$$
-\begin{array}{c} \sum_ {i} | \sum_ {x \in P _ {i}} f _ {A} (x) | + \sum_ {i} | P _ {i} | \operatorname{diam} _ {P _ {i}} (e (\theta x)) \leqslant \sum_ {i} | \sum_ {x \in P _ {i}} f _ {A} (x) | + N ^ {4 / 5} \\ \leqslant \sum_ {i} | \sum_ {x \in P _ {i}} f _ {A} (x) | + \frac {\alpha^ {2}}{5 6} N, \end{array}
-$$
-
-the last step following from our assumption on N. It follows that 
-
-$$
-\sum_ {i} | \sum_ {x \in P _ {i}} f _ {A} (x) | \geqslant \frac {\alpha^ {2}}{5 6} N.
-$$
-
-Since $\textstyle \sum _ { x \in [ N ] } f _ { A } ( x ) = 0$ , we have 
-
-$$
-\sum_ {i} \left(\left| \sum_ {x \in P _ {i}} f _ {A} (x) \right| + \sum_ {x \in P _ {i}} f _ {A} (x)\right) \geqslant \frac {\alpha^ {2}}{5 6} N = \frac {\alpha^ {2}}{5 6} \sum_ {i} | P _ {i} |,
-$$
-
-so there must be some i such that 
-
-$$
-| \sum_ {x \in P _ {i}} f _ {A} (x) | + \sum_ {x \in P _ {i}} f _ {A} (x) \geqslant \frac {\alpha^ {2}}{5 6} | P _ {i} |,
-$$
-
-which implies that 
-
-$$
-\sum_ {x \in P _ {i}} f _ {A} (x) \geqslant \frac {\alpha^ {2}}{1 1 2} | P _ {i} |,
-$$
-
-or in other words that 
-
-$$
-| A \cap P _ {i} | \geqslant (\alpha + \frac {\alpha^ {2}}{1 1 2}) | P _ {i} |.
-$$
-
-This concludes the proof. 
-
-## CHAPTER 4
-
-## Sumset inequalities
-
-In this chapter we explore the notion of adding sets. There is a huge literature on this topic, from which we isolate a few key results. All of the results we shall state are valid for finite subsets of arbitrary abelian groups, and for brevity it is usual to call these “additive sets”. When we are talking about more than one additive set, we assume they are all subsets of the same group. The particular abelian group in question will normally be clear from context (though often it does not matter). In fact, many of the results (but not all) remain true without the assumption of commutativity, but we shall not cover that topic in this course. 
-
-## 4.1. Basic notation and definitions
-
-Let A, B be additive sets (this both A and B are finite subsets of some abelian group). Then we write 
-
-$$
-A + B := \{a + b: a \in A, b \in B \}
-$$
-
-and 
-
-$$
-A - B := \{a - b: a \in A, b \in B \}.
-$$
-
-These definitions extend in an obvious way to more than two summands, for example 
-
-$$
-A _ {1} + \dots + A _ {k} := \left\{a _ {1} + \dots + a _ {k}: a _ {i} \in A _ {i} \right\}.
-$$
-
-If $A _ { 1 } = \cdots = A _ { k } = A$ then we usually write kA for $A _ { 1 } + \cdots + A _ { k }$ . In particular, $2 A = A + A$ . We also write, e.g. 2A − 2A for $\{ a _ { 1 } + a _ { 2 } - a _ { 3 } - a _ { 4 } : a _ { 1 } , \ldots , a _ { 4 } \in A \}$ 
-
-## 4.2. Ruzsa’s triangle inequality and covering lemma
-
-In this section we prove two elegant results of Ruzsa about the size of sumsets. They are surprisingly useful despite their apparent simplicity. 
-
-Lemma 4.2.1 (Ruzsa triangle inequality). Suppose that U, V, W are finite additive sets. Then 
-
-$$
-| V - W | | U | \leqslant | V - U | | U - W |.
-$$
-
-Proof. We will define a map $\phi : ( V - W ) \times U \to ( V - U ) \times ( U - W )$ , and prove that it is an injection, which implies the result. Given $d \in V - W$ select a pair $v _ { d } \in V , w _ { d } \in W$ for which $d = v _ { d } - w _ { d }$ (there may be more than one such pair, but for each $d$ we make a definite choice). Then define 
-
-$$
-\phi (d, u) = (v _ {d} - u, u - w _ {d})
-$$
-
-for each $d \in V - W$ and $u \in U$ . To prove that $\phi$ is an injection, suppose that $( x , y ) \in \mathrm { i m } ( \phi ) \subset ( V - U ) \times ( U - W )$ . If $\phi ( d , u ) = ( x , y )$ then $x + y = ( v _ { d } - u ) +$ $( u - w _ { d } ) = v _ { d } - w _ { d } = d ,$ , and therefore we can determine $d$ and hence $v _ { d }$ and $w _ { d }$ from $( x , y )$ . And we also determine u as $u = - x + v _ { d } \ ( = y - w _ { d } )$ □ 
-
-Remark. If we define 
-
-$$
-d (U, V) := \log \frac {| U - V |}{| U | ^ {1 / 2} | V | ^ {1 / 2}}
-$$
-
-then the Ruzsa triangle inequality may be written 
-
-$$
-d (V, W) \leqslant d (U, V) + d (U, W).
-$$
-
-This explains the term “triangle inequality”. Note that, although the triangle inequality is satisfied, d is not a true distance. This is because $d ( U , V ) = 0$ neither implies, nor is implied by, $U = V$ 
-
-Lemma 4.2.2 (Ruzsa’s covering lemma). Suppose that A and B are finite additive sets and that $| A + B | \leqslant K | A |$ . Then B may be covered by k translates of $A - A$ $f o r$ some $k \leqslant K$ . That is, there is a set $X , \ | X | \leqslant K$ , such that 
-
-$$
-B \subset (A - A) + X.
-$$
-
-Proof. Choose $X \subset B$ maximal so that $\{ A + x : x \in X \}$ are disjoint. The union of these sets contains exactly $| A | | X |$ elements, and all of these elements lie in $A + B$ Therefore $| X | \leqslant K$ . Now, if $b \in B$ then $A + b$ intersects $A + x$ for some $x \in X$ 2 because of the maximality of $X ,$ , and so $b \in A - A + x$ . Hence, $B \subset ( A - A ) + X . \square$ 
-
-## 4.3. Petridis’s inequality
-
-In this section and the next we develop inequalities controlling the size of sums of three or more sets. A beautiful way to do this was discovered surprisingly recently by Petridis. His result is stated as Corollary 4.3.1 below. We give an elegant rephrasing of his proof which was given by Tao on the blog of Tim Gowers. 
-
-Let B be a set in some abelian group G. Let K be a real number, and consider the function $\phi$ on subsets of G defined by 
-
-$$
-\phi (A) := | A + B | - K | A |.\tag{4.1}
-$$
-
-Lemma 4.3.1. $\phi$ is submodular, that is to say it satisfies 
-
-$$
-\phi (A \cup A ^ {\prime}) + \phi (A \cap A ^ {\prime}) \leqslant \phi (A) + \phi (A ^ {\prime}).
-$$
-
-Proof. Write $\sigma ( A ) : = A + B$ . Observe that 
-
-$$
-\sigma (A \cup A ^ {\prime}) = \sigma (A) \cup \sigma (A ^ {\prime}),
-$$
-
-and that 
-
-$$
-\sigma (A \cap A ^ {\prime}) \subseteq \sigma (A) \cap \sigma (A ^ {\prime}).
-$$
-
-Therefore 
-
-$$
-\begin{array}{c} | \sigma (A \cup A ^ {\prime}) | = | \sigma (A) \cup \sigma (A ^ {\prime}) | = | \sigma (A) | + | \sigma (A ^ {\prime}) | - | \sigma (A) \cap \sigma (A ^ {\prime}) | \\ \leqslant | \sigma (A) | + | \sigma (A ^ {\prime}) | - | \sigma (A \cap A ^ {\prime}) |, \end{array}
-$$
-
-that is to say |σ| satisfies the submodularity property 
-
-$$
-| \sigma (A \cup A ^ {\prime}) | + | \sigma (A \cap A ^ {\prime}) | \leqslant | \sigma (A) | + | \sigma (A ^ {\prime}) |.
-$$
-
-Since the function |A| satisfies 
-
-$$
-\left| A \cup A ^ {\prime} \right| + \left| A \cap A ^ {\prime} \right| = \left| A \right| + \left| A ^ {\prime} \right|,
-$$
-
-the result follows immediately, since $\phi ( A ) = | \sigma ( A ) | - K | A |$ 
-
-Lemma 4.3.2. Let $\phi$ be any submodular function. Suppose that $A _ { 1 } , \ldots , A _ { n }$ are sets with the following property: $\phi ( A _ { i } ) = 0$ , and $\phi ( Z _ { i } ) \geqslant 0$ for every subset $Z _ { i } \subseteq A _ { i }$ Then $\textstyle \phi \big ( \bigcup _ { i = 1 } ^ { n } A _ { i } \big ) \leqslant 0$ 
-
-Proof. By the assumptions and submodularity, for any i and for any set $S ,$ , we have 
-
-$$
-\phi (A _ {i} \cup S) \leqslant \phi (A _ {i} \cup S) + \phi (A _ {i} \cap S) \leqslant \phi (A _ {i}) + \phi (S) = \phi (S).
-$$
-
-The result then follows immediately by induction on n. 
-
-Proposition 4.3.1 (Petridis). Let A, B be sets in some abelian group. Suppose that $| A + B | = K | A |$ and that $| Z + B | \geqslant K | Z |$ for all $Z \subseteq A$ . Then, for any further set S in the group, $| A + B + S | \leqslant K | A + S |$ 
-
-Proof. Apply Lemma 4.3.2 with the particular function $\phi$ defined in (4.1) above. Take the $A _ { i }$ to be the translates $A + s$ of A by elements of $s .$ It is easy to check that the hypotheses of Lemma 4.3.2 hold. Observe that $\cup _ { i = 1 } ^ { n } A _ { i } = A + S$ , and so the Lemma implies that $\phi ( A + S ) \leqslant 0 .$ or in other words $| A + B + S | \leqslant K | A + S |$ □ 
-
-It is convenient to apply Petridis’ inequality in the following form. 
-
-Corollary 4.3.1. Let A, B be sets in some abelian group. Suppose that $\left| A + \right.$ $B | \leqslant K | A |$ . Let $X \subseteq A$ be a non-empty set for which the ratio $| X + B | / | X |$ is minimal. Then for any further set S we have 
-
-$$
-| S + X + B | \leqslant K | S + X |.
-$$
-
-Proof. Apply Proposition 4.3.1 with A replaced by X. 
-
-## 4.4. The Pl¨unnecke–Ruzsa inequality
-
-The most widely applicable result about higher-order sumsets is the Pl¨unnecke– Ruzsa inequality. 
-
-Theorem 4.4.1 (Pl¨unnecke–Ruzsa). Suppose that A and B are additive sets with $| A + B | \leqslant K | A |$ . Let $k , \ell \geqslant 0$ be integers. Then $| k B - \ell B | \leqslant K ^ { k + \ell } | A |$ 
-
-The original proof was quite long and involved a fair amount of machinery from graph theory. Nowadays, it can be deduced quickly from Petridis’s inequality. 
-
-Lemma 4.4.1. Suppose that A and B are finite additive sets for which $\left| A + B \right| \leqslant$ $K | A |$ . Then there exists $X \subset A$ for which $| X + k B | \leqslant K ^ { k } | X |$ 
-
-Proof. Let X be the subset of A for which the ratio $| X + B | / | X |$ is minimal. By Petridis’s inequality (Corollary 4.3.1) with $S = ( k - 1 ) B$ , we have 
-
-$$
-| X + k B | = | X + (k - 1) B + B | \leqslant K | X + (k - 1) B |.
-$$
-
-The result then follows by induction on k. 
-
-Proof. [Proof of Theorem 4.4.1]. Suppose that A and B are finite additive sets for which $| A + B | \leqslant K | A |$ . By Ruzsa’s Triangle Inequality with $U , V , W$ replaced by $X , - k B , - \ell B$ , respectively, and then Lemma 4.4.1, we have 
-
-$$
-\left| k B - \ell B \right| | X | \leqslant \left| X + k B \right| \cdot \left| X + \ell B \right| \leqslant K ^ {k + \ell} | X | ^ {2}.
-$$
-
-Thus, since $X \subset A , | k B - \ell B | \leqslant K ^ { k + \ell } | X | \leqslant K ^ { k + \ell } | A | .$ 
-
-Let us record a corollary of this and Lemma 4.2.1 concerning the relationship between sums and diferences. 
-
-Corollary 4.4.1. Suppose that A, B are additive sets. Then 
-
-$$
-| A \mp B | \leqslant \frac {| A \pm B | ^ {3}}{| A | | B |}.
-$$
-
-Proof. We handle the case with a minus sign on the left and a plus sign on the right; the other case follows immediately from this by switching $B \ \mathrm { t o } \ - B$ . Set $K : = | A + B | / | A |$ . First apply Theorem 4.4.1 with $k = 2$ and $\ell = 0$ to obtain $| B + B | \leqslant K ^ { 2 } | A |$ . Now, apply Lemma 4.2.1 with $U = B , V = - B$ and $W = - A$ to get $| A - B | | B | \leqslant | B + B | | A + B |$ . Combining these two estimates gives the result. □ 
-
-## CHAPTER 5
-
-## Freiman’s theorem
-
-This chapter contains one of the highlights of the course, which is a fairly complete (at least qualitatively) answer to the question of what sets with small sumset look like. Let us begin with a little context for the question. 
-
-Recall that if A is a set of integers then 
-
-$$
-A + A := \{a _ {1} + a _ {2}: a _ {1}, a _ {2} \in A \}.
-$$
-
-Suppose A has size n. How big is $A + A ?$ Trivially, it has size at most $\textstyle { \frac { 1 } { 2 } } n ( n + 1 )$ , that being the number of pairs $( a _ { 1 } , a _ { 2 } )$ , with $( a _ { 1 } , a _ { 2 } )$ and $( a _ { 2 } , a _ { 1 } )$ counted the same. 
-
-On the other hand, it has size at least $2 n - 1$ . Writing $a _ { 1 } < \cdots < a _ { n }$ for the elements of A, we have 
-
-$$
-a _ {1} + a _ {1} <   a _ {1} + a _ {2} <   \dots <   a _ {1} + a _ {n} <   a _ {2} + a _ {n} <   \dots <   a _ {n} + a _ {n},
-$$
-
-a listing of $2 n - 1$ distinct elements of A. 
-
-Equality can occur in both bounds. For example if $A = \{ 1 , 2 , \dots , 2 ^ { n - 1 } \}$ then all the sums $a _ { 1 } + a _ { 2 }$ are distinct (except for the trivial relations $a _ { 1 } + a _ { 2 } = a _ { 2 } + a _ { 1 } )$ . If $A = \{ 1 , \ldots , n \}$ then $A + A = \{ 2 , \ldots , 2 n \}$ , a set of size $2 n - 1$ 
-
-We say that A has doubling constant at most K if 
-
-$$
-\frac {| A + A |}{| A |} \leqslant K.
-$$
-
-Typically, we will have in mind that K is fixed (say $K = 1 0 )$ and $n = | A |$ is very large. 
-
-Here is the basic question to be considered in this chapter. 
-
-Question 5.0.1. What is the structure of A if $| A + A | \leqslant K | A |$ , for some small $K ?$ 
-
-## 5.1. Generalised progressions and Freiman’s theorem
-
-Before stating the main result, let us give some progressively more complicated motivating examples. 
-
-Example 5.1.1 (Progression). Let A be any arithmetic progression of length n. Then $| A + A | = 2 n - 1$ 
-
-Example 5.1.2 (Subsets of progressions). Let P be a progression of length $C n$ and let $A \subset P$ be an arbitrary set of size n. Then $| A + A | \leqslant 2 C n$ 
-
-Example 5.1.3 (2-dimensional progression). Suppose that $L _ { 1 } L _ { 2 } = n$ , and consider a set A of the form 
-
-$$
-A := \{x _ {0} + \ell_ {1} x _ {1} + \ell_ {2} x _ {2}: 0 \leqslant \ell_ {1} <   L _ {1}, 0 \leqslant \ell_ {2} <   L _ {2} \}.
-$$
-
-If the $x _ { i }$ are suitably widely spaced, the elements described here are all distinct and $| A | = n$ . In this case we say that A is proper. We have 
-
-$$
-A + A = \left\{2 x _ {0} + \ell_ {1} ^ {\prime} x _ {1} + \ell_ {2} ^ {\prime} x _ {2}: 0 \leqslant \ell_ {1} ^ {\prime} <   2 L _ {1} - 1, 0 \leqslant \ell_ {2} ^ {\prime} <   2 L _ {2} - 1 \right\},
-$$
-
-and so certainly 
-
-$$
-| A + A | \leqslant 4 | A |.
-$$
-
-Example 5.1.4 (d-dimensional progression). The same as above, but with d parameters $L _ { 1 } , \dots , L _ { d } \colon$ thus 
-
-$$
-A = \{x _ {0} + l _ {1} x _ {1} + \dots + l _ {d} x _ {d}: 0 \leqslant l _ {i} <   L _ {i} \}.\tag{5.1}
-$$
-
-Now, if A is proper, we have $| A + A | \leqslant 2 ^ { d } | A |$ 
-
-Example 5.1.5 (Subsets of multidimensional progressions). Let P be a proper d-dimensional progression of size $C n$ . Let $A \subset P$ be an arbitrary set of size n. Then 
-
-$$
-| A + A | \leqslant | P + P | \leqslant 2 ^ {d} | P | = 2 ^ {d} C n.
-$$
-
-The final example gives a somewhat large class of sets with doubling constant at most K (pick any parameters $d , C$ with $2 ^ { d } C \leqslant K )$ 
-
-Freiman’s theorem is the result that the above examples are the only ones. 
-
-Theorem 5.1.1 (Freiman). Suppose that $A \subset \mathbf { Z }$ is a finite set with $| A + A | \leqslant$ $K | A |$ . Then A is contained in a generalised progression P of dimension $\ll _ { K }$ 1 and size $\ll _ { K } | A |$ 
-
-The size of a generalised progression as in (5.1) is defined to be $L _ { 1 } \cdots L _ { d }$ . This is at least the cardinality of the progression, but is strictly bigger than it if the progression fails to be proper. 
-
-Freiman’s theorem states that A is contained in a proper progression of dimension at most $d ( K )$ and size at most $C ( K ) | A |$ , where $d ( ) , C ( )$ are functions of K only. In this course we will not be concerned with bounds, but the argument we give leads to a bound for $d ( K )$ that is exponential in K, and a bound for $C ( K )$ that is doubly exponential in K. This is quite far from the truth; in fact, it does not require a vast amount of further efort to remove an exponential from both of these bounds, but we will not do so here. 
-
-Many other refinements are possible, but again we will not cover them here. For example, one can insist that $P$ be proper if desired. 
-
-## 5.2. Freiman homomorphisms
-
-In his remarkably insightful 1966 book [5], Freiman made an attempt to treat additive number theorey by analogy with the way Klein treated geometry: as well as sets $A , B , \cdots$ of integers, one should study maps between them and, most particularly, properties invariant under natural types of map. This was doubtless regarded as somewhat eccentric at the time, but the notion of Freiman homomorphism is now quite important in additive combinatorics. 
-
-Definition 5.2.1. Suppose that $s \geqslant 2$ is an integer. Suppose that A, B are additive sets. Then we say that a map $\phi : A  B$ is a Freiman s-homomorphism if we have 
-
-$$
-\phi (a _ {1}) + \dots + \phi (a _ {s}) = \phi (a _ {1} ^ {\prime}) + \dots + \phi (a _ {s} ^ {\prime})
-$$
-
-whenever 
-
-$$
-a _ {1} + \dots + a _ {s} = a _ {1} ^ {\prime} + \dots + a _ {s} ^ {\prime}.
-$$
-
-It is obvious that any group homomorphism restricts to a Freiman homomorphism (of arbitrary order) on any subset. However, the notion is much more general. For example, any map whatsoever from $A = \{ 1 , 1 0 , 1 0 0 , 1 0 0 0 \}$ to another additive set is a Freiman 2-homomorphism, simply because A has no nontrivial relations of the form $a _ { 1 } + a _ { 2 } = a _ { 1 } ^ { \prime } + a _ { 2 } ^ { \prime }$ 
-
-The map $\phi$ is said to be a Freiman s-isomorphism if it has an inverse $\phi ^ { - 1 }$ which is also a Freiman s-homomorphism. We caution that, contrary to what is often expected in more algebraic situations, a one-to-one Freiman homomorphism need not be a Freiman isomorphism. For example, the obvious map 
-
-$$
-\phi : \{0, 1 \} ^ {n} \to (\mathbf {Z} / 2 \mathbf {Z}) ^ {n}
-$$
-
-is a Freiman homomorphism of all orders (it is induced from the natural group homomorphism $\mathbf { Z } ^ { n } \to ( \mathbf { Z } / 2 \mathbf { Z } ) ^ { n } )$ . However, it is not a Freiman 2-isomorphism as $( \mathbf { Z } / 2 \mathbf { Z } ) ^ { n }$ contains a great many more additive relations than $\{ 0 , 1 \} ^ { n }$ 
-
-The following lemma records some basic facts about Freiman isomorphisms. 
-
-Lemma 5.2.1. Suppose that $A , B , C$ are additive sets. Let $s \geqslant 2$ be an integer. Then we have the following. 
-
-(i) Suppose that $\phi : A  B$ and $\psi : B  C$ are Freiman s-homomorphisms. Then so is the composition $\psi \circ \phi$ 
-
-(ii) Suppose that $\phi : A  B$ is a Freiman s-homomorphism. Then it is also a Freiman $s ^ { \prime } .$ homomorphism for every $s ^ { \prime }$ satisfying $2 \leqslant s ^ { \prime } \leqslant s$ 
-
-(iii) Suppose that $\phi : A  B$ is a Freiman s-homomorphism and let $k , l \geqslant 0$ be integers. Then $\phi$ induces a Freiman s<sup>0</sup>-homomorphism ${ \tilde { \phi } } : k A - l A $ $k B - l B ,$ for any integer $s ^ { \prime } \leqslant s / ( k + l )$ 
-
-(iv) The above three statements also hold with “homo” replaced by $^ { \circ } i s o ^ { \prime \prime }$ throughout. 
-
-(v) Suppose that P is a generalised progression and that $\phi : { \cal P }  B$ is a Freiman 2-homomorphism. Then $\phi ( P )$ is a generalised progression of the same dimension. If φ is a Freiman 2-isomorphism, and if P is proper, then so is $\phi ( P )$ 
-
-(vi) Let $\pi _ { m } : \mathbf { Z } \to \mathbf { Z } / m \mathbf { Z }$ be the natural map. Then $\pi _ { m }$ is a Freiman sisomorphism when restricted to $\begin{array} { r } { ( t , t + \frac { m } { s } ] \cap { \bf Z } , } \end{array}$ , for any $t \in \mathbf { R }$ 
-
-Proof. The first four parts of this are very straightforward once one has understood the definitions, and we will not $_ \mathrm { g o }$ over them carefully in lectures. Perhaps (iii) requires some further comment: one should define $\tilde { \phi } : k A - l A  k B - l B$ by 
-
-$$
-\tilde {\phi} (a _ {1} + \dots + a _ {k} - a _ {1} ^ {\prime} - \dots - a _ {l} ^ {\prime}) = \phi (a _ {1}) + \dots + \phi (a _ {k}) - \phi (a _ {1} ^ {\prime}) - \dots - \phi (a _ {l} ^ {\prime}).
-$$
-
-One must then check that this is well-defined and is a Freiman homomorphism of the order claimed. 
-
-To prove (v), let $\phi : { \cal P }  \phi ( { \cal P } )$ be a Freiman 2-homomorphism. Suppose that $P = \{ x _ { 0 } + l _ { 1 } x _ { 1 } + \cdots + l _ { d } x _ { d } : 0 \leqslant l _ { i } < L _ { i } \}$ . Set $y _ { 0 } = \phi ( x _ { 0 } )$ , and define $y _ { 1 } , \ldots , y _ { d }$ by $y _ { 0 } + y _ { i } = \phi ( x _ { 0 } + x _ { i } )$ for $i = 1 , \ldots , d ;$ we claim that $\phi ( x _ { 0 } + l _ { 1 } x _ { 1 } + \cdot \cdot \cdot + l _ { d } x _ { d } ) =$ $y _ { 0 } + l _ { 1 } y _ { 1 } + \cdot \cdot \cdot + l _ { d } y _ { d }$ for all $l _ { 1 } , \ldots , l _ { d }$ satisfying $0 \leqslant l _ { i } < L _ { i }$ . This may be established by induction on $l _ { 1 } + \cdots + l _ { d } .$ noting that we have defined the $y _ { i }$ in such a way that it holds whenever $l _ { 1 } + \cdots + l _ { d } = 0$ or 1. To obtain the statement for $( l _ { 1 } , \ldots , l _ { d } ) =$ $( 1 , 1 , 0 , \ldots , 0 )$ , for example, one may use the relation 
-
-$$
-x _ {0} + (x _ {0} + x _ {1} + x _ {2}) = (x _ {0} + x _ {1}) + (x _ {0} + x _ {2})
-$$
-
-to conclude that 
-
-$$
-\phi (x _ {0}) + \phi (x _ {0} + x _ {1} + x _ {2}) = \phi (x _ {0} + x _ {1}) + \phi (x _ {0} + x _ {2})
-$$
-
-and hence that $\phi ( x _ { 0 } + x _ { 1 } + x _ { 2 } ) = y _ { 0 } + y _ { 1 } + y _ { 2 }$ , as required. 
-
-Finally, we comment on (vi). Since $\pi _ { m }$ is a group homomorphism, it is also a Freiman homomorphism. Its restriction to any interval of length at most m is a bijection. Suppose that $x _ { 1 } , \dotsc , x _ { s } , x _ { 1 } ^ { \prime } , \dotsc , x _ { s } ^ { \prime }$ satisfy $\begin{array} { r } { t < x _ { i } , x _ { i } ^ { \prime } \leqslant t + \frac { m } { s } } \end{array}$ and that $\pi _ { m } ( x _ { 1 } ) + \cdot \cdot \cdot + \pi _ { m } ( x _ { s } ) = \pi _ { m } ( x _ { 1 } ^ { \prime } ) + \cdot \cdot \cdot + \pi _ { m } ( x _ { s } ^ { \prime } )$ , that is to say $x _ { 1 } + \cdot \cdot \cdot + x _ { s } =$ $x _ { 1 } ^ { \prime } + \cdot \cdot \cdot + x _ { s } ^ { \prime } ( \mathrm { m o d } m )$ . Then, since $| x _ { 1 } + \cdot \cdot \cdot + x _ { s } - x _ { 1 } ^ { \prime } - \cdot \cdot \cdot - x _ { s } ^ { \prime } | < m$ , we must have $x _ { 1 } + \cdot \cdot \cdot + x _ { s } = x _ { 1 } ^ { \prime } + \cdot \cdot \cdot + x _ { s } ^ { \prime }$ □ 
-
-## 5.3. Ruzsa’s model lemma
-
-In this section we prove a remarkable lemma of Imre Ruzsa. It asserts that a subset of Z with small doubling has a large piece which is Freiman isomorphic to a dense subset of a cyclic group $\mathbf { Z } / m \mathbf { Z }$ . In that setting the tools of harmonic analysis become much more powerful, unlike for arbitrary subsets of Z (even those of small doubling) which could well be highly “spread out”. Here is Ruzsa’s lemma. 
-
-Proposition 5.3.1 (Ruzsa model lemma). Suppose that $A \subset \mathbf { Z }$ is a finite set and that $s \geqslant 2$ is an integer. Let $m \geqslant | s A - s A |$ be an integer. Then there is a set $A ^ { \prime } \subset A$ with $| { \cal { A } } ^ { \prime } | \geqslant | { \cal { A } } | / s$ which is Freiman s-isomorphic to a subset of $\mathbf { Z } / m \mathbf { Z }$ 
-
-Proof. By translating A if necessary, we may assume that A consists of positive integers. Let $q$ be a very large prime number. For $\lambda \in ( \mathbf { Z } / q \mathbf { Z } ) ^ { \times }$ , consider the composition $\phi _ { \lambda } : = \gamma \circ \beta \circ \alpha _ { \lambda }$ of maps 
-
-$$
-\mathbf {Z} \xrightarrow {\alpha_ {\lambda}} \mathbf {Z} / q \mathbf {Z} \xrightarrow {\beta} \{1, \ldots , q \} \xrightarrow {\gamma} \mathbf {Z} / m \mathbf {Z}
-$$
-
-where 
-
-$\alpha _ { \lambda }$ is reduction mod q followed by multiplication by $\lambda ;$ 
-
-• $\beta$ inverts the reduction mod q map; 
-
-• $\gamma$ is the reduction mod m map. 
-
-Now $\alpha _ { \lambda }$ and $\gamma$ are Freiman homomorphisms of all orders. The map $\beta$ is not, but by Proposition (5.2.1) (vi), it is a Freiman s-homomorphism on the reduction mod q of any interval $\begin{array} { r } { I _ { j } : = \{ n \in \mathbf { Z } : \frac { j q } { s } < n \leqslant \frac { ( j + 1 ) q } { s } \} } \end{array}$ . Since s such intervals (with $j = 0 , 1 , \ldots , q - 1 )$ cover $\{ 1 , \ldots , q \}$ , it follows by the pigeonhole principle that for every λ there is a $j = j ( \lambda )$ such that the set 
-
-$$
-A _ {\lambda} := \{a \in A: \alpha_ {\lambda} (a) \in I _ {j (\lambda)} (\mathrm{mod} q) \}
-$$
-
-has size at least $| { \cal A } | / s$ . By construction, $\phi _ { \lambda }$ is a Freiman s-homomorphism when restricted to $A _ { \lambda }$ . 
-
-Everything we have said so far holds for arbitrary λ. To complete the proof, we now show that there exists some λ such that $\phi _ { \lambda }$ is invertible, and its inverse is a Freiman s-homomorphism. If this fails for some $\lambda$ then this means that there is 
-
-$$
-d = a _ {1} + \dots + a _ {s} - a _ {1} ^ {\prime} - \dots - a _ {s} ^ {\prime} \neq 0
-$$
-
-such that 
-
-$$
-\phi_ {\lambda} (a _ {1}) + \dots + \phi_ {\lambda} (a _ {s}) = \phi_ {\lambda} (a _ {1} ^ {\prime}) + \dots + \phi_ {\lambda} (a _ {s} ^ {\prime}).\tag{5.2}
-$$
-
-Here, d and the $a _ { i } , a _ { i } ^ { \prime } \in A _ { \lambda }$ depend on $\lambda$ . 
-
-Write 
-
-$$
-x := \sum_ {i = 1} ^ {s} \beta (\alpha_ {\lambda} (a _ {i})) - \sum_ {i = 1} ^ {s} \beta (\alpha_ {\lambda} (a _ {i} ^ {\prime})).
-$$
-
-Then if (5.2) holds we have $\gamma ( \boldsymbol { x } ) = 0$ , that is to say $x \equiv 0 ( { \bmod { m } } )$ 
-
-Without loss of generality (switching the $a _ { i }$ and the $a _ { i } ^ { \prime }$ if necessary) we may assume that $x \geqslant 0$ . Also, since the $a _ { i } , a _ { i } ^ { \prime }$ lie in $A _ { \lambda }$ , it follows that $x \in s ( I _ { j ( \lambda ) } -$ $I _ { j ( \lambda ) } ) \subset ( - q , q )$ . Therefore $0 \leqslant x < q$ 
-
-Now by construction, x and λd are congruent modulo $q .$ It therefore follows that 
-
-$$
-x = \psi (\lambda d),
-$$
-
-where $\psi ( n )$ is the unique integer in $\{ 0 , 1 , \ldots , q - 1 \}$ congruent to n modulo $q .$ 
-
-From now on we indicate the dependence of d on λ explicitly. To summarise, we have shown the following. If $\phi _ { \lambda } | _ { A _ { \lambda } }$ is not a Freiman s-isomorphism, then there must be some $d _ { \lambda } \in ( s A - s A ) \setminus \{ 0 \}$ such that 
-
-$$
-\psi (\lambda d _ {\lambda}) \equiv 0 (\mathrm{mod} m).
-$$
-
-To get a contradiction, Let us fix $d \in ( s A - s A ) \setminus \{ 0 \}$ and ask about values of λ for which $d = d _ { \lambda }$ : lacking imagination, we call them “bad for $d ^ { \ast }$ . If the prime q is chosen big enough then it will not divide any element of $( s A - s A ) \setminus \{ 0 \}$ , so d is coprime to $q .$ 
-
-As λ ranges over $( \mathbf { Z } / q \mathbf { Z } ) ^ { \times }$ , λd covers $( \mathbf { Z } / q \mathbf { Z } ) ^ { \times }$ uniformly, and hence the set $\{ \psi ( \lambda d ) : \lambda \in ( { \bf Z } / q { \bf Z } ) ^ { \times } \}$ coincides with $\{ 1 , \ldots , q - 1 \}$ . The number of elements $y$ in this interval for which $y \equiv 0 ( { \bmod { m } } )$ is at most $( q - 1 ) / m$ . Since each d lies in the set $( s A - s A ) \setminus \{ 0 \}$ , it follows that the number of λ which are bad for some d is at most 
-
-$$
-\frac {q - 1}{m} \big (| s A - s A | - 1 \big) <   q - 1,
-$$
-
-the inequality being a consequence of the assumption that $m \geqslant | s A - s A |$ 
-
-This is a contradiction, since every λ is bad for some d (namely $d _ { \lambda } )$ . 
-
-In our proof of Freiman’s theorem, we will use the following corollary. 
-
-Corollary 5.3.1. Suppose that $A \subset \mathbf { Z }$ is a finite set with doubling constant K. Then there is a prime $q \leqslant 2 K ^ { 1 6 } | A |$ and a subset $A ^ { \prime } \subset A$ with $| { \cal { A } } ^ { \prime } | \geqslant | { \cal { A } } | / 8$ such that A<sup>0</sup> is Freiman 8-isomorphic to a subset of $\mathbf { Z } / q \mathbf { Z }$ 
-
-Proof. By the Pl¨unnecke–Ruzsa inequality, Theorem 4.4.1, we have $| 8 A - 8 A | \leqslant$ $K ^ { 1 6 } | A |$ . Now by Bertrand’s postulate there is a prime q satisfying $| 8 A - 8 A | \leqslant$ $q \leqslant 2 | 8 A - 8 A |$ . This prime of course satisfies the bound $q \leqslant 2 K ^ { 1 6 } | A |$ , and by the 
-
-Ruzsa model lemma there is a subset $A ^ { \prime } \subset A$ with $| { \cal { A } } ^ { \prime } | \geqslant | { \cal { A } } | / 8$ which is Freiman 8-isomorphic to a subset of $\mathbf { Z } / q \mathbf { Z }$ □ 
-
-## 5.4. Bogolyubov’s lemma
-
-Ruzsa’s model lemma (or, more accurately, Corollary 5.3.1) allows us to switch attention from a set $A \subset \mathbf { Z }$ with small doubling to a dense subset of a cyclic group $\mathbf { Z } / q \mathbf { Z }$ . We now prove a lemma about the structure of such sets. 
-
-Definition 5.4.1. Suppose that $R = \{ r _ { 1 } , \ldots , r _ { k } \}$ is a set of nonzero elements of $\mathbf { Z } / q \mathbf { Z }$ and that $\varepsilon > 0$ is a parameter. Then we define the Bohr set $B ( R , \varepsilon )$ with frequency set R and width ε by 
-
-$$
-B (R, \varepsilon) := \{x \in \mathbf {Z} / q \mathbf {Z}: \| \frac {r _ {i} x}{q} \| _ {\mathbf {T}} \leqslant \varepsilon \text {   for   } i = 1, 2, \dots , k \}.
-$$
-
-The parameter k is said to be the dimension of the Bohr set. 
-
-Proposition 5.4.1 (Bogolyubov’s lemma). Let $S \subset \mathbf { Z } / q \mathbf { Z }$ be a set of size $\sigma q .$ Then $2 S - 2 S$ contains a Bohr set of dimension at most $4 / \sigma ^ { 2 }$ and width at least $\frac { 1 } { 1 0 }$ 
-
-In the proof, we will use the discrete Fourier transform, specifically the Fourier transform on $\mathbf { Z } / q \mathbf { Z } .$ . (The Fourier transform can in fact be developed on any locally compact abelian group, and in this way the Fourier transform on Z which featured in Chapter 3, and the discrete Fourier transform on $\mathbf { Z } / q \mathbf { Z }$ , may be considered as special cases of the same general concept.) Here are the relevant definitions and basic properties. 
-
-Definition 5.4.2. Let $f : \mathbf { Z } / q \mathbf { Z } \to \mathbf { C }$ be a function. Then for $r \in \mathbf { Z } / q \mathbf { Z }$ we define the (discrete) Fourier transform 
-
-$$
-\hat {f} (r) := \frac {1}{q} \sum_ {x \in \mathbf {Z} / q \mathbf {Z}} f (x) e (- r x / q).
-$$
-
-Proposition 5.4.2. In the following proposition, $f , g : { \bf Z } / q { \bf Z } \to { \bf C }$ are two functions. 
-
-(i) We have the inversion formula 
-
-$$
-f (x) = \sum_ {r \in \mathbf {Z} / q \mathbf {Z}} \hat {f} (r) e (r x / q).
-$$
-
-(ii) We have the Parseval identity 
-
-$$
-\frac {1}{q} \sum_ {x \in \mathbf {Z} / q \mathbf {Z}} f (x) \overline {{g (x)}} = \sum_ {r \in \mathbf {Z} / q \mathbf {Z}} \hat {f} (r) \overline {{\hat {g} (r)}}.
-$$
-
-(iii) If the convolution $f * g : \mathbf { Z } / q \mathbf { Z } \to \mathbf { C }$ is defined by 
-
-$$
-(f * g) (x) := \frac {1}{q} \sum_ {y \in \mathbf {Z} / q \mathbf {Z}} f (y) g (x - y)
-$$
-
-$$
-t h e n \widehat {f * g} (r) = \hat {f} (r) \hat {g} (r).
-$$
-
-Proof. Once again, all of this is an easy check using the definitions, as well as the fact that 
-
-$$
-\sum_ {r} e (r x / q) = \left\{ \begin{array}{l l} q & x = 0 \\ 0 & x \in (\mathbf {Z} / q \mathbf {Z}) \setminus \{0 \}. \end{array} \right.
-$$
-
-Remark. Taking $f = g$ in the Parseval identity gives 
-
-$$
-\frac {1}{q} \sum_ {x \in \mathbf {Z} / q \mathbf {Z}} | f (x) | ^ {2} = \sum_ {r \in \mathbf {Z} / q \mathbf {Z}} | \hat {f} (r) | ^ {2}.
-$$
-
-It is worth pausing to consider what convolution “does”. If $f$ and g are functions supported on sets $A , B \subseteq \mathbf { Z } / q \mathbf { Z }$ respectively (for instance, we could have $f = 1 _ { A }$ and $g = 1 _ { B } )$ then $f * g$ is supported on $A + B$ . Moreover, $f * g$ has a nice Fourier transform, which can be very convenient for further analysis. Note carefully that $1 _ { A } * 1 _ { B }$ is not the same thing as ${ 1 } _ { A + B } ;$ the latter function puts equal weight on every element of $A + B$ , whereas the former weights elements x according to the number of representations as $a + b$ with $a \in A , b \in B$ 
-
-Now we turn to the proof of Bogolyubov’s lemma, Lemma 5.4.1. 
-
-Proof. [Proof of Lemma 5.4.1] Consider the function $f : = 1 _ { S } * 1 _ { S } * 1 _ { - S } * 1 _ { - S }$ . This is supported on $2 S - 2 S$ , that is to say if $f ( x ) > 0$ then $x \in 2 S - 2 S$ . Note also that $\hat { 1 } _ { - S } ( r ) = \overline { { \hat { 1 } _ { S } ( r ) } }$ , and so $\hat { f } ( r ) = | \hat { 1 } _ { S } ( r ) | ^ { 4 }$ . By the Fourier inversion formula and the fact that $f$ is real, we have 
-
-$$
-f (x) = \sum_ {r} | \hat {1} _ {S} (r) | ^ {4} e (r x / q) = \sum_ {r} | \hat {1} _ {S} (r) | ^ {4} \cos (2 \pi r x / q).\tag{5.3}
-$$
-
-Let R be the set of all $r \neq 0$ for which $| \hat { 1 } _ { S } ( r ) | \geqslant \sigma ^ { 3 / 2 } / 2$ . By Parseval’s identity we have 
-
-$$
-| R | \frac {\sigma^ {3}}{4} \leqslant \sum_ {r \in R} | \hat {1} _ {S} (r) | ^ {2} \leqslant \sum_ {r} | \hat {1} _ {S} (r) | ^ {2} = \frac {1}{q} \sum_ {x \in \mathbf {Z} / q \mathbf {Z}} 1 _ {S} (x) ^ {2} = \sigma ,
-$$
-
-and so 
-
-$$
-| R | \leqslant 4 / \sigma^ {2}.\tag{5.4}
-$$
-
-We claim that $B ( R , { \frac { 1 } { 1 0 } } ) \subset 2 S - 2 S$ , to which end it sufices to show that $f ( x ) > 0$ for $x \in B ( R , \textstyle { \frac { 1 } { 1 0 } } )$ . To do this, we will use the formula (5.3). We split the sum over r into three pieces: the term $r = 0$ , the terms with $r \in R .$ and all other terms. 
-
-Clearly 
-
-$$
-| \hat {1} _ {S} (0) | ^ {4} = \sigma^ {4}.
-$$
-
-If $r \in R$ then $\cos ( 2 \pi r x / q ) \geqslant 0$ , so the sum of these terms is nonnegative. Finally, 
-
-$$
-\sum_ {r \notin R \cup \{0 \}} | \hat {1} _ {S} (r) | ^ {4} \cos (2 \pi r x / q) \geqslant - \sum_ {r \notin R \cup \{0 \}} | \hat {1} _ {S} (r) | ^ {4} \geqslant - \frac {\sigma^ {3}}{4} \sum_ {r} | \hat {1} _ {S} (r) | ^ {2} = - \frac {\sigma^ {4}}{4},
-$$
-
-the last step being a further application of Parseval’s identity. Combining all of this we obtain 
-
-$$
-f (x) \geqslant \sigma^ {4} + 0 - \frac {\sigma^ {4}}{4} > 0,
-$$
-
-as required. 
-
-## 5.5. Generalised progressions in Bohr sets
-
-It is by no means obvious what has been gained in proving Proposition 5.4.1. The answer is that a Bohr set $B ( R , \varepsilon )$ has a great deal of structure, in particular containing a large generalised progression. The key proposition is as follows. 
-
-Proposition 5.5.1. Let $R \subset \mathbf { Z } / q \mathbf { Z }$ be a set of size $k ,$ not containing zero. Let $\begin{array} { r } { 0 < \varepsilon < \frac { 1 } { 2 } } \end{array}$ . Then the Bohr set $B ( R , \varepsilon )$ contains a proper generalised progression of dimension k and cardinality at least $( \varepsilon / k ) ^ { k } q$ 
-
-In the proof, we will rely on a result from the geometry of numbers, Minkowski’s second theorem. This is stated as Proposition 5.5.2 below. The proof is not examinable, but it is given in Appendix B. To even state the theorem, we need some terminology. 
-
-A lattice $\Lambda \subset \mathbf { R } ^ { d }$ is a discrete and cocompact subgroup of $\mathbf { R } ^ { d }$ . It is a theorem that every lattice is of the form $\mathbf { Z } v _ { 1 } \oplus \mathbf { Z } v _ { 2 } \oplus \cdot \cdot \cdot \oplus \mathbf { Z } v _ { d }$ for linearly independent $v _ { 1 } , \ldots , v _ { d }$ , which are then called an integral basis for Λ. The set $\mathcal { F } : = \{ x _ { 1 } v _ { 1 } + \cdot \cdot \cdot +$ $x _ { d } v _ { d } : 0 \leqslant x _ { i } < 1 \}$ is then called a fundamental region for $\Lambda ;$ note that translates of it by Λ precisely cover $\mathbf { R } ^ { d }$ . Note that the $v _ { i }$ (and hence $\mathcal { F } )$ are not uniquely determined by Λ, but it turns out that the volume of $\mathcal { F }$ is. The determinant det(Λ) is the volume of a fundamental region of Λ. 
-
-The statement of Minkowski’s Second Theorem also involves a centrally symmetric convex body $K \subset \mathbf { R } ^ { d }$ . This means a set which is convex (meaning that if $x , y \in K$ then $\lambda x + ( 1 - \lambda ) y \in K$ for all $\lambda \in [ 0 , 1 ] )$ ) and centrally symmetric, which means that if $x \in K$ then $- x \in K$ 
-
-The geometry of numbers is, to an extent, the study of how lattices Λ interact with convex bodies K. 
-
-Suppose we have a lattice Λ and a convex body K. We define the successive minima $\lambda _ { 1 } , \ldots , \lambda _ { d }$ of K with respect to Λ as follows: $\lambda _ { j }$ is the infimum of those λ for which the dilate λK contains $j$ linearly independent elements of Λ. If K is compact then $\lambda _ { j } K$ itself contains $j$ linearly independent elements of $\Lambda .$ (For each $\varepsilon > 0 , ( \lambda _ { j } + \varepsilon ) K$ contains such elements. Since these all lie in $( \lambda _ { j } + 1 ) K$ , there are only finitely many choices, and in particular for some sequence of ε tending to zero we may make the same choice. Since K is compact, these elements all lie in $\lambda _ { j } K . )$ 
-
-Proposition 5.5.2 (Minkowski’s Second Theorem). We have $\lambda _ { 1 } \cdot \cdot \cdot \lambda _ { d } \mathrm { v o l } ( K ) \leqslant$ $2 ^ { d } \operatorname* { d e t } ( \Lambda )$ 
-
-We now turn to the proof of Proposition 5.5.1. 
-
-Proof. [Proof of Proposition 5.5.1.] Let $R = \{ r _ { 1 } , \ldots , r _ { k } \}$ and consider the lattice 
-
-$$
-\Lambda = q \mathbf {Z} ^ {k} + (r _ {1}, \dots , r _ {k}) \mathbf {Z}.
-$$
-
-Since $q$ is prime, this may be written as a direct sum 
-
-$$
-q \mathbf {Z} ^ {k} \oplus \{0, 1, \dots , q - 1 \} \cdot (r _ {1}, \dots , r _ {k}).
-$$
-
-Thus Λ has index q as a subgroup of $q \mathbf { Z } ^ { k }$ , and from this and the fact that det $( q \mathbf { Z } ^ { k } ) =$ $q ^ { k }$ it follows that det $\cdot ( \Lambda ) = q ^ { k - 1 }$ (see Lemma B.0.1). 
-
-Take $K \subset \mathbf { R } ^ { k }$ to be the box $\{ \mathbf { x } : \| \mathbf { x } \| _ { \infty } \leqslant \varepsilon q \}$ . Let $\lambda _ { 1 } , \ldots , \lambda _ { k }$ be the successive minima of K with respect to $\Lambda .$ . Since K is closed, $\lambda _ { j } K$ contains $j$ linearly independent elements of $\Lambda .$ . We may, by choosing each element in turn, select a basis $\mathbf { b } _ { 1 } , \ldots , \mathbf { b } _ { k }$ for $\mathbf { R } ^ { k }$ with $\mathbf { b } _ { j } \in \Lambda \cap \lambda _ { j } K$ for all $j .$ . (Such a basis is called a directional basis; we should caution that, whilst the $\mathbf { b } _ { j }$ are linearly independent elements of $\Lambda _ { ; }$ they need not form an integral basis for $\Lambda . )$ Thus $\mathbf { b } _ { j } \in \Lambda$ and $\|  { \mathbf { b } } _ { j } \| _ { \infty } \leqslant \lambda _ { j } \varepsilon q$ Set $L _ { j } : = \lceil 1 / \lambda _ { j } k \rceil$ for $j = 1 , \dots , k$ . Then if $0 \leqslant l _ { j } < L _ { j }$ we have $\| l _ { j } \mathbf { b } _ { j } \| _ { \infty } \leqslant \varepsilon q / k$ and therefore 
-
-$$
-\left\| l _ {1} \mathbf {b} _ {1} + \dots + l _ {k} \mathbf {b} _ {k} \right\| _ {\infty} \leqslant \varepsilon q.
-$$
-
-Now each $\mathbf { b } _ { i }$ lies in $\Lambda$ and hence is congruent to $x _ { i } ( r _ { 1 } , \ldots , r _ { k } )$ (mod $q )$ for some $x _ { i }$ $0 \leqslant x _ { i } < q .$ . Abusing notation slightly, we think of these $x _ { i }$ as lying in $\mathbf { Z } / q \mathbf { Z }$ . The preceding observation implies that 
-
-$$
-\| \frac {(l _ {1} x _ {1} + \cdots + l _ {k} x _ {k}) r _ {i}}{q} \| _ {\mathbf {T}} \leqslant \varepsilon
-$$
-
-for each $i ,$ or in other words the generalised progression $\left\{ l _ { 1 } x _ { 1 } + \cdot \cdot \cdot + l _ { k } x _ { k } : 0 \leqslant l _ { i } < \right.$ $L _ { i } \}$ is contained in the Bohr set $B ( R , \varepsilon )$ 
-
-It remains to prove a lower bound on the size of this progression and also to establish its properness. The lower bound on the size is easy: it is at least $k ^ { - k } ( \lambda _ { 1 } \cdot \cdot \cdot \lambda _ { k } ) ^ { - 1 }$ which, by Minkowski’s Second Theorem and the fact that det $( \Lambda ) =$ $q ^ { k - 1 }$ and $\mathrm { v o l } ( K ) = ( 2 \varepsilon q ) ^ { k }$ , is at least $( \varepsilon / k ) ^ { k } q$ 
-
-To establish the properness, suppose that 
-
-$$
-l _ {1} x _ {1} + \dots + l _ {k} x _ {k} = l _ {1} ^ {\prime} x _ {1} + \dots + l _ {k} ^ {\prime} x _ {k} (\mathrm{mod} q),
-$$
-
-where $\left| l _ { i } \right| , \left| l _ { i } ^ { \prime } \right| < \left\lceil 1 / k \lambda _ { i } \right\rceil$ . Then the vector 
-
-$$
-\mathbf {b} = \left(l _ {1} - l _ {1} ^ {\prime}\right) \mathbf {b} _ {1} + \dots + \left(l _ {k} - l _ {k} ^ {\prime}\right) \mathbf {b} _ {k}
-$$
-
-lies in $q \mathbf { Z } ^ { k }$ and furthermore 
-
-$$
-\| \mathbf {b} \| _ {\infty} \leqslant \sum_ {i = 1} ^ {k} 2 \left\lfloor \frac {1}{\lambda_ {i} k} \right\rfloor \| \mathbf {b} _ {i} \| _ {\infty} \leqslant 2 \varepsilon q.
-$$
-
-Since we are assuming that $\varepsilon < 1 / 2$ it follows that $\mathbf b = 0$ and hence, due to the linear independence of the $\mathbf { b } _ { i } ,$ that ${ { l } _ { i } } \mathrm { ~ = ~ } { { l } _ { i } ^ { \prime } }$ for all i. Therefore the progression is indeed proper. □ 
-
-## 5.6. Freiman’s theorem: conclusion of the proof
-
-In this section, we conclude the proof of Freiman’s theorem. 
-
-Proof. [Proof of Theorem 5.1.1] By Corollary 5.3.1, the corollary of Ruzsa’s model lemma, there is a prime $q \leqslant 2 K ^ { 1 6 } | A |$ and a subset $A ^ { \prime } \subset A$ with $| { \cal { A } } ^ { \prime } | \geqslant | { \cal { A } } | / 8$ such that $A ^ { \prime }$ is Freiman 8-isomorphic to a subset $S \subset \mathbf { Z } / q \mathbf { Z }$ . If $\sigma : = | S | / q$ then we have $\sigma \geqslant \frac { 1 } { 1 6 } K ^ { - 1 6 }$ 
-
-By Bogolyubov’s lemma, Proposition 5.4.1, 2S − 2S contains a Bohr set of dimension at most $2 ^ { 1 0 } K ^ { 3 2 }$ and width at least $\textstyle { \frac { 1 } { 1 0 } }$ 
-
-By Proposition 5.5.1, that Bohr set (and hence 2S − 2S) contains a proper generalised progression P of dimension at most $K ^ { O ( 1 ) }$ and cardinality at least $\exp ( - K ^ { O ( 1 ) } ) q$ . (We could keep track of exact constants, but this becomes a little tedious). 
-
-Now A<sup>0</sup> is Freiman 8-isomorphic to S, and so by Lemma 5.2.1 (iii), $2 A ^ { \prime } - 2 A ^ { \prime }$ is Freiman 2-isomorphic to $2 S - 2 S$ . The inverse of this Freiman isomorphism restricts to a Freiman isomorphism $\phi : { \cal P }  \phi ( { \cal P } ) \subset 2 A ^ { \prime } - 2 A ^ { \prime }$ . By Lemma 5.2.1 $( \mathrm { v } ) , Q = \phi ( P )$ is also a proper generalised progression, of the same dimension and size as P. Therefore we have shown that $2 A - 2 A$ contains a proper generalised progression Q of dimension $K ^ { O ( 1 ) }$ and 
-
-$$
-| Q | \geqslant \exp (- K ^ {O (1)}) | A |.\tag{5.5}
-$$
-
-To finish the argument, we apply the covering lemma, Lemma 4.2.2, to the sets $Q$ and A. Since 
-
-$$
-Q + A \subset (2 A - 2 A) + A = 3 A - 2 A,
-$$
-
-the Pl¨unnecke–Ruzsa inequality and (5.5) imply that 
-
-$$
-| Q + A | \leqslant K ^ {5} | A | \leqslant \exp (K ^ {O (1)}) | Q |.
-$$
-
-By Lemma 4.2.2, there is some set $Y = \{ y _ { 1 } , \dots , y _ { m } \}$ 2 
-
-$$
-m \leqslant \exp (K ^ {O (1)}),\tag{5.6}
-$$
-
-such that 
-
-$$
-A \subset (Q - Q) + Y.
-$$
-
-Suppose that 
-
-$$
-Q = \{x _ {0} + l _ {1} x _ {1} + \dots + l _ {d} x _ {d}: 0 \leqslant l _ {i} <   L _ {i} \}
-$$
-
-and that 
-
-$$
-Y = \{y _ {1}, \dots , y _ {m} \}.
-$$
-
-Then 
-
-$$
-\begin{array}{c} (Q - Q) + Y \subset \{\tilde {x} _ {0} + l _ {1} x _ {1} + \dots + l _ {d} x _ {d} + l _ {1} ^ {\prime} y _ {1} + \dots + l _ {m} ^ {\prime} y _ {m}, 0 \leqslant l _ {i} <   2 L _ {i}, 0 \leqslant l _ {j} ^ {\prime} <   2 \} \\ = \tilde {Q} \end{array}
-$$
-
-where 
-
-$$
-\tilde {x} _ {0} = - (L _ {1} x _ {1} + \dots + L _ {d} x _ {d}).
-$$
-
-Note that $\tilde { Q }$ is a generalised progression of dimension $d + m$ and that 
-
-$$
-\mathrm{size} (\tilde {Q}) = 2 ^ {d + m} L _ {1} \dots L _ {d} = 2 ^ {d + m} | Q | \leqslant 2 ^ {d + m} | 2 A - 2 A | \ll_ {K} | A |,
-$$
-
-the penultimate step following since $Q \subset 2 A - 2 A$ 
-
-The dominant term in the bound is $2 ^ { m }$ , which is double exponential in $K . \sqsubset$ 
-
-## CHAPTER 6
-
-## Additive energy and Balog–Szemer´edi-Gowers
-
-In this chapter we introduce the concept of additive energy, which is closely related to the notion of sumset and arises naturally in applications (such as in Chapter 9). 
-
-## 6.1. Introduction
-
-We have already seen the notion of an additive set having small doubling. The next definition introduces some notation for this, and also introduces a kind of bipartite variant of the concept which applies to pairs of sets. 
-
-Definition 6.1.1. Let A be an additive set. Then we define the doubling constant 
-
-$$
-\sigma [ A ] := \frac {| A + A |}{| A |}.
-$$
-
-If A, B are two additive sets, we write 
-
-$$
-\sigma [ A, B ] := \frac {| A + B |}{| A | ^ {1 / 2} | B | ^ {1 / 2}}.
-$$
-
-Remark. This notation should not be confused with the notion of Schnirel’man density, which is of course something quite diferent. 
-
-Note that $\sigma [ A ] = \sigma [ A , A ]$ , so one may think of the former as a shorthand for the latter. 
-
-The notion of a set having small doubling is somehow “combinatorial” in that it refers to the size of $| A + A |$ and does not take account, for example, of the number of representations. The notion has some serious shortcomings, for example being highly sensitive to small changes to A. 
-
-In this chapter we explore the related notion of additive energy, which is more “analytic”, more robust to small perturbations, and often arises in nature. 
-
-Definition 6.1.2. Let A be an additive set. Then we define the additive energy $E ( A )$ to be the number of additive quadruples in A, that is to say quadruples $( a _ { 1 } , a _ { 2 } , a _ { 3 } , a _ { 4 } ) \in A ^ { 4 }$ such that $a _ { 1 } + a _ { 2 } = a _ { 3 } + a _ { 4 }$ . We define the normalised additive energy ω[A] to be $E ( A ) / | A | ^ { 3 }$ . More generally if A, B are two additive sets, we write 
-
-$$
-E (A, B) := \# \{(a, b, a ^ {\prime}, b ^ {\prime}) \in A \times B \times A \times B: a + b = a ^ {\prime} + b ^ {\prime} \}
-$$
-
-and 
-
-$$
-\omega [ A, B ] := | A | ^ {- 3 / 2} | B | ^ {- 3 / 2} E (A, B).
-$$
-
-Note that $0 \leqslant \omega ( A ) \leqslant 1$ : the upper bound here follows from the fact that three elements of an additive quadruple uniquely determine the fourth. More generally, $0 \leqslant \omega [ A , B ] \leqslant 1$ . This follows from the fact that $E ( A , B ) \geqslant$ max $( | A | ^ { 2 } | B | , | A | | B | ^ { 2 } )$ 2 since any three elements of a quadruple $( a , b , a ^ { \prime } , b ^ { \prime } )$ satisfying $a + b = a ^ { \prime } + b ^ { \prime }$ determine the fourth. However, max $( | A | ^ { 2 } | B | , | A | | B | ^ { 2 } ) \geqslant | A | ^ { 3 / 2 } | B | ^ { 3 / 2 }$ 
-
-## 6.2. Basic properties. Statement of Balog-Szemer´edi-Gowers
-
-Proposition 6.2.1. We have $\sigma [ A , B ] \omega [ A , B ] \geqslant 1$ . In particular, if the doubling constant of a pair $A , B$ of additive sets is at most $K$ , their normalised additive energy is at least $1 / K$ . In particular, specialising to the case $A = B$ , we have $\sigma [ A ] \omega [ A ] \geqslant 1$ 
-
-Proof. For $x \in A + B$ write $r ( x )$ for the number of pairs $( a , b ) \in A \times B$ with $a + b = x$ . Then 
-
-$$
-\sum r (x) = | A | | B |,
-$$
-
-whilst 
-
-$$
-\sum r (x) ^ {2} = E (A, B).
-$$
-
-Moreover, $r ( x )$ is supported (that is, is nonzero) on $A + B$ . Thus by Cauchy-Schwartz 
-
-$$
-| A | ^ {2} | B | ^ {2} = \left(\sum_ {x} r (x)\right) ^ {2} \leqslant | A + B | \sum_ {x} r (x) ^ {2} = | A + B | E (A, B),
-$$
-
-which rearranges to give the stated inequality. 
-
-The converse to this kind of statement fails dramatically, as the following shows. 
-
-Example. Let n be a large even number. Let $A _ { 1 } = \{ 1 , \dots , n / 2 \}$ and let $A _ { 2 }$ be some arbitrary set of $n / 2$ integers having no additive relation with $A _ { 1 } .$ , for instance $A _ { 2 } = \{ 1 0 ^ { n } , 1 0 ^ { 2 n } , \ldots , 1 0 ^ { n ^ { 2 } / 2 } \}$ . Set $A = A _ { 1 } \cup A _ { 2 }$ , a set of size n. Then 
-
-$$
-E (A) \geqslant E (A _ {1}) \geqslant \frac {1}{1 0} n ^ {3},
-$$
-
-but 
-
-$$
-\left| A + A \right| \geqslant \left| A _ {2} + A _ {2} \right| \geqslant \frac {1}{8} n ^ {2},
-$$
-
-since the sums of pairs in $A _ { 2 }$ are distinct apart from the relations $x + y = y + x$ Thus $\omega [ A ] \geqslant { \frac { 1 } { 1 0 } }$ , but $\sigma [ A ]$ grows linearly in $n .$ . 
-
-The Balog-Szemer´edi-Gowers theorem is a remarkable result which nonetheless salvages a kind of partial converse to Lemma 6.2.1. We state a bipartitie and a single set version of the result. Recall that by convention C is an absolute constant which can change from line to line (but could be written in explicitly wherever it occurs, if desired, with a bit of work). 
-
-Theorem 6.2.1 (Balog-Szemer´edi-Gowers). We have the following statements. 
-
-(i) Suppose that A, B are additive sets and that $\omega [ A , B ] \geqslant 1 / K$ . Then there are sets $A ^ { \prime } \subseteq A , B ^ { \prime } \subseteq B$ with $| A ^ { \prime } | \geqslant K ^ { - C } | A | , | B ^ { \prime } | \geqslant K ^ { - C } | B |$ such that $\sigma [ A ^ { \prime } , B ^ { \prime } ] \ll K ^ { C }$ 
-
-(ii) Suppose that A is an additive set and that $\omega [ A ] \geqslant 1 / K$ . Then there is a set $A ^ { \prime } \subset A$ with $\left| A ^ { \prime } \right| \gg K ^ { - C } | A |$ such that $\sigma [ A ^ { \prime } ] \ll K ^ { C }$ 
-
-The value of $C$ we obtain is quite reasonable in principle, but we will not be too concerned with computing an exact value. 
-
-The remainder of the chapter is devoted to the proof of Theorem 6.2.1. 
-
-## 6.3. *Paths of length 2
-
-The proof of the Balog-Szemer´edi-Gowers theorem proceeds via the language of graph theory, establishing two lemmas of interest in their own right. The first, concerning paths of length 2, has the cleverer proof. 
-
-Lemma 6.3.1. Suppose that G is a bipartite graph on vertex set $V \cup W$ , where $| V | = | W | = n$ , and with $\alpha n ^ { 2 }$ edges all of which join a vertex in V to one in $W$ Let $\eta > 0$ be a further parameter. Then there is a subset $V ^ { \prime } \subseteq V$ with $| V ^ { \prime } | \geqslant \alpha n / 2$ such that between $\left( 1 - \eta \right) | V ^ { \prime } | ^ { 2 }$ of the ordered pairs of points $( v _ { 1 } , v _ { 2 } ) \in V ^ { \prime } \times V ^ { \prime }$ there are at least $\eta \alpha ^ { 2 } n / 2$ paths of length 2. 
-
-Proof. If $x \in G$ , write $N ( x )$ for the neighbourhood of x in $G ,$ or in other words the set of vertices in G which are joined to x by an edge. Note that, since G is bipartite, $N ( v ) \subseteq W$ whenever $v \in V$ and $N ( w ) \subseteq V$ whenever $w \in W$ 
-
-Now by a double-counting argument, we have 
-
-$$
-\sum_ {w \in W} \sum_ {v \in V} 1 _ {v w \in E (G)} = \alpha n ^ {2},
-$$
-
-where $E ( G )$ is of course the set of edges of G. Applying Cauchy-Schwarz to this gives 
-
-$$
-\sum_ {w \in W} \sum_ {v, v ^ {\prime} \in V} 1 _ {v w \in E (G)} 1 _ {v ^ {\prime} w \in E (G)} \geqslant \alpha^ {2} n ^ {3},
-$$
-
-or in other words 
-
-$$
-\mathbb {E} _ {v, v ^ {\prime} \in V} | N (v) \cap N (v ^ {\prime}) | \geqslant \alpha^ {2} n.\tag{6.1}
-$$
-
-This constitutes the rather basic observation that, on average, pairs $( \boldsymbol { v } , \boldsymbol { v } ^ { \prime } )$ have many common neighbours. Now say that two vertices v and $v ^ { \prime }$ are extremely unfriendly if $\dot { } | N ( v ) \cap N ( v ^ { \prime } ) | < \eta \alpha ^ { 2 } n / 2$ , or in other words if there are fewer than $\eta \alpha ^ { 2 } n / 2$ paths of length two between v and $v ^ { \prime } .$ Write $S \subseteq V \times V$ for the set of extremely unfriendly pairs. Manifestly, from (6.1), we have 
-
-$$
-\mathbb {E} _ {v, v ^ {\prime} \in V} (\eta - 1 _ {(v, v ^ {\prime}) \in S}) | N (v) \cap N (v ^ {\prime}) | \geqslant \eta \alpha^ {2} n / 2.
-$$
-
-This may be rewritten as 
-
-$$
-\mathbb {E} _ {v, v ^ {\prime} \in V} (\eta - 1 _ {(v, v ^ {\prime}) \in S}) \sum_ {w \in W} 1 _ {v w \in E (G)} 1 _ {v ^ {\prime} w \in E (G)} \geqslant \eta \alpha^ {2} n / 2.
-$$
-
-Turning the sum over $W$ into an expectation (by dividing by $| W | = n )$ and swapping the order of summation, this implies that 
-
-$$
-\mathbb {E} _ {w \in W} \mathbb {E} _ {v, v ^ {\prime} \in V} (\eta - 1 _ {(v, v ^ {\prime}) \in S}) 1 _ {v, v ^ {\prime} \in N (w)} \geqslant \eta \alpha^ {2} / 2.
-$$
-
-In particular there is a choice of w such that 
-
-$$
-\mathbb {E} _ {v, v ^ {\prime} \in V} (\eta - 1 _ {(v, v ^ {\prime}) \in S}) 1 _ {v, v ^ {\prime} \in N (w)} \geqslant \eta \alpha^ {2} / 2.
-$$
-
-Simply the fact that this expectation is greater than zero tells us that at most a proportion η of the pairs $v , v ^ { \prime } \in N ( w )$ are extremely unfriendly. Furthermore (ignoring the term involving $S$ completely) we have 
-
-$$
-\mathbb {E} _ {v, v ^ {\prime} \in V} 1 _ {v, v ^ {\prime} \in N (w)} \geqslant \alpha^ {2} / 2,
-$$
-
-which implies that $| N ( w ) | \geqslant \alpha / \sqrt { 2 }$ . Taking $V ^ { \prime } : = N ( w )$ , this proves the result. 
-
-Remarks. This proof looks extremely slick at first sight. However when faced with the task of proving Lemma 6.3.1 it is not hard to develop the feeling that one must somehow select a very “connected” subset of $V .$ . The way we have done this is essentially by picking a random vertex $w \in W$ , and taking $V ^ { \prime }$ to be the neighbourhood $N ( w )$ of w in $V ,$ though this was easier to manage by using expectations rather than starting with “pick $w \in W$ uniformly at random and consider $N ( w ) ^ { \mathfrak { N } }$ This kind of technique seems to have been pioneered in this context by Gowers, and it is called “dependent random selection”: one chooses something random (w in this case), then makes a deterministic choice based on it $( N ( w ) )$ . 
-
-## 6.4. *Paths of length 3
-
-Lemma 6.4.1. Suppose that $G$ is a bipartite graph on vertex set $V \cup W$ , where $| V | = | W | = n$ , and with $\alpha n ^ { 2 }$ edges all of which join a vertex in V to one in $W$ Then there are subsets $V ^ { \prime } \subseteq V$ and $W ^ { \prime } \subseteq W$ with $| V ^ { \prime } | , | W ^ { \prime } | \geqslant c \alpha ^ { C } n$ such that between every pair $\boldsymbol { v } ^ { \prime } \in V ^ { \prime }$ and $w ^ { \prime } \in W ^ { \prime }$ there are at least $c \alpha ^ { C } n ^ { 2 }$ paths of length 3 in $G _ {  }$ . 
-
-Proof. Delete all edges emanating from vertices in $V$ with degree less than $\alpha n / 2 ;$ this causes the deletion of at most $\alpha n ^ { 2 } / 2$ edges in total, so at least $\alpha n ^ { 2 } / 2$ remain. 
-
-From now on if we speak of an edge we mean one of these edges. Let $\eta > 0$ be a parameter to be chosen later. Using the preceding lemma, we may select a set $V ^ { \prime } \subseteq V$ with $| V ^ { \prime } | \geqslant \alpha n / 4$ such that a proportion $1 - \eta$ of the pairs of vertices in $V ^ { \prime }$ have at least $\eta \alpha ^ { 2 } n / 8$ common neighbours in $W$ . 
-
-All vertices in $V ^ { \prime }$ have degree 0 or else degree at least $\alpha n / 2$ , but it is conceivably the case that some do have degree 0. However if $\eta < 1 / 4$ then clearly no more than half of them do. Thus we may pass to a set $V ^ { \prime \prime } \subseteq V ^ { \prime } , | V ^ { \prime \prime } | \geqslant \alpha n / 8$ , such that every vertex in $V ^ { \prime \prime }$ has degree at least $\alpha n / 2$ and still such that a proportion $1 - \eta$ of the pairs of vertices in $V ^ { \prime \prime }$ have at least $\eta \alpha ^ { 2 } n / 8$ common neighbours in $W$ 
-
-Now let us focus on $W$ . Look at all the edges from $V ^ { \prime \prime }$ into $W { : }$ since each vertex in $V ^ { \prime \prime }$ has degree at least $\alpha n / 2$ , and $| V ^ { \prime \prime } | \geqslant \alpha n / 8$ , there are at least $\alpha ^ { 2 } n ^ { 2 } / 1 6$ of these. It follows that there is some set $W ^ { \prime } \subseteq W , | W ^ { \prime } | \geqslant \alpha ^ { 2 } n / 3 2$ , such that each $w \in W ^ { \prime }$ has at least $\alpha ^ { 2 } n / 3 2$ neighbours in $V ^ { \prime \prime }$ 
-
-Before concluding, let us jump back over to the other side and efect one final refinement of $V ^ { \prime \prime }$ . Say that a vertex $v \in V ^ { \prime \prime }$ is sociable if there is a proportion at least $1 - 2 \eta$ of the other vertices $v ^ { \prime } \in V ^ { \prime \prime }$ are such that v and $v ^ { \prime }$ have at least $\eta \alpha ^ { 2 } n / 8$ common neighbours. Then at least half the vertices of $V ^ { \prime \prime }$ are sociable: call this set $V ^ { \prime \prime \prime }$ , so that $| V ^ { \prime \prime \prime } | \geqslant \alpha n / 1 6$ 
-
-We now claim that for any $x \in V ^ { \prime \prime \prime }$ and $y \in W ^ { \prime }$ there are many paths of length three between x and $y$ (in the original graph G). Indeed by the choice of $W ^ { \prime }$ there must be at least $\alpha ^ { 2 } n / 3 2$ elements of $V ^ { \prime \prime }$ adjacent to $y .$ . There must also be at least $( 1 - 2 \eta ) | V ^ { \prime \prime } |$ vertices of $V ^ { \prime \prime }$ which have at least $\eta \alpha ^ { 2 } n / 8$ common neighbours with x. Provided that $\alpha ^ { 2 } n / 3 2 \geqslant 3 \eta | V ^ { \prime \prime } |$ , which will be the case if $\eta \leqslant \alpha ^ { 2 } / 9 6$ , these two sets intersect in a set $\tilde { V } \subseteq V ^ { \prime \prime }$ of size at least $\eta | V ^ { \prime \prime } |$ . Thus each element z of $\tilde { V }$ is adjacent to $y ,$ and has $\eta \alpha ^ { 2 } n / 8$ common neighbours with $x .$ . This clearly leads to at least $\eta ^ { 2 } \alpha ^ { 2 } | V ^ { \prime \prime } | n / 8$ paths of length three between x and $y .$ 
-
-The only constraints on η were that $\eta \leqslant 1 / 4$ and that $\eta \leqslant \alpha ^ { 2 } / 9 6$ . The latter is clearly the more severe constraint, so set $\eta : = \alpha ^ { 2 } / 9 6$ . The lemma is proven. □ 
-
-## 6.5. Proof of Balog-Szemer´edi-Gowers
-
-In this section we deduce Theorem 6.2.1 from the paths of length 3 lemma, Lemma 6.4.1. It is particularly important to remember during this proof that the constant $C$ may change from line to line. 
-
-Proof. [Proof of Theorem 6.2.1] For the majority of the proof we handle the twosets case (i) and the one-set case (ii) at the same time, taking $A = B$ in the latter case. 
-
-Suppose then that $A , B$ are two sets in some abelian group $G$ and that $\omega [ A , B ] \geqslant$ $1 / K$ . This means that there are at least $| A | ^ { 3 / 2 } | B | ^ { 3 / 2 } / K$ solutions to $a _ { 1 } - b _ { 1 } =$ $a _ { 2 } - b _ { 2 }$ . Note that the number of solutions to this equation is at most $| A | ^ { 2 } | B |$ , since once $a _ { 1 } , b _ { 1 }$ and $a _ { 2 }$ are specified $b _ { 2 }$ is uniquely determined. Therefore $| B | \leqslant K ^ { 2 } | A |$ 2 and similarly $| A | \leqslant K ^ { 2 } | B |$ 
-
-Write $s ( x )$ for the number of pairs $( a , b ) \in A \times B$ with $a - b = x$ . Thus we have 
-
-$$
-\sum_ {x} s (x) ^ {2} \geqslant | A | ^ {3 / 2} | B | ^ {3 / 2} / K,
-$$
-
-whilst by double-counting pairs $( a , b ) \in A \times B$ we have 
-
-$$
-\sum_ {x} s (x) = | A | | B |.
-$$
-
-We claim there are at least $| A | ^ { 1 / 2 } | B | ^ { 1 / 2 } / 2 K$ “popular” values of x for which $s ( x ) \geqslant$ $| A | ^ { 1 / 2 } | B | ^ { 1 / 2 } / 2 K$ . To see this, let $\Delta$ denote the set of these popular x. Then 
-
-$$
-\sum_ {x \notin \Delta} s (x) ^ {2} \leqslant \frac {1}{2 K} | A | ^ {1 / 2} | B | ^ {1 / 2} \sum_ {x} s (x) = | A | ^ {3 / 2} | B | ^ {3 / 2} / 2 K,
-$$
-
-so 
-
-$$
-\sum_ {x \in \Delta} s (x) ^ {2} \geqslant | A | ^ {3 / 2} | B | ^ {3 / 2} / 2 K.
-$$
-
-However, since $s ( x ) \leqslant \operatorname* { m i n } ( | A | , | B | ) \leqslant | A | ^ { 1 / 2 } | B | ^ { 1 / 2 }$ for every $x ,$ 
-
-$$
-\sum_ {x \in \Delta} s (x) ^ {2} \leqslant | \Delta | | A | | B |.
-$$
-
-The claim follows. 
-
-Note also, for use below, that 
-
-$$
-| \Delta | \leqslant 2 K | A | ^ {1 / 2} | B | ^ {1 / 2},\tag{6.2}
-$$
-
-a bound which follows straightforwardly by double-counting pairs $( a , b ) \in A \times B$ 
-
-Define a bipartite graph G on vertex set A ∪ B by joining $a \in A$ to $b \in B$ by an edge if $a - b$ is a popular diference in the above sense, that is to say if and only if $a - b \in \Delta$ . Then G has at least $\vert A \vert \vert B \vert / 4 K ^ { 2 }$ edges. Let $n = \operatorname* { m a x } ( | A | , | B | )$ , and “pad $\mathrm { o u t } ^ { \dag }$ the smaller vertex class of G to obtain a new graph having n vertices in each class. Recalling that $K ^ { - 2 } \leqslant | A | / | B | \leqslant K ^ { 2 }$ , this graph has at least $n ^ { 2 } / 4 K ^ { 4 }$ edges. 
-
-Applying Lemma 6.4.1, we may locate sets $A ^ { \prime } \subseteq A$ and $B ^ { \prime } \subseteq B$ with $| A ^ { \prime } | \gg$ $K ^ { - C } | A | , | B ^ { \prime } | \gg K ^ { - C } | B |$ and such that for every $a ^ { \prime } \in A ^ { \prime }$ and $b ^ { \prime } \in B ^ { \prime }$ there are $\gg K ^ { - C } n ^ { 2 }$ paths of length 3 in G between $a ^ { \prime }$ and b<sup>0</sup>. This, of course, means that there $\gg K ^ { - C } n ^ { 2 }$ choices of $a ^ { \prime \prime } \in A$ and $b ^ { \prime \prime } \in B$ such that all three of $a ^ { \prime } - b ^ { \prime \prime } , a ^ { \prime \prime } - b ^ { \prime \prime }$ and $a ^ { \prime \prime } - b ^ { \prime }$ lie in $\Delta$ . 
-
-Noting that $a ^ { \prime } - b ^ { \prime } = ( a ^ { \prime } - b ^ { \prime \prime } ) - ( a ^ { \prime \prime } - b ^ { \prime \prime } ) + ( a ^ { \prime \prime } - b ^ { \prime } )$ , it follows that for all $a ^ { \prime } \in A ^ { \prime }$ and $b ^ { \prime } \in B ^ { \prime }$ the diference $a ^ { \prime } - b ^ { \prime }$ can be written in $\gg K ^ { - C } n ^ { 2 }$ ways as $x - y + z$ , where $x , y , z \in \Delta$ . These are genuinely distinct representations, since it is easy to recover $a ^ { \prime \prime }$ and $b ^ { \prime \prime }$ from knowledge of $a ^ { \prime } , b ^ { \prime } , x , y$ and z. However, by (6.2), the number of popular diferences is bounded above by $2 K | A | ^ { 1 / 2 } | B | ^ { 1 / 2 } \ll K n$ . It follows that 
-
-$$
-\left| A ^ {\prime} - B ^ {\prime} \right| \cdot K ^ {- C} n ^ {2} \ll (K n) ^ {3},
-$$
-
-which of course implies that 
-
-$$
-\left| A ^ {\prime} - B ^ {\prime} \right| \ll K ^ {C} n.\tag{6.3}
-$$
-
-$\mathrm { T o }$ finish the argument, we consider parts (i) and (ii) of Theorem 6.2.1 separately. In case (i), applying (6.3) and Corollary 4.4.1 together with the lower bounds $| A ^ { \prime } | , | B ^ { \prime } | \geqslant K ^ { - 2 } n$ gives the desired upper bound $| A ^ { \prime } + B ^ { \prime } | \ll K ^ { C } n \ll K ^ { C } | A ^ { \prime } | ^ { 1 / 2 } | B ^ { \prime } | ^ { 1 / 2 }$ In case (ii), we first apply the Ruzsa triangle inequality with $U = B ^ { \prime }$ ， $V =$ $W = A ^ { \prime }$ to conclude from (6.3) that $| A ^ { \prime } - A ^ { \prime } | \ll K ^ { C } n$ . From this, it follows using Corollary 4.4.1 that $| A ^ { \prime } + A ^ { \prime } | \ll K ^ { C } n$ 
-
-## CHAPTER 7
-
-## Combinatorial geometry and sum-product
-
-Let A be a set of n integers. We have already discussed the sumset $A + A$ at some length. We may also introduce the product set $A \cdot A : = \{ a a ^ { \prime } : a , a ^ { \prime } \in A \}$ . A famous conjecture of Erd˝os and Szemer´edi is that 
-
-$$
-| A + A | + | A \cdot A | \geqslant n ^ {2 - o (1)}.
-$$
-
-This is far from being proven, but the final result of this chapter is the non-trivial result 
-
-$$
-| A + A | + | A \cdot A | \gg n ^ {5 / 4},
-$$
-
-which is due to Elekes. The main input in establishing this is the so-called Szemer´edi-Trotter theorem, a result in combinatorial geometry of substantial independent interest. 
-
-Theorem 7.0.1 (Szemer´edi-Trotter). Let $r \geqslant 2$ . Let L be a set of m lines. Then the number of points which lie on at least r lines in L is $\textstyle O ( { \frac { m } { r } } + { \frac { m ^ { 2 } } { r ^ { 3 } } } )$ 
-
-There are various slightly diferent ways to state this theorem, a matter we discuss on the example sheets. The proof we shall give of this uses a lemma about crossing numbers which is also of independent interest. 
-
-## 7.1. Crossing number inequality
-
-This section assumes that you are familiar with the basic language of graph theory; if not, it should be easy to read up on the relevant definitions. 
-
-Definition 7.1.1. A drawing of a graph G is a representation of G in the plane $\mathbf { R } ^ { 2 }$ where the vertices of G are points and the edges are “nice” simple curves between pairs of vertices, not passing through any other vertex of the graph. A crossing is an intersection of two edge-curves, other than at a vertex. The crossing number cr(G) of a graph G is the least number of crossings in any drawing of G in the plane. A graph is said to be planar if $\operatorname { c r } ( G ) = 0$ 
-
-Remark. We will not bother to set up what “nice” means rigorously, and it does not really matter; for example, we could take the curves to be polygonal. Note also that crossings are counted as pairs of edge-curves which intersect, not as the actual points of intersection. Thus, for example, three edge-curves all intersecting at the same point counts as three crossings. 
-
-We begin by recalling Euler’s formula. If G is a connected planar graph then 
-
-$$
-V - E + F = 2,\tag{7.1}
-$$
-
-where $V , E , F$ denote the numbers of vertices, edges and faces respectively. Now if $V \geqslant 3$ then every face has at least three edges, and no edge belongs to more than two faces. Therefore, double counting edges, 
-
-$$
-3 F \leqslant 2 E.
-$$
-
-Substituting into Euler’s formula (7.1) gives $E - 3 V \leqslant - 6$ . Considering the cases where $V = 1$ or 2, one sees that certainly 
-
-$$
-E \leqslant 3 V\tag{7.2}
-$$
-
-in all cases. By splitting into connected components, we see that (7.2) holds for all planar graphs, connected or not. 
-
-Remark. Formalising the details here (even defining exactly what is meant by a face, especially in degenerate cases such as when G is a tree) is slightly subtle and not the domain of this course. For a much fuller discussion, see the graph theory course. 
-
-If we have a graph G then consider a drawing of G with $\operatorname { c r } ( G )$ crossings. For each such crossing, remove one of the edges in it. Continuing in this fashion gives a planar graph $G ^ { \prime }$ with the same vertex set as $G$ and with $E ^ { \prime } \geqslant E - \operatorname { c r } ( G )$ edges. It follows from (7.2) that $E ^ { \prime } \leqslant 3 V$ and so 
-
-$$
-\operatorname{cr} (G) \geqslant E - 3 V.\tag{7.3}
-$$
-
-It turns out that by a random sampling trick we can bootstrap this to the following inequality, which is much stronger when E is relatively large in terms of $V .$ 
-
-Proposition 7.1.1. Suppose that $E \geqslant 4 V$ . Then $\begin{array} { r } { \mathrm { c r } ( G ) \geqslant \frac { E ^ { 3 } } { 6 4 V ^ { 2 } } } \end{array}$ 
-
-Proof. Take a drawing of $G$ with the minimal number $\operatorname { c r } ( G )$ of crossings. Then all crossings involve four distinct vertices: if there is some crossing involving edges vx, vy then there is an easy procedure to reduce the number of crossings, best described by a picture (see Figure 7.1). 
-
-Let $p , \ 0 \leqslant p \leqslant 1$ , be a parameter to be specified later. Consider a random subgraph $\mathbf { G } ^ { \prime }$ of $G$ , formed by picking a random set S of vertices by selecting each v in the vertex set of $G$ to lie in S independently at random with probability $p ,$ and then taking $\mathbf { G } ^ { \prime }$ to be the subgraph of G induced by $\mathbf { S } \colon$ that is, include all the edges in G between two vertices in S. Let the number of vertices and edges in $\mathbf { G } ^ { \prime }$ be $\mathbf { V } ^ { \prime }$ , $\mathbf { E ^ { \prime } }$ respectively; these are of course random variables. Also, let $\mathrm { c r } ( \mathbf { G } ^ { \prime } )$ be the number of crossings in $\mathbf { G } ^ { \prime }$ in the drawing we have, that is to say in the drawing induced from that on $G .$ Note that $\tilde { \mathrm { c r } } ( \mathbf G ^ { \prime } ) \geq \mathrm { c r } ( \mathbf G ^ { \prime } )$ , but we do not necessarily have equality since there might be a diferent drawing of $\mathbf { G } ^ { \prime }$ with fewer crossings. 
-
-![image](https://cdn-mineru.openxlab.org.cn/result/2026-10-30/23909552-5ee3-4933-ac18-3d657636778d/096a6a180aa45894cd14273c660074ba538a4fc4831adcb59da11ba04e683a86.jpg)
-
-
-
-Figure 1. Removing a crossing
-
-
-For each instance of this random selection we have the inequality (7.3), that is to say 
-
-$$
-\operatorname{cr} \left(\mathbf {G} ^ {\prime}\right) \geqslant \mathbf {E} ^ {\prime} - 3 \mathbf {V} ^ {\prime}.
-$$
-
-Certainly, then 
-
-$$
-\tilde {\mathrm{cr}} (\mathbf {G} ^ {\prime}) \geqslant \mathbf {E} ^ {\prime} - 3 \mathbf {V} ^ {\prime}.
-$$
-
-We may take expectations of the three random variables appearing here and deduce, using linearity of expectation, that 
-
-$$
-\mathbb {E} \tilde {\mathrm{cr}} (\mathbf {G} ^ {\prime}) \geqslant \mathbb {E} \mathbf {E} ^ {\prime} - 3 \mathbb {E} \mathbf {V} ^ {\prime}.\tag{7.4}
-$$
-
-However, it is easy to see that 
-
-$$
-\mathbb {E} \mathbf {V} ^ {\prime} = p V \qquad \mathrm{and} \qquad \mathbb {E} \mathbf {E} ^ {\prime} = p ^ {2} E
-$$
-
-(since, for each edge in $G ,$ both endpoint vertices must be selected in order for it to be an edge in $\mathbf { G } ^ { \prime } )$ , and 
-
-$$
-\mathbb {E} \tilde {\mathrm{cr}} (\mathbf {G} ^ {\prime}) = p ^ {4} \mathrm{cr} (G)
-$$
-
-(since, for each crossing in $G ,$ all four endpoint vertices of the two edges involved must be selected in order for it to be a crossing in $\mathbf { G } ^ { \prime } )$ 
-
-Substituting into (7.4) gives 
-
-$$
-p ^ {4} \operatorname{cr} (G) \geqslant p ^ {2} E - 3 p V.
-$$
-
-We are free to choose any parameter $p \in [ 0 , 1 ]$ that we like. Choosing $p = 4 V / E$ (noting that, by the hypothesis, $p \leqslant 1 )$ gives the desired bound after rearranging the terms. □ 
-
-## 7.2. The Szemer´edi-Trotter theorem
-
-In this section we prove Theorem 7.0.1. 
-
-Proof. [Proof of Theorem 7.0.1] First of all, note that Theorem 7.0.1 is trivial if $r \leqslant 7 \ \left( { \mathrm { s a y } } \right)$ since there are at most  <sup>m</sup><sub>2</sub>  points lying on two or more lines. 
-
-Suppose henceforth that $r \geqslant 8$ . Draw a graph $G$ as follows. The vertices of G are the points $P$ lying on at least r lines in $L .$ Two vertices $x , y$ are joined by an edge if and only if $x , y$ are consecutive points of P on the same line in L. Denote by $n = | P |$ the number of vertices in this graph; this is the quantity we wish to bound. 
-
-Now observe that G comes with a natural drawing, that is to say the one induced by the lines in $L ;$ in this drawing, every edge is in fact represented by a straight line segment. Since two lines intersect in at most one point, the number of crossings in this drawing is at most  <sup>m</sup><sub>2</sub> . Therefore 
-
-$$
-\operatorname{cr} (G) \leqslant \binom {m} {2} <   m ^ {2}.\tag{7.5}
-$$
-
-The number of edges E is at least $r n - m$ . To see why, count the number of edges starting at v. Usually, v is adjacent to at least $2 r$ other vertices. The exception is when v is one of the two endmost points (in either direction) on one of the lines in $L ,$ in which case we lose one adjacency. Summing over v gives at least $2 r n - 2 m$ pairs (v, w) with vw an edge, which of course double-counts the number of edges. 
-
-Now consider Proposition 7.1.1. Either we are in a position to apply this proposition, or we are not. If not, then $E <$ 4n, so $r n - m < 4 n$ . Since $r \geqslant 8 .$ , this implies that $r n / 2 \leqslant m$ , and so Theorem 7.0.1 holds in this case. Otherwise, $E \geqslant$ 4n and we may apply Proposition 7.1.1. This gives 
-
-$$
-m ^ {2} \geqslant \frac {(r n - m) ^ {3}}{6 4 n ^ {2}}.\tag{7.6}
-$$
-
-If $n \leqslant$ 2m/r then again Theorem 7.0.1 holds. Otherwise, $r n - m \geqslant r n / 2$ and so (7.6) becomes 
-
-$$
-m ^ {2} \geqslant \frac {(r n / 2) ^ {3}}{6 4 n ^ {2}},
-$$
-
-which immediately rearranges to $n \ll m ^ { 2 } / r ^ { 3 }$ , and once again Theorem 7.0.1 holds. This concludes the proof. □ 
-
-## 7.3. Sum-product
-
-In this section we give Elekes’s bound for the sum-product problem. 
-
-Theorem 7.3.1. Suppose that $A \subset \mathbf { R }$ is a finite set of size n. Then $| A + A | | A$ $A | \gg n ^ { 5 / 2 }$ . In particular, at least one of $A + A , A \cdot A$ has cardinality $\gg n ^ { 5 / 4 }$ 
-
-Proof. It clearly sufices to handle the case 0 ∈/ A (otherwise remove 0 and apply the bound to the resulting set). Consider the set of points 
-
-$$
-P := \left\{\left(\frac {1}{a ^ {\prime}}, - \frac {1}{a a ^ {\prime}}\right): a, a ^ {\prime} \in A \right\},
-$$
-
-and the set of lines 
-
-$$
-L := \left\{\left\{(x, y) \in \mathbf {R} ^ {2}: u x + v y = 1 \right\}: u \in A + A, v \in A \cdot A \right\}.
-$$
-
-Observe that $| P | = n ^ { 2 }$ , whilst the number $m = | L |$ of lines is $| A + A | | A \cdot A |$ 
-
-The crucial observation is now that every point of P lies on at least n of these lines. Indeed, the point $\bigl ( \frac { 1 } { a ^ { \prime } } , - \frac { 1 } { a a ^ { \prime } } \bigr )$ lies on the line $u x + v y = 1$ when $u = a ^ { \prime } + t$ and $v = a t$ , for every $t \in A$ 
-
-It follows from Szemer´edi-Trotter that 
-
-$$
-n ^ {2} \ll \frac {m}{n} + \frac {m ^ {2}}{n ^ {3}},
-$$
-
-which implies that $m \gg n ^ { 5 / 2 }$ . This is the desired result. 
-
-## CHAPTER 8
-
-## Some further results about set addition
-
-In this chapter we gather together some further inequalities about sumsets and set addition. Several of these are interesting in their own right, but the overriding aim of the chapter is to assemble ingredients for the proof of a sum-product theorem of Bourgain and Chang in the next chapter. 
-
-## 8.1. The Pr´ekopa-Leindler inequality on the line
-
-We begin with a simple sumset inequality for measurable subsets of R, a kind of continuous analogue of the observation at the start of Chapter 5. Throughout this section, µ denotes Lebesgue measure. 
-
-Lemma 8.1.1. Suppose that $X , Y , Z \subset$ R are non-empty measurable sets with $X + Y \subset Z$ . Then $\mu ( Z ) \geqslant \mu ( X ) + \mu ( Y )$ 
-
-Proof. For any $\varepsilon > 0$ , there are compact subsets $X ^ { \prime } \subset X$ and $Y \subset Y ^ { \prime }$ such that $\mu ( X ^ { \prime } ) \geqslant \mu ( X ) - \varepsilon$ and $\mu ( Y ^ { \prime } ) \geqslant \mu ( Y ) - \varepsilon$ . (This property is the fact that Lebesgue measure is inner regular ; however, for our discrete applications we will only apply Lemma 8.1.1 in cases where this is clear by inspection.) 
-
-Let $x : = \operatorname { i n f } X ^ { \prime }$ and $y : = \operatorname* { s u p } Y ^ { \prime }$ . Since $X ^ { \prime } , Y ^ { \prime }$ are compact, $x \in X ^ { \prime }$ and $y \in Y ^ { \prime }$ and therefore the two sets $x + Y ^ { \prime }$ and $X ^ { \prime } + y$ both lie in $Z .$ Note that every element of $x + Y ^ { \prime }$ is at most $x + y ,$ whilst every element of $X ^ { \prime } + y$ is at least $x + y$ . Therefore $\left( x + Y ^ { \prime } \right) \cap \left( X ^ { \prime } + y \right)$ is the singleton $\{ x + y \}$ , which of course has measure zero, so 
-
-$$
-\begin{array}{c} \mu (Z) \geqslant \mu ((X ^ {\prime} + y) \cup (x + Y ^ {\prime})) = \mu (X ^ {\prime} + y) + \mu (x + Y ^ {\prime}) \\ = \mu (X ^ {\prime}) + \mu (Y ^ {\prime}) \\ \geqslant \mu (X) + \mu (Y) - 2 \varepsilon . \end{array}
-$$
-
-Letting $\varepsilon  0 ,$ , the result follows. 
-
-Now we turn to the main topic of this section. Suppose that $f , g : \mathbf { R } \to [ 0 , \infty )$ are compactly supported, piecewise continuous functions. Define the max-convolution by 
-
-$$
-f ^ {\overline {{*}}} g (x) := \sup _ {y \in \mathbf {R}} f (x - y) g (y).
-$$
-
-The following is a special case of a 1-dimensional version of a special case of the so-called Pr´ekopa-Leindler inequality 
-
-Proposition 8.1.1. Let $f , g : \mathbf { R }  [ 0 , \infty )$ be compactly supported, piecewise continuous functions. Then we have the inequality 
-
-$$
-\int f ^ {\overline {{*}}} g \geqslant 2 \| f \| _ {2} \| g \| _ {2},\tag{8.1}
-$$
-
-where the norms are the usual Lebesgue norms 
-
-$$
-\| f \| _ {2} := \big (\int_ {\mathbf {R}} f ^ {2} \big) ^ {1 / 2}, \quad \| g \| _ {2} := \big (\int_ {\mathbf {R}} g ^ {2} \big) ^ {1 / 2}.
-$$
-
-Proof. Let $\lambda \geqslant 0$ . Then if $f ( x - y ) , g ( y ) \geqslant { \sqrt { \lambda } }$ then we have $f \bar { * } g ( x ) \geqslant \lambda ,$ or in other words 
-
-$$
-\{t: f (t) \geqslant \sqrt {\lambda} \} + \{t: g (t) \geqslant \sqrt {\lambda} \} \subseteq \{t: f \overline {{*}} g (t) \geqslant \lambda \},
-$$
-
-or equivalently 
-
-$$
-\{t: f (t) ^ {2} \geqslant \lambda \} + \{t: g (t) ^ {2} \geqslant \lambda \} \subseteq \{t: f \overline {{*}} g (t) \geqslant \lambda \}.
-$$
-
-By Lemma 8.1.1 it follows that 
-
-$$
-\mu (\{t: f (t) ^ {2} \geqslant \lambda \}) + \mu (\{t: g (t) ^ {2} \geqslant \lambda \}) \leqslant \mu (\{t: f \overline {{*}} g (t) \geqslant \lambda \}),\tag{8.2}
-$$
-
-where $\mu$ is Lebesgue measure. 
-
-Now by Fubini’s theorem, for any measurable $F : \mathbf { R }  [ 0 , \infty )$ we have the “layer-cake” decomposition 
-
-$$
-\int_ {0} ^ {\infty} \mu (\{x: F (x) \geqslant \lambda \}) d \lambda = \int_ {\mathbf {R}} F (x) d x.
-$$
-
-Applying this to (8.2) gives 
-
-$$
-\| f \| _ {2} ^ {2} + \| g \| _ {2} ^ {2} \leqslant \int_ {\mathbf {R}} f ^ {*} g.\tag{8.3}
-$$
-
-The desired inequality (8.1) follows immediately from this and the elementary inequality $a ^ { 2 } + b ^ { 2 } \geqslant 2 a b .$ , applied of course with $a = \| f \| _ { 2 }$ and $b = \| g \| _ { 2 }$ □ 
-
-Remark. The last step appears wastful, and one might wonder why we did not simply state the stronger inequality (8.3). The answer is that the form stated in (8.1) is much more useful for applications. 
-
-## 8.2. A weighted discrete Pr´ekopa–Leindler inequality
-
-We now turn to discrete results. The main aim of this section is to establish Proposition 8.2.1 below, which is a weighted discrete Pr´ekopa–Leindler inequality. The statement has clear analogies with that of Proposition 8.1.1. 
-
-Let $a , b : \mathbf { Z } \to [ 0 , \infty )$ be compactly supported functions. We define the maxconvolution 
-
-$$
-a \overline {{*}} b (n) := \sup _ {m \in \mathbf {Z}} a (n - m) b (m).
-$$
-
-Proposition 8.2.1. Let $a , b : \mathbf { Z } \to [ 0 , \infty )$ be compactly supported functions and let $p \in [ 0 , 1 ]$ . Then we have 
-
-$$
-\sum_ {n} \max (p a \overline {{*}} b (n), (1 - p) a \overline {{*}} b (n - 1)) \geqslant \| a \| _ {2} \| b \| _ {2}.
-$$
-
-Now, the norms are the discrete $\ell ^ { 2 }$ norms given by 
-
-$$
-\| a \| _ {2} := \big (\sum_ {n} a (n) ^ {2} \big) ^ {1 / 2}, \quad \| b \| _ {2} := \big (\sum_ {n} b (n) ^ {2} \big) ^ {1 / 2}.
-$$
-
-Proof. In this proof, we will use the notations ∗ and $\| \cdot \| _ { 2 }$ on both R (with definitions as in the previous section) and on Z (with definitions as above). It should hopefully be clear what the domain of definition of the functions we are working with at any given point are. 
-
-By continuity we may assume that $p \in \mathsf { \Gamma } ( 0 , 1 )$ . Set $\begin{array} { r } { \lambda : = \log ( \frac { 1 } { p } - 1 ) } \end{array}$ . Apply Proposition 8.1 with functions $f , g$ defined by 
-
-$$
-f (x) := e ^ {\lambda \{x \}} a (\lfloor x \rfloor), \quad g (y) := e ^ {\lambda \{y \}} b (\lfloor y \rfloor).
-$$
-
-Let $\mathbf { \boldsymbol { n } } \in \mathbf { \mathbf { Z } }$ and $0 \leqslant t < 1$ . Suppose that $x + y = n + t .$ . Then, since $x - 1 < \lfloor x \rfloor \leqslant x$ 2 we have $n - 2 < \lfloor x \rfloor + \lfloor y \rfloor < n + 1$ , or in other words $\lfloor x \rfloor + \lfloor y \rfloor = n - 1$ or n. If $\lfloor x \rfloor + \lfloor y \rfloor = n - 1$ then 
-
-$$
-f (x) g (y) \leqslant e ^ {\lambda (t + 1)} a \overline {{*}} b (n - 1),
-$$
-
-whilst ${ \mathrm { i f ~ } } \lfloor x \rfloor + \lfloor y \rfloor = n$ then 
-
-$$
-f (x) g (y) \leqslant e ^ {\lambda t} a \overline {{*}} b (n).
-$$
-
-Therefore 
-
-$$
-f ^ {\overline {{*}}} g (n + t) \leqslant e ^ {\lambda t} \max (a ^ {\overline {{*}}} b (n), e ^ {\lambda} a ^ {\overline {{*}}} b (n - 1)).
-$$
-
-Integrating over $t \in [ 0 , 1 )$ and then summing over ${ \boldsymbol { n } } \in \mathbf { Z }$ yields 
-
-$$
-\int_ {\mathbf {R}} f \overline {{*}} g \leqslant \frac {e ^ {\lambda} - 1}{\lambda} \sum_ {n} \max (a \overline {{*}} b (n), e ^ {\lambda} a \overline {{*}} b (n - 1)).\tag{8.4}
-$$
-
-On the other hand, 
-
-$$
-\| f \| _ {2} ^ {2} = \frac {e ^ {2 \lambda} - 1}{2 \lambda} \| a \| _ {2} ^ {2}, \quad \| g \| _ {2} ^ {2} = \frac {e ^ {2 \lambda} - 1}{2 \lambda} \| b \| _ {2} ^ {2}.
-$$
-
-Substituting into Proposition 8.1 gives 
-
-$$
-\sum_ {n} \max (a \overline {{*}} b (n), e ^ {\lambda} a \overline {{*}} b (n - 1)) \geqslant (e ^ {\lambda} + 1) \| a \| _ {2} \| b \| _ {2}.
-$$
-
-Recalling the choice of λ (thus $\begin{array} { r } { p = \frac { 1 } { e ^ { \lambda } + 1 } ) } \end{array}$ , the proposition follows. 
-
-## 8.3. Quasicubes, binary sets and sumsets
-
-Quasicubes. The notion of a quasicube $\Sigma \subseteq \mathbf { Z } ^ { d }$ is defined inductively. When $d = 1$ , a quasicube is simply a set of size two. For larger $d , \Sigma$ is a quasicube if 
-
-(i) $\pi ( \Sigma ) = \{ x _ { 0 } , x _ { 1 } \}$ is a set of size two, where $\pi : \mathbf { Z } ^ { d } \to \mathbf { Z }$ is the coordinate projection onto the final coordinate, and 
-
-(ii) The fibre $\Sigma _ { i } : = \Sigma \cap \pi ^ { - 1 } ( x _ { i } )$ (considered as a subset of $\mathbf { Z } ^ { d - 1 } )$ is a quasicube. 
-
-Thus, for instance, the usual cube $\{ 0 , 1 \} ^ { d }$ is a quasicube. Another example of a quasicube with $d = 2$ is the set $\Sigma = \{ ( 0 , 0 ) , ( 1 , 0 ) , ( 0 , 1 ) , ( 1 , 2 ) \}$ 
-
-Binary sets. A subset of a quasicube is called a binary set (we caution that this is not a standard term in the literature). 
-
-Theorem 8.3.1. Let $A , B \subseteq \mathbf { Z } ^ { d }$ be finite sets and suppose that $U \subseteq \mathbf { Z } ^ { d }$ is a binary set. Then $| A + B + U | \geqslant | A | ^ { 1 / 2 } | B | ^ { 1 / 2 } | U |$ 
-
-Proof. We proceed by induction on d. The proof of the inductive step also proves the base case $d = 1$ 
-
-Suppose that U is contained in a quasicube $\Sigma \subset \mathbf { Z } ^ { d }$ . Suppose that $\pi ( \Sigma ) =$ $\{ x _ { 0 } , x _ { 1 } \}$ , where $\pi : { \bf Z } ^ { d } \to { \bf Z }$ is projection onto the last coordinate. Since the inequality is translation-invariant, we may assume that $x _ { 0 } = 0$ and $x _ { 1 } = q > 0$ Suppose first that $q = 1$ 
-
-Let $A _ { i } : = A \cap \pi ^ { - 1 } ( n )$ be the fibre of A above $n ,$ and similarly for B. The set U has just two fibres $U _ { 0 } , U _ { 1 }$ and, by the definition of quasicubes, they are both contained in quasicubes of dimension $d - 1$ 
-
-Observe that the fibre of $A + B + U$ above n contains $A _ { x } + B _ { y } + U _ { 0 }$ whenever $x + y = n$ , and $A _ { x } + B _ { y } + U _ { 1 }$ whenever $x + y = n - 1$ . By induction, 
-
-$$
-\left| A _ {x} + B _ {y} + U _ {0} \right| \geqslant \left| A _ {x} \right| ^ {1 / 2} \left| B _ {y} \right| ^ {1 / 2} \left| U _ {0} \right|,
-$$
-
-$$
-\left| A _ {x} + B _ {y} + U _ {1} \right| \geqslant \left| A _ {x} \right| ^ {1 / 2} \left| B _ {y} \right| ^ {1 / 2} \left| U _ {1} \right|,
-$$
-
-and so the fibre $( A + B + U ) _ { n }$ of $A + B + U$ above n has size at least 
-
-$$
-\max \left(| U _ {0} | \max _ {x + y = n} | A _ {x} | ^ {1 / 2} | B _ {y} | ^ {1 / 2}, | U _ {1} | \max _ {x + y = n - 1} | A _ {x} | ^ {1 / 2} | B _ {y} | ^ {1 / 2}\right).
-$$
-
-This is equal to 
-
-$$
-| U | \max \left(p a \overline {{*}} b (n) + (1 - p) a \overline {{*}} b (n - 1)\right),
-$$
-
-where $p : = | U _ { 0 } | / | U | , a ( x ) : = | A _ { x } | ^ { 1 / 2 }$ and $b ( y ) : = | B _ { y } | ^ { 1 / 2 }$ . Summing over n and applying Proposition 8.2.1 we obtain 
-
-$$
-\begin{array}{l} | A + B + U | = \sum_ {n} | (A + B + U) _ {n} | \\ \qquad \geqslant | U | \sum_ {n} \max \left(p a ^ {\overline {{*}}} b (n) + (1 - p) a ^ {\overline {{*}}} b (n - 1)\right) \\ \qquad \geqslant | U | \| a \| _ {2} \| b \| _ {2} = | U | | A | ^ {1 / 2} | B | ^ {1 / 2}. \end{array}
-$$
-
-This proves the result when $q = 1$ . Suppose now that $q$ is arbitrary, and foliate $\begin{array} { r } { A = \bigcup _ { r \in { \bf Z } / q { \bf Z } } A _ { r } , B = \bigcup _ { s \in { \bf Z } / q { \bf Z } } B _ { s } } \end{array}$ , where $A _ { r } : = \{ a \in A : \pi ( a ) \equiv r ( \mod q ) \}$ and similarly for $B _ { s }$ . Let $r _ { * }$ be such that $| A _ { r } | \leqslant | A _ { r _ { * } } |$ for all $r ,$ and $s _ { * }$ be such that $| B _ { s } | \leqslant | B _ { s _ { * } } |$ for all s. 
-
-The sets $A _ { r _ { * } } + B _ { s } + U$ are disjoint as s varies, and so by the case $q = 1$ (rescaled) we have 
-
-$$
-| A + B + U | \geqslant \sum_ {s} | A _ {r _ {*}} + B _ {s} + U | \geqslant | U | | A _ {r _ {*}} | ^ {1 / 2} \sum_ {s} | B _ {s} | ^ {1 / 2}.\tag{8.5}
-$$
-
-Similarly, 
-
-$$
-| A + B + U | \geqslant | U | | B _ {s _ {*}} | ^ {1 / 2} \sum_ {r} | A _ {r} | ^ {1 / 2}.\tag{8.6}
-$$
-
-Taking products of (8.5), (8.6) and using 
-
-$$
-\left| A _ {r _ {*}} \right| ^ {1 / 2} \sum_ {r} \left| A _ {r} \right| ^ {1 / 2} \geqslant \sum_ {r} \left| A _ {r} \right| = | A |,
-$$
-
-$$
-\left| B _ {s _ {*}} \right| ^ {1 / 2} \sum_ {s} \left| B _ {s} \right| ^ {1 / 2} \geqslant \sum_ {s} \left| B _ {s} \right| = | B |,
-$$
-
-the result follows. 
-
-## 8.4. Skew-dimension and the P´alv¨olgyi–Zhelezov Theorem
-
-For the purposes of this section, an afine space is a subspace of $\mathbf { Z } ^ { d }$ (for some d) obtained by fixing the values of some possibly empty set of coordinates. Thus, for example, $\{ ( 2 , - 1 , x _ { 3 } ) : x _ { 3 } \in \mathbf { Z } \} \subset \mathbf { Z } ^ { 3 }$ is an afine space. If π is one of the d standard coordinate maps on $\mathbf { Z } ^ { d }$ , and if it restricts to a nontrivial map on V (that is, if its image is Z rather than a singleton) then we say that π is a coordinate map on $V$ In the example, there is just one coordinate map, the map $\pi ( ( 2 , - 1 , x _ { 3 } ) ) = x _ { 3 }$ 
-
-Let A be a finite subset of some afine space. As usual, the doubling constant $\sigma [ A ]$ is defined to be $\textstyle { \frac { | A + A | } { | A | } }$ . The weak<sup>1</sup> Polynomial Freiman-Ruzsa conjecture is the following statement. 
-
-Conjecture 8.4.1. Suppose that A is a finite subset of an afine space and that $\sigma [ A ] \leqslant K$ . Then there is a subset $A ^ { \prime } \subset A , | A ^ { \prime } | \geqslant K ^ { - C } | A |$ , with dim $A ^ { \prime } \ll \log K$ 
-
-We will give an argument of P´alv¨olgyi and Zhelezov which establishes a weak variant of Conjecture 8.4.1, in which the notion of dimension is replaced by a notion which we call the skew-dimension dim<sub>∗</sub>. We define it in the following inductive manner. 
-
-Definition 8.4.1 (Skew dimension). Let A be a finite set in some afine space V. If A is a singleton, define dim $\mathbf { \partial } ( A ) = 0$ . Otherwise, there is some coordinate map $\pi : V \to \mathbf { Z }$ such that $| \pi ( A ) | > 1$ ; for definiteness, take π to correspond to the coordinate with biggest index for which this is so. Then we define dim $* ( A ) : =$ $1 + \operatorname* { m a x } _ { x } \dim _ { * } ( \pi ^ { - 1 } ( x ) \cap A )$ 
-
-Example. Consider the set $A = \{ ( 1 , 0 , 0 ) , ( 2 , 0 , 0 ) , ( 0 , 1 , 1 ) , ( 0 , 2 , 1 ) \} \subset \mathbf { Z } ^ { 3 }$ . The coordinate map $\pi _ { 3 }$ is such that $\pi _ { 3 } ( A ) = \{ 0 , 1 \}$ has size greater than 1. The fibres are then 
-
-$$
-A _ {0} = \pi_ {3} ^ {- 1} (0) \cap A = \{(1, 0, 0), (2, 0, 0) \} \subset V _ {0} := \{(x, y, 0): x, y \in \mathbf {Z} \}
-$$
-
-and 
-
-$$
-A _ {1} = \pi_ {3} ^ {- 1} (1) \cap A = \{(0, 1, 1), (0, 2, 1) \} \subset V _ {1} := \{(x, y, 1): x, y \in \mathbf {Z} \}.
-$$
-
-We have $\pi _ { 2 } ( A _ { 0 } ) = \{ 0 \}$ , which has size 1. However, $\pi _ { 1 } ( A _ { 0 } ) = \{ 1 , 2 \}$ . The fibres are both singletons and so dim<sub>∗</sub> $\left( A _ { 0 } \right) = 1$ . We have $\pi _ { 2 } ( A _ { 1 } ) = \{ 1 , 2 \}$ , and again the fibres are both singletons. Therefore dim<sub>∗</sub> $\left( A _ { 1 } \right) = 1$ . We conclude that dim<sub>∗</sub> $( A ) = 2$ 
-
-This example, which has 1-dimensional fibres over a 1-dimensional base (but the fibres are “skew” to one another), should be thought of a typical example of a set of skew-dimension 2. Note that its true (vector space) dimension is 3. 
-
-Here is the main result. 
-
-Theorem 8.4.1 (P´alv¨olgyi–Zhelezov). Let A be a set in some afine space, and that $\sigma [ A ] \leqslant K$ . Then there is $A ^ { \prime } \subset A , | A ^ { \prime } | \geqslant K ^ { - 3 } | A |$ , with dim<sub>∗</sub> $( A ^ { \prime } ) \leqslant 3 \log _ { 2 } K$ 
-
-Recall, from the last section, the definition of binary set. Let $\mathrm { b i n } [ A ]$ denote the size of the largest binary set in A. This invariant is connected to the doubling constant of $A ,$ as the following result of Matolcsi, Ruzsa, Shakan and Zhelezov shows. 
-
-Proposition 8.4.1. $W e$ have $\mathrm { b i n } [ A ] \leqslant \sigma [ A ] ^ { 3 }$ 
-
-Proof. Let U be a binary set. It follows from Theorem 8.3.1 that $\left| A + A + U \right| \geqslant$ $| U | | A |$ . If $U \subseteq A , | A + A + U | \leqslant | A + A + A | = | 3 A |$ . It follows that bin $[ A ] \leqslant { \frac { | 3 A | } { | A | } }$ By the Pl¨unnecke Ruzsa inequality, Theorem 4.4.1, we have ${ \frac { | 3 A | } { | A | } } \leqslant \sigma [ A ] ^ { 3 }$ . The proposition follows. □ 
-
-Theorem 8.4.1 is an immediate consequence of Proposition 8.4.1 and the following proposition, which provides a link between binary sets and skew dimension. 
-
-Proposition 8.4.2. Suppose that A is a finite set in some afine space, and that bin $[ A ] = m$ . Then there is a subset $A ^ { \prime } \subset A$ with $\begin{array} { r } { | A ^ { \prime } | \geqslant \frac { 1 } { m } | A | } \end{array}$ and dim $\ O _ { \ast } ( A ^ { \prime } ) \ C$ $\log _ { 2 } m$ 
-
-Proof. We induct on this dimension of the afine space containing A. Let $\pi :$ $V  \mathbf { Z }$ be the coordinate map corresponding to largest index. If $| \pi ( A ) | = 1$ ， say $\pi ( A ) = \{ x \}$ , then A lives in the afine space $V ^ { \prime } : = \pi ^ { - 1 } ( x ) \cap V$ , which has dim $V ^ { \prime } <$ dim V . In this case the inductive step is trivial. Suppose, then, that $| \pi ( A ) | \geqslant 2$ . For each $x \in \pi ( A )$ write $A _ { x } : = \pi ^ { - 1 } ( x ) \cap A$ for the fibre of A above x. Thus $A = \textstyle \bigcup _ { x } A _ { x }$ . Write $m _ { x }$ for the size of the largest binary set in $A _ { x }$ . By the inductive hypothesis, there is $\begin{array} { r } { A _ { x } ^ { \prime } \subset A _ { x } , | A _ { x } ^ { \prime } | \geqslant \frac { 1 } { m _ { x } } | A _ { x } | } \end{array}$ , with dim $_ { \mathrm { : } } ( A _ { x } ^ { \prime } ) \leqslant \log _ { 2 } m _ { x }$ 
-
-We may assume that 
-
-$$
-\frac {1}{m _ {x}} | A _ {x} | \leqslant \frac {1}{m} | A |\tag{8.7}
-$$
-
-for all $x ,$ or else we may simply take $A ^ { \prime } = A _ { x } ^ { \prime }$ for any x violating this bound. 
-
-Note also that for distinct $x , y \in \pi ( A )$ the set $A _ { x } \cup A _ { y }$ (and hence A) contains a binary set of size $m _ { x } + m _ { y }$ , and so 
-
-$$
-m _ {x} + m _ {y} \leqslant m.\tag{8.8}
-$$
-
-Now let y be such that $m _ { y }$ is maximal, and set $\textstyle A ^ { \prime } : = \bigcup _ { x \neq y } A _ { x } ^ { \prime }$ . By (8.8), we see that if $x \neq y$ then $m _ { x } \leqslant m / 2$ . Therefore 
-
-$$
-\dim_ {*} (A ^ {\prime}) = 1 + \max _ {x \neq y} \dim_ {*} (A _ {x} ^ {\prime}) \leqslant 1 + \max _ {x \neq y} \log_ {2} m _ {x} \leqslant \log_ {2} m.
-$$
-
-Moreover, 
-
-$$
-\left| A ^ {\prime} \right| = \sum_ {x \neq y} \left| A _ {x} ^ {\prime} \right| \geqslant \sum_ {x \neq y} \frac {1}{m _ {x}} \left| A _ {x} \right| \geqslant \frac {1}{m - m _ {y}} \sum_ {x \neq y} \left| A _ {x} \right| = \frac {| A | - \left| A _ {y} \right|}{m - m _ {y}} \geqslant \frac {| A |}{m}.
-$$
-
-Here, we used $m _ { x } \leqslant m - m _ { y }$ and, in the last step, (8.7) with $x = y$ 
-
-## CHAPTER 9
-
-## Higher sum-product theorems
-
-In this chapter, we will be considering higher-order sumsets and product sets of sets of integers. If $A \subset \mathbf { Z }$ is finite, and if m $\geqslant 1$ is an integer, we have already defined 
-
-$$
-m A := \left\{a _ {1} + \dots + a _ {m}: a _ {i} \in A \right\}.
-$$
-
-We now further define 
-
-$$
-A ^ {(m)} := \{a _ {1} \dots a _ {m}: a _ {i} \in A \}.
-$$
-
-Note that $2 A = A + A$ and ${ \cal A } ^ { ( 2 ) } = { \cal A } \cdot { \cal A }$ 
-
-We showed in Theorem 7.3.1 that if $A \subset \mathbf { R }$ then either 2A or $A ^ { ( 2 ) }$ has size appreciably bigger than that of A, in fact size at least roughly $| A | ^ { 5 / 4 }$ . In this section we will prove a more dificult result due to Bourgain and Chang, which asserts that if $A \subset \mathbf { Z }$ then either mA or $A ^ { ( m ) }$ is much bigger than A, for large values of m. Here is the result we will prove. 
-
-Theorem 9.0.1. Let $A \subset \mathbf { Z }$ . Then for any m either the $\textmu m \_ f o l d$ sumset |mA| or the m-fold product set $A ^ { ( m ) }$ has cardinality at least $| A | ^ { b ( m ) }$ , where $b ( m ) \geqslant$ c log m/ log log m. 
-
-Note that it is important that $A \subset \mathbf { Z } ;$ no corresponding result is currently known for sets $A \subset \mathbf { R } .$ , and this is a very interesting open question. 
-
-In the form stated in Theorem 9.0.1, the result is due to P´alv¨olgyi and Zhelezov; their proof (which is the one we will give) is much easier than the original argument of Bourgain and Chang, and leads to a stronger bound. Remark. The original bound of Bourgain and Chang is on the order $b ( m ) \gg \log ^ { 1 / 4 } m$ . The main point of these results is that $b ( m ) \to \infty$ , which is a highly-nontrivial fact. 
-
-## 9.1. Higher-order additive energies
-
-We begin by generalising the notion of additive energy, which we introduced in Chapter 6. 
-
-Definition 9.1.1. Let $k \geqslant 2$ be an integer. Given an additive set $X ,$ , its additive (2k)-energy $E _ { 2 k } ( X )$ is the number of (2k)-tuples $( x _ { 1 } , \dots , x _ { 2 k } ) \in X ^ { 2 k }$ such that $x _ { 1 } + \cdot \cdot \cdot + x _ { k } = x _ { k + 1 } + \cdot \cdot \cdot + x _ { 2 k }$ . More generally, if $X _ { 1 } , \ldots , X _ { 2 k }$ are additive sets then we define $E ( X _ { 1 } , \ldots , X _ { 2 k } )$ to be the number of solutions to $x _ { 1 } + \cdot \cdot \cdot + x _ { k } =$ $x _ { k + 1 } + \cdot \cdot + x _ { 2 k }$ with $x _ { i } \in X _ { i }$ for all i. 
-
-Thus $E _ { 4 } ( X )$ is the number of quadruples $( x _ { 1 } , x _ { 2 } , x _ { 3 } , x _ { 4 } )$ such that $x _ { 1 } + x _ { 2 } =$ $x _ { 3 } + x _ { 4 }$ , which is what we called simply the additive energy in Chapter 6, where we denoted it by $E ( X )$ 
-
-We will need the following inequality. 
-
-Lemma 9.1.1. Let $X _ { 1 } , \dots , X _ { 2 k } \subset \mathbf { Z }$ be finite sets. Then we have 
-
-$$
-E (X _ {1}, \dots , X _ {2 k}) \leqslant \prod_ {i = 1} ^ {2 k} E _ {2 k} (X _ {i}) ^ {1 / 2 k}.
-$$
-
-Proof. A quick proof of this may be given using the Fourier transform and H¨older’s inequality. For this, observe that 
-
-$$
-E (X _ {1}, \ldots , X _ {2 k}) = \int_ {0} ^ {1} \hat {1} _ {X _ {1}} (\theta) \dots \hat {1} _ {X _ {k}} (\theta) \overline {{\hat {1} _ {X _ {k + 1}} (\theta)}} \dots \overline {{\hat {1} _ {X _ {2 k}} (\theta)}} d \theta ,
-$$
-
-where for any set 
-
-$$
-\hat {1} _ {X} (\theta) := \sum_ {n} 1 _ {X} (n) e (- n \theta),
-$$
-
-as in Chapter 3. The proof involves simply substituting the definition of the Fourier transform and using orthogonality, exactly as for the proof of (3.6). 
-
-Similarly (in fact, consequently) we have 
-
-$$
-E _ {2 k} (X _ {i}) = \int_ {0} ^ {1} | \hat {1} _ {X _ {i}} (\theta) | ^ {2 k} d \theta .
-$$
-
-The stated inequality is now a consequence of H¨older’s inequality on the Fourier side, that is to say the inequality 
-
-$$
-\int_ {0} ^ {1} f _ {1} \dots f _ {2 k} \leqslant \prod_ {i = 1} ^ {2 k} (\int_ {0} ^ {1} | f _ {i} | ^ {2 k}) ^ {1 / 2 k}.
-$$
-
-This concludes the proof. 
-
-We will also need the following, which is essentially the higher-order version of Proposition 6.2.1, proved in the same way. 
-
-Lemma 9.1.2. Let X be an additive set, and let $k \geqslant 2$ be an integer. Then 
-
-$$
-| k X | \geqslant \frac {| X | ^ {2 k}}{E _ {2 k} (X)}.
-$$
-
-Proof. Write $r _ { k } ( n )$ for the number of tuples $( x _ { 1 } , \ldots , x _ { k } ) \in X ^ { k }$ with $x _ { 1 } + \cdot \cdot \cdot + x _ { k } =$ n. Then we have, by the Cauchy-Schwarz inequality, 
-
-$$
-| X | ^ {2 k} = \big (\sum_ {n \in k X} r _ {k} (n) \big) ^ {2} \leqslant | k X | \sum_ {n} r _ {k} (n) ^ {2} = | k X | E _ {2 k} (X).
-$$
-
-This concludes the proof. 
-
-## 9.2. A lemma of Chang
-
-If $p$ is a prime and $m \in \mathbf { N }$ , write $v _ { p } ( m )$ for the p-adic valuation of $m ,$ , that is to say the exponent of the largest power of $p$ dividing $m .$ . We have the following lemma of Mei-Chu Chang. 
-
-Lemma 9.2.1. Let p be a prime, and suppose that $A \subset \mathbf { Z }$ is a finite set. Let $A _ { i } : = \{ n \in A : v _ { p } ( n ) = i \}$ . Then 
-
-$$
-E _ {2 k} (A) ^ {1 / k} \leqslant \binom {2 k} {2} \sum_ {i} E _ {2 k} (A _ {i}) ^ {1 / k}.
-$$
-
-Proof. Since A is the disjoint union of the $A _ { i } .$ , we have 
-
-$$
-E _ {2 k} (A) = \sum_ {j _ {1}, \dots , j _ {2 k}} E (A _ {j _ {1}}, \dots , A _ {j _ {2 k}}).
-$$
-
-However, not all of the terms here make any contribution. For a nonzero contribution we must have 
-
-$$
-p ^ {j _ {1}} n _ {1} + \dots + p ^ {j _ {k}} n _ {k} = p ^ {j _ {k + 1}} n _ {k + 1} + \dots + p ^ {j _ {2 k}} n _ {2 k}
-$$
-
-for some $n _ { i }$ coprime to $p .$ Let $j = \operatorname* { m i n } ( j _ { 1 } , \dots , j _ { 2 k } )$ . Dividing through by $p ^ { j }$ and considering congruences mod $p ,$ we see that there must be two $i , i ^ { \prime }$ with $j _ { i } = j _ { i ^ { \prime } } = j$ Let us estimate the contribution in the case $\{ i , i ^ { \prime } \} = \{ 1 , 2 \}$ ; the other cases are essentially identical. This contribution is 
-
-$$
-\begin{array}{c} \sum_ {j, j _ {3}, j _ {4}, \ldots , j _ {2 k}} E (A _ {j}, A _ {j}, A _ {j _ {3}}, \ldots , A _ {j _ {2 k}}) = \sum_ {j} E (A _ {j}, A _ {j}, A, \ldots , A) \\ \leqslant \sum_ {j} E _ {2 k} (A _ {j}) ^ {1 / k} E _ {2 k} (A) ^ {(k - 1) / k}, \end{array}
-$$
-
-where in the last step we used Lemma 9.1.1. Summing over the $\binom { 2 k } { 2 }$ choices of the pair $\{ i , i ^ { \prime } \}$ now gives 
-
-$$
-E _ {2 k} (A) \leqslant \binom {2 k} {2} E _ {2 k} (A) ^ {(k - 1) / k} \sum_ {j} E _ {2 k} (A _ {j}) ^ {1 / k},
-$$
-
-from which the lemma follows immediately. 
-
-## 9.3. The Bourgain-Chang theorem
-
-Suppose that $A \subset \mathbf { N }$ is a finite set. By the multiplicative skew-dimension of A, we mean the skew-dimension of the image of A under the map $v : = ( v _ { p } ) _ { p \mathrm { p r i m e } } : \mathbf { N } $ $\prod _ { p } \mathbf { Z } .$ Note that since A is a finite set, only finitely many primes are relevant here, so we can assume the image of v is finite-dimensional. We denote the multiplicative skew-dimension by $\dim _ { * } ^ { \times } ( A )$ 
-
-Proposition 9.3.1. Suppose that $A \subset \mathbf { N }$ is a set with multiplicative skewdimension at most D. Then 
-
-$$
-E _ {2 k} (A) ^ {1 / k} \leqslant \binom {2 k} {2} ^ {D} | A |.
-$$
-
-Proof. The result is almost immediate using Lemma 9.2.1 and induction on $D ,$ the result being trivial when $D = 0$ (in which case A is a singleton and $E _ { 2 k } ( A ) = 1 )$ ). To see this, let us consider the definition of multiplicative skew-dimension. If it is at most $D _ { : }$ , there is (by definition) some prime p such that the fibres of the “coordinate map” $v _ { p } : A \to \mathbf { Z }$ have multiplicative skew dimension at most $D - 1$ . These fibres, however, are precisely the $A _ { i }$ in the statement of Lemma 9.2.1. □ 
-
-Now we turn to the main result, Theorem 9.0.1. 
-
-Proof. [Proof of Theorem 9.0.1] At the expense of reducing c slightly, it sufices to handle the case when $m = 2 ^ { t }$ is a suficiently large power of two. Set $k : = \lfloor \frac { t } { \log t } \rfloor$ and $\begin{array} { r } { b : = \frac { t } { 1 0 0 \log { t } } } \end{array}$ 
-
-Suppose that 
-
-$$
-\left| A ^ {\left(2 ^ {t}\right)} \right| \leqslant \left| A \right| ^ {b}.\tag{9.1}
-$$
-
-Our aim is to show that 
-
-$$
-\left| 2 ^ {t} A \right| \geqslant \left| A \right| ^ {b},\tag{9.2}
-$$
-
-which will conclude the proof. The assumption (9.1) implies that 
-
-$$
-\prod_ {i = 0} ^ {t - 1} \frac {| A ^ {(2 ^ {i + 1})} |}{| A ^ {(2 ^ {i})} |} \leqslant | A | ^ {b},
-$$
-
-so there is some $i \leqslant t - 1$ such that 
-
-$$
-\left| A ^ {\left(2 ^ {i + 1}\right)} \right| \leqslant K \left| A ^ {\left(2 ^ {i}\right)} \right|\tag{9.3}
-$$
-
-where $K = | A | ^ { b / t }$ 
-
-By Theorem 8.4.1, there is a set $S \subset A ^ { ( 2 ^ { i } ) } , | S | \geqslant K ^ { - 3 } | A ^ { ( 2 ^ { i } ) } |$ |, with dim $\rho _ { \ast } ^ { \times } ( S ) \leqslant$ $3 \log _ { 2 } K$ . Here dim $\updownarrow _ { * } ^ { \times }$ denotes the multiplicative skew-dimension. 
-
-In the following argument, we will use the fact that if $X \subset \mathbf { N }$ has $| X \cdot X | \leqslant K | X |$ then $| X \cdot X ^ { - 1 } | \leqslant K ^ { 2 } | X |$ , where $X ^ { - 1 } : = \{ x ^ { - 1 } : x \in X \}$ . This is nothing more than the Pl¨unnecke-Ruzsa inequality, Theorem 4.4.1, in the case $k = \ell = 1$ , but stated multiplicatively; note that N (with multiplication) is contained in the abelian group $\mathbf { Q } ^ { \times }$ 
-
-Now we have $\textstyle \sum _ { x } | A \cap x S | = | A | | S |$ , and the sum is supported on $x \in A S ^ { - 1 }$ By the multiplicative Pl¨unnecke-Ruzsa inequality just stated, the containment $S \subset$ $A ^ { ( 2 ^ { i } ) }$ and (9.3), we have 
-
-$$
-| A S ^ {- 1} | \leqslant | A ^ {(2 ^ {i})} (A ^ {(2 ^ {i})}) ^ {- 1} | \leqslant K ^ {2} | A ^ {(2 ^ {i})} |.
-$$
-
-Therefore there is some x such that 
-
-$$
-| A \cap x S | \geqslant \frac {| A | | S |}{| A S ^ {- 1} |} \geqslant K ^ {- 5} | A |.
-$$
-
-Setting $A ^ { \prime } : = A \cap x S$ , we therefore have 
-
-$$
-\left| A ^ {\prime} \right| \geqslant K ^ {- 5} | A |\tag{9.4}
-$$
-
-and 
-
-$$
-\dim_ {*} ^ {\times} (A ^ {\prime}) \leqslant \dim_ {*} ^ {\times} (x S) = \dim_ {*} ^ {\times} (S) \leqslant 3 \log_ {2} K <   5 \log K,
-$$
-
-since multiplicative skew dimension is invariant under (multiplicative) translation. 
-
-By Proposition 9.3.1, $\begin{array} { r } { E _ { 2 k } ( A ^ { \prime } ) \leqslant \binom { 2 k } { 2 } ^ { 5 k \log K } | A | ^ { k } } \end{array}$ . Using the crude bound $\binom { 2 k } { 2 } \leqslant$ $2 k ^ { 2 }$ , we may put this in the tidier form 
-
-$$
-E _ {2 k} (A ^ {\prime}) \leqslant K ^ {1 5 k \log k} | A | ^ {k},\tag{9.5}
-$$
-
-Finally, applying Lemma 9.1.2 and using (9.4), (9.5) gives 
-
-$$
-| 2 ^ {t} A | \geqslant | k A | \geqslant | k A ^ {\prime} | \geqslant K ^ {- 2 5 k \log k} | A | ^ {k} = | A | ^ {k - \frac {2 5 b k \log k}{t}} \geqslant | A | ^ {k / 2} > | A | ^ {b}
-$$
-
-by the choice of $b$ and $k .$ . This is (9.2), the bound we aimed to prove, so the proof is finished. □ 
-
-## APPENDIX A
-
-## Arithmetical functions
-
-In this section, relevant mostly to the material in Chapter 2, we give a brief refresher on the basic arithmetic functions. 
-
-An arithmetical function is simply a function $f : \mathbf { N }  \mathbf { C }$ . The ones we shall consider will be real-valued. The ones which come up in Chapter 2 are the following: 
-
-• The M¨obius function $\mu ,$ defined by $\mu ( 1 ) = 1 , \mu ( n ) = ( - 1 ) ^ { k } { \mathrm { ~ i f ~ } } n = p _ { 1 } \cdot \cdot \cdot p _ { k }$ for distinct primes $p _ { i } .$ , and $\mu ( n ) = 0$ if n is divisible by the square of some prime; 
-
-• The divisor function $\tau ( n )$ , defined to be the number of positive integer divisors of n (including n itself). 
-
-Other important arithmetic functions include the Euler totient function $\phi ( n )$ the number of positive integers less than n and coprime to it. 
-
-The M¨obius function $\mu .$ . The first important fact we need about the M¨obius function is M¨obius inversion. If $f _ { 1 } , f _ { 2 } : \mathbf { N }  \mathbf { C }$ are two arithmetic functions then we write $f _ { 1 } \star f _ { 2 }$ for their Dirichlet convolution 
-
-$$
-f _ {1} \star f _ {2} (n) := \sum_ {d | n} f _ {1} (d) f _ {2} (\frac {n}{d}).
-$$
-
-One may easily check that this is a symmetric, associative operation. 
-
-Lemma A.0.1 (M¨obius inversion). Suppose that $f , g : \mathbf { N }  \mathbf { C }$ are arithmetic functions. Then 
-
-$$
-g (n) = \sum_ {d | n} f (d)
-$$
-
-for all n if and only if 
-
-$$
-f (n) = \sum_ {d | n} \mu (\frac {n}{d}) g (d)
-$$
-
-for all n. 
-
-Proof. In the notation of Dirichlet convolution, this states that $g = f \star 1$ if and only if $f = g \star \mu$ . To prove this, the key observation to make is that 
-
-$$
-\mu \star 1 = \delta ,\tag{A.1}
-$$
-
-where $\delta : \mathbf { N }  \mathbf { C }$ is the arithmetic function defined by $\delta ( 1 ) = 1$ and $\delta ( n ) = 0$ for $n > 1$ . In other words, 
-
-$$
-\sum_ {d \mid n} \mu (d) = 0
-$$
-
-unless $n = 1$ , in which case it equals 1. This may be easily checked by considering the prime factorisation of $n .$ 
-
-One may also observe that δ acts like an identity for Dirichlet convolution: $f = f \star \delta$ 
-
-Therefore if $g = f \star 1$ then we have $g \star \mu = ( f \star 1 ) \star \mu = f \star ( 1 \star \mu ) = f \star \delta = f ,$ whilst in the other direction, if $g { \star } \mu = f$ then $f { \star } 1 = ( g { \star } \mu ) { \star } 1 = g { \star } ( \mu { \star } 1 ) = g { \star } \delta = g .$ This completes the proof. □ 
-
-We also need the following variant of M¨obius inversion. 
-
-Lemma A.0.2. Let $z \geqslant 1$ be a parameter. Suppose we have two arithmetical functions $f , g : \mathbf { N } \to \mathbf { C }$ related by 
-
-$$
-g(\delta) = \sum_{\substack{d\leqslant z\\ \delta |d}}f(d).\tag{A.2}
-$$
-
-Then 
-
-$$
-f(d) = \sum_{\substack{\delta \leqslant z\\ d|\delta}}\mu (\frac{\delta}{d})g(\delta).\tag{A.3}
-$$
-
-Proof. Substitute (A.2) into the right hand side of (A.3). This gives 
-
-$$
-\sum_ {d ^ {\prime} \leqslant z} f (d ^ {\prime}) \sum_ {d | \delta | d ^ {\prime}} \mu (\frac {\delta}{d}).
-$$
-
-(Note the condition $\delta \leqslant z$ has disappeared since it is automatically implied by $d ^ { \prime } \leqslant z \ \mathrm { a n d } \ \delta | d ^ { \prime } )$ . Substituting $\delta = k d$ in the inner sum, we see that 
-
-$$
-\sum_ {d | \delta | d ^ {\prime}} \mu (\frac {\delta}{d}) = \sum_ {k | \frac {d ^ {\prime}}{d}} \mu (k) = 1 _ {d ^ {\prime} / d = 1}.
-$$
-
-This completes the proof. 
-
-Remark. All that was used about the set $\mathcal { D } : = \{ d : d \leqslant z \}$ is that it is divisorclosed, that is to say if $d \in \mathcal { D }$ and $d ^ { \prime } | d ,$ , then $d ^ { \prime } \in \mathcal { D }$ . Therefore, a similar statement holds for other divisor-closed sets. 
-
-The divisor function τ. Recall that $\tau ( n )$ is the number of (positive integer) divisors of n. If $n = p _ { 1 } ^ { a _ { 1 } } \cdot \cdot \cdot p _ { k } ^ { a _ { k } }$ is the prime factorisation of $n ,$ then 
-
-$$
-\tau (n) = (a _ {1} + 1) \dots (a _ {k} + 1);
-$$
-
-the divisors of n are precisely the numbers $p _ { 1 } ^ { a _ { 1 } ^ { \prime } } \ldots p _ { k } ^ { a _ { k } ^ { \prime } }$ with $0 \leqslant a _ { i } ^ { \prime } \leqslant a _ { i }$ for all i. 
-
-A very important fact about the divisor function – used throughout analytic number theory – is the divisor bound, which asserts that $\tau ( n )$ grows slower than any fixed power of n. 
-
-Lemma A.0.3 (Divisor bound). For any $\varepsilon > 0$ there is a constant $C _ { \varepsilon }$ such that $\tau ( n ) \leqslant C _ { \varepsilon } n ^ { \varepsilon }$ for all n. 
-
-Proof. Let the prime factorisation of n be $p _ { 1 } ^ { a _ { 1 } } \cdots p _ { k } ^ { a _ { k } }$ . For each fixed prime p we have $\begin{array} { r } { \operatorname* { l i m } _ { a \to \infty } \frac { a + 1 } { p ^ { \varepsilon a } } = 0 . } \end{array}$ , so there is some $C = C ( p , \varepsilon )$ such that $a + 1 \leqslant C ( p , \varepsilon ) p ^ { a \varepsilon }$ for all natural numbers a. Moreover, since $a + 1 \leqslant 2 ^ { a }$ , we can take $C ( p , \varepsilon ) = 1$ for $p \geqslant 2 ^ { 1 / \varepsilon }$ . It follows that 
-
-$$
-\tau (n) = \prod_ {i = 1} ^ {k} \left(a _ {i} + 1\right) \leqslant \prod_ {i} C \left(p _ {i}, \varepsilon\right) p _ {i} ^ {a _ {i} \varepsilon} \leqslant C (\varepsilon) n ^ {\varepsilon},
-$$
-
-where 
-
-$$
-C (\varepsilon) := \prod_ {p} C (p, \varepsilon).
-$$
-
-Note this is a finite constant because of the fact that $C ( p , \varepsilon ) = 1$ for $p \geqslant 2 ^ { 1 / \varepsilon }$ □ 
-
-Multiplicative functions. An arithmetical function $f : \mathbf { N }  \mathbf { C }$ is multiplicative if $f ( a b ) = f ( a ) f ( b )$ whenever a and b are coprime. Note carefully that the condition is not that $f ( a b ) = f ( a ) f ( b )$ for all $a , b ;$ that is a stronger condition, known as complete multiplicativity. 
-
-Both the M¨obius function $\mu$ and the divisor function τ are multiplicative, but neither is completely multiplicative. 
-
-One may check that if $f , g : \mathbf { N } \to \mathbf { C }$ are two multiplicative functions, then their Dirichlet convolution $f \star g$ is also multiplicative. Indeed, if a and b are coprime then 
-
-$$
-\begin{array}{c} f \star g (a b) = \sum_ {d | a b} f (\frac {a b}{d}) g (d) = \sum_ {d _ {1} | a, d _ {2} | b} f (\frac {a}{d _ {1}} \frac {b}{d _ {2}}) g (d _ {1} d _ {2}) \\ = \sum_ {d _ {1} | a} f (\frac {a}{d _ {1}}) g (d _ {1}) \sum_ {d _ {2} | b} f (\frac {b}{d _ {2}}) g (d _ {2}) = (f \star g) (a) (f \star g) (b). \end{array}
-$$
-
-## APPENDIX B
-
-## Geometry of numbers
-
-The main goal of this section is to prove Minkowski’s second theorem. First we briefly go over some standard properties of the determinant of a lattice. 
-
-Lemma B.0.1. If $q \in \mathbf { N }$ then det $( q \mathbf { Z } ^ { d } ) = q ^ { d }$ . If Λ, Λ<sup>0</sup> are two lattices with $\Lambda ^ { \prime } \subset \Lambda$ , then det $( \Lambda ^ { \prime } ) / \operatorname* { d e t } ( \Lambda ) = [ \Lambda : \Lambda ^ { \prime } ]$ , where the latter quantity is the index of $\Lambda ^ { \prime }$ as a subgroup of Λ, that is to say the number of cosets of Λ<sup>0</sup> needed to cover Λ. 
-
-Now let us recall the statement of Minkowski’s Second theorem, and let us also state Minkowski’s first theorem. In both of these results, $K \subset \mathbf { R } ^ { d }$ is a centrally symmetric convex body, and $\Lambda \subset \mathbf { R } ^ { d }$ a lattice. The successive minima of K with respect to Λ are $\lambda _ { 1 } , \ldots , \lambda _ { d }$ 
-
-Theorem B.0.1 (Minkowski I). Suppose that vol $( K ) > 2 ^ { d } \operatorname* { d e t } ( \Lambda )$ . Then K contains a nonzero point of Λ. 
-
-Theorem B.0.2 (Minkowski II). We have $\lambda _ { 1 } \cdot \cdot \cdot \lambda _ { d } \operatorname { v o l } ( K ) \leqslant 2 ^ { d } \operatorname* { d e t } ( \Lambda )$ 
-
-Let us remark that Minkwoski I is a consequence of Minkowski II. To see this, note that if $\operatorname { v o l } ( K ) > 2 ^ { d } \operatorname* { d e t } ( \Lambda )$ then Minkowski II implies that $\lambda _ { 1 } \cdots \lambda _ { d } < 1$ . Since $\lambda _ { 1 } \leqslant \cdots \lambda _ { d } .$ this implies that $\lambda _ { 1 } < 1$ . By the definition of $\lambda _ { 1 }$ , it follows that K contains at least one nonzero point of Λ. 
-
-Minkowski I is a very straightforward consequence of the following result, Blichfeldt’s lemma, which is also an ingredient in the proof of Minkowski II. 
-
-Lemma B.0.2 (Blichfeldt’s lemma). Suppose that $K \subset \mathbf { R } ^ { d }$ , and suppose that $\operatorname { v o l } ( K ) > \operatorname* { d e t } ( \Lambda )$ . Then there are two distinct points x, $\mathbf { y } \in K$ with $\mathbf { x } - \mathbf { y } \in \Lambda$ 
-
-Remark. Note that here K is not required to be either centrally symmetric or convex. 
-
-Proof. By considering the sets $K \cap B ( 0 , R )$ , as $R \to \infty ,$ , whose volumes tend to that of K, we may assume that K lies inside some ball $B ( 0 , R )$ . Now let us suppose that the conclusion is false: then no translate of K contains two points of $\Lambda _ { ; }$ or in other words 
-
-$$
-\sum_ {\mathbf {x}} 1 _ {K} (\mathbf {x} - \mathbf {t}) 1 _ {\Lambda} (\mathbf {x}) \leqslant 1
-$$
-
-for all $\mathbf { t } \in \mathbf { R } ^ { d }$ . Let $R ^ { \prime }$ be much bigger than $R ,$ and average this last inequality over t lying in the ball $B ( 0 , R ^ { \prime } )$ to obtain 
-
-$$
-\sum_ {x} 1 _ {\Lambda} (\mathbf {x}) \bigl (\frac {1}{\operatorname{vol} (B (0 , R ^ {\prime}))} \int_ {B (0, R ^ {\prime})} 1 _ {K} (\mathbf {x} - \mathbf {t}) d \mathbf {t} \bigr) \leqslant 1.
-$$
-
-Since $K \subset B ( 0 , R )$ , the inner integral equals vol(K) if $\lVert x \rVert \leqslant R ^ { \prime } - R$ , and therefore 
-
-$$
-\sum_ {\mathbf {x}} 1 _ {\Lambda} (\mathbf {x}) 1 _ {B (0, R ^ {\prime} - R)} (\mathbf {x}) d \mathbf {x} \leqslant \frac {\operatorname{vol} (B (0 , R ^ {\prime})}{\operatorname{vol} (K)},
-$$
-
-and hence 
-
-$$
-\frac {1}{\operatorname{vol} \left(B \left(0 , R ^ {\prime} - R\right)\right)} \sum_ {\mathbf {x}} 1 _ {\Lambda} (\mathbf {x}) 1 _ {B \left(0, R ^ {\prime} - R\right)} (\mathbf {x}) d \mathbf {x} \leqslant \frac {\operatorname{vol} \left(B \left(0 , R ^ {\prime}\right) \right.}{\operatorname{vol} \left(B \left(0 , R ^ {\prime} - R\right)\right)} \cdot \frac {1}{\operatorname{vol} (K)}.\tag{B.1}
-$$
-
-However it is “clear” by tiling with fundamental parallelepipeds that 
-
-$$
-\lim _ {r \to \infty} \frac {1}{\operatorname{vol} (B (0 , r))} \sum_ {\mathbf {x}} 1 _ {\Lambda} (\mathbf {x}) 1 _ {B (0, r)} (\mathbf {x}) = \frac {1}{\det (\Lambda)},
-$$
-
-and moreover 
-
-$$
-\lim _ {R ^ {\prime} \to \infty} \frac {\operatorname{vol} (B (0 , R ^ {\prime})}{\operatorname{vol} (B (0 , R ^ {\prime} - R))} = 1.
-$$
-
-Comparing with (B.1) immediately leads to 
-
-$$
-\frac {1}{\det (\Lambda)} \leqslant \frac {1}{\operatorname{vol} (K)},
-$$
-
-contrary to assumption. 
-
-Although we will not formally need it in what follows, let us pause to give the simple deduction of Minkowski I. 
-
-Proof. [Proof of Minkowski I] By Blichfeldt’s lemma, the set $\textstyle { \frac { 1 } { 2 } } K = \{ { \frac { 1 } { 2 } } \mathbf x : \mathbf x \in \mathbf R ^ { d } \}$ contains two distinct points of $\Lambda ;$ thus there are $\mathbf { x } , \mathbf { y } \in K$ with $\frac { 1 } { 2 } \big ( \mathbf x - \mathbf y \big ) \in \Lambda$ However, since K is convex and centrally symmetric we have ${ \frac { 1 } { 2 } } ( \mathbf { x } - \mathbf { y } ) \in K$ 
-
-Now we turn to the proof of Minkowski II. 
-
-Proof. [Proof of Minkowski II] It is technically convenient to assume that K is open; this we may do by passing from K to the interior $K ^ { \circ }$ . Take a directional basis $\mathbf { b } _ { 1 } , \ldots , \mathbf { b } _ { d }$ for Λ with respect to K. Since K is open, $\lambda _ { k } K \cap \Lambda$ is spanned (over R) by the vectors $\mathbf { b } _ { 1 } , \ldots , \mathbf { b } _ { k - 1 }$ . Indeed if it were not then we could choose some further linearly independent vector $\mathbf { b } \in \lambda _ { k } K \cap \Lambda$ , and by the openness of K this would in fact lie in $( \lambda _ { k } - \varepsilon ) K \cap \Lambda$ for some $\varepsilon > 0 .$ , contrary to the definition of $\lambda _ { k }$ 
-
-Write each given x in coordinates relative to the basis vectors $\mathbf { b } _ { i }$ as $x _ { 1 } \mathbf { b } _ { 1 } + \cdots +$ $x _ { d } \mathbf { b } _ { d }$ . We now define some rather unusual maps $\phi _ { j } : K \to K$ , by mapping $\mathbf { x } \in K$ to the centre of gravity of the slice of K which contains x and is parallel to the subspace spanned by $\mathbf { b } _ { 1 } , \cdot \cdot \cdot , \mathbf { b } _ { j - 1 } \ ( \mathrm { f o r } \ j = 1 , \phi _ { 1 } ( \mathbf { x } ) = \mathbf { x } )$ . Next, we define a map $\phi : K \to \mathbf { R } ^ { d }$ by 
-
-$$
-\phi (\mathbf {x}) := \sum_ {j = 1} ^ {d} \left(\lambda_ {j} - \lambda_ {j - 1}\right) \phi_ {j} (\mathbf {x}),
-$$
-
-where we are operating with the convention that $\lambda _ { 0 } = 0$ . Let us make a few further observations concerning the $\phi _ { j }$ and φ. In coordinates we have $\begin{array} { r } { \phi _ { j } ( \mathbf { x } ) = \sum _ { i } c _ { i j } ( \mathbf { x } ) \mathbf { b } _ { i } } \end{array}$ 2 where $c _ { i j } ( \mathbf { x } ) = x _ { i }$ for $i \geqslant j$ , and $c _ { i j } ( \mathbf { x } )$ depends only on $x _ { j } , \cdots , x _ { d }$ for $i < j$ . It follows that 
-
-$$
-\phi (\mathbf {x}) = \sum_ {i = 1} ^ {d} \mathbf {b} _ {i} \left(\lambda_ {i} x _ {i} + \psi_ {j} \left(x _ {i + 1}, \dots , x _ {d}\right)\right)
-$$
-
-for certain continuous functions $\psi _ { j }$ . It follows easily that 
-
-$$
-\operatorname{vol} (\phi (K)) = \lambda_ {1} \dots \lambda_ {d} \operatorname{vol} (K),\tag{B.2}
-$$
-
-the Jacobian of the transformation $x _ { i } ^ { \prime } = \lambda _ { i } x _ { i } + \psi _ { i } ( x _ { i + 1 } , \ldots , x _ { d } )$ being $\lambda _ { 1 } \cdots \lambda _ { d }$ 
-
-Suppose, as a hypothesis for contradiction, that $\lambda _ { 1 } \cdot \cdot \cdot \lambda _ { d } \mathrm { v o l } ( K ) > 2 ^ { d } \operatorname* { d e t } ( \Lambda )$ $\mathrm { B y }$ Blichfeldt’s lemma and (B.2), this means that $\phi ( K )$ contains two elements $\phi ( \mathbf { x } )$ and $\phi ( \mathbf { y } )$ which difer by an element of $2 \cdot \Lambda = \{ 2 \lambda : \lambda \in \Lambda \}$ , and this means that $\begin{array} { r } { \frac { 1 } { 2 } ( \phi ( \mathbf x ) - \phi ( \mathbf y ) ) \in \Lambda } \end{array}$ . Write $\begin{array} { r } { { \mathbf x } = \sum _ { i } x _ { i } { \mathbf b } _ { i } } \end{array}$ and $\begin{array} { r } { \mathbf { y } = \sum _ { i } y _ { i } \mathbf { b } _ { i } } \end{array}$ , and suppose that k is the largest index such that $x _ { k } \neq y _ { k }$ . Then we have $\phi _ { i } ( \mathbf { x } ) = \phi _ { i } ( \mathbf { y } )$ for $i > k ,$ , so that 
-
-$$
-\begin{array}{c} \frac {\phi (\mathbf {x}) - \phi (\mathbf {y})}{2} = \sum_ {j = 1} ^ {d} (\lambda_ {j} - \lambda_ {j - 1}) \bigl (\frac {\phi_ {j} (\mathbf {x}) - \phi_ {j} (\mathbf {y})}{2} \bigr) \\ = \sum_ {j = 1} ^ {k} (\lambda_ {j} - \lambda_ {j - 1}) \bigl (\frac {\phi_ {j} (\mathbf {x}) - \phi_ {j} (\mathbf {y})}{2} \bigr). \end{array}
-$$
-
-This has two consequences. First of all the convexity of K implies that $\begin{array} { r l } { \frac { 1 } { 2 } ( \phi _ { j } ( \mathbf { x } ) - } & { { } } \end{array}$ $\phi _ { j } ( \mathbf { y } ) ) ~ \in ~ K$ for all $j ,$ and hence (again by convexity) $\frac { 1 } { 2 } \big ( \phi ( \mathbf { x } ) - \phi ( \mathbf { y } ) \big ) \ \in \ \lambda _ { k } K$ Secondly we may easily evaluate the coeficient of $\mathbf { b } _ { k }$ when $\begin{array} { r } { \frac { 1 } { 2 } \left( \phi ( \mathbf { x } ) - \phi ( \mathbf { y } ) \right) } \end{array}$ is written in terms of our directional basis: it is exactly $\lambda _ { k } ( x _ { k } - y _ { k } ) / 2$ . In particular this is nonzero, which means that $\begin{array} { r } { \frac { 1 } { 2 } \big ( \phi ( \mathbf { x } ) - \phi ( \mathbf { y } ) \big ) } \end{array}$ lies in Λ and $\lambda _ { k } K$ , but not in the span of $ { \mathbf { b } } _ { 1 } , \cdots ,  { \mathbf { b } } _ { k - 1 }$ . This is contrary to the observation made at the start of the proof. □ 
-
-## Bibliography
-
-[1] H. Davenport, Analytic methods for diophantine equations and diophantine inequalities Second edition. With a foreword by R. C. Vaughan, D. R. Heath-Brown and D. E. Freeman. Edited and prepared for publication by T. D. Browning. Cambridge Mathematical Library. Cambridge University Press, Cambridge, 2005. xx+140 pp 
-
-[2] B. J. Green, Course notes for C3.8, available at 
-
-[3] H. Iwaniec, Topics in classical automorphic forms, Graduate Studies in Math. 17, Springer. 
-
-[4] T. D. Wooley, Large improvements in Waring’s problem, Ann. of Math. (2) 135 (1992), no. 1, 131–164. 
-
-[5] G. A. Freiman, Foundations of a structural theory of set addition. Translated from the Russian. Translations of Mathematical Monographs, Vol 37. American Mathematical Society, Providence, R. I., 1973. vii+108 pp. 
+# 加法组合学
+
+Ben Green
+
+## 目录
+
+0.1. 概述 1  
+0.2. 内容提要 1  
+0.3. 延伸阅读 2  
+0.4. 记号 2  
+第 1 章 平方和 5  
+1.1. 两个平方数之和 5  
+1.2. 四个平方数之和 6  
+1.3. 三个平方数之和 8  
+1.4. *进一步讨论 8  
+第 2 章 素数和 9  
+2.1. 基与施尼雷尔曼密度 9  
+2.2. 素数与施尼雷尔曼密度 12  
+2.3. 塞尔伯格筛法 15  
+第 3 章 长度为 3 的等差数列的 Roth 定理 23  
+3.1. 密度增量策略 23  
+3.2. 整数集 \(\mathbf Z\) 上的傅里叶变换 24  
+3.3. 一个较大的傅里叶系数 25  
+3.4. 从较大的傅里叶系数到密度增量 27  
+第 4 章 和集不等式 29  
+4.1. 基本记号与定义 29  
+4.2. Ruzsa 三角不等式与覆盖引理 29  
+4.3. Petridis 不等式 30  
+4.4. Plünnecke–Ruzsa 不等式 32  
+第 5 章 Freiman 定理 35  
+5.1. 广义等差数列与 Freiman 定理 35  
+5.2. Freiman 同态 37  
+5.3. Ruzsa 模型引理 39  
+5.4. Bogolyubov 引理 41  
+5.5. Bohr 集中的广义等差数列 43  
+
+## 目录
+
+5.6. Freiman 定理：证明的收尾 45  
+第 6 章 加法能量与 Balog–Szemerédi–Gowers 定理 47  
+6.1. 引言 47  
+6.2. 基本性质与 Balog–Szemerédi–Gowers 定理的陈述 48  
+6.3. *长度为 2 的路径 49  
+6.4. *长度为 3 的路径 50  
+6.5. Balog–Szemerédi–Gowers 定理的证明 51  
+第 7 章 组合几何与和积问题 55  
+7.1. 交叉数不等式 55  
+7.2. Szemerédi–Trotter 定理 58  
+7.3. 和积问题 59  
+第 8 章 关于集合加法的一些进一步结果 61  
+8.1. 直线上的 Prékopa–Leindler 不等式 61  
+8.2. 加权离散 Prékopa–Leindler 不等式 62  
+8.3. 准立方体、二元集与和集 64  
+8.4. 斜维数与 Pálvölgyi–Zhelezov 定理 65  
+第 9 章 高阶和积定理 69  
+9.1. 高阶加法能量 69  
+9.2. Chang 引理 71  
+9.3. Bourgain–Chang 定理 71  
+附录 A. 算术函数 75  
+附录 B. 数的几何 79  
+参考文献 83  
+
+## 0.1. 概述
+
+本课程旨在介绍加法数论与组合数论中的经典结果，展示如何运用来自多个数学领域的工具解决数论问题。
+
+我们将从关于自然数表示为平方数之和与素数之和的经典定理讲起。例如，我们将证明 Lagrange 定理：每个自然数都可以表示为四个平方数之和；还将证明，每个充分大的整数都可以表示为有界个数的素数之和。
+
+接下来，我们将研究更一般的整数集合，并证明 Roth 的一个著名定理：每个具有正密度的整数集合都包含三个互不相同、构成等差数列的元素。
+
+我们还将研究有限整数集 \(A\) 的结构。当它们在加法下近似封闭时，其和集
+\[
+A+A:=\{a_1+a_2:a_1,a_2\in A\}
+\]
+相对于 \(A\) 本身会比较小。本课程的重点是 Freiman 定理：该定理指出，任何这样的集合都具有一种精确的组合结构，称为广义等差数列。
+
+最后，我们将研究和积现象的一些实例。该现象表明，一个有限整数集不可能同时具有很强的加法结构和乘法结构。本部分涉及其他数学领域中一系列特别丰富的思想，包括图论、几何与分析。尽管如此，本课程的先修要求仍然很少；我们会从头建立所需的知识。
+
+## 0.2. 内容提要
+
+**经典基。** 每个模 4 同余于 1 的素数都是两个平方数之和。每个自然数都是四个平方数之和。*讨论三个平方数之和。* 施尼雷尔曼密度。应用塞尔伯格筛法证明：存在固定常数 \(C\)，使得每个充分大的整数都是至多 \(C\) 个素数之和。
+
+**长度为 3 的等差数列。** 傅里叶变换的基本性质。Roth 定理：当 \(N\) 关于 \(\delta\) 充分大时，集合 \(\{1,\ldots,N\}\) 的任意子集，只要其大小至少为 \(\delta N\)，就包含三个构成等差数列的元素。
+
+**和集与 Freiman 定理。** 和集的基本估计。加法能量及其与和集的关系：陈述（但不证明）Balog–Szemerédi–Gowers 定理。Bohr 集与 Bogolyubov 定理。Minkowski 第二定理（仅陈述）。关于小倍增常数集合的 Freiman 定理。
+
+**和积定理。** 图的交叉数不等式。关于点–直线关联的 Szemerédi–Trotter 定理，以及它在证明下述结论中的应用：\(|A+A|\) 与 \(|A\cdot A|\) 中至少有一个不小于 \(c|A|^{5/4}\)。Prékopa–Leindler 不等式、准立方体与和集。证明 Bourgain 和 Chang 的结果：对于任意 \(m\)，\(m\) 重和集 \(A+\cdots+A\) 或 \(m\) 重积集 \(A\cdot\ldots\cdot A\) 中至少有一个，其大小不小于 \(|A|^{f(m)}\)，其中 \(f(m)\to\infty\)。
+
+如果时间允许，本课程将以一段简短、无需考试的讨论作结，介绍 Gowers 关于长度为 4 及更长等差数列的 Szemerédi 定理的工作。该工作将本课程前面若干主题联系在一起。
+
+## 0.3. 延伸阅读
+
+M. Nathanson 的两本《Additive Number Theory》对本课程选题产生了重要影响，其中涵盖了相当一部分相关材料。学生应注意，这两本书写于 25 年前，而本课程还将介绍若干较新的进展。T. Tao 与 V. Vu 的《Additive Combinatorics》同样对本课程影响很大，也非常有用，不过这本书也没有涉及那些较新的进展。
+
+对于本课程而言，最好的外部参考资料大概是 Yufei Zhao 新近出版的《Graph Theory and Additive Combinatorics》，我强烈推荐这本书。
+
+## 0.4. 记号
+
+**渐近记号。** 在整个课程中，我们将使用渐近记号。这对于处理接下来会遇到的大量不等式与粗略估计至关重要。下面总结本课程中会用到的记号。建议读者现在不必过分担心这些记号；随着课程进行，我们会有充分的机会练习。另见习题单 0 的第一题。
+
+\(A\ll B\) 表示存在一个绝对常数 \(C>0\)，使得
+\[
+|A|\leq CB.
+\]
+在这种记号中，\(A\) 与 \(B\) 通常是依赖于其他参数的变量。例如，当 \(x\geq1\) 时，\(x+1\ll x\)，因为在此范围内有 \(|x+1|\leq2x\)。需要注意的是，在不同场合中，常数 \(C\) 可以取不同的值。
+
+\(A=O(B)\) 表示同样的意思。
+
+\(A\ll B\) 与 \(B\gg A\) 是等价的记号。
+
+\(O(A)\) 表示某个绝对值不超过 \(CA\) 的量，其中 \(C>0\) 是某个绝对常数。特别地，\(O(1)\) 仅表示一个绝对值有界的量。例如，当 \(x\geq0\) 时，
+\[
+\frac{5x}{1+x}=O(1).
+\]
+
+我们采用以下非常标准的记号：
+\[
+e(t):=e^{2\pi i t}.
+\]
+可以把它看作定义在 \(\mathbf R\) 上、周期为 1 的函数，也可以把它看作定义在
+\(\mathbf T=\mathbf R/\mathbf Z\) 上的函数；我们不会严格区分这两种观点。
+
+对于 \(\theta\in\mathbf T\)，我们用 \(\|\theta\|_{\mathbf T}\) 表示 \(\theta\) 到 0 的距离。例如，
+\[
+\left\|\frac23\right\|_{\mathbf T}=\frac13.
+\]
+
+**数量级。** 理解加法数论与解析数论时，培养对某些量的粗略大小具有可靠直觉非常重要。例如，当 \(X\) 充分大时，应当明确知道
+\[
+\log^{10}X\ll e^{\sqrt{\log X}}\ll X^{0.01}.
+\]
+
+## 第 1 章
+
+## 平方和
+
+在本章中，“平方数”指某个整数的平方，整数可以为零。因此，平方数集合为
+\[
+\{0,1,4,9,16,\ldots\}.
+\]
+
+## 1.1. 两个平方数之和
+
+**定理 1.1.1.** 奇素数 \(p\) 能表示为两个平方数之和，当且仅当
+\[
+p\equiv1\pmod4.
+\]
+
+**证明。** 由于任意平方数模 4 只可能同余于 0 或 1，两个平方数之和模 4 只可能同余于 \(0,1,2\)，特别地，不可能同余于 3。
+
+反过来，设素数 \(p\equiv1\pmod4\)。由二次剩余的基本事实可知，\(-1\) 是模 \(p\) 的平方剩余。因此，存在整数 \(x,y\)（事实上可以取 \(y=1\)），使得
+\[
+x^2+y^2=mp
+\]
+对某个正整数 \(m\) 成立。设 \(m\) 是满足这一性质的最小正整数。为了导出矛盾，假设 \(m>1\)。必要时将 \(x\) 替换为 \(-x\)，再对 \(p\) 取模；对 \(y\) 也作同样处理。于是可以假设
+\[
+|x|,|y|<\frac p2,
+\]
+从而
+\[
+mp<2\left(\frac p2\right)^2,
+\]
+这显然推出 \(m<p\)。
+
+特别地，\(x,y\) 中至少有一个不能被 \(m\) 整除。事实上，若二者都能被 \(m\) 整除，则 \(m^2\mid x^2+y^2\)，进而 \(m\mid p\)。由于假设 \(m\ne1\)，这将迫使 \(m=p\)，但我们已经知道 \(m<p\)，矛盾。
+
+取 \(a,b\)，使得
+\[
+|a|,|b|\leq\frac m2,\qquad
+x\equiv a\pmod m,\quad y\equiv b\pmod m.
+\]
+注意 \(a^2+b^2>0\)，因为 \(x,y\) 不可能同时是 \(m\) 的倍数。还要注意，
+\[
+a^2+b^2\equiv x^2+y^2\equiv0\pmod m.
+\]
+因此，写成
+\[
+a^2+b^2=rm,
+\]
+其中 \(r\) 是正整数。注意
+\[
+rm\leq2\left(\frac m2\right)^2,
+\]
+所以 \(r<m\)。
+
+观察恒等式
+\[
+(x^2+y^2)(a^2+b^2)=(xa+yb)^2+(xb-ya)^2,
+\]
+可得
+\[
+rm^2p=(xa+yb)^2+(xb-ya)^2.
+\]
+
+现在有
+\[
+xa+yb\equiv x^2+y^2\equiv0\pmod m,
+\]
+以及
+\[
+xb-ya\equiv xy-yx\equiv0\pmod m.
+\]
+因此，定义
+\[
+x':=\frac{xa+yb}{m},\qquad
+y':=\frac{xb-ya}{m},
+\]
+则 \(x'\) 与 \(y'\) 都是整数。此外，
+\[
+(x')^2+(y')^2=rp.
+\]
+由于 \(0<r<m\)，这与 \(m\) 的最小性矛盾。因此，假设 \(m>1\) 是错误的，证明完成。□
+
+*注记。* 我们在定理 1.1.1 的证明中使用的“下降法”是该定理最初等的证明之一。另一种略有不同的证明使用代数数论中的高斯整数环 \(\mathbf Z[i]\)。已知整数环 \(\mathbf Z[i]\) 是主理想整环（PID），因此，如果理想 \((p)\) 分裂，就必定可以写成两个主理想的乘积
+\[
+(p)=(x+iy)(x-iy),
+\]
+且这两个理想的范数都是 \(p\)，从而得到 \(x^2+y^2=p\)。另一方面，有一个判别准则（Dedekind 判别准则）指出，可以从多项式 \(X^2+1\) 在有限域 \(\mathbf F_p\) 上的因式分解，读出 \((p)\) 在 \(\mathbf Z[i]\) 中的分解。特别地，\((p)\) 分裂，当且仅当 \(X^2+1\) 在 \(\mathbf F_p\) 上可约；也就是说，当且仅当 \(-1\) 是模 \(p\) 的二次剩余，亦即 \(p\equiv1\pmod4\)。
+
+需要注意的是，尽管上述论证在引用已知结果后非常简短，但通常证明 \(\mathbf Z[i]\) 是 PID 的方法，是先证明它是欧几里得整环；这同样依赖一种与定理 1.1.1 证明中非常相似的下降过程。
+
+## 1.2. 四个平方数之和
+
+**定理 1.2.1.** 每个自然数都是四个平方数之和。
+
+**证明。** 我们注意到恒等式
+\[
+\begin{aligned}
+&(x_1^2+x_2^2+x_3^2+x_4^2)
+(y_1^2+y_2^2+y_3^2+y_4^2)\\
+={}&(x_1y_1+x_2y_2+x_3y_3+x_4y_4)^2\\
+&+(x_1y_2-x_2y_1+x_3y_4-x_4y_3)^2\\
+&+(x_1y_3-x_3y_1+x_4y_2-x_2y_4)^2\\
+&+(x_1y_4-x_4y_1+x_2y_3-x_3y_2)^2.
+\end{aligned}
+\tag{1.1}
+\]
+这意味着，能够表示为四个平方数之和的数集在乘法下封闭。由于
+\[
+2=1^2+1^2+0^2+0^2,
+\]
+只需证明任意奇素数 \(p\) 都属于这个集合。
+
+现在我们沿用定理 1.1.1 证明中非常相似的思路。首先，断言存在某个 \(m>0\)，使得
+\[
+mp=x_1^2+x_2^2+x_3^2+x_4^2.
+\]
+为说明这一点，首先注意，模 \(p\) 的每个元素 \(x\) 都是两个平方数之和。事实上，平方剩余集合 \(S\) 的大小为 \((p+1)/2\)，因此 \(S\) 与 \(x-S\) 必有交集。将模 \(p\) 下的 \(1\) 和 \(-1\) 分别表示为两个平方数之和，再将这两个表示相加，就得到一个不全为零的四个平方数之和，并且它是 \(p\) 的倍数。
+
+假设 \(m\) 具有这一性质且取值最小。为了导出矛盾，假设 \(m>1\)。
+
+必要时将 \(x_i\) 替换为 \(-x_i\)，可假设
+\[
+|x_i|<\frac p2
+\]
+（注意 \(p\) 是奇数，因此这里确实可以取严格不等式）。于是
+\[
+mp<4\left(\frac p2\right)^2=p^2,
+\]
+从而 \(0<m<p\)。
+\[
+\text{因此 }0<m<p.
+\]
+若 \(m\) 为偶数，则可以把 \(x_i\) 分成两对，使每一对中的两个数奇偶性相同。例如，
+\[
+x_1\equiv x_2\pmod2,\qquad x_3\equiv x_4\pmod2.
+\]
+于是
+\[
+\begin{aligned}
+\frac{mp}{2}
+={}&\left(\frac{x_1+x_2}{2}\right)^2+
+\left(\frac{x_1-x_2}{2}\right)^2\\
+&+\left(\frac{x_3+x_4}{2}\right)^2+
+\left(\frac{x_3-x_4}{2}\right)^2,
+\end{aligned}
+\]
+这与 \(m\) 的最小性矛盾。
+
+因此，设 \(m\) 为奇数。并非所有 \(x_i\) 都能被 \(m\) 整除；否则
+\[
+m^2\mid x_1^2+x_2^2+x_3^2+x_4^2=mp,
+\]
+从而 \(m\mid p\)。由于假设 \(m>1\)，这将推出 \(m=p\)，但我们已经证明 \(m<p\)，矛盾。
+
+取 \(y_i\)，使得
+\[
+|y_i|<\frac m2,\qquad x_i\equiv y_i\pmod m,\quad i=1,\ldots,4.
+\]
+由于 \(m\) 是奇数，这里确实可以取严格不等式。于是
+\[
+y_1^2+y_2^2+y_3^2+y_4^2
+\]
+是正整数，并且是 \(m\) 的倍数，因为它与
+\(x_1^2+x_2^2+x_3^2+x_4^2\) 模 \(m\) 同余。设
+\[
+y_1^2+y_2^2+y_3^2+y_4^2=rm.
+\]
+则
+\[
+rm<4\left(\frac m2\right)^2=m^2,
+\]
+所以 \(r<m\)。
+
+现在利用恒等式 (1.1)，得到
+\[
+\begin{aligned}
+rm^2p={}&(x_1y_1+x_2y_2+x_3y_3+x_4y_4)^2\\
+&+\cdots,
+\end{aligned}
+\]
+其中省略号表示 (1.1) 中另外三个平方项。利用
+\(x_i\equiv y_i\pmod m\)，容易验证，四个括号中的表达式都是 \(m\) 的倍数。因此
+\[
+rp=
+\left(\frac{x_1y_1+x_2y_2+x_3y_3+x_4y_4}{m}\right)^2
++\cdots,
+\]
+且所有括号中的表达式都是整数。由于 \(r<m\)，这与假设的 \(m\) 的最小性矛盾。□
+
+## 1.3. 三个平方数之和
+
+关于三个平方数之和的定理要深入一些，至少部分原因在于不存在与恒等式 (1.1) 类似的乘法恒等式。不过，任何数论学习者都应当了解这一主题中由 Gauss 得出的主要结果。
+
+**定理 1.3.1.** 所有不能写成 \(4^m(8k+7)\) 形式的非负整数，都可以表示为三个平方数之和。
+
+## 1.4. *进一步讨论
+
+平方和有一套丰富的理论。三个平方数之和与类数有关。记 \(h(D)\) 为判别式为 \(D\) 的虚二次域的类数。Gauss 证明，对于大于 4 的平方自由整数 \(d\)，将 \(d\) 表示为三个平方数之和的表示数为
+\[
+\begin{cases}
+12h(-4d),&d\equiv1,2\pmod4,\\
+24h(-d),&d\equiv3\pmod8,\\
+0,&d\equiv7\pmod8.
+\end{cases}
+\]
+这里的表示数按整数三元组计数，因而计入不同排列以及符号选择。
+
+用平方数之和表示整数的问题与半整数权模形式理论有着密切联系。这会导出一些优美的结果。例如，将 \(n\) 写成四个平方数之和的表示数，等于 \(n\) 的所有不被 4 整除的正因数之和的 8 倍。
+
+若想了解更多内容，可以参见文献 [3] 第 11.3 节，其中给出了将 \(n\) 表示为 \(s\) 个平方数之和的表示数的显式公式，\(s=4,6,8,10,12\)。当 \(s=8\) 时，公式尤其简洁：表示数为
+\[
+16\sum_{d\mid n}(-1)^{n-d}d^3.
+\]
+
+## 第 2 章
+
+## 素数和
+
+本章的主要定理如下。
+
+**定理 2.0.1.** 存在某个绝对常数 \(C\)，使得每个大于或等于 2 的整数都是至多 \(C\) 个素数之和。
+
+我们不打算特别关注如何得到一个较好的 \(C\) 值，甚至也不要求给出显式值。Helfgott 在 2013 年证明，每个大于或等于 3 的奇整数都是至多 3 个素数之和。由此容易推出可以取 \(C=4\)。人们猜想 \(C=3\)，但这是一个尚未解决的问题，它与哥德巴赫猜想或多或少等价。Helfgott 的证明很长，而且还依赖计算；我们将给出一种更初等的论证，它可以追溯到 Schnirel’man。
+
+## 2.1. 基与施尼雷尔曼密度
+
+设 \(\mathcal A\) 是一个包含 \(0\) 的非负整数无限集，且 \(h\geq1\) 是一个整数。若每个非负整数都能表示为 \(\mathcal A\) 中 \(h\) 个元素之和（允许重复），则称 \(\mathcal A\) 是一个 **\(h\) 阶基**。若 \(\mathcal A\) 是某个阶数的基，则称它为**有限阶基**。
+
+若 \(m\geq1\) 是整数，我们用 \(m\mathcal A\) 表示所有形如
+\[
+a_1+\cdots+a_m,\qquad a_1,\ldots,a_m\in\mathcal A
+\]
+的和构成的集合。因此，\(\mathcal A\) 是 \(h\) 阶基，当且仅当
+\[
+h\mathcal A=\mathbf Z_{\geq0},
+\]
+其中 \(\mathbf Z_{\geq0}\) 表示所有非负整数构成的集合。
+
+先简单记录基这一概念的一些性质，证明留给读者（证明都很简短）：
+
+- 若 \(\mathcal A\) 是 \(h\) 阶基，则对于任意 \(h'\geq h\)，它也是 \(h'\) 阶基；
+- 若 \(k\mathcal A\) 是 \(h\) 阶基，则 \(\mathcal A\) 是一个阶数至多为 \(kh\) 的基。
+
+作为上一章主要结果的推论，平方数集合（连同 0）是一个 4 阶基，但不是 3 阶基。
+
+我们将从下面的命题推出定理 2.0.1。
+
+**命题 2.1.1.** 由 \(0\)、\(1\) 和所有素数组成的集合是一个有限阶基。
+
+定理 2.0.1 的推导相当容易，因此我们现在就给出。设 \(h\) 是使得由 \(0\)、\(1\) 和所有素数组成的集合成为 \(h\) 阶基的阶数。特别地，对于任意整数 \(n\)，可以写成
+\[
+n-2=p_1+\cdots+p_k+1+\cdots+1,
+\]
+其中素数项与 1 的总项数至多为 \(h\)。
+
+若其中没有 1，则
+\[
+n=p_1+\cdots+p_k+2.
+\]
+
+若其中有 1，则
+\[
+n=p_1+\cdots+p_k+1+1+\cdots+1,
+\]
+并且至少有三个 1。我们可以将这些 1 替换为若干个 2 和 3。
+
+两种情形下，我们都将 \(n\) 表示成了至多 \(h+1\) 个素数之和。因此，取 \(C=h+1\)，定理 2.0.1 即得证。
+
+所以，我们的任务是证明命题 2.1.1。我们先给出一个充分条件，以保证任意包含 0 和 1 的集合 \(\mathcal A\) 是有限阶基。然后说明如何应用这一判据证明命题 2.1.1。下面给出的充分条件将使用施尼雷尔曼密度的概念，我们现在来定义它。
+
+**定义 2.1.1（施尼雷尔曼密度）。** 设 \(\mathcal A\) 是一个非负整数集合。称
+\[
+\sigma_{\mathcal A}
+\]
+为 \(\mathcal A\) 的施尼雷尔曼密度，其定义为下列各量的下确界：
+\[
+\frac1N\left|\mathcal A\cap\{1,\ldots,N\}\right|,
+\qquad N=1,2,\ldots.
+\]
+
+为简化记号，我们写
+\[
+\mathcal A[N]:=\mathcal A\cap\{1,\ldots,N\}.
+\]
+因此，如果 \(\mathcal A\) 的施尼雷尔曼密度为
+\(\sigma=\sigma_{\mathcal A}\)，那么对于所有 \(N\) 都有
+\[
+|\mathcal A[N]|\geq\sigma N,
+\]
+并且 \(\sigma\) 是满足这一性质的最大下界（即最优常数）。注意，若一个集合具有正的施尼雷尔曼密度，则必有 \(1\in\mathcal A\)。
+
+下面是关键结果。
+
+**命题 2.1.2.** 设 \(\mathcal A\) 是一个包含 0 且具有正施尼雷尔曼密度的集合。那么 \(\mathcal A\) 是有限阶基。事实上，若 \(\mathcal A\) 的施尼雷尔曼密度为 \(\sigma\)，则 \(\mathcal A\) 是一个阶数至多为 \(4/\sigma\) 的基。
+
+我们稍后给出证明。关键要素是下面这个引理，称为施尼雷尔曼不等式。这里以及下文中，我们记
+\[
+\mathcal A+\mathcal B:=\{a+b:a\in\mathcal A,\ b\in\mathcal B\}.
+\]
+（两个集合的和集这一概念将在本课程后面频繁出现。）
+
+**引理 2.1.1（施尼雷尔曼不等式）。** 设 \(\mathcal A\) 和 \(\mathcal B\) 是两个都包含 0 的非负整数集合，其施尼雷尔曼密度分别为 \(\alpha,\beta\)。那么 \(\mathcal A+\mathcal B\) 的施尼雷尔曼密度至少为
+\[
+\alpha+\beta-\alpha\beta.
+\]
+
+**证明。** 固定一个正整数 \(N\)。若 \(\alpha\) 和 \(\beta\) 都为零，则没有什么需要证明的。于是设 \(\alpha>0\)。特别地，\(1\in\mathcal A\)。
+
+将 \(\mathcal A[N]\) 中的元素按递增次序写出：
+\[
+1=a_0<a_1<\cdots<a_k\leq N.
+\]
+
+对于每个 \(i=0,\ldots,k-1\)，集合
+\[
+a_i+\mathcal B[a_{i+1}-a_i-1]
+\]
+中的元素都属于 \(\mathcal A+\mathcal B\)，并且严格位于 \(a_i\) 与 \(a_{i+1}\) 之间。由于 \(0\in\mathcal B\)，元素 \(a_0,\ldots,a_k\) 本身也都属于 \(\mathcal A+\mathcal B\)，且与刚才列出的元素互不相同。最后，集合
+\[
+a_k+\mathcal B[N-a_k]
+\]
+中的元素也属于 \(\mathcal A+\mathcal B\)，并且位于区间 \((a_k,N]\) 内。
+
+因此，
+\[
+\begin{aligned}
+|(\mathcal A+\mathcal B)[N]|
+\geq{}&k+1+\sum_{i=0}^{k-1}
+|\mathcal B[a_{i+1}-a_i-1]|\\
+&+|\mathcal B[N-a_k]|.
+\end{aligned}
+\tag{2.1}
+\]
+
+由施尼雷尔曼密度的定义，有
+\[
+\begin{aligned}
+|\mathcal B[a_{i+1}-a_i-1]|
+&\geq\beta(a_{i+1}-a_i-1),\\
+|\mathcal B[N-a_k]|
+&\geq\beta(N-a_k).
+\end{aligned}
+\]
+将这些估计代入 (2.1)，得到
+\[
+\begin{aligned}
+|(\mathcal A+\mathcal B)[N]|
+&\geq k+1+\beta\left(
+\sum_{i=0}^{k-1}(a_{i+1}-a_i-1)+N-a_k
+\right)\\
+&=\beta N+(1-\beta)(k+1).
+\end{aligned}
+\]
+最后一步使用了求和中的望远镜消去。
+
+另一方面，
+\[
+k+1=|\mathcal A[N]|\geq\alpha N.
+\]
+将其代入刚得到的估计，便有
+\[
+\begin{aligned}
+|(\mathcal A+\mathcal B)[N]|
+&\geq\beta N+(1-\beta)\alpha N\\
+&=(\alpha+\beta-\alpha\beta)N,
+\end{aligned}
+\]
+这正是所要证明的结论。
+
+我们还需要补充下面这个引理，它在密度非常大时更有效。
+
+**引理 2.1.2.** 设 \(\mathcal A\) 是一个包含 0 且施尼雷尔曼密度至少为 \(1/2\) 的集合。那么
+\[
+2\mathcal A=\mathcal A+\mathcal A
+\]
+包含所有正整数。
+
+**证明。** 假设 \(N\notin\mathcal A+\mathcal A\)。那么对于每个满足 \(1\leq k\leq N\) 的整数 \(k\)，\(k\) 与 \(N-k\) 中至少有一个不属于 \(\mathcal A\)。由此可得
+\[
+|\mathcal A[N]|<\frac12N,
+\]
+这与施尼雷尔曼密度至少为 \(1/2\) 的假设矛盾。□
+
+现在来推导命题 2.1.2。对于每个 \(k\)，记 \(\sigma_k\) 为 \(k\mathcal A\) 的施尼雷尔曼密度，并简记 \(\sigma=\sigma_1\)。对 \(\mathcal A\) 与 \(k\mathcal A\) 应用施尼雷尔曼不等式，得到
+\[
+\sigma_{k+1}\geq\sigma_k+\sigma-\sigma_k\sigma.
+\]
+
+因此，对于给定的 \(k\)，要么
+\[
+\sigma_k\geq\frac12,
+\]
+要么
+\[
+\sigma_{k+1}\geq\sigma_k+\frac12\sigma.
+\]
+由此可知，存在某个 \(k\leq2/\sigma\)，使得
+\[
+\sigma_k>\frac12.
+\]
+
+最后，应用引理 2.1.2，可知 \(k\mathcal A+k\mathcal A\) 包含所有正整数。这就完成了命题 2.1.2 的证明。
+
+本节最后说明，Mann（1942）证明了引理 2.1.1 的一个更强版本。Mann 证明，在相同假设下，\(\mathcal A+\mathcal B\) 的施尼雷尔曼密度至少为
+\[
+\min(1,\alpha+\beta).
+\]
+
+## 2.2. 素数与施尼雷尔曼密度
+
+本节中，令 \(\widetilde{\mathcal P}\) 表示在素数集合中加入 0 和 1 后得到的集合。我们的任务是证明命题 2.1.1，即证明 \(\widetilde{\mathcal P}\) 是一个有限阶基。根据命题 2.1.2，只需证明 \(\widetilde{\mathcal P}\) 具有正的施尼雷尔曼密度即可。不幸的是，这一说法是错误的。事实上，当 \(N\to\infty\) 时，
+\[
+\frac{|\mathcal P[N]|}{N}\to0.
+\]
+（由素数定理，左边的量以 \(1/\log N\) 的速度趋于零。）
+
+不过，事实证明
+\[
+2\widetilde{\mathcal P}
+=\widetilde{\mathcal P}+\widetilde{\mathcal P}
+\]
+确实具有正的施尼雷尔曼密度，而结合基的一些初等性质，这已经足以完成命题 2.1.1 的证明。
+
+**命题 2.2.1.** 设 \(\widetilde{\mathcal P}\) 表示在素数集合中加入 0 和 1 后得到的集合。那么 \(2\widetilde{\mathcal P}\) 具有正的施尼雷尔曼密度。
+
+为了证明这一结果，只需证明下面这个稍弱的结论。
+
+**命题 2.2.2.** 存在某个 \(c>0\)，使得对于所有 \(N\geq2\)，至少有 \(cN\) 个不同的整数可以表示为两个不超过 \(N\) 的素数之和。
+
+命题 2.2.2 很容易推出命题 2.2.1。事实上，对于 \(N\geq2\)，它意味着
+\[
+|2\widetilde{\mathcal P}[2N]|\geq cN,
+\]
+因此对于所有 \(m\geq4\)，
+\[
+\frac1m|2\widetilde{\mathcal P}[m]|
+\geq\frac{c(m-1)}{2m}>\frac c4.
+\]
+这里的减 1 是因为 \(m\) 可能为奇数。另一方面，若 \(m\leq3\)，由于 \(1\in2\widetilde{\mathcal P}\)，我们有平凡估计
+\[
+\frac1m|2\widetilde{\mathcal P}[m]|\geq\frac13.
+\]
+这两个估计合在一起，表明 \(2\widetilde{\mathcal P}\) 的施尼雷尔曼密度确实为正，这就是命题 2.2.1。
+
+因此，本章剩下的任务是证明命题 2.2.2。为此，记 \(r(n)\) 为将 \(n\) 表示为两个素数之和的表示数。用 \(\pi(X)\) 表示不超过 \(X\) 的素数个数，并令 \(S\) 为所有可以表示为两个不超过 \(N\) 的素数之和的整数所构成的集合。那么
+\[
+\pi(N)^2\leq
+\sum_{n\leq2N}r(n)1_S(n).
+\tag{2.2}
+\]
+左边是满足 \(p_1,p_2\leq N\) 的素数对 \((p_1,p_2)\) 的个数；右边则是满足 \(p_1+p_2\leq2N\)，且存在一对不超过 \(N\) 的素数 \(p_1',p_2'\)，使得 \(p_1'+p_2'=n\) 的素数对 \((p_1,p_2)\) 的个数。第一类素数对包含在第二类之中。
+
+由 Cauchy–Schwarz 不等式，我们有
+
+由 Cauchy–Schwarz 不等式，
+\[
+\sum_{n\leq2N}r(n)1_S(n)
+\leq |S|^{1/2}
+\left(\sum_{n\leq2N}r(n)^2\right)^{1/2}.
+\tag{2.3}
+\]
+
+我们将证明下面的估计。
+
+**命题 2.2.3.** 记 \(r(n)\) 为将 \(n\) 表示为两个素数之和的表示数。那么
+\[
+\sum_{n\leq X}r(n)^2\ll\frac{X^3}{\log^4X}.
+\]
+
+将这一估计代入 (2.2)、(2.3)，取 \(X=2N\)，再利用下界
+\[
+\pi(N)\gg\frac N{\log N}\qquad(N\geq2),
+\]
+便得到 \(|S|\gg N\)，也就是说，存在一个与 \(N\) 无关的常数 \(c>0\)，使得
+\[
+|S|\geq cN.
+\]
+这正是命题 2.2.2 的结论。
+
+当然，剩下的任务是证明命题 2.2.3。为此，我们先对 \(r(n)\)（即将 \(n\) 写成两个素数之和的表示数）建立逐点上界。
+
+注意，要得到 \(r(n)\) 的渐近公式，甚至要对偶数 \(n\) 证明下界 \(r(n)>0\)，都是著名的未解决问题：哥德巴赫猜想。若能证明
+\[
+r(n)\ll\frac n{\log^2n}
+\tag{2.4}
+\]
+对所有 \(n\) 一致成立，就足够了。这是凭直觉可能预期的估计：随机选取 \(x\leq n\)，\(x\) 是素数的概率约为 \(1/\log n\)，而 \(n-x\) 也是素数的概率同样如此。然而，这两个事件并不独立；如果 \(n\) 能被许多小素数整除，那么 \(x\) 是素数这一条件，会使得 \(n-x\) 也是素数的可能性高于一个随机整数。
+
+事实上，(2.4) 不可能对所有 \(n\) 一致成立。我们将在下一节证明下面这个稍弱的估计，其中加入了一个算术因子，以反映上述启发式讨论中提到的相关性。
+
+**命题 2.2.4.** 有
+\[
+r(n)\ll
+\prod_{p\mid n}\left(1+\frac1p\right)
+\cdot\frac n{\log^2n}.
+\]
+
+人们猜想，右端实际上给出了 \(r(n)\) 的正确数量级。因子
+\[
+\prod_{p\mid n}\left(1+\frac1p\right)
+\]
+不可能关于 \(n\) 一致有界，因为
+\(1+\frac1p\sim e^{1/p}\)，而素数倒数之和
+\[
+\sum_p\frac1p
+\]
+发散。不过，为了推出命题 2.2.3，我们只需要该因子的平方均值有界。现在给出这一推导。
+
+**证明（假设命题 2.2.4，证明命题 2.2.3）。** 我们将证明
+\[
+\sum_{n\leq X}
+\prod_{p\mid n}\left(1+\frac1p\right)^2
+\ll X.
+\tag{2.5}
+\]
+这足以利用命题 2.2.4 推出命题 2.2.3。事实上，当 \(n\) 充分大时，\(n/\log^2n\) 是递增函数，因此
+\[
+\begin{aligned}
+\sum_{n\leq X}r(n)^2
+&\ll \sum_{n\leq X}
+\left(
+\prod_{p\mid n}\left(1+\frac1p\right)
+\cdot\frac n{\log^2n}
+\right)^2\\
+&\ll \frac{X^2}{\log^4X}
+\sum_{n\leq X}\prod_{p\mid n}\left(1+\frac1p\right)^2.
+\end{aligned}
+\]
+由 (2.5) 立即得到所需的估计。
+
+现在证明 (2.5)。我们利用
+\[
+\prod_{p\mid n}\left(1+\frac1p\right)
+\leq\sum_{d\mid n}\frac1d.
+\]
+事实上，左边恰好是 \(n\) 的所有平方自由因子对应的 \(1/d\) 之和。不过，
+\[
+\begin{aligned}
+\sum_{n\leq X}\left(\sum_{d\mid n}\frac1d\right)^2
+&=\sum_{d_1,d_2\leq X}\frac1{d_1d_2}
+\sum_{\substack{n\leq X\\ [d_1,d_2]\mid n}}1\\
+&\leq X\sum_{d_1,d_2\leq X}
+\frac1{d_1d_2[d_1,d_2]}.
+\end{aligned}
+\]
+由于
+\[
+[d_1,d_2]\geq
+\max(d_1,d_2)\geq\sqrt{d_1d_2},
+\]
+所以
+\[
+\begin{aligned}
+\sum_{d_1,d_2\leq X}
+\frac1{d_1d_2[d_1,d_2]}
+&\leq
+\sum_{d_1,d_2\leq X}
+\frac1{d_1^{3/2}d_2^{3/2}}\\
+&=\left(\sum_{d\leq X}\frac1{d^{3/2}}\right)^2
+\ll1.
+\end{aligned}
+\]
+综合这些事实即可得到所需结论。
+
+于是，剩下也是最重要的任务，就是证明命题 2.2.4。我们将使用一种称为塞尔伯格筛法的工具来完成这一点。
+
+## 2.3. 塞尔伯格筛法
+
+本节将证明 \(r(N)\) 的一个上界，其中 \(r(N)\) 是将 \(N\) 表示为两个素数之和的表示数（注意这里从 \(n\) 改为 \(N\)；对于这一论证，后者似乎更自然，也使我们可以把 \(n\) 用作求和中的哑变量）。本节中始终假设 \(N\) 为偶数；若 \(N\) 为奇数，则显然 \(r(N)\leq1\)（等号成立当且仅当 \(N-2\) 是素数）。
+
+定义
+\[
+\mathcal A:=\{n(N-n):n\leq N\}.
+\]
+
+令
+\[
+z:=N^{1/3}.
+\]
+（任何形如 \(z=N^c\)、其中 \(c<1/2\) 的阈值都可以使用；取 \(c\) 接近 \(1/2\) 时，隐含常数会更好。不过，为了明确起见，我们固定采用这一选择。）若 \(n\leq N\)，且 \(n\) 与 \(N-n\) 都是素数，那么以下三种情形至少有一种成立：
+
+(i) \(n\leq z\)；
+
+(ii) \(N-n\leq z\)；
+
+(iii) \(n(N-n)\) 没有不超过 \(z\) 的素因子。
+
+因此
+\[
+r(N)\leq2z+S(\mathcal A,z),
+\]
+其中 \(S(\mathcal A,z)\) 表示 \(\mathcal A\) 中没有不超过 \(z\) 的素因子的元素个数。为了证明命题 2.2.4，只需建立上界
+\[
+S(\mathcal A,z)\ll
+\prod_{p\mid N}\left(1+\frac1p\right)
+\cdot\frac N{\log^2N}.
+\tag{2.6}
+\]
+
+估计 \(S(\mathcal A,z)\) 的一般问题（即对于更一般的集合 \(\mathcal A\) 和更一般的参数 \(z\) 进行估计）属于筛法理论的研究范围。我们即将介绍的方法虽然是在当前这一特定情形下描述的，但可以应用于范围广泛得多的问题。
+
+对于每个正整数 \(d\)，记 \(\mathcal A_d\) 为 \(\mathcal A\) 中能被 \(d\) 整除的元素所组成的集合。解决这个问题最直接的尝试，是使用容斥原理，计算
+\[
+S(\mathcal A,z)
+=|\mathcal A|-\sum_{p<z}|\mathcal A_p|
++\sum_{p<p'<z}|\mathcal A_{pp'}|-\cdots.
+\]
+遗憾的是，由于项数非常多，这种方法很快就会遇到困难；即使对 \(|\mathcal A_d|\) 的估计只有很小的误差，也会失控地放大。因此需要一种更精细的方法。
+
+我们可以表述更复杂的容斥原理版本（Brun 筛法），但这里将使用一个由 Selberg 提出的思想。它使得论述相对简短，不过乍看之下确实显得有些神奇，缺乏直观动机。
+
+在开始细节之前，先回顾初等数论中的一些基本概念与记号。若 \(a,b\) 是正整数，我们用 \((a,b)\) 表示 \(a,b\) 的最大公因数，用 \([a,b]\) 表示最小公倍数。我们定义 Möbius 函数
+\[
+\mu:\mathbf N\to\{-1,0,1\}
+\]
+如下：若 \(n=p_1\cdots p_k\) 是由 \(k\) 个互不相同的素数组成的乘积，则
+\(\mu(n)=(-1)^k\)；否则 \(\mu(n)=0\)。稍后我们将使用 Möbius 反演与 Dirichlet 卷积的一些基本事实。若要复习或初步了解这一主题，可参见附录 A。
+
+现在转向塞尔伯格筛法。取任意一组实数参数
+\((\lambda_d)_{d\leq z}\)，只要求 \(\lambda_1=1\)。考虑权函数
+\[
+\nu(n):=
+\left(
+\sum_{\substack{d\mid n(N-n)\\d\leq z}}\lambda_d
+\right)^2.
+\]
+显然该权函数非负；当 \(n\in S(\mathcal A,z)\) 时，它等于
+\(\lambda_1^2=1\)，因为求和中只有 \(d=1\) 这一项。因此
+\[
+S(\mathcal A,z)\leq\sum_{n\leq N}\nu(n).
+\tag{2.7}
+\]
+
+展开 \(\nu\) 的定义并重新整理，得到
+\[
+S(\mathcal A,z)
+\leq
+\sum_{d_1,d_2\leq z}
+\lambda_{d_1}\lambda_{d_2}
+|\mathcal A_{[d_1,d_2]}|.
+\tag{2.8}
+\]
+注意这里的 \([d_1,d_2]\) 表示 \(d_1,d_2\) 的最小公倍数，因此
+\[
+\mathcal A_{[d_1,d_2]}
+=
+\{n\leq N:d_1,d_2\mid n(N-n)\}.
+\]
+
+我们将限制权重 \(\lambda_d\)，要求它们仅在平方自由的 \(d\) 上取非零值（也就是说，若 \(d\) 被某个素数的平方整除，则 \(\lambda_d=0\)）。现在估计 \(d\) 为平方自由数时的 \(|\mathcal A_d|\)。有
+\[
+|\mathcal A_d|=\omega(d)\frac Nd+R_d,
+\tag{2.9}
+\]
+其中 \(\omega(d)\) 是同余方程
+\[
+x(N-x)\equiv0\pmod d
+\]
+的解的个数，并且
+\[
+|R_d|\leq\omega(d).
+\tag{2.10}
+\]
+余项来自这样一个事实：我们无法将区间 \(\{1,\ldots,N\}\) 精确划分为长度为 \(d\) 的区间，最后可能剩下一个长度小于 \(d\) 的区间。若 \(d\) 是平方自由数，则由中国剩余定理，
+\[
+\omega(d)=\prod_{p\mid d}\omega(p).
+\tag{2.11}
+\]
+直接检查可得
+\[
+\omega(p)=
+\begin{cases}
+2,&p\nmid N,\\
+1,&p\mid N.
+\end{cases}
+\tag{2.12}
+\]
+
+将 (2.9) 代入 (2.8)，得到
+\[
+\begin{aligned}
+S(\mathcal A,z)\leq{}&
+N\sum_{d_1,d_2\leq z}
+\frac{\lambda_{d_1}\lambda_{d_2}
+\omega([d_1,d_2])}{[d_1,d_2]}\\
+&+\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega([d_1,d_2]).
+\end{aligned}
+\tag{2.13}
+\]
+这里记
+\[
+Q=Q((\lambda_d)_{d\leq z})
+:=
+\sum_{d_1,d_2\leq z}
+\frac{\lambda_{d_1}\lambda_{d_2}
+\omega([d_1,d_2])}{[d_1,d_2]},
+\tag{2.14}
+\]
+以及
+\[
+E=E((\lambda_d)_{d\leq z})
+:=
+\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega([d_1,d_2]).
+\tag{2.15}
+\]
+
+目前，除了 \(\lambda_1=1\) 以及权重仅支撑在平方自由数上以外，我们还没有对 \(\lambda_d\) 作任何要求。接下来的策略是选择 \(\lambda_d\)，使二次型 \(Q\) 最小，然后希望 \(E\) 也足够小，至少在适当选取 \(z\) 后如此。
+
+注意，当 \(z=N^{1/3}\) 时，要求 \(E\) 足够小并不过分；只要有如下粗略估计就足够：
+\[
+|\lambda_d|,\ \omega(d)\leq N^{1/10}
+\tag{2.16}
+\]
+（例如如此），便可推出
+\[
+E\ll N^{1-1/20},
+\]
+这显著小于预期的主项 \(\sim N(\log N)^{-2}\)。
+
+**最小化二次型。** 现在转向选择 \(\lambda_d\) 以使 \(Q\) 最小这一任务。这看起来有些棘手，但实际上 Möbius 反演可以将该二次型对角化，这当然会很有帮助。
+
+首先，将 \(Q\) 重写为
+\[
+Q=
+\sum_{d_1,d_2\leq z}
+\frac{\omega(d_1)\omega(d_2)}{d_1d_2}
+\lambda_{d_1}\lambda_{d_2}
+\frac{(d_1,d_2)}{\omega((d_1,d_2))}.
+\tag{2.17}
+\]
+这里使用了 \(\lambda_d\) 仅在平方自由的 \(d\) 上取非零值这一事实，因此
+\[
+\omega(d_1)\omega(d_2)
+=
+\omega((d_1,d_2))\omega([d_1,d_2]).
+\tag{2.18}
+\]
+（考虑 \(\omega\) 的各个自变量所含的素因子，并使用 (2.11)，即可验证。）
+
+为处理这一表达式，我们使用一个相当标准的技巧。令
+\[
+g(k)=\frac{k}{\omega(k)},
+\]
+并注意由 Möbius 反演（见附录 A），有
+\[
+g(k)=\sum_{\delta\mid k}f(\delta),
+\tag{2.19}
+\]
+其中
+\[
+f(k)=\sum_{\delta\mid k}
+\mu\left(\frac{k}{\delta}\right)g(\delta).
+\]
+用 Dirichlet 卷积的记号表示，即
+\[
+g=f*1,\qquad f=g*\mu.
+\]
+注意 \(g(k)=k/\omega(k)\) 是积性函数，因此 \(f=g*\mu\) 也是积性函数（见附录 A）。此外，容易验证，对于素数 \(p\)，
+\[
+f(p)=\frac p{\omega(p)}-1,
+\]
+其中 \(\omega\) 如 (2.11)、(2.12) 所定义。注意 \(f(p)\) 从不为零（当 \(p=2\) 时，这是因为我们假设 \(N\) 为偶数），因此 \(f\) 实际上严格为正。
+
+将 (2.19) 代入 (2.17)，并交换求和次序，得到
+\[
+\begin{aligned}
+Q
+&=\sum_{\delta\leq z}f(\delta)
+\left(\sum_{\substack{\delta\mid d\\d\leq z}}
+\frac{\omega(d)}d\lambda_d\right)^2\\
+&=\sum_{\delta\leq z}f(\delta)u_\delta^2,
+\end{aligned}
+\tag{2.20}
+\]
+其中
+\[
+u_\delta:=
+\sum_{\substack{\delta\mid d\\d\leq z}}
+\frac{\omega(d)}d\lambda_d.
+\]
+（这里的 \(d\) 遍历平方自由数。）作出这一变量替换后，\(Q\) 确实成为对角二次型。为了最小化 \(Q\)，我们需要用新的变量 \(u_\delta\) 表示约束 \(\lambda_1=1\)。这可以通过应用引理 A.0.2 来实现。由此得到
+\[
+\frac{\omega(d)}d\lambda_d
+=
+\sum_{\substack{d\mid\delta\\\delta\leq z}}
+\mu\left(\frac{\delta}{d}\right)u_\delta,
+\tag{2.21}
+\]
+其中 \(\delta\) 遍历平方自由数。因此，约束 \(\lambda_1=1\) 简化为
+\[
+\sum_{\delta\leq z}\mu(\delta)u_\delta=1.
+\tag{2.22}
+\]
+
+要在约束 (2.22) 下最小化 (2.20) 中的 \(Q\)，只需配方；更具体地说，考虑不等式
+\[
+\sum_{\delta\leq z}
+f(\delta)
+\left(
+u_\delta-\frac{\mu(\delta)}{Df(\delta)}
+\right)^2
+\geq0,
+\tag{2.23}
+\]
+其中
+
+\[
+D=D(z):=
+\sum_{\delta\leq z}\frac{\mu^2(\delta)}{f(\delta)}
+=
+\sum_{\substack{d\leq z\\d\text{ 平方自由}}}\frac1{f(d)}.
+\tag{2.24}
+\]
+这表明，在约束 (2.22) 下，\(Q\)（如 (2.20) 所定义）的最小值为 \(1/D\)，且当
+\[
+u_\delta=\frac{\mu(\delta)}{Df(\delta)}
+\tag{2.25}
+\]
+时取到等号。
+
+因此，我们将尚未指定的权重 \(\lambda_d\) 选为使 \(u_\delta\) 取上述值的权重。根据 (2.21)，这意味着定义
+\[
+\lambda_d:=
+\frac{d}{\omega(d)D}
+\sum_{\substack{d\mid\delta\\\delta\leq z}}
+\frac{\mu(\delta/d)\mu(\delta)}{f(\delta)}.
+\tag{2.26}
+\]
+
+现在总结一下目前的进展。我们的目标是证明 (2.6)。取 (2.26) 中给出的特定权重 \(\lambda_d\)，并令 \(z=N^{1/3}\)，代入 (2.13)，得到
+\[
+S(\mathcal A,z)
+\leq\frac ND+
+O\left(N^{2/3}\max_{d\leq z}|\lambda_d|^2\omega(d)^2\right).
+\tag{2.27}
+\]
+在估计 \(E\) 时，我们使用了
+\[
+\begin{aligned}
+E
+&=\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega([d_1,d_2])\\
+&\leq\sum_{d_1,d_2\leq z}
+|\lambda_{d_1}||\lambda_{d_2}|
+\omega(d_1)\omega(d_2)\\
+&\leq z^2\sup_d|\lambda_d|^2\omega(d)^2,
+\end{aligned}
+\]
+其中中间一步由 (2.18) 得到。
+
+(2.27) 右端的两项分别相当于主项与误差项，不过我们还没有对它们作出严格估计。
+
+为了控制主项，我们将证明
+\[
+D\gg\log^2N\cdot
+\left(\prod_{p\mid N}\left(1+\frac1p\right)\right)^{-1}.
+\tag{2.28}
+\]
+为了控制误差项，我们将证明
+\[
+|\lambda_d|\omega(d)\ll_\varepsilon d^\varepsilon
+\qquad\text{对所有平方自由的 }d.
+\tag{2.29}
+\]
+这是解析数论中的标准记号，表示对于每个 \(\varepsilon>0\)，都存在某个常数 \(C_\varepsilon\)，使得
+\[
+|\lambda_d|\omega(d)\leq C_\varepsilon d^\varepsilon.
+\]
+
+将 (2.28) 与 (2.29) 代入 (2.27)，便可很快得到所需的上界 (2.6)。
+
+因此，剩下的工作是证明 (2.28) 与 (2.29)。这两个结论的证明相当长，也略微有些技术性，不过推导过程值得仔细学习。它们与论证的其他部分关联不大，读者也可以选择略过。
+
+**估计主项。** 现在证明 (2.28)。在本证明中，将 \(\omega\) 扩张为完全积性函数，定义
+\[
+\omega(p^j):=\omega(p)^j.
+\]
+若 \(d\) 是平方自由数，则
+\[
+\begin{aligned}
+\frac1{f(d)}
+&=\prod_{p\mid d}\frac1{f(p)}
+=\prod_{p\mid d}
+\frac{\omega(p)/p}{1-\frac{\omega(p)}p}\\
+&=\prod_{p\mid d}
+\sum_{j\geq1}\frac{\omega(p^j)}{p^j},
+\end{aligned}
+\]
+其中使用了 \(f\) 的积性以及几何级数公式。因此
+\[
+\begin{aligned}
+D
+&=\sum_{\substack{d\leq z\\d\text{ 平方自由}}}
+\prod_{p\mid d}\sum_{j\geq1}
+\frac{\omega(p^j)}{p^j}\\
+&=\sum_{\substack{m:\,\operatorname{rad}(m)\leq z}}
+\frac{\omega(m)}m
+\geq\sum_{m\leq z}\frac{\omega(m)}m.
+\end{aligned}
+\tag{2.30}
+\]
+这里，整数 \(m\) 的根基 \(\operatorname{rad}(m)\) 是整除 \(m\) 的不同素数的乘积；当然，它是平方自由数。
+
+令 \(S'\) 为所有与 \(N\) 互素的正整数构成的集合，令 \(S_*\) 为所有只由整除 \(N\) 的素数组成的正整数构成的集合。任意整数 \(m\) 都有唯一分解
+\[
+m=m'm_*,
+\qquad m'\in S',\quad m_*\in S_*.
+\]
+
+我们断言
+\[
+\omega(m)\geq\tau(m'),
+\tag{2.31}
+\]
+其中 \(\tau\) 是约数函数，即 \(\tau(x)\) 表示 \(x\) 的正整数约数个数。回忆 (2.12) 中 \(\omega(p)\) 的定义。若写成
+\[
+m=p_1^{a_1}\cdots p_k^{a_k},
+\]
+并设 \(p_1,\ldots,p_\ell\) 是那些不整除 \(N\) 的素数，则
+\[
+m'=p_1^{a_1}\cdots p_\ell^{a_\ell},
+\]
+并且
+\[
+\omega(m)=2^{a_1+\cdots+a_\ell},
+\]
+而
+\[
+\tau(m')=(a_1+1)\cdots(a_\ell+1).
+\]
+由对所有整数 \(a\geq1\) 都成立的不等式 \(2^a\geq a+1\)，立即得到所断言的估计 (2.31)。
+
+将 (2.31) 代入 (2.30)，得到
+\[
+D\geq\sum_{m\leq z}\frac{\tau(m')}{m}.
+\tag{2.32}
+\]
+
+现在注意到
+\[
+\prod_{p\mid N}\left(1-\frac1p\right)^{-1}
+=\sum_{t\in S_*}\frac1t.
+\]
+这是因为可以将
+\[
+\left(1-\frac1p\right)^{-1}
+=\sum_{j\geq0}p^{-j}
+\]
+展开，再对所有整除 \(N\) 的素数 \(p\) 相乘。由 (2.32) 可得
+\[
+\begin{aligned}
+D\prod_{p\mid N}\left(1-\frac1p\right)^{-1}
+&\geq
+\sum_{m\leq z}\frac{\tau(m')}{m}
+\sum_{t\in S_*}\frac1t\\
+&=
+\sum_n\frac1n
+\sum_{\substack{m\leq z\\m\mid n\\n/m\in S_*}}
+\tau(m')\\
+&\geq
+\sum_{n\leq z}\frac1n
+\sum_{\substack{m\mid n\\n/m\in S_*}}
+\tau(m').
+\end{aligned}
+\]
+中间一步中，我们代入了 \(n=mt\)。现在，在关于 \(m\) 的求和中，\(n/m\) 恰好遍历 \(n_*\) 的所有约数，因此内层求和共有 \(\tau(n_*)\) 项。对每一项都有 \(m'=n'\)。因此
+\[
+\sum_{\substack{m\mid n\\n/m\in S_*}}\tau(m')
+=\tau(n_*)\tau(n')
+=\tau(n),
+\]
+于是我们证明了
+\[
+D\prod_{p\mid N}\left(1-\frac1p\right)^{-1}
+\geq\sum_{n\leq z}\frac{\tau(n)}n.
+\tag{2.33}
+\]
+
+现在几乎已经完成了 (2.28) 的证明。最后，首先注意到
+\[
+\sum_{n\leq z}\frac{\tau(n)}n
+\geq
+\left(\sum_{x\leq\sqrt z}\frac1x\right)^2.
+\]
+事实上，将右端的平方展开后，得到
+\[
+\sum_{n\leq z}\frac{\widetilde\tau(n)}n,
+\]
+其中 \(\widetilde\tau(n)\) 表示 \(n\) 的约数 \(d\) 中满足
+\(d,n/d\leq\sqrt z\) 的个数。回忆 \(z=N^{1/3}\)，便可推出
+\[
+\sum_{n\leq z}\frac{\tau(n)}n\gg\log^2N.
+\tag{2.34}
+\]
+
+最后，为了推出 (2.28)，结合 (2.33)、(2.34)，并利用
+\[
+\begin{aligned}
+\prod_{p\mid N}\left(1-\frac1p\right)
+&=\prod_{p\mid N}\left(1+\frac1p\right)^{-1}
+\cdot\prod_{p\mid N}\left(1-\frac1{p^2}\right)\\
+&\gg\prod_{p\mid N}\left(1+\frac1p\right)^{-1},
+\end{aligned}
+\]
+即可得到结论。这里使用了乘积
+\[
+\prod_p\left(1-\frac1{p^2}\right)
+\]
+收敛到一个正实数这一事实；事实上，该乘积等于
+\[
+\frac1{\zeta(2)}=\frac6{\pi^2}.
+\]
+
+**估计误差项。** 现在证明估计 (2.29)。由 (2.26) 中 \(\lambda_d\) 的定义可得
+\[
+\begin{aligned}
+|\omega(d)\lambda_d|
+&=\left|
+\frac dD
+\sum_{\substack{d\mid\delta\\\delta\leq z}}
+\frac{\mu(\delta/d)\mu(\delta)}{f(\delta)}
+\right|\\
+&\leq
+\frac{d}{Df(d)}
+\sum_{\substack{\delta'\leq z\\
+\delta'\text{ 平方自由}}}
+\frac1{f(\delta')}
+=\frac d{f(d)}.
+\end{aligned}
+\]
+现在容易验证
+\[
+\frac p{f(p)}\leq6;
+\]
+最坏的情形是 \(p=3\) 且 \(\omega(3)=2\)。因此
+\[
+\begin{aligned}
+|\omega(d)\lambda_d|
+&\leq\frac d{f(d)}
+=\prod_{p\mid d}\frac p{f(p)}\\
+&\leq6^{\#\{\text{\(d\) 的不同素因子}\}}
+=\tau(d)^{\frac{\log6}{\log2}}.
+\end{aligned}
+\]
+由约数估计（引理 A.0.3）立即得到所需结论。□
+
+## 第 3 章
+
+## 长度为 3 的等差数列的 Roth 定理
+
+本章的目标是证明 Roth 于 1953 年得到的下述定理。该定理本身就很值得学习，同时也为我们引入一个关键工具——傅里叶变换——提供了机会。
+
+**定理 3.0.1（Roth 定理）。** 存在一个绝对常数 \(C\)，使得集合
+\(A\subset\{1,\ldots,N\}\) 只要满足
+\[
+|A|\geq\frac{CN}{\log\log N},
+\]
+就包含一个非平凡的三项等差数列（也就是说，存在 \(x,x+d,x+2d\) 这三个元素，其中 \(d\ne0\)）。
+
+特别注意，当 \(N\) 充分大时，\(1/\log\log N\) 最终会小于任意给定的正数。
+
+本章中，我们始终假设 \(N\) 充分大（即大于某个我们不打算精确说明的绝对常数）。
+
+## 3.1. 密度增量策略
+
+Roth 定理的证明采用所谓的**密度增量策略**，驱动这一策略的关键命题如下。
+
+**命题 3.1.1.** 设 \(0<\alpha<1\)，并且
+\[
+N\geq\left(\frac8\alpha\right)^{10}.
+\]
+设 \(P\subset\mathbf Z\) 是长度为 \(N\) 的等差数列，而 \(A\subset P\) 是一个至少有 \(\alpha N\) 个元素的集合。那么，以下两种情形至少有一种成立：
+
+(i) \(A\) 包含一个非平凡的三项等差数列；
+
+(ii) 存在一个长度为 \(N'\geq N^{1/5}\) 的等差数列 \(P'\)，若记
+\[
+A':=A\cap P',\qquad
+\alpha':=\frac{|A'|}{|P'|},
+\]
+则有
+\[
+\alpha'\geq\alpha+\frac{\alpha^2}{112}.
+\]
+
+通过反复应用这一命题即可得到定理 3.0.1。令
+\[
+P_0:=\{1,\ldots,N\},
+\]
+并假设我们有一个集合 \(A\subset P_0\)，满足 \(|A|=\alpha N\)，且不包含非平凡的三项等差数列。于是，我们尝试反复应用命题 3.1.1，得到一列等差数列
+\[
+P_0,P_1,P_2,\ldots
+\]
+以及相应的集合
+\[
+A_i:=A\cap P_i.
+\]
+\(P_i\) 的长度满足
+\[
+N_i\geq N^{(1/5)^i},
+\]
+而密度
+\[
+\alpha_i:=\frac{|A_i|}{|P_i|}
+\]
+满足
+\[
+\alpha_{i+1}>\alpha_i+c\alpha_i^2.
+\]
+
+这一迭代不可能持续太久：经过 \(C/\alpha\) 步后，密度已经翻倍；再经过 \(C/(2\alpha)\) 步，密度又翻倍，以此类推。由于任何集合的密度都不可能超过 1，所以总步数至多为 \(2C/\alpha\)。我们因此可以得出，命题 3.1.1 的某次应用必然失效；这只能意味着条件
+\[
+N_i>C\alpha_i^{-C}
+\]
+不再成立。由于
+\[
+N_i>N^{(1/5)^i}
+\geq N^{(1/5)^{2C/\alpha}},
+\]
+并且（非常粗略地）
+\[
+\alpha_i\geq\alpha,
+\]
+所以我们得到
+\[
+N^{(1/5)^{2C/\alpha}}\leq C\alpha^{-C}.
+\]
+整理后便得到
+
+\[
+\log\log N
+\leq\log\log(C\alpha^{-C})+\frac{2C}{\alpha}
+\leq\frac{C'}{\alpha},
+\]
+这立即给出所声称的界。
+
+*注记。* 这里最重要的参数，远远超过其他参数，是我们进行迭代的次数；它大约为 \(O(1/\alpha)\)。
+
+## 3.2. 整数集 \(\mathbf Z\) 上的傅里叶变换
+
+设
+\[
+f:\mathbf Z\to\mathbf C
+\]
+是一个紧支集函数（也就是说，在某个有限区间之外，\(f(n)=0\)）。我们定义它的傅里叶变换 \(\widehat f(\theta)\) 为
+\[
+\widehat f(\theta):=\sum_n f(n)e(-n\theta).
+\]
+由于 \(f\) 具有紧支集，因此不存在收敛性问题。
+
+我们将使用的一个关键事实是 Parseval 恒等式。
+
+**命题 3.2.1.** 有
+\[
+\sum_n f(n)\overline{g(n)}
+=
+\int_{\mathbf T}
+\widehat f(\theta)\overline{\widehat g(\theta)}\,d\theta.
+\]
+
+**证明。** 根据定义，并利用下述事实，容易验证这一恒等式：
+\[
+\begin{aligned}
+\int_{\mathbf T}e(m\theta)\,d\theta
+&=\int_0^1e(m\theta)\,d\theta\\
+&=
+\begin{cases}
+1,&m=0,\\
+0,&m\in\mathbf Z\setminus\{0\}.
+\end{cases}
+\end{aligned}
+\tag{3.1}
+\]
+
+*注记。* 取 \(f=g\)，得到
+\[
+\sum_n|f(n)|^2
+=
+\int_{\mathbf T}|\widehat f(\theta)|^2\,d\theta.
+\]
+
+## 3.3. 一个较大的傅里叶系数
+
+现在转向密度增量策略的细节。首先注意一个非常简单的事实：不失一般性，我们可以假设
+\[
+P=[N]=\{1,\ldots,N\}.
+\]
+通过仿射变换总可以将问题化归到这一情形。
+
+我们首先证明命题 3.1.1 的下述替代版本，其中第 (ii) 个结论有所不同：它断言函数
+\[
+f_A:=1_A-\alpha1_{[N]}
+\]
+存在一个较大的傅里叶系数。这个函数称为 \(A\) 的**平衡函数**。下一节将证明，较大的傅里叶系数会推出命题 3.1.1 原表述中的密度增量。
+
+**命题 3.3.1.** 设 \(0<\alpha<1\)，且
+\[
+N\geq\frac4{\alpha^2}.
+\]
+设 \(A\subset[N]\) 是一个至少具有 \(\alpha N\) 个元素的集合。那么，以下两种情形至少有一种成立：
+
+(i) \(A\) 包含一个非平凡的三项等差数列；
+
+(ii) 平衡函数 \(f_A\) 有一个较大的傅里叶系数。具体而言，存在某个
+\(\theta\in\mathbf T\)，使得
+\[
+|\widehat f_A(\theta)|
+\geq\frac{\alpha^2N}{28}.
+\]
+
+**证明。** 若 \(f_1,f_2,f_3:\mathbf Z\to\mathbf R\) 是三个有限支集函数，我们定义算子
+\[
+T(f_1,f_2,f_3)
+:=
+\sum_{x,d}f_1(x)f_2(x+d)f_3(x+2d).
+\]
+它按照函数 \(f_i\) 给出的权重，对三项等差数列进行计数。特别地，
+\[
+T(1_A,1_A,1_A)
+=
+\#\{\text{\(A\) 中的三项等差数列}\}.
+\tag{3.2}
+\]
+
+需要特别注意，这里的计数包括 \(d=0\) 的“平凡”等差数列。然而，\(A\) 恰好有 \(\alpha N\) 个平凡等差数列。因此，若情形 (i) 不成立，则
+\[
+T(1_A,1_A,1_A)=\alpha N
+\leq\frac{\alpha^3N^2}{4}.
+\tag{3.3}
+\]
+右端的不等式使用了假设 \(N\geq4/\alpha^2\)。
+
+注意 \(T\) 是一个三线性算子。因此，我们可以写成
+\[
+1_A=f_A+\alpha1_{[N]},
+\]
+并将 \(T(1_A,1_A,1_A)\) 展开为八项之和：
+\[
+\begin{aligned}
+T(1_A,1_A,1_A)
+={}&\alpha^3T(1_{[N]},1_{[N]},1_{[N]})\\
+&+\cdots+T(f_A,f_A,f_A).
+\end{aligned}
+\tag{3.4}
+\]
+省略号所表示的七个“误差项”中，每一项至少包含一个 \(f_A\)。先考察第一项
+\[
+\alpha^3T(1_{[N]},1_{[N]},1_{[N]}).
+\]
+这一项很容易精确计算：满足
+\(x,x+d,x+2d\in[N]\) 的 \((x,d)\) 的个数，恰好等于
+\([N]\times[N]\) 中具有相同奇偶性的二元组 \((n_1,n_2)\) 的个数。事实上，此时可以唯一确定
+\[
+x=n_1,\qquad d=\frac12(n_2-n_1),
+\]
+而 \(x+d\) 自动属于 \([N]\)。若 \(N\) 为偶数，这一数量为 \(N^2/2\)；若 \(N\) 为奇数，则为 \((N^2+1)/2\)。因此，无论哪种情形，它都至少为 \(N^2/2\)。于是
+\[
+\alpha^3T(1_{[N]},1_{[N]},1_{[N]})
+\geq\frac{\alpha^3N^2}{2}.
+\]
+
+由此可知，若情形 (i) 不成立（因而 (3.3) 成立），那么 (3.4) 中七个误差项之和至少为
+\(\alpha^3N^2/4\)。所以，其中至少有一项不小于
+\(\alpha^3N^2/28\)，也就是说
+\[
+|T(f_1,f_2,f_3)|
+\geq\frac{\alpha^3N^2}{28},
+\tag{3.5}
+\]
+其中每个 \(f_i\) 都是 \(\alpha1_{[N]}\) 或 \(f_A\)，且至少有一个等于 \(f_A\)。
+
+现在来到关键思想：存在一个用傅里叶变换表示
+\(T(f_1,f_2,f_3)\) 的公式：
+\[
+T(f_1,f_2,f_3)
+=
+\int_{\mathbf T}
+\widehat f_1(\theta)
+\widehat f_2(-2\theta)
+\widehat f_3(\theta)\,d\theta.
+\tag{3.6}
+\]
+写出这个公式之后，只需将右端的傅里叶变换定义代入，就很容易验证它。
+
+因此，若 (3.5) 成立，则
+\[
+\left|
+\int_{\mathbf T}
+\widehat f_1(\theta)
+\widehat f_2(-2\theta)
+\widehat f_3(\theta)\,d\theta
+\right|
+\geq\frac{\alpha^3N^2}{28}.
+\tag{3.7}
+\]
+
+不妨设 \(f_3=f_A\)；其他情形的分析非常类似。于是
+\[
+\sup_{\theta\in\mathbf T}|\widehat f_A(\theta)|
+\int_{\mathbf T}
+|\widehat f_1(\theta)|
+|\widehat f_2(-2\theta)|\,d\theta
+\geq\frac{\alpha^3N^2}{28}.
+\]
+由 Cauchy–Schwarz 不等式，
+\[
+\begin{aligned}
+&\sup_{\theta\in\mathbf T}|\widehat f_A(\theta)|
+\left(\int_{\mathbf T}|\widehat f_1(\theta)|^2\,d\theta\right)^{1/2}\\
+&\qquad\cdot
+\left(\int_{\mathbf T}|\widehat f_2(-2\theta)|^2\,d\theta\right)^{1/2}
+\geq\frac{\alpha^3N^2}{28}.
+\end{aligned}
+\tag{3.8}
+\]
+
+另一方面，由 Parseval 恒等式，
+\[
+\int_{\mathbf T}|\widehat f_i(\theta)|^2\,d\theta
+=
+\sum_n|f_i(n)|^2.
+\]
+容易验证，若 \(f_i=\alpha1_{[N]}\)，右端等于 \(\alpha^2N\)；若 \(f_i=f_A\)，右端等于 \(\alpha(1-\alpha)N\)。因此，无论哪一种情形，右端都至多为 \(\alpha N\)。于是由 (3.8) 得到
+\[
+\sup_{\theta\in\mathbf T}|\widehat f_A(\theta)|
+\geq\frac{\alpha^2N}{28},
+\]
+这正是命题中的情形 (ii)。□
+
+## 3.4. 从较大的傅里叶系数到密度增量
+
+本节说明，如何将命题 3.3.1 中的情形 (ii)（平衡函数 \(f_A\) 具有较大的傅里叶系数）替换为命题 3.1.1 中的情形 (ii)（某个等差数列上出现密度增量）。关键技术工具如下。
+
+这里，若 \(F:\mathbf Z\to\mathbf C\) 是一个函数，且 \(S\subset\mathbf Z\) 是有限集，我们记
+\[
+\operatorname{diam}_S(F)
+:=
+\sup_{x,x'\in S}|F(x)-F(x')|.
+\]
+
+**引理 3.4.1.** 设 \(\theta\in\mathbf T\)。那么我们可以将 \([N]\) 划分为若干等差数列 \(P_i\)，每个等差数列的长度至少为 \(N^{1/5}\)，并且对所有 \(i\) 都有
+\[
+\operatorname{diam}_{P_i}(e(\theta x))
+\leq N^{-1/5}.
+\]
+
+**证明。** 在整个论证中，假设 \(N\) 充分大。令
+\[
+Q:=\lfloor N^{1/2}\rfloor.
+\]
+由 Dirichlet 的一个著名的抽屉原理应用，存在正整数 \(d\leq Q\)，使得
+\[
+\|d\theta\|_{\mathbf R/\mathbf Z}\leq\frac1Q.
+\]
+（将 \(\theta,2\theta,\ldots,Q\theta\) 看作 \(\mathbf T\) 中的元素。这些元素中有两个——不妨设为 \(j_1\theta\) 与 \(j_2\theta\)——彼此距离不超过 \(1/Q\)。取 \(d:=|j_1-j_2|>0\) 即可。）
+
+若 \(P\) 是公差为 \(d\)、长度至多为 \(3N^{1/5}\) 的任意等差数列，则由三角不等式，
+\[
+\begin{aligned}
+\operatorname{diam}_P(e(\theta x))
+&\leq3N^{1/5}|e(\theta d)-1|\\
+&\leq\frac{20N^{1/5}}Q
+<N^{-1/5},
+\end{aligned}
+\]
+这里使用了不等式
+\[
+|e(t)-1|
+=2|\sin\pi t|
+\leq2\pi\|t\|_{\mathbf R/\mathbf Z}.
+\]
+
+现在注意，可以将 \([N]\) 划分为公差均为 \(d\) 的等差数列 \(P_i\)，使其长度都落在区间
+\[
+[N^{1/5},3N^{1/5}]
+\]
+内。具体做法是，先将 \([N]\) 划分为公差为 \(d\) 的等差数列，每个等差数列的长度约为
+\[
+\frac Nd\gg N^{1/2}.
+\]
+然后沿着每个这样的等差数列从左到右，将其进一步划分为长度为
+\(\lceil N^{1/5}\rceil\) 的等差数列，直到剩下一个长度不超过 \(N^{1/5}\) 的尾段。将这个尾段与前一个等差数列合并即可。□
+
+下面的结果与命题 3.3.1 一起，将立即推出命题 3.1.1，从而完成 Roth 定理的证明。
+
+**命题 3.4.1.** 假设
+\[
+|\widehat f_A(\theta)|\geq\frac{\alpha^2N}{28},
+\qquad
+N\geq\left(\frac8\alpha\right)^{10},
+\]
+并且 \([N]=\bigcup_iP_i\) 是上述划分。那么存在某个 \(i\)，使得
+\[
+|A\cap P_i|
+\geq
+\left(\alpha+\frac{\alpha^2}{112}\right)|P_i|.
+\]
+
+**证明。** 由于 \(P_i\) 划分了 \([N]\)，显然有
+\[
+\sum_i
+\left|
+\sum_{x\in P_i}f_A(x)e(-\theta x)
+\right|
+\geq\frac{\alpha^2}{28}N.
+\]
+由三角不等式以及 \(|f_A(x)|\leq1\)，左端至多为
+\[
+\begin{aligned}
+&\sum_i\left|\sum_{x\in P_i}f_A(x)\right|
++\sum_i|P_i|\operatorname{diam}_{P_i}(e(\theta x))\\
+&\qquad\leq
+\sum_i\left|\sum_{x\in P_i}f_A(x)\right|+N^{4/5}\\
+&\qquad\leq
+\sum_i\left|\sum_{x\in P_i}f_A(x)\right|
++\frac{\alpha^2}{56}N,
+\end{aligned}
+\]
+最后一步来自关于 \(N\) 的假设。于是
+\[
+\sum_i\left|\sum_{x\in P_i}f_A(x)\right|
+\geq\frac{\alpha^2}{56}N.
+\]
+
+由于
+\[
+\sum_{x\in[N]}f_A(x)=0,
+\]
+我们有
+\[
+\begin{aligned}
+\sum_i\Bigg(
+\left|\sum_{x\in P_i}f_A(x)\right|
++\sum_{x\in P_i}f_A(x)
+\Bigg)
+&\geq\frac{\alpha^2}{56}N\\
+&=\frac{\alpha^2}{56}\sum_i|P_i|.
+\end{aligned}
+\]
+因此，必存在某个 \(i\)，使得
+\[
+\left|\sum_{x\in P_i}f_A(x)\right|
++\sum_{x\in P_i}f_A(x)
+\geq\frac{\alpha^2}{56}|P_i|,
+\]
+这意味着
+\[
+\sum_{x\in P_i}f_A(x)
+\geq\frac{\alpha^2}{112}|P_i|.
+\]
+
+换言之，
+\[
+|A\cap P_i|
+\geq
+\left(\alpha+\frac{\alpha^2}{112}\right)|P_i|.
+\]
+证明完成。□
+
+## 第 4 章
+
+## 和集不等式
+
+本章研究集合相加这一概念。关于这一主题已有大量文献，我们从中选取若干关键结果。下面陈述的所有结果都适用于任意阿贝尔群的有限子集。为简便起见，我们通常将这样的集合称为**加法集合**。当讨论多个加法集合时，默认它们都是同一个群的子集。具体是哪一个阿贝尔群，通常可以从上下文中看出（尽管很多时候这并不重要）。事实上，许多结果（但并非全部）在不要求交换性的情况下仍然成立，不过本课程不会涉及这一主题。
+
+## 4.1. 基本记号与定义
+
+设 \(A,B\) 是加法集合（也就是说，\(A\) 和 \(B\) 都是某个阿贝尔群的有限子集）。我们定义
+\[
+A+B:=\{a+b:a\in A,\ b\in B\},
+\]
+以及
+\[
+A-B:=\{a-b:a\in A,\ b\in B\}.
+\]
+
+这些定义以显而易见的方式推广到两个以上的加数。例如，
+\[
+A_1+\cdots+A_k
+:=
+\{a_1+\cdots+a_k:a_i\in A_i\}.
+\]
+
+若 \(A_1=\cdots=A_k=A\)，我们通常用 \(kA\) 表示
+\(A_1+\cdots+A_k\)。特别地，
+\[
+2A=A+A.
+\]
+我们还使用诸如 \(2A-2A\) 这样的记号，表示集合
+\[
+\{a_1+a_2-a_3-a_4:a_1,\ldots,a_4\in A\}.
+\]
+
+## 4.2. Ruzsa 三角不等式与覆盖引理
+
+本节证明 Ruzsa 关于和集大小的两个优美结果。尽管它们看起来很简单，却有着出人意料的广泛用途。
+
+**引理 4.2.1（Ruzsa 三角不等式）。** 设 \(U,V,W\) 是有限加法集合。那么
+\[
+|V-W|\,|U|
+\leq |V-U|\,|U-W|.
+\]
+
+**证明。** 我们定义一个映射
+\[
+\phi:(V-W)\times U\longrightarrow(V-U)\times(U-W),
+\]
+并证明它是单射，从而推出所需的不等式。对于每个
+\(d\in V-W\)，选取一对
+\[
+v_d\in V,\qquad w_d\in W,
+\]
+使得 \(d=v_d-w_d\)（这样的元素对可能不止一对，但我们对每个 \(d\) 固定作出一个选择）。然后定义
+\[
+\phi(d,u)=(v_d-u,u-w_d).
+\]
+
+这里 \(d\in V-W\)，\(u\in U\)。为了证明 \(\phi\) 是单射，设
+\[
+(x,y)\in\operatorname{im}(\phi)
+\subset(V-U)\times(U-W).
+\]
+若 \(\phi(d,u)=(x,y)\)，则
+\[
+\begin{aligned}
+x+y
+&=(v_d-u)+(u-w_d)\\
+&=v_d-w_d=d.
+\end{aligned}
+\]
+因此，我们可以从 \((x,y)\) 唯一确定 \(d\)，进而确定 \(v_d,w_d\)。此外，也可以由
+\[
+u=-x+v_d=y-w_d
+\]
+确定 \(u\)。所以 \(\phi\) 是单射。□
+
+*注记。* 若定义
+\[
+d(U,V):=
+\log\frac{|U-V|}{|U|^{1/2}|V|^{1/2}},
+\]
+那么 Ruzsa 三角不等式可以写成
+\[
+d(V,W)\leq d(U,V)+d(U,W).
+\]
+这解释了“三角不等式”这一名称。注意，尽管它满足三角不等式，\(d\) 并不是真正的距离。这是因为
+\[
+d(U,V)=0
+\]
+既不推出 \(U=V\)，也不由 \(U=V\) 保证。
+
+**引理 4.2.2（Ruzsa 覆盖引理）。** 设 \(A,B\) 是有限加法集合，且
+\[
+|A+B|\leq K|A|.
+\]
+那么，存在某个整数 \(k\leq K\)，使得 \(B\) 可以被 \(k\) 个 \(A-A\) 的平移覆盖。也就是说，存在一个集合 \(X\)，满足
+\[
+|X|\leq K,\qquad B\subset(A-A)+X.
+\]
+
+**证明。** 选取一个极大的子集 \(X\subset B\)，使得
+\[
+\{A+x:x\in X\}
+\]
+两两不交。这些集合的并恰好包含 \(|A||X|\) 个元素，而且它们全部属于 \(A+B\)。因此
+\[
+|X|\leq K.
+\]
+现在，若 \(b\in B\)，则由 \(X\) 的极大性可知，存在某个 \(x\in X\)，使得 \(A+b\) 与 \(A+x\) 相交。因此
+\[
+b\in A-A+x.
+\]
+于是
+\[
+B\subset(A-A)+X.
+\]
+□
+
+## 4.3. Petridis 不等式
+
+本节及下一节将建立一些不等式，用来控制三个或更多集合之和的大小。Petridis 在不久前发现了一种优美的方法。其结果将在下面的推论 4.3.1 中陈述。我们将给出一个简洁的证明改写，这一改写由 Tao 发布在 Tim Gowers 的博客上。
+
+设 \(B\) 是某个阿贝尔群 \(G\) 的子集。令 \(K\) 为一个实数，并考虑定义在 \(G\) 的子集上的函数 \(\phi\)：
+\[
+\phi(A):=|A+B|-K|A|.
+\tag{4.1}
+\]
+
+**引理 4.3.1.** \(\phi\) 是次模函数，也就是说，它满足
+\[
+\phi(A\cup A')+\phi(A\cap A')
+\leq\phi(A)+\phi(A').
+\]
+
+**证明。** 记
+\[
+\sigma(A):=A+B.
+\]
+注意到
+\[
+\sigma(A\cup A')=\sigma(A)\cup\sigma(A'),
+\]
+并且
+\[
+\sigma(A\cap A')\subseteq\sigma(A)\cap\sigma(A').
+\]
+因此
+\[
+\begin{aligned}
+|\sigma(A\cup A')|
+&=|\sigma(A)\cup\sigma(A')|\\
+&=|\sigma(A)|+|\sigma(A')|
+-|\sigma(A)\cap\sigma(A')|\\
+&\leq|\sigma(A)|+|\sigma(A')|
+-|\sigma(A\cap A')|.
+\end{aligned}
+\]
+也就是说，\(|\sigma|\) 满足次模性：
+\[
+|\sigma(A\cup A')|+|\sigma(A\cap A')|
+\leq|\sigma(A)|+|\sigma(A')|.
+\]
+由于函数 \(|A|\) 满足
+\[
+|A\cup A'|+|A\cap A'|=|A|+|A'|,
+\]
+而
+\[
+\phi(A)=|\sigma(A)|-K|A|,
+\]
+所需结论立即成立。□
+
+**引理 4.3.2.** 设 \(\phi\) 是任意次模函数。假设
+\(A_1,\ldots,A_n\) 是满足下列性质的集合：
+\[
+\phi(A_i)=0,
+\]
+并且对于每个 \(A_i\) 的子集 \(Z_i\subseteq A_i\)，都有
+\[
+\phi(Z_i)\geq0.
+\]
+那么
+\[
+\phi\left(\bigcup_{i=1}^nA_i\right)\leq0.
+\]
+
+**证明。** 根据假设与次模性，对于任意 \(i\) 及任意集合 \(S\)，有
+\[
+\begin{aligned}
+\phi(A_i\cup S)
+&\leq\phi(A_i\cup S)+\phi(A_i\cap S)\\
+&\leq\phi(A_i)+\phi(S)\\
+&=\phi(S).
+\end{aligned}
+\]
+这里第一个不等式使用了
+\(\phi(A_i\cap S)\geq0\)。现在对 \(n\) 作归纳，结论立即成立。□
+
+**命题 4.3.1（Petridis）。** 设 \(A,B\) 是某个阿贝尔群中的集合。假设
+\[
+|A+B|=K|A|,
+\]
+并且对所有 \(Z\subseteq A\)，都有
+\[
+|Z+B|\geq K|Z|.
+\]
+那么，对于群中的任意另一个集合 \(S\)，有
+\[
+|A+B+S|\leq K|A+S|.
+\]
+
+**证明。** 将引理 4.3.2 用于上面 (4.1) 中定义的特定函数 \(\phi\)。取 \(A_i\) 为 \(A\) 被 \(S\) 中元素平移得到的集合 \(A+s\)，其中 \(s\in S\)。容易验证，引理 4.3.2 的假设都成立。注意
+\[
+\bigcup_{i=1}^nA_i=A+S,
+\]
+因此该引理推出
+\[
+\phi(A+S)\leq0,
+\]
+也就是说
+\[
+|A+B+S|\leq K|A+S|.
+\]
+□
+
+下面的形式更便于应用 Petridis 不等式。
+
+**推论 4.3.1.** 设 \(A,B\) 是某个阿贝尔群中的集合，并假设
+\[
+|A+B|\leq K|A|.
+\]
+设 \(X\subseteq A\) 是一个非空集合，使得比值
+\[
+\frac{|X+B|}{|X|}
+\]
+在所有非空的 \(A\) 的子集上取到最小值。那么，对于任意另一个集合 \(S\)，都有
+\[
+|S+X+B|\leq K|S+X|.
+\]
+
+**证明。** 在命题 4.3.1 中用 \(X\) 替换 \(A\) 即可。□
+
+## 4.4. Plünnecke–Ruzsa 不等式
+
+关于高阶和集，适用范围最广泛的结果是 Plünnecke–Ruzsa 不等式。
+
+**定理 4.4.1（Plünnecke–Ruzsa）。** 设 \(A,B\) 是加法集合，并且
+\[
+|A+B|\leq K|A|.
+\]
+令 \(k,\ell\geq0\) 为整数。那么
+\[
+|kB-\ell B|\leq K^{k+\ell}|A|.
+\]
+
+最初的证明相当长，并使用了不少图论工具。如今，可以利用 Petridis 不等式很快地推出这一结论。
+
+**引理 4.4.1.** 设 \(A,B\) 是满足
+\[
+|A+B|\leq K|A|
+\]
+的有限加法集合。那么，存在 \(X\subset A\)，使得
+\[
+|X+kB|\leq K^k|X|.
+\]
+
+**证明。** 取 \(X\subset A\)，使得比值
+\[
+\frac{|X+B|}{|X|}
+\]
+最小。由 Petridis 不等式（推论 4.3.1），取
+\(S=(k-1)B\)，得到
+\[
+\begin{aligned}
+|X+kB|
+&=|X+(k-1)B+B|\\
+&\leq K|X+(k-1)B|.
+\end{aligned}
+\]
+对 \(k\) 作归纳即可得到结论。□
+
+**证明（定理 4.4.1）。** 设 \(A,B\) 是满足
+\[
+|A+B|\leq K|A|
+\]
+的有限加法集合。分别在 Ruzsa 三角不等式中取
+\[
+U=X,\qquad V=-kB,\qquad W=-\ell B,
+\]
+再应用引理 4.4.1，得到
+\[
+|kB-\ell B|\,|X|
+\leq |X+kB|\,|X+\ell B|
+\leq K^{k+\ell}|X|^2.
+\]
+因此，由于 \(X\subset A\)，
+\[
+|kB-\ell B|
+\leq K^{k+\ell}|X|
+\leq K^{k+\ell}|A|.
+\]
+□
+
+记录一下由此结果与引理 4.2.1 得到的推论，它描述了和与差之间的关系。
+
+**推论 4.4.1.** 设 \(A,B\) 是加法集合。那么
+\[
+|A\mp B|
+\leq\frac{|A\pm B|^3}{|A||B|}.
+\]
+
+**证明。** 我们处理左边取减号、右边取加号的情形；另一种情形只需将 \(B\) 换成 \(-B\) 即可立即得到。令
+\[
+K:=\frac{|A+B|}{|A|}.
+\]
+首先，在定理 4.4.1 中取 \(k=2,\ell=0\)，得到
+\[
+|B+B|\leq K^2|A|.
+\]
+然后，在引理 4.2.1 中取
+\[
+U=B,\qquad V=-B,\qquad W=-A,
+\]
+得到
+\[
+|A-B|\,|B|\leq|B+B|\,|A+B|.
+\]
+合并这两个估计即可得到结论。□
+
+## 第 5 章
+
+## Freiman 定理
+
+本章包含本课程的亮点之一：对于和集较小的集合具有什么样的结构这一问题，我们将给出一个相当完整（至少在定性意义上）的答案。先介绍一下这一问题的背景。
+
+回忆，若 \(A\) 是一个整数集合，则
+\[
+A+A:=\{a_1+a_2:a_1,a_2\in A\}.
+\]
+假设 \(A\) 的大小为 \(n\)。集合 \(A+A\) 有多大？显然，它的大小至多为
+\[
+\frac12n(n+1),
+\]
+因为这是二元组 \((a_1,a_2)\) 的个数，其中
+\((a_1,a_2)\) 与 \((a_2,a_1)\) 被视为同一对。
+
+另一方面，它的大小至少为 \(2n-1\)。将 \(A\) 的元素按递增次序写成
+\[
+a_1<\cdots<a_n,
+\]
+则有
+\[
+a_1+a_1<a_1+a_2<\cdots<a_1+a_n<a_2+a_n<\cdots<a_n+a_n,
+\]
+这是 \(A+A\) 中 \(2n-1\) 个互不相同的元素。
+
+上述两个界都可以取到等号。例如，若
+\[
+A=\{1,2,\ldots,2^{n-1}\},
+\]
+那么所有的和 \(a_1+a_2\) 都互不相同（除了平凡关系
+\(a_1+a_2=a_2+a_1\)）。若
+\[
+A=\{1,\ldots,n\},
+\]
+那么
+\[
+A+A=\{2,\ldots,2n\},
+\]
+其大小为 \(2n-1\)。
+
+若
+\[
+\frac{|A+A|}{|A|}\leq K,
+\]
+则称 \(A\) 的**倍增常数至多为 \(K\)**。
+
+通常，我们考虑 \(K\) 固定（例如 \(K=10\)），而
+\[
+n=|A|
+\]
+非常大的情形。
+
+本章要考虑的基本问题如下。
+
+**问题 5.0.1.** 若
+\[
+|A+A|\leq K|A|,
+\]
+其中 \(K\) 较小，那么 \(A\) 具有怎样的结构？
+
+## 5.1. 广义等差数列与 Freiman 定理
+
+在陈述主要结果之前，我们先给出一些复杂程度逐渐增加的动机性例子。
+
+**例 5.1.1（等差数列）。** 设 \(A\) 是任意一个长度为 \(n\) 的等差数列。那么
+\[
+|A+A|=2n-1.
+\]
+
+**例 5.1.2（等差数列的子集）。** 设 \(P\) 是一个长度为 \(Cn\) 的等差数列，且
+\(A\subset P\) 是一个大小为 \(n\) 的任意子集。那么
+\[
+|A+A|\leq2Cn.
+\]
+
+**例 5.1.3（二维等差数列）。** 假设
+\[
+L_1L_2=n,
+\]
+并考虑形如
+\[
+A:=
+\{x_0+\ell_1x_1+\ell_2x_2:
+0\leq\ell_1<L_1,\ 0\leq\ell_2<L_2\}
+\]
+的集合。若 \(x_i\) 之间相距足够远，使得这里描述的元素都互不相同，则
+\[
+|A|=n.
+\]
+在这种情况下，我们称 \(A\) 是**真**（proper）的。我们有
+\[
+\begin{aligned}
+A+A=\{&
+2x_0+\ell_1'x_1+\ell_2'x_2:\\
+&0\leq\ell_1'<2L_1-1,\ 
+0\leq\ell_2'<2L_2-1
+\},
+\end{aligned}
+\]
+因此显然
+\[
+|A+A|\leq4|A|.
+\]
+
+**例 5.1.4（\(d\) 维等差数列）。** 与上例相同，但现在有 \(d\) 个参数
+\[
+L_1,\ldots,L_d；
+\]
+也就是说，
+\[
+A=
+\{x_0+\ell_1x_1+\cdots+\ell_dx_d:
+0\leq\ell_i<L_i\}.
+\tag{5.1}
+\]
+若 \(A\) 是真广义等差数列，则
+\[
+|A+A|\leq2^d|A|.
+\]
+
+**例 5.1.5（多维等差数列的子集）。** 设 \(P\) 是一个大小为 \(Cn\) 的真 \(d\) 维等差数列。令 \(A\subset P\) 为一个大小为 \(n\) 的任意子集。那么
+\[
+|A+A|
+\leq|P+P|
+\leq2^d|P|
+=2^dCn.
+\]
+
+最后这个例子给出了一类相当大的集合，它们的倍增常数至多为 \(K\)（只需选取满足 \(2^dC\leq K\) 的任意参数 \(d,C\)）。
+
+Freiman 定理断言，上述例子已经涵盖了所有可能的情形。
+
+**定理 5.1.1（Freiman）。** 设
+\[
+A\subset\mathbf Z
+\]
+是一个有限集，且
+\[
+|A+A|\leq K|A|.
+\]
+那么 \(A\) 包含于一个广义等差数列 \(P\) 中，其中
+\[
+\dim(P)\ll_K1,\qquad
+\operatorname{size}(P)\ll_K|A|.
+\]
+
+形如 (5.1) 的广义等差数列的**规模**定义为
+\[
+L_1\cdots L_d.
+\]
+这一数量至少等于该等差数列的基数；若该等差数列不是 proper 的，则规模严格大于其基数。
+
+Freiman 定理指出，\(A\) 包含于一个真等差数列中，其维数至多为
+\(d(K)\)，规模至多为 \(C(K)|A|\)，其中 \(d(\cdot)\) 与
+\(C(\cdot)\) 都只依赖于 \(K\)。本课程不会关注具体的界，不过我们给出的论证会导出 \(d(K)\) 关于 \(K\) 的指数级上界，以及 \(C(K)\) 关于 \(K\) 的双指数级上界。这距离真正的最佳结果还相当远；事实上，只需多做一些工作，就可以从这两个界中各去掉一个指数，但我们在这里不这样做。
+
+当然，还可以有许多其他改进，不过这里同样不会涉及。例如，如果需要，可以要求 \(P\) 是 proper 的。
+
+## 5.2. Freiman 同态
+
+在 Freiman 于 1966 年出版的那本极具洞察力的著作 [5] 中，他尝试类比 Klein 处理几何的方式来研究加法数论：除了研究整数集合
+\(A,B,\ldots\) 之外，还应当研究它们之间的映射，尤其是那些在自然类型的映射下保持不变的性质。这种观点在当时无疑被认为有些古怪，但 Freiman 同态的概念如今已成为加法组合学中的重要工具。
+
+**定义 5.2.1.** 设 \(s\geq2\) 是一个整数，且 \(A,B\) 是加法集合。若映射
+\[
+\phi:A\to B
+\]
+满足：只要
+\[
+a_1+\cdots+a_s=a_1'+\cdots+a_s',
+\]
+就有
+\[
+\phi(a_1)+\cdots+\phi(a_s)
+=
+\phi(a_1')+\cdots+\phi(a_s'),
+\]
+那么称 \(\phi\) 为一个 **Freiman \(s\)-同态**。
+
+显然，任意群同态限制在任何子集上，都是任意阶数的 Freiman 同态。不过，这一概念要一般得多。例如，从
+\[
+A=\{1,10,100,1000\}
+\]
+到另一个加法集合的任意映射都是 Freiman 2-同态，因为 \(A\) 不存在非平凡的关系
+\[
+a_1+a_2=a_1'+a_2'.
+\]
+
+若映射 \(\phi\) 存在逆映射 \(\phi^{-1}\)，且逆映射也是 Freiman \(s\)-同态，则称 \(\phi\) 为 Freiman \(s\)-同构。需要提醒的是，与代数中的常见预期不同，一个单射 Freiman 同态未必是 Freiman 同构。例如，显然的映射
+\[
+\phi:\{0,1\}^n\to(\mathbf Z/2\mathbf Z)^n
+\]
+是任意阶数的 Freiman 同态（它由自然群同态
+\[
+\mathbf Z^n\to(\mathbf Z/2\mathbf Z)^n
+\]
+诱导得到）。然而，它不是 Freiman 2-同构，因为
+\((\mathbf Z/2\mathbf Z)^n\) 中的加法关系远远多于
+\(\{0,1\}^n\) 中的加法关系。
+
+下面的引理记录 Freiman 同构的一些基本事实。
+
+**引理 5.2.1.** 设 \(A,B,C\) 是加法集合，且 \(s\geq2\) 是一个整数。那么有以下结论。
+
+(i) 若
+\[
+\phi:A\to B,\qquad\psi:B\to C
+\]
+都是 Freiman \(s\)-同态，那么复合映射
+\[
+\psi\circ\phi
+\]
+也是 Freiman \(s\)-同态。
+
+(ii) 若
+\[
+\phi:A\to B
+\]
+是 Freiman \(s\)-同态，那么对于每个满足
+\[
+2\leq s'\leq s
+\]
+的整数 \(s'\)，它也是 Freiman \(s'\)-同态。
+
+(iii) 若
+\[
+\phi:A\to B
+\]
+是 Freiman \(s\)-同态，且 \(k,\ell\geq0\) 是整数并满足
+\(k+\ell\geq1\)，那么对于任意满足
+\[
+2\leq s'\leq\frac{s}{k+\ell}
+\]
+的整数 \(s'\)，\(\phi\) 都诱导出一个 Freiman \(s'\)-同态
+\[
+\widetilde\phi:kA-\ell A\to kB-\ell B.
+\]
+
+(iv) 若将上述前三条中的“同态”全部替换为“同构”，则相应结论仍然成立。
+
+(v) 若 \(P\) 是一个广义等差数列，且
+\[
+\phi:P\to B
+\]
+是 Freiman 2-同态，那么 \(\phi(P)\) 是一个维数相同的广义等差数列。若 \(\phi\) 是 Freiman 2-同构，并且 \(P\) 是 proper 的，那么 \(\phi(P)\) 也具有 proper 性质。
+
+(vi) 令
+\[
+\pi_m:\mathbf Z\to\mathbf Z/m\mathbf Z
+\]
+为自然映射。那么，当其限制在任意区间
+\[
+(t,t+m/s]\cap\mathbf Z
+\]
+上时，\(\pi_m\) 是 Freiman \(s\)-同构，其中 \(t\in\mathbf R\)。
+
+**证明。** 前四部分在理解定义之后都非常直接，课堂上我们不会仔细讨论它们。也许 (iii) 需要进一步说明：应定义
+\[
+\begin{aligned}
+&\widetilde\phi(
+a_1+\cdots+a_k-a_1'-\cdots-a_\ell')\\
+&\qquad=
+\phi(a_1)+\cdots+\phi(a_k)
+-\phi(a_1')-\cdots-\phi(a_\ell').
+\end{aligned}
+\]
+然后需要检查，这个定义是良定义的，而且确实是所声称阶数的 Freiman 同态。
+
+为了证明 (v)，设
+\[
+\phi:P\to\phi(P)
+\]
+是一个 Freiman 2-同态。假设
+\[
+P=\{x_0+\ell_1x_1+\cdots+\ell_dx_d:
+0\leq\ell_i<L_i\}.
+\]
+令
+\[
+y_0=\phi(x_0),
+\]
+并通过
+\[
+y_0+y_i=\phi(x_0+x_i),
+\qquad i=1,\ldots,d
+\]
+定义 \(y_1,\ldots,y_d\)。我们断言，对于所有满足
+\(0\leq\ell_i<L_i\) 的 \(\ell_1,\ldots,\ell_d\)，都有
+\[
+\begin{aligned}
+&\phi(x_0+\ell_1x_1+\cdots+\ell_dx_d)\\
+&\qquad=
+y_0+\ell_1y_1+\cdots+\ell_dy_d.
+\end{aligned}
+\]
+这可以通过对
+\(\ell_1+\cdots+\ell_d\) 作归纳来建立，因为我们对 \(y_i\) 的定义保证，当
+\[
+\ell_1+\cdots+\ell_d=0
+\quad\text{或}\quad1
+\]
+时上述等式成立。例如，为了得到
+\[
+(\ell_1,\ldots,\ell_d)=(1,1,0,\ldots,0)
+\]
+的结论，可以利用关系
+\[
+x_0+(x_0+x_1+x_2)
+=(x_0+x_1)+(x_0+x_2),
+\]
+从而得到
+\[
+\phi(x_0)+\phi(x_0+x_1+x_2)
+=
+\phi(x_0+x_1)+\phi(x_0+x_2),
+\]
+因此
+\[
+\phi(x_0+x_1+x_2)=y_0+y_1+y_2,
+\]
+正如所需。
+
+最后，说明 (vi)。由于 \(\pi_m\) 是群同态，因此它也是 Freiman 同态。它在任意长度至多为 \(m\) 的区间上的限制都是双射。假设
+\[
+x_1,\ldots,x_s,x_1',\ldots,x_s'
+\]
+满足
+\[
+t<x_i,x_i'\leq t+\frac ms,
+\]
+并且
+\[
+\pi_m(x_1)+\cdots+\pi_m(x_s)
+=
+\pi_m(x_1')+\cdots+\pi_m(x_s').
+\]
+也就是说，
+\[
+x_1+\cdots+x_s
+\equiv
+x_1'+\cdots+x_s'
+\pmod m.
+\]
+由于
+\[
+|x_1+\cdots+x_s-x_1'-\cdots-x_s'|<m,
+\]
+必有
+\[
+x_1+\cdots+x_s=x_1'+\cdots+x_s'.
+\]
+这就完成了证明。□
+
+## 5.3. Ruzsa 模型引理
+
+本节证明 Imre Ruzsa 的一个卓越引理。它断言，一个倍增常数较小的整数集 \(A\subset\mathbf Z\)，有一个较大的子集 Freiman 同构于循环群
+\(\mathbf Z/m\mathbf Z\) 的某个稠密子集。在这一环境中，调和分析的工具会强大得多；相比之下，任意整数子集（即使倍增常数较小）也可能分布得非常“分散”。下面是 Ruzsa 引理。
+
+**命题 5.3.1（Ruzsa 模型引理）。** 设
+\[
+A\subset\mathbf Z
+\]
+是一个有限集，且 \(s\geq2\) 是整数。令 \(m\geq|sA-sA|\) 为一个整数。那么存在集合
+\[
+A'\subset A,\qquad |A'|\geq\frac{|A|}{s},
+\]
+使得 \(A'\) Freiman \(s\)-同构于
+\(\mathbf Z/m\mathbf Z\) 的某个子集。
+
+**证明。** 必要时对 \(A\) 作平移，不妨假设 \(A\) 由正整数构成。取一个充分大的素数 \(q\)。对于
+\[
+\lambda\in(\mathbf Z/q\mathbf Z)^\times,
+\]
+考虑如下映射的复合：
+\[
+\phi_\lambda:=\gamma\circ\beta\circ\alpha_\lambda,
+\]
+其中
+\[
+\mathbf Z
+\xrightarrow{\alpha_\lambda}
+\mathbf Z/q\mathbf Z
+\xrightarrow{\beta}
+\{1,\ldots,q\}
+\xrightarrow{\gamma}
+\mathbf Z/m\mathbf Z.
+\]
+这里：
+
+- \(\alpha_\lambda\) 表示先模 \(q\) 取余，再乘以 \(\lambda\)；
+- \(\beta\) 是模 \(q\) 取余映射的逆映射（将剩余类选为
+  \(\{1,\ldots,q\}\) 中的代表元）；
+- \(\gamma\) 是模 \(m\) 的约化映射。
+
+现在，\(\alpha_\lambda\) 和 \(\gamma\) 都是任意阶数的 Freiman 同态。映射 \(\beta\) 则不是；不过，由命题 5.2.1 (vi)，当限制在任意区间
+\[
+I_j:=
+\left\{
+n\in\mathbf Z:
+\frac{jq}{s}<n\leq\frac{(j+1)q}{s}
+\right\}
+\]
+模 \(q\) 的像上时，它是 Freiman \(s\)-同态。由于这 \(s\) 个区间（其中
+\(j=0,1,\ldots,s-1\)）覆盖了 \(\{1,\ldots,q\}\)，由抽屉原理可知，对于每个 \(\lambda\)，都存在某个
+\[
+j=j(\lambda),
+\]
+使得集合
+\[
+A_\lambda:=
+\{a\in A:
+\alpha_\lambda(a)\in I_{j(\lambda)}\pmod q\}
+\]
+的大小至少为
+\[
+\frac{|A|}{s}.
+\]
+根据构造，\(\phi_\lambda\) 限制在 \(A_\lambda\) 上时是 Freiman \(s\)-同态。
+
+到目前为止，我们所说的一切对任意 \(\lambda\) 都成立。为了完成证明，我们现在说明，存在某个 \(\lambda\)，使得
+\(\phi_\lambda\) 是可逆的，而且其逆映射也是 Freiman \(s\)-同态。若这一点对某个 \(\lambda\) 不成立，那么就存在
+\[
+d=a_1+\cdots+a_s-a_1'-\cdots-a_s'\ne0
+\]
+使得
+\[
+\phi_\lambda(a_1)+\cdots+\phi_\lambda(a_s)
+=
+\phi_\lambda(a_1')+\cdots+\phi_\lambda(a_s').
+\tag{5.2}
+\]
+这里，\(d\) 以及
+\(a_i,a_i'\in A_\lambda\) 都依赖于 \(\lambda\)。
+
+令
+\[
+x:=
+\sum_{i=1}^s\beta(\alpha_\lambda(a_i))
+-
+\sum_{i=1}^s\beta(\alpha_\lambda(a_i')).
+\]
+若 (5.2) 成立，则
+\[
+\gamma(x)=0,
+\]
+也就是说
+\[
+x\equiv0\pmod m.
+\]
+不失一般性（必要时交换 \(a_i\) 与 \(a_i'\)），可以假设
+\[
+x\geq0.
+\]
+此外，由于 \(a_i,a_i'\) 都属于 \(A_\lambda\)，可知
+\[
+x\in s(I_{j(\lambda)}-I_{j(\lambda)})
+\subset(-q,q).
+\]
+因此
+\[
+0\leq x<q.
+\]
+
+现在，由构造可知，\(x\) 与 \(\lambda d\) 模 \(q\) 同余。因此
+\[
+x=\psi(\lambda d),
+\]
+其中 \(\psi(n)\) 是 \(\{0,1,\ldots,q-1\}\) 中与 \(n\) 模 \(q\) 同余的唯一整数。
+
+若 \(\phi_\lambda|_{A_\lambda}\) 不是 Freiman \(s\)-同构，则必有某个
+\[
+d_\lambda\in(sA-sA)\setminus\{0\},
+\]
+使得
+\[
+\psi(\lambda d_\lambda)\equiv0\pmod m.
+\]
+
+为了导出矛盾，固定
+\[
+d\in(sA-sA)\setminus\{0\},
+\]
+并考察满足 \(d=d_\lambda\) 的 \(\lambda\) 值。我们不妨称这些 \(\lambda\) 为“对 \(d\) 不利的”。若素数 \(q\) 取得足够大，则它不会整除
+\((sA-sA)\setminus\{0\}\) 中的任何元素，因此 \(d\) 与 \(q\) 互素。
+
+当 \(\lambda\) 遍历
+\((\mathbf Z/q\mathbf Z)^\times\) 时，\(\lambda d\) 均匀地遍历
+\((\mathbf Z/q\mathbf Z)^\times\)。因此
+\[
+\{\psi(\lambda d):\lambda\in(\mathbf Z/q\mathbf Z)^\times\}
+=\{1,\ldots,q-1\}.
+\]
+在这个区间内，满足 \(y\equiv0\pmod m\) 的元素个数至多为
+\((q-1)/m\)。由于每个 \(d\) 都属于
+\((sA-sA)\setminus\{0\}\)，所以对某个 \(d\) 不利的 \(\lambda\) 的总数至多为
+\[
+\frac{q-1}{m}(|sA-sA|-1)<q-1,
+\]
+其中不等式来自假设 \(m\geq|sA-sA|\)。
+
+这就产生了矛盾，因为每个 \(\lambda\) 都必然对某个 \(d\) 不利（即 \(d=d_\lambda\)）。□
+
+在证明 Freiman 定理时，我们将使用下面这个推论。
+
+**推论 5.3.1.** 设 \(A\subset\mathbf Z\) 是一个有限集，倍增常数为 \(K\)。那么，存在一个素数
+\[
+q\leq2K^{16}|A|
+\]
+以及一个子集 \(A'\subset A\)，满足
+\[
+|A'|\geq\frac{|A|}{8},
+\]
+且 \(A'\) Freiman 8-同构于
+\(\mathbf Z/q\mathbf Z\) 的某个子集。
+
+**证明。** 由 Plünnecke–Ruzsa 不等式（定理 4.4.1），
+\[
+|8A-8A|\leq K^{16}|A|.
+\]
+再由 Bertrand 猜想（Bertrand’s postulate），存在素数 \(q\)，使得
+\[
+|8A-8A|\leq q\leq2|8A-8A|.
+\]
+显然，这个素数满足
+\[
+q\leq2K^{16}|A|.
+\]
+由 Ruzsa 模型引理，存在子集 \(A'\subset A\)，使得
+\[
+|A'|\geq\frac{|A|}{8},
+\]
+并且 \(A'\) Freiman 8-同构于 \(\mathbf Z/q\mathbf Z\) 的一个子集。□
+
+## 5.4. Bogolyubov 引理
+
+Ruzsa 模型引理（更准确地说，是推论 5.3.1）使我们能够将注意力从一个倍增常数较小的整数集 \(A\subset\mathbf Z\)，转移到循环群 \(\mathbf Z/q\mathbf Z\) 中的一个稠密子集。我们现在证明一个关于这类集合结构的引理。
+
+**定义 5.4.1.** 设
+\[
+R=\{r_1,\ldots,r_k\}
+\]
+是 \(\mathbf Z/q\mathbf Z\) 中由非零元素组成的一个集合，且
+\(\varepsilon>0\) 是一个参数。我们定义频率集为 \(R\)、宽度为
+\(\varepsilon\) 的 **Bohr 集**
+\[
+B(R,\varepsilon)
+:=
+\left\{
+x\in\mathbf Z/q\mathbf Z:
+\left\|\frac{r_ix}{q}\right\|_{\mathbf T}
+\leq\varepsilon,\quad i=1,\ldots,k
+\right\}.
+\]
+参数 \(k\) 称为这个 Bohr 集的维数。
+
+**命题 5.4.1（Bogolyubov 引理）。** 设
+\(S\subset\mathbf Z/q\mathbf Z\)，且 \(|S|=\sigma q\)。那么
+\(2S-2S\) 包含一个维数至多为 \(4/\sigma^2\)、宽度至少为 \(1/10\) 的 Bohr 集。
+
+在证明中，我们将使用离散傅里叶变换，具体而言，是
+\(\mathbf Z/q\mathbf Z\) 上的傅里叶变换。（事实上，傅里叶变换可以在任意局部紧阿贝尔群上建立。因此，第 3 章中出现的 \(\mathbf Z\) 上的傅里叶变换，以及 \(\mathbf Z/q\mathbf Z\) 上的离散傅里叶变换，都可以看作同一一般概念的特例。）下面给出相关定义与基本性质。
+
+**定义 5.4.2.** 设
+\[
+f:\mathbf Z/q\mathbf Z\to\mathbf C
+\]
+是一个函数。对于 \(r\in\mathbf Z/q\mathbf Z\)，定义其（离散）傅里叶变换为
+\[
+\widehat f(r):=
+\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}
+f(x)e(-rx/q).
+\]
+
+**命题 5.4.2.** 设
+\[
+f,g:\mathbf Z/q\mathbf Z\to\mathbf C
+\]
+是两个函数。
+
+(i) 有 Fourier 反演公式
+\[
+f(x)=\sum_{r\in\mathbf Z/q\mathbf Z}
+\widehat f(r)e(rx/q).
+\]
+
+(ii) 有 Parseval 恒等式
+\[
+\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}
+f(x)\overline{g(x)}
+=
+\sum_{r\in\mathbf Z/q\mathbf Z}
+\widehat f(r)\overline{\widehat g(r)}.
+\]
+
+(iii) 若卷积
+\(f*g:\mathbf Z/q\mathbf Z\to\mathbf C\) 定义为
+\[
+(f*g)(x):=
+\frac1q\sum_{y\in\mathbf Z/q\mathbf Z}f(y)g(x-y),
+\]
+那么
+\[
+\widehat{f*g}(r)=\widehat f(r)\widehat g(r).
+\]
+
+**证明。** 再一次，利用定义以及下述事实，很容易验证上述各式：
+\[
+\sum_{r}e(rx/q)=
+\begin{cases}
+q,&x=0,\\
+0,&x\in(\mathbf Z/q\mathbf Z)\setminus\{0\}.
+\end{cases}
+\]
+*注记。* 在 Parseval 恒等式中取 \(f=g\)，得到
+\[
+\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}|f(x)|^2
+=
+\sum_{r\in\mathbf Z/q\mathbf Z}|\widehat f(r)|^2.
+\]
+
+值得停下来思考一下卷积“做了什么”。若 \(f\) 与 \(g\) 分别支撑在
+\(\mathbf Z/q\mathbf Z\) 的子集 \(A,B\) 上（例如，可以取
+\(f=1_A\)、\(g=1_B\)），那么 \(f*g\) 支撑在 \(A+B\) 上。此外，
+\(f*g\) 具有很好的傅里叶变换，这对于进一步分析非常方便。需要特别注意，
+\(1_A*1_B\) 与 \(1_{A+B}\) 并不相同：后一个函数在 \(A+B\) 的每个元素上赋予相同的权重，而前一个函数则根据表示为 \(a+b\)（其中 \(a\in A,b\in B\)）的方式数，对元素 \(x\) 赋予相应权重。
+
+现在转向 Bogolyubov 引理（引理 5.4.1）的证明。
+
+**证明（引理 5.4.1）。** 考虑函数
+\[
+f:=1_S*1_S*1_{-S}*1_{-S}.
+\]
+它支撑在 \(2S-2S\) 上，也就是说，若 \(f(x)>0\)，则
+\(x\in2S-2S\)。注意
+\[
+\widehat{1_{-S}}(r)=\overline{\widehat{1_S}(r)},
+\]
+因此
+\[
+\widehat f(r)=|\widehat{1_S}(r)|^4.
+\]
+由 Fourier 反演公式以及 \(f\) 为实值函数这一事实，我们有
+\[
+\begin{aligned}
+f(x)
+&=\sum_r|\widehat{1_S}(r)|^4e(rx/q)\\
+&=\sum_r|\widehat{1_S}(r)|^4
+\cos(2\pi rx/q).
+\end{aligned}
+\tag{5.3}
+\]
+
+令 \(R\) 为所有满足
+\[
+r\ne0,\qquad
+|\widehat{1_S}(r)|\geq\frac{\sigma^{3/2}}2
+\]
+的 \(r\) 所组成的集合。由 Parseval 恒等式，
+\[
+\begin{aligned}
+|R|\frac{\sigma^3}{4}
+&\leq\sum_{r\in R}|\widehat{1_S}(r)|^2\\
+&\leq\sum_r|\widehat{1_S}(r)|^2\\
+&=\frac1q\sum_{x\in\mathbf Z/q\mathbf Z}1_S(x)^2\\
+&=\sigma,
+\end{aligned}
+\]
+因此
+\[
+|R|\leq\frac4{\sigma^2}.
+\tag{5.4}
+\]
+
+我们断言
+\[
+B\left(R,\frac1{10}\right)\subset2S-2S.
+\]
+为此，只需证明当
+\(x\in B(R,1/10)\) 时 \(f(x)>0\)。我们将使用公式 (5.3)，并把关于 \(r\) 的求和分成三部分：\(r=0\) 这一项、\(r\in R\) 的各项，以及其余所有项。
+
+显然，
+\[
+|\widehat{1_S}(0)|^4=\sigma^4.
+\]
+若 \(r\in R\)，则
+\[
+\cos(2\pi rx/q)\geq0,
+\]
+因此这些项之和非负。最后，
+\[
+\begin{aligned}
+&\sum_{r\notin R\cup\{0\}}
+|\widehat{1_S}(r)|^4\cos(2\pi rx/q)\\
+&\qquad\geq
+-\sum_{r\notin R\cup\{0\}}|\widehat{1_S}(r)|^4\\
+&\qquad\geq
+-\frac{\sigma^3}{4}
+\sum_r|\widehat{1_S}(r)|^2
+=-\frac{\sigma^4}{4},
+\end{aligned}
+\]
+最后一步再次使用了 Parseval 恒等式。综合以上各项，得到
+\[
+f(x)\geq\sigma^4+0-\frac{\sigma^4}{4}>0,
+\]
+这正是所需结论。□
+
+## 5.5. Bohr 集中的广义等差数列
+
+证明命题 5.4.1 究竟带来了什么，并不是显而易见的。答案是，Bohr 集 \(B(R,\varepsilon)\) 具有大量结构，特别是其中包含一个较大的广义等差数列。关键命题如下。
+
+**命题 5.5.1.** 设
+\(R\subset\mathbf Z/q\mathbf Z\) 是一个大小为 \(k\)、且不包含零的集合。设
+\[
+0<\varepsilon<\frac12.
+\]
+那么 Bohr 集 \(B(R,\varepsilon)\) 包含一个维数为 \(k\) 的真广义等差数列，其基数至少为
+\[
+\left(\frac{\varepsilon}{k}\right)^kq.
+\]
+
+在证明中，我们将依赖数的几何中的一个结果——Minkowski 第二定理。该定理将在下面的命题 5.5.2 中陈述。其证明不属于考试范围，但会在附录 B 中给出。为了陈述该定理，我们需要一些术语。
+
+格
+\[
+\Lambda\subset\mathbf R^d
+\]
+是 \(\mathbf R^d\) 的一个离散且余紧子群。一个标准定理指出，每个格都可以写成
+\[
+\mathbf Zv_1\oplus\mathbf Zv_2\oplus\cdots\oplus\mathbf Zv_d,
+\]
+其中 \(v_1,\ldots,v_d\) 线性无关；这些向量称为 \(\Lambda\) 的一个整基。集合
+\[
+\mathcal F:=
+\left\{
+x_1v_1+\cdots+x_dv_d:
+0\leq x_i<1
+\right\}
+\]
+称为 \(\Lambda\) 的一个基本区域。注意，它在 \(\Lambda\) 的各个平移之下恰好覆盖 \(\mathbf R^d\)。向量 \(v_i\)（以及因此的 \(\mathcal F\)）并不由 \(\Lambda\) 唯一确定，但基本区域的体积却是唯一确定的。格的行列式 \(\det(\Lambda)\) 定义为 \(\Lambda\) 的基本区域的体积。
+
+Minkowski 第二定理的陈述还涉及一个中心对称凸体
+\[
+K\subset\mathbf R^d.
+\]
+这意味着 \(K\) 是一个凸集（也就是说，若 \(x,y\in K\)，则对于所有
+\(\lambda\in[0,1]\)，都有
+\[
+\lambda x+(1-\lambda)y\in K
+\]
+），并且它是中心对称的，即若 \(x\in K\)，则 \(-x\in K\)。
+
+在一定程度上，数的几何就是研究格 \(\Lambda\) 如何与凸体 \(K\) 相互作用。
+
+设我们有一个格 \(\Lambda\) 和一个凸体 \(K\)。我们定义 \(K\) 关于
+\(\Lambda\) 的连续极小值
+\(\lambda_1,\ldots,\lambda_d\) 如下：
+\(\lambda_j\) 是所有满足 \(\lambda K\) 包含 \(j\) 个线性无关的 \(\Lambda\) 元素的 \(\lambda\) 中的下确界。若 \(K\) 是紧集，则
+\(\lambda_jK\) 本身就包含 \(j\) 个线性无关的 \(\Lambda\) 元素。（对于每个
+\(\varepsilon>0\)，集合 \((\lambda_j+\varepsilon)K\) 都包含这样的元素。由于这些元素都位于 \((\lambda_j+1)K\) 中，因此只有有限种选择；特别地，对于某个趋于零的 \(\varepsilon\) 数列，我们可以始终选取同一组元素。由于 \(K\) 是紧的，这些元素都属于 \(\lambda_jK\)。）
+
+**命题 5.5.2（Minkowski 第二定理）。** 有
+\[
+\lambda_1\cdots\lambda_d\,\operatorname{vol}(K)
+\leq2^d\det(\Lambda).
+\]
+
+现在转向命题 5.5.1 的证明。
+
+**证明（命题 5.5.1）。** 令
+\[
+R=\{r_1,\ldots,r_k\},
+\]
+并考虑格
+\[
+\Lambda=q\mathbf Z^k+(r_1,\ldots,r_k)\mathbf Z.
+\]
+由于 \(q\) 是素数，这可以写成直和
+\[
+q\mathbf Z^k\oplus
+\{0,1,\ldots,q-1\}\cdot(r_1,\ldots,r_k).
+\]
+因此，\(\Lambda\) 包含 \(q\mathbf Z^k\)，且
+\[
+[\Lambda:q\mathbf Z^k]=q.
+\]
+由此以及
+\[
+\det(q\mathbf Z^k)=q^k
+\]
+可知
+\[
+\det(\Lambda)=q^{k-1}
+\]
+（见引理 B.0.1）。
+
+取 \(K\subset\mathbf R^k\) 为如下盒子：
+\[
+K=\{\mathbf x:\|\mathbf x\|_\infty\leq\varepsilon q\}.
+\]
+令 \(\lambda_1,\ldots,\lambda_k\) 为 \(K\) 关于 \(\Lambda\) 的连续极小值。由于 \(K\) 是闭集，
+\(\lambda_jK\) 包含 \(j\) 个线性无关的 \(\Lambda\) 元素。我们可以依次选取这些元素，从而得到
+\(\mathbf R^k\) 的一组基
+\[
+\mathbf b_1,\ldots,\mathbf b_k,
+\]
+使得对于所有 \(j\)，
+\[
+\mathbf b_j\in\Lambda\cap\lambda_jK.
+\]
+（这样的基称为方向基；需要提醒的是，尽管 \(\mathbf b_j\) 是
+\(\Lambda\) 中的线性无关元素，但它们不一定构成 \(\Lambda\) 的整基。）于是
+\[
+\mathbf b_j\in\Lambda,\qquad
+\|\mathbf b_j\|_\infty\leq\lambda_j\varepsilon q.
+\]
+对于 \(j=1,\ldots,k\)，令
+\[
+L_j:=\left\lceil\frac1{\lambda_jk}\right\rceil.
+\]
+那么，当 \(0\leq\ell_j<L_j\) 时，
+\[
+\|\ell_j\mathbf b_j\|_\infty
+\leq\frac{\varepsilon q}{k},
+\]
+因此
+\[
+\|\ell_1\mathbf b_1+\cdots+\ell_k\mathbf b_k\|_\infty
+\leq\varepsilon q.
+\]
+
+现在，每个 \(\mathbf b_i\) 都属于 \(\Lambda\)，因此模 \(q\) 同余于
+\[
+x_i(r_1,\ldots,r_k)
+\]
+，其中某个 \(x_i\) 满足 \(0\leq x_i<q\)。稍微滥用一下记号，我们将这些 \(x_i\) 看作 \(\mathbf Z/q\mathbf Z\) 中的元素。前面的观察意味着，对每个 \(i\)，都有
+\[
+\left\|
+\frac{(\ell_1x_1+\cdots+\ell_kx_k)r_i}{q}
+\right\|_{\mathbf T}
+\leq\varepsilon.
+\]
+换言之，广义等差数列
+\[
+\left\{
+\ell_1x_1+\cdots+\ell_kx_k:
+0\leq\ell_i<L_i
+\right\}
+\]
+包含于 Bohr 集 \(B(R,\varepsilon)\)。
+
+剩下要证明的是这个等差数列的大小下界，并且还要证明它是 proper 的。大小下界容易得到：该集合的大小至少为
+\[
+k^{-k}(\lambda_1\cdots\lambda_k)^{-1}.
+\]
+由 Minkowski 第二定理，以及
+\[
+\det(\Lambda)=q^{k-1},\qquad
+\operatorname{vol}(K)=(2\varepsilon q)^k,
+\]
+可知这一数量至少为
+\[
+\left(\frac{\varepsilon}{k}\right)^kq.
+\]
+
+为了证明 proper 性，假设
+\[
+\ell_1x_1+\cdots+\ell_kx_k
+\equiv
+\ell_1'x_1+\cdots+\ell_k'x_k
+\pmod q,
+\]
+其中
+\[
+|\ell_i|,\ |\ell_i'|<
+\left\lceil\frac1{k\lambda_i}\right\rceil.
+\]
+那么向量
+\[
+\mathbf b
+=
+(\ell_1-\ell_1')\mathbf b_1+\cdots+
+(\ell_k-\ell_k')\mathbf b_k
+\]
+属于 \(q\mathbf Z^k\)，而且
+\[
+\begin{aligned}
+\|\mathbf b\|_\infty
+&\leq\sum_{i=1}^k
+2\left\lfloor\frac1{\lambda_ik}\right\rfloor
+\|\mathbf b_i\|_\infty\\
+&\leq2\varepsilon q.
+\end{aligned}
+\]
+由于假设 \(\varepsilon<1/2\)，可知 \(\mathbf b=0\)。再由
+\(\mathbf b_i\) 的线性无关性，得到对于所有 \(i\)，
+\[
+\ell_i=\ell_i'.
+\]
+因此，这个等差数列确实是 proper 的。□
+
+## 5.6. Freiman 定理：证明的收尾
+
+本节完成 Freiman 定理的证明。
+
+**证明（定理 5.1.1）。** 由 Ruzsa 模型引理的推论 5.3.1，存在一个素数
+\[
+q\leq2K^{16}|A|
+\]
+以及一个子集 \(A'\subset A\)，满足
+\[
+|A'|\geq\frac{|A|}{8},
+\]
+并且 \(A'\) Freiman 8-同构于某个子集
+\(S\subset\mathbf Z/q\mathbf Z\)。若
+\[
+\sigma:=\frac{|S|}{q},
+\]
+那么
+\[
+\sigma\geq\frac1{16}K^{-16}.
+\]
+
+由 Bogolyubov 引理（命题 5.4.1），
+\(2S-2S\) 包含一个维数至多为
+\[
+2^{10}K^{32}
+\]
+且宽度至少为 \(1/10\) 的 Bohr 集。
+
+由命题 5.5.1，该 Bohr 集（因此也是 \(2S-2S\)）包含一个真广义等差数列 \(P\)，其维数至多为 \(K^{O(1)}\)，基数至少为
+\[
+\exp(-K^{O(1)})q.
+\]
+（当然，我们可以追踪精确常数，但这样做会有些繁琐。）
+
+现在，\(A'\) Freiman 8-同构于 \(S\)，因此由引理 5.2.1 (iii)，
+\[
+2A'-2A'
+\]
+与
+\[
+2S-2S
+\]
+Freiman 2-同构。这个 Freiman 同构的逆映射限制在 \(P\) 上，给出一个 Freiman 同构
+\[
+\phi:P\longrightarrow\phi(P)\subset2A'-2A'.
+\]
+由引理 5.2.1 (v)，
+\[
+Q=\phi(P)
+\]
+也是一个真广义等差数列，且维数与大小都和 \(P\) 相同。因此我们证明了
+\(2A-2A\) 包含一个真广义等差数列 \(Q\)，其维数为 \(K^{O(1)}\)，并且
+\[
+|Q|\geq\exp(-K^{O(1)})|A|.
+\tag{5.5}
+\]
+
+为了完成论证，我们对集合 \(Q\) 与 \(A\) 应用覆盖引理（引理 4.2.2）。由于
+\[
+Q+A\subset(2A-2A)+A=3A-2A,
+\]
+由 Plünnecke–Ruzsa 不等式和 (5.5)，可得
+\[
+|Q+A|\leq K^5|A|
+\leq\exp(K^{O(1)})|Q|.
+\]
+由引理 4.2.2，存在某个集合
+\[
+Y=\{y_1,\ldots,y_m\},
+\]
+其中
+\[
+m\leq\exp(K^{O(1)}),
+\tag{5.6}
+\]
+使得
+\[
+A\subset(Q-Q)+Y.
+\]
+
+设
+\[
+Q=\left\{
+x_0+\ell_1x_1+\cdots+\ell_dx_d:
+0\leq\ell_i<L_i
+\right\},
+\]
+并且
+\[
+Y=\{y_1,\ldots,y_m\}.
+\]
+那么
+\[
+\begin{aligned}
+(Q-Q)+Y
+\subseteq\Big\{&
+\widetilde x_0+\ell_1x_1+\cdots+\ell_dx_d\\
+&+\ell_1'y_1+\cdots+\ell_m'y_m:\\
+&0\leq\ell_i<2L_i,\quad
+0\leq\ell_j'<2
+\Big\}
+=:\widetilde Q,
+\end{aligned}
+\]
+其中
+\[
+\widetilde x_0=-(L_1x_1+\cdots+L_dx_d).
+\]
+注意，\(\widetilde Q\) 是一个维数为 \(d+m\) 的广义等差数列，并且
+\[
+\begin{aligned}
+\operatorname{size}(\widetilde Q)
+&=2^{d+m}L_1\cdots L_d\\
+&=2^{d+m}|Q|\\
+&\leq2^{d+m}|2A-2A|
+\ll_K|A|,
+\end{aligned}
+\]
+其中倒数第二步使用了 \(Q\subset2A-2A\)。
+
+这个上界中占主导地位的项是 \(2^m\)，它关于 \(K\) 是双指数级的。□
+
+## 第 6 章
+
+## 加法能量与 Balog–Szemerédi–Gowers 定理
+
+本章引入加法能量这一概念。它与和集的概念密切相关，并且会自然地出现在各种应用中（例如第 9 章）。
+
+## 6.1. 引言
+
+我们已经见过加法集合具有小倍增这一概念。下面的定义将引入描述这一性质的记号，同时还介绍该概念的一种二分变体，适用于一对集合。
+
+**定义 6.1.1.** 设 \(A\) 是一个加法集合。我们定义其倍增常数为
+\[
+\sigma[A]:=\frac{|A+A|}{|A|}.
+\]
+若 \(A,B\) 是两个加法集合，我们记
+\[
+\sigma[A,B]:=
+\frac{|A+B|}{|A|^{1/2}|B|^{1/2}}.
+\]
+
+*注记。* 不要将这一记号与 Schnirel’man 密度混淆；两者显然是完全不同的概念。
+
+注意
+\[
+\sigma[A]=\sigma[A,A],
+\]
+因此可以将前者看作后者的简写。
+
+一个集合具有小倍增这一性质在某种意义上是“组合型”的，因为它只涉及 \(|A+A|\) 的大小，而没有考虑例如表示数的多少。这一概念存在一些明显缺点，例如，它对 \(A\) 的微小变化可能非常敏感。
+
+本章研究与之相关的加法能量概念。加法能量更具“分析性”，对于微小扰动更加稳健，而且经常自然地出现在问题中。
+
+**定义 6.1.2.** 设 \(A\) 是一个加法集合。我们定义加法能量 \(E(A)\) 为 \(A\) 中加法四元组的个数，也就是说，满足
+\[
+a_1+a_2=a_3+a_4
+\]
+的四元组
+\[
+(a_1,a_2,a_3,a_4)\in A^4
+\]
+的个数。我们将归一化加法能量 \(\omega[A]\) 定义为
+\[
+\omega[A]:=\frac{E(A)}{|A|^3}.
+\]
+更一般地，若 \(A,B\) 是两个加法集合，我们记
+\[
+E(A,B):=
+\#\{(a,b,a',b')\in A\times B\times A\times B:
+a+b=a'+b'\},
+\]
+并且
+\[
+\omega[A,B]:=
+|A|^{-3/2}|B|^{-3/2}E(A,B).
+\]
+
+注意
+\[
+0\leq\omega[A]\leq1.
+\]
+这里的上界来自这样一个事实：加法四元组中的三个元素唯一确定第四个元素。更一般地，
+\[
+0\leq\omega[A,B]\leq1.
+\]
+这是因为
+\[
+E(A,B)\geq
+\max(|A|^2|B|,\ |A||B|^2),
+\]
+因为满足 \(a+b=a'+b'\) 的四元组
+\((a,b,a',b')\) 中，任意三个元素都能确定第四个元素。然而，
+\[
+\max(|A|^2|B|,\ |A||B|^2)
+\geq |A|^{3/2}|B|^{3/2}.
+\]
+
+## 6.2. 基本性质与 Balog–Szemerédi–Gowers 定理的陈述
+
+**命题 6.2.1.** 有
+\[
+\sigma[A,B]\omega[A,B]\geq1.
+\]
+特别地，若加法集合 \(A,B\) 这一对的倍增常数至多为 \(K\)，那么它们的归一化加法能量至少为 \(1/K\)。特别地，在 \(A=B\) 的情形下，
+\[
+\sigma[A]\omega[A]\geq1.
+\]
+
+**证明。** 对于 \(x\in A+B\)，记 \(r(x)\) 为满足 \(a+b=x\) 的
+\((a,b)\in A\times B\) 的个数。那么
+\[
+\sum_xr(x)=|A||B|,
+\]
+而
+\[
+\sum_xr(x)^2=E(A,B).
+\]
+此外，\(r(x)\) 的支集（也就是说，\(r(x)\ne0\) 的位置）包含于 \(A+B\)。因此，由 Cauchy–Schwarz 不等式，
+\[
+\begin{aligned}
+|A|^2|B|^2
+&=\left(\sum_xr(x)\right)^2\\
+&\leq|A+B|\sum_xr(x)^2\\
+&=|A+B|E(A,B),
+\end{aligned}
+\]
+整理后即得所述不等式。□
+
+上述这类结论的逆命题会严重失效，下面的例子说明了这一点。
+
+**例子。** 设 \(n\) 是一个较大的偶数。令
+\[
+A_1=\{1,\ldots,n/2\},
+\]
+并令 \(A_2\) 是某个任意的 \(n/2\) 个整数构成的集合，它与 \(A_1\) 没有任何加法关系。例如，可以取
+\[
+A_2=\{10^n,10^{2n},\ldots,10^{n^2/2}\}.
+\]
+令
+\[
+A=A_1\cup A_2,
+\]
+因此 \(|A|=n\)。那么
+\[
+E(A)\geq E(A_1)\geq\frac1{10}n^3,
+\]
+但
+\[
+|A+A|\geq|A_2+A_2|\geq\frac18n^2,
+\]
+因为 \(A_2\) 中元素对的和除了 \(x+y=y+x\) 之外都是互不相同的。因此
+\[
+\omega[A]\geq\frac1{10},
+\]
+但 \(\sigma[A]\) 随 \(n\) 线性增长。
+
+Balog–Szemerédi–Gowers 定理是一个非凡的结果，它在一定程度上挽救了引理 6.2.1 的逆命题。我们陈述这一结果的二集合版本和单集合版本。按照惯例，\(C\) 表示一个绝对常数，它可以在不同的行之间改变（当然，只要多做一些工作，也可以将它出现时的具体数值显式写出）。
+
+**定理 6.2.1（Balog–Szemerédi–Gowers）。** 有以下结论：
+
+(i) 设 \(A,B\) 是加法集合，且
+\[
+\omega[A,B]\geq\frac1K.
+\]
+那么存在集合
+\[
+A'\subseteq A,\qquad B'\subseteq B,
+\]
+满足
+\[
+|A'|\geq K^{-C}|A|,\qquad
+|B'|\geq K^{-C}|B|,
+\]
+并且
+\[
+\sigma[A',B']\ll K^C.
+\]
+
+(ii) 设 \(A\) 是一个加法集合，且
+\[
+\omega[A]\geq\frac1K.
+\]
+那么存在一个集合 \(A'\subset A\)，满足
+\[
+|A'|\gg K^{-C}|A|,
+\]
+并且
+\[
+\sigma[A']\ll K^C.
+\]
+
+原则上，我们得到的 \(C\) 值相当合理，不过我们不会过分关注如何计算它的精确值。
+
+本章余下部分将用于证明定理 6.2.1。
+
+## 6.3. *长度为 2 的路径
+
+Balog–Szemerédi–Gowers 定理的证明将借助图论语言，并建立两个本身也很有趣的引理。第一个引理涉及长度为 2 的路径，其证明更为巧妙。
+
+**引理 6.3.1.** 设 \(G\) 是一个二分图，顶点集为 \(V\cup W\)，其中
+\[
+|V|=|W|=n,
+\]
+且有 \(\alpha n^2\) 条边，所有边都连接 \(V\) 中的顶点与 \(W\) 中的顶点。再设 \(\eta>0\) 是另一个参数。那么存在一个子集 \(V'\subseteq V\)，满足
+\[
+|V'|\geq\frac{\alpha n}{2},
+\]
+并且在 \(V'\times V'\) 中至少
+\[
+(1-\eta)|V'|^2
+\]
+个有序点对 \((v_1,v_2)\) 之间，都有至少
+\[
+\frac{\eta\alpha^2n}{2}
+\]
+条长度为 2 的路径。
+
+**证明。** 若 \(x\in G\)，记 \(N(x)\) 为 \(x\) 在 \(G\) 中的邻域，也就是说，所有与 \(x\) 由一条边相连的顶点构成的集合。注意，由于 \(G\) 是二分图，当 \(v\in V\) 时有
+\(N(v)\subseteq W\)；当 \(w\in W\) 时有
+\(N(w)\subseteq V\)。
+
+通过双重计数，我们有
+\[
+\sum_{w\in W}\sum_{v\in V}
+1_{vw\in E(G)}
+=\alpha n^2,
+\]
+其中 \(E(G)\) 显然表示 \(G\) 的边集。对这一等式应用 Cauchy–Schwarz 不等式，得到
+\[
+\sum_{w\in W}\sum_{v,v'\in V}
+1_{vw\in E(G)}1_{v'w\in E(G)}
+\geq\alpha^2n^3,
+\]
+换言之，
+\[
+\mathbb E_{v,v'\in V}|N(v)\cap N(v')|
+\geq\alpha^2n.
+\tag{6.1}
+\]
+
+这给出了一个相当基本的观察：平均而言，顶点对 \((v,v')\) 有许多公共邻居。现在，如果两个顶点 \(v,v'\) 满足
+\[
+|N(v)\cap N(v')|<\frac{\eta\alpha^2n}{2},
+\]
+我们就称它们是**极不友好的**；换言之，\(v\) 与 \(v'\) 之间少于
+\(\eta\alpha^2n/2\) 条长度为 2 的路径。记
+\(S\subseteq V\times V\) 为所有极不友好的点对构成的集合。显然，由 (6.1) 可得
+\[
+\mathbb E_{v,v'\in V}
+(\eta-1_{(v,v')\in S})|N(v)\cap N(v')|
+\geq\frac{\eta\alpha^2n}{2}.
+\]
+这可以改写为
+
+\[
+\mathbb E_{v,v'\in V}
+(\eta-1_{(v,v')\in S})
+\sum_{w\in W}
+1_{vw\in E(G)}1_{v'w\in E(G)}
+\geq\frac{\eta\alpha^2n}{2}.
+\]
+
+将对 \(W\) 的求和转化为期望（除以 \(|W|=n\)），并交换求和次序，可知
+\[
+\mathbb E_{w\in W}\mathbb E_{v,v'\in V}
+(\eta-1_{(v,v')\in S})
+1_{v,v'\in N(w)}
+\geq\frac{\eta\alpha^2}{2}.
+\]
+特别地，存在某个 \(w\)，使得
+\[
+\mathbb E_{v,v'\in V}
+(\eta-1_{(v,v')\in S})
+1_{v,v'\in N(w)}
+\geq\frac{\eta\alpha^2}{2}.
+\]
+仅仅是这个期望为正这一事实，就告诉我们：在
+\(v,v'\in N(w)\) 的点对中，极不友好的点对所占比例至多为 \(\eta\)。此外，（完全忽略涉及 \(S\) 的那一项）我们还有
+\[
+\mathbb E_{v,v'\in V}1_{v,v'\in N(w)}
+\geq\frac{\alpha^2}{2},
+\]
+这意味着
+\[
+|N(w)|\geq\frac{\alpha n}{\sqrt2}.
+\]
+取
+\[
+V':=N(w),
+\]
+即得所需结论。□
+
+*注记。* 乍看之下，这个证明极为巧妙。不过，在尝试证明引理 6.3.1 时，人们很容易形成这样一种直觉：必须以某种方式选出 \(V\) 中一个“连接性”非常强的子集。我们所采用的方法，实质上就是在 \(W\) 中随机选取一个顶点 \(w\)，然后取 \(V'\) 为 \(w\) 在 \(V\) 中的邻域 \(N(w)\)；不过，与其一开始就说“从 \(W\) 中均匀随机选取 \(w\)，并考虑 \(N(w)\)”，使用期望来处理要方便得多。这种技巧似乎是 Gowers 在这一问题背景下首创的，称为**依赖随机选择**（dependent random selection）：先随机选取某个对象（本例中为 \(w\)），再根据它作出一个确定性的选择（本例中为 \(N(w)\)）。
+
+## 6.4. *长度为 3 的路径
+
+**引理 6.4.1.** 设 \(G\) 是一个二分图，顶点集为 \(V\cup W\)，其中
+\[
+|V|=|W|=n,
+\]
+且有 \(\alpha n^2\) 条边，所有边都连接 \(V\) 中的顶点与 \(W\) 中的顶点。那么存在子集
+\[
+V'\subseteq V,\qquad W'\subseteq W,
+\]
+满足
+\[
+|V'|,\ |W'|\geq c\alpha^Cn,
+\]
+并且对于每一对
+\[
+v'\in V',\qquad w'\in W',
+\]
+它们之间在 \(G\) 中都有至少 \(c\alpha^Cn^2\) 条长度为 3 的路径。
+
+**证明。** 删除所有从 \(V\) 中度数小于 \(\alpha n/2\) 的顶点发出的边；这样总共至多删除 \(\alpha n^2/2\) 条边，因此至少还剩下 \(\alpha n^2/2\) 条边。
+
+从现在开始，我们所说的边都指剩余的这些边。设 \(\eta>0\) 是一个稍后才确定的参数。利用前一个引理，我们可以选取一个集合
+\(V'\subseteq V\)，使得
+\[
+|V'|\geq\frac{\alpha n}{4},
+\]
+并且在 \(V'\) 中的点对里，有比例 \(1-\eta\) 的点对在 \(W\) 中至少有
+\[
+\frac{\eta\alpha^2n}{8}
+\]
+个公共邻居。
+
+\(V'\) 中的每个顶点，要么度数为 0，要么度数至少为
+\(\alpha n/2\)，但有些顶点的度数确实可能为 0。不过，若
+\(\eta<1/4\)，那么显然度数为 0 的顶点不超过其中的一半。因此，我们可以转而考虑一个集合
+\[
+V''\subseteq V',\qquad |V''|\geq\frac{\alpha n}{8},
+\]
+其中每个顶点的度数都至少为 \(\alpha n/2\)，并且仍然满足：
+在 \(V''\) 中的点对里，有比例 \(1-\eta\) 的点对在 \(W\) 中至少有
+\(\eta\alpha^2n/8\) 个公共邻居。
+
+现在来关注 \(W\)。考察从 \(V''\) 指向 \(W\) 的所有边：由于
+\(V''\) 中每个顶点的度数都至少为 \(\alpha n/2\)，而
+\[
+|V''|\geq\frac{\alpha n}{8},
+\]
+因此这些边至少有
+\[
+\frac{\alpha^2n^2}{16}
+\]
+条。由此可知，存在一个集合 \(W'\subseteq W\)，满足
+\[
+|W'|\geq\frac{\alpha^2n}{32},
+\]
+并且每个 \(w\in W'\) 在 \(V''\) 中至少有
+\[
+\frac{\alpha^2n}{32}
+\]
+个邻居。
+
+在结束之前，我们再回到另一侧，对 \(V''\) 作最后一次筛选。若顶点
+\(v\in V''\) 满足：在其他顶点 \(v'\in V''\) 中，至少有比例
+\(1-2\eta\) 的顶点与 \(v\) 至少具有
+\(\eta\alpha^2n/8\) 个公共邻居，则称 \(v\) 是**善于交际的**（sociable）。那么 \(V''\) 中至少有一半顶点是善于交际的。将这些顶点组成的集合记为
+\(V'''\)，于是
+\[
+|V'''|\geq\frac{\alpha n}{16}.
+\]
+
+现在断言，对于任意 \(x\in V'''\) 和 \(y\in W'\)，在 \(x\) 与 \(y\) 之间都有许多条长度为 3 的路径（在原图 \(G\) 中）。事实上，由 \(W'\) 的选取方式可知，至少有
+\[
+\frac{\alpha^2n}{32}
+\]
+个 \(V''\) 中的元素与 \(y\) 相邻。此外，\(V''\) 中至少有
+\[
+(1-2\eta)|V''|
+\]
+个顶点与 \(x\) 至少有 \(\eta\alpha^2n/8\) 个公共邻居。只要
+\[
+\frac{\alpha^2n}{32}\geq3\eta|V''|,
+\]
+也就是当
+\[
+\eta\leq\frac{\alpha^2}{96}
+\]
+时，这两个集合就会相交于某个集合
+\(\widetilde V\subseteq V''\)，且
+\[
+|\widetilde V|\geq\eta|V''|.
+\]
+因此，\(\widetilde V\) 中每个元素 \(z\) 都与 \(y\) 相邻，并且与 \(x\) 有至少
+\(\eta\alpha^2n/8\) 个公共邻居。这显然意味着 \(x\) 与 \(y\) 之间至少有
+\[
+\frac{\eta^2\alpha^2|V''|n}{8}
+\]
+条长度为 3 的路径。
+
+对 \(\eta\) 的唯一限制是
+\[
+\eta\leq\frac14,\qquad
+\eta\leq\frac{\alpha^2}{96}.
+\]
+显然后一个限制更严格，因此取
+\[
+\eta:=\frac{\alpha^2}{96}.
+\]
+引理得证。□
+
+## 6.5. Balog–Szemerédi–Gowers 定理的证明
+
+本节将从长度为 3 的路径引理（引理 6.4.1）推出定理 6.2.1。在整个证明过程中，特别需要记住，常数 \(C\) 可以在不同的行之间改变。
+
+**证明（定理 6.2.1）。** 在证明的大部分过程中，我们同时处理二集合情形 (i) 和单集合情形 (ii)；在后一种情形中，取 \(A=B\)。
+
+因此，设 \(A,B\) 是某个阿贝尔群 \(G\) 中的两个集合，且
+\[
+\omega[A,B]\geq\frac1K.
+\]
+这意味着方程
+\[
+a_1-b_1=a_2-b_2
+\]
+至少有
+\[
+\frac{|A|^{3/2}|B|^{3/2}}K
+\]
+组解。注意，该方程的解数至多为 \(|A|^2|B|\)，因为一旦指定了
+\(a_1,b_1,a_2\)，\(b_2\) 就唯一确定。因此
+\[
+|B|\leq K^2|A|,
+\]
+类似地，
+\[
+|A|\leq K^2|B|.
+\]
+
+记 \(s(x)\) 为满足
+\[
+a-b=x
+\]
+的 \((a,b)\in A\times B\) 的个数。于是
+\[
+\sum_xs(x)^2
+\geq\frac{|A|^{3/2}|B|^{3/2}}K,
+\]
+而通过对 \((a,b)\in A\times B\) 作双重计数，有
+\[
+\sum_xs(x)=|A||B|.
+\]
+
+我们断言，至少有
+\[
+\frac{|A|^{1/2}|B|^{1/2}}{2K}
+\]
+个“受欢迎”的 \(x\) 值满足
+\[
+s(x)\geq\frac{|A|^{1/2}|B|^{1/2}}{2K}.
+\]
+为此，令 \(\Delta\) 表示这些受欢迎的 \(x\) 所组成的集合。那么
+\[
+\begin{aligned}
+\sum_{x\notin\Delta}s(x)^2
+&\leq
+\frac{|A|^{1/2}|B|^{1/2}}{2K}
+\sum_xs(x)\\
+&=\frac{|A|^{3/2}|B|^{3/2}}{2K},
+\end{aligned}
+\]
+所以
+\[
+\sum_{x\in\Delta}s(x)^2
+\geq\frac{|A|^{3/2}|B|^{3/2}}{2K}.
+\]
+然而，对每个 \(x\)，都有
+\[
+s(x)\leq\min(|A|,|B|)
+\leq|A|^{1/2}|B|^{1/2},
+\]
+因此
+\[
+\sum_{x\in\Delta}s(x)^2
+\leq|\Delta|\,|A||B|.
+\]
+所断言的结论随即成立。
+
+注意，下面这个估计稍后也会用到：
+\[
+|\Delta|
+\leq2K|A|^{1/2}|B|^{1/2}.
+\tag{6.2}
+\]
+这可以通过对 \((a,b)\in A\times B\) 作双重计数直接得到。
+
+现在定义一个二分图 \(G\)，其顶点集为 \(A\cup B\)：当且仅当
+\(a\in A,b\in B\) 满足 \(a-b\in\Delta\) 时，连接顶点 \(a\) 与 \(b\)。那么 \(G\) 至少有
+\[
+\frac{|A||B|}{4K^2}
+\]
+条边。令
+\[
+n:=\max(|A|,|B|),
+\]
+并向 \(G\) 较小的顶点类中补入孤立顶点，从而得到一个每个顶点类都恰有 \(n\) 个顶点的新图。回忆
+\[
+K^{-2}\leq\frac{|A|}{|B|}\leq K^2,
+\]
+可知这个图至少有
+\[
+\frac{n^2}{4K^4}
+\]
+条边。
+
+应用引理 6.4.1，我们可以找到集合
+\[
+A'\subseteq A,\qquad B'\subseteq B,
+\]
+满足
+\[
+|A'|\gg K^{-C}|A|,\qquad
+|B'|\gg K^{-C}|B|,
+\]
+并且对于每个 \(a'\in A'\) 和 \(b'\in B'\)，它们之间在 \(G\) 中都有
+\[
+\gg K^{-C}n^2
+\]
+条长度为 3 的路径。当然，这意味着存在
+\(\gg K^{-C}n^2\) 对
+\[
+a''\in A,\qquad b''\in B,
+\]
+使得
+\[
+a'-b'',\quad a''-b'',\quad a''-b'
+\]
+这三个差都属于 \(\Delta\)。
+
+注意到
+\[
+a'-b'
+=(a'-b'')-(a''-b'')+(a''-b'),
+\]
+因此，对于所有 \(a'\in A'\) 和 \(b'\in B'\)，差
+\(a'-b'\) 都有 \(\gg K^{-C}n^2\) 种表示为
+\[
+x-y+z,
+\qquad x,y,z\in\Delta.
+\]
+这些表示确实互不相同，因为从 \(a',b',x,y,z\) 可以容易地恢复
+\(a''\) 与 \(b''\)。
+
+然而，由 (6.2)，受欢迎的差的数量至多为
+\[
+2K|A|^{1/2}|B|^{1/2}\ll Kn.
+\]
+由此得到
+\[
+|A'-B'|\cdot K^{-C}n^2\ll(Kn)^3,
+\]
+这当然意味着
+\[
+|A'-B'|\ll K^Cn.
+\tag{6.3}
+\]
+
+为了完成论证，我们分别考虑定理 6.2.1 的 (i)、(ii) 两部分。
+
+在情形 (i) 中，将 (6.3) 与推论 4.4.1 结合，并利用下界
+\[
+|A'|,\ |B'|\geq K^{-2}n,
+\]
+便得到所需的上界
+\[
+|A'+B'|
+\ll K^Cn
+\ll K^C|A'|^{1/2}|B'|^{1/2}.
+\]
+
+在情形 (ii) 中，我们首先在 Ruzsa 三角不等式中取
+\[
+U=B',\qquad V=W=A',
+\]
+由 (6.3) 推出
+\[
+|A'-A'|\ll K^Cn.
+\]
+于是再由推论 4.4.1，得到
+\[
+|A'+A'|\ll K^Cn.
+\]
+这就完成了证明。□
+
+## 第 7 章
+
+## 组合几何与和积问题
+
+设 \(A\) 是一个包含 \(n\) 个整数的集合。我们已经相当详细地讨论了和集 \(A+A\)。我们还可以引入积集
+\[
+A\cdot A:=\{aa':a,a'\in A\}.
+\]
+Erdős 与 Szemerédi 的一个著名猜想是
+\[
+|A+A|+|A\cdot A|\geq n^{2-o(1)}.
+\]
+这一猜想距离证明还很远，不过本章的最终结果是一个非平凡结论：
+\[
+|A+A|+|A\cdot A|\gg n^{5/4},
+\]
+这是由 Elekes 得到的。证明这一结果的主要工具是所谓的
+Szemerédi–Trotter 定理，这是组合几何中的一个结果，其本身也具有重要的独立意义。
+
+**定理 7.0.1（Szemerédi–Trotter 定理）。** 设 \(r\geq2\)，并令 \(L\) 为由 \(m\) 条直线组成的集合。那么，位于 \(L\) 中至少 \(r\) 条直线上的点的个数为
+\[
+O\left(\frac mr+\frac{m^2}{r^3}\right).
+\]
+
+该定理有若干种略有不同的表述方式，我们将在习题课中讨论这一问题。我们将给出的证明使用了一个关于交叉数的引理，该引理本身也很有意义。
+
+## 7.1. 交叉数不等式
+
+本节假设读者熟悉图论的基本语言；如果不熟悉，查阅相关定义应该很容易。
+
+**定义 7.1.1.** 图 \(G\) 的一个**平面画法**，是指在平面
+\(\mathbf R^2\) 中对 \(G\) 的一种表示：\(G\) 的顶点是平面上的点，边是连接两个顶点、且不经过图中其他顶点的“良好”简单曲线。**交叉**是两条边曲线在顶点以外的交点。图 \(G\) 的**交叉数**
+\(\operatorname{cr}(G)\)，是 \(G\) 的任意平面画法中交叉数的最小值。若
+\[
+\operatorname{cr}(G)=0,
+\]
+则称 \(G\) 为平面图。
+
+*注记。* 我们不打算严格定义“良好”意味着什么；事实上，这并不重要。例如，可以将边曲线取为折线。还要注意，交叉是按照相交的边曲线对来计数的，而不是按照实际的交点来计数。因此，例如，三条边曲线在同一点相交，计为三个交叉。
+
+首先回顾 Euler 公式。若 \(G\) 是一个连通平面图，则
+\[
+V-E+F=2,
+\tag{7.1}
+\]
+其中 \(V,E,F\) 分别表示顶点数、边数与面的个数。若 \(V\geq3\)，则每个面至少有三条边，且每条边至多属于两个面。因此，通过对边作双重计数，
+\[
+3F\leq2E.
+\]
+将其代入 Euler 公式 (7.1)，得到
+\[
+E-3V\leq-6.
+\]
+再考虑 \(V=1\) 或 \(V=2\) 的情形，可知在所有情况下必有
+\[
+E\leq3V.
+\tag{7.2}
+\]
+将图分解为连通分支，可知 (7.2) 对所有平面图都成立，无论其是否连通。
+
+*注记。* 将这里的细节形式化（甚至精确定义什么是一个面，尤其是在 \(G\) 是树这类退化情形下）略微有些微妙，并不属于本课程的范围。更完整的讨论请参见图论课程。
+
+若给定一个图 \(G\)，考虑它的某个具有
+\(\operatorname{cr}(G)\) 个交叉的画法。对于每个交叉，删除其中一条边。如此继续进行，得到一个平面图 \(G'\)，其顶点集与 \(G\) 相同，且边数 \(E'\) 满足
+\[
+E'\geq E-\operatorname{cr}(G).
+\]
+由 (7.2) 可知 \(E'\leq3V\)，于是
+\[
+\operatorname{cr}(G)\geq E-3V.
+\tag{7.3}
+\]
+
+通过一个随机抽样技巧，我们可以将这一不等式加强为下面的形式。当 \(E\) 相对于 \(V\) 较大时，它会强得多。
+
+**命题 7.1.1.** 假设
+\[
+E\geq4V.
+\]
+那么
+\[
+\operatorname{cr}(G)\geq\frac{E^3}{64V^2}.
+\]
+
+**证明。** 取 \(G\) 的一个画法，使其交叉数达到最小值
+\(\operatorname{cr}(G)\)。那么，每个交叉都涉及四个不同的顶点：如果某个交叉涉及边 \(vx\) 与 \(vy\)，就存在一个简单的过程可以减少交叉数；最好通过图示来说明这一点（见图 7.1）。
+
+![删除一个交叉](https://cdn-mineru.openxlab.org.cn/result/2026-10-30/23909552-5ee3-4933-ac18-3d657636778d/096a6a180aa45894cd14273c660074ba538a4fc4831adcb59da11ba04e683a86.jpg)
+
+*图 7.1. 删除一个交叉*
+
+令 \(p\) 为一个稍后确定的参数，其中
+\[
+0\leq p\leq1.
+\]
+考虑 \(G\) 的一个随机子图 \(\mathbf G'\)：先随机选取一个顶点集合 \(S\)，使得 \(G\) 的每个顶点 \(v\) 都以概率 \(p\) 独立地被选入 \(S\)；然后令 \(\mathbf G'\) 为由 \(\mathbf S\) 诱导的 \(G\) 的子图，也就是说，保留 \(G\) 中两个端点都属于 \(S\) 的所有边。分别用
+\[
+\mathbf V',\qquad\mathbf E'
+\]
+表示 \(\mathbf G'\) 的顶点数和边数；当然，它们都是随机变量。此外，令
+\(\widetilde{\operatorname{cr}}(\mathbf G')\) 表示在我们当前的画法中，\(\mathbf G'\) 的交叉数，也就是说，在 \(G\) 的画法上诱导得到的画法中的交叉数。注意
+\[
+\widetilde{\operatorname{cr}}(\mathbf G')
+\geq\operatorname{cr}(\mathbf G'),
+\]
+但二者不一定相等，因为 \(\mathbf G'\) 可能存在另一种交叉数更少的画法。
+
+对于每一次随机选取，我们都有不等式 (7.3)，也就是说
+\[
+\operatorname{cr}(\mathbf G')
+\geq\mathbf E'-3\mathbf V'.
+\]
+因此当然也有
+\[
+\widetilde{\operatorname{cr}}(\mathbf G')
+\geq\mathbf E'-3\mathbf V'.
+\]
+对这里出现的三个随机变量取期望，并利用期望的线性性，得到
+\[
+\mathbb E\widetilde{\operatorname{cr}}(\mathbf G')
+\geq
+\mathbb E\mathbf E'-3\mathbb E\mathbf V'.
+\tag{7.4}
+\]
+
+不过，容易看出
+\[
+\mathbb E\mathbf V'=pV,\qquad
+\mathbb E\mathbf E'=p^2E,
+\]
+（因为对于 \(G\) 中的每一条边，只有当它的两个端点都被选中时，它才会成为 \(\mathbf G'\) 中的一条边），并且
+\[
+\mathbb E\widetilde{\operatorname{cr}}(\mathbf G')
+=p^4\operatorname{cr}(G),
+\]
+（因为对于 \(G\) 中的每一个交叉，只有当其中两条边涉及的四个端点都被选中时，它才会成为 \(\mathbf G'\) 中的一个交叉）。
+
+将这些结果代入 (7.4)，得到
+\[
+p^4\operatorname{cr}(G)\geq p^2E-3pV.
+\]
+我们可以自由选择任意参数 \(p\in[0,1]\)。取
+\[
+p=\frac{4V}{E}
+\]
+（注意，由假设可知 \(p\leq1\)），整理各项后便得到所需的界。□
+
+## 7.2. Szemerédi–Trotter 定理
+
+本节证明定理 7.0.1。
+
+**证明（定理 7.0.1）。** 首先注意，当 \(r\leq7\)（例如如此）时，定理 7.0.1 是平凡的，因为位于至少两条直线上的点至多有
+\[
+\binom m2
+\]
+个。
+
+因此，以下设 \(r\geq8\)。如下构造一个图 \(G\)：\(G\) 的顶点是 \(P\) 中的点，其中 \(P\) 表示位于 \(L\) 中至少 \(r\) 条直线上的点集。当且仅当 \(x,y\) 是 \(P\) 中位于 \(L\) 的同一条直线上的相邻点时，才在这两个顶点之间连接一条边。记
+\[
+n=|P|
+\]
+为该图的顶点数；这正是我们希望给出上界的量。
+
+现在注意，\(G\) 有一个自然的画法，即由 \(L\) 中的直线所诱导的画法；在这一画法中，每条边实际上都由一条直线段表示。由于两条直线至多相交于一点，该画法中的交叉数至多为
+\(\binom m2\)。因此
+\[
+\operatorname{cr}(G)\leq\binom m2<m^2.
+\tag{7.5}
+\]
+
+边数 \(E\) 至少为
+\[
+rn-m.
+\]
+解释如下：计算从顶点 \(v\) 出发的边数。通常，\(v\) 至少与其他 \(2r\) 个顶点相邻。例外是当 \(v\) 是 \(L\) 中某条直线（两个方向上）的两个端点之一时，此时我们会少计一条邻接关系。对所有 \(v\) 求和，至少得到 \(2rn-2m\) 对 \((v,w)\)，其中 \(vw\) 是一条边；当然，这样会将每条边重复计算两次。
+
+现在考虑命题 7.1.1。要么我们可以应用该命题，要么不可以。若不能，则
+\[
+E<4n,
+\]
+所以
+\[
+rn-m<4n.
+\]
+由于 \(r\geq8\)，这意味着
+\[
+\frac{rn}{2}\leq m,
+\]
+于是这种情形下定理 7.0.1 成立。否则，
+\[
+E\geq4n,
+\]
+我们就可以应用命题 7.1.1，得到
+\[
+m^2\geq\frac{(rn-m)^3}{64n^2}.
+\tag{7.6}
+\]
+若
+\[
+n\leq\frac{2m}{r},
+\]
+那么定理 7.0.1 同样成立。否则，
+\[
+rn-m\geq\frac{rn}{2},
+\]
+因此 (7.6) 变为
+\[
+m^2\geq\frac{(rn/2)^3}{64n^2},
+\]
+整理后立即得到
+\[
+n\ll\frac{m^2}{r^3},
+\]
+定理 7.0.1 再次成立。证明完成。□
+
+## 7.3. 和积问题
+
+本节给出 Elekes 关于和积问题的界。
+
+**定理 7.3.1.** 设 \(A\subset\mathbf R\) 是一个大小为 \(n\) 的有限集。那么
+\[
+|A+A|\,|A\cdot A|\gg n^{5/2}.
+\]
+特别地，\(A+A\) 与 \(A\cdot A\) 中至少有一个，其基数满足
+\[
+\gg n^{5/4}.
+\]
+
+**证明。** 显然，只需处理 \(0\notin A\) 的情形（否则删去 0，并对所得集合应用该界）。考虑点集
+\[
+P:=
+\left\{
+\left(\frac1{a'},-\frac1{aa'}\right):
+a,a'\in A
+\right\},
+\]
+以及直线集
+\[
+L:=
+\left\{
+\{(x,y)\in\mathbf R^2:ux+vy=1\}:
+u\in A+A,\ v\in A\cdot A
+\right\}.
+\]
+注意
+\[
+|P|=n^2,
+\]
+而直线数 \(m=|L|\) 为
+\[
+m=|A+A|\,|A\cdot A|.
+\]
+
+关键观察是，\(P\) 中每个点都至少位于这些直线中的 \(n\) 条直线上。事实上，对于每个 \(t\in A\)，当
+\[
+u=a'+t,\qquad v=at
+\]
+时，点
+\[
+\left(\frac1{a'},-\frac1{aa'}\right)
+\]
+位于直线 \(ux+vy=1\) 上。
+
+由 Szemerédi–Trotter 定理，
+\[
+n^2\ll\frac mn+\frac{m^2}{n^3},
+\]
+这意味着
+\[
+m\gg n^{5/2}.
+\]
+这正是所需的结论。□
+
+## 第 8 章
+
+## 关于集合加法的一些进一步结果
+
+本章汇集了一些关于和集与集合加法的进一步不等式。其中有若干结果本身就很有趣，不过本章的首要目标，是为下一章证明 Bourgain–Chang 和积定理准备所需的工具。
+
+## 8.1. 直线上的 Prékopa–Leindler 不等式
+
+我们从一个关于实数可测子集的简单和集不等式开始。这可以看作第 5 章开头所述观察的连续类比。本节中，\(\mu\) 表示 Lebesgue 测度。
+
+**引理 8.1.1.** 设 \(X,Y,Z\subset\mathbf R\) 是非空可测集，且
+\[
+X+Y\subset Z.
+\]
+那么
+\[
+\mu(Z)\geq\mu(X)+\mu(Y).
+\]
+
+**证明。** 对任意 \(\varepsilon>0\)，都存在紧集
+\[
+X'\subset X,\qquad Y'\subset Y,
+\]
+使得
+\[
+\mu(X')\geq\mu(X)-\varepsilon,\qquad
+\mu(Y')\geq\mu(Y)-\varepsilon.
+\]
+（这一性质正是 Lebesgue 测度的内正则性；不过，在我们的离散应用中，只会在引理 8.1.1 的结论可以直接看出的情形下使用它。）
+
+令
+\[
+x:=\inf X',\qquad y:=\sup Y'.
+\]
+由于 \(X',Y'\) 是紧集，
+\[
+x\in X',\qquad y\in Y',
+\]
+因此两个集合
+\[
+x+Y',\qquad X'+y
+\]
+都包含于 \(Z\)。注意，\(x+Y'\) 中的每个元素都不大于 \(x+y\)，而 \(X'+y\) 中的每个元素都不小于 \(x+y\)。因此
+\[
+(x+Y')\cap(X'+y)=\{x+y\},
+\]
+这当然是一个测度为零的单点集。于是
+\[
+\begin{aligned}
+\mu(Z)
+&\geq\mu((X'+y)\cup(x+Y'))\\
+&=\mu(X'+y)+\mu(x+Y')\\
+&=\mu(X')+\mu(Y')\\
+&\geq\mu(X)+\mu(Y)-2\varepsilon.
+\end{aligned}
+\]
+令 \(\varepsilon\to0\)，结论即得。□
+
+现在转向本节的主题。设
+\[
+f,g:\mathbf R\to[0,\infty)
+\]
+是紧支集、分段连续的函数。定义**上确界卷积**（max-convolution）为
+\[
+f^{\overline *}g(x)
+:=
+\sup_{y\in\mathbf R}f(x-y)g(y).
+\]
+下面的结论是所谓 Prékopa–Leindler 不等式的一个一维特殊情形的特殊情形。
+
+**命题 8.1.1.** 设
+\[
+f,g:\mathbf R\to[0,\infty)
+\]
+是紧支集、分段连续的函数。那么有不等式
+\[
+\int f^{\overline *}g
+\geq2\|f\|_2\|g\|_2,
+\tag{8.1}
+\]
+其中范数是通常的 Lebesgue 范数：
+\[
+\|f\|_2:=\left(\int_{\mathbf R}f^2\right)^{1/2},
+\qquad
+\|g\|_2:=\left(\int_{\mathbf R}g^2\right)^{1/2}.
+\]
+
+**证明。** 设 \(\lambda\geq0\)。若
+\[
+f(x-y),g(y)\geq\sqrt\lambda,
+\]
+则
+\[
+f^{\overline *}g(x)\geq\lambda.
+\]
+换言之，
+\[
+\{t:f(t)\geq\sqrt\lambda\}
++
+\{t:g(t)\geq\sqrt\lambda\}
+\subseteq
+\{t:f^{\overline *}g(t)\geq\lambda\},
+\]
+或者等价地，
+\[
+\{t:f(t)^2\geq\lambda\}
++
+\{t:g(t)^2\geq\lambda\}
+\subseteq
+\{t:f^{\overline *}g(t)\geq\lambda\}.
+\]
+由引理 8.1.1，得到
+\[
+\begin{aligned}
+&\mu(\{t:f(t)^2\geq\lambda\})
++\mu(\{t:g(t)^2\geq\lambda\})\\
+&\qquad\leq
+\mu(\{t:f^{\overline *}g(t)\geq\lambda\}).
+\end{aligned}
+\tag{8.2}
+\]
+这里 \(\mu\) 是 Lebesgue 测度。
+
+现在由 Fubini 定理，对于任意可测函数
+\[
+F:\mathbf R\to[0,\infty),
+\]
+都有所谓的“层蛋糕分解”：
+\[
+\int_0^\infty
+\mu(\{x:F(x)\geq\lambda\})\,d\lambda
+=
+\int_{\mathbf R}F(x)\,dx.
+\]
+将这一公式应用于 (8.2)，得到
+\[
+\|f\|_2^2+\|g\|_2^2
+\leq\int_{\mathbf R}f^{\overline *}g.
+\tag{8.3}
+\]
+所需的不等式 (8.1) 立即由此以及初等不等式
+\[
+a^2+b^2\geq2ab
+\]
+推出，其中取
+\[
+a=\|f\|_2,\qquad b=\|g\|_2.
+\]
+□
+
+*注记。* 最后一步看起来有些浪费，读者可能会想，为什么我们不直接陈述更强的不等式 (8.3)？原因是，(8.1) 中给出的形式在应用中更有用。
+
+## 8.2. 加权离散 Prékopa–Leindler 不等式
+
+现在转向离散结果。本节的主要目标是证明下面的命题 8.2.1，这是一个加权离散 Prékopa–Leindler 不等式。其陈述与命题 8.1.1 有明显的类比。
+
+设
+\[
+a,b:\mathbf Z\to[0,\infty)
+\]
+是紧支集函数。定义上确界卷积
+\[
+a\overline *b(n)
+:=
+\sup_{m\in\mathbf Z}a(n-m)b(m).
+\]
+
+**命题 8.2.1.** 设
+\[
+a,b:\mathbf Z\to[0,\infty)
+\]
+是紧支集函数，且 \(p\in[0,1]\)。那么
+\[
+\sum_n
+\max\bigl(
+p\,a\overline *b(n),\,
+(1-p)\,a\overline *b(n-1)
+\bigr)
+\geq\|a\|_2\|b\|_2.
+\]
+这里的范数是离散的 \(\ell^2\) 范数，定义为
+\[
+\|a\|_2:=
+\left(\sum_na(n)^2\right)^{1/2},
+\qquad
+\|b\|_2:=
+\left(\sum_nb(n)^2\right)^{1/2}.
+\]
+
+**证明。** 在本证明中，我们将在 \(\mathbf R\)（定义如上一节）和 \(\mathbf Z\)（定义如上）上都使用记号 \(\overline *\) 与
+\(\|\cdot\|_2\)。希望在任何给定时刻，我们所处理函数的定义域都能从上下文中清楚看出。
+
+由连续性，不妨设
+\[
+p\in(0,1).
+\]
+令
+\[
+\lambda:=\log\left(\frac1p-1\right).
+\]
+将命题 8.1.1 应用于如下定义的函数 \(f,g\)：
+\[
+f(x):=e^{\lambda\{x\}}a(\lfloor x\rfloor),
+\qquad
+g(y):=e^{\lambda\{y\}}b(\lfloor y\rfloor).
+\]
+
+令 \(n\in\mathbf Z\)，且 \(0\leq t<1\)。设
+\[
+x+y=n+t.
+\]
+那么，由于
+\[
+x-1<\lfloor x\rfloor\leq x,
+\]
+可知
+\[
+n-2<\lfloor x\rfloor+\lfloor y\rfloor<n+1.
+\]
+换言之，
+\[
+\lfloor x\rfloor+\lfloor y\rfloor=n-1
+\quad\text{或}\quad n.
+\]
+若
+\[
+\lfloor x\rfloor+\lfloor y\rfloor=n-1,
+\]
+则
+\[
+f(x)g(y)
+\leq e^{\lambda(t+1)}a\overline *b(n-1),
+\]
+而若
+\[
+\lfloor x\rfloor+\lfloor y\rfloor=n,
+\]
+则
+
+于是
+\[
+f(x)g(y)\leq e^{\lambda t}a\overline *b(n).
+\]
+因此
+\[
+f^{\overline *}g(n+t)
+\leq e^{\lambda t}
+\max\bigl(
+a\overline *b(n),\ e^\lambda a\overline *b(n-1)
+\bigr).
+\]
+对 \(t\in[0,1)\) 积分，再对 \(n\in\mathbf Z\) 求和，得到
+\[
+\int_{\mathbf R}f\overline *g
+\leq
+\frac{e^\lambda-1}{\lambda}
+\sum_n
+\max\bigl(
+a\overline *b(n),\ e^\lambda a\overline *b(n-1)
+\bigr).
+\tag{8.4}
+\]
+
+另一方面，
+\[
+\|f\|_2^2
+=\frac{e^{2\lambda}-1}{2\lambda}\|a\|_2^2,
+\qquad
+\|g\|_2^2
+=\frac{e^{2\lambda}-1}{2\lambda}\|b\|_2^2.
+\]
+将它们代入命题 8.1.1，得到
+\[
+\sum_n
+\max\bigl(
+a\overline *b(n),\ e^\lambda a\overline *b(n-1)
+\bigr)
+\geq
+(e^\lambda+1)\|a\|_2\|b\|_2.
+\]
+回忆 \(\lambda\) 的选取方式，因此
+\[
+p=\frac1{e^\lambda+1},
+\]
+命题即得证。□
+
+## 8.3. 准立方体、二元集与和集
+
+**准立方体。** 准立方体
+\[
+\Sigma\subseteq\mathbf Z^d
+\]
+的概念是通过归纳定义的。当 \(d=1\) 时，准立方体就是一个大小为 2 的集合。对于更大的 \(d\)，若满足下列条件，则称 \(\Sigma\) 为准立方体：
+
+(i) \(\pi(\Sigma)=\{x_0,x_1\}\) 是一个大小为 2 的集合，其中
+\[
+\pi:\mathbf Z^d\to\mathbf Z
+\]
+是投影到最后一个坐标的坐标投影；
+
+(ii) 纤维
+\[
+\Sigma_i:=\Sigma\cap\pi^{-1}(x_i)
+\]
+（将其看作 \(\mathbf Z^{d-1}\) 的子集）是一个准立方体。
+
+例如，通常的立方体
+\[
+\{0,1\}^d
+\]
+就是一个准立方体。另一个 \(d=2\) 时的准立方体例子是
+\[
+\Sigma=\{(0,0),(1,0),(0,1),(1,2)\}.
+\]
+
+**二元集。** 准立方体的任意子集称为**二元集**（需要提醒的是，这并不是文献中的标准术语）。
+
+**定理 8.3.1.** 设
+\[
+A,B\subseteq\mathbf Z^d
+\]
+是有限集，并假设
+\[
+U\subseteq\mathbf Z^d
+\]
+是一个二元集。那么
+\[
+|A+B+U|
+\geq |A|^{1/2}|B|^{1/2}|U|.
+\]
+
+**证明。** 我们对 \(d\) 作归纳。归纳步骤的证明同时也证明了基例
+\(d=1\)。
+
+假设 \(U\) 包含于某个准立方体
+\[
+\Sigma\subset\mathbf Z^d.
+\]
+设
+\[
+\pi(\Sigma)=\{x_0,x_1\},
+\]
+其中
+\[
+\pi:\mathbf Z^d\to\mathbf Z
+\]
+是投影到最后一个坐标的映射。由于该不等式在平移下不变，不妨设
+\[
+x_0=0,\qquad x_1=q>0.
+\]
+先考虑 \(q=1\) 的情形。
+
+对于每个 \(x\in\mathbf Z\)，令
+\[
+A_x:=A\cap\pi^{-1}(x),\qquad
+B_x:=B\cap\pi^{-1}(x)
+\]
+分别表示 \(A\) 与 \(B\) 在 \(x\) 上方的纤维。集合 \(U\) 恰有两个纤维 \(U_0,U_1\)，根据准立方体的定义，它们都包含于维数为 \(d-1\) 的准立方体中。
+
+注意，对于满足 \(x+y=n\) 的任意 \(x,y\)，集合
+\(A+B+U\) 在 \(n\) 上方的纤维包含
+\[
+A_x+B_y+U_0；
+\]
+对于满足 \(x+y=n-1\) 的任意 \(x,y\)，它还包含
+\[
+A_x+B_y+U_1.
+\]
+由归纳假设，
+\[
+|A_x+B_y+U_0|
+\geq |A_x|^{1/2}|B_y|^{1/2}|U_0|,
+\]
+以及
+\[
+|A_x+B_y+U_1|
+\geq |A_x|^{1/2}|B_y|^{1/2}|U_1|.
+\]
+因此，\(A+B+U\) 在 \(n\) 上方的纤维
+\((A+B+U)_n\) 的大小至少为
+\[
+\begin{aligned}
+\max\Bigg(&
+|U_0|\max_{x+y=n}|A_x|^{1/2}|B_y|^{1/2},\\
+&
+|U_1|\max_{x+y=n-1}|A_x|^{1/2}|B_y|^{1/2}
+\Bigg).
+\end{aligned}
+\]
+这等于
+\[
+|U|\max\bigl(
+p\,a\overline *b(n),\
+(1-p)\,a\overline *b(n-1)
+\bigr),
+\]
+其中
+\[
+p:=\frac{|U_0|}{|U|},\qquad
+a(x):=|A_x|^{1/2},\qquad
+b(y):=|B_y|^{1/2}.
+\]
+对 \(n\) 求和，并应用命题 8.2.1，得到
+\[
+\begin{aligned}
+|A+B+U|
+&=\sum_n|(A+B+U)_n|\\
+&\geq|U|\sum_n
+\max\bigl(
+p\,a\overline *b(n),\
+(1-p)\,a\overline *b(n-1)
+\bigr)\\
+&\geq|U|\|a\|_2\|b\|_2\\
+&=|U||A|^{1/2}|B|^{1/2}.
+\end{aligned}
+\]
+这就证明了 \(q=1\) 时的结论。
+
+现在设 \(q\) 为任意值，并将 \(A,B\) 按末坐标的模 \(q\) 剩余类分解：
+\[
+A=\bigcup_{r\in\mathbf Z/q\mathbf Z}A_r,
+\qquad
+B=\bigcup_{s\in\mathbf Z/q\mathbf Z}B_s,
+\]
+其中
+\[
+A_r:=\{a\in A:\pi(a)\equiv r\pmod q\},
+\]
+而 \(B_s\) 类似定义。取 \(r_*\)，使得对所有 \(r\)，
+\[
+|A_r|\leq|A_{r_*}|;
+\]
+再取 \(s_*\)，使得对所有 \(s\)，
+\[
+|B_s|\leq|B_{s_*}|.
+\]
+
+当 \(s\) 变化时，集合
+\[
+A_{r_*}+B_s+U
+\]
+两两不交。因此，由 \(q=1\) 的情形（经过缩放）可得
+\[
+\begin{aligned}
+|A+B+U|
+&\geq\sum_s|A_{r_*}+B_s+U|\\
+&\geq|U||A_{r_*}|^{1/2}
+\sum_s|B_s|^{1/2}.
+\end{aligned}
+\tag{8.5}
+\]
+类似地，
+\[
+|A+B+U|
+\geq
+|U||B_{s_*}|^{1/2}\sum_r|A_r|^{1/2}.
+\tag{8.6}
+\]
+将 (8.5)、(8.6) 相乘，并利用
+\[
+|A_{r_*}|^{1/2}\sum_r|A_r|^{1/2}
+\geq\sum_r|A_r|=|A|,
+\]
+以及
+\[
+|B_{s_*}|^{1/2}\sum_s|B_s|^{1/2}
+\geq\sum_s|B_s|=|B|,
+\]
+即得所需结论。□
+
+## 8.4. 斜维数与 Pálvölgyi–Zhelezov 定理
+
+本节中，**仿射空间**是指某个 \(\mathbf Z^d\) 的子空间（其中 \(d\) 可以取不同值），它由固定某个可能为空的坐标集中的坐标值而得到。例如，
+\[
+\{(2,-1,x_3):x_3\in\mathbf Z\}
+\subset\mathbf Z^3
+\]
+就是一个仿射空间。若 \(\pi\) 是 \(\mathbf Z^d\) 的 \(d\) 个标准坐标映射之一，并且它在 \(V\) 上的限制是非平凡映射（也就是说，它的像是 \(\mathbf Z\)，而不是单点集），则称 \(\pi\) 是 \(V\) 上的一个**坐标映射**。在上面的例子中，只有一个坐标映射，即
+\[
+\pi((2,-1,x_3))=x_3.
+\]
+
+设 \(A\) 是某个仿射空间中的有限子集。与通常一样，倍增常数
+\[
+\sigma[A]
+\]
+定义为
+\[
+\sigma[A]:=\frac{|A+A|}{|A|}.
+\]
+弱多项式 Freiman–Ruzsa 猜想[^1]（weak Polynomial Freiman–Ruzsa conjecture）是如下命题。
+
+**猜想 8.4.1.** 设 \(A\) 是某个仿射空间中的有限子集，且
+\[
+\sigma[A]\leq K.
+\]
+那么存在一个子集 \(A'\subset A\)，满足
+\[
+|A'|\geq K^{-C}|A|,
+\]
+并且
+\[
+\dim A'\leq\log K.
+\]
+
+[^1]: “弱”一词是因为这里没有尝试将 \(A\) 的任何一部分有效地放入某个广义等差数列中。这个猜想还有一个更强的版本，其中会尝试做到这一点。
+
+我们将给出 Pálvölgyi 与 Zhelezov 的一个论证，它建立了猜想 8.4.1 的一个弱版本：其中的维数概念被我们称为**斜维数**（skew-dimension）
+\(\dim_*(A)\) 所替代。我们通过以下归纳方式定义它。
+
+**定义 8.4.1（斜维数）。** 设 \(A\) 是某个仿射空间 \(V\) 中的有限集。若 \(A\) 是单点集，则定义
+\[
+\dim_*(A)=0.
+\]
+否则，存在某个坐标映射
+\[
+\pi:V\to\mathbf Z,
+\]
+使得
+\[
+|\pi(A)|>1；
+\]
+为明确起见，我们选取指标最大的、满足此条件的坐标所对应的 \(\pi\)。然后定义
+\[
+\dim_*(A):=
+1+\max_x\dim_*(\pi^{-1}(x)\cap A).
+\]
+
+**例子。** 考虑集合
+\[
+A=\{(1,0,0),(2,0,0),(0,1,1),(0,2,1)\}
+\subset\mathbf Z^3.
+\]
+坐标映射 \(\pi_3\) 满足
+\[
+\pi_3(A)=\{0,1\},
+\]
+其大小大于 1。相应的纤维为
+\[
+\begin{aligned}
+A_0
+&=\pi_3^{-1}(0)\cap A\\
+&=\{(1,0,0),(2,0,0)\}\\
+&\subset V_0:=\{(x,y,0):x,y\in\mathbf Z\},
+\end{aligned}
+\]
+以及
+\[
+\begin{aligned}
+A_1
+&=\pi_3^{-1}(1)\cap A\\
+&=\{(0,1,1),(0,2,1)\}\\
+&\subset V_1:=\{(x,y,1):x,y\in\mathbf Z\}.
+\end{aligned}
+\]
+我们有
+\[
+\pi_2(A_0)=\{0\},
+\]
+其大小为 1。然而，
+\[
+\pi_1(A_0)=\{1,2\}.
+\]
+这两个纤维都是单点集，因此
+\[
+\dim_*(A_0)=1.
+\]
+另一方面，
+\[
+\pi_2(A_1)=\{1,2\},
+\]
+而且这两个纤维同样都是单点集。因此
+\[
+\dim_*(A_1)=1.
+\]
+我们得出
+\[
+\dim_*(A)=2.
+\]
+
+这个例子具有一个一维底空间之上的一维纤维（不过这些纤维彼此“斜交”），应当被视为斜维数为 2 的典型例子。注意，它真正的（向量空间）维数为 3。
+
+下面是主要结果。
+
+**定理 8.4.1（Pálvölgyi–Zhelezov）。** 设 \(A\) 是某个仿射空间中的集合，并且
+\[
+\sigma[A]\leq K.
+\]
+那么存在
+\[
+A'\subset A,\qquad |A'|\geq K^{-3}|A|,
+\]
+使得
+\[
+\dim_*(A')\leq3\log_2K.
+\]
+
+回忆上一节中二元集的定义。令
+\[
+\operatorname{bin}[A]
+\]
+表示 \(A\) 中最大二元集的大小。Matolcsi、Ruzsa、Shakan 和 Zhelezov 的下面这个结果表明，该不变量与 \(A\) 的倍增常数有关。
+
+**命题 8.4.1.** 有
+\[
+\operatorname{bin}[A]\leq\sigma[A]^3.
+\]
+
+**证明。** 设 \(U\) 是一个二元集。由定理 8.3.1，
+\[
+|A+A+U|\geq|U||A|.
+\]
+若 \(U\subseteq A\)，则
+\[
+|A+A+U|
+\leq|A+A+A|
+=|3A|.
+\]
+因此
+\[
+\operatorname{bin}[A]\leq\frac{|3A|}{|A|}.
+\]
+由 Plünnecke–Ruzsa 不等式（定理 4.4.1），
+\[
+\frac{|3A|}{|A|}\leq\sigma[A]^3.
+\]
+命题得证。□
+
+定理 8.4.1 是命题 8.4.1 与下述命题的直接推论；后一个命题建立了二元集与斜维数之间的联系。
+
+**命题 8.4.2.** 设 \(A\) 是某个仿射空间中的有限集，且
+\[
+\operatorname{bin}[A]=m.
+\]
+那么存在一个子集 \(A'\subset A\)，满足
+\[
+|A'|\geq\frac1m|A|,
+\]
+并且
+\[
+\dim_*(A')\leq\log_2m.
+\]
+
+**证明。** 我们对包含 \(A\) 的仿射空间的维数作归纳。令
+\[
+\pi:V\to\mathbf Z
+\]
+为对应于最大指标的坐标映射。若
+\[
+|\pi(A)|=1,
+\]
+例如
+\[
+\pi(A)=\{x\},
+\]
+那么 \(A\) 包含于仿射空间
+\[
+V':=\pi^{-1}(x)\cap V,
+\]
+而且
+\[
+\dim V'<\dim V.
+\]
+在这种情形下，归纳步骤是平凡的。
+
+因此，设
+\[
+|\pi(A)|\geq2.
+\]
+对于每个 \(x\in\pi(A)\)，记
+\[
+A_x:=\pi^{-1}(x)\cap A
+\]
+为 \(A\) 在 \(x\) 上方的纤维。于是
+\[
+A=\bigcup_xA_x.
+\]
+记 \(m_x\) 为 \(A_x\) 中最大二元集的大小。由归纳假设，存在
+\[
+A_x'\subset A_x,\qquad
+|A_x'|\geq\frac1{m_x}|A_x|,
+\]
+且
+\[
+\dim_*(A_x')\leq\log_2m_x.
+\]
+
+我们可以假设，对所有 \(x\) 都有
+\[
+\frac1{m_x}|A_x|
+\leq\frac1m|A|.
+\tag{8.7}
+\]
+否则，只需对任何违反这一界的 \(x\) 取
+\(A'=A_x'\)，便得到所需结论。
+
+还要注意，对于不同的
+\(x,y\in\pi(A)\)，集合 \(A_x\cup A_y\)（因而也包括 \(A\)）包含一个大小为
+\(m_x+m_y\) 的二元集，因此
+\[
+m_x+m_y\leq m.
+\tag{8.8}
+\]
+
+现在，取 \(y\) 使得 \(m_y\) 最大，并令
+\[
+A':=\bigcup_{x\ne y}A_x'.
+\]
+由 (8.8) 可知，当 \(x\ne y\) 时，
+\[
+m_x\leq\frac m2.
+\]
+因此
+\[
+\begin{aligned}
+\dim_*(A')
+&=1+\max_{x\ne y}\dim_*(A_x')\\
+&\leq1+\max_{x\ne y}\log_2m_x\\
+&\leq\log_2m.
+\end{aligned}
+\]
+此外，
+\[
+\begin{aligned}
+|A'|
+&=\sum_{x\ne y}|A_x'|\\
+&\geq\sum_{x\ne y}\frac1{m_x}|A_x|\\
+&\geq\frac1{m-m_y}\sum_{x\ne y}|A_x|\\
+&=\frac{|A|-|A_y|}{m-m_y}\\
+&\geq\frac{|A|}{m}.
+\end{aligned}
+\]
+这里使用了 \(m_x\leq m-m_y\)，而最后一步使用了 (8.7) 中
+\(x=y\) 的情形。□
+
+## 第 9 章
+
+## 高阶和积定理
+
+本章研究整数集的高阶和集与积集。设
+\(A\subset\mathbf Z\) 是有限集，且 \(m\geq1\) 是一个整数。我们已经定义
+\[
+mA:=\{a_1+\cdots+a_m:a_i\in A\}.
+\]
+现在进一步定义
+\[
+A^{(m)}:=\{a_1\cdots a_m:a_i\in A\}.
+\]
+注意
+\[
+2A=A+A,\qquad
+A^{(2)}=A\cdot A.
+\]
+
+我们在定理 7.3.1 中证明了，若 \(A\subset\mathbf R\)，那么 \(2A\) 或
+\(A^{(2)}\) 的大小至少有一个显著大于 \(A\) 本身，事实上至少约为
+\[
+|A|^{5/4}.
+\]
+本节将证明 Bourgain 与 Chang 的一个更困难的结果。它断言，若
+\(A\subset\mathbf Z\)，那么对于较大的 \(m\)，\(mA\) 或 \(A^{(m)}\) 中至少有一个要比 \(A\) 大得多。下面是我们将要证明的结果。
+
+**定理 9.0.1.** 设 \(A\subset\mathbf Z\)。那么，对于任意 \(m\)，\(m\) 重和集
+\[
+|mA|
+\]
+与 \(m\) 重积集
+\[
+A^{(m)}
+\]
+中至少有一个，其基数不小于
+\[
+|A|^{b(m)},
+\]
+其中
+\[
+b(m)\geq c\frac{\log m}{\log\log m}.
+\]
+
+注意，\(A\subset\mathbf Z\) 这一条件非常重要；对于
+\(A\subset\mathbf R\) 的集合，目前还不知道相应结果。这是一个非常有趣的公开问题。
+
+定理 9.0.1 这一表述中的结果归功于 Pálvölgyi 与 Zhelezov；他们的证明（也是我们将要给出的证明）远比 Bourgain 与 Chang 的原始论证简单，而且给出了更强的界。
+
+*注记。* Bourgain 与 Chang 的原始界为
+\[
+b(m)\gg\log^{1/4}m
+\]
+的数量级。这些结果的主要意义在于
+\[
+b(m)\to\infty,
+\]
+这是一个高度非平凡的事实。
+
+## 9.1. 高阶加法能量
+
+我们首先推广第 6 章中引入的加法能量概念。
+
+**定义 9.1.1.** 设 \(k\geq2\) 是一个整数。给定一个加法集合 \(X\)，其加法 \(2k\) 阶能量
+\[
+E_{2k}(X)
+\]
+定义为满足
+\[
+x_1+\cdots+x_k=x_{k+1}+\cdots+x_{2k}
+\]
+的 \(2k\) 元组
+\[
+(x_1,\ldots,x_{2k})\in X^{2k}
+\]
+的个数。更一般地，若
+\(X_1,\ldots,X_{2k}\) 是加法集合，我们定义
+\[
+E(X_1,\ldots,X_{2k})
+\]
+为下列方程的解数：
+\[
+x_1+\cdots+x_k=x_{k+1}+\cdots+x_{2k},
+\qquad x_i\in X_i\quad\text{对所有 }i.
+\]
+
+因此，\(E_4(X)\) 是满足
+\[
+x_1+x_2=x_3+x_4
+\]
+的四元组
+\[
+(x_1,x_2,x_3,x_4)
+\]
+的个数。这正是我们在第 6 章中简称为加法能量的量，当时记为 \(E(X)\)。
+
+我们需要下面这个不等式。
+
+**引理 9.1.1.** 设
+\[
+X_1,\ldots,X_{2k}\subset\mathbf Z
+\]
+是有限集。那么
+\[
+E(X_1,\ldots,X_{2k})
+\leq
+\prod_{i=1}^{2k}E_{2k}(X_i)^{1/(2k)}.
+\]
+
+**证明。** 使用傅里叶变换与 Hölder 不等式，可以给出一个很快的证明。注意
+\[
+\begin{aligned}
+E(X_1,\ldots,X_{2k})
+={}&\int_0^1
+\widehat{1_{X_1}}(\theta)\cdots
+\widehat{1_{X_k}}(\theta)\\
+&\qquad\cdot
+\overline{\widehat{1_{X_{k+1}}(\theta)}}
+\cdots
+\overline{\widehat{1_{X_{2k}}(\theta)}}\,d\theta,
+\end{aligned}
+\]
+其中对于任意集合 \(X\)，
+\[
+\widehat{1_X}(\theta)
+:=
+\sum_n1_X(n)e(-n\theta),
+\]
+与第 3 章中的定义相同。证明只需代入傅里叶变换的定义，并利用正交性；这与公式 (3.6) 的证明完全相同。
+
+类似地（事实上，这是前式的推论），我们有
+\[
+E_{2k}(X_i)
+=
+\int_0^1|\widehat{1_{X_i}}(\theta)|^{2k}\,d\theta.
+\]
+所述不等式现在就是傅里叶变换一侧的 Hölder 不等式的推论，也就是说，
+\[
+\int_0^1f_1\cdots f_{2k}
+\leq
+\prod_{i=1}^{2k}
+\left(
+\int_0^1|f_i|^{2k}
+\right)^{1/(2k)}.
+\]
+证明完成。□
+
+我们还需要下面的结果，它本质上是命题 6.2.1 的高阶版本，证明方法相同。
+
+**引理 9.1.2.** 设 \(X\) 是一个加法集合，且 \(k\geq2\) 是整数。那么
+\[
+|kX|\geq\frac{|X|^{2k}}{E_{2k}(X)}.
+\]
+
+**证明。** 记 \(r_k(n)\) 为满足
+\[
+x_1+\cdots+x_k=n
+\]
+的元组
+\[
+(x_1,\ldots,x_k)\in X^k
+\]
+的个数。由 Cauchy–Schwarz 不等式，
+\[
+\begin{aligned}
+|X|^{2k}
+&=\left(\sum_{n\in kX}r_k(n)\right)^2\\
+&\leq|kX|\sum_nr_k(n)^2\\
+&=|kX|E_{2k}(X).
+\end{aligned}
+\]
+证明完成。□
+
+## 9.2. Chang 引理
+
+若 \(p\) 是一个素数，且 \(m\in\mathbf N\)，记
+\[
+v_p(m)
+\]
+为 \(m\) 的 \(p\) 进赋值，也就是说，整除 \(m\) 的最大 \(p\) 次幂的指数。我们有 Mei-Chu Chang 的下述引理。
+
+**引理 9.2.1.** 设 \(p\) 是一个素数，并假设
+\(A\subset\mathbf Z\) 是一个有限集。令
+\[
+A_i:=\{n\in A:v_p(n)=i\}.
+\]
+那么
+\[
+E_{2k}(A)^{1/k}
+\leq
+\binom{2k}{2}
+\sum_iE_{2k}(A_i)^{1/k}.
+\]
+
+**证明。** 由于 \(A\) 是各个 \(A_i\) 的不交并，我们有
+\[
+E_{2k}(A)
+=
+\sum_{j_1,\ldots,j_{2k}}
+E(A_{j_1},\ldots,A_{j_{2k}}).
+\]
+然而，其中并非所有项都会产生贡献。若某一项非零，则必须有
+\[
+p^{j_1}n_1+\cdots+p^{j_k}n_k
+=
+p^{j_{k+1}}n_{k+1}+\cdots+p^{j_{2k}}n_{2k},
+\]
+其中每个 \(n_i\) 都与 \(p\) 互素。令
+\[
+j:=\min(j_1,\ldots,j_{2k}).
+\]
+两边同时除以 \(p^j\)，再考虑模 \(p\) 的同余关系，可知必存在两个指标
+\(i,i'\)，满足
+\[
+j_i=j_{i'}=j.
+\]
+我们来估计
+\[
+\{i,i'\}=\{1,2\}
+\]
+这一情形的贡献；其他情形完全类似。该贡献为
+\[
+\begin{aligned}
+&\sum_{j,j_3,j_4,\ldots,j_{2k}}
+E(A_j,A_j,A_{j_3},\ldots,A_{j_{2k}})\\
+&\qquad=\sum_jE(A_j,A_j,A,\ldots,A)\\
+&\qquad\leq
+\sum_jE_{2k}(A_j)^{1/k}
+E_{2k}(A)^{(k-1)/k},
+\end{aligned}
+\]
+其中最后一步使用了引理 9.1.1。再对
+\(\binom{2k}{2}\) 种指标对 \(\{i,i'\}\) 求和，得到
+\[
+E_{2k}(A)
+\leq
+\binom{2k}{2}
+E_{2k}(A)^{(k-1)/k}
+\sum_jE_{2k}(A_j)^{1/k}.
+\]
+所需引理立即成立。□
+
+## 9.3. Bourgain–Chang 定理
+
+设 \(A\subset\mathbf N\) 是一个有限集。我们将 \(A\) 的**乘法斜维数**定义为 \(A\) 在映射
+\[
+v:=(v_p)_{p\text{ 为素数}}:
+\mathbf N\longrightarrow\prod_p\mathbf Z
+\]
+下的像的斜维数。注意，由于 \(A\) 是有限集，这里只涉及有限多个素数，因此可以假设 \(v(A)\) 是有限维的。我们将乘法斜维数记为
+\[
+\dim_*^\times(A).
+\]
+
+**命题 9.3.1.** 设 \(A\subset\mathbf N\)，且其乘法斜维数至多为 \(D\)。那么
+\[
+E_{2k}(A)^{1/k}
+\leq
+\binom{2k}{2}^D|A|.
+\]
+
+**证明。** 利用引理 9.2.1 并对 \(D\) 作归纳，几乎立即可得所需结果。当 \(D=0\) 时，结论是平凡的（此时 \(A\) 是单点集，且
+\(E_{2k}(A)=1\)）。为了说明这一点，考虑乘法斜维数的定义。若其至多为 \(D\)，则根据定义，存在某个素数 \(p\)，使得“坐标映射”
+\[
+v_p:A\to\mathbf Z
+\]
+的各个纤维的乘法斜维数都至多为 \(D-1\)。然而，这些纤维恰好就是引理 9.2.1 中的 \(A_i\)。□
+
+现在转向主要结果定理 9.0.1。
+
+**证明（定理 9.0.1）。** 只需稍微减小常数 \(c\)，就足以处理
+\[
+m=2^t
+\]
+且 \(m\) 为充分大的 2 的幂这一情形。令
+\[
+k:=\left\lfloor\frac{t}{\log t}\right\rfloor,
+\qquad
+b:=\frac{t}{100\log t}.
+\]
+
+假设
+\[
+|A^{(2^t)}|\leq|A|^b.
+\tag{9.1}
+\]
+我们的目标是证明
+\[
+|2^tA|\geq|A|^b,
+\tag{9.2}
+\]
+从而完成证明。假设 (9.1) 意味着
+\[
+\prod_{i=0}^{t-1}
+\frac{|A^{(2^{i+1})}|}{|A^{(2^i)}|}
+\leq|A|^b.
+\]
+因此，存在某个 \(i\leq t-1\)，使得
+\[
+|A^{(2^{i+1})}|
+\leq K|A^{(2^i)}|,
+\tag{9.3}
+\]
+其中
+\[
+K:=|A|^{b/t}.
+\]
+
+由定理 8.4.1，存在一个集合
+\[
+S\subset A^{(2^i)},
+\qquad
+|S|\geq K^{-3}|A^{(2^i)}|,
+\]
+且
+\[
+\dim_*^\times(S)\leq3\log_2K.
+\]
+这里 \(\dim_*^\times\) 表示乘法斜维数。
+
+在下面的论证中，我们将使用这样一个事实：若
+\(X\subset\mathbf N\)，且
+\[
+|X\cdot X|\leq K|X|,
+\]
+则
+\[
+|X\cdot X^{-1}|\leq K^2|X|,
+\]
+其中
+\[
+X^{-1}:=\{x^{-1}:x\in X\}.
+\]
+这不过是 Plünnecke–Ruzsa 不等式（定理 4.4.1）在 \(k=\ell=1\) 时的乘法版本；注意，带乘法运算的 \(\mathbf N\) 包含于阿贝尔群
+\(\mathbf Q^\times\)。
+
+现在有
+\[
+\sum_x|A\cap xS|=|A||S|,
+\]
+而这个求和只在
+\[
+x\in AS^{-1}
+\]
+时才有非零贡献。由刚才陈述的乘法 Plünnecke–Ruzsa 不等式、包含关系
+\[
+S\subset A^{(2^i)}
+\]
+以及 (9.3)，得到
+\[
+\begin{aligned}
+|AS^{-1}|
+&\leq
+|A^{(2^i)}(A^{(2^i)})^{-1}|\\
+&\leq K^2|A^{(2^i)}|.
+\end{aligned}
+\]
+因此，存在某个 \(x\)，使得
+\[
+|A\cap xS|
+\geq\frac{|A||S|}{|AS^{-1}|}
+\geq K^{-5}|A|.
+\]
+令
+\[
+A':=A\cap xS,
+\]
+于是
+\[
+|A'|\geq K^{-5}|A|.
+\tag{9.4}
+\]
+并且
+\[
+\begin{aligned}
+\dim_*^\times(A')
+&\leq\dim_*^\times(xS)\\
+&=\dim_*^\times(S)\\
+&\leq3\log_2K<5\log K,
+\end{aligned}
+\]
+因为乘法斜维数在（乘法）平移下不变。
+
+由命题 9.3.1，
+\[
+E_{2k}(A')
+\leq
+\binom{2k}{2}^{5k\log K}|A|^k.
+\]
+利用粗略估计
+\[
+\binom{2k}{2}\leq2k^2,
+\]
+可以将其写成更简洁的形式
+\[
+E_{2k}(A')
+\leq K^{15k\log k}|A|^k.
+\tag{9.5}
+\]
+
+最后，应用引理 9.1.2，并利用 (9.4)、(9.5)，得到
+\[
+\begin{aligned}
+|2^tA|
+&\geq|kA|\\
+&\geq|kA'|\\
+&\geq K^{-25k\log k}|A|^k\\
+&=|A|^{\,k-\frac{25bk\log k}{t}}\\
+&\geq|A|^{k/2}\\
+&>|A|^b,
+\end{aligned}
+\]
+其中最后两步使用了 \(b,k\) 的选取方式。这样便得到 (9.2)，也就是我们希望证明的界。证明完成。□
+
+## 附录 A
+
+## 算术函数
+
+本节主要与第 2 章的内容相关，我们简要回顾一些基本算术函数。
+
+算术函数就是一个函数
+\[
+f:\mathbf N\to\mathbf C.
+\]
+我们所考虑的算术函数都是实值函数。第 2 章中出现的算术函数包括：
+
+- **Möbius 函数** \(\mu\)：定义为 \(\mu(1)=1\)；若
+  \[
+  n=p_1\cdots p_k
+  \]
+  是由 \(k\) 个互不相同的素数组成的乘积，则
+  \[
+  \mu(n)=(-1)^k；
+  \]
+  若 \(n\) 能被某个素数的平方整除，则 \(\mu(n)=0\)。
+- **约数函数** \(\tau(n)\)：定义为 \(n\) 的正整数约数的个数（包括 \(n\) 本身）。
+
+其他重要的算术函数还包括 Euler ϕ 函数
+\[
+\phi(n),
+\]
+它表示小于 \(n\) 且与 \(n\) 互素的正整数的个数。
+
+**Möbius 函数 \(\mu\)。** 我们需要的关于 Möbius 函数的第一个重要事实是 Möbius 反演。若
+\[
+f_1,f_2:\mathbf N\to\mathbf C
+\]
+是两个算术函数，我们用
+\[
+f_1\star f_2
+\]
+表示它们的 Dirichlet 卷积：
+
+\[
+(f_1\star f_2)(n)
+:=
+\sum_{d\mid n}f_1(d)f_2\left(\frac nd\right).
+\]
+容易验证，这是一个对称且满足结合律的运算。
+
+**引理 A.0.1（Möbius 反演）。** 设
+\[
+f,g:\mathbf N\to\mathbf C
+\]
+是算术函数。那么，对于所有 \(n\)，
+\[
+g(n)=\sum_{d\mid n}f(d)
+\]
+成立，当且仅当对于所有 \(n\)，
+\[
+f(n)=\sum_{d\mid n}\mu\left(\frac nd\right)g(d).
+\]
+
+**证明。** 用 Dirichlet 卷积的记号表示，这一结论是说
+\[
+g=f\star1
+\]
+当且仅当
+\[
+f=g\star\mu.
+\]
+证明的关键观察是
+\[
+\mu\star1=\delta,
+\tag{A.1}
+\]
+其中
+\[
+\delta:\mathbf N\to\mathbf C
+\]
+是定义为
+\[
+\delta(1)=1,\qquad \delta(n)=0\quad(n>1)
+\]
+的算术函数。换言之，
+\[
+\sum_{d\mid n}\mu(d)=0,
+\]
+除非 \(n=1\)，此时该和等于 1。通过考察 \(n\) 的素因数分解，很容易验证这一点。
+
+还可以注意到，\(\delta\) 在 Dirichlet 卷积下起到单位元的作用：
+\[
+f=f\star\delta.
+\]
+因此，若 \(g=f\star1\)，则
+\[
+\begin{aligned}
+g\star\mu
+&=(f\star1)\star\mu\\
+&=f\star(1\star\mu)\\
+&=f\star\delta=f.
+\end{aligned}
+\]
+反过来，若 \(g\star\mu=f\)，则
+\[
+\begin{aligned}
+f\star1
+&=(g\star\mu)\star1\\
+&=g\star(\mu\star1)\\
+&=g\star\delta=g.
+\end{aligned}
+\]
+证明完成。□
+
+我们还需要 Möbius 反演的下述变体。
+
+**引理 A.0.2.** 设 \(z\geq1\) 是一个参数。假设有两个算术函数
+\[
+f,g:\mathbf N\to\mathbf C,
+\]
+满足
+\[
+g(\delta)=
+\sum_{\substack{d\leq z\\\delta\mid d}}f(d).
+\tag{A.2}
+\]
+那么
+\[
+f(d)=
+\sum_{\substack{\delta\leq z\\d\mid\delta}}
+\mu\left(\frac{\delta}{d}\right)g(\delta).
+\tag{A.3}
+\]
+
+**证明。** 将 (A.2) 代入 (A.3) 的右端，得到
+\[
+\sum_{d'\leq z}f(d')
+\sum_{d\mid\delta\mid d'}
+\mu\left(\frac{\delta}{d}\right).
+\]
+（注意，条件 \(\delta\leq z\) 已经消失，因为它自动由
+\(d'\leq z\) 且 \(\delta\mid d'\) 推出。）在内层求和中代入
+\(\delta=kd\)，便得到
+\[
+\begin{aligned}
+\sum_{d\mid\delta\mid d'}
+\mu\left(\frac{\delta}{d}\right)
+&=\sum_{k\mid d'/d}\mu(k)\\
+&=1_{d'/d=1}.
+\end{aligned}
+\]
+这就完成了证明。□
+
+*注记。* 在这里，对集合
+\[
+\mathcal D:=\{d:d\leq z\}
+\]
+所使用的全部性质是它具有**约数封闭性**，也就是说，若
+\(d\in\mathcal D\) 且 \(d'\mid d\)，则 \(d'\in\mathcal D\)。因此，对于其他约数封闭集合，也有类似结论。
+
+**约数函数 \(\tau\)。** 回忆，\(\tau(n)\) 是 \(n\) 的（正整数）约数的个数。若
+\[
+n=p_1^{a_1}\cdots p_k^{a_k}
+\]
+是 \(n\) 的素因数分解，那么
+\[
+\tau(n)=(a_1+1)\cdots(a_k+1);
+\]
+\(n\) 的约数恰好是形如
+\[
+p_1^{a_1'}\cdots p_k^{a_k'},
+\qquad 0\leq a_i'\leq a_i
+\]
+的数。
+
+约数函数的一个非常重要的事实——在整个解析数论中都会用到——是**约数估计**：它断言 \(\tau(n)\) 的增长速度慢于 \(n\) 的任意固定正次幂。
+
+**引理 A.0.3（约数估计）。** 对于任意 \(\varepsilon>0\)，存在一个常数 \(C_\varepsilon\)，使得对所有 \(n\)，都有
+\[
+\tau(n)\leq C_\varepsilon n^\varepsilon.
+\]
+
+**证明。** 设
+\[
+n=p_1^{a_1}\cdots p_k^{a_k}
+\]
+是 \(n\) 的素因数分解。对于每个固定的素数 \(p\)，都有
+\[
+\lim_{a\to\infty}
+\frac{a+1}{p^{\varepsilon a}}=0,
+\]
+因此存在某个
+\[
+C=C(p,\varepsilon),
+\]
+使得对于所有自然数 \(a\)，
+\[
+a+1\leq C(p,\varepsilon)p^{a\varepsilon}.
+\]
+此外，由于
+\[
+a+1\leq2^a,
+\]
+当
+\[
+p\geq2^{1/\varepsilon}
+\]
+时，我们可以取
+\[
+C(p,\varepsilon)=1.
+\]
+因此
+\[
+\begin{aligned}
+\tau(n)
+&=\prod_{i=1}^k(a_i+1)\\
+&\leq\prod_iC(p_i,\varepsilon)p_i^{a_i\varepsilon}\\
+&\leq C(\varepsilon)n^\varepsilon,
+\end{aligned}
+\]
+其中
+\[
+C(\varepsilon):=\prod_pC(p,\varepsilon).
+\]
+注意，由于
+\[
+p\geq2^{1/\varepsilon}
+\]
+时 \(C(p,\varepsilon)=1\)，这是一个有限常数。□
+
+**积性函数。** 若算术函数
+\[
+f:\mathbf N\to\mathbf C
+\]
+满足
+\[
+f(ab)=f(a)f(b)
+\]
+对所有互素的 \(a,b\) 成立，则称 \(f\) 为**积性函数**。要特别注意，这一条件并不是说对所有 \(a,b\) 都有
+\(f(ab)=f(a)f(b)\)；后者是一个更强的条件，称为**完全积性**。
+
+Möbius 函数 \(\mu\) 和约数函数 \(\tau\) 都是积性函数，但二者都不是完全积性函数。
+
+可以验证，若
+\[
+f,g:\mathbf N\to\mathbf C
+\]
+是两个积性函数，那么它们的 Dirichlet 卷积
+\(f\star g\) 仍然是积性函数。事实上，若 \(a,b\) 互素，则
+\[
+\begin{aligned}
+(f\star g)(ab)
+&=\sum_{d\mid ab}f\left(\frac{ab}{d}\right)g(d)\\
+&=\sum_{\substack{d_1\mid a\\d_2\mid b}}
+f\left(\frac a{d_1}\frac b{d_2}\right)
+g(d_1d_2)\\
+&=\sum_{d_1\mid a}
+f\left(\frac a{d_1}\right)g(d_1)
+\sum_{d_2\mid b}
+f\left(\frac b{d_2}\right)g(d_2)\\
+&=(f\star g)(a)(f\star g)(b).
+\end{aligned}
+\]
+
+## 附录 B
+
+## 数的几何
+
+本节的主要目标是证明 Minkowski 第二定理。首先简要回顾格的行列式的一些标准性质。
+
+**引理 B.0.1.** 若 \(q\in\mathbf N\)，则
+\[
+\det(q\mathbf Z^d)=q^d.
+\]
+若 \(\Lambda,\Lambda'\) 是两个格，且
+\[
+\Lambda'\subset\Lambda,
+\]
+那么
+\[
+\frac{\det(\Lambda')}{\det(\Lambda)}
+=[\Lambda:\Lambda'],
+\]
+其中右端表示 \(\Lambda'\) 作为 \(\Lambda\) 的子群的指数，也就是说，覆盖 \(\Lambda\) 所需的 \(\Lambda'\) 的陪集个数。
+
+现在回顾 Minkowski 第二定理的陈述，并同时陈述 Minkowski 第一基本定理。在这两个结果中，
+\[
+K\subset\mathbf R^d
+\]
+都是中心对称凸体，而
+\[
+\Lambda\subset\mathbf R^d
+\]
+是一个格。\(K\) 关于 \(\Lambda\) 的连续极小值为
+\[
+\lambda_1,\ldots,\lambda_d.
+\]
+
+**定理 B.0.1（Minkowski 第一基本定理）。** 若
+\[
+\operatorname{vol}(K)>2^d\det(\Lambda),
+\]
+那么 \(K\) 包含 \(\Lambda\) 的一个非零点。
+
+**定理 B.0.2（Minkowski 第二定理）。** 有
+\[
+\lambda_1\cdots\lambda_d\operatorname{vol}(K)
+\leq2^d\det(\Lambda).
+\]
+
+注意，Minkowski 第一基本定理是 Minkowski 第二定理的推论。事实上，若
+\[
+\operatorname{vol}(K)>2^d\det(\Lambda),
+\]
+那么由 Minkowski 第二定理可知
+\[
+\lambda_1\cdots\lambda_d<1.
+\]
+由于
+\[
+\lambda_1\leq\cdots\leq\lambda_d,
+\]
+这意味着 \(\lambda_1<1\)。根据 \(\lambda_1\) 的定义，可知 \(K\) 至少包含 \(\Lambda\) 的一个非零点。
+
+Minkowski 第一基本定理是下面这个结果——Blichfeldt 引理——的一个非常直接的推论。该引理也是证明 Minkowski 第二定理的一个工具。
+
+**引理 B.0.2（Blichfeldt 引理）。** 设
+\[
+K\subset\mathbf R^d,
+\]
+并且
+\[
+\operatorname{vol}(K)>\det(\Lambda).
+\]
+那么存在两个不同的点
+\[
+\mathbf x,\mathbf y\in K,
+\]
+使得
+\[
+\mathbf x-\mathbf y\in\Lambda.
+\]
+
+*注记。* 注意，这里的 \(K\) 不要求是中心对称的，也不要求是凸集。
+
+**证明。** 考虑集合
+\[
+K\cap B(0,R),\qquad R\to\infty.
+\]
+其体积趋于 \(K\) 的体积，因此不妨假设 \(K\) 包含于某个球
+\(B(0,R)\) 内。现在假设结论不成立；那么 \(K\) 的任何平移都不包含两个格点。换言之，对于所有
+\(\mathbf t\in\mathbf R^d\)，都有
+\[
+\sum_{\mathbf x}
+1_K(\mathbf x-\mathbf t)1_\Lambda(\mathbf x)
+\leq1.
+\]
+令 \(R'\) 远大于 \(R\)，并对所有
+\(\mathbf t\in B(0,R')\) 取平均，得到
+\[
+\sum_{\mathbf x}1_\Lambda(\mathbf x)
+\left(
+\frac1{\operatorname{vol}(B(0,R'))}
+\int_{B(0,R')}
+1_K(\mathbf x-\mathbf t)\,d\mathbf t
+\right)
+\leq1.
+\]
+由于
+\[
+K\subset B(0,R),
+\]
+当
+\[
+\|\mathbf x\|\leq R'-R
+\]
+时，内层积分等于 \(\operatorname{vol}(K)\)。因此
+\[
+\sum_{\mathbf x}
+1_\Lambda(\mathbf x)
+1_{B(0,R'-R)}(\mathbf x)
+\leq
+\frac{\operatorname{vol}(B(0,R'))}{\operatorname{vol}(K)},
+\]
+从而
+\[
+\begin{aligned}
+&\frac1{\operatorname{vol}(B(0,R'-R))}
+\sum_{\mathbf x}
+1_\Lambda(\mathbf x)
+1_{B(0,R'-R)}(\mathbf x)\\
+&\qquad\leq
+\frac{\operatorname{vol}(B(0,R'))}
+{\operatorname{vol}(B(0,R'-R))}
+\cdot\frac1{\operatorname{vol}(K)}.
+\end{aligned}
+\tag{B.1}
+\]
+
+然而，通过用基本平行多面体铺砌空间，容易看出
+\[
+\lim_{r\to\infty}
+\frac1{\operatorname{vol}(B(0,r))}
+\sum_{\mathbf x}
+1_\Lambda(\mathbf x)1_{B(0,r)}(\mathbf x)
+=
+\frac1{\det(\Lambda)}.
+\]
+此外，
+\[
+\lim_{R'\to\infty}
+\frac{\operatorname{vol}(B(0,R'))}
+{\operatorname{vol}(B(0,R'-R))}
+=1.
+\]
+与 (B.1) 比较，立即得到
+\[
+\frac1{\det(\Lambda)}
+\leq\frac1{\operatorname{vol}(K)},
+\]
+这与假设矛盾。□
+
+虽然接下来并不正式需要它，我们还是停下来给出 Minkowski 第一基本定理的简单推导。
+
+**证明（Minkowski 第一基本定理）。** 由 Blichfeldt 引理，集合
+\[
+\frac12K
+=
+\left\{\frac12\mathbf x:\mathbf x\in K\right\}
+\]
+包含 \(\Lambda\) 的两个不同点。因此，存在
+\(\mathbf x,\mathbf y\in K\)，使得
+\[
+\frac12(\mathbf x-\mathbf y)\in\Lambda.
+\]
+然而，由于 \(K\) 是凸且中心对称的，
+\[
+\frac12(\mathbf x-\mathbf y)\in K.
+\]
+这就得到了 \(K\) 中一个非零的 \(\Lambda\) 元素。□
+
+现在转向 Minkowski 第二定理的证明。
+
+**证明（Minkowski 第二定理）。** 从技术角度来说，假设 \(K\) 是开集会比较方便；我们可以将 \(K\) 换成其内部
+\(K^\circ\)，从而作出这一假设。取 \(K\) 关于 \(\Lambda\) 的一个方向基
+\[
+\mathbf b_1,\ldots,\mathbf b_d.
+\]
+由于 \(K\) 是开集，
+\[
+\lambda_kK\cap\Lambda
+\]
+由向量
+\[
+\mathbf b_1,\ldots,\mathbf b_{k-1}
+\]
+张成。事实上，若不是这样，我们就可以再选取一个线性无关的向量
+\[
+\mathbf b\in\lambda_kK\cap\Lambda,
+\]
+而由 \(K\) 的开性可知，该向量实际上属于某个
+\[
+(\lambda_k-\varepsilon)K\cap\Lambda,
+\]
+其中 \(\varepsilon>0\)。这与 \(\lambda_k\) 的定义矛盾。
+
+将每个给定的 \(\mathbf x\) 用基向量 \(\mathbf b_i\) 表示为
+\[
+\mathbf x=x_1\mathbf b_1+\cdots+x_d\mathbf b_d.
+\]
+现在定义一些不太寻常的映射
+\[
+\phi_j:K\to K：
+\]
+将 \(\mathbf x\in K\) 映射为包含 \(\mathbf x\) 的切片的重心，其中该切片平行于由
+\[
+\mathbf b_1,\ldots,\mathbf b_{j-1}
+\]
+张成的子空间（当 \(j=1\) 时，
+\[
+\phi_1(\mathbf x)=\mathbf x.
+\]
+）
+
+接下来，定义映射
+\[
+\phi:K\to\mathbf R^d
+\]
+如下：
+\[
+\phi(\mathbf x)
+:=
+\sum_{j=1}^d
+(\lambda_j-\lambda_{j-1})\phi_j(\mathbf x),
+\]
+其中约定
+\[
+\lambda_0=0.
+\]
+
+关于 \(\phi_j\) 与 \(\phi\)，我们再作几点观察。在坐标表示中，
+\[
+\phi_j(\mathbf x)
+=
+\sum_i c_{ij}(\mathbf x)\mathbf b_i,
+\]
+其中当 \(i\geq j\) 时，
+\[
+c_{ij}(\mathbf x)=x_i；
+\]
+而当 \(i<j\) 时，
+\(c_{ij}(\mathbf x)\) 仅依赖于
+\[
+x_j,\ldots,x_d.
+\]
+因此，对于某些连续函数 \(\psi_i\)，有
+\[
+\phi(\mathbf x)
+=
+\sum_{i=1}^d
+\mathbf b_i
+\left(
+\lambda_ix_i+\psi_i(x_{i+1},\ldots,x_d)
+\right).
+\]
+于是容易得到
+\[
+\operatorname{vol}(\phi(K))
+=
+\lambda_1\cdots\lambda_d\operatorname{vol}(K),
+\tag{B.2}
+\]
+因为变换
+\[
+x_i'=\lambda_ix_i+\psi_i(x_{i+1},\ldots,x_d)
+\]
+的 Jacobian 为
+\[
+\lambda_1\cdots\lambda_d.
+\]
+
+为了导出矛盾，假设
+\[
+\lambda_1\cdots\lambda_d\operatorname{vol}(K)
+>
+2^d\det(\Lambda).
+\]
+由 Blichfeldt 引理与 (B.2)，这意味着 \(\phi(K)\) 包含两个元素
+\[
+\phi(\mathbf x),\qquad\phi(\mathbf y),
+\]
+它们之差属于
+\[
+2\Lambda:=\{2\lambda:\lambda\in\Lambda\}.
+\]
+换言之，
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))\in\Lambda.
+\]
+写成
+\[
+\mathbf x=\sum_ix_i\mathbf b_i,\qquad
+\mathbf y=\sum_iy_i\mathbf b_i,
+\]
+并设 \(k\) 是满足
+\[
+x_k\ne y_k
+\]
+的最大指标。那么，对于 \(i>k\)，
+\[
+\phi_i(\mathbf x)=\phi_i(\mathbf y),
+\]
+因此
+\[
+\begin{aligned}
+\frac{\phi(\mathbf x)-\phi(\mathbf y)}2
+&=
+\sum_{j=1}^d(\lambda_j-\lambda_{j-1})
+\left(
+\frac{\phi_j(\mathbf x)-\phi_j(\mathbf y)}2
+\right)\\
+&=
+\sum_{j=1}^k(\lambda_j-\lambda_{j-1})
+\left(
+\frac{\phi_j(\mathbf x)-\phi_j(\mathbf y)}2
+\right).
+\end{aligned}
+\]
+
+这有两个推论。首先，由 \(K\) 的凸性可知，对于所有 \(j\)，
+\[
+\frac12(\phi_j(\mathbf x)-\phi_j(\mathbf y))\in K,
+\]
+因此（再次利用凸性）
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))
+\in\lambda_kK.
+\]
+其次，当将
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))
+\]
+用方向基表示时，我们可以容易地计算出
+\(\mathbf b_k\) 的系数恰好为
+\[
+\frac{\lambda_k(x_k-y_k)}2.
+\]
+特别地，这个系数非零。这意味着
+\[
+\frac12(\phi(\mathbf x)-\phi(\mathbf y))
+\]
+是 \(\Lambda\) 与 \(\lambda_kK\) 中的一个元素，却不属于
+\[
+\mathbf b_1,\ldots,\mathbf b_{k-1}
+\]
+所张成的子空间。这与证明开始时的观察矛盾。□
+
+## 参考文献
+
+[1] H. Davenport，《解析方法在 Diophantine 方程与 Diophantine 不等式中的应用》（*Analytic Methods for Diophantine Equations and Diophantine Inequalities*），第二版。R. C. Vaughan、D. R. Heath-Brown 与 D. E. Freeman 作序。T. D. Browning 编辑并整理出版。Cambridge Mathematical Library，Cambridge University Press，Cambridge，2005。xx+140 页。
+
+[2] B. J. Green，C3.8 课程讲义，在线可得：<https://people.maths.ox.ac.uk/greenbj/papersprimenumbers.pdf>。
+
+[3] H. Iwaniec，《经典自守形式专题》（*Topics in Classical Automorphic Forms*），Graduate Studies in Mathematics，第 17 卷，Springer。
+
+[4] T. D. Wooley，《华林问题的重大改进》（*Large Improvements in Waring’s Problem*），*Annals of Mathematics*（第二辑）135（1992），第 1 期，131–164 页。
+
+[5] G. A. Freiman，《集合加法结构理论基础》（*Foundations of a Structural Theory of Set Addition*），俄文原著英译本。Translations of Mathematical Monographs，第 37 卷。American Mathematical Society，Providence，R. I.，1973。vii+108 页。
