@@ -326,7 +326,7 @@ rp=
 
 ## 1.4. *进一步讨论
 
-平方和有一套丰富的理论。三个平方数之和与类数有关。记 \(h(D)\) 为判别式为 \(D\) 的虚二次域的类数。Gauss 证明，对于大于 3 的平方自由整数 \(d\)，将 \(d\) 表示为三个平方数之和的表示数为
+平方和有一套丰富的理论。三个平方数之和与类数有关。记 \(h(D)\) 为判别式为 \(D\) 的虚二次域的类数。Gauss 证明，对于大于 4 的平方自由整数 \(d\)，将 \(d\) 表示为三个平方数之和的表示数为
 \[
 \begin{cases}
 12h(-4d),&d\equiv1,2\pmod4,\\
@@ -4277,7 +4277,7 @@ A_{r_*}+B_s+U
 \[
 \sigma[A]:=\frac{|A+A|}{|A|}.
 \]
-弱多项式 Freiman–Ruzsa 猜想（weak Polynomial Freiman–Ruzsa conjecture）是如下命题。
+弱多项式 Freiman–Ruzsa 猜想[^1]（weak Polynomial Freiman–Ruzsa conjecture）是如下命题。
 
 **猜想 8.4.1.** 设 \(A\) 是某个仿射空间中的有限子集，且
 \[
@@ -4289,8 +4289,10 @@ A_{r_*}+B_s+U
 \]
 并且
 \[
-\dim A'\ll\log K.
+\dim A'\leq\log K.
 \]
+
+[^1]: “弱”一词是因为这里没有尝试将 \(A\) 的任何一部分有效地放入某个广义等差数列中。这个猜想还有一个更强的版本，其中会尝试做到这一点。
 
 我们将给出 Pálvölgyi 与 Zhelezov 的一个论证，它建立了猜想 8.4.1 的一个弱版本：其中的维数概念被我们称为**斜维数**（skew-dimension）
 \(\dim_*(A)\) 所替代。我们通过以下归纳方式定义它。
@@ -5551,7 +5553,7 @@ x_k\ne y_k
 
 [1] H. Davenport，《解析方法在 Diophantine 方程与 Diophantine 不等式中的应用》（*Analytic Methods for Diophantine Equations and Diophantine Inequalities*），第二版。R. C. Vaughan、D. R. Heath-Brown 与 D. E. Freeman 作序。T. D. Browning 编辑并整理出版。Cambridge Mathematical Library，Cambridge University Press，Cambridge，2005。xx+140 页。
 
-[2] B. J. Green，C3.8 课程讲义，在线可得。
+[2] B. J. Green，C3.8 课程讲义，在线可得：<https://people.maths.ox.ac.uk/greenbj/papersprimenumbers.pdf>。
 
 [3] H. Iwaniec，《经典自守形式专题》（*Topics in Classical Automorphic Forms*），Graduate Studies in Mathematics，第 17 卷，Springer。
 
