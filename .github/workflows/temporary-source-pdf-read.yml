@@ -1,0 +1,49 @@
+name: temporary-source-pdf-read
+on:
+  push:
+    branches:
+      - tmp/read-source-pdf-20261103
+jobs:
+  read-source:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Extract PDF text and OCR
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-chi-sim
+          PDF="materials/何林洲组合.pdf"
+          echo "=== PDFINFO ==="
+          pdfinfo "$PDF"
+          mkdir -p /tmp/source-pdf
+          pdftotext -layout "$PDF" /tmp/source-pdf/text.txt || true
+          nbytes=$(wc -c < /tmp/source-pdf/text.txt)
+          echo "=== EXTRACTED_TEXT_BYTES: $nbytes ==="
+          if [ "$nbytes" -gt 300 ]; then
+            echo "=== SOURCE_TEXT_BEGIN ==="
+            cat /tmp/source-pdf/text.txt
+            echo "=== SOURCE_TEXT_END ==="
+          else
+            echo "=== OCR_MODE ==="
+            pdftoppm -png -r 190 "$PDF" /tmp/source-pdf/page
+            for img in /tmp/source-pdf/page-*.png; do
+              [ -f "$img" ] || continue
+              echo "=== OCR_PAGE: $(basename "$img") ==="
+              tesseract "$img" stdout -l chi_sim+eng --psm 6 2>/dev/null || true
+            done
+          fi
+          echo "=== PAGE_IMAGES_BEGIN ==="
+          pdftoppm -f 1 -l 3 -jpeg -gray -r 115 -jpegopt quality=70 "$PDF" /tmp/source-pdf/preview
+          for img in /tmp/source-pdf/preview-*.jpg; do
+            [ -f "$img" ] || continue
+            echo "PAGE_IMAGE_BASE64_$(basename "$img")_BEGIN"
+            base64 -w 0 "$img"
+            echo
+            echo "PAGE_IMAGE_BASE64_$(basename "$img")_END"
+          done
+          echo "=== PAGE_IMAGES_END ==="
