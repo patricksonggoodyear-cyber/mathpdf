@@ -38,7 +38,7 @@ jobs:
             done
           fi
           echo "=== PAGE_IMAGES_BEGIN ==="
-          pdftoppm -f 4 -l 10 -jpeg -gray -r 115 -jpegopt quality=70 "$PDF" /tmp/source-pdf/preview
+          pdftoppm -f 4 -l 5 -jpeg -gray -r 240 -jpegopt quality=80 "$PDF" /tmp/source-pdf/preview
           for img in /tmp/source-pdf/preview-*.jpg; do
             [ -f "$img" ] || continue
             echo "PAGE_IMAGE_BASE64_$(basename "$img")_BEGIN"
