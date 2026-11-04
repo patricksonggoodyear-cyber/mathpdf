@@ -1440,6 +1440,77 @@ $$
 
 由归纳假设，所有多项式 $\alpha_i f_i(X+1)-\alpha_1 f_i(X)$ 都为零。这意味着它们是常数，于是回到已经处理过的情形，证明完成。
 
+## 注记 C.4.1
+
+本定理等价于有理函数存在唯一的部分分式分解。具体地，若
+
+$$
+h=\frac{f}{g},\qquad
+g=\prod_{i=1}^{r}(X-\alpha_i)^{m_i},\qquad \deg f<\deg g,
+$$
+
+则存在次数分别小于 $m_i$ 的多项式 $f_i$，使得
+
+$$
+h=\sum_{i=1}^{r}\frac{f_i}{(X-\alpha_i)^{m_i}}.
+$$
+
+事实上，固定 $g=\sum_{i=0}^{d}a_iX^i$，则分母为 $g$ 且次数为负的有理函数，恰好对应于特征多项式为
+
+$$
+\widehat g=X^dg(1/X)=\sum_{i=0}^{d}a_{d-i}X^i
+$$
+
+的线性递推的生成函数。若 $(u_n)_{n\geq0}$ 为这样的数列，则
+
+$$
+u_{n+d}=-\frac{1}{a_0}\sum_{k=0}^{d-1}a_{d-k}u_{n+k}.
+$$
+
+令 $h=\sum_{n=0}^{\infty}u_nX^n$，展开并重新排列求和得到
+
+$$
+h=f-\frac{(a_0-g)h}{a_0},
+\qquad\text{故}\qquad h=\frac{a_0f}{g}.
+$$
+
+这里的辅助多项式 $f$ 的次数小于 $d$，其系数依次为
+
+$$
+f=u_0+\left(u_1+\frac{a_1}{a_0}u_0\right)X+
+\left(u_2+\frac{a_1}{a_0}u_1+\frac{a_2}{a_0}u_0\right)X^2+\cdots.
+$$
+
+因此可以逐项选择 $u_i$，得到任意次数小于 $d$ 的多项式 $f$；等价地，这些系数的变换矩阵是对角线上没有零元素的三角矩阵，因此可逆。
+
+另一方面，$\widehat g$ 的根为 $1/\alpha_i$。由线性递推的刻画，存在次数至多为 $m_i-1$ 的多项式 $f_i$，使得
+
+$$
+u_n=\sum_{i=1}^{r}f_i(n)(1/\alpha_i)^n.
+$$
+
+于是
+
+$$
+h=\sum_{i=1}^{r}\sum_{n=0}^{\infty}f_i(n)(X/\alpha_i)^n.
+$$
+
+由于 $f_i$ 可以表示为多项式 $(X+k)(X+k-1)\cdots(X+1)$ 的线性组合，只需研究这样的多项式。由等比级数
+
+$$
+\sum_{n=0}^{\infty}(X/\alpha)^n=\frac{1}{1-X/\alpha}
+=\frac{-\alpha}{X-\alpha}
+$$
+
+出发，原文称求 $k$ 次导数可得
+
+$$
+\sum_{n=0}^{\infty}(n+k)(n+k-1)\cdots(n+1)(X/\alpha)^n
+=\frac{k!}{(X-\alpha)^{k+1}}.
+$$
+
+该等式的比例系数存疑，已列入校对记录。
+
 
 ---
 
