@@ -318,7 +318,7 @@ $$
 $$
 (u,v)\longmapsto uf+vg
 $$
-的行列式，其中该映射从 $R_m[X]\times R_n[X]$ 映到 $R_{m+n}[X]$。证明：若
+的行列式，其中该映射从 $R_n[X]\times R_m[X]$ 映到 $R_{m+n}[X]$。证明：若
 $$
 f=\sum_i a_iX^i,\qquad g=\sum_i b_iX^i,
 $$
@@ -346,7 +346,7 @@ $$
 则
 $$
 \operatorname{Res}(f,g)
-=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\alpha_i-\beta_j).
+=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\beta_j-\alpha_i).
 $$
 
 此外，证明
@@ -368,9 +368,9 @@ $\operatorname{Res}(f,g)\in fR[X]+gR[X]$。）
   $$
   \operatorname{Res}(fg,h)=\operatorname{Res}(f,h)\operatorname{Res}(g,h).
   $$
-- 对任意 $f,g,h\in R[X]$，设 $k=\deg(f-gh)$，$n=\deg g$，且 $b$ 为 $g$ 的首项系数，则
+- 对任意 $f,g,h\in R[X]$，设 $k=\deg(f-gh)$，$d=\deg f$，且 $b$ 为 $g$ 的首项系数，则
   $$
-  \operatorname{Res}(f-gh,g)=b^{k-n}\operatorname{Res}(f,g).
+  \operatorname{Res}(f-gh,g)=b^{k-d}\operatorname{Res}(f,g).
   $$
 - 若 $F,G,f,g\in R[X,Y]$ 是齐次多项式，次数依次为 $m,n,k,k$，则
   $$
