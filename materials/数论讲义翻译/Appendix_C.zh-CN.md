@@ -1666,6 +1666,43 @@ $$
 |S|\geq c_n p^n.
 $$
 
+**习题 C.5.22（Siegel 引理）** 设 $A=(a_{i,j})$ 是一个整系数 $m\times n$ 矩阵。证明：如果 $n>m$，那么方程组
+
+$$
+\sum_{j=1}^n a_{i,j}x_j=0
+$$
+
+（原文写作对 $i=1,\ldots,n$）存在一个整数解，满足
+
+$$
+\max_i|x_i|\leq
+\left(n\max_{i,j}|a_{i,j}|\right)^{\frac{m}{n-m}}.
+$$
+
+**习题 C.5.23** 定义矩阵的迹为其对角线元素之和，而线性映射的迹为其任意表示矩阵的迹。证明这一数值与基的选择无关，因此定义良好。
+
+此外，设 $L/K$ 是一个有限可分扩张，其嵌入为 $\sigma_1,\ldots,\sigma_n$，并设 $\alpha\in K$。证明：线性映射 $x\mapsto x\alpha$ 的迹为
+
+$$
+\sum_{i=1}^n\sigma_i(\alpha).
+$$
+
+这个函数称为扩张 $L/K$ 的迹，记作 $\operatorname{Tr}_{L/K}$。
+
+**习题 C.5.24** $\mathbb F_p$ 上有多少个可逆的 $n\times n$ 矩阵？由此求出 $(\mathbb Z/p\mathbb Z)^n$ 中阶为 $p^m$ 的加法子群的个数。
+
+**习题 C.5.25†** 设 $K$ 是一个域，$S\subseteq K^2$ 是一组点。证明：存在一个多项式 $f\in K[X,Y]$，其次数至多为 $\sqrt{2n}$，并且对所有 $(x,y)\in S$ 都有 $f(x,y)=0$。
+
+**习题 C.5.26†** 给定 $m\times n$ 矩阵 $M$，定义其行秩为它的线性无关行向量的最大个数。类似地，定义列秩为它的线性无关列向量的最大个数。证明这两个数相等，称为 $M$ 的秩，记作 $\operatorname{rank}M$。
+
+**习题 C.5.27** 设 $A,B\in R^{n\times n}$。证明
+
+$$
+\operatorname{com}(AB)=\operatorname{com}(A)\operatorname{com}(B).
+$$
+
+**习题 C.5.28（Nakayama 引理）** 设 $R$ 是一个交换环，$I$ 是 $R$ 的理想，即 $R$ 的一个子模，$M$ 是一个有限生成的 $R$-模。假设 $IM=M$。这里 $IM$ 并非单指 $I$ 与 $M$ 的元素乘积构成的集合，而是这些乘积生成的 $R$-模（即其有限线性组合构成的集合）。证明：存在 $r\in R$，满足 $r\equiv1\pmod I$ 且 $rM=0$。
+
 
 ---
 
@@ -1975,3 +2012,29 @@ $$
 - 章节：习题 C.5.15。
 - 原文设任意代数闭域 $K$，但随后只让 $f\in\mathbb C[X]$。对一般 $K$，应写 $f\in K[X]$，否则未必能计算 $f(M)$。
 - 译文保留原文。
+
+
+### 疑点 46：Siegel 引理的方程数量及非零解
+
+- 章节：习题 C.5.22。
+- 题设矩阵为 $m\times n$，却要求对 $i=1,\ldots,n$ 写方程，应为 $i=1,\ldots,m$。
+- 原文只要求存在一个整数解，没有明确“非零”；零解会使题目平凡化，通常的 Siegel 引理应寻找非零整数解。
+- 译文保留原文的索引说明并记录。
+
+### 疑点 47：迹的定义中元素的所属域
+
+- 章节：习题 C.5.23。
+- 原文设 $L/K$ 为扩张，却写 $\alpha\in K$。通常扩张迹是从 $L$ 到 $K$ 的函数，应为 $\alpha\in L$。译文依原文保留。
+- 置信程度：高。
+
+### 疑点 48：插值零点题缺少点集大小条件
+
+- 章节：习题 C.5.25。
+- 原文写 $S\subseteq K^2$，却没有定义 $n$，并要求次数至多为 $\sqrt{2n}$ 的多项式在所有点上为零。显然需要给出 $|S|=n$ 或类似条件，以及多项式非零的要求。
+- 置信程度：高。
+
+### 疑点 49：余因子矩阵乘积次序
+
+- 章节：习题 C.5.27。
+- 原文定义 $\operatorname{com}(A)=\operatorname{adj}(A)^{\mathsf T}$；伴随矩阵满足 $\operatorname{adj}(AB)=\operatorname{adj}(B)\operatorname{adj}(A)$，因此余因子矩阵乘积公式按转置确实写成 $\operatorname{com}(AB)=\operatorname{com}(A)\operatorname{com}(B)$。
+- 这里仅核对一致性，不视为错误。
