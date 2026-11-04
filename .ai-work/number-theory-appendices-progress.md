@@ -64,3 +64,22 @@
 - Translated C.2 inverse maps, change of basis, kernel/image, rank-nullity and Corollary C.2.1 through the paragraph introducing combinatorial Problem C.2.1; commit ea55df12fbaeb0d468f9dfb8ff629c7de8de0131.
 - Next Appendix C location: '## Problem C.2.1' (boys and girls dancing), then remainder of C.2 and later sections.
 - Important unresolved: inconsistent basis-change formula and missing distinctness assumption for interpolation nodes; these are logged in the Chinese draft.
+
+## Checkpoint — expanded continuation
+
+- Appendix C translated from Problem C.2.1 to Exercise C.3.8, inclusive, in three reviewed blocks:
+  - a1f5ff8a857fc448eb0cf7a7185022ab0ed1678c: C.2 dance matrix application, C.3 introduction, determinant definition and 3x3 expansion.
+  - 2613d30c28a8f00cd7a0707d2c4d8095c3145d04: C.3 multilinearity, column swaps, equal columns, through introductory triangular form.
+  - 7aef67252931b191294417d03a6c5bab6b3a06bb: triangular determinants, invertibility criterion, algebraic-integer criterion, closure under sum/product.
+- Appendix A Chinese beginning A.1: corrected distributivity term to multiplication over addition, commit 4940d0010b3a586b14eb6d7b09cbf0c86bc781cf.
+- Outstanding source anomalies: C.3.1 matrix right/left inverse strict inequalities; determinant Laplace term OCR corruption; C.3.2 and C.3.3 circular proof; upper/lower triangular contradiction; missing nonzero Z-module in integral criterion; inconsistent determinant trick prose.
+- Next Appendix C location: "Before presenting more applications, we need two last results. Here is an explicit formula for the determinant..." followed by Lemma C.3.1 and Theorem C.3.2 Vandermonde. Verify Vandermonde sign with row-wise entries before translating; original formula and proof appear inconsistent.
+- Repository main tree was checked: no newly added number-theory PDF/scans were visible; only pre-existing materials/何林洲组合.pdf, which is unrelated. Re-check if original source is subsequently uploaded to the repo/chat.
+- Appendix A/B full comparison still incomplete. A/B files not marked done. User prefers larger work chunks.
+
+## Checkpoint — through Vandermonde
+
+- Translated Lemma C.3.1, Theorem C.3.2 (Vandermonde), Corollary C.3.2*, and Remark C.3.2. Commit 24454454fcaf1f149e27689d560ba412e3b67da0.
+- The source Vandermonde formula has the reversed sign for the displayed row-oriented matrix; its proof says duplicate columns instead of rows and specifies a monomial of impossible total degree. These are retained and flagged, not silently corrected without scan.
+- Next source location: "Here is an arithmetic application, which is exactly how we will use the Vandermonde determinant..." / Problem C.3.1, then alternative cows proof, determinant signature and subsequent C sections.
+- Appendices A and B full translation proofreading remains incomplete.
