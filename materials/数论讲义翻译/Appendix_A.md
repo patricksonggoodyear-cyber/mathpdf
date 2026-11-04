@@ -212,7 +212,7 @@ $$
 a _ {n - k} = (- 1) ^ {k} \sum_ {i _ {1} <   \dots <   i _ {k}} \alpha_ {i _ {1}} \cdot \dots \cdot \alpha_ {i _ {k}}
 $$
 
-for any $k = 0 , \ldots , n - 1 .$
+for any $k = 0 , \ldots , n .$
 
 ## Proof
 
