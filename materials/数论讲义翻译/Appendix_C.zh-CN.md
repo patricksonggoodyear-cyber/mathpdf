@@ -257,6 +257,99 @@ $$
 
 最后，因为 $e_1,\ldots,e_{n+1}$ 是一个基，通过取这些 $f_i$ 的线性组合，就得到了所需的结论。
 
+现在回到较为抽象的问题。给定基 $\mathcal{B}:=(u_1,\ldots,u_m)$ 与 $\mathcal{C}:=(v_1,\ldots,v_n)$，将线性映射 $\varphi$ 关于基 $\mathcal{B}$ 和 $\mathcal{C}$ 的矩阵表示记为
+
+$$
+M_{\mathcal{B}}^{\mathcal{C}}(\varphi)=
+\begin{bmatrix}
+a_{1,1}&a_{1,2}&\cdots&a_{1,m}\\
+a_{2,1}&a_{2,2}&\cdots&a_{2,m}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{n,1}&a_{n,2}&\cdots&a_{n,m}
+\end{bmatrix}.
+$$
+
+注意，我们用指标 $j$ 标记定义域的基向量，用指标 $i$ 标记陪域的基向量。因此，为了得到 $\varphi$ 的矩阵，需要把 $\varphi(u_1),\ldots,\varphi(u_m)$ 分别表示成列向量：
+
+$$
+\begin{bmatrix}a_{1,1}\\a_{2,1}\\\vdots\\a_{n,1}\end{bmatrix},
+\ldots,
+\begin{bmatrix}a_{1,m}\\a_{2,m}\\\vdots\\a_{n,m}\end{bmatrix},
+$$
+
+然后将它们拼接起来。
+
+## 定义 C.2.2（矩阵）
+
+一个 $m\times n$ 矩阵是一个元素族 $(a_{i,j})_{(i,j)\in[m]\times[n]}$，记作
+
+$$
+\begin{bmatrix}
+a_{1,1}&\cdots&a_{1,n}\\
+\vdots&\ddots&\vdots\\
+a_{m,1}&\cdots&a_{m,n}
+\end{bmatrix}.
+$$
+
+系数属于 $K$ 的所有 $m\times n$ 矩阵组成的集合记作 $K^{m\times n}$；当 $n=1$ 时，简记为 $K^m$。
+
+注意，后一记法与笛卡儿积的记法重合，而且 $K^m$ 的元素是列向量，而不是行向量！更麻烦的是，由于列向量会占用太多空间，我们甚至仍将 $K^m$ 的元素写成 $(a_1,\ldots,a_m)$。
+
+下面说明如何定义两个矩阵 $A$ 与 $B$ 的积。设 $U\xrightarrow{\varphi}V\xrightarrow{\psi}W$。如果 $A$ 和 $B$ 分别是 $\psi$ 和 $\varphi$ 的矩阵，我们希望 $AB$ 对应于复合映射 $\psi\circ\varphi$ 的矩阵，其中 $W$ 有一个基 $\mathcal{D}=(w_1,\ldots,w_\ell)$。因此计算
+
+$$
+\begin{aligned}
+\psi(\varphi(u_j))
+&=\psi\left(\sum\limits_k b_{k,j}v_k\right)\\
+&=\sum\limits_k b_{k,j}\psi(v_k)\\
+&=\sum\limits_k b_{k,j}\sum\limits_i a_{i,k}w_i\\
+&=\sum\limits_i w_i\sum\limits_k a_{i,k}b_{k,j}.
+\end{aligned}
+$$
+
+于是定义 $(a_{i,j})(b_{i,j})=(c_{i,j})$，其中
+
+$$
+c_{i,j}=\sum\limits_k a_{i,k}b_{k,j}.
+$$
+
+也就是说，$c_{i,j}$ 是 $A$ 的第 $i$ 行与 $B$ 的第 $j$ 列的数量积。（特别地，只有矩阵的维数相容时才能定义乘积：例如 $m\times n$ 与 $n\times\ell$。）
+
+## 定义 C.2.3（矩阵乘法）
+
+两个维数分别为 $m\times n$ 与 $n\times\ell$ 的矩阵 $(a_{i,j})$ 和 $(b_{i,j})$ 的积，是维数为 $m\times\ell$ 的矩阵 $(c_{i,j})$，其中
+
+$$
+c_{i,j}=\sum\limits_k a_{i,k}b_{k,j}.
+$$
+
+矩阵乘法显然满足结合律，因为映射复合满足结合律。不过，矩阵乘法一般不满足交换律。类似地，矩阵加法按分量定义，因为我们希望线性映射 $\varphi$ 与 $\psi$ 的矩阵之和对应于 $\varphi+\psi$。（我们不把矩阵乘法定义为对应线性映射的乘法，因为这样的乘法一般并没有意义：$x\mapsto x\cdot x$ 不是线性映射。）
+
+**习题 C.2.1\*** 证明
+
+$$
+\begin{bmatrix}1&0\\0&0\end{bmatrix}
+\begin{bmatrix}1&1\\0&0\end{bmatrix}
+=
+\begin{bmatrix}1&1\\0&0\end{bmatrix},
+$$
+
+但
+
+$$
+\begin{bmatrix}1&1\\0&0\end{bmatrix}
+\begin{bmatrix}1&0\\0&0\end{bmatrix}
+=
+\begin{bmatrix}1&0\\0&0\end{bmatrix}.
+$$
+
+**习题 C.2.2\*** 证明矩阵乘法对矩阵加法满足分配律，即对任意维数相容的 $A,B,C$，有
+
+$$
+A(B+C)=AB+AC,\qquad
+(A+B)C=AC+BC.
+$$
+
 
 ---
 
@@ -316,3 +409,18 @@ $$
 - 章节：注记 C.2.1 后对 $\textit{Lagrange}$ 插值定理的回顾。
 - 原文在 $K^{n+1}$ 中使用基 $e_1,\ldots,e_{n+1}$，却写 $(f_i(a_1),\ldots,f_i(a_n))=e_i$，仅列出 $n$ 个坐标。
 - 可能的正确内容应有 $n+1$ 个插值节点；需核查定理 A.1.2 的原文和原始扫描。
+
+
+### 疑点 10：线性映射矩阵的行列数及指标
+
+- 章节：C.2 节，定义 C.2.2 之前。
+- 原文以 $m$ 个定义域基向量、$n$ 个陪域基向量为前提，却给出了 $m$ 行、$n$ 列的矩阵，并在后面的列向量中交换了指标范围。
+- 根据 $\varphi(u_j)=\sum_i a_{i,j}v_i$，矩阵应为 $n\times m$。译文采用这一可由定义确定的形式；建议核对印刷原文。
+- 置信程度：高。
+
+### 疑点 11：矩阵乘法前的基标记
+
+- 章节：定义 C.2.3 前的复合映射解释。
+- 原文的 $A=M_{\mathcal C}^{B}(\psi)$、$S=M_{\mathcal D}^{\mathcal C}(\varphi)$ 与 $U\xrightarrow{\varphi}V\xrightarrow{\psi}W$ 不一致；按映射方向应分别对应 $\psi$ 和 $\varphi$ 的适当定义域与陪域基。
+- 译文保留复合映射的数学解释，未照搬明显冲突的基下标。
+- 置信程度：高。
