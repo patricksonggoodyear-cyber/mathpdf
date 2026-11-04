@@ -60,3 +60,7 @@
 - Identified inconsistent matrix-of-map basis markings in English original.
 - Next Appendix C sentence: 'Suppose we want to invert a linear map...' in C.2, followed by change of bases, kernel/image and rank-nullity.
 - A and B still require full review; MathJax not runtime-verified.
+
+- Translated C.2 inverse maps, change of basis, kernel/image, rank-nullity and Corollary C.2.1 through the paragraph introducing combinatorial Problem C.2.1; commit ea55df12fbaeb0d468f9dfb8ff629c7de8de0131.
+- Next Appendix C location: '## Problem C.2.1' (boys and girls dancing), then remainder of C.2 and later sections.
+- Important unresolved: inconsistent basis-change formula and missing distinctness assumption for interpolation nodes; these are logged in the Chinese draft.
