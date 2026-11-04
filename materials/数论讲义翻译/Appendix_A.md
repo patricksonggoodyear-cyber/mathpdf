@@ -64,7 +64,7 @@ Let $f,g\in K[X]$ be polynomials, with $g\neq0$. There exist polynomials $q,r\in
 
 Start with the uniqueness part. If $gq+r=f=gq'+r'$, then $(q-q')g=r'-r$. If $q\neq q'$, then $\deg((q-q')g)\geq\deg g>\deg(r'-r)$, which is impossible.
 
-We now proceed by induction on $\deg f$ to prove the existence, for a fixed $g$. If $\deg f<\deg g$, we are already done: $f=g\cdot0+f$. Otherwise, let $a$ and $b$ be the leading coefficients of $f$ and $g$, respectively, which are non-zero since $\deg f\geq\deg g\geq0$. The polynomial $f-ab^{-1}X^{\deg f-\deg g}g$ has degree less than $\deg g$, so by the induction hypothesis there exist polynomials $q$ and $r$ such that $\deg r<\deg g$ and
+We now proceed by induction on $\deg f$ to prove the existence, for a fixed $g$. If $\deg f<\deg g$, we are already done: $f=g\cdot0+f$. Otherwise, let $a$ and $b$ be the leading coefficients of $f$ and $g$, respectively, which are non-zero since $\deg f\geq\deg g\geq0$. The polynomial $f-ab^{-1}X^{\deg f-\deg g}g$ has degree less than $\deg f$, so by the induction hypothesis there exist polynomials $q$ and $r$ such that $\deg r<\deg g$ and
 
 $$
 f - a b ^ {- 1} X ^ {\deg f - \deg g} g = g q + r
