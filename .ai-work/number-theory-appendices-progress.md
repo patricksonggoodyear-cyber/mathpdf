@@ -41,3 +41,26 @@
 2. Continue complete English-Chinese comparisons of Appendices A and B, one complete mathematical unit at a time.
 3. Re-fetch SHA before updates; commit reviewed changes to main.
 4. Final check all definitions, formulas, footnotes, cross-references and Obsidian/MathJax syntax.
+
+
+## Checkpoint 2026-11-04 — continuation
+
+- Completed Chinese translation of Appendix C section C.1, through Proposition C.1.4, commit b6eaa73d2e89f412788e8665efc383877e2ab3ff.
+- Translated the beginning of C.2 through discussion of Lagrange interpolation, commit 24a3173c2e09197604aa7da2bd761cce589d6cfd.
+- Source issues noted in Chinese uncertainty report: incomplete vector-space axioms, invalid F_p-vector-space example, integer cow weights induction argument, corrupted elimination coefficient indices, power-versus-iteration ambiguity, finite-field characteristic proof, interpolation coordinates.
+- The preceding Current Task / Pending text is superseded for Appendix C: C.1 is now translated; C.2 is partially translated. Resume at 'We come back to more abstract considerations. Given the bases...' in the English Appendix C.md (matrix representation), continuing through C.2 and later sections.
+- Appendix A and B whole-document translation checking is still incomplete and must be performed separately, not marked completed.
+- Review the Chinese Appendix C uncertainty report and place unique Obsidian block anchors for outstanding points before finalizing.
+- MathJax rendering has not yet been tested in Obsidian.
+
+## Further checkpoint — matrices
+
+- Chinese translation of C.2 extended through Exercise C.2.2, commit c327ddc9afd5db934011dafa17840c9bc0c6a892.
+- Corrected a high-confidence matrix shape OCR/error (matrix for U dimension m -> V dimension n is n rows by m columns), preserving an editorial report of the original mismatch.
+- Identified inconsistent matrix-of-map basis markings in English original.
+- Next Appendix C sentence: 'Suppose we want to invert a linear map...' in C.2, followed by change of bases, kernel/image and rank-nullity.
+- A and B still require full review; MathJax not runtime-verified.
+
+- Translated C.2 inverse maps, change of basis, kernel/image, rank-nullity and Corollary C.2.1 through the paragraph introducing combinatorial Problem C.2.1; commit ea55df12fbaeb0d468f9dfb8ff629c7de8de0131.
+- Next Appendix C location: '## Problem C.2.1' (boys and girls dancing), then remainder of C.2 and later sections.
+- Important unresolved: inconsistent basis-change formula and missing distinctness assumption for interpolation nodes; these are logged in the Chinese draft.
