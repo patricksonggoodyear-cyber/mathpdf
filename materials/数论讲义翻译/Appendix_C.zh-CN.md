@@ -2011,6 +2011,88 @@ $$
 
 倒数第二步利用了注记 C.3.4。
 
+**习题 C.3.17** 证明有限扩张中乘以 $\alpha$ 的线性映射的行列式等于范数。
+
+### 解答
+
+首先处理 $L=K(\alpha)$ 的情形。取基 $1,\alpha,\ldots,\alpha^{n-1}$，设 $\alpha$ 的极小多项式为
+
+$$
+f=X^n+a_{n-1}X^{n-1}+\cdots+a_0.
+$$
+
+关于这一基，映射 $x\mapsto x\alpha$ 的矩阵是
+
+$$
+\begin{bmatrix}
+0&0&\cdots&0&-a_0\\
+1&0&\cdots&0&-a_1\\
+0&1&\cdots&0&-a_2\\
+\vdots&\vdots&\ddots&\vdots&\vdots\\
+0&0&\cdots&1&-a_{n-1}
+\end{bmatrix}.
+$$
+
+根据定理 C.3.3，其行列式为 $-\varepsilon(\sigma)a_0$，其中 $\sigma$ 是循环置换 $(1,2,\ldots,n)$。而由 Viète 公式，$\alpha$ 的共轭数的乘积为 $(-1)^na_0$。因此只需证明 $\varepsilon(\sigma)=(-1)^{n-1}$。事实上，
+
+$$
+\sigma=(1,n)\circ\cdots\circ(1,3)\circ(1,2)
+$$
+
+是 $n-1$ 个对换的复合。
+
+现在考虑一般情况。注意范数具有乘法性：对于任意线性映射 $\varphi,\psi$，行列式满足
+
+$$
+\det(\varphi\circ\psi)=\det\varphi\cdot\det\psi.
+$$
+
+而映射 $x\mapsto\alpha x$ 与 $x\mapsto\beta x$ 的复合是 $x\mapsto\alpha\beta x$，故 $\alpha\beta$ 的范数是 $\alpha$ 与 $\beta$ 的范数之积。
+
+随后，选取 $L/K$ 的本原元 $\gamma$，使得 $\alpha/\gamma$ 也是本原元。原文指出，可以从一个固定本原元 $\delta$ 出发，适当选取 $a,b\in K$ 并令 $\gamma=a\delta+b$，避开使得
+
+$$
+\frac{\sigma(\alpha)}{\sigma(\gamma)}=\frac{\alpha}{\gamma}
+\iff
+\sigma(\gamma)=\gamma\frac{\sigma(\alpha)}{\alpha}
+$$
+
+成立的情形。利用上述乘法性及本原元情形得到
+
+$$
+\begin{aligned}
+N_{L/K}(\alpha)
+&=N_{L/K}(\gamma)N_{L/K}(\alpha/\gamma)\\
+&=\prod_{\sigma\in\operatorname{Emb}_K(L)}\sigma(\gamma)
+\prod_{\sigma\in\operatorname{Emb}_K(L)}\sigma(\alpha/\gamma)\\
+&=\prod_{\sigma\in\operatorname{Emb}_K(L)}\sigma(\alpha).
+\end{aligned}
+$$
+
+这就完成证明。
+
+**习题 C.3.18\*** 证明 $\operatorname{adj}(A)A=(\det A)I_n$。
+
+### 解答
+
+设 $\operatorname{adj}(A)A=(b_{i,j})$。这次有
+
+$$
+b_{i,j}=\sum_{k=1}^n(-1)^{i+k}\det A_{k,i}\,a_{k,j}.
+$$
+
+当 $i=j$ 时，这就是对 $A$ 的行列式沿第 $i$ 列展开的公式，因此等于 $\det A$。当 $i\neq j$ 时，它是把 $A$ 的第 $i$ 列换成第 $j$ 列后得到的矩阵的行列式；该矩阵有两列相同，故其行列式为零。
+
+## C.4 线性递推
+
+**习题 C.4.1** 证明：在特征为 $p\neq0$ 的域上，只要各根重数至多为 $p$，定理 C.4.1 仍成立。
+
+### 解答
+
+只需核验这一点：如果 $f_i(n)=0$ 对所有 $n\in\mathbb Z$ 都成立，并且 $\deg f_i$ 小于 $\alpha_i$ 的重数（因而小于 $p$），那么 $f_i=0$。
+
+这确实成立，因为在特征为 $p$ 的域中，整数的像恰有 $p$ 个元素。所以 $f_i$ 有 $p$ 个不同根，而其次数小于 $p$，于是它只能是零多项式。
+
 
 ---
 
@@ -2374,3 +2456,17 @@ $$
 
 - 章节：习题 C.3.9 解答。
 - 原文一处使用 $a_{2,\sigma(2)}$，但按列展开及后续公式应为 $a_{\sigma(2),2}$。译文按前后文统一指标。
+
+
+### 疑点 55：C.3.17 的本原元与可分性前提
+
+- 章节：习题 C.3.17 的解答。
+- 原文对任意有限扩张 $L/K$ 使用本原元 $\gamma$ 及 $K$-嵌入的乘积，但一般有限不可分扩张未必有本原元，也不能仅用不同嵌入的乘积代表范数。
+- 原文需要补充有限可分扩张等条件，或者使用包含不可分重数的范数定义。
+- 原文中通过选取 $\gamma=a\delta+b$ 避免特定条件的论述还可能需要 $K$ 无限等假设。
+
+### 疑点 56：C.3.17 的 $\alpha=0$ 情形
+
+- 解答在一般情况下写 $\alpha/\gamma$ 及 $\sigma(\alpha)/\alpha$，后者当 $\alpha=0$ 时没有定义。零元素应单独处理。
+- 译文按原文保留该步骤并报告。
+
