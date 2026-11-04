@@ -350,6 +350,118 @@ A(B+C)=AB+AC,\qquad
 (A+B)C=AC+BC.
 $$
 
+假设我们想求一个线性映射的逆映射，也就是说，要寻找另一个线性映射 $\varphi^{-1}$，使得 $\varphi\circ\varphi^{-1}=\operatorname{id}$。恒等映射的矩阵（使用同一个基）很容易描述：它在主对角线上都是 $1$，其他位置都是 $0$，
+
+$$
+M_{\mathcal{B}}^{\mathcal{B}}(\operatorname{id})
+=
+\begin{bmatrix}
+1&0&\cdots&0\\
+0&1&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\cdots&1
+\end{bmatrix}
+=:I_n,
+$$
+
+因为
+
+$$
+\operatorname{id}(e_j)
+=e_j=0e_1+\cdots+0e_{j-1}+e_j+0e_{j+1}+\cdots+0e_n.
+$$
+
+这个矩阵称为单位矩阵。因此，我们希望能够求矩阵的逆。这样做有什么用呢？例如，它使我们能够进行基变换。假设我们最初希望用基 $\mathcal{B}=(u_1,\ldots,u_m)$ 和 $\mathcal{C}=(v_1,\ldots,v_n)$ 表示 $\varphi$，随后却决定改用 $\mathcal{B}'=(u'_1,\ldots,u'_m)$ 和 $\mathcal{C}'=(v'_1,\ldots,v'_n)$。考虑两个线性映射 $\varphi_U(u_j)=u'_j$ 和 $\varphi_V(v_j)=v'_j$。显然，
+
+$$
+M_{\mathcal{B}'}^{\mathcal{C}'}(\varphi)
+=
+M_{\mathcal{B}}^{\mathcal{C}}
+\left(\varphi_V^{-1}\circ\varphi\circ\varphi_U\right),
+$$
+
+这是因为，右侧复合 $\varphi_U$ 把 $u_j$ 变成 $u'_j$，而左侧复合 $\varphi_V^{-1}$ 把 $v'_i$ 变回 $v_i$。
+
+因此，可以通过变基矩阵得到新旧矩阵表示之间的关系。特别令人感兴趣的是 $U=V$、$\mathcal{B}=\mathcal{C}$ 以及 $\mathcal{B}'=\mathcal{C}'$ 的情形。此时得到形如 $M'=NMN^{-1}$ 的等式。
+
+最后，我们证明一个联系线性映射的满射性与单射性的结果：从有限维向量空间到自身的线性映射，如果是单射，那么它也是满射；反之亦然。这个结论在无限维情形下是错误的，但我们只关心有限维情形，所以不受影响。回顾态射的核和像的定义。注意，如果 $\varphi$ 是线性的，那么 $\ker\varphi$ 和 $\operatorname{im}\varphi$ 都是向量空间（因为它们对加法和数乘封闭）。
+
+## 定义 C.2.4（核与像）
+
+设 $\varphi\colon U\to V$ 是一个线性映射。其核 $\ker\varphi$ 是所有满足 $\varphi(u)=0$ 的 $u\in U$ 组成的集合；其像 $\operatorname{im}\varphi$ 是所有满足存在 $u\in U$ 使 $\varphi(u)=v$ 的 $v\in V$ 组成的集合。
+
+## 定理 C.2.1（秩—零化度定理）
+
+设 $\varphi\colon U\to V$ 是有限维向量空间之间的线性映射。那么
+
+$$
+\dim\ker\varphi+\dim\operatorname{im}\varphi=\dim U.
+$$
+
+## 注记 C.2.2
+
+这个定理称为“秩—零化度定理”，因为 $\dim\operatorname{im}\varphi$ 也称为秩，而零化度指的是 $\dim\ker\varphi$。
+
+## 证明
+
+设 $u_1,\ldots,u_k$ 是 $\ker\varphi$ 的一个基，而 $\varphi(u'_1),\ldots,\varphi(u'_m)$ 是 $\operatorname{im}\varphi$ 的一个基。我们证明 $u_1,\ldots,u_k,u'_1,\ldots,u'_m$ 是 $U$ 的一个基。
+
+首先证明这些向量线性无关。假设
+
+$$
+\sum\limits_i a_i u_i+\sum\limits_i b_i u'_i=0.
+$$
+
+对两边施加 $\varphi$，得到
+
+$$
+\sum\limits_i b_i\varphi(u'_i)=0.
+$$
+
+由于 $\varphi(u'_1),\ldots,\varphi(u'_m)$ 线性无关，故 $b_1=\cdots=b_m=0$。于是 $\sum\limits_i a_iu_i=0$，再由 $u_1,\ldots,u_k$ 的线性无关性得到所有 $a_i=0$。
+
+下面证明这些向量张成 $U$。任取 $u\in U$，将其像写作
+
+$$
+\varphi(u)=\sum\limits_i b_i\varphi(u'_i).
+$$
+
+于是
+
+$$
+\varphi\left(u-\sum\limits_i b_i u'_i\right)=0.
+$$
+
+这意味着 $u-\sum\limits_i b_i u'_i\in\ker\varphi$，因此
+
+$$
+u-\sum\limits_i b_i u'_i=\sum\limits_i a_i u_i
+\iff
+u=\sum\limits_i a_i u_i+\sum\limits_i b_i u'_i.
+$$
+
+正是所要证明的结论。
+
+## 推论 C.2.1*
+
+线性映射 $U\to U$ 是单射，当且仅当它是满射。换言之，方阵存在右逆矩阵，当且仅当它存在左逆矩阵。
+
+## 证明
+
+线性映射是单射，当且仅当它的核是平凡的，即其维数为 $0$。根据秩—零化度定理，这等价于 $\dim\operatorname{im}\varphi=\dim U$，也就是 $\varphi$ 为满射。
+
+一个 $n\times n$ 矩阵 $A$ 有右逆矩阵，当且仅当由 $B\mapsto AB$ 定义的从 $K^{n\times n}$ 到自身的线性映射是满射。如果 $A^{-1}$ 是这个右逆矩阵，那么 $A(A^{-1}A)=A$，由该映射的单射性（根据秩—零化度定理）推出 $A^{-1}A=I_n$，因此 $A^{-1}$ 也是左逆矩阵。反过来，如果 $A$ 有左逆矩阵，那么映射 $B\mapsto AB$ 是单射，因此也是满射。
+
+另一个推论是，我们可以根据 $\textit{Lagrange}$ 插值定理（定理 A.1.2）的唯一性部分推出存在性部分：对于任意 $a_1,\ldots,a_n\in K$，考虑从次数小于 $n$ 的多项式组成的向量空间 $K_n[X]$ 到 $K^n$ 的映射
+
+$$
+f\longmapsto(f(a_1),\ldots,f(a_n)).
+$$
+
+这一映射是单射，因此也一定是满射，因为 $K_n[X]$ 和 $K^n$ 的维数都等于 $n$。
+
+接下来给出一个组合数学的应用，它使用了矩阵的右逆也是左逆这一事实。
+
 
 ---
 
@@ -424,3 +536,18 @@ $$
 - 原文的 $A=M_{\mathcal C}^{B}(\psi)$、$S=M_{\mathcal D}^{\mathcal C}(\varphi)$ 与 $U\xrightarrow{\varphi}V\xrightarrow{\psi}W$ 不一致；按映射方向应分别对应 $\psi$ 和 $\varphi$ 的适当定义域与陪域基。
 - 译文保留复合映射的数学解释，未照搬明显冲突的基下标。
 - 置信程度：高。
+
+
+### 疑点 12：变基公式的映射顺序与指标
+
+- 章节：C.2 节的变基讨论。
+- 原文多处基上下标顺序与 $\varphi_U,\varphi_V$ 的复合方向不一致，最后只写出相似变换形式 $M'=NMN^{-1}$。
+- 译文给出与所列映射 $\varphi_U(u_j)=u'_j$、$\varphi_V(v_j)=v'_j$ 相容的复合关系；并未将不确定的展开矩阵等式写成已经核实的事实。
+- 置信程度：中（原始记号错误明显，但需用原书核对）。
+
+### 疑点 13：插值映射单射性的条件
+
+- 章节：推论 C.2.1 后的 $\textit{Lagrange}$ 插值讨论。
+- 原文称对于任意 $a_1,\ldots,a_n\in K$，取值映射都是单射；但若节点重复，则并非单射。
+- 应检查定理 A.1.2 的前提是否要求节点两两不同。译文保留原文。
+
