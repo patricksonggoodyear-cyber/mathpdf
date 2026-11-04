@@ -127,3 +127,14 @@
 - Appendix A corrected Vieta's formula range k=0,...,n (was to n-1, contradicting a_0 formula immediately below) in English and Chinese: commits 946f2b4238ecd1874514312f05b439fa68ecbcf5 and 6b27417371342145473ae03462170932ee92673c.
 - A/B currently only selectively proofread, NOT exhaustively checked. Next: resume Appendix A at A.1 theorem after Lagrange Interpolation or move through A.2 and remaining sections, and Appendix B after B.4.5 through end. Consult Appendix_B_checked.md as a useful corrected English guide; still verify mathematics.
 - Files available in the conversation contain one long pasted TXT instruction file only. No number theory original scans/PDF accessible via Files list. GitHub tree previously had no number-theory PDF either.
+
+## Further A/B detailed checks and corrections
+
+- Appendix A sections A.1 through beginning A.2 selectively compared against English; identified three further high-confidence source/translation errors:
+  - Vieta k range corrected to n (not n-1); see earlier checkpoint.
+  - A.2.1 ring inverse exercise erroneously asserted every nonzero ring element has a multiplicative inverse. Updated to conditional uniqueness in both original English and Chinese: 1680e885047fbf85fe1fc89d42f1001f4bd87a45, 47247918e03bdec254bffa0bfce41b756f7441bf.
+  - Euclidean polynomial gcd worked example erroneously continued (X,0) -> (0,0) and claimed terminal pair {0,h}; corrected both source and translation to stop at {h,0}: f16f238590e04710bcef15302dbbb30f2eeb7cf4, 99b400af836ce0601fe28b18180854fa7f7ca8d1.
+- Appendix B compared first B.1/B.2/B.3 and B.4 resultant exercises with Appendix_B_checked.md. Corrected reduction to real coefficients and three resultant differences (domain order, root-product sign, exponent). Full B remaining sections not exhaustively proofread.
+- Important unresolved original math problems requiring manual check: A.2.3 calls characteristic the smallest m for which ring contains a copy of Z/mZ; this can be false depending on subring unit convention. A.3.6 degree of discrete derivative requires characteristic zero or n nonzero in K. A.2.5 field definition should exclude zero ring if rings allow 1=0. B.4.5 resultant factor b^(k-deg f) may involve negative exponents over a general commutative ring, demanding additional hypotheses.
+- Most recent files.list of conversation files found only the pasted TXT editing instructions, no original scan/PDF; GitHub tree also not yet showed the number-theory source scan.
+- Next: thorough A.2, A.3, A solutions; B.4 and B solutions; then C formulas cross-check against scan and Obsidian rendering.
