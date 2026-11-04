@@ -52,3 +52,11 @@
 - Appendix A and B whole-document translation checking is still incomplete and must be performed separately, not marked completed.
 - Review the Chinese Appendix C uncertainty report and place unique Obsidian block anchors for outstanding points before finalizing.
 - MathJax rendering has not yet been tested in Obsidian.
+
+## Further checkpoint — matrices
+
+- Chinese translation of C.2 extended through Exercise C.2.2, commit c327ddc9afd5db934011dafa17840c9bc0c6a892.
+- Corrected a high-confidence matrix shape OCR/error (matrix for U dimension m -> V dimension n is n rows by m columns), preserving an editorial report of the original mismatch.
+- Identified inconsistent matrix-of-map basis markings in English original.
+- Next Appendix C sentence: 'Suppose we want to invert a linear map...' in C.2, followed by change of bases, kernel/image and rank-nullity.
+- A and B still require full review; MathJax not runtime-verified.
