@@ -92,7 +92,7 @@ This will, as in $\mathbb{Z}$, eventually produce the pair $\{0,h\}$ where $h$ i
 
 Exercise A.1.4*. Prove that the gcd of $0$ and $0$ is $0$.
 
-Exercise A.1.5*. Prove that the Euclidean algorithm produces the gcd. Deduce that the gcd of two polynomials in $K[X]$ is also in $K[X]$. (As a consequence, the fundamental theorem of algebra, Theorem A.1.1, implies that two polynomials with rational coefficients are coprime in $\mathbb{Q}[X]$ if and only if they have a common complex root.)
+Exercise A.1.5*. Prove that the Euclidean algorithm produces the gcd. Deduce that the gcd of two polynomials in $K[X]$ is also in $K[X]$. (As a consequence, the fundamental theorem of algebra, Theorem A.1.1, implies that two polynomials with rational coefficients are coprime in $\mathbb{Q}[X]$ if and only if they have no common complex root.)
 
 Exercise A.1.6* (Bézout’s Lemma). Consider two polynomials $f,g\in K[X]$. Prove that there exist polynomials $u,v\in K[X]$ such that $uf+vg=\gcd(f,g)$.
 
