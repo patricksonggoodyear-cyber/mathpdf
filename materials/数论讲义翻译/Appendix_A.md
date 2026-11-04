@@ -370,7 +370,7 @@ We say a set $R$ with two operations $+$ and $\cdot$ from $R^2$ to $R$ is a ring
 
 7. $\cdot$ distributes over $+$: for any $a,b,c\in R$, $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$.
 
-Exercise A.2.1<sup>∗</sup>. Prove that $1_R$ and $0_R$ are unique, and that any element has a unique additive inverse and a unique multiplicative inverse if it is non-zero.
+Exercise A.2.1<sup>∗</sup>. Prove that $1_R$ and $0_R$ are unique, and that any element has a unique additive inverse and, if an element has a multiplicative inverse, that inverse is unique.
 
 Exercise A.2.2*. Let $R$ be a ring. Prove that $0_Ra=a0_R=0_R$ for any $a\in R$.
 
