@@ -928,6 +928,162 @@ $$
 
 我希望读者不会因此太灰心；毕竟，有时候行列式的显式值确实很有用（例如在习题中）。
 
+下面是一个算术方面的应用；这也正是本书在习题中使用 Vandermonde 行列式的方式。
+
+## 习题 C.3.1
+
+设 $p$ 是素数，$a_1,\ldots,a_m$ 是均不能被 $p$ 整除的整数。假设对于 $k=1,\ldots,m$，都有
+
+$$
+p\mid a_1^k+\cdots+a_m^k.
+$$
+
+证明 $p\mid m$。
+
+## 解答
+
+将模 $p$ 同余的 $a_i$ 归在一起，可以得到
+
+$$
+p\mid \sum\limits_{i=1}^n c_i b_i^k,
+$$
+
+其中 $c_i$ 是正整数，$\sum\limits_i c_i=m$，而 $b_1,\ldots,b_n\in\mathbb{F}_p$ 两两不同。我们有方程组
+
+$$
+\begin{cases}
+c_1+\cdots+c_n\equiv0,\\
+c_1b_1+\cdots+c_nb_n\equiv0,\\
+\vdots\\
+c_1b_1^n+\cdots+c_nb_n^n\equiv0
+\end{cases}\pmod p.
+$$
+
+由于 $b_i$ 模 $p$ 两两不同，根据 Vandermonde 行列式，向量 $(1,b_1,\ldots,b_1^n),\ldots,(1,b_n,\ldots,b_n^n)$ 在 $\mathbb{F}_p$ 上线性无关。因此必有 $c_1\equiv\cdots\equiv c_n\equiv0\pmod p$。又因 $m=\sum\limits_i c_i$，便得到 $p\mid m$，证毕。
+
+正如在第一个例子中看到的，矩阵与线性方程组有着密切关系。回过头来看，这其实很明显：线性方程组
+
+$$
+\begin{cases}
+a_{1,1}x_1+a_{1,2}x_2+\cdots+a_{1,n}x_n=b_1,\\
+a_{2,1}x_1+a_{2,2}x_2+\cdots+a_{2,n}x_n=b_2,\\
+\vdots\\
+a_{n,1}x_1+a_{n,2}x_2+\cdots+a_{n,n}x_n=b_n
+\end{cases}
+$$
+
+等价于
+
+$$
+\begin{bmatrix}
+a_{1,1}&\cdots&a_{1,n}\\
+\vdots&\ddots&\vdots\\
+a_{n,1}&\cdots&a_{n,n}
+\end{bmatrix}
+\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}
+=
+\sum\limits_{j=1}^n x_j
+\begin{bmatrix}a_{1,j}\\\vdots\\a_{n,j}\end{bmatrix}
+=
+\begin{bmatrix}b_1\\\vdots\\b_n\end{bmatrix},
+$$
+
+也就是 $AX=B$，其中 $X=(x_i)$、$A=(a_{i,j})$、$B=(b_i)$。特别地，若 $A$ 可逆，就存在唯一解。因此，如果在解题过程中得到了这样的方程组，而且已经找到了一个显然的解，那么由于解唯一，我们便知道了各个 $x_i$ 的取值。
+
+作为行列式的最后一个应用，我们给出奶牛问题 C.1.1 的另一种解法。
+
+## 奶牛问题 C.1.1 的另一种解法
+
+仍设 $w_i$ 是第 $i$ 头奶牛的体重。写成
+
+$$
+\sum\limits_{i\in I_k}w_i=\sum\limits_{i\in J_k}w_i,
+$$
+
+其中 $|I_k|=|J_k|=n$，且
+
+$$
+I_k\cup J_k=[2n+1]\setminus\{k\}.
+$$
+
+对于 $k\neq2n+1$，不妨设 $2n+1\in I_k$。
+
+考虑下面这个含有 $2n$ 个未知数的 $2n$ 个线性方程组成的方程组：
+
+$$
+\sum\limits_{i\in J_k}w_i
+-\sum\limits_{\substack{i\in I_k\\i\neq2n+1}}w_i
+=-w_{2n+1},\qquad k=1,\ldots,2n.
+$$
+
+其系数矩阵具有如下形式：
+
+$$
+\begin{bmatrix}
+0&\pm1&\pm1&\cdots&\pm1\\
+\pm1&0&\pm1&\cdots&\pm1\\
+\pm1&\pm1&0&\cdots&\pm1\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+\pm1&\pm1&\pm1&\cdots&0
+\end{bmatrix},
+$$
+
+其中主对角线上的元素为 $0$，其余位置为 $\pm1$；若 $i\in J_j$，则第 $(i,j)$ 个元素为 $1$，否则为 $-1$。
+
+我们要证明这个矩阵的行列式非零。这样，方程组就有唯一解；而 $w_1=\cdots=w_{2n}=w_{2n+1}$ 是一个解，因此必然所有体重都相等。
+
+模 $2$ 后，矩阵化为
+
+$$
+A=\begin{bmatrix}
+0&1&\cdots&1\\
+1&0&\cdots&1\\
+\vdots&\vdots&\ddots&\vdots\\
+1&1&\cdots&0
+\end{bmatrix}.
+$$
+
+因此行列式满足
+
+$$
+\begin{aligned}
+\det A
+&=\sum\limits_{\sigma\in\mathfrak{S}_{2n}}
+\varepsilon(\sigma)a_{1,\sigma(1)}
+\cdots a_{2n,\sigma(2n)}\\
+&\equiv\sum\limits_{\sigma\in\mathfrak{S}_{2n}}
+a_{1,\sigma(1)}\cdots a_{2n,\sigma(2n)}
+\pmod2.
+\end{aligned}
+$$
+
+现在，当且仅当 $\sigma$ 没有不动点时，$a_{1,\sigma(1)}\cdots a_{2n,\sigma(2n)}=1$。因此，这个行列式模 $2$ 同余于错排的个数，即没有不动点的置换的个数。习题 C.3.10 表明，当 $2n$ 为偶数时，这个数为奇数，因此行列式非零。于是原来的整系数矩阵的行列式也是奇数，特别地非零，证明完成。
+
+## 注记 C.3.3
+
+也可以直接计算
+
+$$
+\det\begin{bmatrix}
+0&1&\cdots&1\\
+1&0&\cdots&1\\
+\vdots&\vdots&\ddots&\vdots\\
+1&1&\cdots&0
+\end{bmatrix},
+$$
+
+例如利用习题 C.5.6。
+
+**习题 C.3.10\*** 证明：$[m]$ 的错排数为
+
+$$
+\sum\limits_{i=0}^m\frac{(-1)^i m!}{i!},
+$$
+
+并且当 $m$ 为偶数时它是奇数，当 $m$ 为奇数时它是偶数。
+
+好了，现在来完成关于行列式的最后部分。
+
 
 ---
 
@@ -1105,4 +1261,27 @@ $$
 - 章节：推论 C.3.2*。
 - 原文给出 $(1,x_i,\ldots,x_i^n)$，每个向量有 $n+1$ 个分量，而前面的 $n\times n$ Vandermonde 矩阵使用至 $x_i^{n-1}$。
 - 该推论本身仍成立（可由前 $n$ 个坐标的线性无关性推出），但与紧接着的注记所用矩阵不完全一致；可能是 OCR 上标错误。
+- 置信程度：中。
+
+
+### 疑点 26：算术应用的方程组并非全部来自题设
+
+- 章节：习题 C.3.1 解答。
+- 题设仅给出 $k=1,\ldots,m$ 的幂和同余，原文解答却写了 $k=0$ 的式子 $c_1+\cdots+c_n\equiv0\pmod p$，这正是待证结论，不能预先使用。
+- 由于 $b_i$ 两两不同且非零，可以直接使用指数 $1,\ldots,n$ 的方程组，其系数矩阵为 Vandermonde 矩阵乘以可逆对角矩阵，推得所有 $c_i\equiv0$。译文未擅自替换原文证明。
+- 置信程度：高（原文逻辑错误）。
+
+### 疑点 27：线性方程组与矩阵乘法的方向
+
+- 章节：习题 C.3.1 后的线性方程组讨论。
+- 原文先写列向量乘矩阵，又写成 $XA=B$，与所列列向量和第 $i$ 行方程不符；应为 $AX=B$。
+- 原式第一、二行还存在 $b_2$ 重复及系数下标错误。
+- 根据所列逐列线性组合，译文按 $AX=B$ 和正确指标恢复。
+- 置信程度：高（可从分量方程核实）。
+
+### 疑点 28：奶牛问题中系数矩阵的索引方向
+
+- 章节：习题 C.1.1 的另一种解法。
+- 原文声称 $(i,j)$ 元素由 $i\in J_j$ 决定，但方程按 $k$ 逐行建立，正常应由行编号 $k$ 对应的 $J_k$ 决定；这可能是转置记号的约定或 OCR 错误。
+- 行列式非零的结论对转置不变，因而不影响证明主旨；译文保留原文说法并提出疑点。
 - 置信程度：中。
