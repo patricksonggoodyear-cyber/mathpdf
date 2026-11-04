@@ -76,3 +76,10 @@
 - Next Appendix C location: "Before presenting more applications, we need two last results. Here is an explicit formula for the determinant..." followed by Lemma C.3.1 and Theorem C.3.2 Vandermonde. Verify Vandermonde sign with row-wise entries before translating; original formula and proof appear inconsistent.
 - Repository main tree was checked: no newly added number-theory PDF/scans were visible; only pre-existing materials/何林洲组合.pdf, which is unrelated. Re-check if original source is subsequently uploaded to the repo/chat.
 - Appendix A/B full comparison still incomplete. A/B files not marked done. User prefers larger work chunks.
+
+## Checkpoint — through Vandermonde
+
+- Translated Lemma C.3.1, Theorem C.3.2 (Vandermonde), Corollary C.3.2*, and Remark C.3.2. Commit 24454454fcaf1f149e27689d560ba412e3b67da0.
+- The source Vandermonde formula has the reversed sign for the displayed row-oriented matrix; its proof says duplicate columns instead of rows and specifies a monomial of impossible total degree. These are retained and flagged, not silently corrected without scan.
+- Next source location: "Here is an arithmetic application, which is exactly how we will use the Vandermonde determinant..." / Problem C.3.1, then alternative cows proof, determinant signature and subsequent C sections.
+- Appendices A and B full translation proofreading remains incomplete.
