@@ -227,7 +227,7 @@ $$
 a_{n-k}=(-1)^k\sum_{i_1<\dots<i_k}\alpha_{i_1}\cdots\alpha_{i_k}
 $$
 
-对任意 $k=0,\ldots,n-1$ 都成立。
+对任意 $k=0,\ldots,n$ 都成立。
 
 ## 证明
 
