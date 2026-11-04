@@ -83,3 +83,13 @@
 - The source Vandermonde formula has the reversed sign for the displayed row-oriented matrix; its proof says duplicate columns instead of rows and specifies a monomial of impossible total degree. These are retained and flagged, not silently corrected without scan.
 - Next source location: "Here is an arithmetic application, which is exactly how we will use the Vandermonde determinant..." / Problem C.3.1, then alternative cows proof, determinant signature and subsequent C sections.
 - Appendices A and B full translation proofreading remains incomplete.
+
+## Latest checkpoint — arithmetic applications and signatures
+
+- Appendix C C.3 translated from Problem C.3.1 to Corollary C.3.3 and Exercise C.3.14, inclusive:
+  - 54d08004f4b3a244387119e5dd71068569364f39: arithmetic application of Vandermonde, matrix equations, alternative cows proof, derangements.
+  - 2b9cf247608bf28b1dd8bc4729499db17ac02061: permutation signature, explicit determinant theorem and transpose invariance.
+- Recorded problems in source: arithmetic example assumes k=0 relation not supplied in hypothesis; matrix multiplication equation is reversed as XA=B; ambiguity in cow system indices.
+- Next translate from paragraph 'As promised in the beginning of the section, the determinant is the unique solution of a certain functional equation...' through Theorem C.3.4 and onward.
+- Check Theorem C.3.4's cofactor index/sign transcription and Proposition C.3.6's argument, which divides by det(B) despite B possibly singular; document mathematically.
+- No number-theory scans were visible in the GitHub tree when checked. Recheck upon receiving identifiable original document.
