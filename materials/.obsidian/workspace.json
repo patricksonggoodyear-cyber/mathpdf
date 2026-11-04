@@ -174,8 +174,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -188,7 +187,7 @@
       "bases:新建数据库": false
     }
   },
-  "active": "5d66fc9ebd4b8d83",
+  "active": "021346280b32e177",
   "lastOpenFiles": [
     "Appendix_B.zh-CN.md",
     "gowers-lecture-notes.md",
