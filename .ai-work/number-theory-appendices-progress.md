@@ -41,3 +41,14 @@
 2. Continue complete English-Chinese comparisons of Appendices A and B, one complete mathematical unit at a time.
 3. Re-fetch SHA before updates; commit reviewed changes to main.
 4. Final check all definitions, formulas, footnotes, cross-references and Obsidian/MathJax syntax.
+
+
+## Checkpoint 2026-11-04 — continuation
+
+- Completed Chinese translation of Appendix C section C.1, through Proposition C.1.4, commit b6eaa73d2e89f412788e8665efc383877e2ab3ff.
+- Translated the beginning of C.2 through discussion of Lagrange interpolation, commit 24a3173c2e09197604aa7da2bd761cce589d6cfd.
+- Source issues noted in Chinese uncertainty report: incomplete vector-space axioms, invalid F_p-vector-space example, integer cow weights induction argument, corrupted elimination coefficient indices, power-versus-iteration ambiguity, finite-field characteristic proof, interpolation coordinates.
+- The preceding Current Task / Pending text is superseded for Appendix C: C.1 is now translated; C.2 is partially translated. Resume at 'We come back to more abstract considerations. Given the bases...' in the English Appendix C.md (matrix representation), continuing through C.2 and later sections.
+- Appendix A and B whole-document translation checking is still incomplete and must be performed separately, not marked completed.
+- Review the Chinese Appendix C uncertainty report and place unique Obsidian block anchors for outstanding points before finalizing.
+- MathJax rendering has not yet been tested in Obsidian.
