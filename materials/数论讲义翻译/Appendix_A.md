@@ -85,10 +85,10 @@ We say a polynomial $f\in K[X]$ divides a polynomial $g\in K[X]$, and write $f\m
 Note that repeated applications of the Euclidean remainder yield the Euclidean algorithm: given two polynomials $f,g\in K[X]$ with $\deg f>\deg g$, we iteratively replace $f$ by the remainder of its division by $g$. For instance, $f=X^3+X$ and $g=X^2$ yield
 
 $$
-\{X ^ {3} + X, X ^ {2} \} \rightarrow \{X ^ {2}, X \} \rightarrow \{X, 0 \} \rightarrow \{0, 0 \}.
+\{X ^ {3} + X, X ^ {2} \} \rightarrow \{X ^ {2}, X \} \rightarrow \{X, 0 \}.
 $$
 
-This will, as in $\mathbb{Z}$, eventually produce the pair $\{0,h\}$ where $h$ is the greatest common divisor (gcd) of $f$ and $g$, i.e. a polynomial which divides both $f$ and $g$ and such that, if $h'\mid f$ and $h'\mid g$, then $h'\mid h$ (in particular, it is the common divisor with greatest degree, except when $f=g=0$). Note that the gcd is only defined up to multiplication by a non-zero constant, although we will usually assume it to be monic.
+This will, as in $\mathbb{Z}$, eventually produce the pair $\{h,0\}$ where $h$ is the greatest common divisor (gcd) of $f$ and $g$, i.e. a polynomial which divides both $f$ and $g$ and such that, if $h'\mid f$ and $h'\mid g$, then $h'\mid h$ (in particular, it is the common divisor with greatest degree, except when $f=g=0$). Note that the gcd is only defined up to multiplication by a non-zero constant, although we will usually assume it to be monic.
 
 Exercise A.1.4*. Prove that the gcd of $0$ and $0$ is $0$.
 
