@@ -1875,6 +1875,142 @@ $$
 
 是一个有限生成的 $\mathbb Z$-模，并且满足 $\beta M\subseteq M$。因此，$\beta$ 是代数整数。
 
+**习题 C.3.9\*** 证明引理 C.3.1。
+
+### 解答
+
+利用归纳法。按第一列展开行列式，
+
+$$
+\begin{aligned}
+\det A
+&=\sum_{i=1}^n(-1)^{i-1}a_{i,1}\det A_{i,1}\\
+&=\sum_{i=1}^n\sum_{\sigma}(-1)^{i-1}\varepsilon(\sigma)
+a_{i,1}a_{\sigma(2),2}\cdots a_{\sigma(n),n},
+\end{aligned}
+$$
+
+其中内层求和遍历从 $[n]\setminus\{1\}$ 到 $[n]\setminus\{i\}$ 的全部双射。这个公式已具有所需形式。特别地，单项式 $a_{1,1}\cdots a_{n,n}$ 的符号是 $(-1)^{1-1}$ 乘以 $a_{2,2}\cdots a_{n,n}$ 的符号，即 $1$。
+
+**习题 C.3.10\*** 证明错排数公式及其奇偶性。
+
+### 解答
+
+转而计算至少有一个不动点的置换数目，使用容斥原理。对于固定的 $k$，有 $(n-1)!$ 个置换满足 $\sigma(k)=k$，因而初步计数得到 $n(n-1)!=n!$。但其中至少有两个不动点的置换被重复计数，需要减去 $\binom n2(n-2)!$；随后又需补回至少有三个不动点的置换，如此交替进行。结果为
+
+$$
+\sum_{k=1}^n(-1)^{k-1}\binom nk(n-k)!
+=\sum_{k=1}^n(-1)^{k-1}\frac{n!}{k!}.
+$$
+
+从置换总数 $n!$ 中减去它，就得到
+
+$$
+D_n=\sum_{k=0}^n\frac{(-1)^k n!}{k!}.
+$$
+
+原文在此处没有进一步写出奇偶性的论证；由 $D_n=nD_{n-1}+(-1)^n$ 可立即得到：$D_n$ 的奇偶性与 $n-1$ 相反，亦即 $n$ 为偶数时 $D_n$ 为奇数。
+
+**习题 C.3.11\*** 证明交换置换的两个值会使其符号变号。
+
+### 解答
+
+设交换 $\sigma(i)$ 与 $\sigma(j)$，也就是施加对换 $\tau_{\sigma(i),\sigma(j)}$。由符号的乘积定义，交换后涉及其他指标的因子两两抵消，只有这两个值的差所对应的因子变为原来的负数。因此
+
+$$
+\frac{\varepsilon(\sigma)}
+{\varepsilon(\tau\circ\sigma)}
+=
+\frac{\sigma(i)-\sigma(j)}
+{\sigma(j)-\sigma(i)}=-1.
+$$
+
+所以符号变号。
+
+**习题 C.3.12\*** 证明对换生成所有置换。
+
+### 解答
+
+对 $n$ 归纳。先与对换 $\tau_{n,\sigma^{-1}(n)}$ 复合，使得 $\sigma\circ\tau_{n,\sigma^{-1}(n)}$ 固定 $n$。忽略最后一个元素后，它便成为 $[n-1]$ 的一个置换，因此根据归纳假设可写成若干对换的复合。最后再复合 $\tau_{n,\sigma^{-1}(n)}$，便得到 $\sigma$ 的对换分解。
+
+**习题 C.3.13\*** 证明定理 C.3.3。
+
+### 解答
+
+与习题 C.3.9 一样，按第一列展开：
+
+$$
+\det A=
+\sum_{i=1}^n\sum_{\sigma}
+(-1)^{i-1}\varepsilon(\sigma)
+a_{i,1}a_{\sigma(2),2}\cdots a_{\sigma(n),n}.
+$$
+
+只需说明：如果 $\sigma'$ 是删去置换 $\sigma$ 的第一个值后得到的双射，那么
+
+$$
+\varepsilon(\sigma)
+=(-1)^{\sigma(1)-1}\varepsilon(\sigma').
+$$
+
+这是因为，新增的逆序恰好是涉及第一个位置的逆序对 $(1,k)$，其个数是满足 $\sigma(k)<\sigma(1)$ 的 $k>1$ 的数目，即 $\sigma(1)-1$。
+
+**习题 C.3.14\*** 证明 $\det A=\det A^{\mathsf T}$。
+
+### 解答
+
+定理 C.3.3 的公式对于行、列是对称的：
+
+$$
+\begin{aligned}
+\det A
+&=\sum_{\sigma\in\mathfrak S_n}\varepsilon(\sigma)
+a_{\sigma(1),1}\cdots a_{\sigma(n),n}\\
+&=\sum_{\sigma\in\mathfrak S_n}\varepsilon(\sigma^{-1})
+a_{1,\sigma^{-1}(1)}\cdots a_{n,\sigma^{-1}(n)}\\
+&=\sum_{\sigma\in\mathfrak S_n}\varepsilon(\sigma)
+a_{1,\sigma(1)}\cdots a_{n,\sigma(n)}\\
+&=\det A^{\mathsf T}.
+\end{aligned}
+$$
+
+**习题 C.3.15\*** 证明 $D_k(I_{n-1})=(-1)^{k-1}$。
+
+### 解答
+
+考虑定义 $D_k$ 时使用的 $n\times n$ 矩阵，令其中 $A=I_{n-1}$。只需交换 $k-1$ 次相邻列，就能把它化成 $I_n$：依次交换第一列与第二列、第二列与第三列，直到第 $k-1$ 列与第 $k$ 列。于是
+
+$$
+D_k(I_{n-1})=(-1)^{k-1}\det I_n=(-1)^{k-1}.
+$$
+
+**习题 C.3.16** 利用显式公式证明行列式具有乘法性。
+
+### 解答
+
+令 $C=AB$，则
+
+$$
+C^k=b_{1,k}A^1+\cdots+b_{n,k}A^n.
+$$
+
+根据行列式的多重线性性，
+
+$$
+\begin{aligned}
+\det C
+&=\det\left(\sum_i b_{i,1}A^i,\ldots,\sum_i b_{i,n}A^i\right)\\
+&=\sum_{\sigma\in\mathfrak S_n}
+b_{\sigma(1),1}\cdots b_{\sigma(n),n}
+\det(A^{\sigma(1)},\ldots,A^{\sigma(n)})\\
+&=\sum_{\sigma\in\mathfrak S_n}
+\varepsilon(\sigma)b_{\sigma(1),1}\cdots b_{\sigma(n),n}\det A\\
+&=\det B\det A.
+\end{aligned}
+$$
+
+倒数第二步利用了注记 C.3.4。
+
 
 ---
 
@@ -2226,3 +2362,15 @@ $$
 
 - 解答利用了上三角矩阵“第 $k$ 至 $n$ 列前 $k$ 个坐标为零”的性质；须与 C.3 前文展示的下三角矩阵区分。
 - 译文保留证明论述，原始命名矛盾仍需核对。
+
+
+### 疑点 53：错排数奇偶性的解答缺少最后一步
+
+- 章节：习题 C.3.10 的解答。
+- 原文仅推导容斥公式，并未解释题目要求的奇偶性。
+- 译文另注明可从递推式 $D_n=nD_{n-1}+(-1)^n$ 推出；此为补充审校说明，而非原文已有证明。
+
+### 疑点 54：引理 C.3.1 的置换求和指标
+
+- 章节：习题 C.3.9 解答。
+- 原文一处使用 $a_{2,\sigma(2)}$，但按列展开及后续公式应为 $a_{\sigma(2),2}$。译文按前后文统一指标。
