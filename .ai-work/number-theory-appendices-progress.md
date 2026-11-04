@@ -114,3 +114,16 @@
 - Chinese document contains 52 numbered OCR/math uncertainty points; avoid making speculative fixes to the English source. Check source scans if added later.
 - Important source issue: Exercise C.5.4 is false in finite fields; Exercise C.5.7 Cramer's rule reciprocal reversed; C.5.22 missing nonzero solution; C.5.25 lacks |S|=n.
 - A and B exhaustive translation proofreading is still outstanding.
+
+## Checkpoint — full Appendix C draft translated; Appendix A/B proofreading resumed
+
+- Entire source Appendix C.md (1862 lines), including appended exercise solutions through C.5.28 Nakayama's lemma, is now covered by Appendix_C.zh-CN.md. Final solution block commit: 905349048fcf79472c44a624fdb08b0df9a1db7f.
+- Major solution-block commits: b6fe30003634bdd6c3e13922565dd7a0d71b7dc5 (C.3.9-C.3.16), 4ac2c76de31e6ddd8071eb48c374652dbba5183e (C.3.17-C.4.1), 77e0f10a7dbcb920b1829f3d48e693b506eb8d39 (C.5.1,C.5.3,C.5.6,C.5.7), d0f201fbc31bba947c961cb602f09b09455210ce (C.5.8,C.5.9,C.5.12), 7b5484fc7eb2c821dd59f1df758fb95bbdcce98a (C.5.15,C.5.16), ca7ae1f2bffc12497e91d8f2b651d834b4df517a (C.5.19), 5c61b538e4e7f642bf6890a26fb7c05bc337e811 (C.5.20), 8a04e700946e550aef6514402e404e121fe7a9ca (C.5.21,C.5.22), 905349048fcf79472c44a624fdb08b0df9a1db7f (C.5.24-C.5.28).
+- Appendix C Chinese document now includes 73 numbered mathematics/OCR review points, some high-confidence corrections embedded in translation. Full scan-to-original and Obsidian rendering verification remain outstanding. The source includes no solutions for several C.5 exercises; translate only given solutions.
+- Structural formula-delimiter check: A, B and C Chinese files all had even numbers of inline and display math delimiters (coarse test only, not MathJax rendering).
+- Appendix B corrected fundamental theorem of algebra reduction from complex to real polynomials: commit 48688c8fb227bfa096a0edccb3cd78f8ad9a4947.
+- Appendix B corrected resultant Sylvester map domain R_n[X] x R_m[X], product sign beta_j-alpha_i, and second identity exponent using deg f: commit fc710a148d36fc960b2ed55bc6c126942a154492. Source guide was Appendix_B_checked.md plus direct dimensional algebra verification.
+- Appendix A corrected 'coprime iff common complex root' to 'coprime iff NO common complex root' in both English and Chinese: commits 03dfd82c0b303193219b3703aa0aabed33c97584 and d08cf0162499959bce4f37fc726de277e30b0602.
+- Appendix A corrected Vieta's formula range k=0,...,n (was to n-1, contradicting a_0 formula immediately below) in English and Chinese: commits 946f2b4238ecd1874514312f05b439fa68ecbcf5 and 6b27417371342145473ae03462170932ee92673c.
+- A/B currently only selectively proofread, NOT exhaustively checked. Next: resume Appendix A at A.1 theorem after Lagrange Interpolation or move through A.2 and remaining sections, and Appendix B after B.4.5 through end. Consult Appendix_B_checked.md as a useful corrected English guide; still verify mathematics.
+- Files available in the conversation contain one long pasted TXT instruction file only. No number theory original scans/PDF accessible via Files list. GitHub tree previously had no number-theory PDF either.
