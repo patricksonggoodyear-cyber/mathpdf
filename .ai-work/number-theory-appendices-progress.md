@@ -93,3 +93,10 @@
 - Next translate from paragraph 'As promised in the beginning of the section, the determinant is the unique solution of a certain functional equation...' through Theorem C.3.4 and onward.
 - Check Theorem C.3.4's cofactor index/sign transcription and Proposition C.3.6's argument, which divides by det(B) despite B possibly singular; document mathematically.
 - No number-theory scans were visible in the GitHub tree when checked. Recheck upon receiving identifiable original document.
+
+## Checkpoint — C.3 completed, C.4 theorem translated
+- C.3 Theorem C.3.4 through Corollary C.3.5 translated and mathematical uncertainties appended, commit 487e01da5b98d294ae85f4dbb25de74a8f901acf.
+- C.4 Definition C.4.1 and Theorem C.4.1 including proof translated, commit 10ef0598ebd0e29e444a7602c798c7927be100a8.
+- Next location: Remark C.4.1 (partial fractions and generating functions), followed by Remark C.4.2, Corollary C.4.1 and C.5 exercises.
+- Source mathematical issues: determinant multiplicativity proof divides by det B without B invertibility; linear recurrence roots may need splitting field; proof independence induction is insufficient. All logged in Chinese draft.
+- The attempt to append C.4 Remarks failed, and no commit was made for that block. Continue from Remark C.4.1; do not mark it completed.
