@@ -100,3 +100,17 @@
 - Next location: Remark C.4.1 (partial fractions and generating functions), followed by Remark C.4.2, Corollary C.4.1 and C.5 exercises.
 - Source mathematical issues: determinant multiplicativity proof divides by det B without B invertibility; linear recurrence roots may need splitting field; proof independence induction is insufficient. All logged in Chinese draft.
 - The attempt to append C.4 Remarks failed, and no commit was made for that block. Continue from Remark C.4.1; do not mark it completed.
+
+## 2026-11-04 continuation — C.4 and C.5 statements complete, solutions started
+
+- Appendix C Remark C.4.1 translated (partial fractions and generating functions): commit a177d8f1cd6cd1ea087bf68187b24504eee07577.
+- Appendix C Remark C.4.2 and Corollary C.4.1 translated; C.5 Exercises C.5.1-C.5.5: commit 2d9015c77f9830dd748570845494b3d297653208.
+- C.5 Exercises C.5.6-C.5.14: commit b571c8e86f7df67192b98710a19c67180c0ac648.
+- C.5 Exercises C.5.15-C.5.21: commit ac5ef90fb18cb83781c12b594ca48ce20b236fd1.
+- C.5 Exercises C.5.22-C.5.28: commit b21f3a569770c27f914d70346f1efb05370de652.
+- Important: English Appendix C.md includes an *additional appended solutions section*, beginning near source line 1143, after all 28 exercise statements. Translation of this appendix solutions section started:
+  - Solutions from C.1.1 through C.3.8: commit 212e0c9c4f217a2fa67cc225bcc2627a05cbfcf0.
+- NEXT: translate solutions beginning source line 1270, Exercise C.3.9, proceeding through C.3.18, C.4.1, selected C.5 solutions and Nakayama's lemma at source end line 1862. Do not mark entire Appendix C complete until appended solutions finished.
+- Chinese document contains 52 numbered OCR/math uncertainty points; avoid making speculative fixes to the English source. Check source scans if added later.
+- Important source issue: Exercise C.5.4 is false in finite fields; Exercise C.5.7 Cramer's rule reciprocal reversed; C.5.22 missing nonzero solution; C.5.25 lacks |S|=n.
+- A and B exhaustive translation proofreading is still outstanding.
