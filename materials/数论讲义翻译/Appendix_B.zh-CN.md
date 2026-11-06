@@ -368,10 +368,14 @@ $\operatorname{Res}(f,g)\in fR[X]+gR[X]$。）
   $$
   \operatorname{Res}(fg,h)=\operatorname{Res}(f,h)\operatorname{Res}(g,h).
   $$
-- 对任意 $f,g,h\in R[X]$，设 $k=\deg(f-gh)$，$d=\deg f$，且 $b$ 为 $g$ 的首项系数，则
-  $$
+- 对任意 $f,g,h\in R[X]$，设 $k=\deg(f-gh)$，$d=\deg f$，且 $b$ 为 $g$ 的首项系数，则在一般交换环上可写为
+  $
+  b^d\operatorname{Res}(f-gh,g)=b^k\operatorname{Res}(f,g).
+  $
+  如果 $b$ 是可逆元，这等价于原文的表达式
+  $
   \operatorname{Res}(f-gh,g)=b^{k-d}\operatorname{Res}(f,g).
-  $$
+  $
 - 若 $F,G,f,g\in R[X,Y]$ 是齐次多项式，次数依次为 $m,n,k,k$，则
   $$
   \operatorname{Res}(F(f,g),G(f,g))
