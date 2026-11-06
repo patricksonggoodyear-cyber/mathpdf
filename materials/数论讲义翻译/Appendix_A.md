@@ -824,7 +824,7 @@ $$
 
 ## A.2 Algebraic Structures and Morphisms
 
-Exercise A.2.1<sup>∗</sup>. Prove that $1 _ { R }$ and $0 _ { R }$ are unique, and that any element has a unique additive inverse and a unique multiplicative inverse if it is non-zero.
+Exercise A.2.1<sup>∗</sup>. Prove that $1 _ { R }$ and $0 _ { R }$ are unique, and that any element has a unique additive inverse and a unique multiplicative inverse if one exists.
 
 Solution
 
@@ -960,7 +960,7 @@ $$
 g ^ {\prime} (f + \lambda g) - g (f ^ {\prime} + \lambda g ^ {\prime}) = f g ^ {\prime} - g ^ {\prime} f.
 $$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 ## Solution
 
@@ -1086,7 +1086,7 @@ $$
 
 by Exercise $\mathrm { A . 3 . 9 ^ { \dagger } }$ since n $\mid i - j$ if $i = j$ for $i , j \in [ [ 0 , \deg f ] ]$ , as $n > \deg f .$ . For the second part, note that $| f ( \omega ) g ( \omega ) | = f ( \omega ) g ( 1 / \omega ) |$ for any $ω$ on the unit circle.
 
-Exercise A.3.11<sup>†</sup>. Let k be an integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \ \nmid$ k and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
+Exercise A.3.11<sup>†</sup>. Let k be a positive integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \ \nmid$ k and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
 
 ## Solution
 
@@ -1228,7 +1228,7 @@ $$
 
 One can check that the bound $5 / 8$ is achieved by the quaternion group $Q _ { 8 }$ consisting of the elements $e , b , b ^ { 2 } , b ^ { 3 } , a , a b , a b ^ { 2 } , a b ^ { 3 }$ under the presentation $a ^ { 4 } = b ^ { 4 } = e , a ^ { 2 } = b ^ { 2 }$ , and $b a = a b ^ { 3 }$
 
-Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+ ,$ , there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z }$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of positive integers $d _ { 1 } \mid \ldots \mid d _ { m }$ such that
+Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+ ,$ , there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z }$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of integers $2\leq d _ { 1 } \mid \ldots \mid d _ { m }$ such that
 
 $$
 (G, +) \simeq (\mathbb {Z} ^ {n} \times \mathbb {Z} / d _ {1} \mathbb {Z} \times \dots \times \mathbb {Z} / d _ {k} \mathbb {Z}, +).
@@ -1336,7 +1336,7 @@ $$
 
 If we now pick $k = \lfloor \sqrt [ 3 ] { p } \rfloor$ , we get $| S | \le 2 p ^ { 2 / 3 }$ as wanted.
 
-Exercise A.3.22<sup>†</sup> (Mason-Stothers Theorem, ABC conjecture for polynomials). Suppose that $A, B, C \in\mathbb { C } [ X ]$ are coprime polynomials such that $A + B = C$ . Prove that
+Exercise A.3.22<sup>†</sup> (Mason-Stothers Theorem, ABC conjecture for polynomials). Suppose that $A, B, C \in\mathbb { C } [ X ]$ are pairwise coprime polynomials, not all constant, such that $A + B = C$ . Prove that
 
 $$
 1 + \max (\deg A, \deg B, \deg C) \leq \deg (\operatorname{rad} A B C)
