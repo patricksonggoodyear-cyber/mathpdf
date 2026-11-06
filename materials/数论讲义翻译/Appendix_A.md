@@ -864,13 +864,13 @@ Exercise A.2.7. What goes wrong if you try to construct the field of fractions o
 
 ## Solution
 
-Clearly, if $uv=0$, there is something wrong with $1/u$. Indeed, we would have $1/u=v/(uv)=v/0$, which doesn’t make sense (even formally: $1\cdot0$ is not equal to $1$). The problem is that $a/b=c/d$ if $ad=bc$ is not an equivalence relation anymore: we can have $a/b=c/d$ and $c/d=x/y$ but $a/b\neq x/y$. Indeed, this is how the usual proof of transitivity goes: we have $ad=bc$ and $cy=dx$, so
+If $R$ has zero divisors, one cannot simply use the rule $a/b=c/d$ if and only if $ad=bc$, even when all denominators are nonzero: this relation may fail to be transitive, because cancellation by a nonzero zero divisor is not valid.
 
+For example, take $R=\mathbb{Z}/4\mathbb{Z}$ and consider the formal fractions
 $$
-a d y = b c y = b d x
+\frac01,\qquad \frac02,\qquad \frac21.
 $$
-
-which doesn’t necessarily means $a y = b x$ since d might not be invertible. Here is a concrete counterexample, if $d d ^ { \prime } = 0$ , then $1 / d = d ^ { \prime } / 0$ and $d ^ { \prime } / 0 = 1 / 0$ but $1 / d \neq 1 / 0$
+The relation identifies $0/1$ with $0/2$, and $0/2$ with $2/1$ (since $0\cdot1=2\cdot2=0$ in $R$), but it does not identify $0/1$ with $2/1$. Thus it is not an equivalence relation. More fundamentally, a field cannot contain a unital copy of a ring with nonzero zero divisors.
 
 Exercise A.2.8<sup>∗</sup>. Let R be an integral domain. Prove that $R [ X ]$ is also one.
 
