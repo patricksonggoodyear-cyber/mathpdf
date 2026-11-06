@@ -625,7 +625,7 @@ $$
 $$
 (u,v)\longmapsto uf+vg
 $$
-的行列式，其中该映射从 $R_m[X]\times R_n[X]$ 映到 $R_{m+n}[X]$。证明：若
+的行列式，其中该映射从 $R_n[X]\times R_m[X]$ 映到 $R_{m+n}[X]$。证明：若
 $$
 f=\sum_i a_iX^i,\qquad g=\sum_i b_iX^i,
 $$
@@ -653,7 +653,7 @@ $$
 则
 $$
 \operatorname{Res}(f,g)
-=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\alpha_i-\beta_j).
+=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\beta_j-\alpha_i).
 $$
 此外，证明 $\operatorname{Res}(f,g)\in fR[X]+gR[X]$。最后证明：若 $f,g\in\mathbb Z[X]$ 都是首一多项式，且存在 $u,v\in\mathbb Z[X]$ 使得 $uf+vg=1$，那么 $\operatorname{Res}(f,g)=\pm1$。
 
@@ -661,7 +661,7 @@ $$
 
 结式的行列式公式，可以通过在单项式基 $1,X,\ldots,X^{m+n-1}$ 下考察线性映射的矩阵得到。
 
-为了证明根的乘积公式，先把根 $\alpha_i,\beta_j$ 视为不定元。在域 $K$ 上工作。若某个 $\alpha_i=\beta_j$，则结式为零，因为对应的线性映射不是满射。因此，结式被每个 $\alpha_i-\beta_j$ 整除。另一方面，从行列式公式可以看出，结式关于每个 $\alpha_i$ 的次数至多为 $n$，关于每个 $\beta_j$ 的次数至多为 $m$。比较首项系数，便得到
+为了证明根的乘积公式，先把根 $\alpha_i,\beta_j$ 视为不定元。在域 $K$ 上工作。若某个 $\alpha_i=\beta_j$，则结式为零，因为对应的线性映射不是满射。因此，结式被每个 $\beta_j-\alpha_i$ 整除。另一方面，从行列式公式可以看出，结式关于每个 $\alpha_i$ 的次数至多为 $n$，关于每个 $\beta_j$ 的次数至多为 $m$。比较首项系数，便得到
 $$
 \operatorname{Res}(f,g)=a^n b^m\prod_{i=1}^{m}\prod_{j=1}^{n}(\alpha_i-\beta_j).
 $$
@@ -670,15 +670,11 @@ $$
 $$
 RV=(r,0,\ldots,0)^{\mathsf T}=r e_1,
 $$
-其中 $R$ 是线性映射 $(u,v)\mapsto uf+vg$ 对应的矩阵。因此，我们需要
-$$
-rR^{-1}e_1\in R^{m+n}.
-$$
-取 $r=\det R=\operatorname{Res}(f,g)$ 即可，因为伴随矩阵恒等式给出
-$$
-(\det R)R^{-1}=\operatorname{adj}(R),
-$$
-而 $\operatorname{adj}(R)$ 的元素仍属于 $R$。
+其中 $R$ 是线性映射 $(u,v)\mapsto uf+vg$ 对应的矩阵。取 $r=\det R=\operatorname{Res}(f,g)$。由伴随矩阵恒等式 $R\operatorname{adj}(R)=(\det R)I$，可直接取系数向量 $V=\operatorname{adj}(R)e_1$，使得
+$
+RV=(\det R)e_1.
+$
+这里不需要假定 $R$ 可逆，也不需要在一般交换环中引入 $R^{-1}$。
 
 现在令 $f,g$ 为次数分别是 $m,n$ 的一般整系数多项式。最后，假设
 $$
@@ -693,11 +689,12 @@ $$
 $$
 u(\beta_j)f(\beta_j)=1.
 $$
-因此
-$$
-\prod_{j=1}^{n}f(\beta_j)=\pm\operatorname{Res}(f,g)
-$$
-整除 $1$，从而得到所需结论。
+由于 $f,g$ 都是首一整系数多项式，各个 $\beta_j$ 及其在 $\mathbb Z[X]$ 下的取值 $u(\beta_j)$、$f(\beta_j)$ 都是代数整数。对 $j$ 取乘积得到
+$
+\left(\prod_{j=1}^{n}u(\beta_j)\right)
+\left(\prod_{j=1}^{n}f(\beta_j)\right)=1.
+$
+其中两个乘积都是整数，因为它们分别是整系数多项式 $u$、$f$ 在 $g$ 的全部根上的对称表达式。因此 $\prod_jf(\beta_j)=\pm1$，也就是 $\operatorname{Res}(f,g)=\pm1$。
 
 **习题 B.4.6†（希尔伯特零点定理）.** 设 $K$ 为代数闭域。假设
 $$
