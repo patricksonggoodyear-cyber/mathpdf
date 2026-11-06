@@ -986,11 +986,20 @@ $$
 
 ## Solution
 
-We proceed by induction on n. For $n = 0$ it is of course trivial. If it’s true for n, then
+We proceed by induction on $n$. The case $n=0$ is immediate. If the formula holds for $n$, then
 
 $$
-\begin{array}{l} \Delta^ {n + 1} f (x) = \Delta (\Delta^ {n} f) (x) \\ \qquad = \sum_ {k = 0} ^ {n} (- 1) ^ {n - k} \binom {n} {k} (f (x + k + 1) - f (x + k)) \\ \qquad = \sum_ {k = 0} ^ {n + 1} ((- 1) ^ {n + 1 - k} \left(\binom {n} {k + 1} - \binom {n} {k}\right) f (x + k) \\ \qquad = \sum_ {k = 0} ^ {n + 1} (- 1) ^ {n + 1 - k} \left(\binom {n} {k + 1} + \binom {n} {k}\right) f (x + k) \\ \qquad = \sum_ {k = 0} ^ {n + 1} (- 1) ^ {n + 1 - k} \binom {n + 1} {k} f (x + k). \end{array}
+\begin{aligned}
+\Delta^{n+1}f(x)
+&=\sum_{k=0}^n(-1)^{n-k}\binom nk
+\bigl(f(x+k+1)-f(x+k)\bigr)\\
+&=\sum_{k=0}^{n+1}(-1)^{n+1-k}
+\left(\binom n{k-1}+\binom nk\right)f(x+k)\\
+&=\sum_{k=0}^{n+1}(-1)^{n+1-k}\binom{n+1}k f(x+k).
+\end{aligned}
 $$
+
+Here $\binom nk=0$ when $k<0$ or $k>n$.
 
 Exercise ${ \bf A . 3 . 8 ^ { \dagger } }$ . Let $m \geq 0$ be an integer. Prove that there is a polynomial $f _ { m } \in \mathbb { Q } [ X ]$ of degree $m + 1$ such that
 
