@@ -138,3 +138,26 @@
 - Important unresolved original math problems requiring manual check: A.2.3 calls characteristic the smallest m for which ring contains a copy of Z/mZ; this can be false depending on subring unit convention. A.3.6 degree of discrete derivative requires characteristic zero or n nonzero in K. A.2.5 field definition should exclude zero ring if rings allow 1=0. B.4.5 resultant factor b^(k-deg f) may involve negative exponents over a general commutative ring, demanding additional hypotheses.
 - Most recent files.list of conversation files found only the pasted TXT editing instructions, no original scan/PDF; GitHub tree also not yet showed the number-theory source scan.
 - Next: thorough A.2, A.3, A solutions; B.4 and B solutions; then C formulas cross-check against scan and Obsidian rendering.
+
+## 2026-11-06 checkpoint: A.2/A.3 and B.4 corrections; PDFs discovered
+
+**Verified edits committed on main**
+- Appendix A body: char-zero requirement for discrete derivative and integer power-sum exponent k>0, unique invariant factors d_i>=2, and nonconstant condition for polynomial Mason–Stothers; English 1141e96cbea3c1175f7a6b614fd24b84ceeb6ac9 and Chinese 4c48681973ceb105bd51fd0faf0c32c504c50224.
+- Appendix A definitions: excluded zero ring in field and domain definitions, fixed final invariant-factor index from d_k to d_m and logarithmic derivative summation index; English c04346b60c73b70f364eeacc6348d0c19b0fff66 and Chinese 3541d940d9f2ff8269242d35dbf086d206ea9672.
+- Appendix A repeated solution-section exercises were still stale and inconsistent after fixing body; synchronized duplicate hypotheses and coprime/root criterion, English a822055975a7bb68d923dda5ec84a702f212f41c and Chinese 5d64097fe1598400fa96b2bb841067d8b82560c3.
+- A.3.6 discrete derivative now specifies n>=1 in body and solution; root-of-unity Parseval argument A.3.10 fixed exponent omega_k^{-j} vs erroneous omega_k^j in English and Chinese, English 25ae39d312a95151e7f2894e45cda81df198f971 and Chinese 36e6e2c306e9d1a431aeca6bdb3b56917967467e.
+- A.3.7 discrete difference induction proof used wrong binomial index C(n,k+1) instead of C(n,k-1) and a spurious minus. Replaced with correct Pascal identity in English 8c829faa4aa60fcb64920d3dc23d0ecfa96cbedf and Chinese 26c7ddd639e25845b900ebb5fdf66425696f3c12.
+- A.3.10 solution's reversed-polynomial explanatory text had erroneous g(1/bar X), plus missing modulus; fixed English e5ee476702d34bf64144f1e1a94b3990d0a6aa30 and 442c299fbff3f2265cf84344aea46f9ed0c275f2.
+- Appendix B, B.4.4 *duplicate problem statement in solutions section* had the old incorrect resultant dimensions and sign despite corrected main statement. Fixed both, and replaced invalid use of matrix inverse over an arbitrary commutative ring with direct adjugate proof; provided explicit algebraic-integer/norm argument for Res(f,g)=±1. Chinese 051228d224937c214721a87a4086b5ba43c4c81b.
+
+**Source PDF availability (important update)**
+- A recursive GitHub tree GET now definitively shows three original PDF files:
+  - materials/数论讲义翻译/A.pdf (1,294,910 bytes)
+  - materials/数论讲义翻译/B.pdf (1,247,438 bytes)
+  - materials/数论讲义翻译/C.pdf (1,404,002 bytes).
+- GitHub connector `fetch_file` with encoding=base64 on A.pdf returned empty content (length zero), while direct raw/GitHub URLs through web were disabled and container network DNS failed. **Original PDF content has not been inspected; do not claim the PDFs were compared.** Need a working binary attachment/materialization or Work browser/other PDF connector to perform the requested scan-by-scan comparison. Confirm PDFs remain in repo on next turn.
+- No downloadable sandbox PDF copies were created.
+
+**Remaining**
+- Complete exhaustive original-English vs A/B Chinese paragraph and formula check across all solutions, then source-PDF comparison once accessible.
+- Audit A.3.12 modular proof; B.4.5 resultant identity over general commutative rings (the printed formula can use negative powers of nonunits); C final math/OCR review. Keep uncertain statements flagged.
