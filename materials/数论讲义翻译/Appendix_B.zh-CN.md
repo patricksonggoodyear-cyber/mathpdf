@@ -567,14 +567,18 @@ N\alpha^m\in\overline{\mathbb Z},
 $$
 那么 $\alpha\in\overline{\mathbb Z}$。也就是说，$\alpha$ 的各次幂具有统一有界的分母。
 
-当 $n$ 足够大时，$\alpha^{2^n}$ 的次数保持不变。事实上，数列
-$$
-[\mathbb Q(\alpha^{2^n}):\mathbb Q]
-=
-[\mathbb Q(\alpha^{2^n}):\mathbb Q(\alpha^{2^{n-1}})]
+当 $n$ 足够大时，$\alpha^{2^n}$ 的次数保持不变。事实上，由于
+$
+\mathbb Q(\alpha^{2^n})\subseteq\mathbb Q(\alpha^{2^{n-1}}),
+$
+塔式公式给出
+$
 [\mathbb Q(\alpha^{2^{n-1}}):\mathbb Q]
-$$
-是一个非增的正整数数列。将 $\alpha$ 替换为某个足够大的幂 $\alpha^{2^m}$ 后，可以假设这一次数对所有 $n\geq0$ 都保持不变。
+=
+[\mathbb Q(\alpha^{2^{n-1}}):\mathbb Q(\alpha^{2^n})]\,
+[\mathbb Q(\alpha^{2^n}):\mathbb Q].
+$
+因此，$[\mathbb Q(\alpha^{2^n}):\mathbb Q]$ 构成非增的正整数数列。将 $\alpha$ 替换为某个足够大的幂 $\alpha^{2^m}$ 后，可以假设这一次数对所有 $n\geq0$ 都保持不变。
 
 设 $\beta_1,\ldots,\beta_\ell$ 是 $\alpha$ 的共轭。考虑
 $$
@@ -600,7 +604,7 @@ $$
 $$
 N_k=N_1^{2^{k-1}}\longrightarrow\infty,
 $$
-这与 $N_k$ 有统一上界矛盾。因此 $N_1=1$，从而 $\alpha$ 的极小多项式具有整数系数，也就是说，$\alpha$ 是代数整数。证毕。
+这与 $N_k$ 有统一上界矛盾。因此 $N_1=1$，从而 $\alpha^2$ 的极小多项式具有整数系数，即 $\alpha^2$ 是代数整数。于是 $\alpha$ 满足首一多项式 $X^2-\alpha^2$，由代数整数的整闭性（或整性的传递性）可知 $\alpha$ 也是代数整数。证毕。
 
 ### 注 B.4.1
 
