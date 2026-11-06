@@ -1065,7 +1065,7 @@ $$
 \frac {| f (\omega_ {1}) | ^ {2} + \ldots + | f (\omega_ {n}) | ^ {2}}{n} = \sum_ {i} a _ {i} ^ {2}.
 $$
 
-Denote by $S ( f )$ the sum of the squares of the coefficients of $f .$ Deduce that $S ( f g ) = S ( f X ^ { \deg g } g ( 1 / X ) )$ for all $f , g \in \mathbb { R } [ X ] . \ ( X ^ { \deg g } g ( 1 / \bar { X } )$ is the polynomial obtained by reversing the coefficients of $g .$
+Denote by $S ( f )$ the sum of the squares of the coefficients of $f .$ Deduce that $S ( f g ) = S ( f X ^ { \deg g } g ( 1 / X ) )$ for all $f , g \in \mathbb { R } [ X ] .  (Here $X^{\deg g}g(1/X)$ denotes the polynomial obtained by reversing the coefficients of $g$.)
 
 ## Solution
 
