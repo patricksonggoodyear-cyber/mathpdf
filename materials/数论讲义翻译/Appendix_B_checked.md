@@ -436,7 +436,7 @@ $$
 \begin{array}{l} N _ {k} ^ {2} f _ {2 ^ {k + 1}} (X ^ {2}) = N _ {k} ^ {2} \prod_ {i = 1} ^ {\ell} X ^ {2} - \beta_ {i} ^ {2 ^ {n + 1}} \\ \qquad = \left(N _ {k} \prod_ {i = 1} ^ {\ell} X - \beta_ {i} ^ {2 ^ {n}}\right) \left(N _ {k} \prod_ {i = 1} ^ {\ell} X + \beta_ {i} ^ {2 ^ {n}}\right) \\ \qquad = \pm (N _ {k} f _ {2 ^ {k}}) (N _ {k} f _ {2 ^ {k}} (- X)) \end{array}
 $$
 
-which is primitive by Gauss’ lemma 5.1.2. Hence, $N _ { k + 1 } ~ = ~ N _ { k } ^ { 2 }$ so $N _ { 1 }$ must be 1 otherwise $N _ { k } = N _ { 1 } ^ { 2 ^ { n - 1 } } \to \infty$ . This means that the minimal polynomial of α has integral coefficients, i.e. α is an algebraic integer.  
+which is primitive by Gauss’ lemma 5.1.2. Hence, $N _ { k + 1 } ~ = ~ N _ { k } ^ { 2 }$ so $N _ { 1 }$ must be 1 otherwise $N _ { k } = N _ { 1 } ^ { 2 ^ { n - 1 } } \to \infty$ . Thus the minimal polynomial of $\alpha^2$ has integral coefficients, so $\alpha^2$ is an algebraic integer. As $\alpha$ is integral over the ring of algebraic integers (it satisfies $X^2-\alpha^2$), transitivity of integrality shows that $\alpha$ is also an algebraic integer.  
 
 ## Remark B.4.1
 
