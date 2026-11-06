@@ -1093,7 +1093,7 @@ $$
 = \sum_ {i} a _ {i} ^ {2}
 $$
 
-by Exercise $\mathrm { A . 3 . 9 ^ { \dagger } }$ since n $\mid i - j$ if $i = j$ for $i , j \in [ [ 0 , \deg f ] ]$ , as $n > \deg f .$ . For the second part, note that $| f ( \omega ) g ( \omega ) | = f ( \omega ) g ( 1 / \omega ) |$ for any $ω$ on the unit circle.
+by Exercise $\mathrm { A . 3 . 9 ^ { \dagger } }$ since n $\mid i - j$ if $i = j$ for $i , j \in [ [ 0 , \deg f ] ]$ , as $n > \deg f .$ . For the second part, note that $|f(\omega)g(\omega)|=|f(\omega)g(1/\omega)|$ for any $ω$ on the unit circle.
 
 Exercise A.3.11<sup>†</sup>. Let k be a positive integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \ \nmid$ k and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
 
