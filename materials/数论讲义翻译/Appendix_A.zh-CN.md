@@ -912,10 +912,7 @@ $$
 
 ## 解答
 
-如果 $R$ 中包含一个 $\mathbb{Z}/m\mathbb{Z}$ 的副本，其中 $m\geq1$，那么 $R$ 的特征整除 $m$。当 $m\neq1$ 时，这就说明了所需结论。如果 $m=0$，那么 $R$ 的特征为零，因为对所有非零 $n\in\mathbb{Z}$，都有 $n\cdot1_R\neq0$。反过来，如果 $\operatorname{char}R=m$，那么典范映射
-$\mathbb{Z}/m\mathbb{Z}\to R$，$\overline a\mapsto a\cdot1_R$，是良定义且单射的。
-
-（因为两边的特征相同。）
+考虑含幺环态射 $\phi:\mathbb{Z}\to R$，定义为 $\phi(a)=a\cdot1_R$。它的像恰好是由 $1_R$ 生成的含幺子环。若 $m=\operatorname{char}R>0$，则由特征的定义可知 $\ker\phi=m\mathbb{Z}$；若 $m=0$，则 $\ker\phi=\{0\}$。因此，由第一同构定理（也可直接由商环定义验证），该像同构于 $\mathbb{Z}/m\mathbb{Z}$，其中约定 $\mathbb{Z}/0\mathbb{Z}=\mathbb{Z}$。
 
 **习题 A.2.4\*** 证明域的特征要么为 $0$，要么为素数 $p$。
 
