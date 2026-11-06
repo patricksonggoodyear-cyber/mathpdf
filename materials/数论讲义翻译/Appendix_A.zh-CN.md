@@ -1096,21 +1096,20 @@ $$
 
 ## 解答
 
-对 $n$ 使用归纳法。当 $n=0$ 时，结论显然成立。假设结论对 $n$ 成立，那么
+对 $n$ 作归纳。当 $n=0$ 时，结论显然。假设公式对 $n$ 成立，则
 
 $$
 \begin{aligned}
 \Delta^{n+1}f(x)
-&=\Delta(\Delta^nf)(x)\\
-&=\sum_{k=0}^{n}(-1)^{n-k}\binom{n}{k}
- (f(x+k+1)-f(x+k))\\
+&=\sum_{k=0}^n(-1)^{n-k}\binom nk
+\bigl(f(x+k+1)-f(x+k)\bigr)\\
 &=\sum_{k=0}^{n+1}(-1)^{n+1-k}
- \left(\binom{n}{k+1}-\binom{n}{k}\right)f(x+k)\\
-&=\sum_{k=0}^{n+1}(-1)^{n+1-k}
- \left(\binom{n}{k+1}+\binom{n}{k}\right)f(x+k)\\
-&=\sum_{k=0}^{n+1}(-1)^{n+1-k}\binom{n+1}{k}f(x+k).
+\left(\binom n{k-1}+\binom nk\right)f(x+k)\\
+&=\sum_{k=0}^{n+1}(-1)^{n+1-k}\binom{n+1}k f(x+k).
 \end{aligned}
 $$
+
+这里约定当 $k<0$ 或 $k>n$ 时 $\binom nk=0$。
 
 **习题 A.3.8†** 设 $m\geq0$ 是整数。证明存在多项式 $f_m\in\mathbb{Q}[X]$，其次数为 $m+1$，并且对任意 $n\in\mathbb{N}$，都有
 
