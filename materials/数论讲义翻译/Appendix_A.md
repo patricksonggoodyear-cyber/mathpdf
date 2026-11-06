@@ -408,7 +408,7 @@ We now define a field in terms of these objects, exactly like before, but hopefu
 
 ## Definition A.2.5 (Field)
 
-A field $K$ is a commutative ring where non-zero elements have multiplicative inverses, i.e. for any $a\in K$ there is an element $a^{-1}\in K$ such that $aa^{-1}=1_K$.
+A field $K$ is a non-zero commutative ring (with $0_K\neq1_K$) where non-zero elements have multiplicative inverses, i.e. for any $a\in K$ there is an element $a^{-1}\in K$ such that $aa^{-1}=1_K$.
 
 For fields, you should think about $\mathbb{Q}$. We also have the analogous definition for non-commutative fields.
 
@@ -422,7 +422,7 @@ Finally, we define the fundamental integral domains.
 
 ## Definition A.2.7 (Domain)
 
-A domain is a ring where the product of two non-zero elements is non-zero. A commutative domain is called an integral domain.
+A domain is a non-zero ring where the product of two non-zero elements is non-zero. A commutative domain is called an integral domain.
 
 For integral domains, you can again think about $\mathbb{Z}$. An example of a commutative ring which isn’t an integral domain is $\mathbb{Z}/4\mathbb{Z}$: $2\cdot2\equiv0\pmod4$, but $2\not\equiv0\pmod4$. $\mathbb{Z}$ is really the typical example of an integral domain, more than of a ring or commutative ring.
 
@@ -601,7 +601,7 @@ that two elements commute is at most $5 / 8 .$
 Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+$, there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z } .$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of integers $2\leq d _ { 1 } \mid \ldots \mid d _ { m }$ such that
 
 $$
-(G, +) \simeq (\mathbb {Z} ^ {n} \times \mathbb {Z} / d _ {1} \mathbb {Z} \times \dots \times \mathbb {Z} / d _ {k} \mathbb {Z}, +).
+(G, +) \simeq (\mathbb {Z} ^ {n} \times \mathbb {Z} / d _ {1} \mathbb {Z} \times \dots \times \mathbb {Z} / d _ {m} \mathbb {Z}, +).
 $$
 
 Exercise A.3.20<sup>†</sup> (Burnside’s Lemma). Let $G$ be a finite group, $S$ a finite set, and $\cdot$ a group action of $G$ on $S$, meaning a map $\cdot:G\times S\to S$ such that $e \cdot s = s$ and $( g h ) \cdot s = g \cdot ( h \cdot s )$ for any $g , h \in G$ and $s \in S$ . Given a $g \in G ,$ , denote by $\operatorname { F i x } ( g )$ the set of elements of $s$ fixed by $g .$ Prove that
@@ -633,7 +633,7 @@ Exercise A.3.25. Let $( K , + , \cdot )$ be a set satisfying the axioms of a fie
 Exercise $\mathbf { A . 3 . 2 6 ^ { \dagger } }$ (Gauss-Lucas Theorem). Let $f \in \mathbb { C } [ X ]$ be a polynomial with roots $\alpha _ { 1 } , \ldots , \alpha _ { k }$ Prove that
 
 $$
-{\frac {f ^ {\prime}}{f}} = \sum_ {k} {\frac {1}{X - \alpha_ {k}}}.
+{\frac {f ^ {\prime}}{f}} = \sum_ {i=1}^{k} {\frac {1}{X - \alpha_ {i}}}.
 $$
 
 Deduce the Gauss-Lucas theorem: if $f \in \mathbb { C } [ X ]$ is non-constant, the roots of $f ^ { \prime }$ are in the convex hull of the roots of $f _ { ; }$ , that is, any root $\beta$ of $f ^ { \prime }$ is a linear combination $\sum _ { i } \lambda _ { i } \alpha _ { i }$ with $\textstyle \sum _ { i } \lambda _ { i } = 1$ and non-negative $\lambda _ { i } \in \mathbb { R }$
