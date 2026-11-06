@@ -279,7 +279,9 @@ Also prove that $\operatorname{Res}(f,g)\in fR[X]+gR[X]$.<sup>3</sup> Finally, s
 **Exercise B.4.5.** Prove the following identities:
 
 - $\operatorname{Res}(fg,h)=\operatorname{Res}(f,h)\operatorname{Res}(g,h)$ for any $f,g,h\in R[X]$.
-- $\operatorname{Res}(f-gh,g)=b^{k-\deg f}\operatorname{Res}(f,g)$, where $k=\deg(f-gh)$ and $b$ is the leading coefficient of $g$.
+- Writing $d=\deg f$ and $k=\deg(f-gh)$, and letting $b$ be the leading coefficient of $g$, the identity over an arbitrary commutative ring is
+  $b^d\operatorname{Res}(f-gh,g)=b^k\operatorname{Res}(f,g)$.
+  When $b$ is a unit, equivalently $\operatorname{Res}(f-gh,g)=b^{k-d}\operatorname{Res}(f,g)$.
 - If $F,G,f,g\in R[X,Y]$ are homogeneous of degrees $m,n,k,k$, respectively, then
   $\operatorname{Res}(F(f,g),G(f,g))=\operatorname{Res}(F,G)^k\operatorname{Res}(f,g)^{mn}$.
   For homogeneous $A,B\in R[X,Y]$, use the convention
