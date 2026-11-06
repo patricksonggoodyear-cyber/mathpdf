@@ -424,7 +424,7 @@ $$
 
 如果不存在这样的 $m$，则称 $R$ 的特征为 $0$。$R$ 的特征记作 $\operatorname{char}R$。
 
-换言之，$R$ 的特征是最小的 $m\geq0$，使得 $R$ 中包含一个 $\mathbb{Z}/m\mathbb{Z}$ 的副本。**习题 A.2.3\*** 证明 $\operatorname{char}R$ 是使得 $R$ 中包含一个 $\mathbb{Z}/m\mathbb{Z}$ 的副本的最小 $m\geq0$。
+等价地，$R$ 的特征是使得由 $1_R$ 生成的含幺子环同构于 $\mathbb{Z}/m\mathbb{Z}$ 的整数 $m\geq0$。**习题 A.2.3\*** 证明 $R$ 中由 $1_R$ 生成的含幺子环同构于 $\mathbb{Z}/m\mathbb{Z}$，其中 $m=\operatorname{char}R$。
 
 ## 定义 A.2.4（交换环）
 
@@ -659,7 +659,7 @@ $$
 
 **习题 A.3.21†**（中国国家队选拔赛 2009）证明存在实数 $c>0$，使得对任意素数 $p$，满足 $n!\equiv-1\pmod p$ 的正整数 $n$ 至多有 $cp^{2/3}$ 个。
 
-**习题 A.3.22†（梅森–斯托瑟定理，多项式版 ABC 猜想）** 假设 $A,B,C\in\mathbb{C}[X]$ 是两两互素且不全为常数的多项式，并且满足 $A+B=C$。证明
+**习题 A.3.22†（梅森–斯托瑟定理，多项式版 ABC 猜想）** 假设 $A,B,C\in\mathbb{C}[X]$ 是非零、两两互素且不全为常数的多项式，并且满足 $A+B=C$。证明
 
 $$
 1+\max(\deg A,\deg B,\deg C)\leq\deg(\operatorname{rad}ABC),
@@ -908,7 +908,7 @@ $$
 
 证明与习题 A.1.1\* 完全相同。
 
-**习题 A.2.3\*** 证明 $\operatorname{char}R$ 是使得 $R$ 中包含一个 $\mathbb{Z}/m\mathbb{Z}$ 的副本的最小 $m\geq0$。
+**习题 A.2.3\*** 证明 $R$ 中由 $1_R$ 生成的含幺子环同构于 $\mathbb{Z}/m\mathbb{Z}$，其中 $m=\operatorname{char}R$。
 
 ## 解答
 
@@ -1624,7 +1624,7 @@ $$
 现在取 $k=\lfloor\sqrt[3]{p}\rfloor$，就得到
 $|S|\leq2p^{2/3}$，即得所需结论。
 
-**习题 A.3.22†（梅森–斯托瑟定理，多项式版 ABC 猜想）** 假设 $A,B,C\in\mathbb{C}[X]$ 是两两互素且不全为常数的多项式，并且满足 $A+B=C$。证明
+**习题 A.3.22†（梅森–斯托瑟定理，多项式版 ABC 猜想）** 假设 $A,B,C\in\mathbb{C}[X]$ 是非零、两两互素且不全为常数的多项式，并且满足 $A+B=C$。证明
 
 $$
 1+\max(\deg A,\deg B,\deg C)
