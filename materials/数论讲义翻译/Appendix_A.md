@@ -408,7 +408,7 @@ We now define a field in terms of these objects, exactly like before, but hopefu
 
 ## Definition A.2.5 (Field)
 
-A field $K$ is a commutative ring where non-zero elements have multiplicative inverses, i.e. for any $a\in K$ there is an element $a^{-1}\in K$ such that $aa^{-1}=1_K$.
+A field $K$ is a non-zero commutative ring (with $0_K\neq1_K$) where non-zero elements have multiplicative inverses, i.e. for any $a\in K$ there is an element $a^{-1}\in K$ such that $aa^{-1}=1_K$.
 
 For fields, you should think about $\mathbb{Q}$. We also have the analogous definition for non-commutative fields.
 
@@ -422,7 +422,7 @@ Finally, we define the fundamental integral domains.
 
 ## Definition A.2.7 (Domain)
 
-A domain is a ring where the product of two non-zero elements is non-zero. A commutative domain is called an integral domain.
+A domain is a non-zero ring where the product of two non-zero elements is non-zero. A commutative domain is called an integral domain.
 
 For integral domains, you can again think about $\mathbb{Z}$. An example of a commutative ring which isn’t an integral domain is $\mathbb{Z}/4\mathbb{Z}$: $2\cdot2\equiv0\pmod4$, but $2\not\equiv0\pmod4$. $\mathbb{Z}$ is really the typical example of an integral domain, more than of a ring or commutative ring.
 
@@ -522,7 +522,7 @@ Exercise A.3.4<sup>†</sup> (USA TST 2017). Let $f , g \in \mathbb { R } [ X ]$
 
 Exercise A.3.5 (All-Russian Olympiad 2014). On a blackboard, we write (only) the polynomials $X^2-3X$ and $X^2-4X$ and all real numbers $c \in \mathbb { R }$ . If the polynomials $f$ and g are written on the board, we can also write $f \pm g , f \cdot g$ and $f \circ g .$ . Is it possible to write a polynomial of the form $X ^ { n } - 1 ?$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n\geq1$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 Exercise A.3.7†. Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Define its discrete derivative $\Delta f$ as $x\mapsto f(x+1)-f(x)$. Prove that, for any integer $n\geq0$,
 
@@ -562,7 +562,7 @@ $$
 
 Denote by $S(f)$ the sum of the squares of the coefficients of $f$. Deduce that $S(fg)=S\bigl(fX^{\deg g}g(1/X)\bigr)$ for all $f,g\in\mathbb{R}[X]$, where $X^{\deg g}g(1/X)$ is the polynomial obtained by reversing the coefficients of $g$.
 
-Exercise A.3.11<sup>†</sup>. Let k be an integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \nmid k$ and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
+Exercise A.3.11<sup>†</sup>. Let k be a positive integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \nmid k$ and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
 
 Exercise A.3.12<sup>†</sup>. Let $p\neq3$ be a prime number. Suppose that $a$ and $b$ are integers such that $p\mid a^2+ab+b^2$. Prove that $(a+b)^p\equiv a^p+b^p\pmod{p^3}$.
 
@@ -598,10 +598,10 @@ $$
 
 that two elements commute is at most $5 / 8 .$
 
-Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+$, there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z } .$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of positive integers $d _ { 1 } \mid \ldots \mid d _ { m }$ such that
+Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+$, there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z } .$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of integers $2\leq d _ { 1 } \mid \ldots \mid d _ { m }$ such that
 
 $$
-(G, +) \simeq (\mathbb {Z} ^ {n} \times \mathbb {Z} / d _ {1} \mathbb {Z} \times \dots \times \mathbb {Z} / d _ {k} \mathbb {Z}, +).
+(G, +) \simeq (\mathbb {Z} ^ {n} \times \mathbb {Z} / d _ {1} \mathbb {Z} \times \dots \times \mathbb {Z} / d _ {m} \mathbb {Z}, +).
 $$
 
 Exercise A.3.20<sup>†</sup> (Burnside’s Lemma). Let $G$ be a finite group, $S$ a finite set, and $\cdot$ a group action of $G$ on $S$, meaning a map $\cdot:G\times S\to S$ such that $e \cdot s = s$ and $( g h ) \cdot s = g \cdot ( h \cdot s )$ for any $g , h \in G$ and $s \in S$ . Given a $g \in G ,$ , denote by $\operatorname { F i x } ( g )$ the set of elements of $s$ fixed by $g .$ Prove that
@@ -616,7 +616,7 @@ where $| S / G |$ denotes the number of (disjoint) orbits $\mathcal { O } _ { i 
 
 Exercise A.3.21<sup>†</sup> (China TST 2009). Prove that there exists a real number $c>0$ such that, for any prime number $p$, there are at most $cp^{2/3}$ positive integers $n$ satisfying $n!\equiv-1\pmod p$.
 
-Exercise A.3.22† (Mason–Stothers Theorem, ABC conjecture for polynomials). Suppose that $A,B,C\in\mathbb{C}[X]$ are pairwise coprime polynomials such that $A+B=C$. Prove that
+Exercise A.3.22† (Mason–Stothers Theorem, ABC conjecture for polynomials). Suppose that $A,B,C\in\mathbb{C}[X]$ are pairwise coprime polynomials, not all constant, such that $A+B=C$. Prove that
 
 $$
 1 + \max (\deg A, \deg B, \deg C) \leq \deg (\operatorname{rad} A B C)
@@ -633,7 +633,7 @@ Exercise A.3.25. Let $( K , + , \cdot )$ be a set satisfying the axioms of a fie
 Exercise $\mathbf { A . 3 . 2 6 ^ { \dagger } }$ (Gauss-Lucas Theorem). Let $f \in \mathbb { C } [ X ]$ be a polynomial with roots $\alpha _ { 1 } , \ldots , \alpha _ { k }$ Prove that
 
 $$
-{\frac {f ^ {\prime}}{f}} = \sum_ {k} {\frac {1}{X - \alpha_ {k}}}.
+{\frac {f ^ {\prime}}{f}} = \sum_ {i=1}^{k} {\frac {1}{X - \alpha_ {i}}}.
 $$
 
 Deduce the Gauss-Lucas theorem: if $f \in \mathbb { C } [ X ]$ is non-constant, the roots of $f ^ { \prime }$ are in the convex hull of the roots of $f _ { ; }$ , that is, any root $\beta$ of $f ^ { \prime }$ is a linear combination $\sum _ { i } \lambda _ { i } \alpha _ { i }$ with $\textstyle \sum _ { i } \lambda _ { i } = 1$ and non-negative $\lambda _ { i } \in \mathbb { R }$
@@ -824,7 +824,7 @@ $$
 
 ## A.2 Algebraic Structures and Morphisms
 
-Exercise A.2.1<sup>∗</sup>. Prove that $1 _ { R }$ and $0 _ { R }$ are unique, and that any element has a unique additive inverse and a unique multiplicative inverse if it is non-zero.
+Exercise A.2.1<sup>∗</sup>. Prove that $1 _ { R }$ and $0 _ { R }$ are unique, and that any element has a unique additive inverse and a unique multiplicative inverse if one exists.
 
 Solution
 
@@ -960,7 +960,7 @@ $$
 g ^ {\prime} (f + \lambda g) - g (f ^ {\prime} + \lambda g ^ {\prime}) = f g ^ {\prime} - g ^ {\prime} f.
 $$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n\geq1$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 ## Solution
 
@@ -986,11 +986,20 @@ $$
 
 ## Solution
 
-We proceed by induction on n. For $n = 0$ it is of course trivial. If it’s true for n, then
+We proceed by induction on $n$. The case $n=0$ is immediate. If the formula holds for $n$, then
 
 $$
-\begin{array}{l} \Delta^ {n + 1} f (x) = \Delta (\Delta^ {n} f) (x) \\ \qquad = \sum_ {k = 0} ^ {n} (- 1) ^ {n - k} \binom {n} {k} (f (x + k + 1) - f (x + k)) \\ \qquad = \sum_ {k = 0} ^ {n + 1} ((- 1) ^ {n + 1 - k} \left(\binom {n} {k + 1} - \binom {n} {k}\right) f (x + k) \\ \qquad = \sum_ {k = 0} ^ {n + 1} (- 1) ^ {n + 1 - k} \left(\binom {n} {k + 1} + \binom {n} {k}\right) f (x + k) \\ \qquad = \sum_ {k = 0} ^ {n + 1} (- 1) ^ {n + 1 - k} \binom {n + 1} {k} f (x + k). \end{array}
+\begin{aligned}
+\Delta^{n+1}f(x)
+&=\sum_{k=0}^n(-1)^{n-k}\binom nk
+\bigl(f(x+k+1)-f(x+k)\bigr)\\
+&=\sum_{k=0}^{n+1}(-1)^{n+1-k}
+\left(\binom n{k-1}+\binom nk\right)f(x+k)\\
+&=\sum_{k=0}^{n+1}(-1)^{n+1-k}\binom{n+1}k f(x+k).
+\end{aligned}
 $$
+
+Here $\binom nk=0$ when $k<0$ or $k>n$.
 
 Exercise ${ \bf A . 3 . 8 ^ { \dagger } }$ . Let $m \geq 0$ be an integer. Prove that there is a polynomial $f _ { m } \in \mathbb { Q } [ X ]$ of degree $m + 1$ such that
 
@@ -1056,7 +1065,7 @@ $$
 \frac {| f (\omega_ {1}) | ^ {2} + \ldots + | f (\omega_ {n}) | ^ {2}}{n} = \sum_ {i} a _ {i} ^ {2}.
 $$
 
-Denote by $S ( f )$ the sum of the squares of the coefficients of $f .$ Deduce that $S ( f g ) = S ( f X ^ { \deg g } g ( 1 / X ) )$ for all $f , g \in \mathbb { R } [ X ] . \ ( X ^ { \deg g } g ( 1 / \bar { X } )$ is the polynomial obtained by reversing the coefficients of $g .$
+Denote by $S ( f )$ the sum of the squares of the coefficients of $f .$ Deduce that $S ( f g ) = S ( f X ^ { \deg g } g ( 1 / X ) )$ for all $f , g \in \mathbb { R } [ X ] .  (Here $X^{\deg g}g(1/X)$ denotes the polynomial obtained by reversing the coefficients of $g$.)
 
 ## Solution
 
@@ -1073,7 +1082,7 @@ $$
 $$
 
 $$
-\frac {1}{n} \sum_ {k = 1} ^ {n} \sum_ {i} a _ {i} \omega_ {k} ^ {i} \sum_ {j} a _ {j} \omega_ {k} ^ {j}
+\frac {1}{n} \sum_ {k = 1} ^ {n} \sum_ {i} a _ {i} \omega_ {k} ^ {i} \sum_ {j} a _ {j} \omega_ {k} ^ {-j}
 $$
 
 $$
@@ -1084,9 +1093,9 @@ $$
 = \sum_ {i} a _ {i} ^ {2}
 $$
 
-by Exercise $\mathrm { A . 3 . 9 ^ { \dagger } }$ since n $\mid i - j$ if $i = j$ for $i , j \in [ [ 0 , \deg f ] ]$ , as $n > \deg f .$ . For the second part, note that $| f ( \omega ) g ( \omega ) | = f ( \omega ) g ( 1 / \omega ) |$ for any $ω$ on the unit circle.
+by Exercise $\mathrm { A . 3 . 9 ^ { \dagger } }$ since n $\mid i - j$ if $i = j$ for $i , j \in [ [ 0 , \deg f ] ]$ , as $n > \deg f .$ . For the second part, note that $|f(\omega)g(\omega)|=|f(\omega)g(1/\omega)|$ for any $ω$ on the unit circle.
 
-Exercise A.3.11<sup>†</sup>. Let k be an integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \ \nmid$ k and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
+Exercise A.3.11<sup>†</sup>. Let k be a positive integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \ \nmid$ k and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
 
 ## Solution
 
@@ -1228,7 +1237,7 @@ $$
 
 One can check that the bound $5 / 8$ is achieved by the quaternion group $Q _ { 8 }$ consisting of the elements $e , b , b ^ { 2 } , b ^ { 3 } , a , a b , a b ^ { 2 } , a b ^ { 3 }$ under the presentation $a ^ { 4 } = b ^ { 4 } = e , a ^ { 2 } = b ^ { 2 }$ , and $b a = a b ^ { 3 }$
 
-Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+ ,$ , there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z }$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of positive integers $d _ { 1 } \mid \ldots \mid d _ { m }$ such that
+Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+ ,$ , there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z }$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of integers $2\leq d _ { 1 } \mid \ldots \mid d _ { m }$ such that
 
 $$
 (G, +) \simeq (\mathbb {Z} ^ {n} \times \mathbb {Z} / d _ {1} \mathbb {Z} \times \dots \times \mathbb {Z} / d _ {k} \mathbb {Z}, +).
@@ -1336,7 +1345,7 @@ $$
 
 If we now pick $k = \lfloor \sqrt [ 3 ] { p } \rfloor$ , we get $| S | \le 2 p ^ { 2 / 3 }$ as wanted.
 
-Exercise A.3.22<sup>†</sup> (Mason-Stothers Theorem, ABC conjecture for polynomials). Suppose that $A, B, C \in\mathbb { C } [ X ]$ are coprime polynomials such that $A + B = C$ . Prove that
+Exercise A.3.22<sup>†</sup> (Mason-Stothers Theorem, ABC conjecture for polynomials). Suppose that $A, B, C \in\mathbb { C } [ X ]$ are pairwise coprime polynomials, not all constant, such that $A + B = C$ . Prove that
 
 $$
 1 + \max (\deg A, \deg B, \deg C) \leq \deg (\operatorname{rad} A B C)
