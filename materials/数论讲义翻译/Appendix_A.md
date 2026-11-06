@@ -522,7 +522,7 @@ Exercise A.3.4<sup>†</sup> (USA TST 2017). Let $f , g \in \mathbb { R } [ X ]$
 
 Exercise A.3.5 (All-Russian Olympiad 2014). On a blackboard, we write (only) the polynomials $X^2-3X$ and $X^2-4X$ and all real numbers $c \in \mathbb { R }$ . If the polynomials $f$ and g are written on the board, we can also write $f \pm g , f \cdot g$ and $f \circ g .$ . Is it possible to write a polynomial of the form $X ^ { n } - 1 ?$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n\geq1$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 Exercise A.3.7†. Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Define its discrete derivative $\Delta f$ as $x\mapsto f(x+1)-f(x)$. Prove that, for any integer $n\geq0$,
 
@@ -960,7 +960,7 @@ $$
 g ^ {\prime} (f + \lambda g) - g (f ^ {\prime} + \lambda g ^ {\prime}) = f g ^ {\prime} - g ^ {\prime} f.
 $$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n\geq1$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 ## Solution
 
@@ -1073,7 +1073,7 @@ $$
 $$
 
 $$
-\frac {1}{n} \sum_ {k = 1} ^ {n} \sum_ {i} a _ {i} \omega_ {k} ^ {i} \sum_ {j} a _ {j} \omega_ {k} ^ {j}
+\frac {1}{n} \sum_ {k = 1} ^ {n} \sum_ {i} a _ {i} \omega_ {k} ^ {i} \sum_ {j} a _ {j} \omega_ {k} ^ {-j}
 $$
 
 $$
