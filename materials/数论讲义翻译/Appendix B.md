@@ -364,7 +364,7 @@ Newton’s formulas give us $k ! e _ { i } ( \alpha _ { 1 } , \ldots , \alpha _ 
 Thus, the problem reduces to showing that, if $\alpha \in { \overline { { \mathbb { Q } } } }$ is algebraic and such that $N \alpha ^ { n } \in { \overline { { \mathbb { Z } } } } \ ( { \mathrm { i . e . } }$ powers of α have bounded denominator) for some non-zero $N \in \mathbb { Z }$ and any positive integer $n ,$ then $\alpha \in { \overline { { \mathbb { Z } } } } .$ . For large n, the degree of $\alpha ^ { 2 ^ { n } }$ is constant, since the sequence 
 
 $$
-[ \mathbb {Q} (\alpha^ {2 ^ {n}}): \mathbb {Q} ] = [ \mathbb {Q} (\alpha^ {2 ^ {n}}): \mathbb {Q} (\alpha^ {2 ^ {n - 1}}) ] [ \mathbb {Q} (\alpha^ {2 ^ {n - 1}}): \mathbb {Q} ]
+[\mathbb{Q}(\alpha^{2^{n-1}}):\mathbb{Q}]=[\mathbb{Q}(\alpha^{2^{n-1}}):\mathbb{Q}(\alpha^{2^n})][\mathbb{Q}(\alpha^{2^n}):\mathbb{Q}]
 $$
 
 is a non-increasing sequence of integers. By replacing α by $\alpha ^ { 2 ^ { m } }$ for some large m, we may assume that this is true for any $n \geq 0$ . Let $\beta _ { 1 } , \ldots , \beta _ { \ell }$ be the conjugates of $\alpha .$ Consider the minimal polynomial 
