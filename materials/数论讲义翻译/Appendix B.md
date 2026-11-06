@@ -224,7 +224,7 @@ Exercise B.4.5. Prove that
 
 • Res $( f g , h ) = \operatorname { R e s } ( f , h ) \operatorname { R e s } ( g , h )$ for any $f , g h \in R [ X ]$ 
 
-• Res $( f - g h , g ) = b ^ { k - n } \operatorname { R e s } ( f , g )$ for any $f , g , h \in R [ X ]$ where k is the degree of $f - g h , n$ is the degree of g and b its leading coefficient. 
+• For any $f,g,h\in R[X]$, write $d=\deg f$ and $k=\deg(f-gh)$, and let $b$ be the leading coefficient of $g$. Then $b^d\operatorname{Res}(f-gh,g)=b^k\operatorname{Res}(f,g)$. If $b$ is invertible, this is equivalent to $\operatorname{Res}(f-gh,g)=b^{k-d}\operatorname{Res}(f,g)$. 
 
 • Res $( F ( f , g ) , G ( f , g ) ) = \mathrm { R e s } ( F , G ) ^ { k } \mathrm { R e s } ( f , g ) ^ { m n }$ where $F , G , f , g \in R [ X , Y ]$ are homogeneous polynomials of respective degrees $m , n , k , k$ . Here, by ${ \mathrm { R e s } } ( A , B )$ for homogeneous A, $B \in R [ X , Y ]$ we mean Res $( A ( X , 1 ) , B ( X , 1 ) )$ . 
 
