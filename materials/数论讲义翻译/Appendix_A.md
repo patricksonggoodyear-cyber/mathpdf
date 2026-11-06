@@ -522,7 +522,7 @@ Exercise A.3.4<sup>†</sup> (USA TST 2017). Let $f , g \in \mathbb { R } [ X ]$
 
 Exercise A.3.5 (All-Russian Olympiad 2014). On a blackboard, we write (only) the polynomials $X^2-3X$ and $X^2-4X$ and all real numbers $c \in \mathbb { R }$ . If the polynomials $f$ and g are written on the board, we can also write $f \pm g , f \cdot g$ and $f \circ g .$ . Is it possible to write a polynomial of the form $X ^ { n } - 1 ?$
 
-Exercise A.3.6<sup>†</sup> (Discrete Derivative). Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
+Exercise A.3.6<sup>†</sup> (Discrete Derivative). Assume $K$ has characteristic zero. Let $f\in K[X]$ be a polynomial of degree $n$ and leading coefficient $a$. Define its discrete derivative as $\Delta f:=f(X+1)-f(X)$. Prove that, for any $g\in K[X]$, $\Delta f=\Delta g$ if and only if $f-g$ is constant, and that $\Delta f$ is a polynomial of degree $n-1$ with leading coefficient $an$, where $a$ is the leading coefficient of $f$. Deduce the minimal degree of a monic polynomial $f\in\mathbb{Z}[X]$ identically zero modulo $m$, for a given integer $m\geq1$.
 
 Exercise A.3.7†. Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Define its discrete derivative $\Delta f$ as $x\mapsto f(x+1)-f(x)$. Prove that, for any integer $n\geq0$,
 
@@ -562,7 +562,7 @@ $$
 
 Denote by $S(f)$ the sum of the squares of the coefficients of $f$. Deduce that $S(fg)=S\bigl(fX^{\deg g}g(1/X)\bigr)$ for all $f,g\in\mathbb{R}[X]$, where $X^{\deg g}g(1/X)$ is the polynomial obtained by reversing the coefficients of $g$.
 
-Exercise A.3.11<sup>†</sup>. Let k be an integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \nmid k$ and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
+Exercise A.3.11<sup>†</sup>. Let k be a positive integer. Prove that $\textstyle \sum _ { a \in \mathbb { F } _ { p } } a ^ { k }$ is 0 if $p - 1 \nmid k$ and −1 otherwise. Deduce that any non-constant polynomial $f \in \mathbb { F } _ { p } [ X ]$ satisfying $f ( a ) \in \{ 0 , 1 \}$ for all $a \in \mathbb { F } _ { p }$ must have degree at least $p - 1$
 
 Exercise A.3.12<sup>†</sup>. Let $p\neq3$ be a prime number. Suppose that $a$ and $b$ are integers such that $p\mid a^2+ab+b^2$. Prove that $(a+b)^p\equiv a^p+b^p\pmod{p^3}$.
 
@@ -598,7 +598,7 @@ $$
 
 that two elements commute is at most $5 / 8 .$
 
-Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+$, there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z } .$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of positive integers $d _ { 1 } \mid \ldots \mid d _ { m }$ such that
+Exercise A.3.19<sup>†</sup> (Fundamental Theorem of Finitely Generated Abelian Groups). Let $G$ be an abelian group which is finitely generated, i.e., if we write its operation as $+$, there are $g _ { 1 } , \dotsc , g _ { k } \in G$ such that any $g \in G$ can be represented as $n _ { 1 } g _ { 1 } + \ldots + n _ { k } g _ { k }$ for integers $n _ { i } \in \mathbb { Z } .$ . Prove that there is a unique integer $n \geq 0$ (called the rank of the group) and a unique sequence of integers $2\leq d _ { 1 } \mid \ldots \mid d _ { m }$ such that
 
 $$
 (G, +) \simeq (\mathbb {Z} ^ {n} \times \mathbb {Z} / d _ {1} \mathbb {Z} \times \dots \times \mathbb {Z} / d _ {k} \mathbb {Z}, +).
@@ -616,7 +616,7 @@ where $| S / G |$ denotes the number of (disjoint) orbits $\mathcal { O } _ { i 
 
 Exercise A.3.21<sup>†</sup> (China TST 2009). Prove that there exists a real number $c>0$ such that, for any prime number $p$, there are at most $cp^{2/3}$ positive integers $n$ satisfying $n!\equiv-1\pmod p$.
 
-Exercise A.3.22† (Mason–Stothers Theorem, ABC conjecture for polynomials). Suppose that $A,B,C\in\mathbb{C}[X]$ are pairwise coprime polynomials such that $A+B=C$. Prove that
+Exercise A.3.22† (Mason–Stothers Theorem, ABC conjecture for polynomials). Suppose that $A,B,C\in\mathbb{C}[X]$ are pairwise coprime polynomials, not all constant, such that $A+B=C$. Prove that
 
 $$
 1 + \max (\deg A, \deg B, \deg C) \leq \deg (\operatorname{rad} A B C)
